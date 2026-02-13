@@ -1,0 +1,733 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe ::Search::Zoekt::SearchResults, :zoekt_cache_disabled, :zoekt_settings_enabled, feature_category: :global_search do
+  let_it_be(:user) { create(:user) }
+  let_it_be(:group_1) { create(:group) }
+  let_it_be(:group_2) { create(:group) }
+  let_it_be(:project_1) { create(:project, :public, :repository, group: group_1) }
+  let_it_be(:project_2) { create(:project, :public, :repository, group: group_2) }
+
+  let(:query) { 'hello world' }
+  let(:limit_projects) { nil }
+  let(:node_id) { ::Search::Zoekt::Node.last.id }
+  let(:filters) { {} }
+  let(:source) { :api }
+  let(:results) { described_class.new(user, query, nil, **params) }
+
+  let(:params) do
+    {
+      node_id: node_id,
+      filters: filters,
+      source: source,
+      modes: { regex: true }
+    }
+  end
+
+  before_all do
+    zoekt_ensure_project_indexed!(project_1)
+    zoekt_ensure_project_indexed!(project_2)
+  end
+
+  describe '#initialize' do
+    context 'when options has search_level' do
+      it 'raises an error' do
+        expect { described_class.new(nil, 'test', nil, search_level: :project) }
+          .to raise_error('Specifying search level is not supported. Pass group_id or project_id instead.')
+      end
+    end
+  end
+
+  describe '#objects' do
+    using RSpec::Parameterized::TableSyntax
+    let(:query) { 'use.*egex' }
+
+    subject(:objects) { results.objects('blobs') }
+
+    it 'finds blobs by regex search' do
+      expect(objects.map(&:data).join).to include("def username_regex\n      default_regex")
+      expect(results.blobs_count).to eq 10
+    end
+
+    it 'sets file_count on the instance equal to the count of files with matches' do
+      objects
+      expect(results).to have_attributes(file_count: 4)
+    end
+
+    describe 'caching' do
+      context 'when source is :api' do
+        it 'instantiates zoekt cache with correct arguments' do
+          expect(Search::Zoekt::Cache).to receive(:new).with(
+            query,
+            current_user: user,
+            page: 1,
+            per_page: described_class::DEFAULT_PER_PAGE,
+            max_per_page: described_class::DEFAULT_PER_PAGE * 2,
+            project_id: nil,
+            group_id: nil,
+            search_mode: :regex,
+            chunk_size: nil,
+            filters: {},
+            count_only: false
+          ).and_call_original
+
+          objects
+        end
+      end
+
+      context 'when source is not :api' do
+        let(:source) { nil }
+
+        it 'instantiates zoekt cache with correct arguments' do
+          expect(Search::Zoekt::Cache).to receive(:new).with(
+            query,
+            current_user: user,
+            page: 1,
+            per_page: described_class::DEFAULT_PER_PAGE,
+            max_per_page: described_class::DEFAULT_PER_PAGE * 2,
+            project_id: nil,
+            group_id: nil,
+            search_mode: :regex,
+            chunk_size: 3,
+            filters: {},
+            count_only: false
+          ).and_call_original
+
+          objects
+        end
+      end
+    end
+
+    it 'correctly handles pagination' do
+      per_page = 2
+
+      blobs_page1 = results.objects('blobs', page: 1, per_page: per_page)
+      blobs_page2 = results.objects('blobs', page: 2, per_page: per_page)
+
+      expect(blobs_page1.map(&:data).join).to include("def username_regex\n      default_regex")
+      expect(blobs_page2.map(&:data).join).to include("regexp group matches\n  (`$1`, `$2`, etc)")
+      expect(results.blobs_count).to eq 10
+    end
+
+    it 'returns empty result when request is out of page range' do
+      blobs_page = results.objects('blobs', page: 256, per_page: 2)
+
+      expect(blobs_page).to be_empty
+    end
+
+    describe 'regex mode' do
+      where(:param_regex_mode, :source, :search_mode_sent_to_client) do
+        nil     | :api  | :regex
+        nil     | :web  | :exact
+        true    | :api  | :regex
+        true    | :web  | :regex
+        false   | :api  | :exact
+        false   | :web  | :exact
+        'true'  | :api  | :regex
+        'true'  | :web  | :regex
+        'false' | :api  | :exact
+        'false' | :web  | :exact
+      end
+
+      with_them do
+        it 'calls search on Gitlab::Search::Zoekt::Client with correct parameters' do
+          expect(Gitlab::Search::Zoekt::Client).to receive(:search).with(
+            query,
+            hash_including(
+              num: described_class::ZOEKT_COUNT_LIMIT,
+              node_id: node_id,
+              search_mode: search_mode_sent_to_client,
+              source: source)
+          ).and_call_original
+
+          described_class.new(user, query, limit_projects, group_id: group_1.id, node_id: node_id, source: source,
+            modes: { regex: param_regex_mode }).objects('blobs')
+        end
+
+        context 'when a node id is not specified' do
+          context 'and traversal ids feature is unavailable' do
+            let(:limit_projects) { ::Project.id_in([project_1.id]) }
+
+            before do
+              stub_zoekt_features(traversal_id_search: false)
+            end
+
+            it 'calls search on Gitlab::Search::Zoekt::Client with correct parameters' do
+              expect(Gitlab::Search::Zoekt::Client).to receive(:search).with(
+                query,
+                hash_including(
+                  num: described_class::ZOEKT_COUNT_LIMIT,
+                  search_mode: search_mode_sent_to_client,
+                  targets: ::Search::Zoekt::RoutingService.execute(limit_projects),
+                  source: source
+                )
+              ).and_call_original
+
+              described_class.new(user, query, limit_projects, group_id: group_1.id, source: source,
+                modes: { regex: param_regex_mode }).objects('blobs')
+            end
+          end
+
+          it 'calls search on Gitlab::Search::Zoekt::Client with correct parameters' do
+            expect(Gitlab::Search::Zoekt::Client).to receive(:search).with(
+              query,
+              hash_including(
+                num: described_class::ZOEKT_COUNT_LIMIT,
+                search_mode: search_mode_sent_to_client,
+                targets: nil,
+                source: source
+              )
+            ).and_call_original
+
+            described_class.new(user, query, limit_projects, group_id: group_1.id, source: source,
+              modes: { regex: param_regex_mode }).objects('blobs')
+          end
+        end
+      end
+
+      context 'when modes is not passed' do
+        it 'calls search on Gitlab::Search::Zoekt::Client with correct parameters' do
+          expect(Gitlab::Search::Zoekt::Client).to receive(:search).with(
+            query,
+            hash_including(
+              num: described_class::ZOEKT_COUNT_LIMIT,
+              node_id: node_id,
+              search_mode: :exact,
+              source: nil
+            )
+          ).and_call_original
+          described_class.new(user, query, limit_projects, group_id: group_1.id, node_id: node_id,
+            source: nil).objects('blobs')
+        end
+      end
+    end
+
+    context 'when searching with special characters', :aggregate_failures do
+      let_it_be(:examples) do
+        {
+          'perlMethodCall' => '$my_perl_object->perlMethodCall',
+          '"absolute_with_specials.txt"' => '/a/longer/file-path/absolute_with_specials.txt',
+          '"components-within-slashes"' => '/file-path/components-within-slashes/',
+          'bar\(x\)' => 'Foo.bar(x)',
+          'someSingleColonMethodCall' => 'LanguageWithSingleColon:someSingleColonMethodCall',
+          'javaLangStaticMethodCall' => 'MyJavaClass::javaLangStaticMethodCall',
+          'tokenAfterParentheses' => 'ParenthesesBetweenTokens)tokenAfterParentheses',
+          'ruby_call_method_123' => 'RubyClassInvoking.ruby_call_method_123(with_arg)',
+          'ruby_method_call' => 'RubyClassInvoking.ruby_method_call(with_arg)',
+          '#ambitious-planning' => 'We [plan ambitiously](#ambitious-planning).',
+          'ambitious-planning' => 'We [plan ambitiously](#ambitious-planning).',
+          'tokenAfterCommaWithNoSpace' => 'WouldHappenInManyLanguages,tokenAfterCommaWithNoSpace',
+          'missing_token_around_equals' => 'a.b.c=missing_token_around_equals',
+          'and;colons:too\$' => 'and;colons:too$',
+          '"differeñt-lønguage.txt"' => 'another/file-path/differeñt-lønguage.txt',
+          '"relative-with-specials.txt"' => 'another/file-path/relative-with-specials.txt',
+          'ruby_method_123' => 'def self.ruby_method_123(ruby_another_method_arg)',
+          'ruby_method_name' => 'def self.ruby_method_name(ruby_method_arg)',
+          '"dots.also.neeeeed.testing"' => 'dots.also.neeeeed.testing',
+          '.testing' => 'dots.also.neeeeed.testing',
+          'dots' => 'dots.also.neeeeed.testing',
+          'also.neeeeed' => 'dots.also.neeeeed.testing',
+          'neeeeed' => 'dots.also.neeeeed.testing',
+          'tests-image' => 'extends: .gitlab-tests-image',
+          'gitlab-tests' => 'extends: .gitlab-tests-image',
+          'gitlab-tests-image' => 'extends: .gitlab-tests-image',
+          'foo/bar' => 'https://s3.amazonaws.com/foo/bar/baz.png',
+          'https://test.or.dev.com/repository' => 'https://test.or.dev.com/repository/maven-all',
+          'test.or.dev.com/repository/maven-all' => 'https://test.or.dev.com/repository/maven-all',
+          'repository/maven-all' => 'https://test.or.dev.com/repository/maven-all',
+          'https://test.or.dev.com/repository/maven-all' => 'https://test.or.dev.com/repository/maven-all',
+          'bar-baz-conventions' => 'id("foo.bar-baz-conventions")',
+          'baz-conventions' => 'id("foo.bar-baz-conventions")',
+          'baz' => 'id("foo.bar-baz-conventions")',
+          'bikes-3.4' => 'include "bikes-3.4"',
+          'sql_log_bin' => 'q = "SET @@session.sql_log_bin=0;"',
+          'sql_log_bin=0' => 'q = "SET @@session.sql_log_bin=0;"',
+          'v3/delData' => 'uri: "v3/delData"',
+          '"us-east-2"' => 'us-east-2'
+        }
+      end
+
+      before_all do
+        examples.values.uniq.each do |file_content|
+          file_name = Digest::SHA256.hexdigest(file_content)
+          project_1.repository.create_file(user, file_name, file_content, message: 'Some commit message',
+            branch_name: 'master')
+        end
+
+        zoekt_ensure_project_indexed!(project_1)
+      end
+
+      [:api, nil].each do |source|
+        context "when source is #{source}" do
+          it 'finds all examples' do
+            examples.each do |search_term, file_content|
+              file_name = Digest::SHA256.hexdigest(file_content)
+
+              search_results_instance = described_class.new(
+                user,
+                search_term,
+                limit_projects,
+                group_id: group_1.id,
+                node_id: node_id,
+                modes: { regex: true },
+                source: source
+              )
+
+              results = search_results_instance.objects('blobs').map(&:path)
+              expect(results).to include(file_name)
+            end
+          end
+        end
+      end
+    end
+
+    context 'when source is not :api' do
+      let(:source) { nil }
+
+      it 'returns just one blob of kind Search::FoundMultiLineBlob' do
+        expect(results.objects('blobs', per_page: 1)).to contain_exactly(a_kind_of(Search::FoundMultiLineBlob))
+      end
+
+      context 'when projects are deleted' do
+        let(:limit_projects) { Project.where(id: [project_1.id, project_2.id]) }
+
+        it 'removes the results from the deleted projects' do
+          project_2.destroy!
+          results_project_paths = results.objects.map(&:project_path).uniq
+          expect(results_project_paths).to contain_exactly(project_1.full_path)
+        end
+      end
+    end
+
+    describe 'filtering' do
+      include ProjectForksHelper
+
+      let_it_be(:archived_project) { create(:project, :public, :archived, :repository) }
+      let!(:forked_project) { fork_project(project_1) }
+      let(:all_project_ids) { Project.all.pluck_primary_key }
+      let(:non_archived_project_ids) { all_project_ids - [archived_project.id] }
+      let(:non_forked_project_ids) { all_project_ids - [forked_project.id] }
+      let(:filters) { {} }
+
+      subject(:search) do
+        described_class.new(user, query, limit_projects, group_id: group_1.id, node_id: node_id,
+          filters: filters).objects('blobs')
+      end
+
+      shared_examples 'a non-filtered search' do
+        it 'calls search on Gitlab::Search::Zoekt::Client with all project ids' do
+          expect(Gitlab::Search::Zoekt::Client).to receive(:search).with(
+            query,
+            hash_including(
+              num: described_class::ZOEKT_COUNT_LIMIT,
+              node_id: node_id,
+              search_mode: :exact,
+              filters: filters
+            )
+          ).and_call_original
+
+          search
+        end
+      end
+
+      context 'without N+1 queries' do
+        it 'does not have N+1 queries for projects' do
+          projects = [project_1, project_2]
+
+          collection = ::Project.id_in(projects.map(&:id))
+
+          control = ActiveRecord::QueryRecorder.new(skip_cached: false) do
+            described_class.new(user, query, collection, group_id: group_1.id, node_id: node_id,
+              filters: filters).objects('blobs')
+          end
+
+          projects << create(:project, group: create(:group))
+          projects << create(:project, :mirror)
+
+          collection = ::Project.id_in(projects.map(&:id))
+
+          expect do
+            described_class.new(user, query, collection, group_id: group_1.id, node_id: node_id,
+              filters: filters).objects('blobs')
+          end.not_to issue_same_number_of_queries_as(control)
+        end
+      end
+
+      context 'when no filters are passed' do
+        it 'calls search on Gitlab::Search::Zoekt::Client with non archived project ids' do
+          expect(Gitlab::Search::Zoekt::Client).to receive(:search).with(
+            query,
+            hash_including(
+              num: described_class::ZOEKT_COUNT_LIMIT,
+              node_id: node_id,
+              search_mode: :exact
+            )
+          ).and_call_original
+
+          search
+        end
+      end
+
+      describe 'archive filters' do
+        context 'when include_archived filter is set to true' do
+          let(:filters) { { include_archived: true } }
+
+          it_behaves_like 'a non-filtered search'
+        end
+
+        context 'when include_archived filter is set to false' do
+          let(:filters) { { include_archived: false } }
+
+          it 'calls search on Gitlab::Search::Zoekt::Client with correct filter' do
+            expect(Gitlab::Search::Zoekt::Client).to receive(:search).with(
+              query,
+              hash_including(
+                num: described_class::ZOEKT_COUNT_LIMIT,
+                search_mode: :exact,
+                filters: { include_archived: false }
+              )
+            ).and_call_original
+
+            search
+          end
+
+          context 'and all projects are archived' do
+            before do
+              Project.update_all(archived: true)
+            end
+
+            it 'returns an empty result set' do
+              expect(search).to be_empty
+            end
+          end
+        end
+      end
+
+      describe 'fork filters' do
+        using RSpec::Parameterized::TableSyntax
+
+        where(:exclude_forks, :expected_project_ids) do
+          nil   | ref(:non_forked_project_ids) # forked excluded per default
+          true  | ref(:non_forked_project_ids)
+          false | ref(:non_archived_project_ids)
+        end
+
+        with_them do
+          let(:filters) { { exclude_forks: exclude_forks } }
+
+          it 'calls search on Gitlab::Search::Zoekt::Client with the correct filter' do
+            expect(Gitlab::Search::Zoekt::Client).to receive(:search).with(
+              query,
+              hash_including(
+                num: described_class::ZOEKT_COUNT_LIMIT,
+                filters: { exclude_forks: exclude_forks },
+                search_mode: :exact
+              )
+            ).and_call_original
+
+            search
+          end
+        end
+      end
+    end
+
+    context 'when search_level is project and node_id is nil' do
+      let(:logger) { instance_double(Search::Zoekt::Logger) }
+      let(:results) { described_class.new(user, query, limit_projects, project_id: project_1.id) }
+
+      before do
+        allow(Search::Zoekt::Logger).to receive(:build).and_return(logger)
+      end
+
+      context 'when project is empty_repo' do
+        let_it_be(:project_1) { create(:project, :public, :empty_repo) }
+
+        it 'returns empty results, does not log and does not index' do
+          expect(logger).not_to receive(:info).with({
+            'class' => described_class.to_s, 'query' => query, 'project_id' => project_1.id,
+            'message' => 'zoekt repository is not found for this search'
+          })
+          expect(Search::Zoekt).not_to receive(:index_async).with(project_1.id)
+          expect(objects).to eq []
+          expect(results).to have_attributes(file_count: 0)
+        end
+      end
+
+      context 'when project is non empty_repo' do
+        it 'returns empty results, logs and index the project' do
+          expect(logger).to receive(:info).with({
+            'class' => described_class.to_s, 'query' => query, 'project_id' => project_1.id,
+            'message' => 'zoekt repository is not found for this search'
+          })
+          expect(Search::Zoekt).to receive(:index_async).with(project_1.id)
+          expect(objects).to eq []
+          expect(results).to have_attributes(file_count: 0)
+        end
+      end
+    end
+
+    context 'when LineMatches in zoekt response is nil' do
+      let(:logger) { instance_double(Search::Zoekt::Logger) }
+      let(:file_with_nil_matches) do
+        { RepositoryID: project_1.id.to_s, FileName: 'test.rb', LineMatches: nil }
+      end
+
+      let(:mock_response) do
+        instance_double(
+          ::Gitlab::Search::Zoekt::Response,
+          match_count: 1,
+          file_count: 1,
+          failure?: false,
+          parsed_response: {}
+        )
+      end
+
+      before do
+        allow(Search::Zoekt::Logger).to receive(:build).and_return(logger)
+        allow(mock_response).to receive(:each_file).and_yield(file_with_nil_matches)
+        allow(Gitlab::Search::Zoekt::Client).to receive(:search).and_return(mock_response)
+      end
+
+      it 'raises exception and logs error' do
+        expect(logger).to receive(:error).with(
+          hash_including(
+            'class' => described_class.to_s,
+            'message' => 'LineMatches is missing',
+            'error' => mock_response.parsed_response[:Error],
+            'failures' => mock_response.parsed_response[:Failures],
+            'timed_out' => mock_response.parsed_response[:TimedOut],
+            'file' => file_with_nil_matches
+          )
+        )
+        expect { objects }.to raise_error(NoMethodError)
+      end
+    end
+
+    context 'when Zoekt response uses Repository field instead of RepositoryID' do
+      let(:file_with_repository_field) do
+        {
+          Repository: project_1.id.to_s,
+          FileName: 'test.rb',
+          LineMatches: [
+            {
+              LineNumber: 1,
+              Line: Base64.encode64('test content'),
+              LineFragments: [{ LineOffset: 0, MatchLength: 4 }]
+            }
+          ]
+        }
+      end
+
+      let(:mock_response) do
+        instance_double(
+          ::Gitlab::Search::Zoekt::Response,
+          match_count: 1,
+          file_count: 1,
+          failure?: false,
+          parsed_response: {}
+        )
+      end
+
+      before do
+        allow(mock_response).to receive(:each_file).and_yield(file_with_repository_field)
+        allow(Gitlab::Search::Zoekt::Client).to receive(:search).and_return(mock_response)
+      end
+
+      it 'extracts project_id from Repository field' do
+        blobs = objects
+        expect(blobs).not_to be_empty
+        expect(blobs.first.project_id).to eq(project_1.id)
+      end
+    end
+
+    context 'when Zoekt response has RepositoryID as zero and Repository field present' do
+      let(:file_with_zero_repository_id) do
+        {
+          RepositoryID: '0',
+          Repository: project_2.id.to_s,
+          FileName: 'large_id_test.rb',
+          LineMatches: [
+            {
+              LineNumber: 5,
+              Line: Base64.encode64('large project id test'),
+              LineFragments: [{ LineOffset: 0, MatchLength: 5 }]
+            }
+          ]
+        }
+      end
+
+      let(:mock_response) do
+        instance_double(
+          ::Gitlab::Search::Zoekt::Response,
+          match_count: 1,
+          file_count: 1,
+          failure?: false,
+          parsed_response: {}
+        )
+      end
+
+      before do
+        allow(mock_response).to receive(:each_file).and_yield(file_with_zero_repository_id)
+        allow(Gitlab::Search::Zoekt::Client).to receive(:search).and_return(mock_response)
+      end
+
+      it 'falls back to Repository field when RepositoryID is zero' do
+        blobs = objects
+        expect(blobs).not_to be_empty
+        expect(blobs.first.project_id).to eq(project_2.id)
+      end
+    end
+
+    context 'when Zoekt response has valid RepositoryID' do
+      let(:file_with_repository_id) do
+        {
+          RepositoryID: project_1.id.to_s,
+          Repository: '999999',
+          FileName: 'legacy_format.rb',
+          LineMatches: [
+            {
+              LineNumber: 10,
+              Line: Base64.encode64('legacy format test'),
+              LineFragments: [{ LineOffset: 0, MatchLength: 6 }]
+            }
+          ]
+        }
+      end
+
+      let(:mock_response) do
+        instance_double(
+          ::Gitlab::Search::Zoekt::Response,
+          match_count: 1,
+          file_count: 1,
+          failure?: false,
+          parsed_response: {}
+        )
+      end
+
+      before do
+        allow(mock_response).to receive(:each_file).and_yield(file_with_repository_id)
+        allow(Gitlab::Search::Zoekt::Client).to receive(:search).and_return(mock_response)
+      end
+
+      it 'prefers RepositoryID over Repository field' do
+        blobs = objects
+        expect(blobs).not_to be_empty
+        expect(blobs.first.project_id).to eq(project_1.id)
+      end
+    end
+  end
+
+  describe '#blobs_count' do
+    using RSpec::Parameterized::TableSyntax
+
+    where(:query, :source, :regex_mode, :expected_count) do
+      'use.*egex' | nil   | false | 0
+      'use.*egex' | nil   | true  | 5
+      'use.*egex' | :api  | false | 0
+      'use.*egex' | :api  | true  | 5
+      'asdfg'     | nil   | false | 0
+      'asdfg'     | nil   | true  | 0
+      'asdfg'     | :api  | false | 0
+      'asdfg'     | :api  | true  | 0
+      '# good'    | nil   | false | 30
+      '# good'    | nil   | true  | 75
+      '# good'    | :api  | false | 134
+      '# good'    | :api  | true  | 555
+    end
+
+    with_them do
+      let(:results) do
+        described_class.new(user,
+          query,
+          limit_projects,
+          project_id: project_1.id,
+          node_id: node_id,
+          source: source,
+          modes: { regex: regex_mode }
+        )
+      end
+
+      subject(:blobs_count) { results.blobs_count }
+
+      it { is_expected.to eq(expected_count) }
+
+      context 'when error is raised by client' do
+        it 'returns zero when error is raised by client' do
+          client_error = ::Search::Zoekt::Errors::ClientConnectionError.new('test')
+          allow(::Gitlab::Search::Zoekt::Client).to receive(:search).and_raise(client_error)
+
+          expect(blobs_count).to eq 0
+          expect(results.error).to eq(client_error.message)
+          expect(results.error_type).to eq(Search::Zoekt::Errors::ClientConnectionError)
+        end
+      end
+
+      it 'limits to the zoekt count limit' do
+        stub_const("#{described_class}::ZOEKT_COUNT_LIMIT", 2)
+
+        limited_count = [2, expected_count].min
+        expect(blobs_count).to eq(limited_count)
+      end
+    end
+
+    it 'does not call zoekt_extract_result_pages_multi_match' do
+      expect_next_instance_of(Search::Zoekt::MultiMatch) do |instance|
+        expect(instance).not_to receive(:zoekt_extract_result_pages_multi_match)
+      end
+
+      count = described_class.new(user, 'hello', limit_projects, source: :web).blobs_count
+      expect(count).to eq 2
+    end
+  end
+
+  describe '#failed?' do
+    let(:scope) { 'blobs' }
+
+    subject(:results) { described_class.new(user, 'test', limit_projects, group_id: group_1.id, node_id: node_id) }
+
+    context 'when no error raised by client' do
+      it 'returns false' do
+        results.objects(scope)
+        expect(results.failed?(scope)).to be false
+      end
+    end
+
+    context 'when error raised by client' do
+      before do
+        client_error = ::Search::Zoekt::Errors::ClientConnectionError.new('test')
+        allow(::Gitlab::Search::Zoekt::Client).to receive(:search).and_raise(client_error)
+      end
+
+      it 'returns true' do
+        results.objects(scope)
+        expect(results.failed?(scope)).to be true
+      end
+    end
+  end
+
+  describe '#error' do
+    let(:scope) { 'blobs' }
+
+    subject(:results) { described_class.new(user, 'test', limit_projects, group_id: group_1.id, node_id: node_id) }
+
+    context 'when no error raised by client' do
+      it 'returns nil' do
+        results.objects(scope)
+        expect(results.error(scope)).to be_nil
+      end
+    end
+
+    context 'when error raised by client' do
+      before do
+        client_error = ::Search::Zoekt::Errors::ClientConnectionError.new('test')
+        allow(::Gitlab::Search::Zoekt::Client).to receive(:search).and_raise(client_error)
+      end
+
+      it 'returns the error message' do
+        results.objects(scope)
+        expect(results.error(scope)).to eq('test')
+      end
+    end
+  end
+end

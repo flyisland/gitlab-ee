@@ -1,0 +1,54 @@
+---
+title: Value Streams Dashboard
+description: Track key DevSecOps metrics throughout the development lifecycle.
+version: "2"
+gridHeight: compact
+panels:
+  - visualization: usage_overview
+    title: Usage overview for the %{namespaceName} %{namespaceType}
+    gridAttributes:
+      yPos: 0
+      xPos: 0
+      width: 12
+      height: 13
+    options: {}
+  - visualization: vsd_lifecycle_metrics_table
+    title: 'Lifecycle metrics for the %{namespaceName} %{namespaceType}'
+    gridAttributes:
+      yPos: 13
+      xPos: 0
+      width: 12
+      height: 64
+    options: {}
+  - visualization: vsd_dora_metrics_table
+    title: 'DORA metrics for the %{namespaceName} %{namespaceType}'
+    gridAttributes:
+      yPos: 77
+      xPos: 0
+      width: 12
+      height: 43
+    options: {}
+  - visualization: vsd_security_metrics_table
+    title: 'Security metrics for the %{namespaceName} %{namespaceType}'
+    gridAttributes:
+      yPos: 120
+      xPos: 0
+      width: 12
+      height: 32
+    options: {}
+  - visualization: dora_performers_score
+    title: DORA performers score for the %{namespaceName} %{namespaceType} (Last full calendar month)
+    gridAttributes:
+      yPos: 152
+      xPos: 0
+      width: 12
+      height: 51
+    options: {}
+  - visualization: dora_projects_comparison
+    title: Projects by DORA metric (Last full calendar month)
+    gridAttributes:
+      yPos: 203
+      xPos: 0
+      width: 12
+      height: 55
+    options: {}

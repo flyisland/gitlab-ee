@@ -1,0 +1,5 @@
+---
+name: play_job
+description: Grants the ability to play jobs
+boundaries:
+  - project

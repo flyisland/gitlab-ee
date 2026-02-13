@@ -1,0 +1,5 @@
+---
+name: validate_ci_config
+description: Grants the ability to validate CI/CD configuration content
+boundaries:
+  - project

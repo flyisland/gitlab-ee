@@ -1,0 +1,166 @@
+<script>
+import { GlCollapsibleListbox } from '@gitlab/ui';
+import { isEmpty } from 'lodash';
+import { s__ } from '~/locale';
+import {
+  EXCEPT_PROJECTS,
+  EXCEPT_PERSONAL_PROJECTS,
+  EXCLUDING,
+  INCLUDING,
+  WITHOUT_EXCEPTIONS,
+  EXCEPTION_TYPE_LISTBOX_ITEMS,
+  EXCEPTION_WITH_PERSONAL_TYPE_LISTBOX_ITEMS,
+  EXCEPTION_TYPE_TEXTS,
+} from 'ee/security_orchestration/components/policy_editor/scope/constants';
+import GroupProjectsDropdown from 'ee/security_orchestration/components/shared/group_projects_dropdown.vue';
+import InstanceProjectsDropdown from 'ee/security_orchestration/components/shared/instance_projects_dropdown.vue';
+import { convertToGraphQLId, getIdFromGraphQLId } from '~/graphql_shared/utils';
+import { TYPENAME_PROJECT } from '~/graphql_shared/constants';
+
+export default {
+  i18n: {
+    groupProjectErrorDescription: s__('SecurityOrchestration|Failed to load group projects'),
+  },
+  name: 'ScopeProjectSelector',
+  components: {
+    GlCollapsibleListbox,
+    GroupProjectsDropdown,
+    InstanceProjectsDropdown,
+  },
+  inject: ['designatedAsCsp'],
+  props: {
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    projects: {
+      type: Object,
+      required: true,
+      default: () => ({}),
+    },
+    groupFullPath: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    exceptionType: {
+      type: String,
+      required: false,
+      default: WITHOUT_EXCEPTIONS,
+    },
+    isDirty: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+  computed: {
+    exceptionTypeListboxItems() {
+      return this.designatedAsCsp
+        ? EXCEPTION_WITH_PERSONAL_TYPE_LISTBOX_ITEMS
+        : EXCEPTION_TYPE_LISTBOX_ITEMS;
+    },
+    payloadKey() {
+      return this.showExceptions ? EXCLUDING : INCLUDING;
+    },
+    showExceptions() {
+      return Boolean(this.projects?.excluding) || isEmpty(this.projects);
+    },
+    projectIds() {
+      /**
+       * Protection from manual yaml input as objects
+       * Filter out items without id (e.g. { type: 'personal' })
+       * return Array of objects with mapped to GraphQl format ids
+       */
+      const projects = Array.isArray(this.projects?.[this.payloadKey])
+        ? this.projects?.[this.payloadKey]
+        : [];
+
+      const projectIds = projects?.filter(({ id }) => Boolean(id)).map(({ id }) => id);
+
+      if (this.designatedAsCsp) {
+        return projectIds;
+      }
+
+      // Non-CSP project selector uses graphql
+      return projectIds.map((id) => convertToGraphQLId(TYPENAME_PROJECT, id));
+    },
+    selectedExceptionTypeText() {
+      return EXCEPTION_TYPE_TEXTS[this.exceptionType];
+    },
+    showProjectsDropdown() {
+      return this.exceptionType === EXCEPT_PROJECTS || !this.showExceptions;
+    },
+    projectsEmpty() {
+      return this.projectIds.length === 0;
+    },
+    isFieldValid() {
+      // If we're excluding personal projects, that's a valid non-empty state
+      return (
+        !this.projectsEmpty || this.exceptionType === EXCEPT_PERSONAL_PROJECTS || !this.isDirty
+      );
+    },
+  },
+  methods: {
+    emitError() {
+      this.$emit('error', this.$options.i18n.groupProjectErrorDescription);
+    },
+    selectExceptionType(type) {
+      const payloadMap = {
+        [WITHOUT_EXCEPTIONS]: { projects: { [this.payloadKey]: [] } },
+        [EXCEPT_PROJECTS]: { projects: { excluding: [] } },
+        [EXCEPT_PERSONAL_PROJECTS]: { projects: { excluding: [{ type: 'personal' }] } },
+      };
+
+      const payload = payloadMap[type];
+      if (payload) {
+        this.$emit('changed', payload);
+      }
+
+      this.$emit('select-exception-type', type);
+    },
+    setSelectedProjects(projects) {
+      const projectsIds = projects.map(({ id }) => ({ id: getIdFromGraphQLId(id) }));
+      const payload = { projects: { [this.payloadKey]: projectsIds } };
+      this.$emit('changed', payload);
+    },
+  },
+};
+</script>
+
+<template>
+  <div class="gl-flex gl-gap-3">
+    <gl-collapsible-listbox
+      v-if="showExceptions"
+      data-testid="exception-type"
+      :disabled="disabled"
+      :items="exceptionTypeListboxItems"
+      :toggle-text="selectedExceptionTypeText"
+      :selected="exceptionType"
+      @select="selectExceptionType"
+    />
+
+    <template v-if="showProjectsDropdown">
+      <instance-projects-dropdown
+        v-if="designatedAsCsp"
+        :disabled="disabled"
+        :selected="projectIds"
+        :state="isFieldValid"
+        @projects-query-error="emitError"
+        @select="setSelectedProjects"
+      />
+
+      <group-projects-dropdown
+        v-else
+        with-project-count
+        :disabled="disabled"
+        :group-full-path="groupFullPath"
+        :selected="projectIds"
+        :state="isFieldValid"
+        @projects-query-error="emitError"
+        @select="setSelectedProjects"
+      />
+    </template>
+  </div>
+</template>

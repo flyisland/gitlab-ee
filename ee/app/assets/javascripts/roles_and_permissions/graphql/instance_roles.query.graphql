@@ -1,0 +1,20 @@
+#import "./fragments/role.fragment.graphql"
+
+query getInstanceRoles($includeCustomRoles: Boolean!, $includeAdminRoles: Boolean!) {
+  # Filter out the Minimal Access role (business requirement).
+  standardRoles(accessLevel: [GUEST, REPORTER, PLANNER, DEVELOPER, MAINTAINER, OWNER]) {
+    nodes {
+      ...Role
+    }
+  }
+  memberRoles @include(if: $includeCustomRoles) {
+    nodes {
+      ...Role
+    }
+  }
+  adminMemberRoles @include(if: $includeAdminRoles) {
+    nodes {
+      ...Role
+    }
+  }
+}

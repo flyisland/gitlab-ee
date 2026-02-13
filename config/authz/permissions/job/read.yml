@@ -1,0 +1,5 @@
+---
+name: read_job
+description: Grants the ability to read jobs
+boundaries:
+  - project

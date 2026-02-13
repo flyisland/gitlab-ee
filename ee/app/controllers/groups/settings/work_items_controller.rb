@@ -1,0 +1,42 @@
+# frozen_string_literal: true
+
+module Groups
+  module Settings
+    class WorkItemsController < Groups::ApplicationController
+      layout 'group_settings'
+
+      before_action :ensure_root_group
+      before_action :check_feature_availability_and_authorize
+
+      feature_category :team_planning
+      urgency :low
+
+      before_action do
+        push_frontend_feature_flag(:work_item_configurable_types, group)
+      end
+
+      before_action only: [:show] do
+        push_force_frontend_feature_flag(:work_item_planning_view,
+          !!group.work_items_consolidated_list_enabled?(current_user))
+      end
+
+      def show
+        @hide_search_settings = true
+      end
+
+      private
+
+      def ensure_root_group
+        render_404 unless group.root?
+      end
+
+      def check_feature_availability_and_authorize
+        render_404 unless can_access_work_item_settings?
+      end
+
+      def can_access_work_item_settings?
+        can?(current_user, :admin_custom_field, group) || can?(current_user, :admin_work_item_lifecycle, group)
+      end
+    end
+  end
+end

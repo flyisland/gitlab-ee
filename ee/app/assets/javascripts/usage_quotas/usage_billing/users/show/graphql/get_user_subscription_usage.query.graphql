@@ -1,0 +1,69 @@
+#import "~/graphql_shared/fragments/page_info.fragment.graphql"
+
+query getUserSubscriptionUsage(
+  $namespacePath: ID
+  $username: String
+  $first: Int
+  $last: Int
+  $after: String
+  $before: String
+) {
+  subscriptionUsage(namespacePath: $namespacePath) {
+    enabled
+
+    lastEventTransactionAt
+    subscriptionPortalUsageDashboardUrl
+    purchaseCreditsPath
+
+    startDate
+    endDate
+
+    paidTierTrial {
+      isActive
+    }
+
+    usersUsage {
+      users(username: $username) {
+        nodes {
+          id
+          name
+          username
+          avatarUrl
+
+          usage {
+            totalCredits
+            creditsUsed
+            monthlyCommitmentCreditsUsed
+            monthlyWaiverCreditsUsed
+            overageCreditsUsed
+          }
+
+          events(first: $first, last: $last, after: $after, before: $before) {
+            nodes {
+              timestamp
+              eventType
+              flowType
+              location {
+                __typename
+                ... on Project {
+                  id
+                  name
+                  webUrl
+                }
+                ... on Group {
+                  id
+                  name
+                  webUrl
+                }
+              }
+              creditsUsed
+            }
+            pageInfo {
+              ...PageInfo
+            }
+          }
+        }
+      }
+    }
+  }
+}

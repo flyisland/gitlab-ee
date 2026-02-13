@@ -1,0 +1,5 @@
+---
+name: read_pipeline_job
+description: Grants the ability to read pipeline jobs
+boundaries:
+  - project

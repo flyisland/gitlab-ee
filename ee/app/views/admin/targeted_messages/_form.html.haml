@@ -1,0 +1,7 @@
+- target_types = Notifications::TargetedMessage.target_types.map { |key, _| { value: key, text: key.humanize } }
+#js-targeted-message-form{ data: { target_types: target_types.to_json,
+                                    form_action: url,
+                                    is_add_form: is_add_form.to_s,
+                                    initial_target_type: @targeted_message.target_type,
+                                    max_namespace_ids: Notifications::TargetedMessages::NamespaceIdsBuilder::MAX_NAMESPACE_IDS,
+                                    messages_path: admin_targeted_messages_path } }

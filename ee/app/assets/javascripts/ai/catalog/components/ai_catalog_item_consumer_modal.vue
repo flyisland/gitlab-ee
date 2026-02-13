@@ -1,0 +1,265 @@
+<script>
+import { uniqueId } from 'lodash';
+import { GlAlert, GlForm, GlFormGroup, GlModal, GlSprintf } from '@gitlab/ui';
+import { __, s__, sprintf } from '~/locale';
+import {
+  AI_CATALOG_TYPE_AGENT,
+  AI_CATALOG_TYPE_FLOW,
+  AI_CATALOG_TYPE_THIRD_PARTY_FLOW,
+  AI_CATALOG_ITEM_LABELS,
+  AI_CATALOG_CONSUMER_TYPE_GROUP,
+  AI_CATALOG_CONSUMER_TYPE_PROJECT,
+  AI_CATALOG_CONSUMER_LABELS,
+  AI_CATALOG_GROUP_CONSUMER_LABEL_DESCRIPTION,
+  AI_CATALOG_PROJECT_CONSUMER_LABEL_DESCRIPTION,
+} from '../constants';
+import FormGroupDropdown from './form_group_dropdown.vue';
+import FormProjectDropdown from './form_project_dropdown.vue';
+import AddGroupFlowWarning from './add_group_flow_warning.vue';
+import AddGroupAgentWarning from './add_group_agent_warning.vue';
+import AddGroupThirdPartyFlowWarning from './add_group_third_party_flow_warning.vue';
+
+export default {
+  name: 'AiCatalogItemConsumerModal',
+  components: {
+    FormGroupDropdown,
+    FormProjectDropdown,
+    GlAlert,
+    GlForm,
+    GlFormGroup,
+    GlModal,
+    GlSprintf,
+    AddGroupFlowWarning,
+    AddGroupAgentWarning,
+    AddGroupThirdPartyFlowWarning,
+  },
+  props: {
+    item: {
+      type: Object,
+      required: true,
+    },
+    showAddToGroup: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    open: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    isProjectNamespace: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    modalId: {
+      type: String,
+      required: false,
+      default: 'add-item-consumer-modal',
+    },
+  },
+  data() {
+    return {
+      isOpen: this.open,
+      groupId: !this.item.public && this.showAddToGroup ? this.item.project?.rootGroup?.id : null,
+      projectId: !this.item.public || this.isProjectNamespace ? this.item.project?.id : null,
+      isDirty: false,
+      error: null,
+    };
+  },
+  computed: {
+    formId() {
+      return uniqueId('ai-catalog-item-consumer-form-');
+    },
+    modal() {
+      return {
+        actionPrimary: {
+          text: __('Enable'),
+          attributes: {
+            variant: 'confirm',
+            type: 'submit',
+            form: this.formId,
+          },
+        },
+        actionCancel: {
+          text: __('Cancel'),
+        },
+      };
+    },
+    itemTypeLabel() {
+      return AI_CATALOG_ITEM_LABELS[this.item.itemType];
+    },
+    targetType() {
+      return this.showAddToGroup
+        ? AI_CATALOG_CONSUMER_TYPE_GROUP
+        : AI_CATALOG_CONSUMER_TYPE_PROJECT;
+    },
+    targetTypeLabel() {
+      return AI_CATALOG_CONSUMER_LABELS[this.targetType];
+    },
+    title() {
+      return sprintf(s__('AICatalog|Enable %{itemType} in a %{targetType}'), {
+        itemType: this.itemTypeLabel,
+        targetType: this.targetTypeLabel,
+      });
+    },
+    groupName() {
+      return this.item.project?.rootGroup?.fullName;
+    },
+    groupLabelDescription() {
+      return AI_CATALOG_GROUP_CONSUMER_LABEL_DESCRIPTION[this.item.itemType];
+    },
+    projectLabelDescription() {
+      return AI_CATALOG_PROJECT_CONSUMER_LABEL_DESCRIPTION[this.item.itemType];
+    },
+    isPrivateItem() {
+      return !this.item.public;
+    },
+    isGroupValid() {
+      return !this.isDirty || Boolean(this.groupId);
+    },
+    isProjectValid() {
+      return !this.isDirty || Boolean(this.projectId);
+    },
+    isFormValid() {
+      if (this.isTargetTypeGroup) {
+        return this.isGroupValid;
+      }
+
+      return this.isProjectValid;
+    },
+    isTargetTypeGroup() {
+      return this.targetType === AI_CATALOG_CONSUMER_TYPE_GROUP;
+    },
+    warningComponent() {
+      const warningComponentMap = {
+        [AI_CATALOG_TYPE_FLOW]: AddGroupFlowWarning,
+        [AI_CATALOG_TYPE_AGENT]: AddGroupAgentWarning,
+        [AI_CATALOG_TYPE_THIRD_PARTY_FLOW]: AddGroupThirdPartyFlowWarning,
+      };
+      return warningComponentMap[this.item.itemType];
+    },
+  },
+  methods: {
+    onError(error) {
+      this.error = error;
+    },
+    handleSubmit() {
+      this.isDirty = true;
+      if (!this.isFormValid) {
+        return;
+      }
+      this.isOpen = false;
+      this.isDirty = false;
+      const target = this.isTargetTypeGroup
+        ? { groupId: this.groupId }
+        : { projectId: this.projectId };
+      this.$emit('submit', { target });
+    },
+  },
+};
+</script>
+
+<template>
+  <gl-modal
+    v-model="isOpen"
+    :modal-id="modalId"
+    :title="title"
+    :action-primary="modal.actionPrimary"
+    :action-cancel="modal.actionCancel"
+    @primary.prevent
+    @hidden="$emit('hide')"
+  >
+    <gl-alert
+      v-if="error"
+      data-testid="error-alert"
+      variant="danger"
+      class="gl-mb-5"
+      @dismiss="error = null"
+    >
+      {{ error }}
+    </gl-alert>
+
+    <gl-alert
+      v-if="isPrivateItem && !isProjectNamespace"
+      data-testid="private-alert"
+      :dismissible="false"
+      variant="info"
+      class="gl-mb-5"
+    >
+      <gl-sprintf
+        :message="
+          s__(
+            'AICatalog|This %{itemType} is private and can only be enabled in the project it was created in or its top-level group. Duplicate the agent to use the same configuration in other projects.',
+          )
+        "
+      >
+        <template #itemType>{{ itemTypeLabel }}</template>
+      </gl-sprintf>
+    </gl-alert>
+
+    <dl>
+      <dt class="gl-mb-2 gl-font-bold">
+        <gl-sprintf :message="s__('AICatalog|Selected %{itemType}')">
+          <template #itemType>{{ itemTypeLabel }}</template>
+        </gl-sprintf>
+      </dt>
+      <dd class="gl-break-all">{{ item.name }}</dd>
+    </dl>
+
+    <gl-form :id="formId" @submit.prevent="handleSubmit">
+      <div v-if="isPrivateItem || isProjectNamespace">
+        <dl v-if="isTargetTypeGroup">
+          <dt class="gl-mb-2 gl-font-bold">
+            {{ __('Group') }}
+          </dt>
+          <dd data-testid="group-name">
+            {{ groupName }}
+          </dd>
+        </dl>
+        <dl v-else>
+          <dt class="gl-mb-2 gl-font-bold">
+            {{ __('Project') }}
+          </dt>
+          <dd data-testid="project-name">
+            {{ item.project.nameWithNamespace }}
+          </dd>
+        </dl>
+      </div>
+      <div v-else>
+        <gl-form-group
+          v-if="isTargetTypeGroup"
+          :label="__('Group')"
+          :label-description="groupLabelDescription"
+          label-for="group-id"
+          :state="isGroupValid"
+          :invalid-feedback="s__('AICatalog|Group is required.')"
+        >
+          <form-group-dropdown
+            id="group-id"
+            v-model="groupId"
+            :is-valid="isGroupValid"
+            @error="onError"
+          />
+        </gl-form-group>
+        <gl-form-group
+          v-else
+          :label="__('Project')"
+          :label-description="projectLabelDescription"
+          label-for="project-id"
+          :state="isProjectValid"
+          :invalid-feedback="s__('AICatalog|Project is required.')"
+        >
+          <form-project-dropdown
+            id="project-id"
+            v-model="projectId"
+            :is-valid="isProjectValid"
+            @error="onError"
+          />
+        </gl-form-group>
+      </div>
+    </gl-form>
+    <component :is="warningComponent" v-if="warningComponent" />
+  </gl-modal>
+</template>

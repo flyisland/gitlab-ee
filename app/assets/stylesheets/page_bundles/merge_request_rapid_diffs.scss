@@ -1,0 +1,23 @@
+@import 'mixins_and_variables_and_functions';
+
+@supports (content-visibility: hidden) {
+  // cache diffs rendering state for better performance when switching tabs
+  .tab-pane[style="display: none;"] {
+    display: block !important;
+    content-visibility: hidden;
+  }
+}
+
+.container-fluid .diffs.tab-pane {
+  margin: 0;
+}
+
+.rd-app {
+  --rd-app-sticky-top: calc(#{$calc-application-header-height} + #{$mr-sticky-header-height} - 1px);
+
+  // merge request sticky header appears after sm breakpoint
+  @include gl-container-width-down(md, panel) {
+    --rd-app-sticky-top: calc(#{$calc-application-header-height});
+  }
+}
+

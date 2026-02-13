@@ -1,0 +1,6 @@
+---
+name: delete_badge
+description: Grants the ability to delete badges
+boundaries:
+  - project
+  - group

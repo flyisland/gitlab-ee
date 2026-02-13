@@ -1,0 +1,164 @@
+query SubgroupsAndProjects(
+  $fullPath: ID!
+  $subgroupsFirst: Int
+  $subgroupsAfter: String
+  $projectsFirst: Int
+  $projectsAfter: String
+  $search: String
+  $hasSearch: Boolean!
+  $namespaceId: NamespaceID!
+  $vulnerabilityCountFilters: [VulnerabilityCountFilterInput!]
+  $securityAnalyzerFilters: [AnalyzerFilterInput!]
+  $attributeFilters: [AttributeFilterInput!]
+  $canReadAttributes: Boolean!
+) {
+  group(fullPath: $fullPath) {
+    id
+    descendantGroups(
+      archived: false
+      includeParentDescendants: false
+      first: $subgroupsFirst
+      after: $subgroupsAfter
+    ) @skip(if: $hasSearch) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        __typename
+        id
+        name
+        descendantGroupsCount
+        projectsCount
+        path
+        fullPath
+        avatarUrl
+        webUrl
+        updatedAt
+        analyzerStatuses {
+          success
+          failure
+          notConfigured
+          analyzerType
+          updatedAt
+        }
+        vulnerabilityNamespaceStatistic {
+          critical
+          high
+          low
+          info
+          medium
+          unknown
+          updatedAt
+        }
+      }
+    }
+    projects(
+      first: $projectsFirst
+      after: $projectsAfter
+      search: $search
+      includeSubgroups: $hasSearch
+      includeArchived: false
+    ) @skip(if: $hasSearch) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        __typename
+        id
+        name
+        path
+        fullPath
+        avatarUrl
+        webUrl
+        updatedAt
+        containerScanningForRegistryEnabled
+        vulnerabilityStatistic {
+          critical
+          high
+          low
+          info
+          medium
+          unknown
+          updatedAt
+        }
+        analyzerStatuses {
+          status
+          analyzerType
+          lastCall
+          buildId
+          updatedAt
+        }
+        securityAttributes @include(if: $canReadAttributes) {
+          nodes {
+            id
+            securityCategory {
+              id
+              name
+            }
+            name
+            description
+            color
+          }
+        }
+      }
+    }
+  }
+  namespaceSecurityProjects(
+    namespaceId: $namespaceId
+    vulnerabilityCountFilters: $vulnerabilityCountFilters
+    securityAnalyzerFilters: $securityAnalyzerFilters
+    attributeFilters: $attributeFilters
+    first: $projectsFirst
+    after: $projectsAfter
+    search: $search
+    includeSubgroups: true
+  ) @include(if: $hasSearch) {
+    edges {
+      node {
+        __typename
+        id
+        name
+        path
+        fullPath
+        avatarUrl
+        webUrl
+        updatedAt
+        containerScanningForRegistryEnabled
+        vulnerabilityStatistic {
+          critical
+          high
+          low
+          info
+          medium
+          unknown
+          updatedAt
+        }
+        analyzerStatuses {
+          status
+          analyzerType
+          lastCall
+          buildId
+          updatedAt
+        }
+        securityAttributes {
+          nodes {
+            id
+            securityCategory {
+              id
+              name
+            }
+            name
+            description
+            color
+          }
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}

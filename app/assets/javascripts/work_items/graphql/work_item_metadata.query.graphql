@@ -1,0 +1,27 @@
+#import "./work_item_metadata.fragment.graphql"
+
+query workItemMetadata($fullPath: ID!) {
+  namespace(fullPath: $fullPath) {
+    id
+    availableFeatures {
+      ...WorkItemAvailableFeatures
+    }
+    linkPaths {
+      ...WorkItemLinkPaths
+    }
+    userPermissions {
+      createWorkItem
+      adminLabel
+      createProjects
+      adminIssue
+      adminProject
+      importWorkItems
+      readCrmContact
+      readCrmOrganization
+    }
+    metadata {
+      ...WorkItemMetadata
+    }
+    subscribedSavedViewLimit
+  }
+}

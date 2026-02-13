@@ -1,0 +1,35 @@
+query groupTotalRiskScore(
+  $fullPath: ID!
+  $projectId: [ID!]
+  $includeByDefault: Boolean!
+  $includeByProject: Boolean!
+  $first: Int!
+) {
+  group(fullPath: $fullPath) {
+    id
+    securityMetrics(projectId: $projectId) {
+      riskScore {
+        factors {
+          vulnerabilitiesAverageScore {
+            factor
+          }
+        }
+        projectCount
+        score @include(if: $includeByDefault)
+        ... @include(if: $includeByProject) {
+          byProject(first: $first) {
+            nodes {
+              rating
+              score
+              project {
+                id
+                name
+                webUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

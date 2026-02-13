@@ -1,0 +1,1270 @@
+<script>
+// eslint-disable-next-line no-restricted-imports
+import { mapActions, mapState } from 'vuex';
+import { debounce } from 'lodash';
+import { WebAgenticDuoChat } from '@gitlab/duo-ui';
+import { GlToggle, GlTooltipDirective } from '@gitlab/ui';
+import { helpPagePath } from '~/helpers/help_page_helper';
+import SafeHtml from '~/vue_shared/directives/safe_html';
+import getFlowStatus from 'ee/ai/graphql/get_flow_status.query.graphql';
+import ChatLoadingState from 'ee/ai/components/chat_loading_state.vue';
+import getUserWorkflows from 'ee/ai/graphql/get_user_workflow.query.graphql';
+import getConfiguredAgents from 'ee/ai/graphql/get_configured_agents.query.graphql';
+import getFoundationalChatAgents from 'ee/ai/graphql/get_foundational_chat_agents.graphql';
+import getAgentFlowConfig from 'ee/ai/graphql/get_agent_flow_config.query.graphql';
+import { renderGFM } from '~/behaviors/markdown/render_gfm';
+import { computeTrustedUrls } from 'ee/ai/shared/trusted_urls/utils';
+import { getStorageValue, saveStorageValue } from '~/lib/utils/local_storage';
+import { duoChatGlobalState } from '~/super_sidebar/constants';
+import { clearDuoChatCommands, setAgenticMode } from 'ee/ai/utils';
+import { convertToGraphQLId, parseGid } from '~/graphql_shared/utils';
+import { TYPENAME_AI_DUO_WORKFLOW } from '~/graphql_shared/constants';
+import glFeatureFlagsMixin from '~/vue_shared/mixins/gl_feature_flags_mixin';
+import { InternalEvents } from '~/tracking';
+import {
+  GENIE_CHAT_RESET_MESSAGE,
+  GENIE_CHAT_CLEAR_MESSAGE,
+  GENIE_CHAT_NEW_MESSAGE,
+  DUO_AGENTIC_CHAT_CLIENT_CAPABILITIES,
+  DUO_WORKFLOW_STATUS_RUNNING,
+  DUO_WORKFLOW_STATUS_INPUT_REQUIRED,
+  DUO_WORKFLOW_ADDITIONAL_CONTEXT_REPOSITORY,
+  DUO_CURRENT_WORKFLOW_STORAGE_KEY,
+  DUO_CHAT_VIEWS,
+  DUO_AGENTIC_CHAT_PENDING_USER_MESSAGE_ID,
+} from 'ee/ai/constants';
+import getAiChatContextPresets from 'ee/ai/graphql/get_ai_chat_context_presets.query.graphql';
+import getAiChatAvailableModels from 'ee/ai/graphql/get_ai_chat_available_models.query.graphql';
+import ModelSelectDropdown from 'ee/ai/shared/feature_settings/model_select_dropdown.vue';
+import { createWebSocket, closeSocket } from '~/lib/utils/websocket_utils';
+import { fetchPolicies } from '~/lib/graphql';
+import { logError } from '~/lib/logger';
+import { s__, sprintf } from '~/locale';
+import { formatDefaultModelData } from 'ee/ai/shared/model_selection/utils';
+import { WorkflowUtils } from '../utils/workflow_utils';
+import { ApolloUtils } from '../utils/apollo_utils';
+import {
+  getCurrentModel,
+  getDefaultModel,
+  getModel,
+  saveModel,
+  isModelSelectionDisabled as checkModelSelectionDisabled,
+} from '../utils/model_selection_utils';
+import {
+  buildWebsocketUrl,
+  buildStartRequest,
+  processWorkflowMessage,
+} from '../utils/workflow_socket_utils';
+import { getInitialDimensions, calculateDimensions } from '../utils/resize_utils';
+import { validateAgentExists as validateAgent, prepareAgentSelection } from '../utils/agent_utils';
+import { resetThreadContent } from '../utils/thread_utils';
+import { formatErrorMessage } from '../utils/error_handler';
+import { WORKFLOW_NOT_FOUND_CODE, FEEDBACK_TRACKING_EVENT } from '../constants';
+import {
+  saveThreadSnapshot,
+  loadThreadSnapshot,
+  clearThreadSnapshot,
+} from '../utils/chat_thread_snapshot';
+import NoNamespaceEmptyState from './no_namespace_empty_state.vue';
+import NoCreditsEmptyState from './no_credits_empty_state.vue';
+import ActiveTrialOrSubscriptionEmptyState from './active_trial_or_subscription_empty_state.vue';
+
+export default {
+  name: 'DuoAgenticChatApp',
+  components: {
+    WebAgenticDuoChat,
+    GlToggle,
+    ModelSelectDropdown,
+    ChatLoadingState,
+    NoNamespaceEmptyState,
+    NoCreditsEmptyState,
+    ActiveTrialOrSubscriptionEmptyState,
+  },
+  directives: {
+    GlTooltip: GlTooltipDirective,
+    SafeHtml,
+  },
+  mixins: [glFeatureFlagsMixin(), InternalEvents.mixin()],
+  inject: {
+    chatConfiguration: {
+      default: () => ({
+        title: s__('DuoAgenticChat|GitLab Duo Agentic Chat'),
+      }),
+    },
+  },
+  provide() {
+    return {
+      renderGFM,
+      avatarUrl: window.gon?.current_user_avatar_url,
+    };
+  },
+  props: {
+    projectId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    namespaceId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    rootNamespaceId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    resourceId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    metadata: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    userModelSelectionEnabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    mode: {
+      type: String,
+      required: false,
+      default: 'active',
+    },
+    selectedAgentError: {
+      type: Object,
+      required: false,
+      default: () => ({}),
+    },
+    forceAgenticModeForCoreDuoUsers: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    creditsAvailable: {
+      type: Boolean,
+      required: true,
+    },
+    trustedUrls: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
+    isTrial: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    trialActive: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    buyAddonPath: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    canBuyAddon: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    subscriptionActive: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    exploreAiCatalogPath: {
+      type: String,
+      required: false,
+      default: null,
+    },
+  },
+  apollo: {
+    workflowStatus: {
+      query: getFlowStatus,
+      pollInterval: 3000,
+      skip() {
+        return !this.isFlowLocked;
+      },
+      variables() {
+        return {
+          id: convertToGraphQLId(TYPENAME_AI_DUO_WORKFLOW, this.workflowId),
+        };
+      },
+      update(data) {
+        return data?.duoWorkflowWorkflows?.edges[0]?.node.status;
+      },
+    },
+    agenticWorkflows: {
+      query: getUserWorkflows,
+      variables() {
+        return {
+          type: 'foundational_chat_agents',
+          first: 99999,
+        };
+      },
+      fetchPolicy: fetchPolicies.NETWORK_ONLY,
+      update(data) {
+        return data?.duoWorkflowWorkflows?.edges?.map((edge) => edge.node) || [];
+      },
+      error(err) {
+        this.onError(err);
+      },
+    },
+    contextPresets: {
+      query: getAiChatContextPresets,
+      variables() {
+        return {
+          resourceId: this.resourceId,
+          projectId: this.projectId,
+          url: typeof window !== 'undefined' && window.location ? window.location.href : '',
+          questionCount: 4,
+        };
+      },
+      update(data) {
+        return data?.aiChatContextPresets || {};
+      },
+      error(err) {
+        this.onError(err);
+      },
+    },
+    availableModels: {
+      query: getAiChatAvailableModels,
+      fetchPolicy: fetchPolicies.NETWORK_ONLY,
+      skip() {
+        if (!this.userModelSelectionEnabled) return true;
+        return !this.rootNamespaceId;
+      },
+      variables() {
+        return {
+          rootNamespaceId: this.rootNamespaceId,
+        };
+      },
+      update(data) {
+        const { selectableModels = [], defaultModel, pinnedModel } = data.aiChatAvailableModels;
+
+        const formattedDefaultModel = defaultModel
+          ? formatDefaultModelData(defaultModel)
+          : undefined;
+
+        const models = selectableModels.map(
+          ({ ref, name, modelProvider, modelDescription, costIndicator }) => {
+            const isDefaultModel = ref === defaultModel?.ref;
+
+            return {
+              text: isDefaultModel ? formattedDefaultModel?.text : name,
+              value: isDefaultModel ? formattedDefaultModel?.value : ref,
+              provider: modelProvider,
+              description: modelDescription,
+              costIndicator,
+            };
+          },
+        );
+
+        this.pinnedModel = pinnedModel?.ref
+          ? {
+              text: pinnedModel.name,
+              value: pinnedModel.ref,
+            }
+          : null;
+
+        return models;
+      },
+      error(err) {
+        this.onError(err);
+      },
+    },
+    catalogAgents: {
+      query: getConfiguredAgents,
+      variables() {
+        return this.projectId ? { projectId: this.projectId } : { groupId: this.namespaceId };
+      },
+      // NOTE, any update here should also be made to ee/app/assets/javascripts/ai/components/new_chat_button.vue
+      update(data) {
+        return (data?.aiCatalogConfiguredItems.nodes || []).map((node) => ({
+          ...node.item,
+          pinnedItemVersionId: node.pinnedItemVersion.id,
+        }));
+      },
+      error(err) {
+        this.onError(err);
+      },
+    },
+    foundationalAgents: {
+      query: getFoundationalChatAgents,
+      update(data) {
+        return (
+          data?.aiFoundationalChatAgents.nodes.map((agent) => ({
+            ...agent,
+            foundational: true,
+          })) || []
+        );
+      },
+      variables() {
+        return {
+          projectId: this.projectId,
+          namespaceId: this.namespaceId,
+        };
+      },
+      error(err) {
+        this.onError(err);
+      },
+    },
+    agentConfig: {
+      query: getAgentFlowConfig,
+      variables() {
+        return { agentVersionId: this.aiCatalogItemVersionId };
+      },
+      skip() {
+        return !this.aiCatalogItemVersionId;
+      },
+      update(data) {
+        return data?.aiCatalogAgentFlowConfig;
+      },
+    },
+  },
+  data() {
+    const currentWorkflowRecord = getStorageValue(DUO_CURRENT_WORKFLOW_STORAGE_KEY);
+    const currentWorkflowDefaultRecord = { workflowId: null };
+    const { workflowId } = currentWorkflowRecord.exists
+      ? currentWorkflowRecord.value
+      : currentWorkflowDefaultRecord;
+
+    return {
+      agentConfig: null,
+      duoChatGlobalState,
+      ...getInitialDimensions(),
+      chatState: { isEnabled: true, reason: '' },
+      hasCredits: this.creditsAvailable,
+      hasTrialOrSubscription: this.trialActive || this.subscriptionActive,
+      contextPresets: [],
+      availableModels: [],
+      pinnedModel: null,
+      socketManager: null,
+
+      workflowId: workflowId ? convertToGraphQLId(TYPENAME_AI_DUO_WORKFLOW, workflowId) : null,
+      workflowStatus: null,
+
+      isProcessingToolApproval: false,
+      agenticWorkflows: [],
+      multithreadedView: DUO_CHAT_VIEWS.CHAT,
+      selectedModel: null,
+      catalogAgents: [],
+      aiCatalogItemVersionId: '',
+      foundationalAgents: [],
+      selectedFoundationalAgent: null,
+      agentOrWorkflowDeletedError: '',
+      isChatAvailable: true,
+      isFlowLocked: false,
+      isEmbedded: this.chatConfiguration?.defaultProps?.isEmbedded ?? true,
+      // this is required for classic/agentic toggle
+      isClassicAvailable: this.chatConfiguration?.defaultProps?.isClassicAvailable ?? false,
+      // eslint-disable-next-line vue/no-unused-properties
+      userId: this.activeTabData?.props?.userId,
+      duoChatTitle: s__('DuoAgenticChat|GitLab Duo'),
+      isLoading: false,
+      isWaitingOnPrompt: false,
+      lastProcessedMessageId: null,
+      pendingEvent: null,
+      isProcessingMessage: false,
+      isInitialLoad: true,
+    };
+  },
+  computed: {
+    ...mapState(['messages', 'currentAgent']),
+    workflowIid() {
+      return this.workflowId ? parseGid(this.workflowId)?.id : null;
+    },
+    dimensions() {
+      if (!this.isEmbedded) {
+        return {};
+      }
+
+      return {
+        width: this.width,
+        height: this.height,
+        top: this.top,
+        maxHeight: this.maxHeight,
+        maxWidth: this.maxWidth,
+        minWidth: this.minWidth,
+        minHeight: this.minHeight,
+        left: this.left,
+      };
+    },
+    computedTrustedUrls() {
+      return computeTrustedUrls(this.trustedUrls);
+    },
+    defaultModel() {
+      return getDefaultModel(this.availableModels);
+    },
+    currentModel: {
+      get() {
+        return this.$apollo.queries?.availableModels?.loading
+          ? null
+          : getCurrentModel({
+              availableModels: this.availableModels,
+              pinnedModel: this.pinnedModel,
+              selectedModel: this.selectedModel,
+            });
+      },
+      set(val) {
+        this.selectedModel = val;
+      },
+    },
+    isModelSelectionDisabled() {
+      return checkModelSelectionDisabled(this.pinnedModel);
+    },
+    isLoadingThreadList() {
+      return this.$apollo.queries?.agenticWorkflows?.loading;
+    },
+    modelSelectionDisabledTooltipText() {
+      return this.isModelSelectionDisabled
+        ? s__('ModelSelection|Model has been pinned by an administrator.')
+        : '';
+    },
+    predefinedPrompts() {
+      return this.contextPresets.questions || [];
+    },
+    additionalContext() {
+      // Build page context with current URL and title for base context
+      const contextParts = [
+        `<current_gitlab_page_url>${typeof window !== 'undefined' && window.location ? window.location.href : ''}</current_gitlab_page_url>`,
+        `<current_gitlab_page_title>${typeof document !== 'undefined' ? document.title : ''}</current_gitlab_page_title>`,
+      ];
+
+      const pageContext = contextParts.join('\n');
+
+      return [
+        {
+          content: pageContext,
+          // This field depends on INCLUDE_{CATEGORY}_CONTEXT unit primitive:
+          // https://gitlab.com/gitlab-org/cloud-connector/gitlab-cloud-connector/-/blob/main/src/python/gitlab_cloud_connector/data_model/gitlab_unit_primitives.py?ref_type=heads#L37-47
+          // Since there is no unit primitives for all resource types and there is no a general one, let's use the one for repository
+          category: DUO_WORKFLOW_ADDITIONAL_CONTEXT_REPOSITORY,
+          metadata: JSON.stringify({}), // This field is expected to be non-null json object
+        },
+      ];
+    },
+    duoAgenticModePreference: {
+      get() {
+        return this.duoChatGlobalState.chatMode === 'agentic';
+      },
+      set(value) {
+        setAgenticMode({
+          agenticMode: value,
+          saveCookie: true,
+          isEmbedded: this.isEmbedded,
+        });
+      },
+    },
+    agents() {
+      return [...this.foundationalAgents, ...this.catalogAgents].map((agent) => ({
+        ...agent,
+        text: agent.name,
+      }));
+    },
+    websocketUrl() {
+      return buildWebsocketUrl({
+        rootNamespaceId: this.rootNamespaceId,
+        namespaceId: this.namespaceId,
+        projectId: this.projectId,
+        userModelSelectionEnabled: this.userModelSelectionEnabled,
+        currentModel: this.currentModel,
+        defaultModel: this.defaultModel,
+        workflowDefinition: this.selectedFoundationalAgent?.referenceWithVersion,
+      });
+    },
+    window() {
+      return window;
+    },
+    hasActiveWorkflow() {
+      return this.workflowId;
+    },
+    showErrorBannerMessage() {
+      if (this.multithreadedView === DUO_CHAT_VIEWS.CHAT) {
+        if (this.agentOrWorkflowDeletedError) {
+          return this.agentOrWorkflowDeletedError;
+        }
+      }
+      return '';
+    },
+    showNoNamespaceEmptyState() {
+      return (
+        this.multithreadedView === DUO_CHAT_VIEWS.CHAT &&
+        !this.chatConfiguration?.defaultProps?.defaultNamespaceSelected
+      );
+    },
+    shouldShowActiveTrialOrSubscriptionEmptyState() {
+      return this.hasTrialOrSubscription && !this.currentAgent;
+    },
+    shouldShowCustomEmptyState() {
+      return (
+        this.showNoNamespaceEmptyState ||
+        !this.hasCredits ||
+        this.shouldShowActiveTrialOrSubscriptionEmptyState
+      );
+    },
+    shouldDisplayLoadingIndicator() {
+      return this.isLoading && !this.messages?.length;
+    },
+  },
+  watch: {
+    messages: {
+      handler: debounce(function handler(newMessages) {
+        if (this.workflowId && newMessages?.length) {
+          saveThreadSnapshot(this.workflowId, newMessages);
+        }
+      }, 500),
+      deep: true,
+    },
+    'duoChatGlobalState.isAgenticChatShown': {
+      handler(newVal) {
+        if (newVal) {
+          if (this.hasActiveWorkflow) {
+            this.hydrateActiveWorkflow();
+          } else {
+            this.onNewChat();
+          }
+        }
+      },
+    },
+    'duoChatGlobalState.commands': {
+      handler() {
+        if (!this.isLoading) {
+          this.processPendingCommands();
+        }
+      },
+    },
+    workflowStatus: {
+      immediate: true,
+      handler(newStatus, oldStatus) {
+        if (!oldStatus && newStatus === DUO_WORKFLOW_STATUS_RUNNING) {
+          const lastMessage = this.messages?.[this.messages.length - 1];
+          const hasPendingToolRequest =
+            lastMessage?.message_type === 'request' && lastMessage?.tool_info;
+
+          if (hasPendingToolRequest) {
+            this.isProcessingToolApproval = true;
+          }
+        }
+
+        if (this.isProcessingToolApproval && newStatus !== DUO_WORKFLOW_STATUS_RUNNING) {
+          this.isProcessingToolApproval = false;
+        }
+
+        if (this.isFlowLocked && newStatus) {
+          this.isFlowLocked = false;
+          this.setChatState({
+            isEnabled: true,
+          });
+          this.hydrateActiveWorkflow();
+        }
+      },
+    },
+    workflowId(newWorkflowId, oldWorkflowId) {
+      if (newWorkflowId !== oldWorkflowId) {
+        saveStorageValue(DUO_CURRENT_WORKFLOW_STORAGE_KEY, {
+          workflowId: newWorkflowId,
+        });
+        this.emitSessionIdChanged();
+      }
+    },
+    mode(newMode) {
+      this.switchMode(newMode);
+    },
+    selectedAgentError(newError) {
+      if (newError) this.onError(newError);
+    },
+  },
+  mounted() {
+    this.checkNamespaceAvailability();
+    this.checkCreditsAvailability();
+
+    // Only manage dimensions and resize when not isEmbedded
+    if (!this.isEmbedded) {
+      this.setDimensions();
+      window.addEventListener('resize', this.onWindowResize);
+    }
+
+    this.switchMode(this.mode);
+    this.loadDuoNextIfNeeded();
+    this.emitSessionIdChanged();
+  },
+  beforeDestroy() {
+    // Remove the event listener when the component is destroyed
+    if (!this.isEmbedded) {
+      window.removeEventListener('resize', this.onWindowResize);
+    }
+    this.cleanupSocket();
+    // Clear messages when component is destroyed to prevent state leaking
+    // between mode switches (classic <-> agentic)
+    this.clearActiveWorkflow();
+    this.isLoading = false;
+    this.isWaitingOnPrompt = false;
+    this.$emit('change-title');
+  },
+  methods: {
+    ...mapActions(['addDuoChatMessage', 'setMessages', 'setCurrentAgent']),
+    clearActiveWorkflow() {
+      this.setMessages([]);
+      this.lastProcessedMessageId = null;
+    },
+    emitSessionIdChanged() {
+      if (this.workflowIid) {
+        this.$emit('session-id-changed', this.workflowIid);
+      }
+    },
+    async loadDuoNextIfNeeded() {
+      if (this.glFeatures.duoUiNext) {
+        try {
+          await import('fe_islands/duo_next/dist/main');
+        } catch (err) {
+          logError('Failed to load frontend islands duo_next module', err);
+        }
+      }
+    },
+    setChatState(state) {
+      if (
+        (state.isEnabled === false && typeof state.reason === 'string') ||
+        state.isEnabled === true
+      ) {
+        this.chatState = state;
+      } else {
+        throw new Error(s__('DuoAgenticChat|Invalid chat state provided'));
+      }
+    },
+    checkNamespaceAvailability() {
+      if (!this.chatConfiguration?.defaultProps?.defaultNamespaceSelected) {
+        const preferencesUrl = this.chatConfiguration?.defaultProps?.preferencesPath;
+        this.setChatState({
+          isEnabled: false,
+          reason: sprintf(
+            s__(
+              'DuoAgenticChat|To use Agentic Chat, select a default namespace in your %{preferencesLinkStart}user profile preferences%{preferencesLinkEnd}. Alternatively, turn off the  %{agenticModeStart}Agentic toggle%{agenticModeEnd} to return to Classic Chat.',
+            ),
+            {
+              preferencesLinkStart: `<a href="${preferencesUrl}" class="gl-link" target="_blank" rel="noopener noreferrer">`,
+              preferencesLinkEnd: '</a>',
+              agenticModeStart: '<strong>',
+              agenticModeEnd: '</strong>',
+            },
+            false,
+          ),
+        });
+      }
+    },
+    turnOffAgenticMode() {
+      setAgenticMode({
+        agenticMode: false,
+        saveCookie: true,
+        isEmbedded: this.isEmbedded,
+      });
+    },
+    checkCreditsAvailability() {
+      if (!this.hasCredits) {
+        this.setChatState({
+          isEnabled: false,
+          reason: sprintf(
+            s__(
+              'DuoAgenticChat|No GitLab Credits remain for this billing period. Turn off the %{agenticModeStart}Agentic mode%{agenticModeEnd} toggle or ask your administrator for more credits. %{linkStart}Learn more%{linkEnd}.',
+            ),
+            {
+              linkStart: `<a href="${helpPagePath('user/gitlab_duo_chat/_index')}" target="_blank" rel="noopener noreferrer">`,
+              linkEnd: '</a>',
+              agenticModeStart: '<strong>',
+              agenticModeEnd: '</strong>',
+            },
+            false,
+          ),
+        });
+      }
+    },
+    switchMode(mode) {
+      if (mode === 'active') {
+        if (this.isLoading) {
+          return;
+        }
+
+        if (this.hasActiveWorkflow) {
+          this.hydrateActiveWorkflow();
+        } else {
+          this.onNewChat();
+        }
+      }
+      if (mode === 'new') {
+        this.onNewChat();
+      }
+      if (mode === 'history') {
+        this.onBackToList();
+        this.$emit('change-title', '');
+      }
+    },
+
+    cleanupSocket() {
+      if (this.socketManager) {
+        closeSocket(this.socketManager);
+        this.socketManager = null;
+      }
+    },
+
+    cleanupState(resetWorkflowId = true) {
+      this.isLoading = false;
+      this.isWaitingOnPrompt = false;
+      this.lastProcessedMessageId = null;
+      this.isProcessingMessage = false;
+      this.pendingEvent = null;
+      this.cleanupSocket();
+      if (resetWorkflowId) {
+        this.workflowId = null;
+      }
+      this.workflowStatus = null;
+      this.isChatAvailable = true;
+      this.agentOrWorkflowDeletedError = '';
+    },
+
+    setDimensions() {
+      this.updateDimensions();
+    },
+    updateDimensions(width, height) {
+      const newDimensions = calculateDimensions({
+        width,
+        height,
+        currentWidth: this.width,
+        currentHeight: this.height,
+      });
+
+      Object.assign(this, newDimensions);
+    },
+    onChatResize(e) {
+      this.$emit('chat-resize');
+      this.updateDimensions(e.width, e.height);
+    },
+    onWindowResize() {
+      this.updateDimensions();
+    },
+    shouldStartNewChat(question) {
+      return [GENIE_CHAT_NEW_MESSAGE, GENIE_CHAT_CLEAR_MESSAGE, GENIE_CHAT_RESET_MESSAGE].includes(
+        question,
+      );
+    },
+    onChatCancel() {
+      this.cleanupState(false);
+    },
+    startWorkflow(goal, approval = {}, additionalContext) {
+      this.cleanupSocket();
+
+      const startRequest = buildStartRequest({
+        workflowId: this.workflowIid,
+        workflowDefinition: this.selectedFoundationalAgent?.referenceWithVersion,
+        goal,
+        approval,
+        additionalContext,
+        agentConfig: this.agentConfig,
+        metadata: this.metadata,
+        clientCapabilities: DUO_AGENTIC_CHAT_CLIENT_CAPABILITIES,
+      });
+
+      this.socketManager = createWebSocket(this.websocketUrl, {
+        onMessage: this.onMessageReceived,
+        onError: () => {
+          this.onError(
+            new Error(
+              s__('DuoAgenticChat|Unable to connect to workflow service. Please try again.'),
+            ),
+          );
+        },
+        onClose: (event) => {
+          if (event?.code === 1013) {
+            this.isFlowLocked = true;
+            this.setChatState({
+              isEnabled: false,
+              reason: s__(
+                'DuoAgenticChat|GitLab Duo is already responding to this chat in another tab or location. Start a new chat, or wait for GitLab Duo to finish before sending a new message.',
+              ),
+            });
+          }
+          // Handle credit exhaustion - websocket close 1008 with insufficient credits
+          if (event?.code === 1008) {
+            this.hasCredits = false;
+            this.checkCreditsAvailability();
+          }
+          // Only set waiting on prompt to false if we're not waiting for tool approval
+          // and we don't have a pending workflow that will create a new connection
+          if (this.workflowStatus !== DUO_WORKFLOW_STATUS_RUNNING) {
+            this.isProcessingToolApproval = false;
+            this.isWaitingOnPrompt = false;
+          }
+        },
+      });
+
+      this.socketManager.connect(startRequest);
+    },
+
+    async onMessageReceived(event) {
+      // Store the latest event
+      this.pendingEvent = event;
+
+      // If already processing, return - the event is stored and will be processed
+      if (this.isProcessingMessage) {
+        return;
+      }
+
+      // Start the processing loop
+      await this.processMessages();
+    },
+
+    async processMessages() {
+      // If there's no pending event, exit
+      if (this.pendingEvent === null) {
+        this.isProcessingMessage = false;
+        return;
+      }
+
+      this.isProcessingMessage = true;
+
+      try {
+        const eventToProcess = this.pendingEvent;
+        this.pendingEvent = null; // Clear before processing
+
+        const workflowData = await processWorkflowMessage(
+          eventToProcess,
+          this.lastProcessedMessageId,
+        );
+
+        if (workflowData) {
+          this.lastProcessedMessageId = workflowData.lastProcessedMessageId;
+
+          if (workflowData.messages && workflowData.messages.length > 0) {
+            workflowData.messages.forEach((msg) => {
+              this.addDuoChatMessage(msg);
+            });
+          }
+
+          this.workflowStatus = workflowData.status;
+
+          if (this.workflowStatus === DUO_WORKFLOW_STATUS_INPUT_REQUIRED) {
+            this.isWaitingOnPrompt = false;
+          }
+        }
+
+        // Check if another event arrived while we were processing
+        // If so, process it recursively
+        if (this.pendingEvent !== null) {
+          await this.processMessages();
+        }
+      } catch (err) {
+        this.onError(err);
+      } finally {
+        this.isProcessingMessage = false;
+      }
+    },
+
+    async onSendChatPrompt(question) {
+      if (this.shouldStartNewChat(question)) {
+        this.onNewChat(true);
+        return;
+      }
+
+      if (!this.isWaitingOnPrompt) {
+        this.isWaitingOnPrompt = true;
+      }
+
+      if (!this.workflowId) {
+        try {
+          const { workflowId } = await ApolloUtils.createWorkflow(this.$apollo, {
+            projectId: this.projectId,
+            namespaceId: this.namespaceId,
+            goal: question,
+            workflowDefinition: this.selectedFoundationalAgent?.referenceWithVersion,
+            aiCatalogItemVersionId: this.aiCatalogItemVersionId,
+          });
+
+          this.workflowId = workflowId;
+        } catch (err) {
+          this.onError(err);
+          this.isWaitingOnPrompt = false;
+          return;
+        }
+      } else {
+        await this.validateWorkflowExists();
+      }
+
+      const userMessage = {
+        content: question,
+        role: 'user',
+        requestId: DUO_AGENTIC_CHAT_PENDING_USER_MESSAGE_ID,
+      };
+      this.startWorkflow(question, {}, this.additionalContext);
+      this.addDuoChatMessage(userMessage);
+    },
+    onChatClose() {
+      // Only manage global state when not isEmbedded
+      // When isEmbedded, the parent container (AI Panel) manages the visibility
+      if (!this.isEmbedded) {
+        this.duoChatGlobalState.isAgenticChatShown = false;
+      }
+    },
+    onError(err) {
+      this.addDuoChatMessage({ errors: [formatErrorMessage(err)] });
+    },
+    handleApproveToolCall() {
+      this.isProcessingToolApproval = true;
+      this.startWorkflow('', { approval: {} }, this.additionalContext);
+    },
+    handleDenyToolCall(event) {
+      this.isProcessingToolApproval = true;
+      const message = event?.message || event;
+      this.startWorkflow(
+        '',
+        {
+          approval: undefined,
+          rejection: { message },
+        },
+        this.additionalContext,
+      );
+    },
+    async onThreadSelected(thread) {
+      this.workflowId = thread.id;
+      this.clearActiveWorkflow();
+      this.cleanupState(false);
+
+      if (!this.isEmbedded) {
+        // We should not hydrate when in embedded mode - the SSOT for
+        // when to hydrate the thread is on the `mode` and is managed in
+        // `switchMode()`
+        await this.hydrateActiveWorkflow();
+        // Check if the thread's agent still exists after hydration
+        this.validateAgentExists();
+      } else {
+        this.$emit('switch-to-active-tab', DUO_CHAT_VIEWS.CHAT);
+      }
+
+      if (this.$route?.path !== '/chat') {
+        this.$router.push(`/chat`);
+      }
+    },
+    async hydrateActiveWorkflow() {
+      this.multithreadedView = DUO_CHAT_VIEWS.CHAT;
+
+      this.isLoading = true;
+
+      if (this.workflowId) {
+        // Load cached messages immediately to prevent flickering
+        const snapshot = loadThreadSnapshot(this.workflowId);
+        if (snapshot?.messages?.length) {
+          this.setMessages(snapshot.messages);
+        }
+      }
+
+      // We need the snapshot copy of the workflowId to avoid race conditions
+      // with `cleanupState` in `onThreadSelected()` when/if we reach `clearThreadSnapshot`
+      // below
+      const id = this.workflowId;
+
+      try {
+        const workflowExists = await this.validateWorkflowExists();
+
+        if (!workflowExists) {
+          clearThreadSnapshot(id);
+          return;
+        }
+
+        // Fetch fresh data from API
+        await this.loadActiveWorkflow();
+        this.validateAgentExists();
+
+        if (this.workflowStatus === DUO_WORKFLOW_STATUS_RUNNING) {
+          this.startWorkflow('');
+        }
+      } finally {
+        if (this.aiCatalogItemVersionId) {
+          const activeAgent = this.catalogAgents.find(
+            (agent) => agent.pinnedItemVersionId === this.aiCatalogItemVersionId,
+          );
+          this.setCurrentAgent(activeAgent);
+        } else if (this.selectedFoundationalAgent) {
+          this.setCurrentAgent(this.selectedFoundationalAgent);
+        }
+        this.isLoading = false;
+        this.processPendingCommands();
+      }
+    },
+    async loadActiveWorkflow() {
+      try {
+        const data = await ApolloUtils.fetchWorkflowEvents(this.$apollo, this.workflowId);
+
+        const parsedWorkflowData = WorkflowUtils.parseWorkflowData(data);
+        const uiChatLog = parsedWorkflowData?.checkpoint?.channel_values?.ui_chat_log || [];
+        const messages = WorkflowUtils.transformChatMessages(uiChatLog);
+        const [workflow] = data.duoWorkflowWorkflows.nodes ?? [];
+
+        this.workflowStatus = parsedWorkflowData?.workflowStatus;
+        this.aiCatalogItemVersionId = workflow?.aiCatalogItemVersionId;
+
+        if (workflow?.workflowDefinition) {
+          this.selectedFoundationalAgent = this.foundationalAgents.find(
+            (agent) => agent.referenceWithVersion === workflow.workflowDefinition,
+          );
+        }
+
+        this.lastProcessedMessageId = messages.at(-1)?.message_id;
+        this.setMessages(messages);
+        this.$emit('change-title', parsedWorkflowData?.workflowGoal);
+      } catch (err) {
+        this.onError(err);
+      } finally {
+        this.isInitialLoad = false;
+      }
+    },
+    processPendingCommands() {
+      const [firstCommand] = duoChatGlobalState.commands;
+
+      if (firstCommand) {
+        this.selectAgentFromCommand(firstCommand);
+        this.onNewChat();
+        this.onSendChatPrompt(firstCommand.question);
+      }
+    },
+    onBackToList() {
+      this.multithreadedView = DUO_CHAT_VIEWS.LIST;
+      this.clearActiveWorkflow();
+      try {
+        if (this.$apollo?.queries?.agenticWorkflows) {
+          this.$apollo.queries.agenticWorkflows.refetch();
+        }
+      } catch (err) {
+        this.onError(err);
+      }
+    },
+    async onDeleteThread(threadId) {
+      try {
+        const success = await ApolloUtils.deleteWorkflow(this.$apollo, threadId);
+        if (success) {
+          this.$apollo.queries.agenticWorkflows?.refetch();
+          clearThreadSnapshot(threadId);
+        }
+      } catch (err) {
+        this.onError(err);
+      }
+    },
+    async onNewChat(reuseAgent) {
+      clearDuoChatCommands();
+      this.clearActiveWorkflow();
+
+      const threadContent = resetThreadContent();
+      Object.assign(this, threadContent);
+
+      this.cleanupState();
+      this.isChatAvailable = true;
+      this.agentOrWorkflowDeletedError = '';
+      this.$emit('change-title');
+
+      const agentState = prepareAgentSelection(this.currentAgent, reuseAgent);
+      if (agentState) {
+        Object.assign(this, agentState);
+      }
+
+      if (this.isEmbedded) {
+        this.$emit('switch-to-active-tab', DUO_CHAT_VIEWS.CHAT);
+      }
+
+      if (this.$route?.path !== '/chat') {
+        this.$router.push('/chat');
+      }
+      this.isInitialLoad = false;
+    },
+    onModelSelect(selectedModelValue) {
+      const model = getModel(this.availableModels, selectedModelValue);
+
+      if (model) {
+        this.currentModel = model;
+        saveModel(model);
+        this.onNewChat(true);
+      }
+    },
+    validateAgentExists() {
+      const { isAvailable, errorMessage } = validateAgent(
+        this.aiCatalogItemVersionId,
+        this.catalogAgents,
+      );
+
+      this.isChatAvailable = isAvailable;
+      this.agentOrWorkflowDeletedError = errorMessage;
+
+      return isAvailable;
+    },
+    // `focusInput` can be called by the parent component. Ideally, we would mark this as a public
+    // method via Vue's `expose` option. However, doing so would cause several tests to fail in Vue 3
+    // because we wrote some assertions directly against the `vm`, which becomes private when `expose`
+    // is defined. So we need to _not_ use `expose` and disable vue/no-unused-properties for now.
+    // eslint-disable-next-line vue/no-unused-properties
+    focusInput() {
+      this.$refs.chat.focusChatInput();
+    },
+    hasActiveMessagesButWorkflowDeleted(hasWorkflowNotFoundError) {
+      return hasWorkflowNotFoundError && !this.isInitialLoad && this.messages.length > 0;
+    },
+    async validateWorkflowExists() {
+      if (!this.workflowId) {
+        return false;
+      }
+
+      try {
+        await ApolloUtils.fetchWorkflowEvents(this.$apollo, this.workflowId);
+        return true;
+      } catch (errorData) {
+        const workflowNotFoundChecker = (e) => e?.extensions?.code === WORKFLOW_NOT_FOUND_CODE;
+        const hasWorkflowNotFoundError = errorData?.graphQLErrors?.some(workflowNotFoundChecker);
+
+        if (this.hasActiveMessagesButWorkflowDeleted(hasWorkflowNotFoundError)) {
+          this.isChatAvailable = false;
+          this.agentOrWorkflowDeletedError = s__('DuoAgenticChat|This chat was deleted.');
+        } else if (hasWorkflowNotFoundError && this.messages.length === 0) {
+          await this.$nextTick();
+          this.onNewChat();
+        } else {
+          this.onError(errorData);
+        }
+        return false;
+      }
+    },
+    trackBinaryFeedbackEvent(event) {
+      this.trackEvent(FEEDBACK_TRACKING_EVENT, {
+        label: event.feedbackType,
+        property: this.workflowIid,
+      });
+    },
+
+    selectAgentFromCommand(command) {
+      if (!command?.agent) {
+        return;
+      }
+
+      this.setCurrentAgent(command.agent);
+    },
+  },
+};
+</script>
+
+<template>
+  <div>
+    <div v-if="glFeatures.duoUiNext" class="gl-border-l gl-absolute gl-bg-white">
+      <!--
+        In order to correctly pass data down to the <next-chat> Custom Element, follow the following principle:
+        - as an **attribute** for primitives (string/number)
+        - as a **DOM property with a `.prop` modifier** for complex data structures like objects/arrays/functions/etc
+      -->
+      <fe-island-duo-next
+        :avatar-url="window.gon ? window.gon.current_user_avatar_url : null"
+        :user-name="window.gon ? window.gon.current_user_fullname : null"
+        :models.prop="availableModels"
+        @change-model="({ detail: models }) => window.alert(models[0])"
+      />
+    </div>
+    <chat-loading-state v-else-if="shouldDisplayLoadingIndicator" />
+    <web-agentic-duo-chat
+      v-else
+      id="duo-chat"
+      ref="chat"
+      :chat-state="chatState"
+      :title="currentAgent ? currentAgent.name : duoChatTitle"
+      :messages="messages"
+      :is-loading="isWaitingOnPrompt"
+      :loading-thread-list="isLoadingThreadList"
+      :predefined-prompts="predefinedPrompts"
+      :thread-list="agenticWorkflows"
+      :multi-threaded-view="multithreadedView"
+      :active-thread-id="workflowId"
+      :is-multithreaded="true"
+      :enable-code-insertion="false"
+      :should-render-resizable="!isEmbedded"
+      :with-feedback="glFeatures.duoChatBinaryFeedback"
+      :show-header="true"
+      :show-studio-header="isEmbedded"
+      :session-id="workflowIid"
+      badge-type="beta"
+      :dimensions="dimensions"
+      :is-tool-approval-processing="isProcessingToolApproval"
+      :agents="agents"
+      :is-chat-available="isChatAvailable"
+      :error="showErrorBannerMessage"
+      :trusted-urls="computedTrustedUrls"
+      :should-auto-focus-input="!isEmbedded"
+      :is-binary-feedback-enabled="glFeatures.duoChatBinaryFeedback"
+      class="gl-h-full gl-w-full"
+      @new-chat="onNewChat"
+      @send-chat-prompt="onSendChatPrompt"
+      @chat-cancel="onChatCancel"
+      @chat-hidden="onChatClose"
+      @chat-resize="onChatResize"
+      @approve-tool="handleApproveToolCall"
+      @deny-tool="handleDenyToolCall"
+      @thread-selected="onThreadSelected"
+      @back-to-list="onBackToList"
+      @delete-thread="onDeleteThread"
+      @track-feedback="trackBinaryFeedbackEvent"
+    >
+      <template #subheader>
+        <div class="gl-absolute gl-right-5 gl-top-10 gl-pt-2">
+          <slot name="header"></slot>
+        </div>
+      </template>
+      <template #agentic-model>
+        <div
+          v-if="userModelSelectionEnabled && hasCredits"
+          v-gl-tooltip
+          :title="modelSelectionDisabledTooltipText"
+          data-testid="model-dropdown-container"
+        >
+          <model-select-dropdown
+            class="-gl-my-3 -gl-ml-3"
+            button-class="!gl-border-0 gl-bg-transparent !gl-px-3 !gl-text-subtle"
+            :disabled="isModelSelectionDisabled"
+            :is-loading="$apollo.queries.availableModels.loading"
+            :items="availableModels"
+            :selected-option="currentModel"
+            :placeholder-dropdown-text="s__('ModelSelection|Select a model')"
+            @select="onModelSelect"
+          />
+        </div>
+      </template>
+      <template v-if="isClassicAvailable && !forceAgenticModeForCoreDuoUsers" #agentic-switch>
+        <gl-toggle v-model="duoAgenticModePreference" label-position="left" class="gl-h-5">
+          <template #label>
+            <span class="gl-font-normal gl-text-subtle">{{ s__('DuoChat|Agentic') }}</span>
+          </template>
+        </gl-toggle>
+      </template>
+      <template v-if="shouldShowCustomEmptyState" #custom-empty-state>
+        <no-namespace-empty-state
+          v-if="showNoNamespaceEmptyState"
+          key="no-namespace-empty-state"
+          :preferences-path="chatConfiguration.defaultProps.preferencesPath"
+          :is-classic-available="isClassicAvailable"
+          @return-to-classic="turnOffAgenticMode"
+        />
+        <no-credits-empty-state
+          v-else-if="!hasCredits"
+          key="no-credits-empty-state"
+          :is-trial="isTrial"
+          :buy-addon-path="buyAddonPath"
+          :can-buy-addon="canBuyAddon"
+        />
+        <active-trial-or-subscription-empty-state
+          v-else-if="shouldShowActiveTrialOrSubscriptionEmptyState"
+          key="has-trial-or-subscription"
+          :agents="agents"
+          :predefined-prompts="predefinedPrompts"
+          :explore-ai-catalog-path="exploreAiCatalogPath"
+          @new-chat="onNewChat"
+          @send-chat-prompt="onSendChatPrompt"
+        />
+      </template>
+    </web-agentic-duo-chat>
+  </div>
+</template>

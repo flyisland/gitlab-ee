@@ -1,0 +1,392 @@
+import { GlPopover, GlSprintf } from '@gitlab/ui';
+import Vue from 'vue';
+import VueApollo from 'vue-apollo';
+// eslint-disable-next-line no-restricted-imports
+import Vuex from 'vuex';
+import MockAdapter from 'axios-mock-adapter';
+import axios from '~/lib/utils/axios_utils';
+import RuleView from 'ee/projects/settings/branch_rules/components/view/index.vue';
+import ApprovalRulesApp from 'ee/approvals/components/approval_rules_app.vue';
+import ProjectRules from 'ee/approvals/project_settings/project_rules.vue';
+import StatusChecks from 'ee/projects/settings/branch_rules/components/view/status_checks/status_checks.vue';
+import branchRulesQuery from 'ee/projects/settings/branch_rules/queries/branch_rules_details.query.graphql';
+import squashOptionQuery from '~/projects/settings/branch_rules/queries/squash_option.query.graphql';
+import * as urlUtility from '~/lib/utils/url_utility';
+import CrudComponent from '~/vue_shared/components/crud_component.vue';
+import { createStoreOptions } from 'ee/approvals/stores';
+import projectSettingsModule from 'ee/approvals/stores/modules/project_settings';
+import ProtectionToggle from '~/projects/settings/branch_rules/components/view/protection_toggle.vue';
+import Protection from '~/projects/settings/branch_rules/components/view/protection.vue';
+import deleteBranchRuleMutation from '~/projects/settings/branch_rules/mutations/branch_rule_delete.mutation.graphql';
+import editBranchRuleMutation from 'ee_else_ce/projects/settings/branch_rules/mutations/edit_branch_rule.mutation.graphql';
+import { shallowMountExtended } from 'helpers/vue_test_utils_helper';
+import createMockApollo from 'helpers/mock_apollo_helper';
+import waitForPromises from 'helpers/wait_for_promises';
+import { useMockInternalEventsTracking } from 'helpers/tracking_internal_events_helper';
+import {
+  deleteBranchRuleMockResponse,
+  branchProtectionsMockResponse,
+  squashOptionMockResponse,
+  protectionPropsMock,
+  editBranchRuleMockResponse,
+  predefinedBranchRulesMockResponse,
+} from './mock_data';
+
+jest.mock('~/lib/utils/url_utility', () => ({
+  getParameterByName: jest.fn().mockReturnValue('main'),
+  mergeUrlParams: jest.fn().mockReturnValue('/branches?state=all&search=main'),
+  joinPaths: jest.fn(),
+  setUrlFragment: jest.fn(),
+}));
+
+Vue.use(VueApollo);
+Vue.use(Vuex);
+
+describe('View branch rules in enterprise edition', () => {
+  let wrapper;
+  let fakeApollo;
+  let store;
+  let axiosMock;
+  const projectPath = 'test/testing';
+  const protectedBranchesPath = 'protected/branches';
+  const approvalRulesPath = 'approval/rules';
+  const securityPoliciesPath = 'path/to/-/security/policies';
+  const statusChecksPath = 'status/checks';
+  const branchProtectionsMockRequestHandler = (response = branchProtectionsMockResponse) =>
+    jest.fn().mockResolvedValue(response);
+  const squashOptionMockRequestHandler = (response = squashOptionMockResponse) =>
+    jest.fn().mockResolvedValue(response);
+  const deleteBranchRuleMockRequestHandler = (response = deleteBranchRuleMockResponse) =>
+    jest.fn().mockResolvedValue(response);
+  const editBranchRuleSuccessHandler = (response = editBranchRuleMockResponse) =>
+    jest.fn().mockResolvedValue(response);
+  const { bindInternalEventDocument } = useMockInternalEventsTracking();
+
+  const createComponent = async (
+    { showApprovers, showStatusChecks, showCodeOwners } = {},
+    mockResponse,
+    mutationMockResponse,
+    editMutationMockResponse,
+    // eslint-disable-next-line max-params
+  ) => {
+    axiosMock = new MockAdapter(axios);
+    store = createStoreOptions({ approvals: projectSettingsModule() });
+    jest.spyOn(store.modules.approvals.actions, 'setRulesFilter');
+    jest.spyOn(store.modules.approvals.actions, 'fetchRules');
+
+    fakeApollo = createMockApollo([
+      [branchRulesQuery, branchProtectionsMockRequestHandler(mockResponse)],
+      [squashOptionQuery, squashOptionMockRequestHandler(mutationMockResponse)],
+      [deleteBranchRuleMutation, deleteBranchRuleMockRequestHandler(mutationMockResponse)],
+      [editBranchRuleMutation, editBranchRuleSuccessHandler(editMutationMockResponse)],
+    ]);
+
+    wrapper = shallowMountExtended(RuleView, {
+      store: new Vuex.Store(store),
+      apolloProvider: fakeApollo,
+      provide: {
+        canAdminProtectedBranches: true,
+        projectPath,
+        protectedBranchesPath,
+        approvalRulesPath,
+        securityPoliciesPath,
+        statusChecksPath,
+        showApprovers,
+        showStatusChecks,
+        showCodeOwners,
+      },
+      stubs: {
+        CrudComponent,
+        GlSprintf,
+        Protection,
+        ProtectionToggle,
+        StatusChecks,
+      },
+    });
+
+    await waitForPromises();
+  };
+
+  beforeEach(() => createComponent());
+
+  afterEach(() => axiosMock.restore());
+
+  const findDeleteRuleButton = () => wrapper.findByTestId('delete-rule-button');
+  const findDeleteRuleButtonPopover = () => wrapper.findComponent(GlPopover);
+  const findAllowedToMerge = () => wrapper.findByTestId('allowed-to-merge-content');
+  const findAllowedToPush = () => wrapper.findByTestId('allowed-to-push-content');
+  const findApprovalsApp = () => wrapper.findComponent(ApprovalRulesApp);
+  const findProjectRules = () => wrapper.findComponent(ProjectRules);
+  const findCrudComponent = () => wrapper.findComponent(CrudComponent);
+  const findStatusChecksCrud = () => wrapper.findByTestId('status-checks');
+  const findStatusChecksTitle = () => wrapper.findByTestId('crud-title');
+  const findAllowForcePushToggle = () => wrapper.findByTestId('force-push-content');
+  const findCodeOwnersToggle = () => wrapper.findByTestId('code-owners-content');
+  const findStatusChecksDrawer = () => wrapper.findByTestId('status-checks-drawer');
+  const findSquashSettingContent = () => wrapper.findByTestId('squash-setting-content');
+
+  describe('Squash settings', () => {
+    it('renders squash option and help text when available', () => {
+      const content = findSquashSettingContent();
+      expect(content.text()).toContain('Encourage');
+      expect(content.text()).toContain('Checkbox is visible and selected by default.');
+    });
+  });
+
+  it('renders a branch protection component for push rules', () => {
+    expect(findAllowedToPush().props()).toMatchObject({
+      roles: protectionPropsMock.roles,
+      header: 'Allowed to push and merge',
+      count: 2,
+    });
+  });
+
+  it('renders a branch protection component for merge rules', () => {
+    expect(findAllowedToMerge().props()).toMatchObject({
+      roles: protectionPropsMock.roles,
+      header: 'Allowed to merge',
+      count: 2,
+    });
+  });
+
+  describe('Code owner approvals', () => {
+    it('does not render a code owner approval section by default', () => {
+      expect(findCodeOwnersToggle().exists()).toBe(false);
+    });
+
+    it.each`
+      codeOwnerApprovalRequired | iconTitle                                       | description
+      ${true}                   | ${'Requires code owner approval'}               | ${'Changed files listed in %{linkStart}CODEOWNERS%{linkEnd} require an approval for merge requests and will be rejected for code pushes.'}
+      ${false}                  | ${'Does not require approval from code owners'} | ${'Changed files listed in %{linkStart}CODEOWNERS%{linkEnd} require an approval for merge requests and will be rejected for code pushes.'}
+    `(
+      'renders code owners approval section with the correct iconTitle and description',
+      async ({ codeOwnerApprovalRequired, iconTitle, description }) => {
+        const mockResponse = branchProtectionsMockResponse;
+        mockResponse.data.project.branchRules.nodes[0].branchProtection.codeOwnerApprovalRequired =
+          codeOwnerApprovalRequired;
+        await createComponent({ showCodeOwners: true }, mockResponse);
+
+        expect(findCodeOwnersToggle().props('iconTitle')).toEqual(iconTitle);
+        expect(findCodeOwnersToggle().props('description')).toEqual(description);
+      },
+    );
+
+    it('emits a tracking event, when Code Owner Approval toggle is switched', async () => {
+      await createComponent({ showCodeOwners: true });
+      const { trackEventSpy } = bindInternalEventDocument(wrapper.element);
+
+      findCodeOwnersToggle().vm.$emit('toggle', false);
+      await waitForPromises();
+
+      expect(trackEventSpy).toHaveBeenCalledWith('change_require_codeowner_approval', {
+        label: 'branch_rule_details',
+      });
+    });
+  });
+
+  it('does not render approvals and status checks sections by default', () => {
+    expect(findApprovalsApp().exists()).toBe(false);
+    expect(findStatusChecksCrud().exists()).toBe(false);
+  });
+
+  describe('if "showApprovers" is true', () => {
+    beforeEach(() => createComponent({ showApprovers: true }));
+
+    it('sets an approval rules filter', () => {
+      expect(store.modules.approvals.actions.setRulesFilter).toHaveBeenCalledWith(
+        expect.anything(),
+        ['test'],
+      );
+    });
+
+    it('fetches the approval rules', () => {
+      expect(store.modules.approvals.actions.fetchRules).toHaveBeenCalledTimes(1);
+    });
+
+    it('re-fetches the approval rules when a rule is successfully added/edited', async () => {
+      findApprovalsApp().vm.$emit('submitted');
+      await waitForPromises();
+
+      expect(store.modules.approvals.actions.setRulesFilter).toHaveBeenCalledTimes(2);
+      expect(store.modules.approvals.actions.fetchRules).toHaveBeenCalledTimes(2);
+    });
+
+    it('renders the approval rules component with correct props', () => {
+      expect(findApprovalsApp().props('isMrEdit')).toBe(false);
+    });
+
+    it('renders the project rules component', () => {
+      expect(findProjectRules().exists()).toBe(true);
+    });
+  });
+
+  describe('if "showStatusChecks" is true', () => {
+    it('does not render status check section for all protected branches', () => {
+      jest.spyOn(urlUtility, 'getParameterByName').mockReturnValue('All protected branches');
+      createComponent({ showStatusChecks: true });
+      expect(findStatusChecksTitle().exists()).toBe(false);
+      expect(findStatusChecksDrawer().exists()).toBe(false);
+    });
+
+    it('renders status check section for all branches', async () => {
+      jest.spyOn(urlUtility, 'getParameterByName').mockReturnValue('All branches');
+      createComponent({ showStatusChecks: true }, predefinedBranchRulesMockResponse);
+      await waitForPromises();
+      expect(findCrudComponent().props('title')).toBe('Rule target');
+      expect(findStatusChecksDrawer().exists()).toBe(true);
+    });
+
+    it('renders status check section for non-predefined branch', async () => {
+      jest.spyOn(urlUtility, 'getParameterByName').mockReturnValue('main');
+      createComponent({ showStatusChecks: true }, branchProtectionsMockResponse);
+      await waitForPromises();
+      expect(findCrudComponent().props('title')).toBe('Rule target');
+      expect(findStatusChecksDrawer().exists()).toBe(true);
+    });
+  });
+
+  describe('Security policies', () => {
+    describe('deleting a branch rule', () => {
+      describe('when it prevents deletion', () => {
+        beforeEach(async () => {
+          const mockResponse = structuredClone(branchProtectionsMockResponse);
+          mockResponse.data.project.branchRules.nodes[0].branchProtection.modificationBlockedByPolicy = true;
+          await createComponent({}, mockResponse);
+        });
+
+        it('renders disabled delete rule button', () => {
+          expect(findDeleteRuleButton().exists()).toBe(true);
+          expect(findDeleteRuleButton().props('disabled')).toBe(true);
+        });
+
+        it('renders the delete button popover', () => {
+          const popover = findDeleteRuleButtonPopover();
+          expect(popover.exists()).toBe(true);
+          expect(popover.text()).toBe(
+            "You can't unprotect this branch because its protection is enforced by one or more security policies. Learn more.",
+          );
+          expect(findDeleteRuleButtonPopover().exists()).toBe(true);
+        });
+      });
+
+      describe('when it warns about deletion (warn mode)', () => {
+        beforeEach(async () => {
+          const mockResponse = structuredClone(branchProtectionsMockResponse);
+          mockResponse.data.project.branchRules.nodes[0].branchProtection.warnModificationBlockedByPolicy = true;
+          await createComponent({}, mockResponse);
+        });
+
+        it('renders enabled delete rule button', () => {
+          expect(findDeleteRuleButton().exists()).toBe(true);
+          expect(findDeleteRuleButton().props('disabled')).toBe(false);
+        });
+
+        it('renders the delete button popover with warn mode message', () => {
+          const popover = findDeleteRuleButtonPopover();
+          expect(popover.exists()).toBe(true);
+          expect(popover.text()).toBe(
+            "If one or more security policies become enforced, you can't unprotect this branch. Learn more.",
+          );
+        });
+      });
+
+      describe('when it does not prevent deletion', () => {
+        beforeEach(async () => {
+          await createComponent();
+        });
+
+        it('renders enabled delete rule button', () => {
+          expect(findDeleteRuleButton().exists()).toBe(true);
+          expect(findDeleteRuleButton().props('disabled')).toBe(false);
+        });
+
+        it('does not render the delete button popover', () => {
+          expect(findDeleteRuleButtonPopover().exists()).toBe(false);
+        });
+      });
+    });
+
+    describe('preventing push/force push', () => {
+      describe('when it prevents pushing/force pushing to a branch', () => {
+        beforeEach(async () => {
+          const mockResponse = structuredClone(branchProtectionsMockResponse);
+          mockResponse.data.project.branchRules.nodes[0].branchProtection.protectedFromPushBySecurityPolicy = true;
+          await createComponent({}, mockResponse);
+        });
+
+        it('renders the allowed to push button with the correct props', () => {
+          expect(findAllowedToPush().props('isProtectedByPolicy')).toBe(true);
+        });
+
+        it('renders the force push toggle with the correct props', () => {
+          expect(findAllowForcePushToggle().props('isProtectedByPolicy')).toBe(true);
+        });
+      });
+
+      describe('when it warns about pushing/force pushing to a branch (warn mode)', () => {
+        beforeEach(async () => {
+          const mockResponse = structuredClone(branchProtectionsMockResponse);
+          mockResponse.data.project.branchRules.nodes[0].branchProtection.warnProtectedFromPushBySecurityPolicy = true;
+          await createComponent({}, mockResponse);
+        });
+
+        it('renders the allowed to push button with warn mode props', () => {
+          expect(findAllowedToPush().props('isProtectedByWarnPolicy')).toBe(true);
+        });
+
+        it('renders the force push toggle with warn mode props', () => {
+          expect(findAllowForcePushToggle().props('isProtectedByWarnPolicy')).toBe(true);
+        });
+      });
+
+      describe('when it does not prevent pushing/force pushing to a branch', () => {
+        beforeEach(async () => {
+          await createComponent();
+        });
+
+        it('renders the allowed to push button with the correct props', () => {
+          expect(findAllowedToPush().props('isProtectedByPolicy')).toBe(false);
+        });
+
+        it('renders the force push toggle with the correct props', () => {
+          expect(findAllowForcePushToggle().props('isProtectedByPolicy')).toBe(false);
+        });
+      });
+    });
+  });
+
+  describe('when isGroupLevel is true', () => {
+    beforeEach(async () => {
+      const mockResponse = {
+        ...branchProtectionsMockResponse,
+        data: {
+          ...branchProtectionsMockResponse.data,
+          project: {
+            ...branchProtectionsMockResponse.data.project,
+            branchRules: {
+              ...branchProtectionsMockResponse.data.project.branchRules,
+              nodes: branchProtectionsMockResponse.data.project.branchRules.nodes.map((node) => ({
+                ...node,
+                branchProtection: {
+                  ...node.branchProtection,
+                  isGroupLevel: true,
+                },
+              })),
+            },
+          },
+        },
+      };
+
+      await createComponent({ showCodeOwners: true }, mockResponse);
+    });
+
+    it('filters out a group level rule from display and renders empty state', () => {
+      expect(wrapper.text()).toBe('No data to display');
+      expect(findDeleteRuleButton().exists()).toBe(false);
+      expect(findAllowedToMerge().exists()).toBe(false);
+      expect(findAllowedToPush().exists()).toBe(false);
+      expect(findAllowForcePushToggle().exists()).toBe(false);
+      expect(findCodeOwnersToggle().exists()).toBe(false);
+    });
+  });
+});

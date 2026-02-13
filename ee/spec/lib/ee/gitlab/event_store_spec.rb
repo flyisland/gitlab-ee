@@ -1,0 +1,139 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe Gitlab::EventStore, feature_category: :shared do
+  describe '.instance' do
+    it 'returns a store with CE and EE subscriptions' do
+      instance = described_class.instance
+
+      expect(instance.subscriptions.keys).to match_array([
+        Ai::ActiveContext::Code::CreateEnabledNamespaceEvent,
+        Ai::ActiveContext::Code::MarkRepositoryAsReadyEvent,
+        Ai::ActiveContext::Code::MarkRepositoryAsPendingDeletionEvent,
+        Ai::ActiveContext::Code::ProcessPendingEnabledNamespaceEvent,
+        Ai::ActiveContext::Code::ProcessInvalidEnabledNamespaceEvent,
+        ::Ci::JobArtifactsDeletedEvent,
+        ::Ci::JobSecurityScanCompletedEvent,
+        ::Ci::PipelineCreatedEvent,
+        ::Ci::PipelineFinishedEvent,
+        ::Ci::Workloads::WorkloadFinishedEvent,
+        ::Repositories::KeepAroundRefsCreatedEvent,
+        ::MergeRequests::ApprovedEvent,
+        ::MergeRequests::MergedEvent,
+        ::MergeRequests::AutoMerge::TitleDescriptionUpdateEvent,
+        ::MergeRequests::ApprovalsResetEvent,
+        ::MergeRequests::DraftStateChangeEvent,
+        ::MergeRequests::UnblockedStateEvent,
+        ::MergeRequests::OverrideRequestedChangesStateEvent,
+        ::MergeRequests::DiscussionsResolvedEvent,
+        ::MergeRequests::MergeableEvent,
+        ::MergeRequests::ViolationsUpdatedEvent,
+        ::MergeRequests::ClosedEvent,
+        ::MergeRequests::CreatedEvent,
+        ::MergeRequests::ReopenedEvent,
+        ::MergeRequests::UpdatedEvent,
+        ::MergeRequests::DraftNotePublishedEvent,
+        ::GitlabSubscriptions::RenewedEvent,
+        ::Repositories::DefaultBranchChangedEvent,
+        ::Repositories::RepositoryCreatedEvent,
+        ::NamespaceSettings::AiRelatedSettingsChangedEvent,
+        ::Members::DestroyedEvent,
+        ::Members::MembersAddedEvent,
+        ::Namespaces::Groups::GroupArchivedEvent,
+        ::ProjectAuthorizations::AuthorizationsChangedEvent,
+        ::ProjectAuthorizations::AuthorizationsRemovedEvent,
+        ::ProjectAuthorizations::AuthorizationsAddedEvent,
+        ::Projects::ComplianceFrameworkChangedEvent,
+        ::ContainerRegistry::ImagePushedEvent,
+        Projects::ProjectTransferedEvent,
+        Projects::ProjectVisibilityChangedEvent,
+        Groups::GroupTransferedEvent,
+        Groups::GroupDeletedEvent,
+        Projects::ProjectArchivedEvent,
+        Projects::ProjectFeaturesChangedEvent,
+        ::Pages::Domains::PagesDomainDeletedEvent,
+        Vulnerabilities::LinkToExternalIssueTrackerCreated,
+        Vulnerabilities::LinkToExternalIssueTrackerRemoved,
+        WorkItems::WorkItemClosedEvent,
+        WorkItems::WorkItemCreatedEvent,
+        WorkItems::WorkItemDeletedEvent,
+        WorkItems::WorkItemReopenedEvent,
+        WorkItems::WorkItemUpdatedEvent,
+        PackageMetadata::IngestedAdvisoryEvent,
+        MergeRequests::ExternalStatusCheckPassedEvent,
+        Packages::PackageCreatedEvent,
+        Projects::ProjectCreatedEvent,
+        Projects::ProjectDeletedEvent,
+        ::Milestones::MilestoneUpdatedEvent,
+        ::WorkItems::BulkUpdatedEvent,
+        ::Users::ActivityEvent,
+        Sbom::VulnerabilitiesCreatedEvent,
+        Sbom::SbomIngestedEvent,
+        Search::Zoekt::ForceUpdateOverprovisionedIndexEvent,
+        Search::Zoekt::IndexMarkedAsReadyEvent,
+        Search::Zoekt::IndexMarkedAsToDeleteEvent,
+        Search::Zoekt::IndexMarkPendingEvictionEvent,
+        Search::Zoekt::IndexToEvictEvent,
+        Search::Zoekt::InitialIndexingEvent,
+        Search::Zoekt::LostNodeEvent,
+        Search::Zoekt::NodeWithNegativeUnclaimedStorageEvent,
+        Search::Zoekt::OrphanedIndexEvent,
+        Search::Zoekt::OrphanedRepoEvent,
+        Search::Zoekt::RepoMarkedAsToDeleteEvent,
+        Search::Zoekt::RepoToIndexEvent,
+        Search::Zoekt::RepoToReindexEvent,
+        Search::Zoekt::TaskFailedEvent,
+        Search::Zoekt::UpdateIndexUsedStorageBytesEvent,
+        Search::Zoekt::SaasRolloutEvent,
+        Search::Zoekt::TooManyReplicasEvent,
+        Security::PolicyCreatedEvent,
+        Security::PolicyUpdatedEvent,
+        Security::PolicyDeletedEvent,
+        Security::PolicyResyncEvent,
+        Security::PolicyDismissalPreservedEvent,
+        ::Members::MembershipModifiedByAdminEvent,
+        Repositories::ProtectedBranchCreatedEvent,
+        Repositories::ProtectedBranchDestroyedEvent,
+        Vulnerabilities::BulkDismissedEvent,
+        Vulnerabilities::BulkRedetectedEvent,
+        ::Analytics::ClickHouseForAnalyticsEnabledEvent
+      ])
+    end
+  end
+
+  describe '.publish_group' do
+    let(:events) { [] }
+
+    it 'calls publish_group of instance' do
+      expect(described_class.instance).to receive(:publish_group).with(events)
+
+      described_class.publish_group(events)
+    end
+  end
+
+  describe 'virtual registries subscriptions' do
+    expected_subscriptions = {
+      ::Projects::ProjectDeletedEvent => ::VirtualRegistries::DestroyLocalUpstreamsWorker,
+      ::Groups::GroupDeletedEvent => ::VirtualRegistries::DestroyLocalUpstreamsWorker
+    }
+
+    subscriptions = described_class.instance.subscriptions
+
+    expected_subscriptions.each do |event_class, worker_class|
+      it "subscribes #{worker_class} to #{event_class}" do
+        expect(subscriptions[event_class]).to include(have_attributes(worker: worker_class))
+      end
+    end
+  end
+
+  describe 'Vulnerabilities::AutoDismissWorker subscription' do
+    let(:subscriptions) { described_class.instance.subscriptions }
+
+    it 'subscribes Vulnerabilities::AutoDismissWorker to Sbom::VulnerabilitiesCreatedEvent' do
+      expect(subscriptions[Sbom::VulnerabilitiesCreatedEvent]).to include(
+        have_attributes(worker: ::Vulnerabilities::AutoDismissWorker)
+      )
+    end
+  end
+end

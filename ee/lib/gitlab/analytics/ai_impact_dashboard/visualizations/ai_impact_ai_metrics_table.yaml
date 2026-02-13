@@ -1,0 +1,18 @@
+---
+version: 1
+type: AiImpactTable
+data:
+  type: value_stream
+  query:
+    filters:
+      includeMetrics:
+        - duo_used_count
+        - code_suggestions_usage_rate
+        - code_suggestions_acceptance_rate
+        - duo_chat_usage_rate
+        - duo_rca_usage_rate
+        - duo_review_requests_count
+        - duo_review_comment_count
+        - duo_agent_platform_flows
+        - duo_agent_platform_chats
+options: {}

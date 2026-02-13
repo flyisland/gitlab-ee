@@ -1,0 +1,38 @@
+# @feature_category: workflow_catalog
+#import "../fragments/ai_catalog_item.fragment.graphql"
+#import "~/graphql_shared/fragments/page_info.fragment.graphql"
+#import "../fragments/ai_catalog_agent_version.fragment.graphql"
+
+query aiCatalogAgents(
+  $itemTypes: [AiCatalogItemType!]
+  $before: String
+  $after: String
+  $first: Int
+  $last: Int
+  $search: String
+) {
+  aiCatalogItems(
+    itemTypes: $itemTypes
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    search: $search
+  ) {
+    nodes {
+      ...BaseAiCatalogItem
+      project {
+        id
+        nameWithNamespace
+      }
+      versions {
+        nodes {
+          ...BaseAiCatalogAgentVersion
+        }
+      }
+    }
+    pageInfo {
+      ...PageInfo
+    }
+  }
+}

@@ -1,0 +1,69 @@
+query getProjectDependencies(
+  $fullPath: ID!
+  $first: Int
+  $last: Int
+  $after: String
+  $before: String
+  $sort: DependencySort
+  $componentNames: [String!]
+  $componentVersions: [String!]
+  $policyViolations: [PolicyViolations!]
+) {
+  namespace: project(fullPath: $fullPath) {
+    id
+    dependencies(
+      first: $first
+      last: $last
+      after: $after
+      before: $before
+      sort: $sort
+      componentNames: $componentNames
+      componentVersions: $componentVersions
+      policyViolations: $policyViolations
+    ) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      nodes {
+        id
+        name
+        componentVersion {
+          id
+          version
+        }
+        packager
+        location {
+          path
+          blobPath
+          ancestors {
+            name
+            version
+          }
+        }
+        licenses {
+          name
+          url
+          spdxIdentifier
+          policyViolations @gl_introduced(version: "18.7.0") {
+            id
+            securityPolicy {
+              id
+              name
+            }
+          }
+        }
+        vulnerabilities {
+          nodes {
+            id
+            policyViolations
+          }
+        }
+        vulnerabilityCount
+        hasDependencyPaths @gl_introduced(version: "18.4.0")
+      }
+    }
+  }
+}

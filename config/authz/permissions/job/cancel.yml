@@ -1,0 +1,5 @@
+---
+name: cancel_job
+description: Grants the ability to cancel jobs
+boundaries:
+  - project

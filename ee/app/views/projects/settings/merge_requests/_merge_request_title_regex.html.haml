@@ -1,0 +1,23 @@
+- form = local_assigns.fetch(:form)
+- project = local_assigns.fetch(:project)
+
+- if ::Feature.enabled?(:merge_request_title_regex, project)
+  .form-group
+    = form.label :merge_request_title_regex, s_('ProjectSettings|Title pattern'), class: 'gl-mb-0'
+    %p.gl-text-subtle
+      %span{ id: :merge_request_title_hint }
+        - regex_link = link_to('', 'https://github.com/google/re2/wiki/Syntax', target: '_blank', rel: 'noopener noreferrer')
+        = safe_format(s_('ProjectSettings|Regex pattern that all merge request titles must match. %{link_start}What is regex?%{link_end} If empty, any title is allowed.'), tag_pair(regex_link, :link_start, :link_end))
+
+    = form.text_field :merge_request_title_regex, class: "form-control", placeholder: '^\[.+\]', aria: { describedby: :merge_request_title_hint }
+  .form-group
+    - example_placeholder = s_('ProjectSettings|[Feature] Add login')
+    = form.label :merge_request_title_regex_description, s_('ProjectSettings|Title example'), class: 'gl-mb-0'
+    %p.gl-text-subtle
+      %span{ id: :merge_request_title_regex_description_hint }
+        = s_('ProjectSettings|Describe what the title pattern enforces. Include a valid example.')
+
+    = form.text_field :merge_request_title_regex_description, class: "form-control", placeholder: example_placeholder, aria: { describedby: :merge_request_title_regex_description_hint }
+    %p.gl-text-subtle
+      %span
+        = s_('ProjectSettings|Usage example: "Title must match validation pattern `%{pattern}`."') % { pattern: example_placeholder }

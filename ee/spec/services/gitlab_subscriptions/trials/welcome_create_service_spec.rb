@@ -1,0 +1,365 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe GitlabSubscriptions::Trials::WelcomeCreateService, :saas, feature_category: :acquisition do
+  include TrialHelpers
+
+  let_it_be(:user, reload: true) { create(:user) }
+  let_it_be(:organization) { create(:organization, users: [user]) }
+  let_it_be(:existing_group) { create(:group_with_plan, plan: :free_plan, owners: user) }
+  let_it_be(:existing_project) { create(:project, namespace: existing_group) }
+  let_it_be(:unrelated_group) { create(:group_with_plan, plan: :free_plan) }
+  let_it_be(:unrelated_project) { create(:project, namespace: unrelated_group) }
+
+  let(:experiment) { instance_double(ApplicationExperiment) }
+  let(:glm_params) { { glm_source: 'some-source', glm_content: 'some-content' } }
+  let(:group) { build(:group) }
+
+  let(:params) do
+    {
+      company_name: 'Test Company',
+      country: 'US',
+      state: 'CA',
+      project_name: 'Test Project',
+      group_name: 'gitlab',
+      organization_id: organization.id,
+      onboarding_status_role: '0',
+      onboarding_status_setup_for_company: 'true',
+      onboarding_status_registration_objective: '1'
+    }.merge(glm_params)
+  end
+
+  let(:lead_params) do
+    {
+      trial_user: params.except(
+        :namespace_id,
+        :group_name,
+        :project_name,
+        :organization_id,
+        :onboarding_status_role,
+        :onboarding_status_setup_for_company,
+        :onboarding_status_registration_objective
+      ).merge(
+        {
+          work_email: user.email,
+          uid: user.id,
+          setup_for_company: true,
+          skip_email_confirmation: true,
+          gitlab_com_trial: true,
+          provider: 'gitlab',
+          product_interaction: 'Experiment - SaaS Trial',
+          first_name: user.first_name,
+          last_name: user.last_name,
+          role: 'software_developer',
+          jtbd: 'move_repository'
+        }
+      )
+    }
+  end
+
+  let(:group_params) do
+    glm_params.merge(
+      namespace_id: be_a(Integer),
+      namespace: {
+        id: be_a(Integer),
+        name: be_a(String),
+        path: be_a(String),
+        kind: group.kind,
+        trial_ends_on: group.trial_ends_on,
+        plan: be_a(String)
+      }
+    )
+  end
+
+  let(:existing_group_params) do
+    group_params[:namespace].merge(kind: existing_group.kind, trial_ends_on: existing_group.trial_ends_on)
+    group_params
+  end
+
+  let(:retry_params) { {} }
+
+  let(:lead_service_class) { GitlabSubscriptions::CreateLeadService }
+  let(:apply_trial_worker_class) { GitlabSubscriptions::Trials::ApplyTrialService }
+
+  subject(:execute) { described_class.new(params: params, user: user, **retry_params).execute }
+
+  describe '#execute' do
+    context 'when successful' do
+      it 'creates lead and applies trial successfully', :aggregate_failures do
+        expect_create_lead_success(lead_params)
+        expect_apply_trial_async(user, namespace: nil, extra_params: glm_params)
+
+        expect { execute }.to change { Group.count }.by(1).and change { Project.count }.by(1)
+        expect(execute).to be_success
+        expect(execute.message).to eq('Trial applied')
+        expect(execute.payload).to eq({ namespace: Group.last, project: Project.last })
+      end
+
+      it 'saves onboarding_status fields to user', :aggregate_failures do
+        expect_create_lead_success(lead_params)
+        expect_apply_trial_async(user, namespace: nil, extra_params: glm_params)
+
+        expect { execute }.to change { user.reload.onboarding_status_role }.from(nil).to(0)
+          .and change { user.onboarding_status_setup_for_company }.from(nil).to(true)
+          .and change { user.onboarding_status_registration_objective }.from(nil).to(1)
+      end
+
+      it 'adds experiment contexts and tracks namespace', :experiment do
+        stub_experiments(
+          lightweight_trial_registration_redesign: :candidate,
+          premium_message_during_trial: :candidate
+        )
+
+        expect_create_lead_success(lead_params)
+        expect_any_instance_of(PremiumMessageDuringTrialExperiment) do |instance|
+          expect(instance).to receive(:track).with(:assignment, namespace: an_instance_of(Group)).and_call_original
+        end
+
+        execute
+      end
+
+      context 'when retrying' do
+        before do
+          allow(GitlabSubscriptions::Trials)
+            .to receive(:namespace_eligible?).with(existing_group).and_return(true)
+        end
+
+        context "when project creation failed" do
+          let(:retry_params) { { namespace_id: existing_group.id } }
+
+          it 'uses existing group' do
+            expect_create_lead_success(lead_params)
+            expect_apply_trial_async(user, namespace: existing_group, extra_params: glm_params)
+
+            expect { execute }.to not_change { Group.count }.and change { Project.count }.by(1)
+            expect(execute).to be_success
+            expect(execute.message).to eq('Trial applied')
+            expect(execute.payload).to eq({ namespace: existing_group, project: Project.last })
+          end
+        end
+
+        context "when lead creation failed" do
+          let(:retry_params) do
+            { namespace_id: existing_group.id, project_id: existing_project.id, lead_created: false }
+          end
+
+          it 'uses existing group and project' do
+            expect_create_lead_success(lead_params)
+            expect_apply_trial_async(user, namespace: existing_group, extra_params: glm_params)
+
+            expect { execute }.to not_change { Group.count }.and not_change { Project.count }
+            expect(execute).to be_success
+            expect(execute.message).to eq('Trial applied')
+            expect(execute.payload).to eq({ namespace: existing_group, project: existing_project })
+          end
+
+          it 'group/project creation is tracked' do
+            allow_next_instance_of(GitlabSubscriptions::Trials::WelcomeCreateService) do |service|
+              allow(service).to receive(:experiment).with(:lightweight_trial_registration_redesign,
+                actor: user).and_return(experiment)
+            end
+
+            expect(experiment).to receive(:track).with(:assignment, namespace: existing_group)
+            expect_create_lead_success(lead_params)
+            expect_apply_trial_async(user, namespace: existing_group, extra_params: glm_params)
+
+            execute
+          end
+        end
+
+        context "when project isn't owned by user" do
+          let(:retry_params) do
+            { namespace_id: existing_group.id, project_id: unrelated_project.id }
+          end
+
+          it 'returns not found error and lead/trial is not submitted' do
+            expect(lead_service_class).not_to receive(:new)
+            expect(apply_trial_worker_class).not_to receive(:perform_async)
+
+            expect(execute).to be_error
+            expect(execute.message).to eq('Not found')
+            expect(execute.reason).to eq(:not_found)
+          end
+        end
+
+        context "when namespace isn't owned by user" do
+          let(:retry_params) do
+            { namespace_id: unrelated_group.id }
+          end
+
+          before do
+            allow(GitlabSubscriptions::Trials).to receive(:namespace_eligible?).with(unrelated_group).and_return(true)
+          end
+
+          it 'returns not found error and lead/trial is not submitted' do
+            expect(lead_service_class).not_to receive(:new)
+            expect(apply_trial_worker_class).not_to receive(:perform_async)
+
+            expect(execute).to be_error
+            expect(execute.message).to eq('Not found')
+            expect(execute.reason).to eq(:not_found)
+          end
+        end
+
+        context 'when namespace is not eligible for trial' do
+          let(:retry_params) do
+            { namespace_id: existing_group.id, project_id: existing_project.id, lead_created: true }
+          end
+
+          before do
+            allow(GitlabSubscriptions::Trials)
+              .to receive(:namespace_eligible?).with(existing_group).and_return(false)
+          end
+
+          it 'returns not found error and lead/trial is not submitted' do
+            expect(lead_service_class).not_to receive(:new)
+            expect(apply_trial_worker_class).not_to receive(:perform_async)
+
+            expect(execute).to be_error
+            expect(execute.message).to eq('Not found')
+            expect(execute.reason).to eq(:not_found)
+          end
+        end
+      end
+    end
+
+    context 'when namespace creation fails' do
+      let(:params) { super().merge(group_name: '  ') }
+
+      it 'returns model error and does not attempt to execute next steps' do
+        expect(lead_service_class).not_to receive(:new)
+        expect(apply_trial_worker_class).not_to receive(:perform_async)
+        expect(Projects::CreateService).not_to receive(:new)
+
+        expect(execute).to be_error
+        expect(execute.message).to eq("Trial creation failed in namespace stage")
+        expect(execute.payload).to include({ namespace_id: nil, project_id: nil, lead_created: false })
+        expect(execute.payload.dig(:model_errors, :group_name)).to include(/^Name can't be blank/)
+      end
+    end
+
+    context 'when project creation fails' do
+      let(:params) { super().merge(project_name: '  ') }
+
+      it 'returns model error and does not attempt to execute next steps' do
+        expect(lead_service_class).not_to receive(:new)
+        expect(apply_trial_worker_class).not_to receive(:perform_async)
+
+        expect(execute).to be_error
+        expect(execute.message).to eq("Trial creation failed in project stage")
+        expect(execute.payload).to include({ namespace_id: Group.last.id, project_id: nil, lead_created: false })
+        expect(execute.payload.dig(:model_errors, :project_name)).to include(/name can't be blank/)
+      end
+
+      it 'trial registration experiment is not tracked' do
+        trial_experiment = instance_double(ApplicationExperiment)
+        premium_message_experiment = instance_double(ApplicationExperiment)
+
+        allow_next_instance_of(GitlabSubscriptions::Trials::WelcomeCreateService) do |service|
+          allow(service).to receive(:experiment).with(:lightweight_trial_registration_redesign,
+            actor: user).and_return(trial_experiment)
+          allow(service).to receive(:experiment).with(:premium_message_during_trial,
+            namespace: an_instance_of(Group)).and_return(premium_message_experiment)
+
+          allow(premium_message_experiment).to receive(:enabled?).and_return(false)
+          allow(premium_message_experiment).to receive(:track).with(:assignment)
+        end
+
+        expect(trial_experiment).not_to receive(:track).with(:assignment, namespace: existing_group)
+        expect(lead_service_class).not_to receive(:new)
+
+        execute
+      end
+    end
+
+    context 'when lead creation fails' do
+      it 'returns error with lead failure reason and does not attempt to submit trial' do
+        expect_create_lead_fail(lead_params)
+        expect(apply_trial_worker_class).not_to receive(:perform_async)
+
+        expect(execute).to be_error
+        expect(execute.message).to eq("Trial creation failed in lead stage")
+        expect(execute.payload).to eq({ namespace_id: Group.last.id, project_id: Project.last.id, lead_created: false,
+          model_errors: {} })
+      end
+    end
+
+    context 'when user validation fails' do
+      let(:params) do
+        super().merge(
+          onboarding_status_role: nil,
+          onboarding_status_setup_for_company: nil,
+          onboarding_status_registration_objective: nil
+        )
+      end
+
+      it 'returns model error and does not attempt to create lead or submit trial' do
+        expect(lead_service_class).not_to receive(:new)
+        expect(apply_trial_worker_class).not_to receive(:perform_async)
+
+        expect(execute).to be_error
+        expect(execute.message).to eq("Trial creation failed in user stage")
+        expect(execute.payload).to include({
+          namespace_id: Group.last.id,
+          project_id: Project.last.id,
+          lead_created: false
+        })
+        expect(execute.payload.dig(:model_errors, :role)).to be_present
+      end
+
+      context 'when user fails, group succeeds, project fails' do
+        let(:params) do
+          super().merge(
+            project_name: '  ',
+            onboarding_status_role: nil,
+            onboarding_status_setup_for_company: nil,
+            onboarding_status_registration_objective: nil
+          )
+        end
+
+        it 'returns user stage error and does not create project' do
+          expect(lead_service_class).not_to receive(:new)
+          expect(apply_trial_worker_class).not_to receive(:perform_async)
+
+          expect { execute }.to change { Group.count }.by(1).and not_change { Project.count }
+          expect(execute).to be_error
+          expect(execute.message).to eq("Trial creation failed in user stage")
+          expect(execute.payload).to include({
+            namespace_id: Group.last.id,
+            project_id: nil,
+            lead_created: false
+          })
+          expect(execute.payload.dig(:model_errors, :role)).to be_present
+        end
+      end
+
+      context 'when user fails, group fails' do
+        let(:params) do
+          super().merge(
+            group_name: '  ',
+            onboarding_status_role: nil,
+            onboarding_status_setup_for_company: nil,
+            onboarding_status_registration_objective: nil
+          )
+        end
+
+        it 'returns user stage error does not create project' do
+          expect(lead_service_class).not_to receive(:new)
+          expect(apply_trial_worker_class).not_to receive(:perform_async)
+          expect(Projects::CreateService).not_to receive(:new)
+
+          expect { execute }.to not_change { Project.count }
+          expect(execute).to be_error
+          expect(execute.message).to eq("Trial creation failed in user stage")
+          expect(execute.payload).to include({
+            namespace_id: nil,
+            project_id: nil,
+            lead_created: false
+          })
+          expect(execute.payload.dig(:model_errors, :role)).to be_present
+        end
+      end
+    end
+  end
+end

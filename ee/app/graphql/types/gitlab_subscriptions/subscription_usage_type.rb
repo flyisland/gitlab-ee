@@ -1,0 +1,76 @@
+# frozen_string_literal: true
+
+module Types
+  module GitlabSubscriptions
+    class SubscriptionUsageType < BaseObject
+      graphql_name 'GitlabSubscriptionUsage'
+      description 'Describes the usage of consumables under the subscription'
+
+      authorize :read_subscription_usage
+
+      field :enabled, GraphQL::Types::Boolean,
+        null: false,
+        method: :enabled?,
+        description: 'Indicates if the Customer Portal GitLab Credits API is enabled.'
+
+      field :is_outdated_client, GraphQL::Types::Boolean,
+        null: true,
+        method: :outdated_client?,
+        description: 'Indicates if the GitLab instance has an outdated API contract with the Customer Portal.'
+
+      field :last_event_transaction_at, GraphQL::Types::ISO8601DateTime,
+        null: true,
+        description: 'Date and time when the last usage event resulted in a wallet transaction.'
+
+      field :start_date, GraphQL::Types::ISO8601Date,
+        null: true,
+        description: 'Start date of the period covered by the usage data.'
+
+      field :end_date, GraphQL::Types::ISO8601Date,
+        null: true,
+        description: 'End date of the period covered by the usage data.'
+
+      field :purchase_credits_path, GraphQL::Types::String,
+        null: true,
+        description: 'URL to purchase GitLab Credits.'
+
+      # rubocop: disable GraphQL/ExtractType -- no value for now
+      field :monthly_waiver, SubscriptionUsage::MonthlyWaiverType,
+        null: true,
+        description: 'Monthly waiver usage for the subscription.'
+
+      field :monthly_commitment, SubscriptionUsage::MonthlyCommitmentType,
+        null: true,
+        description: 'Monthly commitment usage for the subscription.'
+      # rubocop:enable GraphQL/ExtractType
+
+      field :overage, SubscriptionUsage::OverageType,
+        null: true,
+        description: 'Overage statistics.'
+
+      field :users_usage, SubscriptionUsage::UsersUsageType,
+        null: true,
+        description: 'Consumption usage for users under the subscription.'
+
+      field :paid_tier_trial, SubscriptionUsage::PaidTierTrialType,
+        null: false,
+        description: 'Paid tier trial data for the subscription.'
+
+      field :overage_terms_accepted, GraphQL::Types::Boolean,
+        null: false,
+        description: 'Indicates whether overage terms have been accepted for the subscription.'
+
+      field :can_accept_overage_terms, GraphQL::Types::Boolean,
+        null: false,
+        description: 'Indicates whether the subscription is currently eligible to accept overage terms.'
+
+      field :dap_promo_enabled, GraphQL::Types::Boolean,
+        null: false,
+        description: 'Indicates whether the Duo AI promo (DAP) is enabled for the subscription.'
+
+      field :subscription_portal_usage_dashboard_url, GraphQL::Types::String,
+        null: true,
+        description: 'Full URL to the GitLab Credits usage dashboard in the Customer Portal.'
+    end
+  end
+end

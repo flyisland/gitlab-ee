@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name for the permission"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the permission"
+    },
+    "boundaries": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "instance",
+          "group",
+          "project",
+          "user"
+        ]
+      },
+      "minItems": 1,
+      "description": "List of resource types that the permission can be applied to"
+    }
+  },
+  "required": [
+    "name",
+    "description"
+  ]
+}

@@ -1,0 +1,5 @@
+---
+name: update_pipeline_schedule
+description: Grants the ability to update pipeline schedules
+boundaries:
+  - project

@@ -1,0 +1,48 @@
+#import "~/graphql_shared/fragments/page_info.fragment.graphql"
+#import "ee/ai/catalog/graphql/fragments/ai_catalog_item.fragment.graphql"
+
+query projectAiCatalogFlows(
+  $projectPath: ID!
+  $enabled: Boolean
+  $allAvailable: Boolean = false
+  $projectId: ProjectID!
+  $groupId: GroupID!
+  $before: String
+  $after: String
+  $first: Int
+  $last: Int
+  $search: String
+) {
+  project(fullPath: $projectPath) {
+    id
+    aiCatalogItems(
+      itemTypes: [FLOW]
+      enabled: $enabled
+      allAvailable: $allAvailable
+      before: $before
+      after: $after
+      first: $first
+      last: $last
+      search: $search
+    ) {
+      nodes {
+        ...BaseAiCatalogItem
+        project {
+          id
+          nameWithNamespace
+        }
+        configurationForProject(projectId: $projectId) {
+          id
+          enabled
+        }
+        configurationForGroup(groupId: $groupId) {
+          id
+          enabled
+        }
+      }
+      pageInfo {
+        ...PageInfo
+      }
+    }
+  }
+}

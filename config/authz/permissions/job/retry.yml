@@ -1,0 +1,5 @@
+---
+name: retry_job
+description: Grants the ability to retry jobs
+boundaries:
+  - project

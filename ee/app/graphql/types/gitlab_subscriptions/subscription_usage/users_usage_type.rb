@@ -1,0 +1,46 @@
+# frozen_string_literal: true
+
+module Types
+  module GitlabSubscriptions
+    module SubscriptionUsage
+      class UsersUsageType < BaseObject
+        graphql_name 'GitlabSubscriptionUsageUsersUsage'
+        description 'Describes the usage of consumables by users under the subscription'
+
+        authorize :read_subscription_usage
+
+        # rubocop: disable GraphQL/ExtractType -- no value for now
+        field :total_users_using_credits, GraphQL::Types::Int,
+          null: true,
+          description: 'Total number of users consuming GitLab Credits.'
+
+        field :total_users_using_monthly_commitment, GraphQL::Types::Int,
+          null: true,
+          description: 'Total number of users consuming GitLab Credits from the subscription monthly commitment.'
+
+        field :total_users_using_overage, GraphQL::Types::Int,
+          null: true,
+          description: 'Total number of users consuming overage.'
+        # rubocop:enable GraphQL/ExtractType
+
+        field :credits_used, GraphQL::Types::Float,
+          null: true,
+          description: 'GitLab Credits used by consumers of the subscription.'
+
+        field :daily_usage,
+          [DailyUsageType],
+          null: true,
+          description: 'Array of daily usage of GitLab Credits.'
+
+        field :users, UserType.connection_type,
+          null: true,
+          max_page_size: 20,
+          description: 'List of users with their usage data.' do
+            argument :username, GraphQL::Types::String,
+              required: false,
+              description: 'Username of the User.'
+          end
+      end
+    end
+  end
+end

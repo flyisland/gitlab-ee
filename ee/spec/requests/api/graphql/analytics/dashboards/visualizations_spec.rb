@@ -1,0 +1,151 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+require 'rspec-parameterized'
+
+RSpec.describe 'Query.project(id).dashboards.panels(id).visualization', feature_category: :product_analytics do
+  include GraphqlHelpers
+
+  let_it_be(:user) { create(:user) }
+  let_it_be(:project) { create(:project, :with_product_analytics_dashboard) }
+
+  let(:query) do
+    <<~GRAPHQL
+      query {
+        project(fullPath: "#{project.full_path}") {
+          name
+          customizableDashboards {
+            nodes {
+              title
+              slug
+              description
+              panels {
+                nodes {
+                  title
+                  gridAttributes
+                  visualization {
+                    type
+                    options
+                    data
+                    errors
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    GRAPHQL
+  end
+
+  before do
+    stub_licensed_features(product_analytics: true, project_merge_request_analytics: false)
+  end
+
+  context 'when current user is a developer' do
+    let_it_be(:user) { create(:user, developer_of: project) }
+
+    it 'returns visualization' do
+      get_graphql(query, current_user: user)
+
+      expect(
+        graphql_data_at(:project, :customizable_dashboards, :nodes, 0, :panels, :nodes, 0, :visualization, :type)
+      ).to eq('LineChart')
+    end
+
+    context 'when clickhouse is enabled' do
+      using RSpec::Parameterized::TableSyntax
+
+      before do
+        allow(Gitlab::ClickHouse).to receive(:globally_enabled_for_analytics?).and_return(true)
+        allow(Ability).to receive(:allowed?).and_call_original
+        allow(Ability).to receive(:allowed?)
+                      .with(user, :read_enterprise_ai_analytics, anything)
+                      .and_return(true)
+      end
+
+      it 'returns the correct number of visualizations' do
+        get_graphql(query, current_user: user)
+
+        expect(graphql_data_at(:project, :customizable_dashboards, :nodes, 0, :panels, :nodes).count).to eq(18)
+      end
+
+      where(:node_idx, :panel_type, :panel_title) do
+        0 | 'SingleStat' | 'Assigned GitLab Duo seat engagement'
+        1 | 'SingleStat' | 'GitLab Duo Code Suggestions usage'
+        2 | 'SingleStat' | 'GitLab Duo Code Suggestions acceptance rate'
+        3 | 'SingleStat' | 'GitLab Duo Chat usage'
+        4 | 'BarChart' | 'GitLab Duo Code Suggestions acceptance by language (Last 30 days)'
+        5 | 'BarChart' | 'GitLab Duo Code Suggestions acceptance by IDE (Last 30 days)'
+        6 | 'StackedColumnChart' | 'GitLab Duo Code Review requests by role (Last 180 days)'
+        7 | 'AreaChart' | 'GitLab Duo Code Review comments sentiment (Last 180 days)'
+        8 | 'AreaChart' | 'Code generation volume trends (Last 180 days)'
+        9 | 'AiImpactTable' | 'GitLab Duo usage metrics for the %{namespaceName} %{namespaceType}'
+        10 | 'AiImpactTable' | 'Development metrics for the %{namespaceName} %{namespaceType}'
+        11 | 'AiImpactTable' | 'Pipeline metrics for the %{namespaceName} %{namespaceType}'
+        12 | 'DataTable' | 'Flow usage (Last 30 days)'
+        13 | 'DataTable' | 'GitLab Duo Code Suggestions usage by user (Last 30 days)'
+        14 | 'DataTable' | 'GitLab Duo Code Review usage by user (Last 30 days)'
+        15 | 'DataTable' | 'GitLab Duo Root Cause Analysis usage by user (Last 30 days)'
+        16 | 'DataTable' | 'GitLab Duo usage by user (Last 30 days)'
+        17 | 'DataTable' | 'Flows usage by user (Last 30 days)'
+      end
+
+      with_them do
+        it "returns the each visualization" do
+          get_graphql(query, current_user: user)
+
+          expect(
+            graphql_data_at(:project, :customizable_dashboards, :nodes, 0, :panels, :nodes, node_idx, :visualization,
+              :type)
+          ).to eq(panel_type)
+          expect(
+            graphql_data_at(:project, :customizable_dashboards, :nodes, 0, :panels, :nodes, node_idx, :title)
+          ).to eq(panel_title)
+        end
+      end
+    end
+
+    context 'when the visualization has validation errors' do
+      let_it_be(:project) { create(:project, :with_product_analytics_invalid_custom_visualization) }
+      let_it_be(:user) { create(:user, developer_of: project) }
+
+      let(:slug) { "dashboard_example_invalid_vis" }
+      let(:query) do
+        <<~GRAPHQL
+          query {
+            project(fullPath: "#{project.full_path}") {
+              customizableDashboards(slug: "#{slug}") {
+                nodes {
+                  panels {
+                    nodes {
+                      visualization {
+                        errors
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        GRAPHQL
+      end
+
+      it 'returns the visualization with a validation error' do
+        get_graphql(query, current_user: user)
+
+        expect(
+          graphql_data_at(:project, :customizable_dashboards, :nodes, 0,
+            :panels, :nodes, 0, :visualization, :errors, 0))
+          .to eq("property '/type' is not one of: " \
+            "[\"AreaChart\", \"LineChart\", \"ColumnChart\", \"DataTable\", \"SingleStat\", " \
+            "\"DORAChart\", \"UsageOverview\", \"DoraPerformersScore\", " \
+            "\"DoraProjectsComparison\", \"AiImpactTable\", \"ContributionsByUserTable\", " \
+            "\"ContributionsPushesChart\", \"ContributionsIssuesChart\", " \
+            "\"ContributionsMergeRequestsChart\", \"NamespaceMetadata\", " \
+            "\"MergeRequestsThroughputTable\", " \
+            "\"BarChart\", \"StackedColumnChart\"]")
+      end
+    end
+  end
+end

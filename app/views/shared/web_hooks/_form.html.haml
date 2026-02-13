@@ -1,0 +1,16 @@
+= form_errors(hook)
+- has_group = defined?(@group) && @group.present?
+
+.js-vue-webhook-form{ data: webhook_form_data(hook).merge('has_group': has_group.to_s) }
+
+.form-group
+  = form.label :custom_webhook_template, s_('Webhooks|Custom webhook template (optional)'), class: 'label-bold'
+  = form.text_area :custom_webhook_template, value: hook.custom_webhook_template, class: 'form-control gl-form-input gl-form-input-xl', rows: 8, maxlength: 4096
+  %p.form-text.gl-text-subtle
+    = link_to s_('Webhooks|How to create a custom webhook template?'), help_page_path('user/project/integrations/webhooks.md', anchor: 'custom-webhook-template')
+
+.form-group
+  = form.label :enable_ssl_verification, s_('Webhooks|SSL verification'), class: 'label-bold checkbox'
+  %ul.list-unstyled
+    %li
+      = form.gitlab_ui_checkbox_component :enable_ssl_verification, s_('Webhooks|Enable SSL verification')

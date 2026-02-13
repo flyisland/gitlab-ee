@@ -1,0 +1,637 @@
+# frozen_string_literal: true
+
+require "spec_helper"
+
+# We can disable the cop that enforces the use of this class
+# as we need to test around it.
+#
+# rubocop: disable Gitlab/Json
+RSpec.describe Gitlab::Json do
+  describe ".parse" do
+    it "is aliased" do
+      [:parse!, :load, :decode].each do |method|
+        expect(described_class.method(method)).to eq(described_class.method(:parse))
+      end
+    end
+
+    context "legacy_mode is disabled by default" do
+      it "parses an object" do
+        expect(subject.parse('{ "foo": "bar" }')).to eq({ "foo" => "bar" })
+      end
+
+      it "parses an array" do
+        expect(subject.parse('[{ "foo": "bar" }]')).to eq([{ "foo" => "bar" }])
+      end
+
+      it "parses a string" do
+        expect(subject.parse('"foo"', legacy_mode: false)).to eq("foo")
+      end
+
+      it "parses a true bool" do
+        expect(subject.parse("true", legacy_mode: false)).to be(true)
+      end
+
+      it "parses a false bool" do
+        expect(subject.parse("false", legacy_mode: false)).to be(false)
+      end
+    end
+
+    context "legacy_mode is enabled" do
+      it "parses an object" do
+        expect(subject.parse('{ "foo": "bar" }', legacy_mode: true)).to eq({ "foo" => "bar" })
+      end
+
+      it "parses an array" do
+        expect(subject.parse('[{ "foo": "bar" }]', legacy_mode: true)).to eq([{ "foo" => "bar" }])
+      end
+
+      it "raises an error on a string" do
+        expect { subject.parse('"foo"', legacy_mode: true) }.to raise_error(JSON::ParserError)
+      end
+
+      it "raises an error on a true bool" do
+        expect { subject.parse("true", legacy_mode: true) }.to raise_error(JSON::ParserError)
+      end
+
+      it "raises an error on a false bool" do
+        expect { subject.parse("false", legacy_mode: true) }.to raise_error(JSON::ParserError)
+      end
+    end
+
+    describe 'log oversize JSON objects' do
+      let(:string) { '{"key1": "value1", "key2": ["item1", "item2"], "key3": {"nested": "value"}}' }
+
+      shared_examples 'parses JSON object without logging' do
+        it 'parses JSON object without logging' do
+          expect(Gitlab::AppJsonLogger).not_to receive(:info)
+
+          result = subject.parse(string)
+          expect(result['key1']).to eq("value1")
+        end
+      end
+
+      shared_examples 'parses JSON object with logging' do |expected_fields_count|
+        it 'logs oversize JSON object and parses string' do
+          expect(Gitlab::AppJsonLogger).to receive(:info).with(
+            message: 'Large JSON object',
+            number_of_fields: expected_fields_count,
+            caller: anything
+          )
+
+          result = subject.parse(string)
+          expect(result['key1']).to eq("value1")
+        end
+      end
+
+      context 'when JSON object is not oversize' do
+        before do
+          stub_env('GITLAB_JSON_SIZE_THRESHOLD', '100')
+        end
+
+        it_behaves_like 'parses JSON object without logging'
+      end
+
+      context 'when JSON object is oversize' do
+        before do
+          stub_env('GITLAB_JSON_SIZE_THRESHOLD', '5')
+        end
+
+        it_behaves_like 'parses JSON object with logging', 10
+      end
+
+      context 'when JSON object environment variable is 0' do
+        before do
+          stub_env('GITLAB_JSON_SIZE_THRESHOLD', '0')
+        end
+
+        it_behaves_like 'parses JSON object without logging'
+      end
+
+      context 'when threshold environment variable is not defined' do
+        it_behaves_like 'parses JSON object without logging'
+      end
+    end
+  end
+
+  describe ".parse!" do
+    context "legacy_mode is disabled by default" do
+      it "parses an object" do
+        expect(subject.parse!('{ "foo": "bar" }')).to eq({ "foo" => "bar" })
+      end
+
+      it "parses an array" do
+        expect(subject.parse!('[{ "foo": "bar" }]')).to eq([{ "foo" => "bar" }])
+      end
+
+      it "parses a string" do
+        expect(subject.parse!('"foo"', legacy_mode: false)).to eq("foo")
+      end
+
+      it "parses a true bool" do
+        expect(subject.parse!("true", legacy_mode: false)).to be(true)
+      end
+
+      it "parses a false bool" do
+        expect(subject.parse!("false", legacy_mode: false)).to be(false)
+      end
+    end
+
+    context "legacy_mode is enabled" do
+      it "parses an object" do
+        expect(subject.parse!('{ "foo": "bar" }', legacy_mode: true)).to eq({ "foo" => "bar" })
+      end
+
+      it "parses an array" do
+        expect(subject.parse!('[{ "foo": "bar" }]', legacy_mode: true)).to eq([{ "foo" => "bar" }])
+      end
+
+      it "raises an error on a string" do
+        expect { subject.parse!('"foo"', legacy_mode: true) }.to raise_error(JSON::ParserError)
+      end
+
+      it "raises an error on a true bool" do
+        expect { subject.parse!("true", legacy_mode: true) }.to raise_error(JSON::ParserError)
+      end
+
+      it "raises an error on a false bool" do
+        expect { subject.parse!("false", legacy_mode: true) }.to raise_error(JSON::ParserError)
+      end
+    end
+  end
+
+  describe '.safe_parse' do
+    it 'uses Gitlab::Json::StreamValidator to validate the limits' do
+      string = '{"name":"test","age":30}'
+
+      expect_next_instance_of(Gitlab::Json::StreamValidator, described_class::PARSE_LIMITS) do |validator|
+        expect(validator).to receive(:validate!).with(string)
+      end
+
+      subject.safe_parse(string)
+    end
+
+    it 'merges parse_limits with defaults' do
+      string = '{"name":"test","age":30}'
+      parse_limits = { max_depth: 5, max_json_size_bytes: 100 }
+
+      expected_limits = described_class::PARSE_LIMITS.merge(parse_limits)
+      expect_next_instance_of(Gitlab::Json::StreamValidator, expected_limits) do |validator|
+        expect(validator).to receive(:validate!).with(string)
+      end
+
+      subject.safe_parse(string, parse_limits: parse_limits)
+    end
+
+    context 'when the string is nil' do
+      it 'returns nil' do
+        expect(subject.safe_parse(nil)).to be_nil
+      end
+    end
+
+    context 'with malformed JSON strings' do
+      where(:string) do
+        [
+          '{',
+          '[',
+          '{"key"',
+          '[1,2,3',
+          '{"a":}',
+          'invalid json'
+        ]
+      end
+
+      with_them do
+        it 'raises JSON::ParserError' do
+          expect { subject.safe_parse(string) }.to raise_error(JSON::ParserError)
+        end
+      end
+    end
+
+    context 'with valid JSON strings' do
+      where(:json, :expected) do
+        [
+          ['{}', {}],
+          ['[]', []],
+          ['{"name":"test","age":30}', { 'name' => 'test', 'age' => 30 }],
+          ['[1,2,3,4,5]', [1, 2, 3, 4, 5]],
+          ['["a","b","c"]', %w[a b c]],
+          ['[[1,2],[3,4]]', [[1, 2], [3, 4]]],
+          ['{"items":[{"id":1},{"id":2}]}', { 'items' => [{ 'id' => 1 }, { 'id' => 2 }] }],
+          ['{"value":null}', { 'value' => nil }],
+          ['{"a": {"b": {"c": "nested"}}}', { "a" => { "b" => { "c" => "nested" } } }]
+        ]
+      end
+
+      with_them do
+        it 'parses the JSON string' do
+          expect(subject.safe_parse(json)).to eq(expected)
+        end
+      end
+    end
+
+    context 'with literal strings' do
+      where(:string, :expected) do
+        [
+          ['true', true],
+          ['false', false],
+          ['null', nil],
+          ["123", 123],
+          ["-123", -123],
+          ["-1.23", -1.23],
+          ["-1.23e10", -12300000000.0],
+          ["-1.23E-1", -1.23e-1],
+          ['"simple"', 'simple'],
+          ['"hello world"', 'hello world'],
+          ['""', ''],
+          ['"say \\"hello\\""', 'say "hello"'],
+          ['"backslash: \\\\"', 'backslash: \\'],
+          ['"forward slash: \\/"', 'forward slash: /'],
+          ['"line1\\nline2"', "line1\nline2"],
+          ['"tab\\there"', "tab\there"],
+          ['"carriage\\rreturn"', "carriage\rreturn"],
+          ['"backspace\\bhere"', "backspace\bhere"],
+          ['"form\\ffeed"', "form\ffeed"],
+          ['"unicode: \\u0041"', 'unicode: A'],
+          ['"unicode: \\u00E9"', 'unicode: é'],
+          ['"unicode: \\u20AC"', 'unicode: €'],
+          ['"mixed: \\u0048\\u0065\\u006C\\u006C\\u006F"', 'mixed: Hello'],
+          ['"complex: \\"Hello\\nWorld\\" \\u2764"', "complex: \"Hello\nWorld\" ❤"],
+          ['"all escapes: \\"\\\\\\/ \\b\\f\\n\\r\\t \\u0041"', "all escapes: \"\\/\s\b\f\n\r\t A"]
+        ]
+      end
+
+      with_them do
+        it 'parses literal strings' do
+          expect(subject.safe_parse(string)).to eq(expected)
+        end
+      end
+    end
+
+    context 'when literal string exceeds max_json_size_bytes' do
+      it 'raises JSON::ParserError' do
+        string = "\"#{'a' * 10}\""
+
+        expect { subject.safe_parse(string, parse_limits: { max_json_size_bytes: 5 }) }
+          .to raise_error(JSON::ParserError, 'JSON body too large')
+      end
+    end
+
+    context 'when JSON exceeds limits' do
+      where(:parse_limits, :string, :expected_error_message, :expected_log_message, :expected_exception_class) do
+        [
+          [{ max_depth: 2 },
+            '{"a": {"b": {"c": "too deep"}}}',
+            'Parameters nested too deeply',
+            'JSON depth 3 exceeds limit of 2',
+            'Gitlab::Json::StreamValidator::DepthLimitError'],
+          [{ max_array_size: 2 },
+            '{"items": [1, 2, 3]}',
+            'Array parameter too large',
+            'Array size exceeds limit of 2 (tried to add element 3)',
+            'Gitlab::Json::StreamValidator::ArraySizeLimitError'],
+          [{ max_hash_size: 2 },
+            '{"a": 1, "b": 2, "c": 3}',
+            'Hash parameter too large',
+            'Hash size exceeds limit of 2 (tried to add key-value pair 3)',
+            'Gitlab::Json::StreamValidator::HashSizeLimitError'],
+          [{ max_total_elements: 3 },
+            '{"a": 1, "b": 2, "c": 3, "d": 4}',
+            'Too many total parameters',
+            'Total elements (3) exceeds limit of 3',
+            'Gitlab::Json::StreamValidator::ElementCountLimitError'],
+          [{ max_json_size_bytes: 10 },
+            '{"key": "very long value"}',
+            'JSON body too large',
+            'JSON body too large: 26 bytes',
+            'Gitlab::Json::StreamValidator::BodySizeExceededError']
+        ]
+      end
+
+      with_them do
+        it 'raises JSON::ParserError error with user-facing message' do
+          allow(Gitlab::AppLogger).to receive(:warn)
+
+          expect(Gitlab::AppLogger).to receive(:warn).with(
+            hash_including(
+              message: 'Exceeded allowed limits for parsing JSON input',
+              parse_limits: hash_including(parse_limits),
+              'exception.backtrace' => anything,
+              'exception.class' => expected_exception_class,
+              'exception.message' => expected_log_message
+            )
+          )
+
+          expect { subject.safe_parse(string, { parse_limits: parse_limits }) }
+            .to raise_error(JSON::ParserError, expected_error_message)
+        end
+      end
+    end
+  end
+
+  describe ".dump" do
+    it "dumps an object" do
+      expect(subject.dump({ "foo" => "bar" })).to eq('{"foo":"bar"}')
+    end
+
+    it "dumps an array" do
+      expect(subject.dump([{ "foo" => "bar" }])).to eq('[{"foo":"bar"}]')
+    end
+
+    it "dumps a string" do
+      expect(subject.dump("foo")).to eq('"foo"')
+    end
+
+    it "dumps a true bool" do
+      expect(subject.dump(true)).to eq("true")
+    end
+
+    it "dumps a false bool" do
+      expect(subject.dump(false)).to eq("false")
+    end
+  end
+
+  describe ".generate" do
+    let(:obj) do
+      { test: true, "foo.bar" => "baz", is_json: 1, some: [1, 2, 3] }
+    end
+
+    it "is aliased" do
+      expect(described_class.method(:encode)).to eq(described_class.method(:generate))
+    end
+
+    it "generates JSON" do
+      expected_string = <<~STR.chomp
+        {"test":true,"foo.bar":"baz","is_json":1,"some":[1,2,3]}
+      STR
+
+      expect(subject.generate(obj)).to eq(expected_string)
+    end
+
+    it "allows you to customise the output" do
+      opts = {
+        indent: "  ",
+        space: " ",
+        space_before: " ",
+        object_nl: "\n",
+        array_nl: "\n"
+      }
+
+      json = subject.generate(obj, opts)
+
+      expected_string = <<~STR.chomp
+        {
+          "test" : true,
+          "foo.bar" : "baz",
+          "is_json" : 1,
+          "some" : [
+            1,
+            2,
+            3
+          ]
+        }
+      STR
+
+      expect(json).to eq(expected_string)
+    end
+  end
+
+  describe ".pretty_generate" do
+    let(:obj) do
+      {
+        test: true,
+        "foo.bar" => "baz",
+        is_json: 1,
+        some: [1, 2, 3],
+        more: { test: true },
+        multi_line_empty_array: [],
+        multi_line_empty_obj: {}
+      }
+    end
+
+    it "generates pretty JSON" do
+      expected_string = <<~STR.chomp
+        {
+          "test": true,
+          "foo.bar": "baz",
+          "is_json": 1,
+          "some": [
+            1,
+            2,
+            3
+          ],
+          "more": {
+            "test": true
+          },
+          "multi_line_empty_array": [],
+          "multi_line_empty_obj": {}
+        }
+      STR
+
+      expect(subject.pretty_generate(obj)).to eq(expected_string)
+    end
+
+    it "allows you to customise the output" do
+      opts = {
+        space_before: " "
+      }
+
+      json = subject.pretty_generate(obj, opts)
+
+      expected_string = <<~STR.chomp
+        {
+          "test" : true,
+          "foo.bar" : "baz",
+          "is_json" : 1,
+          "some" : [
+            1,
+            2,
+            3
+          ],
+          "more" : {
+            "test" : true
+          },
+          "multi_line_empty_array" : [],
+          "multi_line_empty_obj" : {}
+        }
+      STR
+
+      expect(json).to eq(expected_string)
+    end
+  end
+
+  context "the database is missing" do
+    before do
+      allow(Feature::FlipperFeature).to receive(:table_exists?).and_raise(PG::ConnectionBad)
+    end
+
+    it "still parses json" do
+      expect(subject.parse("{}")).to eq({})
+    end
+
+    it "still generates json" do
+      expect(subject.dump({})).to eq("{}")
+    end
+  end
+
+  describe Gitlab::Json::GrapeFormatter do
+    subject { described_class.call(obj, env) }
+
+    let(:obj) { { test: true } }
+    let(:env) { {} }
+    let(:result) { "{\"test\":true}" }
+
+    it "generates JSON" do
+      expect(subject).to eq(result)
+    end
+
+    it "uses Gitlab::Json" do
+      expect(Gitlab::Json).to receive(:dump).with(obj)
+
+      subject
+    end
+
+    context "precompiled JSON" do
+      let(:obj) { Gitlab::Json::PrecompiledJson.new(result) }
+
+      it "renders the string directly" do
+        expect(subject).to eq(result)
+      end
+
+      it "calls #to_s on the object" do
+        expect(obj).to receive(:to_s).once
+
+        subject
+      end
+
+      it "doesn't run the JSON formatter" do
+        expect(Gitlab::Json).not_to receive(:dump)
+
+        subject
+      end
+    end
+  end
+
+  describe Gitlab::Json::PrecompiledJson do
+    subject(:precompiled) { described_class.new(obj) }
+
+    describe "#to_s" do
+      subject { precompiled.to_s }
+
+      context "obj is a string" do
+        let(:obj) { "{}" }
+
+        it "returns a string" do
+          expect(subject).to eq("{}")
+        end
+      end
+
+      context "obj is an array" do
+        let(:obj) { ["{\"foo\": \"bar\"}", "{}"] }
+
+        it "returns a string" do
+          expect(subject).to eq("[{\"foo\": \"bar\"},{}]")
+        end
+      end
+
+      context "obj is an array of un-stringables" do
+        let(:obj) { [BasicObject.new] }
+
+        it "raises an error" do
+          expect { subject }.to raise_error(NoMethodError)
+        end
+      end
+
+      context "obj is something else" do
+        let(:obj) { {} }
+
+        it "raises an error" do
+          expect { subject }.to raise_error(described_class::UnsupportedFormatError)
+        end
+      end
+    end
+  end
+
+  describe Gitlab::Json::LimitedEncoder do
+    subject { described_class.encode(obj, limit: 10.kilobytes) }
+
+    context 'when object size is acceptable' do
+      let(:obj) { { test: true } }
+
+      it 'returns json string' do
+        is_expected.to eq("{\"test\":true}")
+      end
+    end
+
+    context 'when object is too big' do
+      let(:obj) { [{ test: true }] * 1000 }
+
+      it 'raises LimitExceeded error' do
+        expect { subject }.to raise_error(
+          Gitlab::Json::LimitedEncoder::LimitExceeded
+        )
+      end
+    end
+
+    context 'when object contains ASCII-8BIT encoding' do
+      let(:obj) { [{ a: "\x8F" }] * 1000 }
+
+      it 'does not raise encoding error' do
+        expect { subject }.not_to raise_error
+        expect(subject).to be_a(String)
+        expect(subject.size).to eq(10001)
+      end
+    end
+  end
+
+  describe Gitlab::Json::RailsEncoder do
+    let(:obj) do
+      { foo: "<span>bar</span>" }
+    end
+
+    it "is used by ActiveSupport::JSON" do
+      expect_next_instance_of(described_class) do |encoder|
+        expect(encoder).to receive(:encode).with(obj)
+      end
+
+      ActiveSupport::JSON.encode(obj)
+    end
+
+    it "is used by .to_json calls" do
+      expect_next_instance_of(described_class) do |encoder|
+        expect(encoder).to receive(:encode).with(obj)
+      end
+
+      obj.to_json
+    end
+
+    it "is consistent with the original JSON implementation" do
+      default_encoder = ActiveSupport::JSON::Encoding::JSONGemEncoder
+
+      original_result = ActiveSupport::JSON::Encoding.use_encoder(default_encoder) do
+        ActiveSupport::JSON.encode(obj)
+      end
+
+      new_result = ActiveSupport::JSON::Encoding.use_encoder(described_class) do
+        ActiveSupport::JSON.encode(obj)
+      end
+
+      expect(new_result).to eq(original_result)
+    end
+
+    it "behaves the same when processing invalid unicode data" do
+      invalid_obj = { test: "Gr\x80\x81e" }
+      default_encoder = ActiveSupport::JSON::Encoding::JSONGemEncoder
+
+      original_result = ActiveSupport::JSON::Encoding.use_encoder(default_encoder) do
+        expect { ActiveSupport::JSON.encode(invalid_obj) }.to raise_error(JSON::GeneratorError)
+      end
+
+      new_result = ActiveSupport::JSON::Encoding.use_encoder(described_class) do
+        expect { ActiveSupport::JSON.encode(invalid_obj) }.to raise_error(JSON::GeneratorError)
+      end
+
+      expect(new_result).to eq(original_result)
+    end
+  end
+end
+# rubocop: enable Gitlab/Json

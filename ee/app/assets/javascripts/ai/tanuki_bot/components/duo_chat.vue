@@ -1,0 +1,640 @@
+<script>
+import { debounce } from 'lodash';
+// eslint-disable-next-line no-restricted-imports
+import { mapActions, mapState } from 'vuex';
+import { WebDuoChat } from '@gitlab/duo-ui';
+import { GlToggle } from '@gitlab/ui';
+import { v4 as uuidv4 } from 'uuid';
+import { __, s__ } from '~/locale';
+import { renderGFM } from '~/behaviors/markdown/render_gfm';
+import { helpPagePath } from '~/helpers/help_page_helper';
+import { duoChatGlobalState } from '~/super_sidebar/constants';
+import { clearDuoChatCommands, generateEventLabelFromText, setAgenticMode } from 'ee/ai/utils';
+import { computeTrustedUrls } from 'ee/ai/shared/trusted_urls/utils';
+import DuoChatCallout from 'ee/ai/components/global_callout/duo_chat_callout.vue';
+import getAiConversationThreads from 'ee/ai/graphql/get_ai_conversation_threads.query.graphql';
+import getAiMessagesWithThread from 'ee/ai/graphql/get_ai_messages_with_thread.query.graphql';
+import chatMutation from 'ee/ai/graphql/chat.mutation.graphql';
+import chatWithNamespaceMutation from 'ee/ai/graphql/chat_with_namespace.mutation.graphql';
+import duoUserFeedbackMutation from 'ee/ai/graphql/duo_user_feedback.mutation.graphql';
+import { InternalEvents } from '~/tracking';
+import deleteConversationThreadMutation from 'ee/ai/graphql/delete_conversation_thread.mutation.graphql';
+import {
+  i18n,
+  GENIE_CHAT_RESET_MESSAGE,
+  GENIE_CHAT_CLEAR_MESSAGE,
+  GENIE_CHAT_NEW_MESSAGE,
+  DUO_CHAT_VIEWS,
+} from 'ee/ai/constants';
+import getAiSlashCommands from 'ee/ai/graphql/get_ai_slash_commands.query.graphql';
+import glFeatureFlagsMixin from '~/vue_shared/mixins/gl_feature_flags_mixin';
+import getAiChatContextPresets from 'ee/ai/graphql/get_ai_chat_context_presets.query.graphql';
+import {
+  TANUKI_BOT_TRACKING_EVENT_NAME,
+  MESSAGE_TYPES,
+  WIDTH_OFFSET,
+  MULTI_THREADED_CONVERSATION_TYPE,
+} from '../constants';
+import TanukiBotSubscriptions from './tanuki_bot_subscriptions.vue';
+
+export default {
+  name: 'TanukiBotChatApp',
+  i18n: {
+    gitlabChat: s__('DuoChat|GitLab Duo Chat'),
+    giveFeedback: s__('DuoChat|Give feedback'),
+    source: __('Source'),
+    experiment: __('Experiment'),
+    askAQuestion: s__('DuoChat|Ask a question about GitLab'),
+    exampleQuestion: s__('DuoChat|For example, %{linkStart}what is a fork%{linkEnd}?'),
+    whatIsAForkQuestion: s__('DuoChat|What is a fork?'),
+    newSlashCommandDescription: s__('DuoChat|New chat conversation.'),
+    GENIE_CHAT_LEGAL_GENERATED_BY_AI: i18n.GENIE_CHAT_LEGAL_GENERATED_BY_AI,
+  },
+  helpPagePath: helpPagePath('policy/development_stages_support', { anchor: 'beta' }),
+  components: {
+    WebDuoChat,
+    DuoChatCallout,
+    TanukiBotSubscriptions,
+    GlToggle,
+  },
+  mixins: [InternalEvents.mixin(), glFeatureFlagsMixin()],
+  provide() {
+    return {
+      renderGFM,
+      avatarUrl: window.gon?.current_user_avatar_url,
+    };
+  },
+  props: {
+    userId: {
+      type: String,
+      required: true,
+    },
+    resourceId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    projectId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    rootNamespaceId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    chatTitle: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    isAgenticAvailable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    mode: {
+      type: String,
+      required: false,
+      default: 'new',
+    },
+    isEmbedded: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    trustedUrls: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
+  },
+  apollo: {
+    aiConversationThreads: {
+      query: getAiConversationThreads,
+      skip() {
+        return this.shouldSkipQueries;
+      },
+      update(data) {
+        return data?.aiConversationThreads?.nodes || [];
+      },
+      error(err) {
+        this.onError(err);
+      },
+    },
+    aiSlashCommands: {
+      query: getAiSlashCommands,
+      skip() {
+        return this.shouldSkipQueries;
+      },
+      variables() {
+        return {
+          url: typeof window !== 'undefined' && window.location ? window.location.href : '',
+        };
+      },
+      update(data) {
+        return data?.aiSlashCommands || [];
+      },
+      error(err) {
+        this.onError(err);
+      },
+    },
+    contextPresets: {
+      query: getAiChatContextPresets,
+      skip() {
+        return this.shouldSkipQueries;
+      },
+      variables() {
+        return {
+          resourceId: this.resourceId,
+          projectId: this.projectId,
+          url: typeof window !== 'undefined' && window.location ? window.location.href : '',
+          questionCount: 4,
+        };
+      },
+      update(data) {
+        return data?.aiChatContextPresets?.questions || [];
+      },
+      error(err) {
+        this.onError(err);
+      },
+    },
+  },
+  data() {
+    return {
+      duoChatGlobalState,
+      clientSubscriptionId: uuidv4(),
+      toolName: i18n.GITLAB_DUO,
+      error: '',
+      isResponseTracked: false,
+      cancelledRequestIds: [],
+      completedRequestId: null,
+      aiSlashCommands: [],
+      top: 0,
+      width: 400,
+      height: window.innerHeight,
+      minWidth: 400,
+      minHeight: 400,
+      maxHeight: window.innerHeight,
+      maxWidth: window.innerWidth - WIDTH_OFFSET,
+      // Explicitly initializing `left` as null to ensure Vue makes it reactive.
+      // This allows computed properties and watchers dependent on `left` to work correctly.
+      left: null,
+      aiConversationThreads: [],
+      contextPresets: [],
+      isWaitingOnPrompt: false,
+    };
+  },
+  computed: {
+    ...mapState(['messages']),
+    // Use global state for these properties so they persist across component recreations
+    activeThread: {
+      get() {
+        return this.duoChatGlobalState.activeThread;
+      },
+      set(value) {
+        this.duoChatGlobalState.activeThread = value;
+      },
+    },
+    multithreadedView: {
+      get() {
+        return this.duoChatGlobalState.multithreadedView;
+      },
+      set(value) {
+        this.duoChatGlobalState.multithreadedView = value;
+      },
+    },
+    shouldSkipQueries() {
+      // In embedded mode, always load; in drawer mode, only load when shown
+      return this.isEmbedded ? false : !this.duoChatGlobalState.isShown;
+    },
+    duoAgenticModePreference: {
+      get() {
+        return this.duoChatGlobalState.chatMode === 'agentic';
+      },
+      set(value) {
+        setAgenticMode({
+          agenticMode: value,
+          saveCookie: true,
+          isEmbedded: this.isEmbedded,
+        });
+      },
+    },
+    computedResourceId() {
+      if (this.hasCommands) {
+        return this.duoChatGlobalState.commands[0].resourceId;
+      }
+
+      return this.resourceId || this.userId;
+    },
+    dimensions() {
+      // Only return dimensions for drawer mode; embedded mode doesn't need them
+      if (this.isEmbedded) {
+        return {};
+      }
+
+      return {
+        width: this.width,
+        height: this.height,
+        top: this.top,
+        maxHeight: this.maxHeight,
+        maxWidth: this.maxWidth,
+        minWidth: this.minWidth,
+        minHeight: this.minHeight,
+        left: this.left,
+      };
+    },
+    hasCommands() {
+      return this.duoChatGlobalState.commands.length > 0;
+    },
+    predefinedPrompts() {
+      return this.contextPresets;
+    },
+    formattedContextPresets() {
+      return this.contextPresets.map((question) => ({
+        text: question,
+        eventLabel: generateEventLabelFromText(question),
+      }));
+    },
+    computedTrustedUrls() {
+      return computeTrustedUrls(this.trustedUrls);
+    },
+  },
+  watch: {
+    'duoChatGlobalState.isShown': {
+      handler(newVal) {
+        if (newVal === true && !this.activeThread) {
+          // When chat is opened and there's no active thread, start a new chat
+          this.onNewChat();
+        }
+      },
+    },
+    'duoChatGlobalState.commands': {
+      handler(newVal) {
+        if (newVal.length) {
+          const { commands } = this.duoChatGlobalState;
+          if (commands.length) {
+            this.onNewChat();
+            const { question, variables, resourceId } = commands[0];
+            this.onSendChatPrompt(question, variables, resourceId);
+          }
+        }
+      },
+    },
+    'duoChatGlobalState.focusChatInput': {
+      handler(newVal) {
+        if (newVal) {
+          this.duoChatGlobalState.focusChatInput = false; // reset global state
+          this.focusInput();
+        }
+      },
+    },
+    mode(newMode) {
+      this.switchMode(newMode);
+    },
+  },
+  mounted() {
+    // Only manage dimensions and resize when not isEmbedded
+    if (!this.isEmbedded) {
+      this.setDimensions();
+      window.addEventListener('resize', this.onWindowResize);
+    }
+
+    this.switchMode(this.mode);
+  },
+  beforeDestroy() {
+    // Remove the event listener when the component is destroyed
+    if (!this.isEmbedded) {
+      window.removeEventListener('resize', this.onWindowResize);
+    }
+    this.isWaitingOnPrompt = false;
+  },
+  methods: {
+    ...mapActions(['addDuoChatMessage', 'setMessages']),
+    switchMode(mode) {
+      if (mode === 'chat') {
+        if (this.activeThread) {
+          this.loadActiveThread();
+        }
+      }
+      if (mode === 'new') {
+        this.onNewChat();
+      }
+      if (mode === 'history') {
+        this.onBackToList();
+        this.$emit('change-title', '');
+      }
+    },
+    setDimensions() {
+      this.updateDimensions();
+    },
+    updateDimensions(width, height) {
+      const y = this.$refs.duoChat?.$el?.getBoundingClientRect().y || this.top;
+
+      this.maxWidth = window.innerWidth - WIDTH_OFFSET;
+      this.maxHeight = window.innerHeight;
+
+      this.width = Math.min(width || this.width, this.maxWidth);
+      this.height = Math.min(height || this.height, this.maxHeight);
+      if (y <= 0 && !height) {
+        this.height = this.maxHeight;
+      }
+      this.top = Math.max(window.innerHeight - this.height, 0);
+      this.left = window.innerWidth - this.width;
+    },
+    onChatResize(e) {
+      this.updateDimensions(e.width, e.height);
+    },
+    onWindowResize: debounce(function resize() {
+      this.updateDimensions();
+    }, 50),
+    shouldStartNewChat(question) {
+      return [GENIE_CHAT_NEW_MESSAGE, GENIE_CHAT_CLEAR_MESSAGE, GENIE_CHAT_RESET_MESSAGE].includes(
+        question,
+      );
+    },
+    findPredefinedPrompt(question) {
+      return this.formattedContextPresets.find(({ text }) => text === question);
+    },
+    navigateToChat() {
+      this.$emit('switch-to-active-tab', DUO_CHAT_VIEWS.CHAT);
+
+      if (this.$route?.path !== '/chat') {
+        this.$router.push(`/chat`);
+      }
+    },
+    async onThreadSelected(e) {
+      try {
+        const { data } = await this.$apollo.query({
+          query: getAiMessagesWithThread,
+          variables: { threadId: e.id },
+          fetchPolicy: 'network-only',
+        });
+
+        if (data?.aiMessages?.nodes?.length > 0) {
+          this.setMessages(data.aiMessages.nodes);
+          this.multithreadedView = DUO_CHAT_VIEWS.CHAT;
+          this.activeThread = e.id;
+        }
+      } catch (err) {
+        this.onError(err);
+      }
+      this.navigateToChat();
+    },
+    async loadActiveThread() {
+      this.onThreadSelected({ id: this.activeThread });
+    },
+    cleanState() {
+      this.setMessages([]);
+      this.isWaitingOnPrompt = false;
+      this.completedRequestId = null;
+      this.cancelledRequestIds = [];
+      this.activeThread = undefined;
+    },
+    onNewChat() {
+      clearDuoChatCommands();
+      this.cleanState();
+      this.multithreadedView = DUO_CHAT_VIEWS.CHAT;
+    },
+    onChatCancel() {
+      // pushing last requestId of messages to canceled Request Id's
+      this.cancelledRequestIds.push(this.messages[this.messages.length - 1].requestId);
+      this.isWaitingOnPrompt = false;
+    },
+    onMessageReceived(aiCompletionResponse) {
+      this.addDuoChatMessage(aiCompletionResponse);
+      if (aiCompletionResponse.role.toLowerCase() === MESSAGE_TYPES.TANUKI) {
+        this.completedRequestId = aiCompletionResponse.requestId;
+        clearDuoChatCommands();
+        this.isWaitingOnPrompt = false;
+      }
+    },
+    onMessageStreamReceived(aiCompletionResponse) {
+      if (aiCompletionResponse.requestId !== this.completedRequestId) {
+        this.addDuoChatMessage(aiCompletionResponse);
+      }
+    },
+    onResponseReceived(requestId) {
+      if (this.isResponseTracked) {
+        return;
+      }
+
+      performance.mark('response-received');
+      performance.measure('prompt-to-response', 'prompt-sent', 'response-received');
+      const entries = performance.getEntriesByName('prompt-to-response');
+      const duration = entries[0]?.duration ?? 0;
+      const numericDuration = parseFloat(duration);
+
+      this.trackEvent('ai_response_time', {
+        property: requestId,
+        value: Number.isFinite(numericDuration) ? numericDuration : 0,
+      });
+
+      performance.clearMarks();
+      performance.clearMeasures();
+      this.isResponseTracked = true;
+    },
+    onSendChatPrompt(question, variables = {}, resourceId = this.computedResourceId) {
+      if (this.shouldStartNewChat(question)) {
+        this.onNewChat();
+        return;
+      }
+
+      performance.mark('prompt-sent');
+      this.completedRequestId = null;
+      this.isResponseTracked = false;
+
+      if (!this.isWaitingOnPrompt) {
+        this.isWaitingOnPrompt = true;
+      }
+
+      const mutationName = this.rootNamespaceId ? chatWithNamespaceMutation : chatMutation;
+      const mutationVariables = {
+        question,
+        resourceId,
+        clientSubscriptionId: this.clientSubscriptionId,
+        projectId: this.projectId,
+        threadId: this.activeThread,
+        conversationType: MULTI_THREADED_CONVERSATION_TYPE,
+        ...(this.rootNamespaceId && { rootNamespaceId: this.rootNamespaceId }),
+        ...variables,
+      };
+
+      this.$apollo
+        .mutate({
+          mutation: mutationName,
+          variables: mutationVariables,
+          context: {
+            headers: {
+              'X-GitLab-Interface': 'duo_chat',
+              'X-GitLab-Client-Type': 'web_browser',
+            },
+          },
+        })
+        .then(({ data: { aiAction = {} } = {} }) => {
+          const trackingOptions = {
+            property: aiAction.requestId,
+            label: this.findPredefinedPrompt(question)?.eventLabel,
+          };
+
+          this.trackEvent('submit_gitlab_duo_question', trackingOptions);
+
+          if (aiAction.threadId && !this.activeThread) {
+            this.activeThread = aiAction.threadId;
+            this.navigateToChat();
+          }
+
+          this.addDuoChatMessage({
+            ...aiAction,
+            content: question,
+          });
+        })
+        .catch((err) => {
+          this.addDuoChatMessage({
+            content: question,
+          });
+          this.onError(err);
+          this.isWaitingOnPrompt = false;
+        });
+    },
+    onChatClose() {
+      // Only manage global state when not isEmbedded
+      // When isEmbedded, the parent container (AI Panel) manages the visibility
+      if (!this.isEmbedded) {
+        this.duoChatGlobalState.isShown = false;
+      }
+    },
+    onCalloutDismissed() {
+      this.duoChatGlobalState.isShown = true;
+    },
+    onTrackFeedback({ feedbackChoices, didWhat, improveWhat, message } = {}) {
+      if (message) {
+        const { id, requestId, extras, role, content } = message;
+        this.$apollo
+          .mutate({
+            mutation: duoUserFeedbackMutation,
+            variables: {
+              input: {
+                aiMessageId: id,
+                trackingEvent: {
+                  category: TANUKI_BOT_TRACKING_EVENT_NAME,
+                  action: 'duo_chat',
+                  label: 'response_feedback',
+                  property: feedbackChoices.join(','),
+                  extra: {
+                    improveWhat,
+                    didWhat,
+                    prompt_location: 'after_content',
+                  },
+                },
+              },
+            },
+          })
+          .catch(() => {
+            // silent failure because of fire and forget
+          });
+
+        this.addDuoChatMessage({
+          requestId,
+          role,
+          content,
+          extras: { ...extras, hasFeedback: true },
+        });
+      }
+    },
+    onError(err) {
+      this.addDuoChatMessage({ errors: [err.toString()] });
+    },
+    onBackToList() {
+      this.multithreadedView = DUO_CHAT_VIEWS.LIST;
+      this.setMessages([]);
+      this.$apollo.queries.aiConversationThreads.refetch();
+    },
+    onDeleteThread(threadId) {
+      this.$apollo
+        .mutate({
+          mutation: deleteConversationThreadMutation,
+          variables: { input: { threadId } },
+        })
+        .then(({ data }) => {
+          if (data?.deleteConversationThread?.success) {
+            this.$apollo.queries.aiConversationThreads.refetch();
+          } else {
+            const errors = data?.deleteConversationThread?.errors;
+            this.onError(new Error(errors.join(', ')));
+          }
+        })
+        .catch(this.onError);
+    },
+    // `focusInput` can be called by the parent component. Ideally, we would mark this as a public
+    // method via Vue's `expose` option. However, doing so would cause several tests to fail in Vue 3
+    // because we wrote some assertions directly against the `vm`, which becomes private when `expose`
+    // is defined. So we need to _not_ use `expose` and disable vue/no-unused-properties for now.
+    focusInput() {
+      this.$refs.duoChat?.focusChatInput();
+    },
+  },
+};
+</script>
+
+<template>
+  <div class="gl-grow-1 gl-flex gl-w-full">
+    <div v-if="isEmbedded || duoChatGlobalState.isShown" class="gl-w-full">
+      <!-- Renderless component for subscriptions -->
+      <tanuki-bot-subscriptions
+        :user-id="userId"
+        :client-subscription-id="clientSubscriptionId"
+        :cancelled-request-ids="cancelledRequestIds"
+        :active-thread-id="activeThread"
+        @message="onMessageReceived"
+        @message-stream="onMessageStreamReceived"
+        @response-received="onResponseReceived"
+        @error="onError"
+      />
+
+      <web-duo-chat
+        id="duo-chat"
+        ref="duoChat"
+        :thread-list="aiConversationThreads"
+        :multi-threaded-view="multithreadedView"
+        :active-thread-id="activeThread"
+        :is-multithreaded="true"
+        :slash-commands="aiSlashCommands"
+        :title="chatTitle"
+        :dimensions="dimensions"
+        :messages="messages"
+        :error="error"
+        :is-loading="isWaitingOnPrompt"
+        :should-render-resizable="!isEmbedded"
+        :show-studio-header="isEmbedded"
+        :show-header="!isEmbedded"
+        :predefined-prompts="predefinedPrompts"
+        :badge-type="null"
+        :tool-name="toolName"
+        :trusted-urls="computedTrustedUrls"
+        :canceled-request-ids="cancelledRequestIds"
+        :class="isEmbedded ? 'gl-h-full gl-w-full' : 'duo-chat-container gl-h-full'"
+        :should-auto-focus-input="!isEmbedded"
+        @thread-selected="onThreadSelected"
+        @new-chat="onNewChat"
+        @back-to-list="onBackToList"
+        @delete-thread="onDeleteThread"
+        @chat-cancel="onChatCancel"
+        @send-chat-prompt="onSendChatPrompt"
+        @chat-hidden="onChatClose"
+        @track-feedback="onTrackFeedback"
+        @chat-resize="onChatResize"
+      >
+        <template v-if="isAgenticAvailable" #agentic-switch>
+          <gl-toggle v-model="duoAgenticModePreference" label-position="left">
+            <template #label>
+              <span class="gl-font-normal gl-text-subtle">{{ s__('DuoChat|Agentic') }}</span>
+            </template>
+          </gl-toggle>
+        </template>
+      </web-duo-chat>
+    </div>
+    <duo-chat-callout @callout-dismissed="onCalloutDismissed" />
+  </div>
+</template>

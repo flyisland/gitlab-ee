@@ -1,0 +1,446 @@
+<script>
+import { GlButton, GlSprintf, GlIcon, GlTooltipDirective } from '@gitlab/ui';
+import { debounce } from 'lodash';
+import { fetchPolicies } from '~/lib/graphql';
+import * as Sentry from '~/sentry/sentry_browser_wrapper';
+import { s__, n__, sprintf } from '~/locale';
+import glFeatureFlagMixin from '~/vue_shared/mixins/gl_feature_flags_mixin';
+import { createAlert } from '~/alert';
+import {
+  getLocationHash,
+  queryToObject,
+  setUrlParams,
+  updateHistory,
+} from '~/lib/utils/url_utility';
+import LocalStorageSync from '~/vue_shared/components/local_storage_sync.vue';
+import { convertToGraphQLId } from '~/graphql_shared/utils';
+import { TYPENAME_GROUP } from '~/graphql_shared/constants';
+import { SIDEBAR_VISIBLE_STORAGE_KEY, MAX_SELECTED_COUNT } from '../constants';
+import SubgroupsAndProjectsQuery from '../graphql/subgroups_and_projects.query.graphql';
+import { getData, getPageInfo } from '../graphql/helper';
+import SubgroupSidebar from './sidebar/subgroup_sidebar.vue';
+import EmptyState from './empty_state.vue';
+import SecurityInventoryTable from './security_inventory_table.vue';
+import InventoryDashboardFilteredSearchBar from './inventory_dashboard_filtered_search_bar.vue';
+import BulkEditActionsDropdown from './bulk_edit_actions_dropdown.vue';
+
+const PAGE_SIZE = 20;
+
+export default {
+  components: {
+    SubgroupSidebar,
+    LocalStorageSync,
+    RecursiveBreadcrumbs: () => import('./recursive_breadcrumbs.vue'),
+    GlButton,
+    GlSprintf,
+    GlIcon,
+    EmptyState,
+    SecurityInventoryTable,
+    InventoryDashboardFilteredSearchBar,
+    BulkEditActionsDropdown,
+  },
+  directives: {
+    GlTooltip: GlTooltipDirective,
+  },
+  mixins: [glFeatureFlagMixin()],
+  inject: [
+    'groupFullPath',
+    'groupId',
+    'newProjectPath',
+    'canReadAttributes',
+    'canManageAttributes',
+    'canApplyProfiles',
+  ],
+  i18n: {
+    errorFetchingChildren: s__(
+      'SecurityInventory|An error occurred while fetching subgroups and projects. Please try again.',
+    ),
+    loadMore: s__('SecurityInventory|Load more'),
+  },
+  data() {
+    return {
+      activeFullPath: this.groupFullPath,
+      activeGroupId: this.groupId,
+      sidebarVisible: true,
+      filters: {
+        search: this.getSearchParams(),
+      },
+      // displayItems is the combined list of Project and Subgroups to be shown in the UI.
+      displayItems: [],
+      subgroupItems: [],
+      projectItems: [],
+      subgroupsPageInfo: {
+        hasNextPage: false,
+        endCursor: null,
+      },
+      projectsPageInfo: {
+        hasNextPage: false,
+        endCursor: null,
+      },
+      isLoadingMore: false,
+      projectsInitialized: false,
+      selectedCount: 0,
+    };
+  },
+  apollo: {
+    subgroupItems: {
+      query: SubgroupsAndProjectsQuery,
+      fetchPolicy: fetchPolicies.NETWORK_ONLY,
+      nextFetchPolicy: fetchPolicies.CACHE_ONLY,
+      variables() {
+        const {
+          search = '',
+          securityAnalyzerFilters = [],
+          vulnerabilityCountFilters = [],
+          attributeFilters = [],
+        } = this.filters;
+
+        return {
+          fullPath: this.activeFullPath,
+          namespaceId: convertToGraphQLId(TYPENAME_GROUP, this.activeGroupId),
+          search,
+          hasSearch: this.hasSearch,
+          subgroupsFirst: PAGE_SIZE,
+          subgroupsAfter: null,
+          projectsFirst: PAGE_SIZE,
+          projectsAfter: null,
+          securityAnalyzerFilters,
+          vulnerabilityCountFilters,
+          attributeFilters,
+          canReadAttributes: this.canReadAttributes,
+        };
+      },
+      update(data) {
+        const groupData = getData(data, 'group');
+        if (!groupData) return [];
+
+        return getData(groupData, 'descendantGroups.nodes', []);
+      },
+      result({ data }) {
+        const groupData = getData(data, 'group');
+        if (!groupData) return;
+        this.activeGroupId = groupData.id;
+
+        this.subgroupsPageInfo = getPageInfo(groupData, 'descendantGroups.pageInfo');
+        this.projectsPageInfo = this.hasSearch
+          ? getPageInfo(data, 'namespaceSecurityProjects.pageInfo')
+          : getPageInfo(groupData, 'projects.pageInfo');
+
+        const subgroups = getData(groupData, 'descendantGroups.nodes', []);
+        this.projectItems = this.hasSearch
+          ? getData(data, 'namespaceSecurityProjects.edges', []).map((edge) => edge.node)
+          : getData(groupData, 'projects.nodes', []);
+        this.projectsInitialized = true;
+
+        // Initially, populate items with only subgroups
+        this.displayItems = [...subgroups];
+        // Once all subgroups are loaded, display both subgroups and projects
+        if (!this.hasMoreSubgroups) {
+          this.displayItems = [...subgroups, ...this.projectItems];
+        }
+      },
+      error(error) {
+        this.handleError(error);
+      },
+    },
+  },
+  computed: {
+    hasMoreSubgroups() {
+      return this.subgroupsPageInfo?.hasNextPage;
+    },
+    hasMoreProjects() {
+      return this.projectsPageInfo?.hasNextPage;
+    },
+    isLoading() {
+      return this.$apollo.queries.subgroupItems.loading && !this.isLoadingMore;
+    },
+    hasSearch() {
+      return Boolean(
+        this.filters.search?.length ||
+          this.filters.securityAnalyzerFilters?.length ||
+          this.filters.vulnerabilityCountFilters?.length ||
+          this.filters.attributeFilters?.length,
+      );
+    },
+    hasChildren() {
+      return this.displayItems.length > 0;
+    },
+    showLoadMoreButton() {
+      return this.hasMoreSubgroups || this.hasMoreProjects;
+    },
+    showEmptyState() {
+      return !this.isLoading && !this.hasChildren;
+    },
+    selectedCountMessage() {
+      return sprintf(
+        n__(
+          '%{strongStart}%{selectedCount}%{strongEnd} item selected',
+          '%{strongStart}%{selectedCount}%{strongEnd} items selected',
+          this.selectedCount,
+        ),
+        { selectedCount: this.selectedCount },
+      );
+    },
+  },
+  created() {
+    this.debouncedFilter = debounce(this.performFilter, 50);
+    this.initializeFromUrl();
+    window.addEventListener('hashchange', this.handleLocationHashChange);
+  },
+  beforeDestroy() {
+    window.removeEventListener('hashchange', this.handleLocationHashChange);
+  },
+  methods: {
+    handleError(error) {
+      createAlert({
+        message: this.$options.i18n.errorFetchingChildren,
+        error,
+        captureError: true,
+      });
+      Sentry.captureException(error);
+    },
+    getSearchParams() {
+      return queryToObject(window.location.search).search;
+    },
+    initializeFromUrl() {
+      this.handleLocationHashChange();
+      this.filters.search = this.getSearchParams();
+    },
+    handleLocationHashChange() {
+      let hash = getLocationHash();
+      if (!hash) {
+        hash = this.groupFullPath;
+      }
+      if (this.activeFullPath !== hash) {
+        this.activeFullPath = hash;
+        this.$refs.inventoryTable?.clearSelection();
+        this.resetData();
+      }
+    },
+    resetData() {
+      this.displayItems = [];
+      this.subgroupItems = [];
+      this.projectItems = [];
+      this.subgroupsPageInfo = {
+        hasNextPage: false,
+        endCursor: null,
+      };
+      this.projectsPageInfo = {
+        hasNextPage: false,
+        endCursor: null,
+      };
+      this.isLoadingMore = false;
+      this.projectsInitialized = false;
+    },
+    async loadMore() {
+      if (this.isLoadingMore) return;
+      this.isLoadingMore = true;
+
+      try {
+        if (this.hasMoreSubgroups) {
+          await this.loadMoreSubgroups();
+        } else {
+          await this.loadMoreProjects();
+        }
+      } catch (error) {
+        this.handleError(error);
+      } finally {
+        this.isLoadingMore = false;
+      }
+    },
+    /**
+     * Abstracts the GraphQL query for fetching subgroups and projects
+     * @param {Object} options - Query options
+     * @param {Number} options.subgroupsFirst - Number of subgroups to fetch
+     * @param {String} options.subgroupsAfter - Cursor for subgroups pagination
+     * @param {Number} options.projectsFirst - Number of projects to fetch
+     * @param {String} options.projectsAfter - Cursor for projects pagination
+     * @returns {Promise} Apollo query promise
+     */
+    async fetchSubgroupsAndProjects(options = {}) {
+      const {
+        subgroupsFirst = 0,
+        subgroupsAfter = null,
+        projectsFirst = 0,
+        projectsAfter = null,
+      } = options;
+      const {
+        search = '',
+        securityAnalyzerFilters = [],
+        vulnerabilityCountFilters = [],
+        attributeFilters = [],
+      } = this.filters;
+
+      return this.$apollo.query({
+        query: SubgroupsAndProjectsQuery,
+        variables: {
+          fullPath: this.activeFullPath,
+          namespaceId: convertToGraphQLId(TYPENAME_GROUP, this.activeGroupId),
+          search,
+          hasSearch: this.hasSearch,
+          subgroupsFirst,
+          subgroupsAfter,
+          projectsFirst,
+          projectsAfter,
+          securityAnalyzerFilters,
+          vulnerabilityCountFilters,
+          attributeFilters,
+          canReadAttributes: this.canReadAttributes,
+        },
+      });
+    },
+    async loadMoreSubgroups() {
+      const { data } = await this.fetchSubgroupsAndProjects({
+        subgroupsFirst: PAGE_SIZE,
+        subgroupsAfter: this.subgroupsPageInfo.endCursor,
+      });
+
+      const groupData = getData(data, 'group');
+      if (!groupData) return;
+
+      const newSubgroups = getData(groupData, 'descendantGroups.nodes', []);
+      this.subgroupsPageInfo = getPageInfo(data, 'descendantGroups.pageInfo');
+      this.subgroupItems = [...this.subgroupItems, ...newSubgroups];
+
+      if (!this.hasMoreSubgroups) {
+        this.displayItems = [...this.subgroupItems, ...this.projectItems];
+      } else {
+        this.displayItems = [...this.subgroupItems];
+      }
+    },
+    async loadMoreProjects() {
+      const { data } = await this.fetchSubgroupsAndProjects({
+        projectsFirst: PAGE_SIZE,
+        projectsAfter: this.projectsPageInfo.endCursor,
+      });
+
+      const groupData = getData(data, 'group');
+      if (!groupData) return;
+
+      const newProjects = this.hasSearch
+        ? getData(data, 'namespaceSecurityProjects.edges', []).map((e) => e.node)
+        : getData(groupData, 'projects.nodes', []);
+      this.projectsPageInfo = this.hasSearch
+        ? getPageInfo(data, 'namespaceSecurityProjects.pageInfo')
+        : getPageInfo(groupData, 'projects.pageInfo');
+      this.projectItems = [...this.projectItems, ...newProjects];
+
+      this.displayItems = [...this.subgroupItems, ...this.projectItems];
+    },
+    toggleSidebar(value = !this.sidebarVisible) {
+      this.sidebarVisible = value;
+    },
+    filterSubgroupsAndProjects(filters) {
+      this.filters = filters;
+      this.debouncedFilter(filters);
+      this.$refs.inventoryTable?.clearSelection();
+    },
+    performFilter(filters) {
+      const currentHash = getLocationHash();
+      const newUrl = setUrlParams(
+        { search: filters.search },
+        { url: window.location.href, clearParams: true },
+      );
+      const urlWithHashPreserved = newUrl.split('#')[0] + (currentHash ? `#${currentHash}` : '');
+      updateHistory({
+        url: urlWithHashPreserved,
+      });
+    },
+    bulkEdit(type) {
+      this.$nextTick(() => {
+        this.$refs.inventoryTable.bulkEdit(type);
+      });
+    },
+    handleSelectedCount(count) {
+      this.selectedCount = count;
+    },
+  },
+  SIDEBAR_VISIBLE_STORAGE_KEY,
+  MAX_SELECTED_COUNT,
+};
+</script>
+
+<template>
+  <div class="-gl-mb-10 gl-mt-5">
+    <div
+      class="gl-flex gl-w-full gl-border-b-1 gl-border-t-1 gl-border-default gl-bg-subtle gl-border-b-solid gl-border-t-solid"
+    >
+      <gl-button
+        icon="sidebar"
+        icon-only
+        class="gl-m-3"
+        :aria-label="sidebarVisible ? __('Collapse sidebar') : __('Expand sidebar')"
+        @click="toggleSidebar()"
+      />
+      <inventory-dashboard-filtered-search-bar
+        class="gl-flex-auto gl-items-center"
+        :initial-filters="filters"
+        :namespace="activeFullPath"
+        @filterSubgroupsAndProjects="filterSubgroupsAndProjects"
+      />
+    </div>
+    <local-storage-sync
+      v-model="sidebarVisible"
+      :storage-key="$options.SIDEBAR_VISIBLE_STORAGE_KEY"
+      @input="toggleSidebar"
+    />
+    <div class="gl-flex">
+      <subgroup-sidebar v-if="sidebarVisible" :active-full-path="activeFullPath" />
+      <div class="gl-w-auto gl-grow" :class="{ 'gl-pl-5': sidebarVisible }">
+        <div
+          v-if="selectedCount"
+          class="gl-border-b gl-sticky gl-top-0 gl-z-2 gl-flex gl-flex-row gl-items-center gl-justify-between gl-bg-default gl-px-3 gl-py-4"
+        >
+          <span>
+            <gl-sprintf :message="selectedCountMessage">
+              <template #strong="{ content }">
+                <strong>{{ content }}</strong>
+              </template>
+            </gl-sprintf>
+            <gl-icon
+              v-if="selectedCount >= $options.MAX_SELECTED_COUNT"
+              v-gl-tooltip="
+                sprintf(__('You can edit up to %{maximumCount} items at once'), {
+                  maximumCount: $options.MAX_SELECTED_COUNT,
+                })
+              "
+              name="warning"
+              variant="warning"
+            />
+          </span>
+          <bulk-edit-actions-dropdown
+            v-if="glFeatures.securityScanProfilesFeature && canApplyProfiles"
+            :selected-count="selectedCount"
+            @bulk-edit="bulkEdit"
+          />
+          <gl-button
+            v-else-if="canManageAttributes"
+            data-testid="edit-attributes-button"
+            @click="bulkEdit"
+            >{{ s__('SecurityAttributes|Edit security attributes') }}</gl-button
+          >
+        </div>
+        <recursive-breadcrumbs
+          v-else
+          :group-full-path="groupFullPath"
+          :current-path="activeFullPath"
+        />
+        <empty-state v-if="showEmptyState" />
+        <security-inventory-table
+          v-else
+          ref="inventoryTable"
+          :items="displayItems"
+          :is-loading="isLoading"
+          :has-search="hasSearch"
+          @refetch="$apollo.queries.subgroupItems.refetch()"
+          @selectedCount="handleSelectedCount"
+        />
+        <div v-if="showLoadMoreButton" class="gl-mt-5 gl-flex gl-justify-center">
+          <gl-button data-testid="load-more-button" :loading="isLoadingMore" @click="loadMore">
+            {{ $options.i18n.loadMore }}
+          </gl-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

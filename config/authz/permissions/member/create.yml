@@ -1,0 +1,6 @@
+---
+name: create_member
+description: Grants the ability to create members
+boundaries:
+  - group
+  - project

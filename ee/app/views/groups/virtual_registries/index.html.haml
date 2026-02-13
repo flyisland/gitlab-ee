@@ -1,0 +1,46 @@
+- title = s_('VirtualRegistry|Virtual registry')
+- page_title title
+- learn_more_path = local_assigns.fetch(:learn_more_path, help_page_path('user/packages/virtual_registry/_index.md'))
+- learn_more_link = link_to _('Learn more.'), learn_more_path
+- registry_data = registry_types(@group)
+- has_registry_with_count = @registry_types_with_counts.any? { |type, count| count > 0 }
+
+= render ::Layouts::PageHeadingComponent.new('') do |c|
+  - c.with_heading do
+    .gl-flex.gl-gap-2
+      %span
+        = title
+      %span
+        = render Pajamas::ExperimentBadgeComponent.new(type: :beta)
+
+= render ::Layouts::CrudComponent.new(s_('VirtualRegistry|Registry types'),
+  options: { class: 'gl-mt-5' }) do |c|
+  - c.with_body do
+    - if has_registry_with_count
+      %ul.content-list
+        - registry_data.each do |key, data|
+          %li.gl-items-center{ class: '!gl-flex' }
+            .gl-flex.gl-items-center.gl-grow
+              = image_tag data[:image_path], size: '48', class: 'gl-bg-transparent dark:gl-bg-gray-900 gl-border-solid gl-border-1 gl-border-default gl-rounded-base', aria: { hidden: true }
+              .gl-ml-4{ class: "@sm/panel:gl-flex" }
+                .gl-font-bold= data[:type_name]
+                .gl-mx-3.gl-hidden{ class: "@sm/panel:gl-inline" } ·
+                = render Pajamas::ButtonComponent.new(variant: :link, href: data[:landing_page_path]) do
+                  = s_('VirtualRegistry|View registries')
+            - if can_create_virtual_registry?(@group)
+              - if max_registries_count_exceeded?(@group, key)
+                = s_('VirtualRegistry|Maximum number of registries reached.')
+              - else
+                = render Pajamas::ButtonComponent.new(size: :small, href: data[:new_page_path]) do
+                  = s_('VirtualRegistry|Create registry')
+
+    - else
+      = render Pajamas::EmptyStateComponent.new(svg_path: 'illustrations/empty-state/empty-package-md.svg',
+        title: s_('VirtualRegistry|Get started with virtual registries')) do |c|
+        - c.with_description do
+          = s_('VirtualRegistry|Manage packages across multiple sources and streamline development workflows. %{learn_more_link}').html_safe % { learn_more_link: learn_more_link }
+          // When we implement multiple registry types, this empty state action button should be removed
+          - if can_create_virtual_registry?(@group)
+            .gl-mt-4
+              = render Pajamas::ButtonComponent.new(variant: :confirm, href: new_group_virtual_registries_maven_registry_path(@group)) do
+                = s_('VirtualRegistry|Create Maven registry')

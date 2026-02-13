@@ -1,0 +1,6 @@
+---
+name: update_wiki
+description: Grants the ability to update wikis
+boundaries:
+  - group
+  - project

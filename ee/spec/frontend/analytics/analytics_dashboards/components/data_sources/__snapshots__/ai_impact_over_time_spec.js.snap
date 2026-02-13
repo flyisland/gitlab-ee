@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for code_suggestions_acceptance_rate metric with null values response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Code Suggestions accepted out of total Code Suggestions generated. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/user/project/repository/code_suggestions/_index#use-code-suggestions",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for code_suggestions_acceptance_rate metric with valid response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Code Suggestions accepted out of total Code Suggestions generated. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/user/project/repository/code_suggestions/_index#use-code-suggestions",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for code_suggestions_acceptance_rate metric with zeroes response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Code Suggestions accepted out of total Code Suggestions generated. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/user/project/repository/code_suggestions/_index#use-code-suggestions",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for code_suggestions_usage_rate metric with null values response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Code contributors with assigned Duo seats who used Code Suggestions. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/user/project/repository/code_suggestions/_index#use-code-suggestions",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for code_suggestions_usage_rate metric with valid response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Code contributors with assigned Duo seats who used Code Suggestions. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/user/project/repository/code_suggestions/_index#use-code-suggestions",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for code_suggestions_usage_rate metric with zeroes response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Code contributors with assigned Duo seats who used Code Suggestions. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/user/project/repository/code_suggestions/_index#use-code-suggestions",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for duo_chat_usage_rate metric with null values response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Users with assigned Duo seats who used Duo Chat. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/user/gitlab_duo_chat/_index",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for duo_chat_usage_rate metric with valid response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Users with assigned Duo seats who used Duo Chat. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/user/gitlab_duo_chat/_index",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for duo_chat_usage_rate metric with zeroes response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Users with assigned Duo seats who used Duo Chat. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/user/gitlab_duo_chat/_index",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for duo_usage_rate metric with null values response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Users with assigned Duo seats who used at least one Duo feature. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/subscriptions/subscription-add-ons#assign-gitlab-duo-seats",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for duo_usage_rate metric with valid response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Users with assigned Duo seats who used at least one Duo feature. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/subscriptions/subscription-add-ons#assign-gitlab-duo-seats",
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`AI Impact Over Time Data Source fetch setVisualizationOverrides callback for duo_usage_rate metric with zeroes response will call the setVisualizationOverrides callback with the correct settings 1`] = `
+[
+  [
+    {
+      "visualizationOptionOverrides": {
+        "title": "Last 30 days",
+        "tooltip": {
+          "description": "Users with assigned Duo seats who used at least one Duo feature. %{linkStart}Learn more%{linkEnd}.",
+          "descriptionLink": "/help/subscriptions/subscription-add-ons#assign-gitlab-duo-seats",
+        },
+      },
+    },
+  ],
+]
+`;

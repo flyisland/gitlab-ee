@@ -1,0 +1,81 @@
+<script>
+import { GlTooltipDirective } from '@gitlab/ui';
+import WorkItemLinkChildContents from '~/work_items/components/shared/work_item_link_child_contents.vue';
+import WorkItemStatusBadge from 'ee/work_items/components/shared/work_item_status_badge.vue';
+import { WIDGET_TYPE_STATUS } from '~/work_items/constants';
+
+export default {
+  name: 'WorkItemLinkChildContentsEE',
+  components: {
+    WorkItemLinkChildContents,
+    WorkItemStatusBadge,
+  },
+  directives: {
+    GlTooltip: GlTooltipDirective,
+  },
+  props: {
+    childItem: {
+      type: Object,
+      required: true,
+    },
+    canUpdate: {
+      type: Boolean,
+      required: true,
+    },
+    isGroup: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    workItemFullPath: {
+      type: String,
+      required: true,
+    },
+    showLabels: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    contextualViewEnabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+  computed: {
+    metadataWidgets() {
+      return this.childItem.widgets?.reduce((metadataWidgets, widget) => {
+        if (widget.type) {
+          // eslint-disable-next-line no-param-reassign
+          metadataWidgets[widget.type] = widget;
+        }
+        return metadataWidgets;
+      }, {});
+    },
+    customStatus() {
+      return this.metadataWidgets[WIDGET_TYPE_STATUS]?.status;
+    },
+  },
+};
+</script>
+
+<template>
+  <work-item-link-child-contents
+    :child-item="childItem"
+    :can-update="canUpdate"
+    :is-group="isGroup"
+    :show-labels="showLabels"
+    :work-item-full-path="workItemFullPath"
+    :contextual-view-enabled="contextualViewEnabled"
+    @mouseover="$emit('mouseover')"
+    @mouseout="$emit('mouseout')"
+    @click="$emit('click', $event)"
+    @removeChild="$emit('removeChild', childItem)"
+  >
+    <template #child-contents>
+      <div class="gl-max-w-20">
+        <work-item-status-badge v-if="customStatus" :item="customStatus" />
+      </div>
+    </template>
+  </work-item-link-child-contents>
+</template>

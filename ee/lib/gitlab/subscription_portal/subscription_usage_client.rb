@@ -1,0 +1,469 @@
+# frozen_string_literal: true
+
+module Gitlab
+  module SubscriptionPortal
+    class SubscriptionUsageClient < Client
+      include ::Gitlab::Utils::StrongMemoize
+
+      ResponseError = Class.new(StandardError)
+
+      GET_METADATA_QUERY = <<~GQL
+        query subscriptionUsageMetadata(
+          $instanceId: String,
+          $namespaceId: ID,
+          $licenseKey: String,
+          $gitlabVersion: String!,
+        ) {
+          subscription(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            gitlabCreditsUsage(instanceId: $instanceId) {
+              startDate
+              endDate
+              enabled
+              isOutdatedClient(gitlabVersion: $gitlabVersion)
+              lastEventTransactionAt
+              overageTermsAccepted
+              canAcceptOverageTerms
+              dapPromoEnabled
+              usageDashboardPath
+            }
+          }
+        }
+      GQL
+
+      GET_PAID_TIER_TRIAL_QUERY = <<~GQL
+        query subscriptionUsagePaidTierTrial(
+          $instanceId: String,
+          $namespaceId: ID,
+          $licenseKey: String
+        ) {
+          subscription(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            gitlabCreditsUsage(instanceId: $instanceId) {
+              paidTierTrial {
+                isActive
+                dailyUsage {
+                  date
+                  creditsUsed
+                }
+              }
+            }
+          }
+        }
+      GQL
+
+      GET_MONTHLY_WAIVER_QUERY = <<~GQL
+        query subscriptionUsageMonthlyWaiver(
+          $instanceId: String
+          $namespaceId: ID,
+          $licenseKey: String
+        ) {
+          subscription(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            gitlabCreditsUsage(instanceId: $instanceId) {
+              monthlyWaiver {
+                creditsUsed
+                totalCredits
+                dailyUsage {
+                  date
+                  creditsUsed
+                }
+              }
+            }
+          }
+        }
+      GQL
+
+      GET_MONTHLY_COMMITMENT_QUERY = <<~GQL
+        query subscriptionUsageMonthlyCommitment(
+          $instanceId: String,
+          $namespaceId: ID,
+          $licenseKey: String
+        ) {
+          subscription(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            gitlabCreditsUsage(instanceId: $instanceId) {
+              monthlyCommitment {
+                totalCredits
+                creditsUsed
+                dailyUsage {
+                  date
+                  creditsUsed
+                }
+              }
+            }
+          }
+        }
+      GQL
+
+      GET_OVERAGE_QUERY = <<~GQL
+        query subscriptionUsageOverage(
+          $instanceId: String,
+          $namespaceId: ID,
+          $licenseKey: String
+        ) {
+          subscription(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            gitlabCreditsUsage(instanceId: $instanceId) {
+              overage {
+                isAllowed
+                creditsUsed
+                dailyUsage {
+                  date
+                  creditsUsed
+                }
+              }
+            }
+          }
+        }
+      GQL
+
+      GET_USER_EVENTS_QUERY = <<~GQL
+        query subscriptionUsageUserEvents(
+          $instanceId: String,
+          $namespaceId: ID,
+          $licenseKey: String,
+          $userIds: [Int!]!,
+          $first: Int,
+          $last: Int,
+          $after: String,
+          $before: String
+        ) {
+          subscription(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            gitlabCreditsUsage(instanceId: $instanceId) {
+              usersUsage {
+                users(userIds: $userIds) {
+                  events(first: $first, last: $last, before: $before, after: $after) {
+                    nodes {
+                      timestamp
+                      eventType
+                      flowType
+                      projectId
+                      namespaceId
+                      creditsUsed
+                    }
+                    pageInfo {
+                      hasNextPage
+                      hasPreviousPage
+                      startCursor
+                      endCursor
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      GQL
+
+      GET_USERS_USAGE_QUERY = <<~GQL
+        query subscriptionUsageForUserIds(
+          $instanceId: String,
+          $namespaceId: ID,
+          $licenseKey: String,
+          $userIds: [Int!]!
+        ) {
+          subscription(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            gitlabCreditsUsage(instanceId: $instanceId) {
+              usersUsage {
+                users(userIds: $userIds) {
+                  userId
+                  totalCredits
+                  creditsUsed
+                  monthlyCommitmentCreditsUsed
+                  monthlyWaiverCreditsUsed
+                  overageCreditsUsed
+                }
+              }
+            }
+          }
+        }
+      GQL
+
+      GET_USERS_USAGE_STATS_QUERY = <<~GQL
+        query subscriptionUsageUsersStats(
+          $instanceId: String,
+          $namespaceId: ID,
+          $licenseKey: String
+        ) {
+          subscription(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            gitlabCreditsUsage(instanceId: $instanceId) {
+              usersUsage {
+                totalUsersUsingCredits
+                totalUsersUsingMonthlyCommitment
+                totalUsersUsingOverage
+                creditsUsed
+                dailyUsage {
+                  date
+                  creditsUsed
+                }
+              }
+            }
+          }
+        }
+      GQL
+
+      GET_TRIAL_USAGE_QUERY = <<~GQL
+        query trialUsage(
+          $namespaceId: ID,
+          $licenseKey: String
+        ) {
+          trialUsage(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            activeTrial {
+              startDate
+              endDate
+            }
+            usersUsage {
+              creditsUsed
+              totalUsersUsingCredits
+            }
+          }
+        }
+      GQL
+
+      GET_TRIAL_USAGE_FOR_USER_IDS_QUERY = <<~GQL
+        query trialUsageForUserIds(
+          $namespaceId: ID,
+          $licenseKey: String,
+          $userIds: [Int!]!
+        ) {
+          trialUsage(namespaceId: $namespaceId, licenseKey: $licenseKey) {
+            usersUsage {
+              users(userIds: $userIds) {
+                userId
+                totalCredits
+                creditsUsed
+              }
+            }
+          }
+        }
+      GQL
+
+      # Initialize the client with the provided parameters that will be used later
+      # to make API calls to the subscription portal
+      #
+      # @param namespace_id [Integer] The ID of the namespace, used when in GitLab.com
+      # @param license_key [String] The license key to use for authentication in Self-Managed instances
+      def initialize(namespace_id: nil, license_key: nil)
+        @namespace_id = namespace_id
+        @license_key = license_key
+      end
+
+      def get_metadata
+        response = execute_graphql_query(
+          query: GET_METADATA_QUERY,
+          extra_variables: { gitlabVersion: Gitlab::VERSION }
+        )
+
+        if unsuccessful_response?(response)
+          error(GET_METADATA_QUERY, response)
+        else
+          {
+            success: true,
+            subscriptionUsage: response.dig(:data, :subscription, :gitlabCreditsUsage)
+          }
+        end
+      end
+      strong_memoize_attr :get_metadata
+
+      def get_monthly_waiver
+        response = execute_graphql_query(query: GET_MONTHLY_WAIVER_QUERY)
+
+        if unsuccessful_response?(response)
+          error(GET_MONTHLY_WAIVER_QUERY, response)
+        else
+          {
+            success: true,
+            monthlyWaiver: response.dig(:data, :subscription, :gitlabCreditsUsage, :monthlyWaiver)
+          }
+        end
+      end
+
+      def get_monthly_commitment
+        response = execute_graphql_query(query: GET_MONTHLY_COMMITMENT_QUERY)
+
+        if unsuccessful_response?(response)
+          error(GET_MONTHLY_COMMITMENT_QUERY, response)
+        else
+          {
+            success: true,
+            monthlyCommitment: response.dig(:data, :subscription, :gitlabCreditsUsage, :monthlyCommitment)
+          }
+        end
+      end
+      strong_memoize_attr :get_monthly_commitment
+
+      def get_overage
+        response = execute_graphql_query(query: GET_OVERAGE_QUERY)
+
+        if unsuccessful_response?(response)
+          error(GET_OVERAGE_QUERY, response)
+        else
+          {
+            success: true,
+            overage: response.dig(:data, :subscription, :gitlabCreditsUsage, :overage)
+          }
+        end
+      end
+      strong_memoize_attr :get_overage
+
+      def get_paid_tier_trial
+        response = execute_graphql_query(query: GET_PAID_TIER_TRIAL_QUERY)
+
+        if unsuccessful_response?(response)
+          error(GET_PAID_TIER_TRIAL_QUERY, response)
+        else
+          {
+            success: true,
+            paidTierTrial: response.dig(:data, :subscription, :gitlabCreditsUsage, :paidTierTrial)
+          }
+        end
+      end
+      strong_memoize_attr :get_paid_tier_trial
+
+      def get_events_for_user_id(user_id, args)
+        strong_memoize_with(:get_events_for_user_id, user_id, args) do
+          response = execute_graphql_query(
+            query: GET_USER_EVENTS_QUERY,
+            extra_variables: {
+              userIds: [user_id],
+              first: args[:first],
+              last: args[:last],
+              before: args[:before],
+              after: args[:after]
+            }
+          )
+
+          if unsuccessful_response?(response)
+            error(GET_USER_EVENTS_QUERY, response)
+          else
+            user_events = response.dig(:data, :subscription, :gitlabCreditsUsage, :usersUsage, :users)
+              .to_a.first&.fetch(:events)
+            {
+              success: true,
+              userEvents: user_events
+            }
+          end
+        end
+      end
+
+      def get_usage_for_user_ids(user_ids)
+        strong_memoize_with(:get_usage_for_user_ids, user_ids) do
+          response = execute_graphql_query(query: GET_USERS_USAGE_QUERY, extra_variables: { userIds: user_ids })
+
+          if unsuccessful_response?(response)
+            error(GET_USERS_USAGE_QUERY, response)
+          else
+            {
+              success: true,
+              usersUsage: response.dig(:data, :subscription, :gitlabCreditsUsage, :usersUsage, :users)
+            }
+          end
+        end
+      end
+
+      def get_users_usage_stats
+        response = execute_graphql_query(query: GET_USERS_USAGE_STATS_QUERY)
+
+        if unsuccessful_response?(response)
+          error(GET_USERS_USAGE_STATS_QUERY, response)
+        else
+          {
+            success: true,
+            usersUsage: response.dig(:data, :subscription, :gitlabCreditsUsage, :usersUsage)
+          }
+        end
+      end
+      strong_memoize_attr :get_users_usage_stats
+
+      def get_trial_usage
+        response = execute_graphql_query(query: GET_TRIAL_USAGE_QUERY)
+
+        if unsuccessful_response?(response)
+          error(GET_TRIAL_USAGE_QUERY, response)
+        else
+          {
+            success: true,
+            trialUsage: response.dig(:data, :trialUsage)
+          }
+        end
+      end
+      strong_memoize_attr :get_trial_usage
+
+      def get_trial_usage_for_user_ids(user_ids)
+        strong_memoize_with(:get_trial_usage_for_user_ids, user_ids) do
+          response = execute_graphql_query(query: GET_TRIAL_USAGE_FOR_USER_IDS_QUERY,
+            extra_variables: { userIds: user_ids })
+
+          if unsuccessful_response?(response)
+            error(GET_TRIAL_USAGE_FOR_USER_IDS_QUERY, response)
+          else
+            {
+              success: true,
+              usersUsage: response.dig(:data, :trialUsage, :usersUsage, :users)
+            }
+          end
+        end
+      end
+
+      private
+
+      attr_reader :namespace_id, :license_key
+
+      def execute_graphql_query(query:, extra_variables: {})
+        variables = {
+          instanceId: Gitlab::GlobalAnonymousId.instance_id,
+          namespaceId: namespace_id,
+          licenseKey: license_key
+        }.compact.merge(extra_variables)
+
+        headers = variables[:licenseKey] ? json_headers : admin_headers
+
+        http_response = ::Gitlab::HTTP.post(
+          ::Gitlab::Routing.url_helpers.subscription_portal_graphql_url,
+          headers: headers,
+          body: { query: query, variables: variables }.to_json
+        )
+
+        if http_response.response.is_a?(Net::HTTPSuccess)
+          http_response.parsed_response.deep_symbolize_keys
+        else
+          { data: { errors: http_response.response.message } }
+        end
+      end
+
+      def unsuccessful_response?(response)
+        return if response.dig(:data, :errors).blank?
+
+        true
+      end
+
+      def error(query, response)
+        Gitlab::ErrorTracking.track_and_raise_exception(
+          ResponseError.new("Received an error from CustomerDot"),
+          query: query,
+          response: response
+        )
+      end
+
+      def default_headers
+        {
+          "User-Agent" => Gitlab::Qa.user_agent.presence || "GitLab/#{Gitlab::VERSION}"
+        }
+      end
+
+      def json_headers
+        default_headers.merge(
+          {
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+          }
+        )
+      end
+
+      def admin_headers
+        json_headers.merge(
+          {
+            'X-Admin-Email' => Gitlab::SubscriptionPortal::SUBSCRIPTION_PORTAL_ADMIN_EMAIL,
+            'X-Admin-Token' => Gitlab::SubscriptionPortal::SUBSCRIPTION_PORTAL_ADMIN_TOKEN
+          }
+        )
+      end
+    end
+  end
+end

@@ -1,0 +1,6 @@
+---
+name: update_member
+description: Grants the ability to update members
+boundaries:
+  - group
+  - project

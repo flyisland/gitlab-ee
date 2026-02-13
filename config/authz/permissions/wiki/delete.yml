@@ -1,0 +1,6 @@
+---
+name: delete_wiki
+description: Grants the ability to delete wikis
+boundaries:
+  - group
+  - project

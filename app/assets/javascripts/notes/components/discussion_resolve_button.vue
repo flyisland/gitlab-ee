@@ -1,0 +1,31 @@
+<script>
+import { GlButton } from '@gitlab/ui';
+
+export default {
+  name: 'ResolveDiscussionButton',
+  components: {
+    GlButton,
+  },
+  props: {
+    isResolving: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    buttonTitle: {
+      type: String,
+      required: true,
+    },
+  },
+};
+</script>
+
+<template>
+  <gl-button
+    :loading="isResolving"
+    class="gl-w-full @sm/panel:!gl-ml-3 @sm/panel:gl-w-auto"
+    @click="$emit('on-click')"
+  >
+    {{ buttonTitle }}
+  </gl-button>
+</template>

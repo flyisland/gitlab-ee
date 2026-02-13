@@ -1,0 +1,32 @@
+# Queries for all the AI metrics values
+
+fragment AiMetricItem on AiMetrics {
+  codeContributorsCount
+  duoChatContributorsCount
+  duoAssignedUsersCount
+  duoUsedCount
+  rootCauseAnalysisUsersCount
+  codeReview {
+    requestReviewDuoCodeReviewOnMrByAuthorEventCount
+    requestReviewDuoCodeReviewOnMrByNonAuthorEventCount
+    postCommentDuoCodeReviewOnDiffEventCount
+    reactThumbsDownOnDuoCodeReviewCommentEventCount
+    reactThumbsUpOnDuoCodeReviewCommentEventCount
+  }
+  codeSuggestions(languages: $languages, ideNames: $ideNames) {
+    contributorsCount
+    shownCount
+    acceptedCount
+    languages
+    acceptedLinesOfCode
+    shownLinesOfCode
+    ideNames
+  }
+  agentPlatformChats: agentPlatform(flowTypes: ["chat"]) @gl_introduced(version: "18.7.0-pre") {
+    startedSessionEventCount
+  }
+  agentPlatformFlows: agentPlatform(not: { flowTypes: ["chat"] })
+    @gl_introduced(version: "18.7.0-pre") {
+    startedSessionEventCount
+  }
+}

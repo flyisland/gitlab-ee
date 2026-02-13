@@ -1,0 +1,553 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe Gitlab::Llm::TanukiBot, feature_category: :duo_chat do
+  let_it_be(:user) { create(:user) }
+
+  describe '.enabled_for?', :use_clean_rails_redis_caching do
+    let_it_be_with_reload(:group) { create(:group) }
+    let(:authorizer_response) { instance_double(Gitlab::Llm::Utils::Authorizer::Response, allowed?: allowed) }
+
+    context 'when user present and container is not present' do
+      where(:allowed, :result) do
+        [
+          [true, true],
+          [false, false]
+        ]
+      end
+
+      with_them do
+        before do
+          allow(Gitlab::Llm::Chain::Utils::ChatAuthorizer).to receive(:user).with(user: user)
+                                                                            .and_return(authorizer_response)
+        end
+
+        it 'returns correct result' do
+          expect(described_class.enabled_for?(user: user)).to be(result)
+        end
+      end
+    end
+
+    context 'when user and container are both present' do
+      where(:allowed, :result) do
+        [
+          [true, true],
+          [false, false]
+        ]
+      end
+
+      with_them do
+        before do
+          allow(Gitlab::Llm::Chain::Utils::ChatAuthorizer).to receive(:container).with(user: user, container: group)
+                                                                                 .and_return(authorizer_response)
+        end
+
+        it 'returns correct result' do
+          expect(described_class.enabled_for?(user: user, container: group)).to be(result)
+        end
+      end
+    end
+
+    context 'when user is not present' do
+      it 'returns false' do
+        expect(described_class.enabled_for?(user: nil)).to be(false)
+      end
+    end
+  end
+
+  describe '.classic_chat_available?' do
+    let(:checked_user) { nil }
+
+    subject(:chat_available) { described_class.classic_chat_available?(user: checked_user) }
+
+    context 'when user is nil' do
+      it { is_expected.to be false }
+    end
+
+    context 'when user is present' do
+      let(:checked_user) { user }
+      let(:can_access_classic_chat) { false }
+
+      before do
+        allow(checked_user).to receive(:can?).with(:access_duo_classic_chat).and_return(can_access_classic_chat)
+      end
+
+      context 'when user can access duo classic chat' do
+        let(:can_access_classic_chat) { true }
+
+        it { is_expected.to be true }
+      end
+
+      context 'when user cannot access duo classic chat' do
+        let(:can_access_classic_chat) { false }
+
+        it { is_expected.to be false }
+      end
+    end
+  end
+
+  describe '.agentic_mode_available?' do
+    let_it_be(:project) { create(:project) }
+    let_it_be(:group) { create(:group) }
+
+    context 'with a persisted project' do
+      context 'when user can access duo agentic chat for project' do
+        before do
+          allow(user).to receive(:can?).with(:access_duo_agentic_chat, project).and_return(true)
+        end
+
+        it 'returns true' do
+          expect(described_class.agentic_mode_available?(user: user, project: project, group: nil)).to be(true)
+        end
+      end
+
+      context 'when user cannot access duo agentic chat for project' do
+        before do
+          allow(user).to receive(:can?).with(:access_duo_agentic_chat, project).and_return(false)
+        end
+
+        it 'returns false' do
+          expect(described_class.agentic_mode_available?(user: user, project: project, group: nil)).to be(false)
+        end
+      end
+    end
+
+    context 'with a persisted group' do
+      context 'when user can access duo agentic chat for group' do
+        before do
+          allow(user).to receive(:can?).with(:access_duo_agentic_chat, group).and_return(true)
+        end
+
+        it 'returns true' do
+          expect(described_class.agentic_mode_available?(user: user, project: nil, group: group)).to be(true)
+        end
+      end
+
+      context 'when user cannot access duo agentic chat for group' do
+        before do
+          allow(user).to receive(:can?).with(:access_duo_agentic_chat, group).and_return(false)
+        end
+
+        it 'returns false' do
+          expect(described_class.agentic_mode_available?(user: user, project: nil, group: group)).to be(false)
+        end
+      end
+    end
+
+    context 'with both project and group present' do
+      context 'when user can access duo agentic chat for project' do
+        before do
+          allow(user).to receive(:can?).with(:access_duo_agentic_chat, project).and_return(true)
+        end
+
+        it 'prioritizes project and returns true' do
+          expect(described_class.agentic_mode_available?(user: user, project: project, group: group)).to be(true)
+        end
+      end
+
+      context 'when user cannot access duo agentic chat for project but can for group' do
+        before do
+          allow(user).to receive(:can?).with(:access_duo_agentic_chat, project).and_return(false)
+          allow(user).to receive(:can?).with(:access_duo_agentic_chat, group).and_return(true)
+        end
+
+        it 'prioritizes project and returns false' do
+          expect(described_class.agentic_mode_available?(user: user, project: project, group: group)).to be(false)
+        end
+      end
+    end
+
+    context 'with non-persisted project' do
+      let(:non_persisted_project) { build(:project) }
+
+      before do
+        allow(user).to receive(:can?).with(:access_duo_agentic_chat, group).and_return(true)
+      end
+
+      it 'falls back to group check' do
+        expect(described_class.agentic_mode_available?(user: user, project: non_persisted_project,
+          group: group)).to be(true)
+      end
+    end
+
+    context 'with non-persisted group' do
+      let(:non_persisted_group) { build(:group) }
+
+      it 'returns false' do
+        expect(described_class.agentic_mode_available?(user: user, project: nil,
+          group: non_persisted_group)).to be(false)
+      end
+    end
+
+    context 'with nil project and nil group' do
+      it 'returns false' do
+        expect(described_class.agentic_mode_available?(user: user, project: nil, group: nil)).to be(false)
+      end
+    end
+  end
+
+  describe '.show_duo_entry_point?' do
+    let(:authorizer_response) { instance_double(Gitlab::Llm::Utils::Authorizer::Response, allowed?: allowed) }
+
+    where(:allowed, :duo_chat_access) do
+      [
+        [true, true],
+        [false, false]
+      ]
+    end
+
+    with_them do
+      it 'shows button in correct cases' do
+        expect(Gitlab::Llm::Chain::Utils::ChatAuthorizer)
+          .to receive(:user).with(user: user).and_return(authorizer_response)
+        expect(described_class.show_duo_entry_point?(user: user)).to be(duo_chat_access)
+      end
+    end
+  end
+
+  describe '.chat_disabled_reason' do
+    let(:authorizer_response) { instance_double(Gitlab::Llm::Utils::Authorizer::Response, allowed?: allowed) }
+    let(:container) { build_stubbed(:group) }
+
+    before do
+      allow(Gitlab::Llm::Chain::Utils::ChatAuthorizer)
+        .to receive(:container).with(container: container, user: user)
+                               .and_return(authorizer_response)
+    end
+
+    context 'when chat is allowed' do
+      let(:allowed) { true }
+
+      it 'returns nil' do
+        expect(described_class.chat_disabled_reason(user: user, container: container)).to be_nil
+      end
+    end
+
+    context 'when chat is not allowed' do
+      let(:allowed) { false }
+
+      context 'with a group' do
+        it 'returns group' do
+          expect(described_class.chat_disabled_reason(user: user, container: container)).to be(:group)
+        end
+      end
+
+      context 'with a project' do
+        let(:container) { build_stubbed(:project) }
+
+        it 'returns project' do
+          expect(described_class.chat_disabled_reason(user: user, container: container)).to be(:project)
+        end
+      end
+
+      context 'without a container' do
+        let(:container) { nil }
+
+        it 'returns nil' do
+          expect(described_class.chat_disabled_reason(user: user, container: container)).to be_nil
+        end
+      end
+    end
+  end
+
+  describe '.credits_available?' do
+    let_it_be(:project) { create(:project) }
+    let_it_be(:group) { create(:group) }
+
+    context 'when user is nil' do
+      it 'returns false' do
+        expect(described_class.credits_available?(user: nil, project: project, group: group)).to be_falsy
+      end
+    end
+
+    context 'when required params are present' do
+      before do
+        allow_next_instance_of(::Ai::UsageQuotaService) do |service|
+          allow(service).to receive(:execute).and_return(ServiceResponse.success)
+        end
+      end
+
+      it 'calls service' do
+        expect(described_class.credits_available?(user: user, project: project)).to be_truthy
+      end
+    end
+
+    context 'when service returns an error' do
+      context 'when no default namespace exists' do
+        before do
+          allow_next_instance_of(::Ai::UsageQuotaService) do |service|
+            allow(service).to receive(:execute).and_return(ServiceResponse.error(reason: :namespace_missing,
+              message: "No namespace"))
+          end
+        end
+
+        it 'returns false' do
+          expect(described_class.credits_available?(user: user, project: project)).to be_falsey
+        end
+      end
+
+      context 'when billing error returned' do
+        before do
+          allow_next_instance_of(::Ai::UsageQuotaService) do |service|
+            allow(service).to receive(:execute).and_return(ServiceResponse.error(reason: :usage_quota_exceeded,
+              message: "Billing error"))
+          end
+        end
+
+        it 'returns false' do
+          expect(described_class.credits_available?(user: user, project: project)).to be_falsey
+        end
+      end
+    end
+  end
+
+  describe '.resource_id' do
+    let(:issue) { build_stubbed(:issue) }
+
+    context 'with current context including resource_id' do
+      before do
+        Gitlab::ApplicationContext.push(ai_resource: issue.to_global_id)
+      end
+
+      it 'returns the ai_resource from the current context' do
+        expect(described_class.resource_id).to eq(issue.to_global_id)
+      end
+    end
+
+    context 'with current context not including resource_id' do
+      it 'returns nil when ai_resource is not present in the context' do
+        expect(described_class.resource_id).to be_nil
+      end
+    end
+  end
+
+  describe '.project_id' do
+    let_it_be(:project) { create(:project) }
+
+    context 'with current context including project_id' do
+      before do
+        ::Gitlab::ApplicationContext.push(project: project)
+      end
+
+      it 'returns the global ID of the project when found' do
+        expect(described_class.project_id).to eq(project.to_global_id)
+      end
+    end
+
+    context 'when project is not found' do
+      before do
+        ::Gitlab::ApplicationContext.push(project: 'non_existent_project')
+      end
+
+      it 'returns nil' do
+        expect(described_class.project_id).to be_nil
+      end
+    end
+
+    context 'when project is not present in the context' do
+      it 'returns nil' do
+        expect(described_class.project_id).to be_nil
+      end
+    end
+  end
+
+  describe '.namespace' do
+    let_it_be(:group) { create(:group) }
+
+    context 'when root_namespace is present in context' do
+      it 'returns the group found by full_path' do
+        result = ::Gitlab::ApplicationContext.with_raw_context(root_namespace: group.full_path) do
+          described_class.namespace
+        end
+
+        expect(result).to eq(group)
+      end
+    end
+
+    context 'when root_namespace is not present in context' do
+      it 'returns nil' do
+        expect(described_class.namespace).to be_nil
+      end
+    end
+
+    context 'when root_namespace path does not exist' do
+      it 'returns nil' do
+        result = ::Gitlab::ApplicationContext.with_raw_context(root_namespace: 'non_existent_path') do
+          described_class.namespace
+        end
+
+        expect(result).to be_nil
+      end
+    end
+
+    context 'when root_namespace is empty string' do
+      it 'returns nil' do
+        result = ::Gitlab::ApplicationContext.with_raw_context(root_namespace: '') do
+          described_class.namespace
+        end
+
+        expect(result).to be_nil
+      end
+    end
+  end
+
+  describe '.default_duo_namespace' do
+    let(:default_namespace) { create(:group) }
+
+    it 'returns nil when user is not present' do
+      expect(described_class.default_duo_namespace(user: nil)).to be_nil
+    end
+
+    it 'returns the default duo namespace from user preference' do
+      allow(user.user_preference).to receive(:duo_default_namespace_with_fallback).and_return(default_namespace)
+
+      expect(described_class.default_duo_namespace(user: user)).to eq(default_namespace)
+    end
+
+    it 'returns nil when user preference has no default namespace' do
+      allow(user.user_preference).to receive(:duo_default_namespace_with_fallback).and_return(nil)
+
+      expect(described_class.default_duo_namespace(user: user)).to be_nil
+    end
+  end
+
+  describe 'default_duo_namespace_check_passes?' do
+    subject(:namespace_check) { described_class.default_duo_namespace_check_passes?(user: user) }
+
+    context 'for SaaS' do
+      before do
+        stub_saas_features(gitlab_com_subscriptions: true)
+      end
+
+      context 'when a default namespace exists' do
+        let(:default_namespace) { create(:group) }
+
+        before do
+          allow(user.user_preference).to receive(:duo_default_namespace_with_fallback).and_return(default_namespace)
+        end
+
+        it 'passes the check' do
+          is_expected.to be_truthy
+        end
+      end
+
+      context 'when a default namespace does not exist' do
+        it 'fails the check' do
+          is_expected.to be_falsey
+        end
+      end
+    end
+
+    context 'for self-managed' do
+      it 'passes the check' do
+        is_expected.to be_truthy
+      end
+    end
+  end
+
+  describe '.root_namespace_id' do
+    let_it_be(:group) { create(:group) }
+    let_it_be(:subgroup) { create(:group, parent: group) }
+    let_it_be(:project) { create(:project, namespace: subgroup) }
+
+    context 'when scope is a group' do
+      it 'returns the global ID of the root ancestor' do
+        expect(described_class.root_namespace_id(subgroup)).to eq(group.to_global_id)
+      end
+    end
+
+    context 'when scope is a project' do
+      it 'returns the global ID of the root ancestor' do
+        expect(described_class.root_namespace_id(project)).to eq(group.to_global_id)
+      end
+    end
+
+    context 'when scope is nil' do
+      it 'returns nil' do
+        expect(described_class.root_namespace_id(nil)).to be_nil
+      end
+    end
+  end
+
+  describe '.user_model_selection_enabled?' do
+    let_it_be(:group) { create(:group) }
+    let_it_be(:subgroup) { create(:group, parent: group) }
+
+    context 'when scope is present' do
+      subject(:result) { described_class.user_model_selection_enabled?(user: user, scope: subgroup) }
+
+      context 'when root namespace is present' do
+        before do
+          allow_next_instance_of(Ai::FeatureSettingSelectionService) do |service|
+            allow(service).to receive(:execute).and_return(service_response)
+          end
+        end
+
+        context 'when the feature setting returns ai_feature_setting payload' do
+          let(:payload) { build(:ai_feature_setting, feature: :duo_agent_platform) }
+          let(:service_response) { ServiceResponse.success(payload: payload) }
+
+          it { is_expected.to be_falsey }
+        end
+
+        context 'when the feature setting returns instance_model_selection_feature_setting payload' do
+          let(:payload) { build(:instance_model_selection_feature_setting, feature: :duo_agent_platform) }
+          let(:service_response) { ServiceResponse.success(payload: payload) }
+
+          it { is_expected.to be_truthy }
+        end
+
+        context 'when the feature setting returns ai_namespace_feature_setting payload' do
+          let(:payload) { build(:ai_namespace_feature_setting, namespace: group, feature: :duo_agent_platform) }
+          let(:service_response) { ServiceResponse.success(payload: payload) }
+
+          it { is_expected.to be_truthy }
+        end
+
+        context 'when the feature setting service returns an error' do
+          let(:service_response) { ServiceResponse.error(message: "error!") }
+
+          it { is_expected.to be_falsey }
+        end
+      end
+    end
+
+    context 'when scope is nil' do
+      subject(:result) { described_class.user_model_selection_enabled?(user: user, scope: nil) }
+
+      it { is_expected.to be_falsey }
+    end
+  end
+
+  describe '.duo_scope_hash' do
+    using RSpec::Parameterized::TableSyntax
+
+    let_it_be(:project) { create(:project) }
+    let_it_be(:group) { create(:group) }
+    let_it_be(:default_namespace) { create(:group) }
+    let(:non_persisted_project) { build(:project) }
+    let(:non_persisted_group) { build(:group) }
+
+    before do
+      allow(user.user_preference).to receive(:duo_default_namespace_with_fallback).and_return(default_namespace)
+    end
+
+    where(:controller_name, :project_param, :group_param, :expected_result) do
+      'search' | ref(:project)                | ref(:group)                | { namespace: ref(:default_namespace) }
+      'search' | nil                          | ref(:group)                | { namespace: ref(:default_namespace) }
+      'note'   | ref(:project)                | ref(:group)                | { project: ref(:project) }
+      'note'   | ref(:non_persisted_project)  | ref(:group)                | { namespace: ref(:group) }
+      'note'   | nil                          | ref(:group)                | { namespace: ref(:group) }
+      'note'   | ref(:non_persisted_project)  | ref(:non_persisted_group)  | { namespace: ref(:default_namespace) }
+      'note'   | nil                          | nil                        | { namespace: ref(:default_namespace) }
+    end
+
+    with_them do
+      it 'returns the expected scope hash' do
+        expect(described_class.duo_scope_hash(user, project_param, group_param, controller_name))
+          .to eq(expected_result)
+      end
+    end
+  end
+end
