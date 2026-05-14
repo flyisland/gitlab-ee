@@ -1,0 +1,113 @@
+@import 'page_bundles/mixins_and_variables_and_functions';
+
+// --- Frosted glass panels ---
+// Translucent backgrounds with backdrop-filter blur used by overlays and
+// sidebars. These have no Tailwind equivalents (rgba alpha + backdrop-filter).
+
+.orbit-frosted-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(12px);
+
+  // stylelint-disable-next-line gitlab/no-gl-class
+  .gl-dark & {
+    background: rgba(10, 10, 18, 0.92);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: $white;
+  }
+}
+
+// --- Hero banner gradient ---
+
+.explorer-hero-banner {
+  background: linear-gradient(90deg, rgba(83, 46, 22, 0.4) 0%, rgba(52, 45, 89, 0.35) 100%),
+    var(--gl-background-color-default, #18171d);
+  border-color: rgba(246, 128, 109, 0.3);
+}
+
+// --- Schema detail panel columns ---
+
+.schema-detail-col-type {
+  width: 70px;
+}
+
+.schema-detail-col-nullable {
+  width: 60px;
+  text-align: right;
+}
+
+.schema-detail-header {
+  border-bottom: 1px solid var(--gl-border-color-default);
+}
+
+.schema-detail-row {
+  border-bottom: 1px solid var(--gl-border-color-subtle, rgba(255, 255, 255, 0.05));
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+// --- Node detail overlay type label ---
+
+.node-detail-type-label {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+// --- Onboarding panel ---
+
+.orbit-hero-heading {
+  font-size: 30px;
+}
+
+.orbit-visual-placeholder {
+  min-height: 500px;
+}
+
+.orbit-onboarding-panel {
+  background: linear-gradient(180deg, rgba(83, 46, 22, 0.3) 0%, rgba(52, 45, 89, 0.3) 100%),
+    var(--gl-background-color-default, #18171d);
+  border-color: var(--gl-border-color-danger, #f6806d);
+}
+
+// --- Query panel: Monaco editor overrides ---
+// SourceEditor defaults to 500px height via framework/source_editor.scss.
+// Orbit sets use-dynamic-height=false and needs the editor to fill its
+// flex container instead. The dark mode background overrides align Monaco
+// with the gl-dark theme.
+
+.explorer-query-panel {
+  flex: 0 0 45%;
+  max-width: 45%;
+
+  .editor-wrapper {
+    position: relative;
+    overflow: hidden;
+
+    [id^='source-editor-'],
+    [id^='source-editor-'] .monaco-editor,
+    [id^='source-editor-'] .monaco-editor .overflow-guard {
+      height: 100% !important;
+    }
+
+    .monaco-editor .line-numbers {
+      padding-right: 8px !important;
+    }
+  }
+
+  // stylelint-disable-next-line gitlab/no-gl-class
+  .gl-dark & .editor-wrapper {
+    .monaco-editor,
+    .monaco-editor .overflow-guard,
+    .monaco-scrollable-element,
+    .monaco-editor .margin {
+      background: #1e1e1e !important;
+    }
+
+    .monaco-editor .line-numbers {
+      color: $gray-400 !important;
+      padding-right: 8px !important;
+    }
+  }
+}

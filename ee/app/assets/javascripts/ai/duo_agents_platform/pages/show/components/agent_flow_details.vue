@@ -1,0 +1,175 @@
+<script>
+import { GlCollapse, GlTooltipDirective } from '@gitlab/ui';
+import isMaximizedQuery from 'ee/ai/graphql/get_ai_panel_is_maximized.query.graphql';
+import infoToggleStatesQuery from 'ee/ai/graphql/get_ai_panel_info_toggle_states.query.graphql';
+import NoCreditsBanner from '../../../components/common/no_credits_banner.vue';
+import AgentFlowHeader from './agent_flow_header.vue';
+import AgentFlowInfo from './agent_flow_info.vue';
+import AgentActivityLogs from './agent_activity_logs.vue';
+
+export default {
+  name: 'AgentFlowDetails',
+  components: {
+    AgentFlowHeader,
+    AgentFlowInfo,
+    AgentActivityLogs,
+    NoCreditsBanner,
+    GlCollapse,
+  },
+  directives: {
+    GlTooltip: GlTooltipDirective,
+  },
+  inject: {
+    isSidePanelView: { default: false },
+    creditsAvailable: { default: true },
+  },
+  props: {
+    isLoading: {
+      required: true,
+      type: Boolean,
+    },
+    status: {
+      required: true,
+      type: String,
+    },
+    humanStatus: {
+      required: true,
+      type: String,
+    },
+    agentFlowDefinition: {
+      required: true,
+      type: String,
+    },
+    duoMessages: {
+      type: Array,
+      required: true,
+    },
+    executorUrl: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    createdAt: {
+      type: String,
+      required: true,
+    },
+    updatedAt: {
+      type: String,
+      required: true,
+    },
+    project: {
+      type: Object,
+      required: true,
+    },
+    userId: {
+      type: String,
+      required: true,
+    },
+    workflowId: {
+      type: String,
+      required: true,
+    },
+    canUpdateWorkflow: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  emits: ['cancel-session'],
+  apollo: {
+    isMaximized: {
+      query: isMaximizedQuery,
+      result({ data }) {
+        this.isMaximized = data?.isMaximized ?? false;
+      },
+    },
+    infoToggleStates: {
+      query: infoToggleStatesQuery,
+      result({ data }) {
+        this.infoToggleStates = data?.infoToggleStates ?? {};
+      },
+    },
+  },
+  data() {
+    return {
+      isMaximized: false,
+      infoToggleStates: {},
+    };
+  },
+  computed: {
+    collapseId() {
+      return `agent-flow-info-collapse-${this.workflowId}`;
+    },
+    isInfoVisible() {
+      if (!this.isSidePanelView) {
+        return false;
+      }
+      return this.infoToggleStates[`ai_panel:${this.workflowId}`] ?? false;
+    },
+    agentFlowInfoProps() {
+      return {
+        isLoading: this.isLoading,
+        status: this.status,
+        humanStatus: this.humanStatus,
+        agentFlowDefinition: this.agentFlowDefinition,
+        createdAt: this.createdAt,
+        project: this.project,
+        updatedAt: this.updatedAt,
+        executorUrl: this.executorUrl,
+        workflowId: this.workflowId,
+        userId: this.userId,
+        canUpdateWorkflow: this.canUpdateWorkflow,
+      };
+    },
+  },
+};
+</script>
+<template>
+  <div>
+    <agent-flow-header
+      v-if="!isSidePanelView"
+      :is-loading="isLoading"
+      :agent-flow-definition="agentFlowDefinition"
+    />
+    <no-credits-banner v-if="!creditsAvailable" />
+    <div
+      class="gl-flex"
+      :class="{
+        'gl-flex-col-reverse gl-justify-between xl:gl-flex-row': !isSidePanelView,
+        'gl-flex-col': isSidePanelView && !isMaximized,
+        'gl-flex-col gl-justify-end lg:gl-flex-row-reverse': isSidePanelView && isMaximized,
+      }"
+      data-testid="agent-flow-details-wrapper"
+    >
+      <gl-collapse
+        v-if="isSidePanelView"
+        :id="collapseId"
+        ref="infoCollapse"
+        :class="{ 'lg:gl-min-w-[30%]': isMaximized }"
+        :visible="isInfoVisible"
+      >
+        <agent-flow-info
+          class="gl-mt-3"
+          :class="{ 'lg:gl-border-l': isSidePanelView && isMaximized, 'gl-border-b': !isMaximized }"
+          v-bind="agentFlowInfoProps"
+          @cancel-session="$emit('cancel-session')"
+        />
+      </gl-collapse>
+      <agent-activity-logs
+        class="gl-overflow-auto"
+        :class="{ 'lg:gl-min-w-[70%]': !isSidePanelView || isMaximized }"
+        :is-loading="isLoading"
+        :duo-messages="duoMessages"
+        :created-at="createdAt"
+        :status="status"
+        :updated-at="updatedAt"
+        :user-id="userId"
+      />
+      <agent-flow-info
+        v-if="!isSidePanelView"
+        class="gl-border-b gl-mt-3 gl-min-w-[30%] gl-pt-3 xl:gl-border-l xl:gl-border-b-0"
+        v-bind="agentFlowInfoProps"
+        @cancel-session="$emit('cancel-session')"
+      />
+    </div>
+  </div>
+</template>

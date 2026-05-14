@@ -1,0 +1,12 @@
+---
+name: mcp_semantic_code_search_use_rest_api
+description: Use the REST API endpoint as the MCP tool for semantic_code_search instead
+  of the custom SemanticCodeSearchService, to evaluate parity before sunsetting the
+  service
+feature_issue_url: https://gitlab.com/groups/gitlab-org/-/work_items/21285
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228569
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/594555
+milestone: '18.11'
+group: group::global search
+type: development
+default_enabled: false

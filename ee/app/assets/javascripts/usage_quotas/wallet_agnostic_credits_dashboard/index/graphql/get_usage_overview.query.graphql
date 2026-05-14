@@ -1,0 +1,74 @@
+# @feature_category: consumables_cost_management
+
+#import "~/graphql_shared/fragments/page_info.fragment.graphql"
+
+query subscriptionCreditsUsage(
+  $namespacePath: ID
+  $productsListFirst: Int
+  $productsListLast: Int
+  $productsListAfter: String
+  $productsListBefore: String
+  $usersListFirst: Int
+  $usersListLast: Int
+  $usersListAfter: String
+  $usersListBefore: String
+) {
+  subscriptionCreditsUsage(
+    namespacePath: $namespacePath # SaaS subscription root group
+  ) @client {
+    lastEventTransactionAt
+    startDate
+    endDate
+
+    creditsUsed
+    dailyAverage
+
+    peakDay {
+      creditsUsed
+      date
+    }
+
+    dailyUsage {
+      creditsUsed
+      date
+    }
+
+    users(
+      first: $usersListFirst
+      last: $usersListLast
+      after: $usersListAfter
+      before: $usersListBefore
+    ) {
+      totalCount
+      nodes {
+        id
+        name
+        username
+        avatarUrl
+        usage {
+          totalCreditsUsed
+        }
+      }
+      pageInfo {
+        ...PageInfo
+      }
+    }
+
+    products(
+      first: $productsListFirst
+      last: $productsListLast
+      after: $productsListAfter
+      before: $productsListBefore
+    ) {
+      nodes {
+        id
+        name
+        category
+        creditsUsed
+      }
+      pageInfo {
+        ...PageInfo
+      }
+    }
+  }
+}

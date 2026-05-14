@@ -1,0 +1,367 @@
+import { nextTick } from 'vue';
+import { noop } from 'lodash-es';
+import {
+  GlForm,
+  GlFormCheckboxGroup,
+  GlFormGroup,
+  GlFormRadioGroup,
+  GlModal,
+  GlSprintf,
+} from '@gitlab/ui';
+import { shallowMountExtended } from 'helpers/vue_test_utils_helper';
+import { stubComponent } from 'helpers/stub_component';
+import AiCatalogItemConsumerModal from 'ee/ai/catalog/components/ai_catalog_item_consumer_modal.vue';
+import FormProjectDropdown from 'ee/ai/catalog/components/form_project_dropdown.vue';
+import AiCatalogItemConsumerWarning from 'ee/ai/catalog/components/ai_catalog_item_consumer_warning.vue';
+import {
+  AI_CATALOG_TYPE_AGENT,
+  AI_CATALOG_TYPE_FLOW,
+  AI_CATALOG_TYPE_THIRD_PARTY_FLOW,
+} from 'ee/ai/catalog/constants';
+import { mockFlow, mockAgent, mockProjectWithGroup } from '../mock_data';
+
+const mockProjectWithGroupExtended = {
+  ...mockProjectWithGroup,
+  name: 'Project 1',
+  nameWithNamespace: 'Group-1 / Project 1',
+  fullPath: 'group-1/project-1',
+  rootGroup: {
+    ...mockProjectWithGroup.rootGroup,
+    fullPath: 'group-1',
+  },
+};
+
+describe('AiCatalogItemConsumerModal', () => {
+  let wrapper;
+
+  const defaultProps = {
+    item: mockFlow,
+  };
+  const GlFormGroupStub = stubComponent(GlFormGroup, {
+    props: ['state', 'labelDescription'],
+  });
+
+  const createWrapper = ({ props = {}, provide = {} } = {}) => {
+    wrapper = shallowMountExtended(AiCatalogItemConsumerModal, {
+      propsData: {
+        ...defaultProps,
+        ...props,
+      },
+      provide: {
+        isProjectNamespace: false,
+        ...provide,
+      },
+      stubs: {
+        GlSprintf,
+        GlFormGroup: GlFormGroupStub,
+      },
+    });
+  };
+
+  const findModal = () => wrapper.findComponent(GlModal);
+  const findForm = () => wrapper.findComponent(GlForm);
+  const findFormGroup = () => wrapper.findComponent(GlFormGroup);
+  const findFormRadioGroup = () => wrapper.findComponent(GlFormRadioGroup);
+  const findErrorAlert = () => wrapper.findByTestId('error-alert');
+  const findPrivateAlert = () => wrapper.findByTestId('private-alert');
+  const findSingleProjectDropdown = () => wrapper.findByTestId('project-dropdown');
+  const findProjectDropdown = () => wrapper.findComponent(FormProjectDropdown);
+  const findProjectName = () => wrapper.findByTestId('project-name');
+  const findTriggers = () => wrapper.findComponent(GlFormCheckboxGroup);
+
+  describe('component rendering', () => {
+    describe('default', () => {
+      beforeEach(() => {
+        createWrapper();
+      });
+
+      it('renders modal and item name', () => {
+        expect(findModal().props('title')).toBe('Enable flow in your project');
+        expect(findModal().find('dt').text()).toBe('Selected flow');
+        expect(findModal().find('dd').text()).toBe(mockFlow.name);
+      });
+
+      it('does not render group/project radio group', () => {
+        expect(findFormRadioGroup().exists()).toBe(false);
+      });
+
+      it('renders the label description of the project field', () => {
+        expect(findFormGroup().props('labelDescription')).toBe(
+          'Members of the selected project will be able to use the flow.',
+        );
+      });
+
+      describe.each`
+        itemType
+        ${AI_CATALOG_TYPE_AGENT}
+        ${AI_CATALOG_TYPE_FLOW}
+        ${AI_CATALOG_TYPE_THIRD_PARTY_FLOW}
+      `('when the selected item type is $itemType', ({ itemType }) => {
+        it('renders the warning component with correct itemType prop', () => {
+          const item = {
+            ...mockFlow,
+            itemType,
+          };
+          createWrapper({ props: { item } });
+
+          const warningComponent = wrapper.findComponent(AiCatalogItemConsumerWarning);
+          expect(warningComponent.exists()).toBe(true);
+          expect(warningComponent.props('itemType')).toBe(itemType);
+        });
+      });
+    });
+
+    describe('when the item is private', () => {
+      beforeEach(() => {
+        createWrapper({
+          props: { item: { ...mockFlow, public: false, project: mockProjectWithGroupExtended } },
+        });
+      });
+
+      it('renders private alert', () => {
+        expect(findPrivateAlert().exists()).toBe(true);
+      });
+
+      it('renders project name instead of dropdown', () => {
+        expect(findProjectName().text()).toBe(mockProjectWithGroupExtended.nameWithNamespace);
+        expect(findProjectDropdown().exists()).toBe(false);
+      });
+    });
+
+    describe('when item is private but has missing project ID', () => {
+      beforeEach(() => {
+        createWrapper({
+          props: {
+            item: {
+              ...mockFlow,
+              public: false,
+              project: { id: undefined, nameWithNamespace: 'projectNamespace' },
+            },
+          },
+        });
+      });
+
+      it('does not render error alert due to missing project', () => {
+        expect(findErrorAlert().exists()).toBe(false);
+      });
+
+      it('does not submit when missing project id', () => {
+        findForm().vm.$emit('submit', { preventDefault: noop });
+
+        expect(wrapper.emitted('submit')).toBeUndefined();
+      });
+    });
+
+    describe('when the item is public', () => {
+      beforeEach(() => {
+        createWrapper();
+      });
+
+      it('renders project dropdown without a selected project', () => {
+        expect(findProjectName().exists()).toBe(false);
+        expect(findProjectDropdown().props('value')).toBe(null);
+      });
+
+      it('does not render the error validation initially', () => {
+        expect(findFormGroup().props('state')).toBe(true);
+      });
+
+      it('renders alert when there was a problem fetching the projects', async () => {
+        const error = 'Failed to load projects.';
+
+        await findProjectDropdown().vm.$emit('error', error);
+
+        expect(findErrorAlert().text()).toBe(error);
+      });
+
+      it('does not render private alert', () => {
+        expect(findPrivateAlert().exists()).toBe(false);
+      });
+    });
+
+    describe('when the item is public and within project namespace', () => {
+      beforeEach(() => {
+        createWrapper({
+          props: {
+            item: { ...mockFlow, project: mockProjectWithGroupExtended },
+          },
+          provide: {
+            isProjectNamespace: true,
+          },
+        });
+      });
+
+      it('does not render private alert', () => {
+        expect(findPrivateAlert().exists()).toBe(false);
+      });
+
+      it('renders project dropdown with a selected project', () => {
+        expect(findProjectName().exists()).toBe(false);
+        expect(findProjectDropdown().props('value')).toBe(mockProjectWithGroupExtended.id);
+      });
+    });
+  });
+
+  describe('when submitting the form', () => {
+    it('emits the submit event', async () => {
+      createWrapper();
+
+      const projectId = 'gid://gitlab/Project/1000000';
+      await findProjectDropdown().vm.$emit('input', projectId);
+      findForm().vm.$emit('submit', { preventDefault: noop });
+
+      expect(wrapper.emitted('submit')[0][0]).toStrictEqual({
+        target: { projectId },
+        triggerTypes: ['mention', 'assign', 'assign_reviewer'],
+      });
+    });
+
+    describe('when there is no project selected', () => {
+      beforeEach(() => {
+        createWrapper({
+          props: {
+            item: { ...mockFlow, project: null },
+          },
+        });
+      });
+
+      it('renders alert', async () => {
+        findForm().vm.$emit('submit', { preventDefault: noop });
+        await nextTick();
+
+        expect(wrapper.emitted('submit')).toBeUndefined();
+        expect(findFormGroup().props('state')).toBe(false);
+      });
+    });
+  });
+
+  describe('when the modal emits the hidden event', () => {
+    beforeEach(() => {
+      createWrapper();
+    });
+
+    it('emits the hide event', () => {
+      findModal().vm.$emit('hidden');
+
+      expect(wrapper.emitted('hide')).toHaveLength(1);
+    });
+
+    it('resets form state', async () => {
+      const projectId = 'gid://gitlab/Project/1000000';
+      await findProjectDropdown().vm.$emit('input', projectId);
+      await findProjectDropdown().vm.$emit('error', 'Some error');
+
+      findModal().vm.$emit('hidden');
+      await nextTick();
+
+      expect(wrapper.vm.projectId).toBe(null);
+      expect(wrapper.vm.error).toBe(null);
+      expect(wrapper.vm.isDirty).toBe(false);
+    });
+  });
+
+  describe('when user does not have permission to enable a private item', () => {
+    beforeEach(() => {
+      createWrapper({
+        props: {
+          item: { ...mockFlow, project: mockProjectWithGroupExtended, public: false },
+          canEnable: false,
+        },
+      });
+    });
+
+    it('renders project name instead of dropdown', () => {
+      expect(findProjectName().text()).toBe(mockProjectWithGroupExtended.nameWithNamespace);
+      expect(findProjectDropdown().exists()).toBe(false);
+    });
+  });
+
+  describe('when user has permission to enable a private item', () => {
+    beforeEach(() => {
+      createWrapper({
+        props: {
+          item: { ...mockFlow, project: mockProjectWithGroupExtended, public: false },
+          canEnable: true,
+        },
+      });
+    });
+
+    it('renders project name instead of dropdown', () => {
+      expect(findProjectName().text()).toBe(mockProjectWithGroupExtended.nameWithNamespace);
+      expect(findProjectDropdown().exists()).toBe(false);
+    });
+  });
+
+  describe('when user has permission to enable a public item', () => {
+    beforeEach(() => {
+      createWrapper({
+        props: {
+          item: { ...mockFlow, project: mockProjectWithGroupExtended },
+          canEnable: true,
+        },
+      });
+    });
+
+    it('renders project dropdown without a selected project', () => {
+      expect(findProjectName().exists()).toBe(false);
+      expect(findSingleProjectDropdown().props('value')).toBe(null);
+    });
+
+    it('renders trigger selection for flows', () => {
+      expect(findTriggers().exists()).toBe(true);
+    });
+
+    it('emits submit event with triggerTypes for flows', async () => {
+      const projectId = 'gid://gitlab/Project/1';
+
+      await findSingleProjectDropdown().vm.$emit('input', projectId);
+      findForm().vm.$emit('submit', { preventDefault: noop });
+
+      expect(wrapper.emitted('submit')[0][0]).toStrictEqual({
+        target: { projectId },
+        triggerTypes: ['mention', 'assign', 'assign_reviewer'],
+      });
+    });
+
+    it('does not submit when all triggers are deselected', async () => {
+      const projectId = 'gid://gitlab/Project/1';
+
+      await findSingleProjectDropdown().vm.$emit('input', projectId);
+      await findTriggers().vm.$emit('input', []);
+      findForm().vm.$emit('submit', { preventDefault: noop });
+      await nextTick();
+
+      expect(wrapper.emitted('submit')).toBeUndefined();
+    });
+  });
+
+  describe('when user has permission to enable a public agent', () => {
+    beforeEach(() => {
+      createWrapper({
+        props: {
+          item: { ...mockAgent, project: mockProjectWithGroupExtended },
+          canEnable: true,
+        },
+      });
+    });
+
+    it('does not render trigger selection for agents', () => {
+      expect(findTriggers().exists()).toBe(false);
+    });
+  });
+
+  describe('when user does not have permission to enable a public flow', () => {
+    beforeEach(() => {
+      createWrapper({
+        props: {
+          item: { ...mockFlow, project: mockProjectWithGroupExtended },
+          canEnable: false,
+        },
+      });
+    });
+
+    it('does not render trigger selection', () => {
+      expect(findTriggers().exists()).toBe(false);
+    });
+  });
+});

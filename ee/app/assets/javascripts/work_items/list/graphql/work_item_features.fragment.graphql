@@ -1,0 +1,38 @@
+#import "~/work_items/list/graphql/base_work_item_features.fragment.graphql"
+#import "./work_item_feature_status.fragment.graphql"
+
+fragment WorkItemFeatures on WorkItemFeatures {
+  ...BaseWorkItemFeatures
+  startAndDueDate {
+    dueDate
+    startDate
+    rollUp
+    isFixed
+  }
+  healthStatus {
+    healthStatus
+  }
+  weight {
+    weight
+  }
+  linkedItems {
+    blockedByCount
+    blockingCount
+  }
+  iteration {
+    iteration {
+      id
+      title
+      startDate
+      dueDate
+      webUrl
+      iterationCadence {
+        id
+        title
+      }
+    }
+  }
+  status {
+    ...WorkItemFeatureStatus
+  }
+}

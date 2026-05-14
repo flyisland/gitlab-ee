@@ -1,0 +1,44 @@
+# @feature_category: ai_agents
+
+query getAgentArtifacts(
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+  $name: String
+  $not: AiItemsNegatedFilterInput
+) {
+  aiItems(after: $after, before: $before, first: $first, last: $last, name: $name, not: $not)
+    @client {
+    count
+    nodes {
+      id
+      name
+      session {
+        id
+        webPath
+      }
+      auditEvents {
+        count
+      }
+      creditsUsed
+      project {
+        id
+        name
+        webPath
+      }
+      startTime
+      latestCheckpoint {
+        duoMessages {
+          content
+        }
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}

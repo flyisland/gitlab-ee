@@ -1,0 +1,73 @@
+# frozen_string_literal: true
+
+module Resolvers
+  module Ai
+    class FoundationalChatAgentsResolver < BaseResolver
+      description 'AI foundational chat agents.'
+
+      type ::Types::Ai::FoundationalChatAgentType.connection_type, null: true
+
+      argument :project_id, ::Types::GlobalIDType[Project],
+        required: false,
+        description: 'Global ID of the project where the chat is present.'
+
+      argument :namespace_id, ::Types::GlobalIDType[::Namespace],
+        required: false,
+        description: 'Global ID of the namespace where the chat is present.'
+
+      def resolve(*, project_id: nil, namespace_id: nil)
+        enabled_agents = if ::Gitlab::Saas.feature_available?(:gitlab_com_subscriptions)
+                           enabled_foundational_agents_in_namespace(
+                             resolve_namespace(current_user, namespace_id, project_id),
+                             current_user
+                           )
+                         else
+                           enabled_foundational_agents_in_organization(
+                             ::Organizations::Organization.default_organization
+                           )
+                         end
+
+        enabled_agents.sort_by(&:id)
+      end
+
+      private
+
+      def resolve_namespace(current_user, namespace_id, project_id)
+        return unless current_user
+
+        current_root_namespace = find_object(project_id || namespace_id)&.root_ancestor
+        current_user.governing_namespace(current_root_namespace)
+      end
+
+      def enabled_foundational_agents_in_namespace(namespace, current_user)
+        unless namespace && Ability.allowed?(current_user, :read_namespace, namespace)
+          return ::Ai::FoundationalChatAgent.only_duo_chat_agent
+        end
+
+        agents = namespace.enabled_foundational_agents
+
+        return agents if namespace.licensed_feature_available?(:ai_catalog)
+
+        agents.reject(&:ultimate_only)
+      end
+
+      def enabled_foundational_agents_in_organization(organization)
+        agents = organization.enabled_foundational_agents
+
+        return agents.reject(&:ultimate_only) if sm_gitlab_credits_dap_access?
+
+        agents
+      end
+
+      def sm_gitlab_credits_dap_access?
+        ::GitlabSubscriptions::AddOnPurchase.for_gitlab_credits.for_self_managed.active.exists?
+      end
+
+      def find_object(id)
+        return unless id
+
+        ::Gitlab::Graphql::Lazy.force(GitlabSchema.object_from_id(id))
+      end
+    end
+  end
+end

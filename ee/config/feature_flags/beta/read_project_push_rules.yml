@@ -1,0 +1,10 @@
+---
+name: read_project_push_rules
+description: read project push rules from project_push_rules table
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/588805
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225456
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/588979
+milestone: '18.10'
+group: group::source code
+type: beta
+default_enabled: false

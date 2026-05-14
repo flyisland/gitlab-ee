@@ -1,0 +1,28 @@
+# @feature_category: security_policy_management
+query projectPolicyTestRuns($fullPath: ID!, $first: Int = 10) {
+  namespace: project(fullPath: $fullPath) {
+    id
+    securityPolicies(type: PIPELINE_EXECUTION_SCHEDULE_POLICY, relationship: DIRECT) {
+      nodes {
+        id
+        name
+        testRuns(first: $first) {
+          nodes {
+            id
+            state
+            startedAt
+            finishedAt
+            duration
+            errorMessage
+            createdAt
+            project {
+              id
+              fullPath
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}

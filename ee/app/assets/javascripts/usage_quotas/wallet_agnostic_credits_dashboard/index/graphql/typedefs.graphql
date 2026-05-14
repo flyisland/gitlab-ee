@@ -1,0 +1,57 @@
+extend type Query {
+  subscriptionCreditsUsage(namespacePath: ID): SubscriptionCreditsUsage
+}
+
+type SubscriptionCreditsUsage {
+  lastEventTransactionAt: String
+  startDate: String
+  endDate: String
+
+  creditsUsed: Float
+  dailyAverage: Float
+  peakDay: SubscriptionCreditsDailyUsage
+  dailyUsage: [SubscriptionCreditsDailyUsage]
+  products(
+    first: Int
+    last: Int
+    after: String
+    before: String
+  ): SubscriptionCreditsProductConnection
+  users(first: Int, last: Int, after: String, before: String): SubscriptionCreditsUserConnection
+}
+
+type SubscriptionCreditsDailyUsage {
+  creditsUsed: Float
+  date: String
+}
+
+type SubscriptionCreditsProductConnection {
+  nodes: [SubscriptionCreditsProduct]
+  pageInfo: PageInfo
+}
+
+type SubscriptionCreditsProduct {
+  id: ID
+  name: String
+  category: String
+  creditsUsed: Int
+}
+
+type SubscriptionCreditsUserConnection {
+  totalCount: Int
+  nodes: [SubscriptionCreditsUser]
+  pageInfo: PageInfo
+}
+
+type SubscriptionCreditsUser {
+  id: ID
+  name: String
+  username: String
+  avatarUrl: String
+  usage: SubscriptionCreditsUserUsage
+  maxRole: String
+}
+
+type SubscriptionCreditsUserUsage {
+  totalCreditsUsed: Float
+}

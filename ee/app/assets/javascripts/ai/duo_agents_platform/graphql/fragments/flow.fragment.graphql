@@ -1,0 +1,28 @@
+fragment FlowFragment on DuoWorkflow {
+  id
+  status
+  humanStatus
+  createdAt
+  updatedAt
+  workflowDefinition
+  userId
+  latestCheckpoint {
+    duoMessages {
+      content
+      messageType
+    }
+  }
+  userPermissions {
+    updateDuoWorkflow
+  }
+  project {
+    id
+    name
+    webUrl
+    namespace {
+      id
+      name
+      webUrl
+    }
+  }
+}

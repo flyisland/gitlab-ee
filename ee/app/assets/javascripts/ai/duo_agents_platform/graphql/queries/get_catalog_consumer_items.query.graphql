@@ -1,0 +1,11 @@
+query getCatalogConsumerItems($projectId: ProjectID!, $itemTypes: [AiCatalogItemType!]) {
+  aiCatalogConfiguredItems(projectId: $projectId, itemTypes: $itemTypes) {
+    nodes {
+      id
+      item {
+        id
+        name
+      }
+    }
+  }
+}

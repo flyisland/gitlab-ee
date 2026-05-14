@@ -1,0 +1,21 @@
+---
+description: User triggers validation input error when entering monthly credit amount
+internal_events: true
+status: active
+action: error_input_quantity
+identifiers:
+  - namespace
+  - user
+additional_properties:
+  property:
+    description: Error type
+product_group: acquisition
+product_categories:
+  - acquisition
+  - subscription_management
+milestone: '18.11'
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229556
+tiers:
+  - free
+  - premium
+  - ultimate

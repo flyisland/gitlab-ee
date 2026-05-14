@@ -1,0 +1,165 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe 'Sandboxed Mermaid rendering', :js, feature_category: :markdown do
+  let_it_be(:group) { create(:group) }
+  let_it_be(:subgroup) { create(:group, parent: group) }
+  let_it_be(:project) { create(:project, :public, :repository, group: subgroup) }
+  let_it_be(:description) do
+    <<~MERMAID
+    ```mermaid
+    graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+    ```
+    MERMAID
+  end
+
+  let_it_be(:issue) { create(:issue, project: project, description: description) }
+
+  let(:expected) do
+    src_prefix = "http://#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}" \
+      '/-/sandbox/mermaid_v'
+    %r{<iframe src="#{Regexp.escape(src_prefix)}\d+(?:\?darkMode=true)?" sandbox="allow-scripts allow-popups"}
+  end
+
+  context 'in an issue' do
+    it 'includes mermaid frame correctly', :with_license do
+      visit project_issue_path(project, issue)
+
+      wait_for_requests
+
+      expect(page.html).to match(expected)
+    end
+  end
+
+  context 'in a merge request' do
+    let(:merge_request) { create(:merge_request_with_diffs, source_project: project, description: description) }
+
+    it 'renders diffs and includes mermaid frame correctly' do
+      visit(diffs_project_merge_request_path(project, merge_request))
+
+      wait_for_requests
+
+      page.within('.tab-content') do
+        expect(page).to have_selector('.diffs')
+      end
+
+      visit(project_merge_request_path(project, merge_request))
+
+      wait_for_requests
+
+      page.within('.merge-request') do
+        expect(page.html).to match(expected)
+      end
+    end
+  end
+
+  context 'in a project milestone' do
+    let(:milestone) { create(:project_milestone, project: project, description: description) }
+
+    it 'includes mermaid frame correctly',
+      quarantine: 'https://gitlab.com/gitlab-org/quality/test-failure-issues/-/issues/9494' do
+      visit(project_milestone_path(project, milestone))
+
+      wait_for_requests
+
+      expect(page.html).to match(expected)
+    end
+  end
+
+  context 'in a project home page' do
+    let!(:wiki) { create(:project_wiki, project: project) }
+    let!(:wiki_page) { create(:wiki_page, wiki: wiki, title: 'home', content: description) }
+
+    before do
+      project.project_feature.update_attribute(:repository_access_level, ProjectFeature::DISABLED)
+    end
+
+    it 'includes mermaid frame correctly',
+      quarantine: 'https://gitlab.com/gitlab-org/quality/test-failure-issues/-/issues/9387' do
+      visit(project_path(project))
+
+      wait_for_all_requests
+
+      page.within '.js-wiki-content' do
+        # the find is needed to ensure the lazy container is loaded, otherwise
+        # it can be a flaky test, similar to
+        # https://gitlab.com/gitlab-org/gitlab/-/merge_requests/25408
+        #
+        expect(page.html).to match(expected)
+      end
+    end
+  end
+
+  context 'in a group milestone' do
+    let(:group_milestone) { create(:group_milestone, description: description) }
+
+    it 'includes mermaid frame correctly' do
+      visit(group_milestone_path(group_milestone.group, group_milestone))
+
+      wait_for_requests
+
+      expect(page.html).to match(expected)
+    end
+  end
+
+  describe 'use_mermaid_v11 feature flag' do
+    shared_examples_for 'v10' do
+      it 'uses the mermaid v10 sandbox' do
+        visit project_issue_path(project, issue)
+
+        wait_for_requests
+
+        expect(page.html).to include('/-/sandbox/mermaid_v10')
+        expect(page.html).not_to include('/-/sandbox/mermaid_v11')
+      end
+    end
+
+    shared_examples_for 'v11' do
+      it 'uses the mermaid v11 sandbox' do
+        visit project_issue_path(project, issue)
+
+        wait_for_requests
+
+        expect(page.html).not_to include('/-/sandbox/mermaid_v10')
+        expect(page.html).to include('/-/sandbox/mermaid_v11')
+      end
+    end
+
+    context 'with FF disabled' do
+      before do
+        stub_feature_flags(use_mermaid_v11: false)
+      end
+
+      it_behaves_like 'v10'
+    end
+
+    context 'with FF set for the project' do
+      before do
+        stub_feature_flags(use_mermaid_v11: project)
+      end
+
+      it_behaves_like 'v11'
+    end
+
+    context 'with FF set for the immediate group' do
+      before do
+        stub_feature_flags(use_mermaid_v11: subgroup)
+      end
+
+      it_behaves_like 'v11'
+    end
+
+    context 'with FF set for an ancestor group' do
+      before do
+        stub_feature_flags(use_mermaid_v11: group)
+      end
+
+      it_behaves_like 'v11'
+    end
+  end
+end

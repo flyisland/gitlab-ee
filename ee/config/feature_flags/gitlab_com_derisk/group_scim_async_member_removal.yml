@@ -1,0 +1,10 @@
+---
+name: group_scim_async_member_removal
+description: When a group SCIM DELETE request is made, remove the user memberships in the background
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/588829
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228156
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/592629
+milestone: '18.11'
+group: group::seat management
+type: gitlab_com_derisk
+default_enabled: false

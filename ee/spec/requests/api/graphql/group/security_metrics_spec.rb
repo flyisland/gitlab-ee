@@ -1,0 +1,675 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe 'Security metrics through GroupQuery', :elastic_helpers, :freeze_time, feature_category: :vulnerability_management do
+  include GraphqlHelpers
+
+  let_it_be(:current_user) { create(:user) }
+  let_it_be(:group) { create(:group) }
+  let_it_be(:subgroup) { create(:group, parent: group) }
+  let_it_be(:project_1) { create(:project, :public, group: group) }
+  let_it_be(:project_2) { create(:project, :public, group: subgroup) }
+  let_it_be(:project_3) { create(:project, :public, group: group) }
+
+  let(:security_metrics_data) { graphql_data['group']['securityMetrics'] }
+  let(:vulnerabilities_per_severity_data) { security_metrics_data&.dig('vulnerabilitiesPerSeverity') }
+  let(:vulnerabilities_over_time_data) { security_metrics_data&.dig('vulnerabilitiesOverTime', 'nodes') }
+  let(:risk_score_data) { security_metrics_data&.dig('riskScore') }
+
+  let(:start_date) { 1.week.ago(Time.zone.now).to_date }
+  let(:end_date) { Time.zone.now.to_date }
+
+  let(:base_query_fields) do
+    <<~GRAPHQL
+      vulnerabilitiesPerSeverity {
+        critical { count }
+        high { count }
+        medium { count }
+        low { count }
+        info { count }
+        unknown { count }
+      }
+      vulnerabilitiesOverTime(startDate: "#{start_date.iso8601}", endDate: "#{end_date.iso8601}") {
+        nodes {
+          date
+          count
+          bySeverity {
+            severity
+            count
+          }
+          byReportType {
+            reportType
+            count
+          }
+        }
+      }
+      riskScore {
+        score
+        rating
+        byProject {
+          nodes {
+            rating
+            score
+            project {
+              id
+              name
+            }
+          }
+        }
+      }
+    GRAPHQL
+  end
+
+  def query(group_path: group.full_path)
+    graphql_query_for(
+      'group',
+      { 'fullPath' => group_path },
+      "securityMetrics { #{base_query_fields} }"
+    )
+  end
+
+  before do
+    stub_licensed_features(security_dashboard: true)
+    stub_ee_application_setting(elasticsearch_search: true, elasticsearch_indexing: true)
+    set_elasticsearch_migration_to(:backfill_vulnerabilities_for_self_managed)
+  end
+
+  describe 'when user has access' do
+    before_all do
+      group.add_maintainer(current_user)
+    end
+
+    context 'with vulnerabilities data' do
+      let_it_be(:vulnerability_1) do
+        create(:vulnerability, :critical, :with_finding, project: project_1, created_at: 2.days.ago(Time.zone.now))
+      end
+
+      let_it_be(:vulnerability_2) do
+        create(:vulnerability, :high, :with_finding, project: project_2, created_at: 1.day.ago(Time.zone.now))
+      end
+
+      let_it_be(:vulnerability_3) do
+        create(:vulnerability, :medium, :with_finding, project: project_3, created_at: 1.day.ago(Time.zone.now))
+      end
+
+      before do
+        allow_next_instance_of(
+          ::Search::AdvancedFinders::Security::Vulnerability::CountBySeverityFinder) do |finder|
+          allow(finder).to receive(:execute).and_return(
+            {
+              'critical' => { 'count' => 1, 'avg_detected_at' => {}, 'median_detected_at' => {} },
+              'high' => { 'count' => 1, 'avg_detected_at' => {}, 'median_detected_at' => {} },
+              'medium' => { 'count' => 1, 'avg_detected_at' => {}, 'median_detected_at' => {} },
+              'low' => { 'count' => 0, 'avg_detected_at' => {}, 'median_detected_at' => {} },
+              'info' => { 'count' => 0, 'avg_detected_at' => {}, 'median_detected_at' => {} },
+              'unknown' => { 'count' => 0, 'avg_detected_at' => {}, 'median_detected_at' => {} }
+            }
+          )
+        end
+
+        allow_next_instance_of(
+          ::Search::AdvancedFinders::Security::Vulnerability::CountOverTimeFinder
+        ) do |finder|
+          allow(finder).to receive(:execute).and_return([
+            {
+              date: 2.days.ago(Time.zone.now).to_date.iso8601,
+              count: 1,
+              by_severity: [{ severity: 'critical', count: 1 }],
+              by_report_type: [{ report_type: 'sast', count: 1 }]
+            },
+            {
+              date: 1.day.ago(Time.zone.now).to_date.iso8601,
+              count: 2,
+              by_severity: [
+                { severity: 'high', count: 1 },
+                { severity: 'medium', count: 1 }
+              ],
+              by_report_type: [{ report_type: 'sast', count: 2 }]
+            }
+          ])
+        end
+
+        allow_next_instance_of(::Resolvers::Security::RiskScoreResolver) do |resolver|
+          allow(resolver).to receive(:resolve).and_return(
+            {
+              score: 7.5,
+              rating: 'high',
+              factors: {
+                vulnerabilities_average_score: {
+                  factor: 0.8
+                }
+              },
+              by_project: [
+                {
+                  rating: 'medium',
+                  score: 5.2,
+                  project: project_1
+                }
+              ]
+            }
+          )
+        end
+      end
+
+      it_behaves_like 'a working graphql query' do
+        before do
+          post_graphql(query, current_user: current_user)
+        end
+      end
+
+      it 'returns security metrics successfully' do
+        simple_query = graphql_query_for(
+          'group',
+          { 'fullPath' => group.full_path },
+          <<~GRAPHQL
+            securityMetrics {
+              vulnerabilitiesPerSeverity {
+                critical { count }
+                high { count }
+                medium { count }
+                low { count }
+              }
+            }
+          GRAPHQL
+        )
+
+        post_graphql(simple_query, current_user: current_user)
+
+        expect(response).to have_gitlab_http_status(:ok)
+        expect(graphql_errors).to be_nil
+        expect(security_metrics_data).not_to be_nil
+
+        severity_data = security_metrics_data['vulnerabilitiesPerSeverity']
+        expect(severity_data['critical']['count']).to eq(1)
+        expect(severity_data['high']['count']).to eq(1)
+        expect(severity_data['medium']['count']).to eq(1)
+        expect(severity_data['low']['count']).to eq(0)
+      end
+
+      describe 'vulnerabilities per severity' do
+        it 'returns vulnerability counts by severity' do
+          severity_query = graphql_query_for(
+            'group',
+            { 'fullPath' => group.full_path },
+            <<~GRAPHQL
+              securityMetrics {
+                vulnerabilitiesPerSeverity {
+                  critical { count }
+                  high { count }
+                  medium { count }
+                  low { count }
+                  info { count }
+                  unknown { count }
+                }
+              }
+            GRAPHQL
+          )
+
+          post_graphql(severity_query, current_user: current_user)
+
+          expect(vulnerabilities_per_severity_data).to include(
+            'critical' => { 'count' => 1 },
+            'high' => { 'count' => 1 },
+            'medium' => { 'count' => 1 },
+            'low' => { 'count' => 0 },
+            'info' => { 'count' => 0 },
+            'unknown' => { 'count' => 0 }
+          )
+        end
+
+        context 'with date range arguments' do
+          let(:start_date) { 3.days.ago(Time.zone.now).to_date }
+          let(:end_date) { Time.zone.now.to_date }
+
+          it 'filters vulnerabilities by date range' do
+            date_range_query = graphql_query_for(
+              'group',
+              { 'fullPath' => group.full_path },
+              <<~GRAPHQL
+                securityMetrics {
+                  vulnerabilitiesPerSeverity(startDate: "#{start_date.iso8601}", endDate: "#{end_date.iso8601}") {
+                    critical { count }
+                    high { count }
+                    medium { count }
+                    low { count }
+                  }
+                }
+              GRAPHQL
+            )
+
+            post_graphql(date_range_query, current_user: current_user)
+
+            expect(vulnerabilities_per_severity_data).to include(
+              'critical' => { 'count' => 1 },
+              'high' => { 'count' => 1 },
+              'medium' => { 'count' => 1 }
+            )
+          end
+        end
+
+        context 'without date range arguments' do
+          it 'returns all vulnerabilities without date filtering' do
+            no_date_query = graphql_query_for(
+              'group',
+              { 'fullPath' => group.full_path },
+              <<~GRAPHQL
+                securityMetrics {
+                  vulnerabilitiesPerSeverity {
+                    critical { count }
+                    high { count }
+                    medium { count }
+                    low { count }
+                  }
+                }
+              GRAPHQL
+            )
+
+            post_graphql(no_date_query, current_user: current_user)
+
+            expect(response).to have_gitlab_http_status(:ok)
+            expect(graphql_errors).to be_nil
+            expect(vulnerabilities_per_severity_data).to include(
+              'critical' => { 'count' => 1 },
+              'high' => { 'count' => 1 },
+              'medium' => { 'count' => 1 },
+              'low' => { 'count' => 0 }
+            )
+          end
+        end
+      end
+
+      describe 'vulnerabilities over time' do
+        it 'returns vulnerability metrics over time' do
+          post_graphql(query, current_user: current_user)
+
+          expect(vulnerabilities_over_time_data).to be_an(Array)
+          expect(vulnerabilities_over_time_data).to have_attributes(size: 2)
+
+          first_day = vulnerabilities_over_time_data.first
+          expect(first_day).to include(
+            'date' => 2.days.ago(Time.zone.now).to_date.iso8601,
+            'count' => 1
+          )
+          expect(first_day['bySeverity']).to include(
+            { 'severity' => 'CRITICAL', 'count' => 1 }
+          )
+          expect(first_day['byReportType']).to include(
+            { 'reportType' => 'SAST', 'count' => 1 }
+          )
+        end
+
+        context 'when querying only bySeverity' do
+          let(:severity_only_query) do
+            graphql_query_for(
+              'group',
+              { 'fullPath' => group.full_path },
+              <<~GRAPHQL
+                securityMetrics {
+                  vulnerabilitiesOverTime(startDate: "#{start_date.iso8601}", endDate: "#{end_date.iso8601}") {
+                    nodes {
+                      date
+                      count
+                      bySeverity {
+                        severity
+                        count
+                      }
+                    }
+                  }
+                }
+              GRAPHQL
+            )
+          end
+
+          before do
+            allow_next_instance_of(
+              ::Search::AdvancedFinders::Security::Vulnerability::CountOverTimeFinder
+            ) do |finder|
+              allow(finder).to receive(:execute).and_return([
+                {
+                  date: 2.days.ago(Time.zone.now).to_date.iso8601,
+                  count: 1,
+                  by_severity: [{ severity: 'critical', count: 1 }]
+                },
+                {
+                  date: 1.day.ago(Time.zone.now).to_date.iso8601,
+                  count: 2,
+                  by_severity: [
+                    { severity: 'high', count: 1 },
+                    { severity: 'medium', count: 1 }
+                  ]
+                }
+              ])
+            end
+          end
+
+          it 'returns only bySeverity data without byReportType' do
+            post_graphql(severity_only_query, current_user: current_user)
+
+            expect(vulnerabilities_over_time_data).to be_an(Array)
+            expect(vulnerabilities_over_time_data).to have_attributes(size: 2)
+
+            first_day = vulnerabilities_over_time_data.first
+            expect(first_day).to include(
+              'date' => 2.days.ago(Time.zone.now).to_date.iso8601,
+              'count' => 1
+            )
+            expect(first_day['bySeverity']).to include(
+              { 'severity' => 'CRITICAL', 'count' => 1 }
+            )
+            expect(first_day).not_to have_key('byReportType')
+          end
+        end
+
+        context 'when querying only byReportType' do
+          let(:report_type_only_query) do
+            graphql_query_for(
+              'group',
+              { 'fullPath' => group.full_path },
+              <<~GRAPHQL
+                securityMetrics {
+                  vulnerabilitiesOverTime(startDate: "#{start_date.iso8601}", endDate: "#{end_date.iso8601}") {
+                    nodes {
+                      date
+                      count
+                      byReportType {
+                        reportType
+                        count
+                      }
+                    }
+                  }
+                }
+              GRAPHQL
+            )
+          end
+
+          before do
+            allow_next_instance_of(
+              ::Search::AdvancedFinders::Security::Vulnerability::CountOverTimeFinder
+            ) do |finder|
+              allow(finder).to receive(:execute).and_return([
+                {
+                  date: 2.days.ago(Time.zone.now).to_date.iso8601,
+                  count: 1,
+                  by_report_type: [{ report_type: 'sast', count: 1 }]
+                },
+                {
+                  date: 1.day.ago(Time.zone.now).to_date.iso8601,
+                  count: 2,
+                  by_report_type: [
+                    { report_type: 'sast', count: 1 },
+                    { report_type: 'dast', count: 1 }
+                  ]
+                }
+              ])
+            end
+          end
+
+          it 'returns only byReportType data without bySeverity' do
+            post_graphql(report_type_only_query, current_user: current_user)
+
+            expect(vulnerabilities_over_time_data).to be_an(Array)
+            expect(vulnerabilities_over_time_data).to have_attributes(size: 2)
+
+            first_day = vulnerabilities_over_time_data.first
+            expect(first_day).to include(
+              'date' => 2.days.ago(Time.zone.now).to_date.iso8601,
+              'count' => 1
+            )
+            expect(first_day['byReportType']).to include(
+              { 'reportType' => 'SAST', 'count' => 1 }
+            )
+            expect(first_day).not_to have_key('bySeverity')
+          end
+        end
+      end
+
+      describe 'risk score' do
+        it 'returns risk score information' do
+          post_graphql(query, current_user: current_user)
+
+          expect(risk_score_data).to include('score', 'rating')
+          expect(risk_score_data['score']).to be_a(Numeric)
+          expect(risk_score_data['rating']).to be_a(String)
+        end
+      end
+
+      context 'with project filtering' do
+        it 'filters by specific project IDs' do
+          project_ids = [project_1.to_global_id.to_s, project_2.to_global_id.to_s]
+          project_filter_query = graphql_query_for(
+            'group',
+            { 'fullPath' => group.full_path },
+            <<~GRAPHQL
+              securityMetrics(projectId: [#{project_ids.map { |id| "\"#{id}\"" }.join(', ')}]) {
+                vulnerabilitiesPerSeverity {
+                  critical { count }
+                  high { count }
+                  medium { count }
+                  low { count }
+                }
+              }
+            GRAPHQL
+          )
+
+          post_graphql(project_filter_query, current_user: current_user)
+
+          expect(response).to have_gitlab_http_status(:ok)
+          expect(graphql_errors).to be_nil
+          expect(security_metrics_data).not_to be_nil
+
+          severity_data = security_metrics_data['vulnerabilitiesPerSeverity']
+          expect(severity_data['critical']['count']).to eq(1)
+          expect(severity_data['high']['count']).to eq(1)
+        end
+      end
+
+      context 'with report type filtering' do
+        it 'filters by specific report types' do
+          report_type_query = graphql_query_for(
+            'group',
+            { 'fullPath' => group.full_path },
+            <<~GRAPHQL
+              securityMetrics(reportType: [SAST, DAST]) {
+                vulnerabilitiesPerSeverity {
+                  critical { count }
+                  high { count }
+                  medium { count }
+                  low { count }
+                }
+              }
+            GRAPHQL
+          )
+
+          post_graphql(report_type_query, current_user: current_user)
+
+          expect(response).to have_gitlab_http_status(:ok)
+          expect(graphql_errors).to be_nil
+          expect(security_metrics_data).not_to be_nil
+        end
+      end
+    end
+
+    context 'without vulnerabilities data' do
+      let_it_be(:empty_group) { create(:group) }
+
+      before_all do
+        empty_group.add_maintainer(current_user)
+      end
+
+      it 'returns empty security metrics' do
+        allow_next_instance_of(::Resolvers::Security::VulnerabilitiesPerSeverityResolver) do |resolver|
+          allow(resolver).to receive(:resolve).and_return(
+            {
+              'critical' => { count: 0 },
+              'high' => { count: 0 },
+              'medium' => { count: 0 },
+              'low' => { count: 0 },
+              'info' => { count: 0 },
+              'unknown' => { count: 0 }
+            }
+          )
+        end
+
+        allow_next_instance_of(::Resolvers::Security::VulnerabilitiesOverTimeResolver) do |resolver|
+          allow(resolver).to receive(:resolve).and_return([])
+        end
+
+        allow_next_instance_of(::Resolvers::Security::RiskScoreResolver) do |resolver|
+          allow(resolver).to receive(:resolve).and_return(nil)
+        end
+
+        simple_query = graphql_query_for(
+          'group',
+          { 'fullPath' => empty_group.full_path },
+          "securityMetrics { #{base_query_fields} }"
+        )
+
+        post_graphql(simple_query, current_user: current_user)
+
+        expect(response).to have_gitlab_http_status(:ok)
+        expect(graphql_errors).to be_nil
+        expect(security_metrics_data).not_to be_nil
+
+        severity_data = security_metrics_data['vulnerabilitiesPerSeverity']
+        expect(severity_data['critical']['count']).to eq(0)
+        expect(severity_data['high']['count']).to eq(0)
+        expect(severity_data['medium']['count']).to eq(0)
+        expect(severity_data['low']['count']).to eq(0)
+      end
+    end
+  end
+
+  describe 'when user does not have access' do
+    it 'returns null for security metrics' do
+      post_graphql(query, current_user: current_user)
+
+      expect(response).to have_gitlab_http_status(:ok)
+      expect(graphql_errors).to be_nil
+      expect(security_metrics_data).to be_nil
+    end
+  end
+
+  describe 'when security_dashboard feature is not licensed' do
+    before_all do
+      group.add_maintainer(current_user)
+    end
+
+    it 'returns null for security metrics' do
+      stub_licensed_features(security_dashboard: false)
+
+      post_graphql(query, current_user: current_user)
+
+      expect(response).to have_gitlab_http_status(:ok)
+      expect(graphql_errors).to be_nil
+      expect(security_metrics_data).to be_nil
+    end
+  end
+
+  describe 'when group is private and user is not a member' do
+    let_it_be(:private_group) { create(:group, :private) }
+    let_it_be(:private_project) { create(:project, :private, group: private_group) }
+
+    it 'returns null group' do
+      post_graphql(query(group_path: private_group.full_path), current_user: current_user)
+
+      expect(response).to have_gitlab_http_status(:ok)
+      expect(graphql_errors).to be_nil
+      expect(graphql_data['group']).to be_nil
+    end
+  end
+
+  describe 'N+1 query checks' do
+    let_it_be(:vulnerability_a) { create(:vulnerability, :critical, :with_read, project: project_1) }
+    let_it_be(:vulnerability_b) { create(:vulnerability, :high, :with_read, project: project_2) }
+
+    before_all do
+      group.add_maintainer(current_user)
+    end
+
+    it 'avoids N+1 queries when requesting vulnerabilities per severity' do
+      simple_query = graphql_query_for(
+        'group',
+        { 'fullPath' => group.full_path },
+        <<~GRAPHQL
+          securityMetrics {
+            vulnerabilitiesPerSeverity {
+              critical { count }
+              high { count }
+              medium { count }
+              low { count }
+            }
+          }
+        GRAPHQL
+      )
+
+      post_graphql(simple_query, current_user: current_user)
+
+      control = ActiveRecord::QueryRecorder.new(skip_cached: false) do
+        post_graphql(simple_query, current_user: current_user)
+      end
+
+      new_project = create(:project, :public, group: group)
+      create_list(:vulnerability, 3, :medium, :with_read, project: new_project)
+
+      expect do
+        post_graphql(simple_query, current_user: current_user)
+      end.not_to exceed_query_limit(control).with_threshold(2)
+    end
+  end
+
+  describe 'argument validation' do
+    before_all do
+      group.add_maintainer(current_user)
+    end
+
+    context 'with invalid date range' do
+      it 'returns error when start date is after end date' do
+        invalid_query = graphql_query_for(
+          'group',
+          { 'fullPath' => group.full_path },
+          <<~GRAPHQL
+            securityMetrics {
+              vulnerabilitiesOverTime(startDate: "2023-12-31", endDate: "2023-01-01") {
+                nodes {
+                  date
+                  count
+                }
+              }
+            }
+          GRAPHQL
+        )
+
+        post_graphql(invalid_query, current_user: current_user)
+
+        expect(graphql_errors).to be_present
+        expect(graphql_errors.first['message']).to match(/start date.*end date/i)
+      end
+
+      it 'returns error when date range exceeds maximum' do
+        start_date = 2.years.ago(Time.zone.now).to_date
+        end_date = Time.zone.now.to_date
+
+        invalid_query = graphql_query_for(
+          'group',
+          { 'fullPath' => group.full_path },
+          <<~GRAPHQL
+            securityMetrics {
+              vulnerabilitiesOverTime(startDate: "#{start_date.iso8601}", endDate: "#{end_date.iso8601}") {
+                nodes {
+                  date
+                  count
+                }
+              }
+            }
+          GRAPHQL
+        )
+
+        post_graphql(invalid_query, current_user: current_user)
+
+        expect(graphql_errors).to be_present
+        expect(graphql_errors.first['message']).to match(/date range.*days/i)
+      end
+    end
+  end
+end

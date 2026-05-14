@@ -1,0 +1,10 @@
+---
+name: saas_upgrade_subscription_page
+description: Gates adding a new upgrade subscription page while in dev and derisks release
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/593611
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227720
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/593807
+milestone: '18.11'
+group: group::monetization
+type: gitlab_com_derisk
+default_enabled: false

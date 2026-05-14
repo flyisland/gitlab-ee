@@ -1,0 +1,58 @@
+# frozen_string_literal: true
+
+module EE
+  module Gitlab
+    module Ci
+      module Pipeline
+        module Chain
+          module Command
+            extend ::Gitlab::Utils::Override
+
+            override :dry_run?
+            def dry_run?
+              super || !!pipeline_policy_context&.pipeline_execution_context&.creating_policy_pipeline?
+            end
+
+            override :pipeline_policy_context
+            def pipeline_policy_context
+              sha_context = ::Gitlab::Ci::Pipeline::ShaContext.new(
+                before: before_sha,
+                after: after_sha,
+                source: source_sha,
+                checkout: checkout_sha,
+                target: target_sha
+              )
+              self[:pipeline_policy_context] ||= ::Gitlab::Ci::Pipeline::ExecutionPolicies::PipelineContext.new(
+                project: project,
+                source: source,
+                current_user: current_user,
+                ref: ref,
+                sha_context: sha_context,
+                variables_attributes: variables_attributes,
+                scan_execution_policy_context_block: scan_execution_policy_context_block,
+                chat_data: chat_data,
+                merge_request: merge_request,
+                schedule: schedule,
+                bridge: bridge,
+                trigger: trigger
+              )
+            end
+
+            override :scan_profile_eligibility_service
+            def scan_profile_eligibility_service
+              self[:scan_profile_eligibility_service] ||= ::Security::ScanProfiles::PipelineEligibilityService.new(
+                project: project,
+                ref: ref,
+                pipeline_source: source
+              )
+            end
+
+            def increment_duplicate_job_name_errors_counter(suffix_strategy)
+              metrics.duplicate_job_name_errors_counter.increment(suffix_strategy: suffix_strategy)
+            end
+          end
+        end
+      end
+    end
+  end
+end

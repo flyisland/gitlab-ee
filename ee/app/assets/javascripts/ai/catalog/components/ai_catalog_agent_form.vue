@@ -1,0 +1,685 @@
+<script>
+import { uniqueId } from 'lodash-es';
+import {
+  GlBadge,
+  GlButton,
+  GlLink,
+  GlForm,
+  GlFormInput,
+  GlFormTextarea,
+  GlTokenSelector,
+  GlTooltipDirective,
+  GlAlert,
+  GlSprintf,
+} from '@gitlab/ui';
+import { helpPagePath } from '~/helpers/help_page_helper';
+import * as Sentry from '~/sentry/sentry_browser_wrapper';
+import {
+  VISIBILITY_LEVEL_PUBLIC_STRING,
+  VISIBILITY_LEVEL_PRIVATE_STRING,
+} from '~/visibility_level/constants';
+import {
+  MAX_LENGTH_NAME,
+  MAX_LENGTH_DESCRIPTION,
+  MAX_LENGTH_PROMPT,
+  VISIBILITY_LEVEL_PRIVATE,
+  VISIBILITY_LEVEL_PUBLIC,
+  AGENT_VISIBILITY_LEVEL_DESCRIPTIONS,
+  AI_CATALOG_TYPE_AGENT,
+  DEFAULT_THIRD_PARTY_FLOW_YML_STRING,
+  AI_CATALOG_TYPE_THIRD_PARTY_FLOW,
+} from 'ee/ai/catalog/constants';
+import { TYPENAME_PROJECT } from '~/graphql_shared/constants';
+import { convertToGraphQLId } from '~/graphql_shared/utils';
+import { __, s__ } from '~/locale';
+import glAbilitiesMixin from '~/vue_shared/mixins/gl_abilities_mixin';
+import glFeatureFlagsMixin from '~/vue_shared/mixins/gl_feature_flags_mixin';
+import ErrorsAlert from '~/vue_shared/components/errors_alert.vue';
+import { AI_CATALOG_AGENTS_ROUTE, AI_CATALOG_AGENTS_SHOW_ROUTE } from '../router/constants';
+import aiCatalogBuiltInToolsQuery from '../graphql/queries/ai_catalog_built_in_tools.query.graphql';
+import aiCatalogMcpToolsQuery from '../graphql/queries/ai_catalog_mcp_tools.query.graphql';
+import aiCatalogMcpServersQuery from '../graphql/queries/ai_catalog_mcp_servers.query.graphql';
+import AiCatalogFormButtons from './ai_catalog_form_buttons.vue';
+import FormGroup from './form_group.vue';
+import FormSection from './form_section.vue';
+import FormAgentType from './form_agent_type.vue';
+import FormFlowDefinition from './form_flow_definition.vue';
+import FormProjectDropdown from './form_project_dropdown.vue';
+import VisibilityLevelRadioGroup from './visibility_level_radio_group.vue';
+
+export default {
+  name: 'AiCatalogAgentForm',
+  components: {
+    ErrorsAlert,
+    AiCatalogFormButtons,
+    FormAgentType,
+    FormFlowDefinition,
+    FormGroup,
+    FormSection,
+    FormProjectDropdown,
+    GlBadge,
+    GlButton,
+    GlLink,
+    GlForm,
+    GlFormInput,
+    GlFormTextarea,
+    GlTokenSelector,
+    GlAlert,
+    GlSprintf,
+    VisibilityLevelRadioGroup,
+  },
+  directives: {
+    GlTooltip: GlTooltipDirective,
+  },
+  mixins: [glAbilitiesMixin(), glFeatureFlagsMixin()],
+  inject: {
+    projectId: {
+      default: null,
+    },
+    isGlobalNamespace: {},
+    instanceBetaFeaturesEnabled: {
+      default: false,
+    },
+  },
+  apollo: {
+    availableBuiltInTools: {
+      query: aiCatalogBuiltInToolsQuery,
+      update: (data) =>
+        data.aiCatalogBuiltInTools.nodes.map((t) => ({
+          id: t.id,
+          machineName: t.title.toLowerCase().replace(/\s+/g, '_'),
+          name: t.title,
+          description: t.description,
+          source: 'builtin',
+        })),
+      error(error) {
+        Sentry.captureException(error);
+      },
+    },
+    availableMcpTools: {
+      query: aiCatalogMcpToolsQuery,
+      skip() {
+        return !this.glFeatures.mcpCatalogAgentTools;
+      },
+      update: (data) =>
+        data.aiCatalogMcpTools.nodes.map((t) => ({
+          id: `mcp-${t.name}`,
+          mcpName: t.name,
+          machineName: t.name,
+          name: t.title,
+          description: t.description,
+          source: 'mcp',
+        })),
+      error(error) {
+        Sentry.captureException(error);
+      },
+    },
+    availableMcpServers: {
+      query: aiCatalogMcpServersQuery,
+      variables: {
+        first: 100,
+      },
+      skip() {
+        return !this.glAbilities?.readAiCatalogMcpServer;
+      },
+      update: (data) =>
+        data.aiCatalogMcpServers.nodes.map((s) => ({
+          id: s.id,
+          name: s.name,
+          description: s.description,
+        })),
+      error(error) {
+        Sentry.captureException(error);
+      },
+    },
+  },
+  props: {
+    mode: {
+      type: String,
+      required: true,
+      validator: (mode) => ['edit', 'create'].includes(mode),
+    },
+    isLoading: {
+      type: Boolean,
+      required: true,
+    },
+    errors: {
+      type: Array,
+      required: true,
+    },
+    initialValues: {
+      type: Object,
+      required: false,
+      default() {
+        return {
+          projectId: null,
+          name: '',
+          description: '',
+          systemPrompt: '', // agent specific
+          tools: [], // agent specific
+          mcpTools: [], // agent specific
+          mcpServers: [], // agent specific
+          definition: DEFAULT_THIRD_PARTY_FLOW_YML_STRING, // third_party_flow specific
+          public: false,
+          itemType: AI_CATALOG_TYPE_AGENT,
+        };
+      },
+    },
+  },
+  emits: ['dismiss-errors', 'select-item-type', 'submit'],
+  data() {
+    return {
+      availableBuiltInTools: [],
+      availableMcpTools: [],
+      availableMcpServers: [],
+      toolFilter: '',
+      mcpServerFilter: '',
+      formValues: {
+        ...this.initialValues,
+        projectId:
+          !this.isGlobalNamespace && this.projectId
+            ? convertToGraphQLId(TYPENAME_PROJECT, this.projectId)
+            : this.initialValues.projectId,
+        visibilityLevel: this.initialValues.public
+          ? VISIBILITY_LEVEL_PUBLIC
+          : VISIBILITY_LEVEL_PRIVATE,
+        mcpServers: this.initialValues.mcpServers,
+      },
+      formErrors: [],
+    };
+  },
+  computed: {
+    formId() {
+      return uniqueId('ai-catalog-agent-form-');
+    },
+    isThirdPartyFlow() {
+      return this.formValues.itemType === AI_CATALOG_TYPE_THIRD_PARTY_FLOW;
+    },
+    isEditMode() {
+      return this.mode === 'edit';
+    },
+    isCreateThirdPartyFlowsAvailable() {
+      return (
+        this.glAbilities.createAiCatalogThirdPartyFlow ??
+        (this.glFeatures.aiCatalogThirdPartyFlows && this.glFeatures.aiCatalogCreateThirdPartyFlows)
+      );
+    },
+    showTypeSelection() {
+      if (this.isEditMode) {
+        return (
+          this.glAbilities.createAiCatalogThirdPartyFlow ?? this.glFeatures.aiCatalogThirdPartyFlows
+        );
+      }
+
+      return this.isCreateThirdPartyFlowsAvailable;
+    },
+    mcpToolsEnabled() {
+      return Boolean(this.glFeatures.mcpCatalogAgentTools) && this.instanceBetaFeaturesEnabled;
+    },
+    canReadMcpServers() {
+      return this.glAbilities.readAiCatalogMcpServer;
+    },
+    allErrors() {
+      return [...this.errors, ...this.formErrors];
+    },
+    submitButtonText() {
+      return this.isEditMode ? s__('AICatalog|Save changes') : s__('AICatalog|Create agent');
+    },
+    cancelRoute() {
+      // when navigating from edit or duplicate page, we go back to show page
+      if (this.$route.params.id) {
+        return {
+          name: AI_CATALOG_AGENTS_SHOW_ROUTE,
+          params: { id: this.$route.params.id },
+        };
+      }
+
+      // when navigating from new page, we go back to index page
+      return {
+        name: AI_CATALOG_AGENTS_ROUTE,
+      };
+    },
+    availableTools() {
+      const mcpToolsWithState = this.availableMcpTools.map((t) => ({
+        ...t,
+        disabled: !this.mcpToolsEnabled,
+      }));
+      return [...this.availableBuiltInTools, ...mcpToolsWithState].sort((a, b) =>
+        a.name.localeCompare(b.name),
+      );
+    },
+    filteredAvailableTools() {
+      return this.availableTools.filter((tool) =>
+        tool.name.toLowerCase().includes(this.toolFilter.toLowerCase()),
+      );
+    },
+    selectedTools() {
+      const selectedBuiltIn = this.availableTools.filter(
+        (tool) => tool.source === 'builtin' && this.formValues.tools.includes(tool.id),
+      );
+      const availableMcpNames = new Set(this.availableMcpTools.map((t) => t.machineName));
+      const selectedMcp = this.availableTools.filter(
+        (tool) => tool.source === 'mcp' && this.formValues.mcpTools.includes(tool.mcpName),
+      );
+      // Create placeholder tokens for saved MCP tools not in the available list
+      // (e.g., when the feature flag is off and the query was skipped)
+      const savedMcpPlaceholders = this.formValues.mcpTools
+        .filter((name) => !availableMcpNames.has(name))
+        .map((name) => ({
+          id: `mcp-${name}`,
+          mcpName: name,
+          machineName: name,
+          name,
+          description: '',
+          source: 'mcp',
+          disabled: true,
+        }));
+      return [...selectedBuiltIn, ...selectedMcp, ...savedMcpPlaceholders];
+    },
+    filteredAvailableMcpServers() {
+      return this.availableMcpServers.filter((server) =>
+        server.name.toLowerCase().includes(this.mcpServerFilter.toLowerCase()),
+      );
+    },
+    selectedMcpServers() {
+      return this.availableMcpServers.filter((server) =>
+        this.formValues.mcpServers.includes(server.id),
+      );
+    },
+  },
+  watch: {
+    'formValues.projectId': function validateProjectField() {
+      this.$nextTick(() => {
+        this.$refs.fieldProject?.validate();
+      });
+    },
+    'formValues.itemType': {
+      handler(newItemType) {
+        this.$emit('select-item-type', newItemType);
+      },
+    },
+  },
+  methods: {
+    handleSubmit() {
+      const isFormValid = this.validate();
+      if (!isFormValid) {
+        return;
+      }
+
+      const transformedValues = {
+        projectId: this.isEditMode ? undefined : this.formValues.projectId,
+        name: this.formValues.name.trim(),
+        description: this.formValues.description.trim(),
+        public: this.formValues.visibilityLevel === VISIBILITY_LEVEL_PUBLIC,
+        itemType: this.formValues.itemType,
+      };
+
+      if (this.isThirdPartyFlow) {
+        transformedValues.definition = this.formValues.definition.trim();
+      } else {
+        transformedValues.systemPrompt = this.formValues.systemPrompt.trim();
+        transformedValues.tools = this.formValues.tools;
+        transformedValues.mcpTools = this.formValues.mcpTools;
+        transformedValues.mcpServers = this.formValues.mcpServers;
+      }
+
+      this.$emit('submit', transformedValues);
+    },
+    handleToolsInput(input) {
+      this.formValues.tools = input
+        .filter((t) => t.source === 'builtin' && !t.disabled)
+        .map((t) => t.id);
+      this.formValues.mcpTools = input.filter((t) => t.source === 'mcp').map((t) => t.mcpName);
+    },
+    handleToolSearch(search) {
+      this.toolFilter = search;
+    },
+    handleMcpServersInput(input) {
+      this.formValues.mcpServers = input.map((s) => s.id);
+    },
+    handleMcpServerSearch(search) {
+      this.mcpServerFilter = search;
+    },
+    onError(error) {
+      this.formErrors.push(error);
+    },
+    dismissErrors() {
+      this.formErrors = [];
+      this.$emit('dismiss-errors');
+    },
+    validate() {
+      return Object.keys(this.$refs)
+        .filter((key) => key.startsWith('field'))
+        .reduce((allValid, key) => {
+          const field = this.$refs[key];
+          if (!field) return allValid;
+          const isFieldValid = this.$refs[key].validate();
+          return allValid && isFieldValid;
+        }, true);
+    },
+  },
+  visibilityLevelTexts: {
+    textPrivate: AGENT_VISIBILITY_LEVEL_DESCRIPTIONS[VISIBILITY_LEVEL_PRIVATE_STRING],
+    textPublic: AGENT_VISIBILITY_LEVEL_DESCRIPTIONS[VISIBILITY_LEVEL_PUBLIC_STRING],
+  },
+  fields: {
+    projectId: {
+      id: 'agent-form-project-id',
+      label: s__('AICatalog|Managed by'),
+      validations: {
+        requiredLabel: s__('AICatalog|Project is required.'),
+      },
+      groupAttrs: {
+        labelDescription: s__(
+          'AICatalog|Only members of this project can edit or delete this agent.',
+        ),
+      },
+    },
+    name: {
+      id: 'agent-form-name',
+      label: __('Display name'),
+      validations: {
+        requiredLabel: s__('AICatalog|Name is required.'),
+        maxLength: MAX_LENGTH_NAME,
+      },
+      inputAttrs: {
+        'data-testid': 'agent-form-input-name',
+        placeholder: s__('AICatalog|Research Assistant, Creative Writer, Code Helper'),
+      },
+    },
+    description: {
+      id: 'agent-form-description',
+      label: __('Description'),
+      validations: {
+        requiredLabel: s__('AICatalog|Description is required.'),
+        maxLength: MAX_LENGTH_DESCRIPTION,
+      },
+    },
+    itemType: {
+      id: 'agent-form-type',
+      label: __('Type'),
+      groupAttrs: {
+        labelDescription: s__(
+          'AICatalog|Build a custom agent in GitLab or connect to an AI model provider you already use.',
+        ),
+      },
+    },
+    systemPrompt: {
+      id: 'agent-form-system-prompt',
+      label: s__('AICatalog|System prompt'),
+      validations: {
+        requiredLabel: s__('AICatalog|System prompt is required.'),
+        maxLength: MAX_LENGTH_PROMPT,
+      },
+      groupAttrs: {
+        labelDescription: s__(
+          "AICatalog|Define the agent's personality, expertise, and behavior. This changes how the agent solves problems and responds to requests.",
+        ),
+      },
+    },
+    visibilityLevel: {
+      id: 'agent-form-visibility-level',
+      label: __('Visibility'),
+      groupAttrs: {
+        labelDescription: s__('AICatalog|Choose who can view and interact with this agent.'),
+      },
+    },
+    tools: {
+      id: 'agent-form-tools',
+      label: s__('AICatalog|Tools'),
+      groupAttrs: {
+        optional: true,
+      },
+    },
+    mcpServers: {
+      id: 'agent-form-mcp-servers',
+      label: s__('AICatalog|MCP servers'),
+      groupAttrs: {
+        optional: true,
+        labelDescription: s__(
+          'AICatalog|Connect Model Context Protocol servers to extend this agent with external tools and data sources.',
+        ),
+      },
+    },
+    definition: {
+      id: 'agent-form-configuration',
+      label: s__('AICatalog|YAML configuration'),
+      validations: {
+        requiredLabel: s__('AICatalog|Configuration is required.'),
+      },
+      groupAttrs: {
+        labelDescription: s__(
+          'AICatalog|This YAML configuration file determines the prompts, tools, and capabilities of your flow. Required properties: injectGatewayToken, image, commands',
+        ),
+      },
+    },
+  },
+  AI_CATALOG_TYPE_AGENT,
+  VISIBILITY_LEVEL_PUBLIC,
+  toolsDocsLink: helpPagePath('user/duo_agent_platform/agents/tools'),
+  publicDeletionHelpLink: helpPagePath('user/duo_agent_platform/agents/custom', {
+    anchor: 'agent-visibility',
+  }),
+};
+</script>
+
+<template>
+  <div>
+    <errors-alert :errors="allErrors" @dismiss="dismissErrors" />
+    <gl-form :id="formId" class="gl-flex gl-flex-col gl-gap-5" @submit.prevent="handleSubmit">
+      <form-section :title="s__('AICatalog|Basic information')">
+        <form-group
+          #default="{ state, blur }"
+          ref="fieldName"
+          :field="$options.fields.name"
+          :field-value="formValues.name"
+        >
+          <gl-form-input
+            :id="$options.fields.name.id"
+            v-model="formValues.name"
+            :data-testid="$options.fields.name.inputAttrs['data-testid']"
+            :placeholder="$options.fields.name.inputAttrs.placeholder"
+            :state="state"
+            @blur="blur"
+          />
+        </form-group>
+        <form-group
+          #default="{ state, blur }"
+          ref="fieldDescription"
+          :field="$options.fields.description"
+          :field-value="formValues.description"
+        >
+          <gl-form-textarea
+            :id="$options.fields.description.id"
+            v-model="formValues.description"
+            :no-resize="false"
+            :placeholder="
+              s__(
+                'AICatalog|This agent specializes in... It can help you with... Best suited for...',
+              )
+            "
+            :state="state"
+            data-testid="agent-form-textarea-description"
+            @blur="blur"
+          />
+        </form-group>
+      </form-section>
+      <form-section :title="s__('AICatalog|Visibility & access')">
+        <form-group
+          v-if="isGlobalNamespace"
+          ref="fieldProject"
+          :field="$options.fields.projectId"
+          :field-value="formValues.projectId"
+        >
+          <form-project-dropdown
+            :id="$options.fields.projectId.id"
+            v-model="formValues.projectId"
+            :disabled="isEditMode"
+            @error="onError"
+          />
+        </form-group>
+        <form-group
+          :field="$options.fields.visibilityLevel"
+          :field-value="formValues.visibilityLevel"
+        >
+          <gl-alert
+            v-if="formValues.visibilityLevel === $options.VISIBILITY_LEVEL_PUBLIC"
+            :dismissible="false"
+            class="gl-mb-5 gl-mt-2"
+          >
+            <gl-sprintf
+              :message="
+                s__(
+                  `AICatalog|If a public agent is enabled, you can't delete it or make it private. %{linkStart}Learn more about agent visibility.%{linkEnd}`,
+                )
+              "
+            >
+              <template #link="{ content }">
+                <gl-link :href="$options.publicDeletionHelpLink">{{ content }}</gl-link>
+              </template>
+            </gl-sprintf>
+          </gl-alert>
+          <visibility-level-radio-group
+            :id="$options.fields.visibilityLevel.id"
+            v-model="formValues.visibilityLevel"
+            :item-type="$options.AI_CATALOG_TYPE_AGENT"
+            :texts="$options.visibilityLevelTexts"
+          />
+        </form-group>
+      </form-section>
+      <form-section :title="s__('AICatalog|Configuration')">
+        <form-group
+          v-if="showTypeSelection"
+          :field="$options.fields.itemType"
+          :field-value="formValues.itemType"
+        >
+          <form-agent-type v-model="formValues.itemType" :disabled="isEditMode" />
+        </form-group>
+        <form-group
+          v-if="isThirdPartyFlow"
+          ref="fieldDefinitionThirdPartyFlow"
+          :key="$options.fields.definition.id"
+          :field="$options.fields.definition"
+          :field-value="formValues.definition"
+        >
+          <form-flow-definition
+            v-model="formValues.definition"
+            data-testid="flow-form-definition-third-party-flow"
+          />
+        </form-group>
+        <template v-else>
+          <form-group :field="$options.fields.tools" :field-value="formValues.tools">
+            <template #label-description>
+              <span>{{ s__('AICatalog|Tools are built and maintained by GitLab.') }}</span>
+              <gl-link :href="$options.toolsDocsLink" target="_blank">{{
+                s__('AICatalog|What are tools?')
+              }}</gl-link>
+            </template>
+            <gl-token-selector
+              :id="$options.fields.tools.id"
+              :selected-tokens="selectedTools"
+              :dropdown-items="filteredAvailableTools"
+              :placeholder="s__('AICatalog|Search tools.')"
+              allow-clear-all
+              data-testid="agent-form-token-selector-tools"
+              @input="handleToolsInput"
+              @text-input="handleToolSearch"
+              @keydown.enter.prevent
+            >
+              <template #dropdown-item-content="{ dropdownItem }">
+                <span
+                  v-gl-tooltip="
+                    dropdownItem.disabled
+                      ? s__(
+                          'AICatalog|Enable experiment and beta features in admin settings to use this tool.',
+                        )
+                      : dropdownItem.description
+                  "
+                  :aria-disabled="dropdownItem.disabled ? 'true' : null"
+                  :class="{ 'gl-text-gray-400': dropdownItem.disabled }"
+                  class="gl-flex gl-items-center gl-gap-2"
+                >
+                  {{ dropdownItem.name }}
+                  <gl-badge v-if="dropdownItem.source === 'mcp'" size="sm" variant="neutral">
+                    {{ s__('AICatalog|Experimental') }}
+                  </gl-badge>
+                </span>
+              </template>
+              <template #token-content="{ token }">
+                <span
+                  v-gl-tooltip="
+                    token.disabled
+                      ? s__(
+                          'AICatalog|Enable experiment and beta features in admin settings to use this tool.',
+                        )
+                      : token.description
+                  "
+                  :aria-disabled="token.disabled ? 'true' : null"
+                  :class="{ 'gl-text-gray-400 gl-line-through': token.disabled }"
+                >
+                  {{ token.name }}
+                </span>
+              </template>
+            </gl-token-selector>
+          </form-group>
+          <form-group
+            v-if="canReadMcpServers"
+            :field="$options.fields.mcpServers"
+            :field-value="formValues.mcpServers"
+          >
+            <gl-token-selector
+              :id="$options.fields.mcpServers.id"
+              :selected-tokens="selectedMcpServers"
+              :dropdown-items="filteredAvailableMcpServers"
+              :placeholder="s__('AICatalog|Search MCP servers.')"
+              allow-clear-all
+              data-testid="agent-form-token-selector-mcp-servers"
+              @input="handleMcpServersInput"
+              @text-input="handleMcpServerSearch"
+              @keydown.enter.prevent
+            >
+              <template #token-content="{ token }">
+                <span v-gl-tooltip="token.description">
+                  {{ token.name }}
+                </span>
+              </template>
+            </gl-token-selector>
+          </form-group>
+          <form-group
+            #default="{ state, blur }"
+            ref="fieldSystemPrompt"
+            :field="$options.fields.systemPrompt"
+            :field-value="formValues.systemPrompt"
+          >
+            <gl-form-textarea
+              :id="$options.fields.systemPrompt.id"
+              v-model="formValues.systemPrompt"
+              :no-resize="false"
+              :placeholder="
+                s__(
+                  'AICatalog|You are an expert in [domain]. Your communication style is [style]. When helping users, you should always... Your key strengths include... You approach problems by...',
+                )
+              "
+              :rows="20"
+              data-testid="agent-form-textarea-system-prompt"
+              :state="state"
+              @blur="blur"
+            />
+          </form-group>
+        </template>
+      </form-section>
+      <ai-catalog-form-buttons :is-disabled="isLoading" :cancel-route="cancelRoute">
+        <gl-button
+          class="js-no-auto-disable gl-w-full @sm/panel:gl-w-auto"
+          type="submit"
+          variant="confirm"
+          category="primary"
+          data-testid="agent-form-submit-button"
+          :loading="isLoading"
+        >
+          {{ submitButtonText }}
+        </gl-button>
+      </ai-catalog-form-buttons>
+    </gl-form>
+  </div>
+</template>

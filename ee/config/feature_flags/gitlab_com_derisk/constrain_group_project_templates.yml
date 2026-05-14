@@ -1,0 +1,10 @@
+---
+name: constrain_group_project_templates
+description:
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/296815
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/222720
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/586332
+milestone: '18.9'
+group: group::source code
+type: gitlab_com_derisk
+default_enabled: false

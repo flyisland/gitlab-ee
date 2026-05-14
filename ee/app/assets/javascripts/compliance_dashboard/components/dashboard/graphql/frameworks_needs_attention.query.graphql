@@ -1,0 +1,45 @@
+query frameworksNeedsAttention($groupPath: ID!) {
+  group(fullPath: $groupPath) {
+    id
+    complianceFrameworksNeedingAttention {
+      nodes {
+        id
+        framework {
+          id
+          name
+          color
+          scanExecutionPolicies {
+            nodes {
+              id @gl_introduced(version: "18.11.0")
+              name
+            }
+          }
+          vulnerabilityManagementPolicies {
+            nodes {
+              id @gl_introduced(version: "18.11.0")
+              name
+            }
+          }
+          scanResultPolicies {
+            nodes {
+              id @gl_introduced(version: "18.11.0")
+              name
+            }
+          }
+          pipelineExecutionPolicies {
+            nodes {
+              id @gl_introduced(version: "18.11.0")
+              name
+            }
+          }
+        }
+        projectsCount
+        requirementsCount
+        requirementsWithoutControls {
+          id
+          name
+        }
+      }
+    }
+  }
+}

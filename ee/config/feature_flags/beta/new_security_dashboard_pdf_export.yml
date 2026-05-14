@@ -1,0 +1,10 @@
+---
+name: new_security_dashboard_pdf_export
+description:
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/589201
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224664
+rollout_issue_url:
+milestone: '18.10'
+group: group::security insights
+type: beta
+default_enabled: true

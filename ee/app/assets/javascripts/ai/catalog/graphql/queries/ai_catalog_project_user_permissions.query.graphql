@@ -1,0 +1,10 @@
+# @feature_category: workflow_catalog
+query aiCatalogProjectUserPermissions($fullPath: ID!) {
+  project(fullPath: $fullPath) {
+    id
+    userPermissions {
+      adminAiCatalogItemConsumer
+      adminAiCatalogItem
+    }
+  }
+}

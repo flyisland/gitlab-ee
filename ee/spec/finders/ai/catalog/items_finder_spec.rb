@@ -1,0 +1,338 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe Ai::Catalog::ItemsFinder, :aggregate_failures, feature_category: :workflow_catalog do
+  include Ai::Catalog::TestHelpers
+
+  let_it_be(:user) { create(:user) }
+
+  let_it_be(:project_reporter_access) { create(:project, reporters: user) }
+  let_it_be(:project_developer_access) { create(:project, developers: user) }
+
+  let_it_be(:public_flow) { create(:ai_catalog_flow, public: true) }
+  let_it_be(:public_deleted_flow) { create(:ai_catalog_flow, deleted_at: Time.zone.now) }
+  let_it_be(:public_flow_in_other_org) { create(:ai_catalog_flow, public: true, organization: create(:organization)) }
+  let_it_be(:private_flow) { create(:ai_catalog_flow, public: false) }
+  let_it_be(:public_agent) { create(:ai_catalog_agent, public: true) }
+
+  let_it_be(:private_flow_reporter_access) do
+    create(:ai_catalog_flow, public: false, project: project_reporter_access)
+  end
+
+  let_it_be(:private_flow_developer_access) do
+    create(:ai_catalog_flow, public: false, project: project_developer_access)
+  end
+
+  let_it_be(:private_agent_developer_access) do
+    create(:ai_catalog_agent, public: false, project: project_developer_access)
+  end
+
+  let_it_be(:private_third_party_flow_developer_access) do
+    create(:ai_catalog_third_party_flow, public: false, project: project_developer_access)
+  end
+
+  let(:params) { { organization: user.organization } }
+
+  subject(:results) { described_class.new(user, params: params).execute }
+
+  before do
+    enable_ai_catalog
+  end
+
+  it 'returns items visible to user' do
+    is_expected.to contain_exactly(
+      public_flow,
+      private_third_party_flow_developer_access,
+      public_agent,
+      private_flow_developer_access,
+      private_agent_developer_access
+    )
+  end
+
+  context 'when filtering by item_type' do
+    let(:params) { { organization: user.organization, item_type: 'agent' } }
+
+    it 'returns the matching items' do
+      is_expected.to contain_exactly(
+        public_agent,
+        private_agent_developer_access
+      )
+    end
+  end
+
+  context 'when filtering by item_types' do
+    let(:params) { { organization: user.organization, item_types: %w[third_party_flow agent] } }
+
+    it 'returns the matching items' do
+      is_expected.to contain_exactly(
+        public_agent,
+        private_agent_developer_access,
+        private_third_party_flow_developer_access
+      )
+    end
+  end
+
+  context 'when filtering by item_type and item_types' do
+    let(:params) { { organization: user.organization, item_types: ['third_party_flow'], item_type: 'agent' } }
+
+    it 'returns items matching both arguments' do
+      is_expected.to contain_exactly(
+        public_agent,
+        private_agent_developer_access,
+        private_third_party_flow_developer_access
+      )
+    end
+  end
+
+  context 'when filtering by search' do
+    let_it_be(:agent_with_name_match) { create(:ai_catalog_agent, public: true, name: 'Autotriager') }
+    let_it_be(:flow_with_description_match) do
+      create(:ai_catalog_flow, public: true, description: 'Flow to triage issues')
+    end
+
+    let(:params) { { organization: user.organization, search: 'triage' } }
+
+    it 'returns items that partial match on the name or description' do
+      is_expected.to contain_exactly(
+        agent_with_name_match,
+        flow_with_description_match
+      )
+    end
+  end
+
+  context 'when filtering by organization' do
+    context "with user's organization" do
+      let(:params) { { organization: user.organization } }
+
+      it 'returns the matching items' do
+        is_expected.not_to include(public_flow_in_other_org)
+        expect(results.size).to eq(5)
+      end
+    end
+
+    context "with organization user does not belong to" do
+      let(:params) { { organization: public_flow_in_other_org.organization } }
+
+      it 'returns public items in that organization' do
+        is_expected.to contain_exactly(public_flow_in_other_org)
+      end
+
+      it 'returns the matching items when user is nil' do
+        expect(described_class.new(nil, params: params).execute).to contain_exactly(
+          public_flow_in_other_org
+        )
+      end
+    end
+
+    context 'when organization and project do not match' do
+      let(:params) { { organization: user.organization, project: project_reporter_access } }
+
+      it 'uses the explicit organization parameter and returns no items because organizations do not match' do
+        is_expected.to be_empty
+      end
+    end
+
+    context 'when organization is not provided' do
+      let(:params) { {} }
+
+      it 'raises an ArgumentError' do
+        expect do
+          results
+        end.to raise_error(ArgumentError, _('Organization parameter must be specified'))
+      end
+    end
+  end
+
+  context 'when filtering by project' do
+    let(:params) { { organization: user.organization, project: [public_flow.project, public_agent.project] } }
+
+    it 'returns the matching items' do
+      is_expected.to contain_exactly(public_flow, public_agent)
+    end
+  end
+
+  context 'when filtering by ID' do
+    let(:params) { { organization: user.organization, id: [public_flow.id, public_agent.id] } }
+
+    it 'returns the matching items' do
+      is_expected.to contain_exactly(public_flow, public_agent)
+    end
+  end
+
+  describe 'ordering' do
+    # Create additional items in random priority order to ensure ordering is from logic, not creation order
+    let_it_be(:public_item) { create(:ai_catalog_item, public: true, organization: user.organization) }
+
+    let_it_be(:foundational_flow) do
+      create(:ai_catalog_flow, :with_foundational_flow_reference, public: true,
+        verification_level: :gitlab_maintained, organization: user.organization)
+    end
+
+    let_it_be(:foundational_external_agent) do
+      create(:ai_catalog_agent, public: true, verification_level: :gitlab_maintained, organization: user.organization)
+    end
+
+    let(:params) { { organization: user.organization } }
+
+    context 'when ai_catalog_items_priority_order feature flag is enabled' do
+      it 'returns items ordered by priority' do
+        result = results.to_a
+
+        # Priority 1: Foundational agents (SaaS only, not applicable here)
+        # Priority 2: GitLab-maintained items (foundational flows, external agents)
+        # Priority 3: User's project items (developer+ access)
+        # Priority 4: Remaining public items
+        # Note: Reporter-only items are excluded
+        expect(result).to eq([
+          foundational_external_agent,
+          foundational_flow,
+          private_third_party_flow_developer_access,
+          private_agent_developer_access,
+          private_flow_developer_access,
+          public_item,
+          public_agent,
+          public_flow
+        ])
+      end
+
+      context 'when on SaaS', :saas do
+        let_it_be(:foundational_agent) { create(:ai_catalog_agent, public: true, organization: user.organization) }
+
+        before do
+          allow(Ai::Catalog::Item).to receive_messages(
+            foundational_chat_agent_ids: [foundational_agent.id],
+            foundational_external_agent_ids: [foundational_external_agent.id]
+          )
+          # Foundational external agents on SaaS use hardcoded IDs, making
+          # verification_level irrelevant for priority ordering
+          foundational_external_agent.update!(verification_level: :unverified)
+        end
+
+        it 'returns items ordered by priority with foundational agents first' do
+          result = results.to_a
+
+          # Priority 1: Foundational agents (hardcoded IDs)
+          # Priority 2: GitLab-maintained items (foundational flows, external agents)
+          # Priority 3: User's project items (developer+ access)
+          # Priority 4: Remaining public items
+          # Note: Reporter-only items are excluded
+          expect(result).to eq([
+            foundational_agent,
+            foundational_external_agent,
+            foundational_flow,
+            private_third_party_flow_developer_access,
+            private_agent_developer_access,
+            private_flow_developer_access,
+            public_item,
+            public_agent,
+            public_flow
+          ])
+        end
+
+        context 'with filters applied' do
+          it 'maintains priority ordering with item_type filter' do
+            result = described_class.new(user, params: params.merge(item_type: 'agent')).execute.to_a
+
+            expect(result).to eq([
+              foundational_agent,
+              foundational_external_agent,
+              private_agent_developer_access,
+              public_item,
+              public_agent
+            ])
+          end
+
+          it 'maintains priority ordering with search filter' do
+            public_item.update!(name: 'SearchableItem')
+            private_third_party_flow_developer_access.update!(name: 'SearchableFlow')
+            foundational_external_agent.update!(name: 'SearchableAgent')
+            foundational_flow.update!(name: 'SearchableFoundationalFlow')
+
+            result = described_class.new(user, params: params.merge(search: 'Searchable')).execute.to_a
+
+            expect(result).to eq([
+              foundational_external_agent,
+              foundational_flow,
+              private_third_party_flow_developer_access,
+              public_item
+            ])
+          end
+        end
+      end
+    end
+
+    context 'when ai_catalog_items_priority_order feature flag is disabled' do
+      before do
+        stub_feature_flags(ai_catalog_items_priority_order: false)
+      end
+
+      it 'uses public_or_visible_to_user and order_by_catalog_priority' do
+        result = results.to_a
+
+        # Foundational flows first, then remaining items ordered by ID ASC
+        # Reporter-only items are excluded
+        expect(result).to eq([
+          foundational_flow,
+          foundational_external_agent,
+          public_item,
+          private_third_party_flow_developer_access,
+          private_agent_developer_access,
+          private_flow_developer_access,
+          public_agent,
+          public_flow
+        ])
+      end
+    end
+
+    context 'when sort param is provided' do
+      before do
+        public_flow.update!(last_30_day_usage_count: 50)
+        public_agent.update!(last_30_day_usage_count: 100)
+        public_item.update!(last_30_day_usage_count: 10)
+        private_flow_developer_access.update!(last_30_day_usage_count: 75)
+      end
+
+      context 'with sort: :usage_count_desc' do
+        let(:params) { { organization: user.organization, sort: :usage_count_desc } }
+
+        it 'returns items sorted by usage count descending' do
+          result = results.to_a
+
+          usage_counts = result.map(&:last_30_day_usage_count)
+          expect(usage_counts).to eq(usage_counts.sort.reverse)
+        end
+      end
+
+      context 'with sort: :usage_count_asc' do
+        let(:params) { { organization: user.organization, sort: :usage_count_asc } }
+
+        it 'returns items sorted by usage count ascending' do
+          result = results.to_a
+
+          usage_counts = result.map(&:last_30_day_usage_count)
+          expect(usage_counts).to eq(usage_counts.sort)
+        end
+      end
+
+      context 'with sort: :catalog_priority' do
+        let(:params) { { organization: user.organization, sort: :catalog_priority } }
+
+        it 'returns items in catalog priority order' do
+          result = results.to_a
+
+          expect(result).to eq([
+            foundational_external_agent,
+            foundational_flow,
+            private_third_party_flow_developer_access,
+            private_agent_developer_access,
+            private_flow_developer_access,
+            public_item,
+            public_agent,
+            public_flow
+          ])
+        end
+      end
+    end
+  end
+end

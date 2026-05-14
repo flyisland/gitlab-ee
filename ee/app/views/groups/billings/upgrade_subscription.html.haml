@@ -1,0 +1,12 @@
+- add_to_breadcrumbs _('Billing'), group_billings_path(@group)
+- page_title s_("BillingPlans|Upgrade subscription")
+- add_page_specific_style 'page_bundles/upgrade_subscription'
+
+- if @top_level_group
+  - current_plan = subscription_plan_info(@plans_data, @top_level_group.actual_plan_name)
+  = render 'subgroup_billing_plan_header',
+    namespace: @group,
+    current_plan: current_plan,
+    top_level_group: @top_level_group
+- else
+  #js-upgrade-subscription{ "data-provide": upgrade_subscription_data_attributes(@group, @plans_data).to_json }

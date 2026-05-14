@@ -1,0 +1,8 @@
+# @feature_category: workflow_catalog
+query aiCatalogProjectsMaintainer {
+  projects(membership: true, minAccessLevel: MAINTAINER, first: 1) {
+    nodes {
+      id
+    }
+  }
+}

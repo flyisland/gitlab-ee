@@ -1,0 +1,13 @@
+# @feature_category: knowledge_graph
+query getOwnedNamespaces($first: Int = 25) {
+  groups(ownedOnly: true, topLevelOnly: true, first: $first, sort: "name_asc") {
+    nodes {
+      id
+      name
+      fullName
+      fullPath
+      avatarUrl
+      knowledgeGraphEnabled
+    }
+  }
+}

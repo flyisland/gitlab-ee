@@ -1,0 +1,172 @@
+# frozen_string_literal: true
+
+module Ai
+  module DuoWorkflows
+    class DuoAgentPlatformModelMetadataService
+      include ::Gitlab::Utils::StrongMemoize
+
+      def initialize(
+        feature_name:,
+        root_namespace: nil,
+        current_user: nil,
+        user_selected_model_identifier: nil
+      )
+        @root_namespace = root_namespace
+        @current_user = current_user
+        @user_selected_model_identifier = user_selected_model_identifier.to_s
+        @feature_name = feature_name&.to_sym
+      end
+
+      def execute
+        return resolve_self_managed_model_metadata if self_managed?
+
+        resolve_gitlab_com_model_metadata
+      end
+
+      private
+
+      attr_reader :root_namespace, :current_user, :user_selected_model_identifier, :feature_name
+
+      def self_managed?
+        !::Gitlab::Saas.feature_available?(:gitlab_com_subscriptions)
+      end
+
+      def duo_agent_platform
+        ::Ai::FeatureSetting.find_by_feature(feature_name)
+      end
+      strong_memoize_attr :duo_agent_platform
+
+      def duo_agent_platform_in_self_hosted_duo?
+        # There is a `disabled` option for Duo Self-Hosted.
+        # We need to consider this case otherwise it resolves to
+        # cloud-connected models.
+        return true if duo_agent_platform&.disabled?
+
+        duo_agent_platform&.self_hosted?
+      end
+
+      def resolve_self_managed_model_metadata
+        return resolve_self_hosted_duo_model_metadata if duo_agent_platform_in_self_hosted_duo?
+
+        resolve_cloud_connected_model_metadata
+      end
+
+      # Self-Hosted Duo Priority:
+      # 1. Self-hosted feature setting (admin-configured models only)
+      # Note: No user model selection - limited to what admin sets up
+      def resolve_self_hosted_duo_model_metadata
+        feature_setting = duo_agent_platform
+
+        return {} if feature_setting.nil? || feature_setting.disabled?
+
+        model_metadata_from_setting(feature_setting)
+      end
+
+      # Cloud-Connected Self-Managed Priority (same user empowerment as GitLab.com):
+      # 1. Instance-level model selection (admin sets instance defaults)
+      # 2. User model selection (users can override instance defaults)
+      def resolve_cloud_connected_model_metadata
+        # Priority 1: Instance-level model selection
+        instance_setting = ::Ai::ModelSelection::InstanceModelSelectionFeatureSetting
+                            .find_or_initialize_by_feature(feature_name)
+
+        return {} unless instance_setting
+
+        resolve_model_metadata_with_user_selection(instance_setting, model_selection_scope: nil)
+      end
+
+      # GitLab.com Priority:
+      # 1. Namespace-level model selection (organization/group defaults)
+      # 2. User model selection (users can override namespace defaults)
+      def resolve_gitlab_com_model_metadata
+        return {} unless root_namespace
+
+        # Priority 1: Namespace-level model selection
+        namespace_setting = ::Ai::ModelSelection::NamespaceFeatureSetting
+                             .find_or_initialize_by_feature(root_namespace, feature_name)
+
+        return {} unless namespace_setting
+
+        resolve_model_metadata_with_user_selection(namespace_setting, model_selection_scope: root_namespace)
+      end
+
+      def resolve_model_metadata_with_user_selection(setting, model_selection_scope:)
+        setting_metadata = model_metadata_from_setting(setting)
+
+        return setting_metadata if do_not_consider_user_selected_model?(setting, model_selection_scope)
+
+        # Priority 2: User model selection
+        user_selected_model_metadata(model_selection_scope)
+      end
+
+      def model_metadata_from_setting(setting_record)
+        ::Gitlab::Llm::AiGateway::AgentPlatform::ModelMetadata.new(
+          feature_setting: setting_record
+        ).execute
+      end
+
+      def do_not_consider_user_selected_model?(setting, model_selection_scope)
+        # Only consider user selected model for agentic chat
+        return true unless feature_name == ::Ai::ModelSelection::FeaturesConfigurable.agentic_chat_feature_name
+
+        setting.pinned_model? ||
+          invalid_user_selected_model_identifier?(setting, model_selection_scope)
+      end
+
+      def invalid_user_selected_model_identifier?(setting, model_selection_scope)
+        return true if user_selected_model_identifier.blank?
+
+        selectable_models(setting, model_selection_scope).exclude?(user_selected_model_identifier)
+      end
+
+      def selectable_models(setting, model_selection_scope)
+        result = ::Ai::ModelSelection::FetchModelDefinitionsService
+                    .new(current_user, model_selection_scope: model_selection_scope)
+                    .execute
+
+        return [] unless result&.success?
+
+        return [] unless setting
+
+        # Use the decorator to get selectable models (includes dev overrides for team members)
+        decorated = ::Gitlab::Graphql::Representation::ModelSelection::FeatureSetting.decorate(
+          [setting],
+          model_definitions: result.payload,
+          current_user: current_user,
+          group_id: model_selection_scope&.id
+        )
+
+        decorator_result = decorated.find do |object|
+          object.feature_setting&.feature&.to_sym == setting.feature.to_sym
+        end
+
+        return [] unless decorator_result.present?
+
+        # rubocop:disable Rails/Pluck -- selectable_models returns an array, not an AR relation
+        decorator_result.selectable_models.map { |model| model[:ref] }
+        # rubocop:enable Rails/Pluck
+      end
+
+      def user_selected_model_metadata(model_selection_scope)
+        record = build_record_with_user_selected_model_identifier(model_selection_scope)
+
+        model_metadata_from_setting(record)
+      end
+
+      def build_record_with_user_selected_model_identifier(model_selection_scope)
+        if model_selection_scope
+          ::Ai::ModelSelection::NamespaceFeatureSetting.build(
+            namespace: model_selection_scope,
+            feature: feature_name,
+            offered_model_ref: user_selected_model_identifier
+          )
+        else
+          ::Ai::ModelSelection::InstanceModelSelectionFeatureSetting.build(
+            feature: feature_name,
+            offered_model_ref: user_selected_model_identifier
+          )
+        end
+      end
+    end
+  end
+end

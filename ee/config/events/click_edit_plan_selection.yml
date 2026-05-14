@@ -1,0 +1,21 @@
+---
+description: User clicks edit to return to plan selection on upgrade subscription
+internal_events: true
+status: active
+action: click_edit_plan_selection
+identifiers:
+  - namespace
+  - user
+additional_properties:
+  property:
+    description: The edit action context
+product_group: acquisition
+product_categories:
+  - acquisition
+  - subscription_management
+milestone: '18.11'
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229539
+tiers:
+  - free
+  - premium
+  - ultimate

@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+module EE
+  module Projects::IncidentsController
+    extend ActiveSupport::Concern
+
+    prepended do
+      before_action do
+        push_frontend_feature_flag(:work_item_configurable_types, project.root_namespace)
+        push_licensed_feature(:escalation_policies, project)
+      end
+    end
+  end
+end

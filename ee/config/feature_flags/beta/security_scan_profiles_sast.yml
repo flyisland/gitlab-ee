@@ -1,0 +1,10 @@
+---
+name: security_scan_profiles_sast
+description:
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/591256
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/226747
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/592953
+milestone: '18.11'
+group: group::security platform management
+type: beta
+default_enabled: true

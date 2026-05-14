@@ -1,0 +1,394 @@
+<script>
+import EMPTY_SVG_URL from '@gitlab/svgs/dist/illustrations/empty-state/empty-ai-catalog-md.svg?url';
+import { GlTabs, GlTab } from '@gitlab/ui';
+import { fetchPolicies } from '~/lib/graphql';
+import { InternalEvents } from '~/tracking';
+import { __, s__, sprintf } from '~/locale';
+import { convertToGraphQLId } from '~/graphql_shared/utils';
+import glFeatureFlagsMixin from '~/vue_shared/mixins/gl_feature_flags_mixin';
+import ErrorsAlert from '~/vue_shared/components/errors_alert.vue';
+import { TYPENAME_PROJECT, TYPENAME_GROUP } from '~/graphql_shared/constants';
+import {
+  VISIBILITY_LEVEL_PRIVATE_STRING,
+  VISIBILITY_LEVEL_PUBLIC_STRING,
+} from '~/visibility_level/constants';
+import AiCatalogListHeader from 'ee/ai/catalog/components/ai_catalog_list_header.vue';
+import AiCatalogListWrapper from 'ee/ai/catalog/components/ai_catalog_list_wrapper.vue';
+import aiCatalogProjectUserPermissionsQuery from 'ee/ai/catalog/graphql/queries/ai_catalog_project_user_permissions.query.graphql';
+import aiCatalogGroupUserPermissionsQuery from 'ee/ai/catalog/graphql/queries/ai_catalog_group_user_permissions.query.graphql';
+import {
+  AI_CATALOG_TYPE_AGENT,
+  AI_CATALOG_TYPE_THIRD_PARTY_FLOW,
+  AGENT_VISIBILITY_LEVEL_DESCRIPTIONS,
+  PAGE_SIZE,
+  AI_CATALOG_CONSUMER_LABELS,
+  AI_CATALOG_CONSUMER_TYPE_PROJECT,
+  AI_CATALOG_CONSUMER_TYPE_GROUP,
+  TRACK_EVENT_TYPE_AGENT,
+  TRACK_EVENT_VIEW_AI_CATALOG_PROJECT_MANAGED,
+  TRACK_EVENT_VIEW_AI_CATALOG_PROJECT_CATALOG,
+} from 'ee/ai/catalog/constants';
+import { AI_CATALOG_AGENTS_SHOW_ROUTE } from 'ee/ai/catalog/router/constants';
+import projectAiCatalogAgentsQuery from 'ee/ai/duo_agents_platform/graphql/queries/get_project_agents.query.graphql';
+import AiCatalogConfiguredItemsWrapper from 'ee/ai/duo_agents_platform/components/catalog/ai_catalog_configured_items_wrapper.vue';
+import aiCatalogAgentsQuery from 'ee/ai/catalog/graphql/queries/ai_catalog_agents.query.graphql';
+
+export default {
+  name: 'AiAgentsIndex',
+  components: {
+    GlTabs,
+    GlTab,
+    ErrorsAlert,
+    AiCatalogListHeader,
+    AiCatalogListWrapper,
+    AiCatalogConfiguredItemsWrapper,
+  },
+  mixins: [glFeatureFlagsMixin(), InternalEvents.mixin()],
+  inject: {
+    isProjectNamespace: {},
+    groupPath: {
+      default: null,
+    },
+    projectId: {
+      default: null,
+    },
+    projectPath: {
+      default: null,
+    },
+    exploreAiCatalogAgentsPath: {
+      default: '',
+    },
+    rootGroupId: {
+      default: null,
+    },
+    groupId: {
+      default: null,
+    },
+  },
+  apollo: {
+    aiAgents: {
+      query: projectAiCatalogAgentsQuery,
+      skip() {
+        return (
+          !this.projectPath || this.selectedTabIndex !== this.$options.PROJECT_TAB_INDICES.MANAGED
+        );
+      },
+      variables() {
+        const effectiveGroupId = this.projectId ? this.rootGroupId : this.groupId;
+
+        return {
+          projectPath: this.projectPath,
+          itemTypes: this.itemTypes,
+          projectId: convertToGraphQLId(TYPENAME_PROJECT, this.projectId),
+          groupId: convertToGraphQLId(TYPENAME_GROUP, effectiveGroupId),
+          search: this.searchTerm,
+          ...this.paginationVariables,
+        };
+      },
+      // fetchPolicy needed to refresh items after creating an item
+      fetchPolicy: fetchPolicies.CACHE_AND_NETWORK,
+      update: (data) => {
+        return (data?.project?.aiCatalogItems?.nodes || []).map((item) => {
+          if (!item.configurationForProject) {
+            return item;
+          }
+
+          const latest = item.latestVersion.versionName;
+          const pinned = item.configurationForProject?.pinnedItemVersion.versionName;
+
+          return {
+            ...item,
+            isUpdateAvailable: latest !== pinned,
+          };
+        });
+      },
+      result({ data }) {
+        this.pageInfo = data?.project?.aiCatalogItems?.pageInfo || {};
+      },
+      error() {
+        this.errors = [s__('AICatalog|There was a problem fetching agents.')];
+      },
+    },
+    aiCatalogAgents: {
+      query: aiCatalogAgentsQuery,
+      skip() {
+        return this.selectedTabIndex !== this.$options.PROJECT_TAB_INDICES.CATALOG;
+      },
+      variables() {
+        return {
+          ...this.paginationVariables,
+          itemTypes: this.itemTypes,
+          search: this.searchTerm,
+        };
+      },
+      fetchPolicy: fetchPolicies.CACHE_AND_NETWORK,
+      update: (data) => data?.aiCatalogItems?.nodes || [],
+      result({ data }) {
+        this.pageInfo = data?.aiCatalogItems?.pageInfo || {};
+      },
+      error() {
+        this.errors = [s__('AICatalog|There was a problem fetching agents.')];
+      },
+    },
+    groupUserPermissions: {
+      query: aiCatalogGroupUserPermissionsQuery,
+      skip() {
+        return !this.groupPath;
+      },
+      variables() {
+        return {
+          fullPath: this.groupPath,
+        };
+      },
+      update: (data) => data.group?.userPermissions || {},
+    },
+    projectUserPermissions: {
+      query: aiCatalogProjectUserPermissionsQuery,
+      skip() {
+        return !this.projectPath;
+      },
+      variables() {
+        return {
+          fullPath: this.projectPath,
+        };
+      },
+      update: (data) => data.project?.userPermissions || {},
+    },
+  },
+  data() {
+    return {
+      aiAgents: [],
+      aiCatalogAgents: [],
+      groupUserPermissions: {},
+      projectUserPermissions: {},
+      errors: [],
+      errorTitle: null,
+      pageInfo: {},
+      paginationVariables: {
+        before: null,
+        after: null,
+        first: PAGE_SIZE,
+        last: null,
+      },
+      selectedTabIndex: this.$options.PROJECT_TAB_INDICES.ENABLED,
+      searchTerm: '',
+    };
+  },
+  computed: {
+    isLoading() {
+      return this.$apollo.queries.aiAgents.loading;
+    },
+    isCatalogLoading() {
+      return this.$apollo.queries.aiCatalogAgents.loading;
+    },
+    itemTypes() {
+      const types = [AI_CATALOG_TYPE_AGENT];
+
+      if (this.glFeatures.aiCatalogThirdPartyFlows) {
+        types.push(AI_CATALOG_TYPE_THIRD_PARTY_FLOW);
+      }
+      return types;
+    },
+    itemTypeConfig() {
+      return {
+        showRoute: AI_CATALOG_AGENTS_SHOW_ROUTE,
+        visibilityTooltip: {
+          [VISIBILITY_LEVEL_PUBLIC_STRING]:
+            AGENT_VISIBILITY_LEVEL_DESCRIPTIONS[VISIBILITY_LEVEL_PUBLIC_STRING],
+          [VISIBILITY_LEVEL_PRIVATE_STRING]:
+            AGENT_VISIBILITY_LEVEL_DESCRIPTIONS[VISIBILITY_LEVEL_PRIVATE_STRING],
+        },
+      };
+    },
+    itemTypeConfigEnabled() {
+      return {
+        disableActionItem: {
+          showActionItem: (item) => {
+            if (!this.userPermissions?.adminAiCatalogItemConsumer) {
+              return false;
+            }
+            return !item.foundational;
+          },
+          text: __('Disable'),
+        },
+        ...this.itemTypeConfig,
+      };
+    },
+    itemTypeConfigManaged() {
+      return {
+        showStatusBadge: true,
+        ...this.itemTypeConfig,
+      };
+    },
+    namespaceTypeLabel() {
+      return this.isProjectNamespace
+        ? AI_CATALOG_CONSUMER_LABELS[AI_CATALOG_CONSUMER_TYPE_PROJECT]
+        : AI_CATALOG_CONSUMER_LABELS[AI_CATALOG_CONSUMER_TYPE_GROUP];
+    },
+    userPermissions() {
+      return this.isProjectNamespace ? this.projectUserPermissions : this.groupUserPermissions;
+    },
+    disableConfirmTitle() {
+      return sprintf(s__('AICatalog|Disable agent from this %{namespaceType}'), {
+        namespaceType: this.namespaceTypeLabel,
+      });
+    },
+    disableConfirmMessageGroup() {
+      return s__(
+        'AICatalog|Are you sure you want to disable agent %{name}? The agent will also be disabled from any projects in this group.',
+      );
+    },
+    disableConfirmMessageProject() {
+      return s__(
+        'AICatalog|Are you sure you want to disable agent %{name}? The agent will no longer work in this project.',
+      );
+    },
+    emptyStateTitle() {
+      return sprintf(s__('AICatalog|Use agents in your %{namespaceType}.'), {
+        namespaceType: this.namespaceTypeLabel,
+      });
+    },
+    emptyStateDescription() {
+      return s__('AICatalog|Use agents to automate tasks and answer questions.');
+    },
+    emptyStateButtonText() {
+      return s__('AICatalog|Explore the AI Catalog');
+    },
+  },
+  methods: {
+    resetPagination() {
+      this.paginationVariables = {
+        before: null,
+        after: null,
+        first: PAGE_SIZE,
+        last: null,
+      };
+    },
+    handleNextPage() {
+      this.paginationVariables = {
+        before: null,
+        after: this.pageInfo.endCursor,
+        first: PAGE_SIZE,
+        last: null,
+      };
+    },
+    handlePrevPage() {
+      this.paginationVariables = {
+        after: null,
+        before: this.pageInfo.startCursor,
+        first: null,
+        last: PAGE_SIZE,
+      };
+    },
+    handleSearch(filters) {
+      [this.searchTerm] = filters;
+    },
+    handleClearSearch() {
+      this.searchTerm = '';
+    },
+    handleError({ title, errors }) {
+      this.errorTitle = title;
+      this.errors = errors;
+    },
+    dismissErrors() {
+      this.errors = [];
+      this.errorTitle = null;
+    },
+    onClickManagedTab() {
+      this.resetPagination();
+      if (this.selectedTabIndex !== this.$options.PROJECT_TAB_INDICES.MANAGED) {
+        this.trackEvent(TRACK_EVENT_VIEW_AI_CATALOG_PROJECT_MANAGED, {
+          label: TRACK_EVENT_TYPE_AGENT,
+        });
+      }
+    },
+    onClickCatalogTab() {
+      this.resetPagination();
+      if (this.selectedTabIndex !== this.$options.PROJECT_TAB_INDICES.CATALOG) {
+        this.trackEvent(TRACK_EVENT_VIEW_AI_CATALOG_PROJECT_CATALOG, {
+          label: TRACK_EVENT_TYPE_AGENT,
+        });
+      }
+    },
+  },
+  PROJECT_TAB_INDICES: {
+    ENABLED: 0,
+    MANAGED: 1,
+    CATALOG: 2,
+  },
+  EMPTY_SVG_URL,
+};
+</script>
+
+<template>
+  <div>
+    <ai-catalog-list-header
+      :heading="s__('AICatalog|Agents')"
+      :can-admin="userPermissions.adminAiCatalogItem"
+      new-button-variant="default"
+    />
+    <errors-alert class="gl-mt-5" :title="errorTitle" :errors="errors" @dismiss="dismissErrors" />
+
+    <gl-tabs v-if="isProjectNamespace" v-model="selectedTabIndex" content-class="gl-py-0">
+      <gl-tab :title="__('Enabled')">
+        <ai-catalog-configured-items-wrapper
+          :disable-confirm-title="disableConfirmTitle"
+          :disable-confirm-message="disableConfirmMessageProject"
+          :empty-state-title="emptyStateTitle"
+          :empty-state-description="emptyStateDescription"
+          :empty-state-button-text="emptyStateButtonText"
+          :item-types="itemTypes"
+          :item-type-config="itemTypeConfigEnabled"
+          @empty-state-click="selectedTabIndex = $options.PROJECT_TAB_INDICES.CATALOG"
+          @error="handleError"
+        />
+      </gl-tab>
+      <gl-tab :title="s__('AICatalog|Managed')" lazy @click="onClickManagedTab">
+        <ai-catalog-list-wrapper
+          :is-loading="isLoading"
+          :items="aiAgents"
+          :item-type-config="itemTypeConfigManaged"
+          :page-info="pageInfo"
+          :empty-state-title="emptyStateTitle"
+          :empty-state-description="emptyStateDescription"
+          :empty-state-button-text="emptyStateButtonText"
+          :disable-confirm-title="disableConfirmTitle"
+          :disable-confirm-message="disableConfirmMessageProject"
+          :search-term="searchTerm"
+          data-testid="managed-agents-list"
+          @empty-state-click="selectedTabIndex = $options.PROJECT_TAB_INDICES.CATALOG"
+          @next-page="handleNextPage"
+          @prev-page="handlePrevPage"
+          @search="handleSearch"
+          @clear-search="handleClearSearch"
+        />
+      </gl-tab>
+      <gl-tab :title="s__('AICatalog|AI Catalog')" lazy @click="onClickCatalogTab">
+        <ai-catalog-list-wrapper
+          :is-loading="isCatalogLoading"
+          :items="aiCatalogAgents"
+          :item-type-config="itemTypeConfig"
+          :page-info="pageInfo"
+          :search-term="searchTerm"
+          data-testid="catalog-agents-list"
+          @next-page="handleNextPage"
+          @prev-page="handlePrevPage"
+          @search="handleSearch"
+          @clear-search="handleClearSearch"
+        />
+      </gl-tab>
+    </gl-tabs>
+    <ai-catalog-configured-items-wrapper
+      v-else
+      :disable-confirm-title="disableConfirmTitle"
+      :disable-confirm-message="disableConfirmMessageGroup"
+      :empty-state-title="emptyStateTitle"
+      :empty-state-description="emptyStateDescription"
+      :empty-state-button-href="exploreAiCatalogAgentsPath"
+      :empty-state-button-text="emptyStateButtonText"
+      :item-types="itemTypes"
+      :item-type-config="itemTypeConfigEnabled"
+      @error="handleError"
+    />
+  </div>
+</template>

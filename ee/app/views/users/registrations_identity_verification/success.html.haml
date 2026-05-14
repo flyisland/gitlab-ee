@@ -1,0 +1,4 @@
+- content_for :body_class, '!gl-bg-default'
+- content_for :hide_empty_navbar, true
+
+= render template: 'devise/sessions/successful_verification', locals: { data: { track_action: 'render', track_label: @tracking_label } }

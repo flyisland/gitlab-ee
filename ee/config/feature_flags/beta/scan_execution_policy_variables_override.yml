@@ -1,0 +1,10 @@
+---
+name: scan_execution_policy_variables_override
+description: Use variables_override for SEP instead of non-performant variables builder
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/485051
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224456
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/591129
+milestone: '18.10'
+group: group::security policies
+type: beta
+default_enabled: true

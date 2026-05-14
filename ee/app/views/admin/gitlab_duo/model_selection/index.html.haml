@@ -1,0 +1,5 @@
+- page_title s_("AdminSelfHostedModels|Model selection")
+- add_to_breadcrumbs _("GitLab Duo"), admin_gitlab_duo_path
+- add_page_specific_style 'page_bundles/settings'
+
+#js-duo-instance-model-selection{ data: { view_model: { basePath: admin_gitlab_duo_model_selection_index_path, modelOptions: model_choices_as_options, betaModelsEnabled: beta_models_enabled?, canManageInstanceModelSelection: can_manage_instance_model_selection?, canManageSelfHostedModels: can_manage_self_hosted_models?, canManageDapSelfHostedModels: can_manage_dap_self_hosted_models?, isDedicatedInstance: dedicated_instance?, duoConfigurationSettingsPath: admin_gitlab_duo_configuration_index_url }.to_json } }

@@ -1,0 +1,34 @@
+fragment BaseAiCatalogItem on AiCatalogItem {
+  id
+  createdAt
+  itemType
+  description
+  foundational @gl_introduced(version: "18.10.0")
+  ... on AiCatalogAgent {
+    foundational @gl_introduced(version: "18.7.0")
+  }
+  ... on AiCatalogFlow {
+    foundational @gl_introduced(version: "18.7.0")
+  }
+  name
+  public
+  updatedAt
+  softDeleted
+  latestVersion {
+    id
+    createdAt
+    updatedAt
+    createdBy {
+      id
+      name
+      username
+      webUrl
+    }
+  }
+  userPermissions {
+    adminAiCatalogItem
+    reportAiCatalogItem
+    forceHardDeleteAiCatalogItem
+  }
+  __typename
+}

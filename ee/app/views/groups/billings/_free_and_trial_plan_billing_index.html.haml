@@ -1,0 +1,16 @@
+.gl-max-w-6xl.gl-mx-auto{ data: { track_action: 'render', testid: 'free-trial-plan-billing-content' } }
+  #js-targeted-message-banner{ "data-provide": { namespaceFullPath: namespace.full_path }.to_json }
+  - if Feature.enabled?(:saas_upgrade_subscription_page, namespace)
+    #js-free-trial-plan-billing-with-upgrade-subscription{ "data-provide": free_trial_upgrade_subscription_billing_attributes(namespace, monthly_commitment_purchased: @monthly_commitment_purchased).to_json }
+  - else
+    #js-free-trial-plan-billing-with-dap-monthly-commit{ "data-provide": free_trial_plan_billing_attributes(namespace, plans_data, monthly_commitment_purchased: @monthly_commitment_purchased).to_json }
+
+.gl-mt-8.gl-text-center
+  .gl-text-lg.gl-mb-5
+    = s_("BillingPlans|Trusted by")
+  .gl-flex.gl-gap-5.gl-mb-5.gl-justify-center.gl-items-center.gl-flex-wrap
+    - logo_classes = 'dark:gl-invert'
+
+    - trusted_by_logos.each do |logo|
+      = image_tag(logo[:path], alt: logo[:name], title: logo[:name], class: logo[:no_invert] ? "" : logo_classes)
+  = render GitlabSubscriptions::ExpertContactComponent.new
