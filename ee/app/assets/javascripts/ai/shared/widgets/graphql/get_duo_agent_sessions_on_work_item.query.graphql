@@ -1,0 +1,26 @@
+# @feature_category: duo_agent_platform
+query getDuoAgentSessionsOnWorkItem($id: WorkItemID!) {
+  workItem(id: $id) {
+    id
+    features {
+      aiSession {
+        duoWorkflows {
+          nodes {
+            id
+            status
+            humanStatus
+            createdAt
+            updatedAt
+            workflowDefinition
+            userId
+            project {
+              id
+              name
+              fullPath
+            }
+          }
+        }
+      }
+    }
+  }
+}

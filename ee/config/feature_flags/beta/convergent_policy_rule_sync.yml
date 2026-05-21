@@ -1,0 +1,10 @@
+---
+name: convergent_policy_rule_sync
+description: 'Fixes race condition in compliance framework policy sync by using state-based dispatch and scoped fan-out'
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/596146
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231321
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/596943
+milestone: '19.0'
+group: group::security policies
+type: beta
+default_enabled: true

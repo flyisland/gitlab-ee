@@ -1,0 +1,10 @@
+---
+name: new_addon_lead_endpoint
+description: Routes addon-related lead creation (Duo Pro, Duo Enterprise) to the dedicated CustomersDot endpoint POST /leads/gitlab_com/addons instead of the combined trial endpoint.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/582586
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234463
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/599046
+milestone: '19.0'
+group: group::acquisition
+type: gitlab_com_derisk
+default_enabled: false

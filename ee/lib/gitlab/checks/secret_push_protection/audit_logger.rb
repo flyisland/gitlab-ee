@@ -1,0 +1,222 @@
+# frozen_string_literal: true
+
+module Gitlab
+  module Checks
+    module SecretPushProtection
+      class AuditLogger < ::Gitlab::Checks::SecretPushProtection::Base
+        include ::Gitlab::InternalEventsTracking
+
+        def initialize(project:, changes_access:)
+          super
+          @user = changes_access.user_access.user
+        end
+
+        def log_skip_secret_push_protection(skip_method)
+          return unless should_log_audit_events?
+
+          branch_name = changes_access.single_change_accesses.first.branch_name
+          message = "#{_('Secret push protection skipped via')} #{skip_method} on branch #{branch_name}"
+          audit_context = {
+            name: 'skip_secret_push_protection',
+            author: @user,
+            target: project,
+            scope: project,
+            message: message,
+            target_details: generate_target_details
+          }
+
+          ::Gitlab::Audit::Auditor.audit(audit_context)
+        end
+
+        def log_exclusion_audit_event(exclusion)
+          return unless should_log_audit_events?
+
+          audit_context = {
+            name: 'project_security_exclusion_applied',
+            author: @user,
+            target: exclusion,
+            scope: project,
+            message: "An exclusion of type (#{exclusion.type}) with value (#{exclusion.value}) was " \
+              "applied in Secret push protection"
+          }
+
+          ::Gitlab::Audit::Auditor.audit(audit_context)
+        end
+
+        def log_applied_exclusions_audit_events(applied_exclusions)
+          return unless should_log_audit_events?
+
+          applied_exclusions.each do |exclusion|
+            project_security_exclusion = get_project_security_exclusion_from_sds_exclusion(exclusion)
+            log_exclusion_audit_event(project_security_exclusion) unless project_security_exclusion.nil?
+          end
+        end
+
+        def track_spp_skipped(skip_method)
+          track_internal_event(
+            'skip_secret_push_protection',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              label: skip_method
+            }
+          )
+        end
+
+        def track_secret_found(secret_type)
+          track_internal_event(
+            'detect_secret_type_on_push',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              label: secret_type
+            }
+          )
+        end
+
+        def track_spp_scan_executed(scan_type)
+          track_internal_event(
+            'spp_scan_executed',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              label: scan_type
+            }
+          )
+        end
+
+        def track_spp_scan_passed
+          track_internal_event(
+            'spp_scan_passed',
+            user: @user,
+            project: project,
+            namespace: project.namespace
+          )
+        end
+
+        def track_spp_push_blocked_secrets_found(number)
+          track_internal_event(
+            'spp_push_blocked_secrets_found',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              value: number
+            }
+          )
+        end
+
+        def track_spp_push_blocked_secrets_found_with_errors(number)
+          track_internal_event(
+            'spp_push_blocked_secrets_found_with_errors',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              value: number
+            }
+          )
+        end
+
+        def track_changed_paths_calculated(changed_paths_count)
+          track_internal_event(
+            'calculate_changed_paths_in_secret_push_protection',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              value: changed_paths_count
+            }
+          )
+        end
+
+        def track_spp_execution_time_in_seconds(number)
+          track_internal_event(
+            'spp_total_execution_time',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              value: number
+            }
+          )
+        end
+
+        def track_spp_standard_error_exception(exception_class)
+          track_internal_event(
+            'spp_standard_error_exception_encountered',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              label: exception_class
+            }
+          )
+        end
+
+        def track_spp_too_many_changed_paths_error(message, changed_paths_count)
+          track_internal_event(
+            'spp_too_many_changed_paths_error_encountered',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              label: message,
+              value: changed_paths_count
+            }
+          )
+        end
+
+        def track_spp_too_many_lines_error(message, lines_count)
+          track_internal_event(
+            'spp_too_many_lines_error_encountered',
+            user: @user,
+            project: project,
+            namespace: project.namespace,
+            additional_properties: {
+              label: message,
+              value: lines_count
+            }
+          )
+        end
+
+        def track_spp_ruleset_error
+          track_internal_event(
+            'spp_ruleset_error_encountered',
+            user: @user,
+            project: project,
+            namespace: project.namespace
+          )
+        end
+
+        private
+
+        def should_log_audit_events?
+          project.licensed_feature_available?(:audit_events)
+        end
+
+        def generate_target_details
+          changes = changes_access.changes
+          old_rev = changes.first&.dig(:oldrev)
+          new_rev = changes.last&.dig(:newrev)
+
+          return project.name if old_rev.nil? || new_rev.nil?
+
+          ::Gitlab::Utils.append_path(
+            ::Gitlab::Routing.url_helpers.root_url,
+            ::Gitlab::Routing.url_helpers.project_compare_path(project, from: old_rev, to: new_rev)
+          )
+        end
+
+        def get_project_security_exclusion_from_sds_exclusion(exclusion)
+          return exclusion if exclusion.is_a?(::Security::ProjectSecurityExclusion)
+
+          project.security_exclusions.where(value: exclusion.value).first # rubocop:disable CodeReuse/ActiveRecord -- Need to be able to link GRPC::Exclusion to ProjectSecurityExclusion
+        end
+      end
+    end
+  end
+end

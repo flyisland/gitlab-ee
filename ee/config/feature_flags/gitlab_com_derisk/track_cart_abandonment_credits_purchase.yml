@@ -1,0 +1,10 @@
+---
+name: track_cart_abandonment_credits_purchase
+description: Controls sending cart abandonment credits purchase event to CDot
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/591667
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228480
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/594431
+milestone: '18.11'
+group: group::acquisition
+type: gitlab_com_derisk
+default_enabled: false

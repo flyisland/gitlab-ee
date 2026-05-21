@@ -1,0 +1,57 @@
+# @feature_category: compliance_management
+#import "~/graphql_shared/fragments/page_info.fragment.graphql"
+
+query complianceFrameworkPolicies(
+  $fullPath: ID!
+  $complianceFramework: ComplianceManagementFrameworkID
+  $approvalPoliciesAfter: String
+  $scanExecutionPoliciesAfter: String
+  $pipelineExecutionPoliciesAfter: String
+  $vulnerabilityManagementPoliciesAfter: String
+) {
+  namespace(fullPath: $fullPath) {
+    id
+    complianceFrameworks(id: $complianceFramework) {
+      nodes {
+        id
+        name
+        approvalPolicies(after: $approvalPoliciesAfter) @gl_introduced(version: "19.0.0") {
+          # eslint-disable-next-line @graphql-eslint/require-selections -- id not needed for this query
+          nodes {
+            name
+          }
+          pageInfo {
+            ...PageInfo
+          }
+        }
+        scanExecutionPolicies(after: $scanExecutionPoliciesAfter) {
+          # eslint-disable-next-line @graphql-eslint/require-selections -- id not needed for this query
+          nodes {
+            name
+          }
+          pageInfo {
+            ...PageInfo
+          }
+        }
+        pipelineExecutionPolicies(after: $pipelineExecutionPoliciesAfter) {
+          # eslint-disable-next-line @graphql-eslint/require-selections -- id not needed for this query
+          nodes {
+            name
+          }
+          pageInfo {
+            ...PageInfo
+          }
+        }
+        vulnerabilityManagementPolicies(after: $vulnerabilityManagementPoliciesAfter) {
+          # eslint-disable-next-line @graphql-eslint/require-selections -- id not needed for this query
+          nodes {
+            name
+          }
+          pageInfo {
+            ...PageInfo
+          }
+        }
+      }
+    }
+  }
+}

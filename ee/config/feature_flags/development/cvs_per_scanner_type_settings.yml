@@ -1,0 +1,8 @@
+---
+name: cvs_per_scanner_type_settings
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230988
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/596574
+milestone: '19.0'
+type: development
+group: group::composition analysis
+default_enabled: false

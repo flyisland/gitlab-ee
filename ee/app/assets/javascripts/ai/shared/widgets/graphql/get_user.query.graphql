@@ -1,0 +1,8 @@
+#import "~/graphql_shared/fragments/user.fragment.graphql"
+
+# @feature_category: duo_agent_platform
+query getAgentSessionUser($id: UserID!) {
+  user(id: $id) {
+    ...User
+  }
+}

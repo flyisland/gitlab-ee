@@ -1,0 +1,230 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe Ai::DuoWorkflows::FoundationalFlowStartParamsResolver, feature_category: :duo_agent_platform do
+  describe '.call' do
+    let_it_be(:project) { create(:project, :in_group) }
+
+    context 'when reference is not a known foundational flow' do
+      it 'returns an empty hash' do
+        expect(described_class.call('unknown/v1', project)).to eq({})
+      end
+    end
+
+    context 'with developer/v1' do
+      let(:reference) { 'developer/v1' }
+
+      before do
+        stub_feature_flags(duo_developer_next_unstable: false)
+      end
+
+      it 'returns versioning params with version 2.0.0' do
+        expect(described_class.call(reference, project)).to eq(
+          flow_definition: 'developer/v1',
+          flow_config_id: 'developer',
+          flow_config_schema_version: 'v1',
+          flow_version: '2.0.0'
+        )
+      end
+
+      context 'when duo_developer_next_unstable is enabled for the project' do
+        before do
+          stub_feature_flags(duo_developer_next_unstable: project)
+        end
+
+        it 'overrides to developer_unstable/experimental with version 1.0.0' do
+          expect(described_class.call(reference, project)).to eq(
+            flow_definition: 'developer_unstable/experimental',
+            flow_config_id: 'developer_unstable',
+            flow_config_schema_version: 'experimental',
+            flow_version: '1.0.0'
+          )
+        end
+      end
+
+      context 'when duo_developer_next_unstable is enabled for the root ancestor' do
+        before do
+          stub_feature_flags(duo_developer_next_unstable: project.root_ancestor)
+        end
+
+        it 'overrides to developer_unstable/experimental with version 1.0.0' do
+          expect(described_class.call(reference, project)).to eq(
+            flow_definition: 'developer_unstable/experimental',
+            flow_config_id: 'developer_unstable',
+            flow_config_schema_version: 'experimental',
+            flow_version: '1.0.0'
+          )
+        end
+      end
+
+      context 'with Orbit user preference' do
+        let_it_be(:user) { create(:user) }
+
+        before do
+          stub_feature_flags(duo_developer_next_unstable: false, duo_developer_orbit: false)
+        end
+
+        context 'when duo_developer_orbit is enabled and orbit master toggle is on' do
+          before do
+            stub_feature_flags(duo_developer_orbit: user)
+            user.user_preference.update!(orbit_settings: { 'enabled' => true })
+          end
+
+          it 'returns developer/v1 with orbit flow version' do
+            expect(described_class.call(reference, project, user: user)).to eq(
+              flow_definition: 'developer/v1',
+              flow_config_id: 'developer',
+              flow_config_schema_version: 'v1',
+              flow_version: '2.0.0-orbit'
+            )
+          end
+
+          context 'when duo_developer_next_unstable is also enabled' do
+            before do
+              stub_feature_flags(duo_developer_next_unstable: project)
+            end
+
+            it 'gives priority to duo_developer_orbit over duo_developer_next_unstable' do
+              expect(described_class.call(reference, project, user: user)).to eq(
+                flow_definition: 'developer/v1',
+                flow_config_id: 'developer',
+                flow_config_schema_version: 'v1',
+                flow_version: '2.0.0-orbit'
+              )
+            end
+          end
+        end
+
+        context 'when duo_developer_orbit feature flag is disabled' do
+          before do
+            stub_feature_flags(duo_developer_orbit: false)
+            user.user_preference.update!(orbit_settings: { 'enabled' => true })
+          end
+
+          it 'returns developer/v1 with default flow version' do
+            expect(described_class.call(reference, project, user: user)).to eq(
+              flow_definition: 'developer/v1',
+              flow_config_id: 'developer',
+              flow_config_schema_version: 'v1',
+              flow_version: '2.0.0'
+            )
+          end
+        end
+
+        context 'when orbit master toggle is off' do
+          before do
+            stub_feature_flags(duo_developer_orbit: user)
+            user.user_preference.update!(orbit_settings: { 'enabled' => false })
+          end
+
+          it 'returns developer/v1 with default flow version' do
+            expect(described_class.call(reference, project, user: user)).to eq(
+              flow_definition: 'developer/v1',
+              flow_config_id: 'developer',
+              flow_config_schema_version: 'v1',
+              flow_version: '2.0.0'
+            )
+          end
+        end
+
+        context 'when no user is provided' do
+          it 'returns developer/v1 with default flow version' do
+            expect(described_class.call(reference, project)).to eq(
+              flow_definition: 'developer/v1',
+              flow_config_id: 'developer',
+              flow_config_schema_version: 'v1',
+              flow_version: '2.0.0'
+            )
+          end
+        end
+      end
+    end
+
+    context 'with fix_pipeline/v1' do
+      let(:reference) { 'fix_pipeline/v1' }
+
+      before do
+        stub_feature_flags(fix_pipeline_next: false)
+      end
+
+      it 'returns versioning params with version 1.0.0' do
+        expect(described_class.call(reference, project)).to eq(
+          flow_definition: 'fix_pipeline/v1',
+          flow_config_id: 'fix_pipeline',
+          flow_config_schema_version: 'v1',
+          flow_version: '1.0.0'
+        )
+      end
+
+      context 'when fix_pipeline_next is enabled for the project' do
+        before do
+          stub_feature_flags(fix_pipeline_next: project)
+        end
+
+        it 'overrides to fix_pipeline_next/v1' do
+          expect(described_class.call(reference, project)).to eq(
+            flow_definition: 'fix_pipeline_next/v1',
+            flow_config_id: 'fix_pipeline_next',
+            flow_config_schema_version: 'v1',
+            flow_version: '1.0.0'
+          )
+        end
+      end
+
+      context 'when fix_pipeline_next is enabled for the root ancestor' do
+        before do
+          stub_feature_flags(fix_pipeline_next: project.root_ancestor)
+        end
+
+        it 'overrides to fix_pipeline_next/v1' do
+          expect(described_class.call(reference, project)).to eq(
+            flow_definition: 'fix_pipeline_next/v1',
+            flow_config_id: 'fix_pipeline_next',
+            flow_config_schema_version: 'v1',
+            flow_version: '1.0.0'
+          )
+        end
+      end
+    end
+
+    context 'with code_review/v1' do
+      it 'returns the flow params unchanged' do
+        expect(described_class.call('code_review/v1', project)).to eq(
+          flow_definition: 'code_review/v1',
+          flow_config_id: 'code_review',
+          flow_config_schema_version: 'v1',
+          flow_version: '1.0.0'
+        )
+      end
+    end
+
+    context 'when container is a namespace' do
+      let_it_be(:namespace) { create(:group) }
+
+      it 'works with a namespace container' do
+        expect(described_class.call('code_review/v1', namespace)).to eq(
+          flow_definition: 'code_review/v1',
+          flow_config_id: 'code_review',
+          flow_config_schema_version: 'v1',
+          flow_version: '1.0.0'
+        )
+      end
+
+      context 'with developer/v1 and feature flag enabled for namespace' do
+        before do
+          stub_feature_flags(duo_developer_next_unstable: namespace)
+        end
+
+        it 'applies the override' do
+          expect(described_class.call('developer/v1', namespace)).to eq(
+            flow_definition: 'developer_unstable/experimental',
+            flow_config_id: 'developer_unstable',
+            flow_config_schema_version: 'experimental',
+            flow_version: '1.0.0'
+          )
+        end
+      end
+    end
+  end
+end

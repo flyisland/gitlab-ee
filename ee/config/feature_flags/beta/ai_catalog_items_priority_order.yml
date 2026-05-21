@@ -1,0 +1,10 @@
+---
+name: ai_catalog_items_priority_order
+description: Sort AI catalog items by priority at both the explore and group/project levels, replacing the current default limited ordering.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/587379
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/222430
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/590309
+milestone: '18.10'
+group: group::workflow catalog
+type: beta
+default_enabled: true

@@ -1,0 +1,7 @@
+- breadcrumb_title _("Agent artifacts")
+- page_title _("Agent artifacts")
+
+= render ::Layouts::PageHeadingComponent.new(_("Agent artifacts")) do |c|
+  - c.with_description { _("Monitor and observe AI agent behavior and activities across your group.") }
+
+#js-agent-artifacts{ data: { group_id: @group.to_global_id, group_full_path: @group.full_path } }

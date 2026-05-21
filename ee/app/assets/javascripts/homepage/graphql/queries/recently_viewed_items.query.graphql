@@ -1,0 +1,30 @@
+query RecentlyViewedItemsEE {
+  currentUser {
+    id
+    recentlyViewedItems {
+      viewedAt
+      item {
+        ... on Issue {
+          id
+          title
+          webUrl
+        }
+        ... on MergeRequest {
+          id
+          title
+          webUrl
+        }
+        ... on Epic {
+          id
+          title
+          webUrl
+        }
+        ... on WikiPage @gl_introduced(version: "18.11.0") {
+          id
+          title
+          webUrl
+        }
+      }
+    }
+  }
+}

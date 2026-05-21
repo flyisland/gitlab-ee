@@ -1,0 +1,40 @@
+# frozen_string_literal: true
+
+module Search
+  module Elastic
+    module Aggregations
+      LABEL_AGGREGATION_LIMIT = 500
+      WORK_ITEM_TYPE_AGGREGATION_LIMIT = 50
+
+      class << self
+        def by_label_ids(query_hash:, max_size: LABEL_AGGREGATION_LIMIT)
+          query_hash.deep_merge(
+            size: 0,
+            aggs: {
+              'labels' => {
+                terms: {
+                  field: 'label_ids',
+                  size: max_size
+                }
+              }
+            }
+          )
+        end
+
+        def by_work_item_type_ids(query_hash:, max_size: WORK_ITEM_TYPE_AGGREGATION_LIMIT)
+          query_hash.deep_merge(
+            size: 0,
+            aggs: {
+              'work_item_type_ids' => {
+                terms: {
+                  field: 'work_item_type_id',
+                  size: max_size
+                }
+              }
+            }
+          )
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,10 @@
+---
+name: pipeline_security_advanced_search
+description:
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/577180
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/233082
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/598051
+milestone: '19.0'
+group: group::security insights
+type: beta
+default_enabled: true

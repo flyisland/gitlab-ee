@@ -1,0 +1,10 @@
+---
+name: compliance_export_higher_limit
+description: Increases the query limit for compliance requirement status export from 100 to 10000 rows
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/537338
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/219709
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/590372
+milestone: '18.10'
+group: group::compliance
+type: gitlab_com_derisk
+default_enabled: false

@@ -1,0 +1,8 @@
+---
+name: duo_cli_enabled_setting
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/597833
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235165
+milestone: '19.0'
+group: group::editor extensions
+type: development
+default_enabled: false

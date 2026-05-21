@@ -1,0 +1,10 @@
+---
+name: dap_git_tree_zero_option
+description: Controls enablement of --filter=tree:0 for remote flows
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/595704
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230113
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/595729
+milestone: '18.11'
+group: group::agent foundations
+type: gitlab_com_derisk
+default_enabled: false

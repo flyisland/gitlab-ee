@@ -1,0 +1,10 @@
+---
+name: aggregate_ci_minutes_reads
+description:
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/490968
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225852/diffs#ca5da75f2856e3475a792562075c66c5a804f074
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/592211
+milestone: '18.11'
+group: group::pipeline execution
+type: gitlab_com_derisk
+default_enabled: false

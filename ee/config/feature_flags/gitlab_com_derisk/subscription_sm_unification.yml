@@ -1,0 +1,9 @@
+---
+name: subscription_sm_unification
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/594274
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230014
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/596515
+milestone: '19.0'
+group: group::acquisition
+type: gitlab_com_derisk
+default_enabled: false

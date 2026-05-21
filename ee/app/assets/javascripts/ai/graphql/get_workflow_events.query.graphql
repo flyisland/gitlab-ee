@@ -1,0 +1,21 @@
+query getDuoWorkflowEvents($workflowId: AiDuoWorkflowsWorkflowID!) {
+  duoWorkflowEvents(workflowId: $workflowId) {
+    nodes {
+      checkpoint
+      errors
+      metadata
+      workflowGoal
+      workflowStatus
+    }
+  }
+  duoWorkflowWorkflows(workflowId: $workflowId) {
+    nodes {
+      id
+      status
+      aiCatalogItemVersionId
+      workflowDefinition
+      archived
+      stalled
+    }
+  }
+}

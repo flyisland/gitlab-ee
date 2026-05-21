@@ -1,0 +1,2 @@
+- if ::Feature.enabled?(:subscription_com_unification, :instance, type: :gitlab_com_derisk)
+  = onboarding_status_presenter.get_started_subtext

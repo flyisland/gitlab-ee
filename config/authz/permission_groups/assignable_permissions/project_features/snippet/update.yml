@@ -1,0 +1,9 @@
+---
+name: update_snippet
+description: Grants the ability to update snippets
+boundaries:
+  - user
+available_for:
+  - granular_access_token
+permissions:
+  - update_snippet

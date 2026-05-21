@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MR Widget Security Reports - Summary Highlights snapshots should display all three severity highlights properly 1`] = `
+<div
+  class="gl-text-sm"
+>
+  <strong
+    class="severity-text-critical"
+    data-testid="critical"
+  >
+    10 critical
+  </strong>
+  ,
+  <strong
+    class="severity-text-high"
+    data-testid="high"
+  >
+    20 high
+  </strong>
+  , and
+  <strong
+    class="gl-text-subtle"
+    data-testid="other"
+  >
+    60 others
+  </strong>
+</div>
+`;
+
+exports[`MR Widget Security Reports - Summary Highlights snapshots should display one severity highlight properly 1`] = `
+<div
+  class="gl-text-sm"
+>
+  <strong
+    class="severity-text-critical"
+    data-testid="critical"
+  >
+    10 critical
+  </strong>
+</div>
+`;
+
+exports[`MR Widget Security Reports - Summary Highlights snapshots should display two severity highlights properly 1`] = `
+<div
+  class="gl-text-sm"
+>
+  <strong
+    class="severity-text-critical"
+    data-testid="critical"
+  >
+    10 critical
+  </strong>
+  and
+  <strong
+    class="severity-text-high"
+    data-testid="high"
+  >
+    20 high
+  </strong>
+</div>
+`;
+
+exports[`MR Widget Security Reports - Summary Highlights snapshots should display zero vulnerabilities properly 1`] = `
+<div
+  class="gl-text-sm"
+>
+  <span
+    class="gl-text-disabled"
+  >
+    0 vulnerabilities
+  </span>
+</div>
+`;

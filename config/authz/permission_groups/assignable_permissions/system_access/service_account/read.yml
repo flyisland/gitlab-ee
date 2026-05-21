@@ -1,0 +1,10 @@
+---
+name: read_service_account
+description: Grants the ability to read service accounts
+boundaries:
+  - group
+  - instance
+available_for:
+  - granular_access_token
+permissions:
+  - read_service_account

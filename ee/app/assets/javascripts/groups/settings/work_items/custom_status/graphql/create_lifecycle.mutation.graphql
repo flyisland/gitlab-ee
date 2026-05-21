@@ -1,0 +1,10 @@
+#import "./work_item_lifecycle.fragment.graphql"
+
+mutation LifecycleCreate($input: LifecycleCreateInput!) {
+  lifecycleCreate(input: $input) {
+    lifecycle {
+      ...WorkItemLifecycle
+    }
+    errors
+  }
+}

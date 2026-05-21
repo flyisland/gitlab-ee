@@ -1,0 +1,19 @@
+# @feature_category: workflow_catalog
+
+query aiCatalogGroupProjects($fullPath: ID!, $search: String, $first: Int, $after: String) {
+  group(fullPath: $fullPath) {
+    id
+    projects(includeSubgroups: true, search: $search, first: $first, after: $after) {
+      nodes {
+        id
+        name
+        nameWithNamespace
+        avatarUrl
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+}

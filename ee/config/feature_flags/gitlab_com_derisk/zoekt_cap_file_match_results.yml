@@ -1,0 +1,10 @@
+---
+name: zoekt_cap_file_match_results
+description: Cap max_file_match_results in standard Zoekt search to reduce JSON response size
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/591910
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227479
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/593724
+milestone: '18.10'
+group: group::global search
+type: gitlab_com_derisk
+default_enabled: false

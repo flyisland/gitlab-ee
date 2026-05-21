@@ -1,0 +1,9 @@
+---
+name: duo_disabled_non_admin_empty_state
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/585920
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228881
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/596048
+milestone: '19.0'
+group: group::engagement
+type: gitlab_com_derisk
+default_enabled: false

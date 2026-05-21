@@ -1,0 +1,10 @@
+---
+name: ai_catalog_dws_validate_flow_config
+description: Validate custom flow definitions with Duo Workflow Service before saving in AI Catalog.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/597224
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235560
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/600098
+milestone: '19.0'
+group: group::workflow catalog
+type: gitlab_com_derisk
+default_enabled: false

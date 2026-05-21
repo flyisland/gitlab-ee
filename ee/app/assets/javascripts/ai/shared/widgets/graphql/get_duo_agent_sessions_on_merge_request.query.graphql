@@ -1,0 +1,25 @@
+# @feature_category: duo_agent_platform
+query getDuoAgentSessionsOnMergeRequest($projectPath: ID!, $iid: String!) {
+  project(fullPath: $projectPath) {
+    id
+    mergeRequest(iid: $iid) {
+      id
+      duoWorkflows {
+        nodes {
+          id
+          status
+          humanStatus
+          createdAt
+          updatedAt
+          workflowDefinition
+          userId
+          project {
+            id
+            name
+            fullPath
+          }
+        }
+      }
+    }
+  }
+}

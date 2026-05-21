@@ -1,0 +1,9 @@
+- content_for :body_class, '!gl-bg-default'
+- content_for :hide_empty_navbar, true
+- content_for :registration_marketing_panel_image, 'subscription/collab'
+- content_for :registration_marketing_panel_heading, s_('InProductMarketing|Collaborate and accelerate in one place')
+
+- if unified_registration?
+  = render template: 'devise/sessions/unified_registration/successful_verification', locals: { data: { track_action: 'render', track_label: @tracking_label } }
+- else
+  = render template: 'devise/sessions/successful_verification', locals: { data: { track_action: 'render', track_label: @tracking_label } }

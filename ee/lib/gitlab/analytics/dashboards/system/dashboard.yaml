@@ -1,0 +1,144 @@
+---
+title: GitLab Duo and SDLC trends
+description: Visualize Duo usage and development trends side-by-side.
+version: "2"
+panels:
+  - title: "GitLab Duo users"
+    visualization: duo_users_count_over_time
+    gridAttributes:
+      yPos: 0
+      xPos: 0
+      width: 3
+      height: 1
+  - title: "GitLab Duo power users"
+    visualization: duo_power_users_count_over_time
+    gridAttributes:
+      yPos: 0
+      xPos: 3
+      width: 3
+      height: 1
+    options: {}
+  - title: "GitLab Duo agent/flow users"
+    visualization: duo_agent_platform_agent_flows_users_count_over_time
+    gridAttributes:
+      yPos: 0
+      xPos: 6
+      width: 3
+      height: 1
+    options: {}
+  - title: "GitLab Duo Agent Chat sessions"
+    visualization: duo_agent_chat_sessions_over_time
+    gridAttributes:
+      yPos: 0
+      xPos: 9
+      width: 3
+      height: 1
+    options: {}
+  - title: 'GitLab Duo Agent Platform flow usage'
+    visualization: duo_flow_metrics_table
+    gridAttributes:
+      yPos: 1
+      xPos: 0
+      width: 12
+      height: 4
+    options: {}
+  - title: 'GitLab Duo usage metrics for the %{namespaceName} %{namespaceType}'
+    visualization: ai_impact_ai_metrics_table
+    gridAttributes:
+      yPos: 5
+      xPos: 0
+      width: 12
+      height: 5
+    options: {}
+  - title: 'Development metrics for the %{namespaceName} %{namespaceType}'
+    visualization: ai_impact_lifecycle_metrics_table
+    gridAttributes:
+      yPos: 10
+      xPos: 0
+      width: 12
+      height: 3
+    options: {}
+  - title: 'Pipeline metrics for the %{namespaceName} %{namespaceType}'
+    visualization: pipeline_metrics_table
+    gridAttributes:
+      yPos: 13
+      xPos: 0
+      width: 12
+      height: 3
+    options: {}
+  - title: 'GitLab Duo usage by user'
+    visualization: duo_total_event_count_by_user
+    gridAttributes:
+      yPos: 16
+      xPos: 0
+      width: 4
+      height: 4
+  - title: 'GitLab Duo Code Review usage by user'
+    visualization: duo_code_review_usage_by_user
+    gridAttributes:
+      yPos: 16
+      xPos: 4
+      width: 4
+      height: 4
+  - title: 'GitLab Duo Root Cause Analysis usage by user'
+    visualization: duo_rca_usage_by_user
+    gridAttributes:
+      yPos: 16
+      xPos: 8
+      width: 4
+      height: 4
+  - title: 'Flows usage by user'
+    visualization: duo_flows_by_user
+    gridAttributes:
+      yPos: 20
+      xPos: 0
+      width: 6
+      height: 4
+    options: {}
+  - title: 'GitLab Duo Code Suggestions usage by user'
+    visualization: duo_code_suggestions_by_user
+    gridAttributes:
+      yPos: 20
+      xPos: 6
+      width: 6
+      height: 4
+  - title: 'GitLab Duo Code Suggestions acceptance by language'
+    visualization: code_suggestions_acceptance_by_language_chart
+    gridAttributes:
+      yPos: 24
+      xPos: 0
+      width: 4
+      height: 3
+    options: {}
+  - title: 'GitLab Duo Code Suggestions acceptance by IDE'
+    visualization: code_suggestions_acceptance_by_ide_chart
+    gridAttributes:
+      yPos: 24
+      xPos: 4
+      width: 4
+      height: 3
+    options: {}
+  - title: 'GitLab Duo Code Review requests by role'
+    visualization: code_review_requests_by_role_chart
+    gridAttributes:
+      yPos: 24
+      xPos: 8
+      width: 4
+      height: 3
+    options: {}
+  - title: 'GitLab Duo Code Review comments sentiment'
+    visualization: code_review_comments_sentiment_over_time_chart
+    gridAttributes:
+      yPos: 27
+      xPos: 0
+      width: 6
+      height: 4
+    options: {}
+  - title: 'Code generation volume trends'
+    visualization: code_generation_volume_trends_chart
+    gridAttributes:
+      yPos: 27
+      xPos: 6
+      width: 6
+      height: 4
+    options: {}

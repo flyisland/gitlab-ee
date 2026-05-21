@@ -1,0 +1,10 @@
+---
+name: reduce_token_inquiry_timeout
+description: Reduce timeout for token inquiry from 30 seconds to 3 seconds
+feature_issue_url: https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/2273
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235168
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/599813
+milestone: '19.0'
+group: group::ai coding
+type: gitlab_com_derisk
+default_enabled: false

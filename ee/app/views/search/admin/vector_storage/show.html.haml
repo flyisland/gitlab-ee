@@ -1,0 +1,48 @@
+- page_title s_('SemanticSearch|Vector storage')
+- breadcrumb_title s_('SemanticSearch|Vector storage')
+- add_to_breadcrumbs _('Search'), search_admin_application_settings_path(anchor: 'js-semantic-search-settings')
+- add_page_specific_style 'page_bundles/settings'
+
+= render ::Layouts::SettingsBlockComponent.new(s_('SemanticSearch|Vector storage'),
+  testid: 'vector-storage-settings',
+  expanded: true) do |c|
+  - c.with_description do
+    = s_('SemanticSearch|Connect a vector store to index and store embeddings.')
+  - c.with_body do
+    = render Pajamas::CardComponent.new do |card|
+      - card.with_body do
+        - if License.feature_available?(:elastic_search)
+          .gl-py-2
+            .gl-flex.gl-items-center.gl-gap-2.gl-mb-4
+              %h3.gl-heading-3.gl-m-0= s_('SemanticSearch|Advanced Search cluster')
+              - if @using_advanced_search
+                = render Pajamas::BadgeComponent.new(s_('SemanticSearch|In use'), variant: :success)
+            %p.gl-text-subtle.gl-mb-4= s_('SemanticSearch|Reuse your existing Advanced Search configuration.')
+            = form_tag admin_search_vector_storage_use_advanced_search_cluster_for_semantic_search_path, method: :post do
+              = render Pajamas::ButtonComponent.new(variant: :confirm, type: :submit, disabled: @using_advanced_search || @custom_active, button_options: { data: { testid: 'advanced-search-submit-button' } }) do
+                = s_('SemanticSearch|Connect')
+          %hr.gl-my-4
+        .gl-py-2
+          .gl-flex.gl-items-center.gl-gap-2.gl-mb-4
+            %h3.gl-heading-3.gl-m-0= s_('SemanticSearch|Custom Elasticsearch settings')
+            - if @custom_active
+              = render Pajamas::BadgeComponent.new(s_('SemanticSearch|In use'), variant: :success)
+          = form_tag admin_search_vector_storage_connect_custom_vector_storage_path, method: :post, class: 'gl-flex gl-flex-col gl-gap-4' do
+            .form-group.gl-m-0
+              = label_tag 'url', _('URL'), class: 'label-bold'
+              = text_field_tag 'url', @custom_options['url'], class: 'form-control gl-form-input', placeholder: 'http://localhost:9200, http://localhost:9201', autocomplete: 'off', disabled: @inputs_disabled
+              .form-text.gl-text-subtle.gl-mt-0
+                = s_('SemanticSearch|The URLs for connecting to the Elasticsearch cluster. For clustering, add the URLs separated by commas.')
+            .form-group.gl-m-0
+              = label_tag 'username', _('Username'), class: 'label-bold'
+              = text_field_tag 'username', @custom_options['username'], class: 'form-control gl-form-input', autocomplete: 'off', disabled: @inputs_disabled
+              .form-text.gl-text-subtle.gl-mt-0
+                = s_('SemanticSearch|Enter the username for password-protected Elasticsearch servers.')
+            .form-group.gl-m-0
+              = label_tag 'password', _('Password'), class: 'label-bold'
+              = password_field_tag 'password', @custom_options['password'].present? ? ::Ai::ActiveContext::Connection::MASKED_PASSWORD : nil, class: 'form-control gl-form-input', autocomplete: 'new-password', disabled: @inputs_disabled
+              .form-text.gl-text-subtle.gl-mt-0
+                = s_('SemanticSearch|Enter the password for password-protected Elasticsearch servers.')
+            .gl-flex.gl-items-start
+              = render Pajamas::ButtonComponent.new(variant: :confirm, type: :submit, disabled: @inputs_disabled, button_options: { data: { testid: 'custom-submit-button' } }) do
+                = s_('SemanticSearch|Save changes')

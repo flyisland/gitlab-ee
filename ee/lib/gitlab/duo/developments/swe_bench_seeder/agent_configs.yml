@@ -1,0 +1,42 @@
+# Template .gitlab/duo/agent-config.yml for SWE-bench seeded projects.
+#
+# One project is created per SWE-bench instance. The project's default branch
+# is reset to exactly base_commit before this config is committed, so the
+# /testbed checkout in the swebench image and $CI_PROJECT_DIR are already in
+# sync — no commit-checkout gymnastics required.
+#
+# The `image` key is injected per-instance by the seeder (derived from instance_id).
+#
+# The setup_script assumes a swebench instance image environment:
+#   - conda at /opt/miniconda3 with a `testbed` env containing the
+#     correct Python version and all dependencies pre-installed
+#   - A repo clone at /testbed already checked out at base_commit
+#
+# This config is committed to the default branch of every seeded project.
+---
+setup_script:
+  # Replace /testbed with a symlink to $CI_PROJECT_DIR so the pre-installed
+  # conda env and compiled extensions point at the agent's working copy.
+  # Both are already at base_commit so no git checkout is needed.
+  - find /testbed -mindepth 1 -maxdepth 1 -not -name '.git' -exec cp -a {} $CI_PROJECT_DIR/ \; && rm -rf /testbed && ln -s $CI_PROJECT_DIR /testbed
+  # Install Node.js 20 — required because duo-cli needs Node >= 20.17 but swebench
+  # images ship Ubuntu 22.04 with Node 12.
+  - |
+    NODE_VERSION=20.20.0
+    NODE_TARBALL="node-v${NODE_VERSION}-linux-x64.tar.xz"
+    curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/${NODE_TARBALL}" -o "/tmp/${NODE_TARBALL}"
+    tar -xf "/tmp/${NODE_TARBALL}" -C /usr/local --strip-components=1
+    rm "/tmp/${NODE_TARBALL}"
+  # Upgrade git from 2.34.1 (Ubuntu 22.04 default) — duo-cli requires git grep --max-count.
+  # Install from the git-core PPA via apt-get for reliable, up-to-date packages.
+  - |
+    curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE1DD270288B4E6030699E45FA1715D88E1DF1F24" | gpg --dearmor -o /etc/apt/trusted.gpg.d/git-core.gpg
+    echo "deb https://ppa.launchpadcontent.net/git-core/ppa/ubuntu $(cat /etc/os-release | grep VERSION_CODENAME | cut -d= -f2) main" | tee /etc/apt/sources.list.d/git-core.list
+    apt-get update
+    apt-get install -y git=1:2.54.0-0ppa1~ubuntu22.04.1
+    echo "git version: $(git --version)"
+  # Install duo-cli for workflow execution.
+  - npm install -g @gitlab/duo-cli
+  # Activate the swebench conda environment with the correct Python version
+  # and all project dependencies pre-installed.
+  - source /opt/miniconda3/bin/activate && conda activate testbed

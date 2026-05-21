@@ -1,0 +1,9 @@
+---
+name: create_snippet
+description: Grants the ability to create snippets
+boundaries:
+  - user
+available_for:
+  - granular_access_token
+permissions:
+  - create_snippet

@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": [
+    "object",
+    "null"
+  ],
+  "description": "The embedding details",
+  "additionalProperties": false,
+  "properties": {
+    "model_type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "gitlab_managed"
+      ],
+      "description": "The embedding model type. Supported model_types should be kept in sync with ::Ai::ActiveContext::Embedding::MODEL_TYPES"
+    },
+    "model_ref": {
+      "type": "string",
+      "description": "The embedding model identifier."
+    },
+    "field": {
+      "type": "string",
+      "description": "The embeddings field in the vector store."
+    },
+    "dimensions": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        null,
+        768
+      ],
+      "description": "Embedding dimensions. Supported dimensions should be kept in sync with ::Ai::ActiveContext::Embedding::EMBEDDING_DIMENSIONS"
+    }
+  },
+  "required": [
+    "field",
+    "model_ref"
+  ]
+}
