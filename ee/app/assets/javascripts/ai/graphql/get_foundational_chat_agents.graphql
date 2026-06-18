@@ -1,0 +1,12 @@
+query getFoundationalChatAgents($projectId: ProjectID, $namespaceId: NamespaceID) {
+  aiFoundationalChatAgents(projectId: $projectId, namespaceId: $namespaceId) {
+    nodes {
+      id
+      name
+      description
+      referenceWithVersion
+      avatarUrl
+      selectableInChat @gl_introduced(version: "18.11.0")
+    }
+  }
+}

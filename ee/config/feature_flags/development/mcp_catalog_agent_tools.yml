@@ -1,0 +1,8 @@
+---
+name: mcp_catalog_agent_tools
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224998
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/596557
+milestone: '18.11'
+type: development
+group: group::ai framework
+default_enabled: false

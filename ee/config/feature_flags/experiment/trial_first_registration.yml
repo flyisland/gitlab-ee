@@ -1,0 +1,10 @@
+---
+name: trial_first_registration
+description: This experiment tests whether eliminating free registration and routing all new users to Ultimate Trial signup improves activation and paid conversion rates.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/590786
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224919
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/591126
+milestone: '18.11'
+group: group::acquisition
+type: experiment
+default_enabled: false

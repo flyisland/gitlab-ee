@@ -1,0 +1,10 @@
+---
+name: free_user_cap_pre_enforcement_banner
+description: 'Shows the pre-enforcement warning alert to qualifying Free tier namespaces'
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237994
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/594206
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/477232
+milestone: '19.1'
+type: gitlab_com_derisk
+group: group::seat management
+default_enabled: false

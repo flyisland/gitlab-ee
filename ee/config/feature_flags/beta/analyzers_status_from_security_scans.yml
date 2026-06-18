@@ -1,0 +1,10 @@
+---
+name: analyzers_status_from_security_scans
+description: Use security_scans as the data source for security analyzer statuses instead of CI job artifacts.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/599288
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/238568
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/602749
+milestone: '19.1'
+group: group::security platform management
+type: beta
+default_enabled: true

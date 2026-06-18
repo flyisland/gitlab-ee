@@ -1,0 +1,9 @@
+---
+name: orbit_mcp_command_tools
+description: Gates Orbit MCP tools/list discovery between legacy direct tools and command wrapper tools for rollout compatibility.
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234925
+rollout_issue_url:
+milestone: '19.0'
+type: gitlab_com_derisk
+group: group::knowledge graph
+default_enabled: false

@@ -1,0 +1,297 @@
+import { GlCollapsibleListbox } from '@gitlab/ui';
+import { shallowMountExtended } from 'helpers/vue_test_utils_helper';
+import FlowTriggerEventsField from 'ee/ai/duo_agents_platform/pages/flow_triggers/components/flow_trigger_events_field.vue';
+import PipelineEventsConfiguration from 'ee/ai/duo_agents_platform/pages/flow_triggers/components/event_configurations/pipeline_events_configuration.vue';
+import MergeRequestEventsConfiguration from 'ee/ai/duo_agents_platform/pages/flow_triggers/components/event_configurations/merge_request_events_configuration.vue';
+import {
+  FLOW_TRIGGER_TYPES,
+  FLOW_TRIGGER_TYPE_MENTION,
+  FLOW_TRIGGER_TYPE_PIPELINE_HOOKS,
+  FLOW_TRIGGER_TYPE_MERGE_REQUEST,
+} from 'ee/ai/duo_agents_platform/constants';
+
+describe('FlowTriggerEventsField', () => {
+  let wrapper;
+
+  const pipelineFilter = {
+    [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value]: {
+      rules: [{ field: 'object_attributes.status', operator: 'in', value: ['failed'] }],
+    },
+  };
+
+  const createWrapper = ({ props = {}, glFeatures = {} } = {}) => {
+    wrapper = shallowMountExtended(FlowTriggerEventsField, {
+      propsData: { itemTypeLabel: 'flow', ...props },
+      provide: {
+        glFeatures: {
+          ...glFeatures,
+        },
+      },
+    });
+  };
+
+  const findListbox = () => wrapper.findComponent(GlCollapsibleListbox);
+  const findPipelineConfig = () => wrapper.findComponent(PipelineEventsConfiguration);
+  const findMergeRequestConfig = () => wrapper.findComponent(MergeRequestEventsConfiguration);
+
+  describe('listbox options', () => {
+    it('lists every flow trigger type when feature flags are enabled', () => {
+      createWrapper();
+
+      const items = findListbox().props('items');
+      expect(items.map((option) => option.value)).toEqual(FLOW_TRIGGER_TYPES.map((t) => t.value));
+    });
+
+    it('substitutes the itemTypeLabel prop into the option descriptions', () => {
+      createWrapper({ props: { itemTypeLabel: 'agent or flow' } });
+
+      const mentionOption = findListbox()
+        .props('items')
+        .find((option) => option.value === FLOW_TRIGGER_TYPE_MENTION.value);
+
+      expect(mentionOption.description).toBe(
+        'Trigger agent or flow when service account user is mentioned in an issue or merge request.',
+      );
+    });
+  });
+
+  describe('toggle text', () => {
+    it('shows the placeholder when nothing is selected', () => {
+      createWrapper();
+
+      expect(findListbox().props('toggleText')).toBe('Select one or multiple event types');
+    });
+
+    it('joins selected option labels with commas', () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_MENTION.value, FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value],
+        },
+      });
+
+      expect(findListbox().props('toggleText')).toBe(
+        `${FLOW_TRIGGER_TYPE_MENTION.text}, ${FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.text}`,
+      );
+    });
+  });
+
+  describe('selection changes', () => {
+    it('emits update:event-types with the new selection', async () => {
+      createWrapper();
+
+      const newSelection = [FLOW_TRIGGER_TYPE_MENTION.value];
+      await findListbox().vm.$emit('select', newSelection);
+
+      expect(wrapper.emitted('update:event-types')).toEqual([[newSelection]]);
+    });
+
+    it('re-emits blur when the listbox blurs', async () => {
+      createWrapper();
+
+      await findListbox().vm.$emit('blur');
+
+      expect(wrapper.emitted('blur')).toHaveLength(1);
+    });
+
+    it('prunes filter scopes for deselected configurable event types', async () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value],
+          filter: pipelineFilter,
+        },
+      });
+
+      await findListbox().vm.$emit('select', [FLOW_TRIGGER_TYPE_MENTION.value]);
+
+      expect(wrapper.emitted('update:filter')).toEqual([[{}]]);
+    });
+
+    it('does not re-emit filter when no configurable scope was removed', async () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_MENTION.value],
+          filter: {},
+        },
+      });
+
+      await findListbox().vm.$emit('select', [
+        FLOW_TRIGGER_TYPE_MENTION.value,
+        FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value,
+      ]);
+
+      expect(wrapper.emitted('update:filter')).toBeUndefined();
+    });
+  });
+
+  describe('pipeline events configuration', () => {
+    it('does not render the configuration when pipeline_hooks is unselected', () => {
+      createWrapper();
+
+      expect(findPipelineConfig().exists()).toBe(false);
+    });
+
+    it('renders the configuration and forwards the filter when pipeline_hooks is selected', () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value],
+          filter: pipelineFilter,
+        },
+      });
+
+      expect(findPipelineConfig().exists()).toBe(true);
+      expect(findPipelineConfig().props('value')).toEqual(pipelineFilter);
+    });
+
+    it('emits update:filter when the configuration emits input', async () => {
+      createWrapper({
+        props: { eventTypes: [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value], filter: {} },
+      });
+
+      await findPipelineConfig().vm.$emit('input', pipelineFilter);
+
+      expect(wrapper.emitted('update:filter')).toEqual([[pipelineFilter]]);
+    });
+  });
+
+  describe('validity reporting', () => {
+    it('emits update:filter-valid with true when no configurable event types are selected', () => {
+      createWrapper({ props: { eventTypes: [FLOW_TRIGGER_TYPE_MENTION.value] } });
+
+      expect(wrapper.emitted('update:filter-valid')).toEqual([[true]]);
+    });
+
+    it('emits update:filter-valid with true when pipeline filter is valid', () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value],
+          filter: pipelineFilter,
+        },
+      });
+
+      expect(wrapper.emitted('update:filter-valid')).toEqual([[true]]);
+    });
+
+    it('emits update:filter-valid with false when pipeline filter is empty', () => {
+      createWrapper({
+        props: { eventTypes: [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value], filter: {} },
+      });
+
+      expect(wrapper.emitted('update:filter-valid')).toEqual([[false]]);
+    });
+
+    it('re-emits update:filter-valid when filter transitions to valid', async () => {
+      createWrapper({
+        props: { eventTypes: [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value], filter: {} },
+      });
+
+      await wrapper.setProps({ filter: pipelineFilter });
+
+      expect(wrapper.emitted('update:filter-valid').map(([v]) => v)).toEqual([false, true]);
+    });
+  });
+
+  describe('invalid feedback display', () => {
+    it('hides invalid feedback when showErrors is false', () => {
+      createWrapper({
+        props: { eventTypes: [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value], filter: {} },
+      });
+
+      expect(findPipelineConfig().props('invalidFeedback')).toBeNull();
+    });
+
+    it('shows invalid feedback when showErrors is true and pipeline filter is empty', () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value],
+          filter: {},
+          showErrors: true,
+        },
+      });
+
+      expect(findPipelineConfig().props('invalidFeedback')).toBe(
+        'Select at least one pipeline event.',
+      );
+    });
+
+    it('keeps feedback null when showErrors is true but the filter is valid', () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_PIPELINE_HOOKS.value],
+          filter: pipelineFilter,
+          showErrors: true,
+        },
+      });
+
+      expect(findPipelineConfig().props('invalidFeedback')).toBeNull();
+    });
+  });
+
+  describe('merge request events configuration', () => {
+    const mergeRequestFilter = {
+      [FLOW_TRIGGER_TYPE_MERGE_REQUEST.value]: {
+        rules: [{ field: 'action', operator: 'in', value: ['approved'] }],
+      },
+    };
+
+    it('does not render the configuration when merge_request is unselected', () => {
+      createWrapper();
+
+      expect(findMergeRequestConfig().exists()).toBe(false);
+    });
+
+    it('renders the configuration and forwards the filter when merge_request is selected', () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_MERGE_REQUEST.value],
+          filter: mergeRequestFilter,
+        },
+      });
+
+      expect(findMergeRequestConfig().exists()).toBe(true);
+      expect(findMergeRequestConfig().props('value')).toEqual(mergeRequestFilter);
+    });
+
+    it('emits update:filter when the configuration emits input', async () => {
+      createWrapper({
+        props: { eventTypes: [FLOW_TRIGGER_TYPE_MERGE_REQUEST.value], filter: {} },
+      });
+
+      await findMergeRequestConfig().vm.$emit('input', mergeRequestFilter);
+
+      expect(wrapper.emitted('update:filter')).toEqual([[mergeRequestFilter]]);
+    });
+
+    it('emits update:filter-valid with false when the merge_request filter is empty', () => {
+      createWrapper({
+        props: { eventTypes: [FLOW_TRIGGER_TYPE_MERGE_REQUEST.value], filter: {} },
+      });
+
+      expect(wrapper.emitted('update:filter-valid')).toEqual([[false]]);
+    });
+
+    it('emits update:filter-valid with true when the merge_request filter has an action', () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_MERGE_REQUEST.value],
+          filter: mergeRequestFilter,
+        },
+      });
+
+      expect(wrapper.emitted('update:filter-valid')).toEqual([[true]]);
+    });
+
+    it('shows invalid feedback when showErrors is true and the filter is empty', () => {
+      createWrapper({
+        props: {
+          eventTypes: [FLOW_TRIGGER_TYPE_MERGE_REQUEST.value],
+          filter: {},
+          showErrors: true,
+        },
+      });
+
+      expect(findMergeRequestConfig().props('invalidFeedback')).toBe(
+        'Select at least one merge request action.',
+      );
+    });
+  });
+});

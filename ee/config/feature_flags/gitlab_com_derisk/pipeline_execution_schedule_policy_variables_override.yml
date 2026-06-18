@@ -1,0 +1,10 @@
+---
+name: pipeline_execution_schedule_policy_variables_override
+description: Use variables_override metadata for scheduled pipeline execution policies
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/543105
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229476
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/597624
+milestone: '19.0'
+group: group::security policies
+type: gitlab_com_derisk
+default_enabled: false

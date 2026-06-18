@@ -1,0 +1,77 @@
+# frozen_string_literal: true
+
+module Security
+  module DependencyFirewall
+    class CreateEventService < BaseService
+      include Gitlab::InternalEventsTracking
+
+      PACKAGE_DOWNLOAD = 1
+      PACKAGE_UPLOAD = 2
+      CONTAINER_PULL = 3
+      CONTAINER_PUSH = 4
+
+      INTERNAL_EVENTS_NAMES = {
+        'pull_package_package' => 'collect_dependency_firewall_metrics_on_package_download_from_package_registry',
+        'push_package_package' => 'collect_dependency_firewall_metrics_on_package_upload_to_package_registry',
+        'pull_container_package' => 'collect_dependency_firewall_metrics_on_image_pull_from_container_registry',
+        'push_container_package' => 'collect_dependency_firewall_metrics_on_image_push_to_container_registry',
+        'forwarded_pull_package' =>
+          'collect_dependency_firewall_metrics_on_forwarded_package_download_from_package_registry'
+      }.freeze
+
+      def execute
+        event_key = determine_event_name
+        return unless event_key && INTERNAL_EVENTS_NAMES.key?(event_key)
+
+        track_internal_event(
+          INTERNAL_EVENTS_NAMES[event_key],
+          user: current_user,
+          project: project,
+          namespace: params[:namespace],
+          additional_properties: build_additional_properties
+        )
+      end
+
+      private
+
+      def determine_event_name
+        operation = params[:operation]
+        forwarded = params[:forwarded]
+
+        case operation
+        when PACKAGE_DOWNLOAD
+          forwarded ? 'forwarded_pull_package' : 'pull_package_package'
+        when PACKAGE_UPLOAD
+          'push_package_package'
+        when CONTAINER_PULL
+          'pull_container_package'
+        when CONTAINER_PUSH
+          'push_container_package'
+        else
+          Gitlab::AppLogger.warn(
+            "DependencyFirewall: unknown operation #{operation.inspect}, event will not be tracked"
+          )
+          nil
+        end
+      end
+
+      def build_additional_properties
+        {
+          label: outcome_label(params[:outcome]),
+          property: params[:cache_hit] ? "1" : "0",
+          value: params[:runtime_ms],
+          purl: params[:purl]
+        }
+      end
+
+      def outcome_label(outcome)
+        case outcome
+        when EnforcementService::SUCCESS_ALLOWED then 'allowed'
+        when EnforcementService::SUCCESS_BLOCKED then 'blocked-license'
+        when EnforcementService::SUCCESS_WARNING then 'warn-license'
+        else raise ArgumentError, "DependencyFirewall: unknown outcome #{outcome.inspect}"
+        end
+      end
+    end
+  end
+end

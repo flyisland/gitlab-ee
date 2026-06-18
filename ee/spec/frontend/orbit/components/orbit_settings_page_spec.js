@@ -1,0 +1,57 @@
+import Vue from 'vue';
+import VueApollo from 'vue-apollo';
+import { shallowMountExtended } from 'helpers/vue_test_utils_helper';
+import createMockApollo from 'helpers/mock_apollo_helper';
+import waitForPromises from 'helpers/wait_for_promises';
+import { useMockInternalEventsTracking } from 'helpers/tracking_internal_events_helper';
+import OrbitSettingsPage from 'ee/orbit/components/orbit_settings_page.vue';
+import namespaceQuery from 'ee/orbit/graphql/queries/namespace.query.graphql';
+
+Vue.use(VueApollo);
+
+jest.mock('ee/orbit/api/orbit_api', () => ({
+  fetchOrbitStatus: jest.fn().mockResolvedValue({
+    data: { version: '1.0', status: 'healthy', components: [] },
+  }),
+}));
+
+describe('OrbitSettingsPage', () => {
+  let wrapper;
+
+  const namespace = {
+    id: 'gid://gitlab/Group/1',
+    fullPath: 'gitlab-org',
+    name: 'gitlab-org',
+    fullName: 'GitLab Org',
+    avatarUrl: null,
+    knowledgeGraphEnabled: true,
+    knowledgeGraphAvailable: true,
+  };
+
+  const createComponent = async () => {
+    const namespaceHandler = jest.fn().mockResolvedValue({ data: { group: namespace } });
+    const apolloProvider = createMockApollo([[namespaceQuery, namespaceHandler]]);
+
+    wrapper = shallowMountExtended(OrbitSettingsPage, {
+      apolloProvider,
+      propsData: { groupFullPath: 'gitlab-org' },
+    });
+
+    await waitForPromises();
+  };
+
+  const findDisableButton = () => wrapper.findByTestId('turn-off-indexing-btn');
+
+  describe('tracking', () => {
+    const { bindInternalEventDocument } = useMockInternalEventsTracking();
+
+    it('tracks click_orbit_turn_off_indexing when the Turn off indexing button is clicked', async () => {
+      await createComponent();
+      const { trackEventSpy } = bindInternalEventDocument(wrapper.element);
+
+      await findDisableButton().vm.$emit('click');
+
+      expect(trackEventSpy).toHaveBeenCalledWith('click_orbit_turn_off_indexing', {}, undefined);
+    });
+  });
+});

@@ -1,0 +1,10 @@
+---
+name: unstick_stuck_merge_requests
+description:
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/389044
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224537
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/595501
+milestone: '19.0'
+group: group::pipeline execution
+type: gitlab_com_derisk
+default_enabled: false

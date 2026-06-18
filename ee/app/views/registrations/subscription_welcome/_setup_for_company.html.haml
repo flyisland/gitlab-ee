@@ -1,0 +1,11 @@
+.row
+  .form-group.gl-col-sm-12
+    = f.label :onboarding_status_setup_for_company, _('Who will be using this GitLab subscription?')
+    .gl-flex.gl-flex-col
+      .gl-grow
+        = f.gitlab_ui_radio_component :onboarding_status_setup_for_company, true, _('My company or team'),
+          radio_options: { required: true, class: "js-track-error",
+                           data: { track_action_for_errors: ::Onboarding::SubscriptionRegistration.tracking_label } }
+      .gl-grow{ data: { testid: 'setup-for-just-me-content' } }
+        = f.gitlab_ui_radio_component :onboarding_status_setup_for_company, false, _('Just me'),
+          radio_options: { required: true, data: { testid: 'setup-for-just-me-radio' } }

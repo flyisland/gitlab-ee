@@ -1,0 +1,10 @@
+---
+name: vector_storage_admin_settings
+description: Gates the vector storage admin settings page
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/585318
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227482
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/585318
+milestone: '18.11'
+group: group::global search
+type: wip
+default_enabled: false

@@ -1,0 +1,83 @@
+# frozen_string_literal: true
+
+module Resolvers
+  module Ai
+    module DuoWorkflows
+      # Shared resolution logic for Duo Agent Platform session artifacts.
+      # Concrete resolvers expose their own filter argument set: the group
+      # resolver also offers `project_path`, while the project resolver omits
+      # it because the project is already fixed by the parent object.
+      class BaseSessionArtifactsResolver < ::Resolvers::BaseResolver
+        type ::Types::Ai::DuoWorkflows::SessionArtifactType.connection_type, null: true
+
+        argument :workflow_definition, GraphQL::Types::String,
+          required: false,
+          description: 'Filter by workflow definition.'
+
+        argument :workflow_created_after, ::Types::TimeType,
+          required: false,
+          description: 'Return sessions created after the timestamp.'
+
+        argument :workflow_created_before, ::Types::TimeType,
+          required: false,
+          description: 'Return sessions created before the timestamp.'
+
+        argument :not, ::Types::Ai::DuoWorkflows::SessionArtifactNegatedFilterInput,
+          required: false,
+          description: 'Negated filter conditions.'
+
+        def resolve(**args)
+          return ::Ai::DuoWorkflows::SessionArtifact.none unless feature_enabled?
+
+          if args[:workflow_created_after] && args[:workflow_created_before] &&
+              args[:workflow_created_after] >= args[:workflow_created_before]
+            raise Gitlab::Graphql::Errors::ArgumentError,
+              'workflowCreatedAfter must be before workflowCreatedBefore'
+          end
+
+          reject_unsupported_filters!(args) unless ::Gitlab::ClickHouse.globally_enabled_for_analytics?
+
+          ::Ai::DuoWorkflows::SessionArtifactsFinder.new(
+            current_user: current_user,
+            namespace: resolver_namespace,
+            params: finder_params(args)
+          ).execute
+        end
+
+        private
+
+        # Filter arguments that require ClickHouse and must be rejected on the
+        # PostgreSQL path. Implemented per concrete resolver to match its
+        # argument set.
+        def unsupported_pg_args
+          raise NotImplementedError
+        end
+
+        def finder_params(_args)
+          raise NotImplementedError
+        end
+
+        # On a project-scoped field the resolver `object` is the project; scope
+        # to its project_namespace so the PostgreSQL (`for_project_namespace`)
+        # and ClickHouse (`traversal_path`) finders both resolve to the single
+        # project. On a group-scoped field the object is already the group
+        # namespace and is used as-is.
+        def resolver_namespace
+          object.respond_to?(:project_namespace) ? object.project_namespace : object
+        end
+
+        def reject_unsupported_filters!(args)
+          used = unsupported_pg_args.select { |arg| args[arg].present? }
+          return if used.empty?
+
+          raise Gitlab::Graphql::Errors::ArgumentError,
+            "Filtering by #{used.join(', ')} requires ClickHouse to be enabled for analytics."
+        end
+
+        def feature_enabled?
+          ::Feature.enabled?(:agent_artifacts_page, object.root_ancestor)
+        end
+      end
+    end
+  end
+end

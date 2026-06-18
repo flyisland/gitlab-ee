@@ -1,0 +1,41 @@
+# frozen_string_literal: true
+
+module Ci
+  class DropPipelineService
+    # execute service asynchronously for each cancelable pipeline
+    def execute_async_for_all(pipelines, failure_reason, context_user, worker_class: Ci::DropPipelineWorker)
+      pipelines.cancelable.select(:id).find_in_batches do |pipelines_batch|
+        worker_class.bulk_perform_async_with_contexts(
+          pipelines_batch,
+          arguments_proc: ->(pipeline) { [pipeline.id, failure_reason] },
+          context_proc: ->(_) { { user: context_user } }
+        )
+      end
+    end
+
+    def execute(pipeline, failure_reason, retries: 3)
+      pipeline.cancelable_statuses.find_in_batches do |batch|
+        preload_associations_for_drop(batch, pipeline)
+
+        batch.each do |job|
+          Gitlab::OptimisticLocking.retry_lock(job, retries, name: 'ci_pipeline_drop_running') do |subject|
+            subject.drop(failure_reason)
+          end
+        end
+      end
+    end
+
+    private
+
+    def preload_associations_for_drop(commit_status_batch, pipeline)
+      ::Ci::Preloaders::CommitStatusPreloader.new(commit_status_batch).execute(preloaded_relations(pipeline))
+    end
+
+    # overridden in EE
+    def preloaded_relations(pipeline)
+      relations = [:project, :pipeline, :metadata, :job_definition, :deployment, :taggings]
+      relations << :pending_state if Feature.enabled?(:ci_anchor_finished_at_to_pending_state, pipeline.project)
+      relations
+    end
+  end
+end

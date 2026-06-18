@@ -1,0 +1,47 @@
+# @feature_category: ai_agents
+query getProjectAgentArtifacts(
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+  $name: String
+  $not: DuoWorkflowSessionArtifactNegatedFilterInput
+  $startTimeAfter: Time
+  $startTimeBefore: Time
+  $projectFullPath: ID!
+) {
+  project(fullPath: $projectFullPath) {
+    id
+    duoWorkflowSessionArtifacts(
+      after: $after
+      before: $before
+      first: $first
+      last: $last
+      workflowCreatedAfter: $startTimeAfter
+      workflowCreatedBefore: $startTimeBefore
+      workflowDefinition: $name
+      not: $not
+    ) {
+      count
+      nodes {
+        id
+        workflowDefinition
+        webPath
+        auditEventsCount
+        workflowCreatedAt
+        project {
+          id
+          name
+          webPath
+          fullPath
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+    }
+  }
+}

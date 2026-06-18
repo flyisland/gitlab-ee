@@ -1,0 +1,10 @@
+---
+name: security_inventory_no_longer_detected_vulnerabilities
+description: Excludes no longer detected vulnerabilities from Security Inventory counts and surfaces the accompanying frontend alert and live-update path.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/600455
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/238773
+rollout_issue_url:
+milestone: '19.1'
+group: group::security platform management
+type: wip
+default_enabled: false

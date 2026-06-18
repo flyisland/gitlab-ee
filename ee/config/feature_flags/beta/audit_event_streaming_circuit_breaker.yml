@@ -1,0 +1,10 @@
+---
+name: audit_event_streaming_circuit_breaker
+description: Enables per-destination circuit breaker for audit event streaming. When enabled, destinations are skipped after repeated external-service failures within a sliding window to prevent cascading timeouts while preserving delivery to healthy destinations.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/535297
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235349
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/599820
+milestone: '19.0'
+group: group::compliance
+type: beta
+default_enabled: true

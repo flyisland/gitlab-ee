@@ -1,0 +1,10 @@
+---
+name: audit_event_type_denylist
+description:
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/602025
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237996
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/602027
+milestone: '19.1'
+group: group::compliance
+type: gitlab_com_derisk
+default_enabled: false

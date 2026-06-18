@@ -1,0 +1,16 @@
+- section = @presenter.adapter_section('elasticsearch')
+.gl-py-2.js-elasticsearch-section{ class: section.hidden_class, data: { testid: 'elasticsearch-section' } }
+  .gl-flex.gl-items-center.gl-gap-2.gl-mb-4
+    %h3.gl-heading-3.gl-m-0= s_('SemanticSearch|Custom Elasticsearch settings')
+    - if section.in_use
+      = render Pajamas::BadgeComponent.new(s_('SemanticSearch|In use'), variant: :success)
+  = form_with url: admin_search_vector_storage_connect_custom_elasticsearch_vector_storage_path, method: :post, class: 'gl-flex gl-flex-col gl-gap-4' do |f|
+    = render 'connection_fields',
+        f: f,
+        section: section,
+        url_help_text: s_('SemanticSearch|The URLs for connecting to the Elasticsearch cluster. For clustering, add the URLs separated by commas.'),
+        username_help_text: s_('SemanticSearch|Enter the username for password-protected Elasticsearch servers.'),
+        password_help_text: s_('SemanticSearch|Enter the password for password-protected Elasticsearch servers.')
+    .gl-flex.gl-items-start
+      = render Pajamas::ButtonComponent.new(variant: :confirm, type: :submit, disabled: section.inputs_disabled, button_options: { data: { testid: 'custom-submit-button' } }) do
+        = s_('SemanticSearch|Save changes')

@@ -1,0 +1,20 @@
+---
+description: AI Catalog item version restored as new latest version
+internal_events: true
+status: active
+action: restore_ai_catalog_item
+classification: duo
+identifiers:
+- project
+- user
+additional_properties:
+  label:
+    description: Type of AI catalog item
+product_group: workflow_catalog
+product_categories:
+- workflow_catalog
+milestone: '19.1'
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239425
+tiers:
+- premium
+- ultimate

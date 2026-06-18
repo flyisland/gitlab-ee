@@ -1,0 +1,74 @@
+- collection_heading = s_('SemanticSearch|Semantic search %{collection} embeddings').html_safe % { collection: collection_name(@collection_key) }
+
+- page_title collection_heading
+- breadcrumb_title collection_heading
+- add_to_breadcrumbs _('Search'), search_admin_application_settings_path(anchor: 'js-semantic-search-settings')
+- add_page_specific_style 'page_bundles/settings'
+
+= render ::Layouts::SettingsBlockComponent.new(collection_heading, testid: 'semantic-search-embeddings', expanded: true) do |c|
+  - c.with_description do
+    = s_('SemanticSearch|Set or update the embedding model and dimensions for the collection')
+  - c.with_body do
+    = render Pajamas::CardComponent.new do |card|
+      - card.with_body do
+        .gl-py-2
+          - if @presenter.current_model
+            %div{ data: { testid: 'semantic-search-display-embedding-model-current' } }
+              %h5= s_('SemanticSearch|Current model')
+              %p= embedding_model_display_name(@presenter.current_model)
+          - if @presenter.next_model
+            %div{ data: { testid: 'semantic-search-display-embedding-model-next' } }
+              %h5= s_('SemanticSearch|Next model')
+              %p
+                = s_('SemanticSearch|Switching to: %{model_name}') % { model_name: embedding_model_display_name(@presenter.next_model) }
+        - if @presenter.user_can_update_model?
+          .gl-py-2
+            = gitlab_ui_form_with method: :put,
+              url: admin_application_settings_semantic_search_embedding_path(@collection_key),
+              data: { testid: 'semantic-search-embeddings-form' } do |f|
+              = f.hidden_field :tested_model_metadata, value: @presenter.tested_model_metadata_json,
+                id: 'semantic-search-embeddings-tested-model'
+              .form-group
+                = f.label :embedding_model, s_('SemanticSearch|Select embedding model'), class: 'label-bold'
+                = f.select :embedding_model,
+                  grouped_options_for_select(embedding_models_grouped_options(@presenter.current_model, @self_hosted_embedding_models), embedding_model_key(@presenter.form_display_model)),
+                  {},
+                  class: 'form-control',
+                  data: { testid: 'semantic-search-embeddings-model' },
+                  disabled: @presenter.disable_inputs?
+                .form-text.gl-text-subtle
+                  - ai_gateway_link = link_to('', help_page_path('administration/gitlab_duo/gateway.md'), target: '_blank', rel: 'noopener noreferrer')
+                  - add_self_hosted_model_link = link_to('', help_page_path('administration/gitlab_duo_self_hosted/offline_deployment.md', anchor: 'add-the-self-hosted-model'), target: '_blank', rel: 'noopener noreferrer')
+                  = safe_format(s_('SemanticSearch|For GitLab-managed models, make sure you have access to GitLab-operated %{ai_gateway_link_start}AI Gateway%{ai_gateway_link_end}.'), tag_pair(ai_gateway_link, :ai_gateway_link_start, :ai_gateway_link_end))
+                  = safe_format(s_('SemanticSearch|For Self-hosted models, you first need to add a model under the "Embedding" model family on the %{add_self_hosted_model_link_start}Add self-hosted model%{add_self_hosted_model_link_end} form.'), tag_pair(add_self_hosted_model_link, :add_self_hosted_model_link_start, :add_self_hosted_model_link_end))
+              .form-group
+                = f.label :embedding_dimensions, s_('SemanticSearch|Select embedding dimensions'), class: 'label-bold'
+                = f.number_field :embedding_dimensions,
+                  value: embedding_model_dimensions(@presenter.form_display_model),
+                  step: 1,
+                  min: 1,
+                  class: 'form-control',
+                  data: { testid: 'semantic-search-embeddings-dimensions' },
+                  disabled: @presenter.disable_inputs?
+                .form-text.gl-text-subtle
+                  = s_('SemanticSearch|Make sure the model allows the value, and your vector store can handle it.')
+              - if @presenter.current_model.present?
+                .form-group{ data: { testid: 'semantic-search-embeddings-update-warning' } }
+                  = render Pajamas::AlertComponent.new(variant: :warning,
+                    title: s_('SemanticSearch|Changing the embeddings model or dimensions results in a backfill'),
+                    dismissible: false) do |alert_c|
+                    - alert_c.with_body do
+                      %p= s_('SemanticSearch|This process can take several hours depending on your codebase size. Semantic search will remain available during the backfill.')
+              .gl-flex.gl-gap-2.gl-justify-end
+                = render Pajamas::ButtonComponent.new(type: :button,
+                    disabled: @presenter.disable_inputs?,
+                    button_options: { id: 'test-model-configuration-button', formaction: test_model_configuration_admin_application_settings_semantic_search_embedding_path(@collection_key) }) do
+                  = s_('SemanticSearch|Test model configuration')
+                = render Pajamas::ButtonComponent.new(type: :submit,
+                    variant: :confirm,
+                    disabled: @presenter.disable_inputs?,
+                    button_options: { data: { testid: 'semantic-search-embeddings-submit-button' } }) do
+                  - if @presenter.current_model.present?
+                    = s_('SemanticSearch|Update embeddings and start backfill process')
+                  - else
+                    = s_('SemanticSearch|Set embeddings')

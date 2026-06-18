@@ -1,0 +1,254 @@
+<script>
+import { GlButton, GlTooltipDirective } from '@gitlab/ui';
+import { InternalEvents } from '~/tracking';
+import { BV_HIDE_TOOLTIP } from '~/lib/utils/constants';
+import { keysFor, DUO_CHAT } from '~/behaviors/shortcuts/keybindings';
+import { shouldDisableShortcuts } from '~/behaviors/shortcuts/shortcuts_toggle';
+import { __, sprintf } from '~/locale';
+import { sanitize } from '~/lib/dompurify';
+import { ROUTE_TO_TAB } from 'ee/ai/duo_agents_platform/router/constants';
+import NewChatButton from './new_chat_button.vue';
+
+export default {
+  name: 'NavigationRail',
+  components: {
+    GlButton,
+    NewChatButton,
+  },
+  directives: {
+    GlTooltip: GlTooltipDirective,
+  },
+  mixins: [InternalEvents.mixin()],
+  i18n: {
+    aiCatalogLabel: __('GitLab Duo AI Catalog'),
+    chatOffLabel: __('GitLab Duo Agent Platform'),
+    currentChatLabel: __('Current GitLab Duo Chat'),
+    duoChatLabel: __('Active GitLab Duo Chat'),
+    historyLabel: __('GitLab Duo Chat history'),
+    sessionsLabel: __('GitLab Duo sessions'),
+    suggestionsLabel: __('GitLab Duo suggestions'),
+  },
+  props: {
+    isExpanded: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    showSuggestionsTab: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    chatDisabledReason: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    projectId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    namespaceId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    isAgenticMode: {
+      type: Boolean,
+      required: true,
+    },
+    exploreAiCatalogPath: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    showChatDisabledNav: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  emits: ['handleTabToggle', 'new-chat', 'newChatError'],
+  computed: {
+    activeTab() {
+      return ROUTE_TO_TAB[this.$route?.name];
+    },
+    duoShortcutKey() {
+      return shouldDisableShortcuts() || this.isChatDisabled ? null : keysFor(DUO_CHAT);
+    },
+    isChatDisabled() {
+      return Boolean(this.chatDisabledReason);
+    },
+    chatDisabledTooltip() {
+      if (!this.isChatDisabled) return '';
+
+      return sprintf(__('An administrator has turned off GitLab Duo for this %{reason}.'), {
+        reason: this.chatDisabledReason,
+      });
+    },
+    formattedDuoShortcutTooltip() {
+      if (this.isChatDisabled) return this.chatDisabledTooltip;
+
+      const description = this.isAgenticMode
+        ? this.$options.i18n.currentChatLabel
+        : this.$options.i18n.duoChatLabel;
+      const key = keysFor(DUO_CHAT);
+      return shouldDisableShortcuts()
+        ? description
+        : sanitize(`${description} <kbd class="flat gl-ml-1" aria-hidden=true>${key}</kbd>`);
+    },
+  },
+  methods: {
+    toggleTab(tab) {
+      if (!this.isChatDisabled || this.showChatDisabledNav) {
+        this.$emit('handleTabToggle', tab);
+      }
+    },
+    handleNewChat(agent) {
+      this.$emit('new-chat', agent);
+    },
+    hideTooltips() {
+      this.$root.$emit(BV_HIDE_TOOLTIP);
+    },
+    handleNewChatError(error) {
+      this.$emit('newChatError', error);
+    },
+    handleAiCatalogClick() {
+      this.trackEvent('click_ai_catalog_button_duo_rail');
+    },
+  },
+};
+</script>
+
+<!-- eslint-disable @gitlab/vue-tailwind-no-max-width-media-queries -->
+<template>
+  <nav class="max-lg:gl-flex max-lg:gl-flex-1" :aria-label="__('Duo controls')">
+    <div class="ai-navigation-rail" role="tablist" aria-orientation="vertical">
+      <template v-if="showChatDisabledNav">
+        <gl-button
+          v-gl-tooltip.left
+          icon="duo-chat-off"
+          size="small"
+          :aria-label="$options.i18n.chatOffLabel"
+          :aria-expanded="isExpanded"
+          role="tab"
+          :title="$options.i18n.chatOffLabel"
+          class="application-chrome-nav-item !gl-rounded-lg"
+          :selected="isExpanded"
+          data-testid="duo-disabled-toggle"
+          @click="toggleTab('chat')"
+          @mouseout="hideTooltips"
+        />
+      </template>
+      <template v-else>
+        <new-chat-button
+          :project-id="projectId"
+          :namespace-id="namespaceId"
+          :is-expanded="isExpanded"
+          :is-chat-disabled="isChatDisabled"
+          :is-agent-select-enabled="isAgenticMode"
+          :chat-disabled-tooltip="chatDisabledTooltip"
+          @new-chat="handleNewChat"
+          @toggleTab="toggleTab"
+          @hideTooltips="hideTooltips"
+          @newChatError="handleNewChatError"
+        />
+        <div
+          class="gl-h-5 gl-w-1 gl-border-0 gl-border-r-1 gl-border-solid gl-border-strong lg:gl-mx-auto lg:gl-h-1 lg:gl-w-5 lg:gl-border-r-0 lg:gl-border-t-1"
+        ></div>
+        <gl-button
+          v-gl-tooltip.left="{
+            title: formattedDuoShortcutTooltip,
+            html: true,
+          }"
+          icon="duo-chat"
+          size="small"
+          class="js-tanuki-bot-chat-toggle application-chrome-nav-item !gl-rounded-lg"
+          :class="{ 'gl-opacity-5': isChatDisabled }"
+          :selected="activeTab === 'chat'"
+          category="tertiary"
+          :aria-selected="activeTab === 'chat'"
+          :aria-expanded="isExpanded"
+          :aria-keyshortcuts="duoShortcutKey"
+          :aria-label="$options.i18n.duoChatLabel"
+          role="tab"
+          :aria-disabled="isChatDisabled"
+          data-testid="ai-chat-toggle"
+          @mouseout="hideTooltips"
+          @click="toggleTab('chat')"
+        />
+        <gl-button
+          v-gl-tooltip.left
+          icon="history"
+          size="small"
+          class="application-chrome-nav-item !gl-rounded-lg"
+          :class="{ 'gl-opacity-5': isChatDisabled }"
+          :selected="activeTab === 'history'"
+          category="tertiary"
+          :aria-selected="activeTab === 'history'"
+          :aria-expanded="isExpanded"
+          :aria-label="$options.i18n.historyLabel"
+          :title="isChatDisabled ? chatDisabledTooltip : $options.i18n.historyLabel"
+          role="tab"
+          :aria-disabled="isChatDisabled"
+          data-testid="ai-history-toggle"
+          @mouseout="hideTooltips"
+          @click="toggleTab('history')"
+        />
+        <gl-button
+          v-gl-tooltip.left
+          icon="session-ai"
+          size="small"
+          class="application-chrome-nav-item !gl-rounded-lg"
+          :class="{ 'gl-opacity-5': isChatDisabled }"
+          :selected="activeTab === 'sessions'"
+          category="tertiary"
+          :aria-selected="activeTab === 'sessions'"
+          :aria-expanded="isExpanded"
+          :aria-label="$options.i18n.sessionsLabel"
+          :title="isChatDisabled ? chatDisabledTooltip : $options.i18n.sessionsLabel"
+          role="tab"
+          :aria-disabled="isChatDisabled"
+          data-testid="ai-sessions-toggle"
+          @mouseout="hideTooltips"
+          @click="toggleTab('sessions')"
+        />
+        <gl-button
+          v-if="showSuggestionsTab"
+          v-gl-tooltip.left
+          icon="suggestion-ai"
+          size="small"
+          class="application-chrome-nav-item !gl-rounded-lg max-lg:gl-ml-auto lg:gl-mt-auto"
+          :class="{ 'gl-opacity-5': isChatDisabled }"
+          :selected="activeTab === 'suggestions'"
+          category="tertiary"
+          :aria-selected="activeTab === 'suggestions'"
+          :aria-expanded="isExpanded"
+          :aria-label="$options.i18n.suggestionsLabel"
+          :title="isChatDisabled ? chatDisabledTooltip : $options.i18n.suggestionsLabel"
+          role="tab"
+          :aria-disabled="isChatDisabled"
+          data-testid="ai-suggestions-toggle"
+          @mouseout="hideTooltips"
+          @click="toggleTab('suggestions')"
+        />
+        <gl-button
+          v-if="exploreAiCatalogPath"
+          v-gl-tooltip.left
+          icon="tanuki-ai"
+          size="small"
+          class="application-chrome-nav-item !gl-rounded-lg"
+          :class="{ 'max-lg:gl-ml-auto lg:gl-mt-auto': !showSuggestionsTab }"
+          category="tertiary"
+          :aria-label="$options.i18n.aiCatalogLabel"
+          :title="$options.i18n.aiCatalogLabel"
+          :href="exploreAiCatalogPath"
+          target="_blank"
+          data-testid="ai-catalog-button"
+          @mouseout="hideTooltips"
+          @click="handleAiCatalogClick"
+        />
+      </template>
+    </div>
+  </nav>
+</template>

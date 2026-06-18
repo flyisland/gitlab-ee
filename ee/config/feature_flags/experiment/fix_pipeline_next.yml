@@ -1,0 +1,10 @@
+---
+name: fix_pipeline_next
+description: Control whether to use the new version of Fix Pipeline flow
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/589268
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227503
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/593732
+milestone: '18.11'
+group: group::pipeline execution
+type: experiment
+default_enabled: false

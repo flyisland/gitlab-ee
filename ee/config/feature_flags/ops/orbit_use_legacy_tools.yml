@@ -1,0 +1,9 @@
+---
+name: orbit_use_legacy_tools
+description: When disabled, removes legacy Orbit tools (query_graph, get_graph_schema, get_graph_status) from execution, AI Catalog picker, and DWS pre-approved tools. Discovery is already gated by orbit_mcp_command_tools.
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239300
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/602095
+milestone: '19.1'
+type: ops
+group: group::knowledge graph
+default_enabled: true

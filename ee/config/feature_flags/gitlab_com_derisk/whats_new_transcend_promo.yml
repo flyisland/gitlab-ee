@@ -1,0 +1,10 @@
+---
+name: whats_new_transcend_promo
+description: Shows a promotional card for the GitLab Transcend event in the What's New drawer
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/600482
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236991
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/600663
+milestone: '19.1'
+group: group::acquisition
+type: gitlab_com_derisk
+default_enabled: false

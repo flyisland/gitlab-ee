@@ -1,0 +1,10 @@
+// stylelint-disable-next-line gitlab/no-gl-class
+.plan-selection .gl-form-radio.custom-control .custom-control-input ~ .custom-control-label {
+  margin-bottom: 0;
+}
+
+// stylelint-disable-next-line gitlab/no-gl-class
+.plan-selection .gl-form-radio.custom-control .custom-control-input ~ .custom-control-label::before,
+.plan-selection .gl-form-radio.custom-control .custom-control-input ~ .custom-control-label::after {
+  top: 0.4rem;
+}

@@ -1,0 +1,10 @@
+---
+name: dap_instance_network_access_controls
+description: Enables instance-level DAP network access controls.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/593149
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229531
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/595211
+milestone: '18.11'
+group: group::agent foundations
+type: beta
+default_enabled: true

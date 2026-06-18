@@ -1,0 +1,322 @@
+# frozen_string_literal: true
+
+module Ai
+  module DuoWorkflows
+    class CreateWorkflowService
+      include ::Services::ReturnServiceResponses
+      include Concerns::WorkflowEventTracking
+
+      MAX_GOVERNANCE_RETRIES = 3
+
+      def initialize(container:, current_user:, params:)
+        @container = container || current_user.default_duo_namespace
+        @current_user = current_user
+        # Remove ids to avoid confusion - @container determines the workflow scope, not raw IDs
+        @params = params.except(:namespace_id, :project_id)
+      end
+
+      def execute
+        unless @container.is_a?(::Project) || @container.is_a?(::Namespace)
+          return error('container must be a Project or Namespace', :bad_request)
+        end
+
+        resolve_agent_privileges
+
+        namespace = @container.is_a?(::Project) ? @container.namespace : @container
+        credit_check_response = Ai::UsageQuotaService.new(
+          ai_feature: chat? ? :duo_chat : :duo_agent_platform,
+          user: @current_user,
+          namespace: namespace,
+          workflow_definition: workflow_definition
+        ).execute
+
+        if credit_check_response.error?
+          # http status should not be part of Service, but needs significant refactoring in the callers of
+          # CreateWorkflowService.execute
+          http_status = http_status_for_quota_error(credit_check_response.reason)
+          message = enriched_error_message(credit_check_response)
+          return error(message, http_status, pass_back: { reason: credit_check_response.reason })
+        end
+
+        response = check_ai_catalog_item_access || check_access
+        return response if response&.error?
+
+        workflow = Ai::DuoWorkflows::Workflow.new(workflow_attributes)
+
+        return error(workflow.errors.full_messages.join(', '), :bad_request) unless workflow.save
+
+        Ai::DuoWorkflows::GenerateWorkflowTitleWorker.perform_async(workflow.id)
+
+        track_workflow_event("agent_platform_session_created", workflow)
+
+        audit_context = {
+          name: 'duo_session_created',
+          author: @current_user,
+          scope: workflow.project || workflow.namespace,
+          target: workflow,
+          target_details: "#{workflow.workflow_definition} session #{workflow.id}",
+          message: 'Created Duo session'
+        }
+        begin
+          ::Gitlab::Audit::Auditor.audit(audit_context)
+        rescue StandardError => e
+          Gitlab::ErrorTracking.track_exception(e, workflow_id: workflow.id)
+        end
+
+        create_workflow_system_note(workflow)
+
+        unless ::Gitlab::ClickHouse.globally_enabled_for_analytics?
+          Ai::DuoWorkflows::SyncSessionArtifactWorker.perform_async(workflow.id)
+        end
+
+        success(workflow: workflow)
+      end
+
+      def workflow_attributes
+        base_params.merge(
+          user: @current_user,
+          **container_attributes,
+          **noteable_attributes,
+          **service_account_attributes
+        )
+      end
+
+      private
+
+      def base_params
+        @params.except(:issue_id, :merge_request_id, :service_account)
+      end
+
+      def service_account_attributes
+        return {} unless @params[:service_account]
+
+        { service_account: @params[:service_account] }
+      end
+
+      def create_workflow_system_note(workflow)
+        noteable = workflow.noteable
+        return unless noteable
+
+        # Who/what initiated the workflow
+        # currently the user, but could be another agent
+        # in future iterations
+        trigger_source = @current_user
+        note_author = workflow.service_account
+
+        SystemNoteService.agent_session_started(
+          noteable,
+          noteable.project,
+          workflow.id,
+          trigger_source,
+          note_author
+        )
+      rescue StandardError => err
+        Gitlab::ErrorTracking.track_exception(
+          err,
+          workflow_id: workflow.id,
+          noteable_type: noteable.class.name,
+          noteable_id: noteable.id
+        )
+      end
+
+      def check_ai_catalog_item_access
+        return unless @params[:ai_catalog_item_version]
+
+        finder_params = {
+          item_id: @params[:ai_catalog_item_version].ai_catalog_item_id
+        }
+
+        if @container.is_a?(::Project)
+          finder_params[:project_id] = @container.id
+        elsif @container.is_a?(::Namespace)
+          finder_params[:group_id] = @container.id
+        end
+
+        return if Ai::Catalog::ItemConsumersFinder.new(@current_user, params: finder_params).execute.exists?
+
+        error('ItemVersion not found', :not_found)
+      end
+
+      def check_access
+        if chat?
+          check_agentic_chat_access
+        else
+          check_duo_workflow_access
+        end
+      end
+
+      def check_agentic_chat_access
+        unless Ability.allowed?(@current_user, :access_duo_agentic_chat, @container)
+          return error('forbidden to access agentic chat', :forbidden)
+        end
+
+        reference = FoundationalChatAgent.reference_from_workflow_definition(workflow_definition)
+
+        agent = FoundationalChatAgent.with_workflow_definition(workflow_definition)
+        if agent&.ultimate_only
+          root_namespace = @container.root_ancestor
+          return error('agent requires Ultimate plan', :forbidden) unless
+            root_namespace.licensed_feature_available?(:ai_catalog)
+        end
+
+        return if foundational_agents_settings_container&.foundational_agent_enabled?(reference)
+
+        error('foundation agent disabled for namespace', :forbidden)
+      end
+
+      def check_duo_workflow_access
+        return if Ability.allowed?(@current_user, :create_duo_workflow_for_ci, @container)
+
+        error('forbidden to access duo workflow', :forbidden, pass_back: { reason: :cannot_create_workflow_pipeline })
+      end
+
+      def workflow_definition
+        @params['workflow_definition'] || @params[:workflow_definition]
+      end
+
+      def chat?
+        FoundationalChatAgent.foundational_workflow_definition?(workflow_definition)
+      end
+
+      def container_attributes
+        if @container.is_a?(::Project)
+          { project: @container }
+        elsif @container.is_a?(::Namespace)
+          { namespace: @container }
+        end
+      end
+
+      def noteable_attributes
+        attributes = {}
+
+        if @params[:issue_id].present?
+          work_item = find_issue(@params[:issue_id])
+          attributes[:issue_id] = work_item.id if work_item
+        end
+
+        if @params[:merge_request_id].present?
+          mr = find_merge_request(@params[:merge_request_id])
+          attributes[:merge_request_id] = mr.id if mr
+        end
+
+        # When no explicit noteable is provided, resolve from the foundational flow.
+        # E.g. fix_pipeline derives merge_request from the pipeline URL (goal).
+        # Also skip resolution when the API layer has already resolved AR objects
+        # (e.g. agent_workflows passes :issue or :merge_request directly).
+        resolve_noteable_from_flow(attributes) unless explicit_noteable?(attributes)
+
+        attributes
+      end
+
+      def explicit_noteable?(attributes)
+        attributes.any? || @params[:issue].present? || @params[:merge_request].present?
+      end
+
+      def resolve_noteable_from_flow(attributes)
+        return unless @container.is_a?(::Project)
+
+        flow = ::Ai::Catalog::FoundationalFlow[workflow_definition]
+        noteable = flow&.resolve_noteable_for(project: @container, goal: @params[:goal])
+
+        attributes[:merge_request_id] = noteable.id if noteable.is_a?(::MergeRequest)
+      end
+
+      def find_issue(issue_iid)
+        return unless @container.is_a?(::Project)
+
+        IssuesFinder.new(@current_user, project_id: @container.id, iids: [issue_iid]).execute.first
+      rescue StandardError => err
+        Gitlab::ErrorTracking.track_exception(err, issue_iid: issue_iid, container_id: @container.id)
+        nil
+      end
+
+      def find_merge_request(mr_iid)
+        MergeRequestsFinder.new(@current_user, project_id: @container.id, iids: [mr_iid]).execute.first
+      rescue StandardError => err
+        Gitlab::ErrorTracking.track_exception(err, merge_request_iid: mr_iid, project_id: @container.id)
+        nil
+      end
+
+      def enriched_error_message(response)
+        case response.reason
+        when :namespace_missing
+          ::Ai::FoundationalFlowMessages.namespace_missing_error(@current_user)
+        else
+          response.message
+        end
+      end
+
+      def http_status_for_quota_error(reason)
+        case reason
+        when :user_missing, :namespace_missing
+          :bad_request
+        when :usage_quota_exceeded
+          :payment_required
+        else
+          :internal_server_error
+        end
+      end
+
+      def foundational_agents_settings_container
+        @current_user.duo_foundational_agents_container(@container.root_ancestor)
+      end
+
+      def resolve_agent_privileges
+        return if @params[:agent_privileges]
+        return unless @container
+        return unless valid_container_for_governance?
+
+        unless Feature.enabled?(:gitlab_duo_governance_settings, @container)
+          @params[:agent_privileges] = ::Ai::DuoWorkflows::Workflow::AgentPrivileges::DEFAULT_PRIVILEGES
+          return
+        end
+
+        result = execute_governance_resolution_with_retry
+
+        if result&.success?
+          @params[:agent_privileges] = result.payload[:agent_privileges]
+          @params[:pre_approved_agent_privileges] = result.payload[:pre_approved_agent_privileges]
+        else
+          Gitlab::AppLogger.error(
+            message: "Governance resolution failed after #{MAX_GOVERNANCE_RETRIES} " \
+              "retries, failing closed with no tools",
+            container_id: @container.id,
+            container_type: @container.class.name
+          )
+          @params[:agent_privileges] = []
+          @params[:pre_approved_agent_privileges] = []
+        end
+      end
+
+      def execute_governance_resolution_with_retry
+        service = build_resolution_service
+        result = nil
+
+        MAX_GOVERNANCE_RETRIES.times do |attempt|
+          result = service.execute
+          break if result.success?
+
+          Gitlab::AppLogger.warn(
+            message: "Governance resolution failed, retrying (attempt #{attempt + 1}/#{MAX_GOVERNANCE_RETRIES})",
+            container_id: @container.id,
+            container_type: @container.class.name
+          )
+        end
+
+        result
+      end
+
+      def build_resolution_service
+        ::Ai::ToolRules::ResolutionService.new(
+          namespace: @container.root_ancestor,
+          surface: @params[:environment]&.to_s || 'web',
+          project: @container.is_a?(::Project) ? @container : nil
+        )
+      end
+
+      def valid_container_for_governance?
+        @container.is_a?(::Project) || @container.is_a?(::Namespace)
+      end
+    end
+  end
+end

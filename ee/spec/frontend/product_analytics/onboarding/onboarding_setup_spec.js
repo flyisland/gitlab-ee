@@ -1,0 +1,87 @@
+import VueApollo from 'vue-apollo';
+import Vue from 'vue';
+import { GlLoadingIcon } from '@gitlab/ui';
+import ProductAnalyticsSetupView from 'ee/product_analytics/onboarding/onboarding_setup.vue';
+import { mountExtended } from 'helpers/vue_test_utils_helper';
+import {
+  TEST_COLLECTOR_HOST,
+  TEST_TRACKING_KEY,
+} from 'ee_jest/analytics/analytics_dashboards/mock_data';
+import createMockApollo from 'helpers/mock_apollo_helper';
+import { TEST_PROJECT_FULL_PATH } from '../mock_data';
+
+const { i18n } = ProductAnalyticsSetupView;
+
+Vue.use(VueApollo);
+
+describe('ProductAnalyticsSetupView', () => {
+  /** @type {import('helpers/vue_test_utils_helper').ExtendedWrapper} */
+  let wrapper;
+
+  const defaultProps = {
+    isInitialSetup: false,
+    dashboardsPath: '/path/to/dashboard',
+  };
+
+  const findTitle = () => wrapper.findByTestId('title');
+  const findDescription = () => wrapper.findByTestId('description');
+  const findHelpLink = () => wrapper.findByTestId('help-link');
+  const findIntroduction = () => wrapper.findByTestId('introduction');
+  const findBackToDashboardsButton = () => wrapper.findByTestId('back-to-dashboards-button');
+  const findLoadingIcon = () => wrapper.findComponent(GlLoadingIcon);
+
+  const createWrapper = (props = {}, provide = {}) => {
+    wrapper = mountExtended(ProductAnalyticsSetupView, {
+      apolloProvider: createMockApollo([]),
+      propsData: {
+        ...defaultProps,
+        ...props,
+      },
+      provide: {
+        namespaceFullPath: TEST_PROJECT_FULL_PATH,
+        collectorHost: TEST_COLLECTOR_HOST,
+        trackingKey: TEST_TRACKING_KEY,
+        ...provide,
+      },
+    });
+  };
+
+  describe('when mounted', () => {
+    it('should render the heading section', () => {
+      createWrapper();
+
+      expect(findTitle().text()).toContain(i18n.title);
+      expect(findHelpLink().text()).toContain(i18n.learnMore);
+      expect(findHelpLink().attributes('href')).toBe(ProductAnalyticsSetupView.docsPath);
+    });
+
+    it('does not render the loading icon', () => {
+      createWrapper();
+
+      expect(findLoadingIcon().exists()).toBe(false);
+    });
+
+    it.each`
+      isInitialSetup | description
+      ${true}        | ${i18n.initialSetupDescription}
+      ${false}       | ${i18n.description}
+    `(
+      'should render the right heading when "isInitialSetup" is "$isInitialSetup"',
+      ({ isInitialSetup, description }) => {
+        createWrapper({ isInitialSetup });
+
+        expect(findDescription().text()).toContain(description);
+        expect(findIntroduction().exists()).toBe(isInitialSetup);
+        expect(findBackToDashboardsButton().exists()).toBe(!isInitialSetup);
+      },
+    );
+  });
+
+  describe('when no trackingKey is provided', () => {
+    it('displays the loading icon', () => {
+      createWrapper({}, { trackingKey: null });
+
+      expect(findLoadingIcon().exists()).toBe(true);
+    });
+  });
+});

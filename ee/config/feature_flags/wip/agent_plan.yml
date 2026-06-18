@@ -1,0 +1,10 @@
+---
+name: agent_plan
+description: Enables the agent plan widget on a work item
+feature_issue_url: https://gitlab.com/groups/gitlab-org/-/work_items/21511
+rollout_issue_url: # Type WIP, no rollout issue yet
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231689
+milestone: '19.0'
+group: group::knowledge
+type: wip
+default_enabled: false

@@ -1,0 +1,44 @@
+# frozen_string_literal: true
+
+module Sbom
+  class ScheduleIngestReportsService
+    include Gitlab::Utils::StrongMemoize
+
+    def self.execute(pipeline)
+      new(pipeline).execute
+    end
+
+    def initialize(pipeline)
+      @pipeline = pipeline
+    end
+
+    def execute
+      return unless pipeline.project.namespace.ingest_sbom_reports_available?
+
+      if !pipeline.default_branch? && Feature.disabled?(:sbom_ingestion_on_non_default_branches, pipeline.project)
+        return
+      end
+
+      return unless all_security_jobs_complete? && any_pipeline_has_sbom_reports?
+
+      ::Sbom::IngestReportsWorker.perform_async(root_pipeline.id)
+    end
+
+    private
+
+    attr_reader :pipeline
+
+    def all_security_jobs_complete?
+      root_pipeline.all_security_jobs_complete?
+    end
+
+    def any_pipeline_has_sbom_reports?
+      root_pipeline.builds_in_self_and_project_descendants
+        .with_artifacts(::Ci::JobArtifact.of_report_type(:sbom)).any?
+    end
+
+    def root_pipeline
+      @root_pipeline ||= pipeline.root_ancestor
+    end
+  end
+end

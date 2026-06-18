@@ -1,0 +1,72 @@
+# frozen_string_literal: true
+
+module Types
+  module Ai
+    module DuoWorkflows
+      class WorkflowEventType < Types::BaseObject
+        graphql_name 'DuoWorkflowEvent'
+        description "Events that describe the history and progress of a GitLab Duo Agent Platform session"
+        present_using ::Ai::DuoWorkflows::WorkflowCheckpointEventPresenter
+        authorize :read_duo_workflow_event
+
+        COMPRESS_LEVEL = 6 # Fast and good zlib compression
+
+        def self.authorization_scopes
+          [:api, :read_api, :ai_features, :ai_workflows]
+        end
+
+        field :checkpoint, Types::JsonStringType,
+          scopes: [:api, :read_api, :ai_features, :ai_workflows],
+          deprecated: { reason: 'Checkpoints are big & contain internal langgraph details', milestone: '18.7' },
+          description: 'Checkpoint of the event.'
+
+        field :compressed_checkpoint, GraphQL::Types::String,
+          null: true,
+          scopes: [:api, :read_api, :ai_features, :ai_workflows],
+          description: 'Checkpoint of the event, zlib-compressed and Base64-encoded.'
+
+        field :metadata, Types::JsonStringType,
+          scopes: [:api, :read_api, :ai_features, :ai_workflows],
+          description: 'Metadata associated with the event.'
+
+        field :workflow_status, Types::Ai::DuoWorkflows::WorkflowStatusEnum,
+          description: 'Status of the session.'
+
+        field :execution_status, GraphQL::Types::String,
+          null: false, description: "Granular status of the session's execution.",
+          experiment: { milestone: '17.10' }
+
+        field :errors, [GraphQL::Types::String],
+          scopes: [:api, :read_api, :ai_features, :ai_workflows],
+          null: true, description: 'Message errors.'
+
+        field :thread_ts, GraphQL::Types::String,
+          scopes: [:api, :read_api, :ai_features, :ai_workflows],
+          description: 'UUID v7 timestamp identifier for the conversation thread/session in LangGraph state management.'
+
+        # rubocop:disable GraphQL/ExtractType -- no need to extract fields into a separate field
+        field :parent_ts, GraphQL::Types::String,
+          scopes: [:api, :read_api, :ai_features, :ai_workflows],
+          description: 'UUID v7 timestamp identifier of the parent message for branched conversations or responses.'
+
+        field :workflow_goal, GraphQL::Types::String,
+          description: 'Goal of the session.'
+
+        field :workflow_definition, GraphQL::Types::String,
+          description: 'GitLab Duo Agent Platform flow type based on its capabilities.'
+        # rubocop:enable GraphQL/ExtractType -- we want to keep this way for backwards compatibility
+
+        field :duo_messages, [Types::Ai::DuoWorkflows::DuoMessageType],
+          scopes: [:api, :read_api, :ai_features, :ai_workflows],
+          description: 'Messages from the ui_chat_log for the checkpoint.'
+
+        def compressed_checkpoint
+          checkpoint = object.checkpoint
+          return unless checkpoint
+
+          Base64.strict_encode64(Zlib::Deflate.deflate(checkpoint.to_json, COMPRESS_LEVEL))
+        end
+      end
+    end
+  end
+end

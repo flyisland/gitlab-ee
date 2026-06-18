@@ -1,0 +1,9 @@
+---
+name: sbom_ingestion_on_non_default_branches
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/581948
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/238709
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/581948
+milestone: '19.1'
+type: development
+group: group::security infrastructure
+default_enabled: false

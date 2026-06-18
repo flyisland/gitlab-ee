@@ -1,0 +1,12 @@
+# @feature_category: compliance_management
+
+mutation updateAiToolRule($input: UpdateAiToolRuleInput!) {
+  updateAiToolRule(input: $input) {
+    toolRule {
+      id
+      webAccess
+      localAccess
+    }
+    errors
+  }
+}

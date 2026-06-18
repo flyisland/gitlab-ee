@@ -1,0 +1,10 @@
+---
+name: dependency_management_auto_remediation
+description: Enable automatic remediation of vulnerable dependencies via auto-generated merge requests
+feature_issue_url: https://gitlab.com/groups/gitlab-org/-/work_items/17403
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229697
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/595588
+milestone: '18.11'
+group: group::composition analysis
+type: gitlab_com_derisk
+default_enabled: false
