@@ -1,0 +1,10 @@
+---
+name: cyclonedx_license_expression_ingestion
+description: Ingest CycloneDX `licenses[].expression` into Reports::Sbom::License so SPDX expressions flow through to license scanning and policy evaluation
+feature_issue_url: https://gitlab.com/groups/gitlab-org/-/work_items/21946
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241193
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/604791
+milestone: '19.2'
+group: group::security policies
+type: gitlab_com_derisk
+default_enabled: false

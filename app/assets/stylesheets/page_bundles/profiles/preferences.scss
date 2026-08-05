@@ -1,0 +1,31 @@
+@import 'page_bundles/mixins_and_variables_and_functions';
+
+.application-theme {
+  .preview {
+    --theme-preview-color: var(--gl-color-alpha-dark-8);
+    --theme-preview-accent-color: var(--gl-color-neutral-200);
+
+    // stylelint-disable-next-line gitlab/no-gl-class
+    .gl-dark & {
+      --theme-preview-color: var(--gl-color-alpha-light-8);
+      --theme-preview-accent-color: var(--gl-color-neutral-400);
+    }
+
+    font-size: 0;
+    @apply gl-text-neutral-50;
+    @apply dark:gl-text-neutral-900;
+    @apply gl-border;
+    @apply gl-rounded-lg;
+    @apply gl-mb-3;
+    @apply gl-overflow-hidden;
+
+    svg {
+      width: 100%;
+    }
+
+    &.ui-neutral-scope {
+      opacity: 0.75;
+      --theme-preview-accent-color: var(--gl-color-blue-200);
+    }
+  }
+}

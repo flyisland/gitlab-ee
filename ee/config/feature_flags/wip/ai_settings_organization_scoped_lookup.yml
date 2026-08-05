@@ -1,0 +1,9 @@
+---
+name: ai_settings_organization_scoped_lookup
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/531356
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243041
+rollout_issue_url:
+milestone: '19.2'
+group: group::cells infrastructure
+type: wip
+default_enabled: false

@@ -1,0 +1,213 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe 'Groups::DuoAgentsPlatform', feature_category: :workflow_catalog do
+  let(:group) { create(:group) }
+  let(:user) { create(:user) }
+
+  before do
+    group.add_developer(user)
+
+    sign_in(user)
+    allow(Ability).to receive(:allowed?).and_call_original
+    allow(Ability).to receive(:allowed?).with(user, :read_duo_agent_platform, group).and_return(true)
+    allow(Ability).to receive(:allowed?).with(user, :duo_workflow, group).and_return(true)
+    allow(Ability).to receive(:allowed?).with(user, :read_ai_catalog_flow, group).and_return(true)
+
+    # Stub subscription portal requests for credits_available? check
+    stub_request(:head, %r{https://customers\.staging\.gitlab\.com/api/v1/consumers/resolve})
+      .to_return(status: 200, body: "", headers: {})
+  end
+
+  describe 'GET /:group/-/automate' do
+    context 'when user is not signed in' do
+      before do
+        sign_out(user)
+      end
+
+      it 'returns 404' do
+        get group_automate_agents_path(group)
+
+        expect(response).to have_gitlab_http_status(:not_found)
+      end
+    end
+
+    context 'when group is not a root group' do
+      let(:group) { create(:group, :nested) }
+
+      it 'returns 404' do
+        get group_automate_agents_path(group)
+
+        expect(response).to have_gitlab_http_status(:not_found)
+      end
+    end
+
+    context 'when user has access to duo_workflow' do
+      it 'renders successfully' do
+        get group_automate_flows_path(group)
+
+        expect(response).to have_gitlab_http_status(:ok)
+      end
+
+      it 'pushes feature flags to frontend' do
+        get group_automate_flows_path(group)
+
+        expect(response.body).to include('aiCatalogThirdPartyFlows')
+        expect(response.body).to include('mcpCatalogAgentTools')
+      end
+    end
+
+    context 'when ai_catalog_public_explore is disabled and user is not entitled to the agent platform' do
+      before do
+        stub_feature_flags(ai_catalog_public_explore: false)
+        allow(Ability).to receive(:allowed?).with(user, :read_duo_agent_platform, group).and_return(false)
+      end
+
+      it 'does not render' do
+        get group_automate_flows_path(group)
+
+        expect(response).to have_gitlab_http_status(:not_found)
+      end
+    end
+
+    context 'when ai_catalog_public_explore is enabled and user is not entitled to the agent platform' do
+      before do
+        allow(Ability).to receive(:allowed?).with(user, :read_duo_agent_platform, group).and_return(false)
+      end
+
+      it 'renders successfully' do
+        get group_automate_agents_path(group)
+
+        expect(response).to have_gitlab_http_status(:ok)
+      end
+    end
+
+    context 'when the user is entitled but lacks :duo_workflow (e.g. pending identity verification)' do
+      before do
+        stub_feature_flags(ai_catalog_public_explore: false)
+        allow(Ability).to receive(:allowed?).with(user, :read_duo_agent_platform, group).and_return(true)
+        allow(Ability).to receive(:allowed?).with(user, :duo_workflow, group).and_return(false)
+      end
+
+      it 'renders the page so the verification banner can be shown' do
+        get group_automate_agents_path(group)
+
+        expect(response).to have_gitlab_http_status(:ok)
+      end
+    end
+
+    context 'when vueroute is agents' do
+      it 'returns successfully' do
+        get group_automate_agents_path(group)
+
+        expect(response).to have_gitlab_http_status(:ok)
+      end
+    end
+
+    context 'when vueroute is flows' do
+      it 'returns successfully' do
+        get group_automate_flows_path(group)
+
+        expect(response).to have_gitlab_http_status(:ok)
+      end
+
+      context 'when user is a maintainer of a project in the group' do
+        let_it_be(:maintainer) { create(:user) }
+        let_it_be(:maintainer_group, freeze: false) { create(:group) }
+        let_it_be(:project) { create(:project, group: maintainer_group, maintainers: maintainer) }
+
+        let(:group) { maintainer_group }
+        let(:user) { maintainer }
+
+        before do
+          group.members.find_by!(user: user).destroy!
+
+          group.namespace_settings.update!(
+            duo_features_enabled: true,
+            duo_foundational_flows_enabled: true,
+            duo_remote_flows_enabled: true
+          )
+
+          allow(::Gitlab::Llm::StageCheck).to receive(:available?).with(group, :ai_catalog).and_return(true)
+          allow(::Gitlab::Llm::StageCheck).to receive(:available?).with(group, :ai_catalog_flows).and_return(true)
+          allow(::Gitlab::Llm::StageCheck).to receive(:available?).with(group, :foundational_flows).and_return(true)
+          allow(Ability).to receive(:allowed?).with(user, :read_duo_agent_platform, group).and_return(true)
+          allow(Ability).to receive(:allowed?).with(user, :duo_workflow, group).and_return(false)
+          allow(Ability).to receive(:allowed?).with(user, :read_ai_catalog_flow, group).and_call_original
+          allow(Ability).to receive(:allowed?).with(user, :read_ai_foundational_flow, group).and_call_original
+        end
+
+        it 'renders successfully' do
+          get group_automate_flows_path(group)
+
+          expect(response).to have_gitlab_http_status(:ok)
+        end
+
+        context 'when ai_catalog_public_explore is disabled' do
+          before do
+            stub_feature_flags(ai_catalog_public_explore: false)
+          end
+
+          it 'renders successfully' do
+            get group_automate_flows_path(group)
+
+            expect(response).to have_gitlab_http_status(:ok)
+          end
+        end
+      end
+
+      context 'when user can read foundational flows' do
+        before do
+          allow(Ability).to receive(:allowed?).with(user, :read_ai_catalog_flow, group).and_return(false)
+          allow(Ability).to receive(:allowed?).with(user, :read_ai_foundational_flow, group).and_return(true)
+        end
+
+        it 'returns successfully' do
+          get group_automate_flows_path(group)
+
+          expect(response).to have_gitlab_http_status(:ok)
+        end
+      end
+
+      context 'when user does not have access to read flows or foundational flows' do
+        before do
+          allow(Ability).to receive(:allowed?).with(user, :read_ai_catalog_flow, group).and_return(false)
+          allow(Ability).to receive(:allowed?).with(user, :read_ai_foundational_flow, group).and_return(false)
+        end
+
+        it 'does not render' do
+          get group_automate_flows_path(group)
+
+          expect(response).to have_gitlab_http_status(:not_found)
+        end
+      end
+    end
+
+    context 'when vueroute is mcp-servers' do
+      context 'when user can read mcp servers' do
+        before do
+          allow(Ability).to receive(:allowed?).with(user, :read_ai_catalog_mcp_server, group).and_return(true)
+        end
+
+        it 'returns successfully' do
+          get group_automate_mcp_servers_path(group)
+
+          expect(response).to have_gitlab_http_status(:ok)
+        end
+      end
+
+      context 'when user cannot read mcp servers' do
+        before do
+          allow(Ability).to receive(:allowed?).with(user, :read_ai_catalog_mcp_server, group).and_return(false)
+        end
+
+        it 'returns 404' do
+          get group_automate_mcp_servers_path(group)
+
+          expect(response).to have_gitlab_http_status(:not_found)
+        end
+      end
+    end
+  end
+end

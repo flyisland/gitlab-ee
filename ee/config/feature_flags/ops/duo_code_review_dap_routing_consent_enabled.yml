@@ -1,0 +1,14 @@
+---
+name: duo_code_review_dap_routing_consent_enabled
+description: >
+  When enabled, the Code Review Flow toggle and namespace consent become the
+  authoritative routing signal for Duo Code Review, taking priority over
+  Duo Enterprise seat assignment. Requires explicit namespace consent recorded
+  in namespaces_consents (feature_name: code_review_flow_dap_routing).
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/602689
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240432
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/602839
+milestone: '19.2'
+group: group::code review
+type: ops
+default_enabled: true

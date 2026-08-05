@@ -1,0 +1,9 @@
+---
+name: admin_duo_availability_namespace_overrides
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/603135
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/603247
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/605359
+milestone: '19.2'
+type: beta
+group: group::compliance
+default_enabled: true

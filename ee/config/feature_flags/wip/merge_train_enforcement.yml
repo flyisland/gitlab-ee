@@ -1,0 +1,11 @@
+---
+name: merge_train_enforcement
+description: Enforce merge trains by preventing direct merges via UI and API for projects
+  with the merge_train_enforcement setting enabled
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/597962
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241083
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/603364
+milestone: '19.2'
+group: group::pipeline execution
+type: wip
+default_enabled: false

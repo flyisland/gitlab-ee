@@ -1,0 +1,40 @@
+# @feature_category: continuous_delivery
+
+query cdApplicationWithServices($id: CdApplicationID!) {
+  organization {
+    id
+    cdApplication(id: $id) {
+      id
+      name
+      description
+      updatedAt
+      services {
+        nodes {
+          id
+          name
+          sync @client
+          health @client
+          lastDeployed @client
+          serviceType @client
+          environments @client
+        }
+      }
+      versionSets {
+        nodes {
+          id
+          name
+          createdAt
+          rollouts(first: 1) {
+            nodes {
+              id
+              state
+            }
+          }
+          versionSetEntries {
+            count
+          }
+        }
+      }
+    }
+  }
+}

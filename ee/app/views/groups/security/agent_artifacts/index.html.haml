@@ -1,0 +1,8 @@
+- breadcrumb_title _("Agent artifacts")
+- page_title _("Agent artifacts")
+
+= render ::Layouts::IndexLayout.new(heading: _("Agent artifacts")) do |layout|
+  - layout.with_description do
+    = _("Monitor and observe AI agent behavior and activities across your group.")
+
+  #js-agent-artifacts{ data: { group_id: @group.to_global_id, group_full_path: @group.full_path } }

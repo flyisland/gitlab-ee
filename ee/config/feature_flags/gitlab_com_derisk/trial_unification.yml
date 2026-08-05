@@ -1,0 +1,10 @@
+---
+name: trial_unification
+description: Unified registration flow for .com Ultimate trial signup
+feature_issue_url: https://gitlab.com/groups/gitlab-org/-/work_items/21601
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237932
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/601116
+milestone: '19.1'
+group: group::acquisition
+type: gitlab_com_derisk
+default_enabled: false

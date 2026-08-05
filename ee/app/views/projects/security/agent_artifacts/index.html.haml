@@ -1,0 +1,8 @@
+- breadcrumb_title _("Agent artifacts")
+- page_title _("Agent artifacts")
+
+= render ::Layouts::IndexLayout.new(heading: _("Agent artifacts")) do |layout|
+  - layout.with_description do
+    = _("Monitor and observe AI agent behavior and activities across your project.")
+
+  #js-agent-artifacts{ data: { project_id: @project.to_global_id, project_full_path: @project.full_path, project_governance_path: edit_project_path(@project, anchor: 'js-gitlab-duo-settings') } }

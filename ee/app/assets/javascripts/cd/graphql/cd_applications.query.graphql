@@ -1,0 +1,15 @@
+# @feature_category: continuous_delivery
+
+query cdApplications {
+  organization {
+    id
+    cdApplications {
+      nodes {
+        id
+        description
+        name
+        updatedAt
+      }
+    }
+  }
+}

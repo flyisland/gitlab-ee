@@ -1,0 +1,36 @@
+- page_title s_('Trial|Start your free Ultimate trial')
+- content_for(:hide_empty_navbar, true)
+- content_for :registration_marketing_panel_image, 'subscription/groups'
+- content_for :registration_marketing_panel_heading, s_("InProductMarketing|Let's get set up")
+- content_for :page_specific_javascripts do
+  = render "layouts/google_tag_manager_head"
+  = render "layouts/one_trust"
+  = render "layouts/bizible"
+= render "layouts/google_tag_manager_body"
+
+
+- if trial_unification?
+  .registration-form-container.gl-mx-auto.gl-mt-6
+    .gl-py-8
+      %h2.gl-mt-0.gl-mb-3
+        = s_('Trial|Welcome to GitLab')
+
+      %p.gl-mb-6
+        = s_('Trial|Set up your GitLab environment and answer a few questions to personalize your experience.')
+
+      .gl-max-w-80.gl-mx-auto
+        #js-create-trial-welcome-form{ data: { view_model: form_data } }
+- else
+  .gl-max-w-2xl.gl-mx-auto.gl-mt-6
+    .gl-p-8.gl-bg-subtle.gl-rounded-lg.gl-border
+      .gl-text-center.gl-mb-6
+        = image_tag 'illustrations/gitlab_logo.svg', class: 'gl-h-9', alt: 'GitLab'
+
+      %h2.gl-mt-0.gl-text-center
+        = s_('Trial|Welcome to GitLab')
+
+      %p.gl-text-subtle.gl-text-lg.gl-text-center
+        = s_('Trial|Help us personalize your GitLab experience by answering a few questions')
+
+      .gl-max-w-80.gl-mx-auto
+        #js-create-trial-welcome-form{ data: { view_model: form_data } }

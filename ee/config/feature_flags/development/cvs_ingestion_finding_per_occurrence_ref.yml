@@ -1,0 +1,10 @@
+---
+name: cvs_ingestion_finding_per_occurrence_ref
+description: 'Creates vulnerability findings per sbom_occurrence_ref in CVS ingestion'
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/581948
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237988
+rollout_issue_url:
+milestone: '19.2'
+group: group::security infrastructure
+type: development
+default_enabled: false

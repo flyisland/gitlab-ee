@@ -1,0 +1,11 @@
+---
+name: enforce_ai_audit_events_storage_setting
+description: Enforce the ai_audit_events_storage_enabled cascading setting when persisting
+  AI audit events
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/603892
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242767
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/604269
+milestone: '19.2'
+group: group::compliance
+type: beta
+default_enabled: true

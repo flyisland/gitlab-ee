@@ -1,0 +1,10 @@
+---
+name: group_security_configuration_scanners_tab
+description: Show the group security configuration scanners tab
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/596597
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231257
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/597648
+milestone: '19.0'
+group: group::security platform management
+type: beta
+default_enabled: true
