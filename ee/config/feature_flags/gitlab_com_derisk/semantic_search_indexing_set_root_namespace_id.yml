@@ -1,0 +1,10 @@
+---
+name: semantic_search_indexing_set_root_namespace_id
+description: 'Enables resolving and setting root_namespace_id on code references during semantic search indexing for billing and compliance tracking on SaaS.'
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/606107
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/246906
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/606945
+milestone: '19.3'
+group: group::ai core infra
+type: gitlab_com_derisk
+default_enabled: false
