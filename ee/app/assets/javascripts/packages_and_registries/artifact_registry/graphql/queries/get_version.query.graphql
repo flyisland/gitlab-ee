@@ -1,0 +1,52 @@
+# @feature_category: artifact_registry
+
+query getArtifactRegistryVersion(
+  $organizationId: OrganizationsOrganizationID!
+  $name: String!
+  $artifactId: ID!
+  $versionId: ID!
+) {
+  organization(id: $organizationId) {
+    id
+    artifactRegistryRepository(name: $name) {
+      name
+      format
+      kind
+      package(id: $artifactId) {
+        ... on ArtifactRegistryMavenPackageDetails {
+          id
+          groupId
+          artifactId
+        }
+        ... on ArtifactRegistryNpmPackageDetails {
+          id
+          name
+          scope
+        }
+      }
+      version(id: $versionId, artifactId: $artifactId) @client {
+        id
+        version
+        createdAt
+        sizeBytes
+        statistics {
+          filesCount
+        }
+        createdBy {
+          id
+          name
+        }
+        project {
+          id
+          name
+          fullPath
+          webPath
+        }
+        gitCommitSha
+        npmMetadata {
+          description
+        }
+      }
+    }
+  }
+}

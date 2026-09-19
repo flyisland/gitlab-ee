@@ -1,0 +1,10 @@
+---
+name: security_policy_target_branch_desync_detection
+description: Blocks merge and self-heals when policy approval rules were never synced for the current target branch
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/601181
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/246788
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/623321
+milestone: '19.4'
+group: group::policy management
+type: gitlab_com_derisk
+default_enabled: false

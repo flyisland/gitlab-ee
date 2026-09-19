@@ -1,0 +1,6 @@
+# @feature_category: team_planning
+mutation workItemDecisionDelete($input: LocalWorkItemDecisionDeleteInput!) {
+  workItemDecisionDelete(input: $input) @client {
+    errors
+  }
+}

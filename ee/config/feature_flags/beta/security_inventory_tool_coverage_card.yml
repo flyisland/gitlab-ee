@@ -1,0 +1,9 @@
+---
+name: security_inventory_tool_coverage_card
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/527861
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251832
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/628306
+milestone: '19.4'
+type: beta
+group: group::security controls
+default_enabled: true

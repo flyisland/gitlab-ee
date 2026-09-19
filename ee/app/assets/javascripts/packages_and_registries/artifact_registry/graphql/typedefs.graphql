@@ -1,0 +1,85 @@
+# `extend`, because redeclaring a type the schema already owns fails the Apollo schema build.
+#
+# The schema owns the two package types, the union over them, their connection, the `packages`
+# field, the `image` and `package` lookups, the detail fields (`artifactsCount`, `createdAt`,
+# `createdBy`, `updatedBy`) on `ArtifactRegistryRepositoryDetails`, `ArtifactRegistryImage` with its
+# connection and the `images` field on the detail type, the `ArtifactRegistryVersion` type with its
+# `createdBy` and `project` attribution, its connection, and the `versions` field on each package
+# type, the `ArtifactRegistryManifest` type, its connection, and the `manifests` field on the image,
+# and `lastDownloadedAt` on the image and on each package type. The schema also owns the `version`
+# lookup on the detail type, the `ArtifactRegistryVersionDetails` type with its `sizeBytes`, the
+# plain version type's `sizeBytes`, and the `files` connection with its two file element types and
+# their union. What stays local: the `gitCommitSha` and npm metadata fields on the version types,
+# the npm metadata type, the statistics type, and the `manifest` lookup on the detail type with
+# the manifest detail, platform, and annotation types.
+# Fields the schema owns keep their `@client` directive and mock resolver in the query until
+# the read is wired; they just cannot be redeclared here.
+
+# The extension below targets `ArtifactRegistryRepositoryDetails`, not
+# `ArtifactRegistryRepository`: the single-repository read returns the detail type, and
+# graphql-ruby emits the two as unrelated types, so extending the list type would not reach the
+# field `manifest` is selected under.
+extend type ArtifactRegistryRepositoryDetails {
+  manifest(digest: String!, artifactId: ID!): ArtifactRegistryManifestDetails
+}
+
+# `extend`: the schema now owns `ArtifactRegistryVersion` with its `id`, `version`, `createdAt`,
+# `createdBy`, `project`, and `sizeBytes`. Of the still-local fields, `gitCommitSha` stays here
+# (with `npmMetadata`), until the schema carries them too.
+extend type ArtifactRegistryVersion {
+  gitCommitSha: String
+  npmMetadata: ArtifactRegistryNpmVersionMetadata
+}
+
+# `extend`: the schema now owns `ArtifactRegistryVersionDetails` (with the `version` lookup on the
+# repository detail type, its inherited `id`, `version`, `createdAt`, `createdBy`, `project`, and
+# `sizeBytes`, and the `files` connection). Only the fields the schema does not carry yet stay
+# local.
+extend type ArtifactRegistryVersionDetails {
+  gitCommitSha: String
+  npmMetadata: ArtifactRegistryNpmVersionMetadata
+  statistics: ArtifactRegistryVersionStatistics
+}
+
+type ArtifactRegistryNpmVersionMetadata {
+  description: String
+}
+
+# `annotations` is a list of pairs rather than a JSON scalar so a null map stays distinguishable
+# from an empty one, which the contract keeps apart.
+type ArtifactRegistryManifestDetails {
+  id: ID!
+  digest: String!
+  mediaType: String!
+  artifactType: String
+  subjectDigest: String
+  size: String!
+  createdAt: String
+  architecture: String
+  os: String
+  osVariant: String
+  tags: [String!]
+  tagsCount: Int
+  children: [ArtifactRegistryManifestPlatform!]
+  childrenCount: Int
+  parentDigests: [String!]
+  parentsCount: Int
+  referrersCount: Int
+  annotations: [ArtifactRegistryManifestAnnotation!]
+}
+
+type ArtifactRegistryManifestPlatform {
+  digest: String!
+  architecture: String
+  os: String
+  osVariant: String
+}
+
+type ArtifactRegistryManifestAnnotation {
+  key: String!
+  value: String!
+}
+
+type ArtifactRegistryVersionStatistics {
+  filesCount: Int
+}

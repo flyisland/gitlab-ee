@@ -1,0 +1,18 @@
+# @feature_category: team_planning
+mutation workItemDecisionUpdate($input: LocalWorkItemDecisionUpdateInput!) {
+  workItemDecisionUpdate(input: $input) @client {
+    decision {
+      id
+      title
+      description
+      resolutionRationale
+      noteUrl
+      resolvedBy {
+        id
+        name
+        avatarUrl
+      }
+    }
+    errors
+  }
+}

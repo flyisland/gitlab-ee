@@ -1,0 +1,58 @@
+/*
+Additional context contributed by the slash command a prompt invokes.
+
+A slash command is offered by a plugin, but what it adds to the turn is sent by the chat
+core, so that translation lives here rather than in the plugin, which keeps the core free
+of imports from individual plugins. A holding place: once extending the turn's context is
+a plugin capability, each command's contribution moves back to the plugin offering it.
+
+Flow commands are the only kind that contributes today.
+*/
+
+/**
+ * Category of the additional context item that tells the Duo Workflow Service to run a
+ * flow instead of asking the model what to do.
+ *
+ * It rides additional context because a dedicated field on the start request would not
+ * survive Workhorse, which drops proto fields it does not know. Internal envelopes must
+ * also be listed in `INTERNAL_CONTEXT_CATEGORIES` on the Rails side, or reading the
+ * checkpoint back fails on the non-null `AiAdditionalContextCategory` enum.
+ */
+export const SLASH_COMMAND_CONTEXT_CATEGORY = 'duo_chat_command';
+
+/**
+ * What a flow command adds to the turn it starts.
+ *
+ * The prompt builder has already matched the command and handed back the whole object,
+ * `consumerId` and all, so this only has to say what that means for the request. The
+ * flow is addressed by that id, which is what keeps the command deterministic: the model
+ * is never asked which flow was meant.
+ *
+ * Identified by `consumerId` rather than by the `/flow:` prefix, so it survives flows
+ * being given author-supplied command names, which is the intended fix for two flows
+ * slugifying alike.
+ *
+ * @param {import('../services/user_prompt/user_prompt').UserPrompt} userPrompt
+ * @returns {Object[]} One context item, or none.
+ */
+export const slashCommandContextFor = ({ text = '', slashCommands = [] } = {}) => {
+  const command = slashCommands.find(({ consumerId }) => consumerId);
+  if (!command) return [];
+
+  const trimmed = text.trim();
+  if (!trimmed.toLowerCase().startsWith(command.value.toLowerCase())) return [];
+
+  const goal = trimmed.slice(command.value.length).trim();
+
+  return [
+    {
+      category: SLASH_COMMAND_CONTEXT_CATEGORY,
+      content: JSON.stringify({
+        command: 'flow',
+        ai_catalog_item_consumer_id: command.consumerId,
+        goal: goal || null,
+      }),
+      metadata: '{}',
+    },
+  ];
+};

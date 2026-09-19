@@ -1,0 +1,10 @@
+---
+name: fix_minute_contention
+description: Distribute compute minute usage writes across multiple sharded rows per namespace per month to reduce write lock contention on ci_namespace_monthly_usages
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/490968
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248203
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/589227
+milestone: '19.3'
+group: group::pipeline execution
+type: gitlab_com_derisk
+default_enabled: false
