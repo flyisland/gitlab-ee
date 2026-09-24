@@ -1,0 +1,8 @@
+---
+name: jh_block_free_ha
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3311
+rollout_issue_url:
+milestone: '18.5'
+type: development
+group:
+default_enabled: true

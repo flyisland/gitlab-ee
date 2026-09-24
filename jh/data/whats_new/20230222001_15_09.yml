@@ -1,0 +1,46 @@
+- name: 具有访客角色的用户可以查看私有仓库
+  description: |  # Do not modify this line, instead modify the lines below.
+    具有访客角色和旗舰版许可证的用户现在可以在管理员授予权限的情况下查看私有仓库的内容。管理员必须通过 API 创建一个新角色，并将该角色分配给管理员希望拥有查看仓库权限的用户。在这之前，具有访客角色的用户无法查看私有项目中的代码。
+  stage: manage
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/permissions.html#custom-roles
+  #  image_url: https://img.youtube.com/vi/46cp_-Rtxps/hqdefault.jpg
+  published_at: 2023-02-22  # YYYY-MM-DD
+  release: 15.9
+- name: 管理许可证审批策略
+  description: |  # Do not modify this line, instead modify the lines below.
+    极狐GitLab 现在支持灵活的许可证审批策略。许可证审批策略通过多种方式改进许可证检查方面的用户体验：
+
+    - 用户可以选择允许编辑许可证审批策略的人员。
+    - 可以创建多个策略规则并混合使用。
+    - 可以对许可证审批策略的任何更改执行两步审批流程。
+    - 一组许可证策略可以应用于多个开发项目，也可以应用于群组或子组，以便轻松维护单个的集中式规则集。
+    - 策略可用于要求审批任何未被明确允许的许可证。
+
+    许可证审批策略可以与现有的许可证检查功能一起使用，因为这两个策略是可以叠加的且不会冲突。首先，验证您已经为您的实例启用了 `license_scanning_policies` 功能标志，然后导航至 **安全与合规 > 策略** 页面，创建一个新的扫描结果类型策略，并为您的策略规则选择 **许可证扫描**。
+  stage: manage
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/compliance/license_approval_policies.html
+  #  image_url: https://img.youtube.com/vi/34qBQ9t8qO8/hqdefault.jpg
+  published_at: 2023-02-22  # YYYY-MM-DD
+  release: 15.9
+- name: 新许可证合规扫描器
+  description: |  # Do not modify this line, instead modify the lines below.
+    极狐GitLab 现在支持一种检测许可证的新方法，该方法能够解析和识别 500 多种不同类型的许可证，并可以从双重许可或具有多个不同许可证的包中提取许可证信息。在极狐GitLab 的开发测试中，这会显著提高结果的准确性和完整性。由于不再需要许可证合规性作业，因此消耗的 CI 流水线分钟数会更少。此外，新方法支持与极狐GitLab 依赖项扫描拥有相同的语言和版本。
+
+    要使用这个新的扫描器，请在您的 CI 配置中删除包含的 `Jobs/License-Scanning.yml` 模板，用 `Jobs/Dependency-Scanning.yml` 模板代替。在 16.0 版本之后，将不再支持使用 `Jobs/License-Scanning.yml` 模板进行扫描。
+
+    目前，开启 `license_scanning_sbom_scanner` 和 `package_metadata_synchronization` 功能标志的极狐GitLab SaaS 用户可以使用此功能。
+  stage: secure
+  self-managed: false
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/compliance/license_scanning_of_cyclonedx_files/
+  #  image_url: https://about.gitlab.com/images/15_9/new_license_scanner.png
+  published_at: 2023-02-22  # YYYY-MM-DD
+  release: 15.9
+

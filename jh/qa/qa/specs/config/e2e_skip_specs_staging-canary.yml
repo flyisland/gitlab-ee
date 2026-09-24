@@ -1,0 +1,13 @@
+##
+# Notice:
+# 1. Always fix the test on upstream first, and then consider skipping tests
+# 2. We should include your MR or Issue url in comment, try to tell others where and why
+# 3. The file is grouped by `file_path`, check if a new `file_path` group already exists before adding it
+# 4. Please add new `file_path` group at the bottom
+# *. See details in: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/431
+#
+
+- file_path: 'qa/specs/features/browser_ui/3_create/repository/push_to_canary_gitaly_spec.rb'
+  description:
+    - 'Create Git push to canary Gitaly node over HTTP pushes to a project using a canary specific Gitaly repository storage'
+  skip_reason: 'The test depends on a hard-coded GitLab staging Gitaly storage unavailable in JH'

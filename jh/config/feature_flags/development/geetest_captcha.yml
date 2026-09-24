@@ -1,0 +1,8 @@
+---
+name: geetest_captcha
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/1277
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/2441
+milestone: '15.9'
+type: development
+group: group::access
+default_enabled: false

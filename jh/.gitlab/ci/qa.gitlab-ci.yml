@@ -1,0 +1,16 @@
+build-qa-image:
+  extends:
+    - .base-image-build-buildx
+    - .jh:build-images:rules:build-qa-image
+  stage: build-images
+  needs: []
+  script:
+    - run_timed_command "scripts/build_qa_image"
+
+e2e:test-on-cng:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+e2e:perf-on-cng:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]

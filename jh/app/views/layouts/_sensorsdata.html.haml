@@ -1,0 +1,45 @@
+-# haml-lint:disable InlineJavaScript
+%script{ :src => "https://static.sensorsdata.cn/sdk/1.26.2/sensorsdata.min.js", "nonce" => content_security_policy_nonce }
+= javascript_tag do
+  :plain
+    function initSensorsData() {
+      var isProdEnv = window.location.host === 'jihulab.com';
+      var sensors = window['sensorsDataAnalytic201505'];
+      var productionSensorsParam = isProdEnv ? '&project=production' : '';
+      sensors.use('PageLeave');
+      sensors.use('PageLoad');
+      sensors.init({
+        server_url: `https://jihuxinxi.datasink.sensorsdata.cn/sa?token=f72fe9657b021a44${productionSensorsParam}`,
+        heatmap: {
+          clickmap: 'default',
+          scroll_notice_map: 'default',
+          collect_tags: {
+            div: {
+              max_level: 3
+            }
+          },
+          get_vtrack_config: true
+        },
+        use_client_time: true,
+        send_type: 'beacon',
+        show_log: !isProdEnv
+      });
+
+      var siteUrl = new URL(location.href);
+
+      sensors.registerPage({
+        lead_source: 'SaaS',
+        platform_type: window.location.host,
+        channel: siteUrl.searchParams.get('channel') || '',
+        utm_keyword: siteUrl.searchParams.get('utm_keyword') || '',
+        utm_source: siteUrl.searchParams.get('utm_source') || '',
+        utm_medium: siteUrl.searchParams.get('utm_medium') || '',
+        utm_term: siteUrl.searchParams.get('utm_term') || '',
+        utm_content: siteUrl.searchParams.get('utm_content') || '',
+        utm_campaign: siteUrl.searchParams.get('utm_campaign') || '',
+      });
+
+      sensors.quick('autoTrack');
+    }
+    document.addEventListener('DOMContentLoaded', initSensorsData);
+    document.addEventListener('turbolinks:load', initSensorsData);

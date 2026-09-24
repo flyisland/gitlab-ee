@@ -1,0 +1,74 @@
+- name: 价值流仪表盘中的新速度指标
+  description: |  # Do not modify this line, instead modify the lines below.
+    价值流仪表盘的功能通过发布新指标而得到增强：**合并请求（MR）吞吐量** 和 **已关闭的议题总数**（速度）。在极狐GitLab 中，**MR 吞吐量** 是每月合并的合并请求的数量，**已关闭的议题总数** 是在某个时间点关闭的流程项的数量。
+
+    通过这些指标，您可以识别出低生产力或高生产力的月份以及[合并请求和代码审查流程](https://docs.gitlab.cn/jh/user/analytics/merge_request_analytics.html)的效率。您可以衡量[价值流交付](https://docs.gitlab.cn/jh/user/group/value_stream_analytics/)的速度是否正在增加。
+
+    随着时间的推移，这些指标会积累 MR 和议题的历史数据。团队可以使用这些数据来确定交付率是否有所增加或需要改进，并为他们可以交付的工作量提供更准确的预估。
+  stage: Plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/analytics/value_streams_dashboard.html
+  #  image_url: https://about.gitlab.com/images/16_3/16.3_vsd.mr_iss.png
+  published_at: 2023-08-22
+  release: 16.3
+
+  #  - name: More powerful GitLab SaaS runners on Linux
+  #  description: |  # Do not modify this line, instead modify the lines below.
+  #  Having recently upgraded all of our Linux SaaS runners, we are now introducing `xlarge` and `2xlarge` [SaaS runners on Linux](https://docs.gitlab.com/ee/ci/runners/saas/linux_saas_runner.html). Equipped with 16 and 32 vCPUs respectively and fully integrated with GitLab CI/CD, these runners will allow you to build and test your application faster than ever before.
+
+  #  We are determined to provide the industry's fastest CI/CD build speed and look forward to seeing teams achieve even shorter feedback cycles and ultimately deliver software faster.
+  #  stage: Verify
+  #  self-managed: false
+  #  gitlab-com: true
+  #  available_in: [Premium, Ultimate]
+  #  documentation_link: https://docs.gitlab.com/ee/ci/runners/saas/linux_saas_runner.html
+  #  image_url: https://about.gitlab.com/images/16_3/larger-runners.png
+  #  published_at: 2023-08-22
+  #  release: 16.3
+
+- name: 扫描结果策略的附加过滤
+  description: |  # Do not modify this line, instead modify the lines below.
+    确定安全或合规性扫描的哪些结果可操作是安全和合规团队面临的重大挑战。扫描结果策略的精细过滤器将帮助您消除干扰，识别最需要您关注的漏洞或违规行为。这些新的过滤器和过滤器更新将简化您的工作流程：
+
+    - 状态：状态规则更改引入了对“新”漏洞与“之前存在”漏洞的更直观的展示。新的状态字段 `new_needs_triage` 可以仅过滤需要分类的新漏洞。
+    - 期限：根据检测日期，当漏洞超出 SLA（天、月或年）范围时，创建策略以强制执行批准。
+    - 可用修复：缩小策略的重点，以解决具有可用修复的依赖项。
+    - 误报：过滤掉漏洞提取工具检测到的误报（SAST 结果）以及通过 Rezilion 检测到的误报（容器扫描和依赖项扫描结果）。
+  stage: Govern
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/application_security/policies/scan-result-policies.html
+  #  image_url: https://about.gitlab.com/images/16_3/security-policy-filters-compressed.png
+  published_at: 2023-08-22
+  release: 16.3
+
+  #  - name: 使用 SSH 连接到工作区
+  #  description: |  # Do not modify this line, instead modify the lines below.
+  #  通过工作区，您可以创建可重复的、短暂的、基于云的运行时环境。由于该功能是在 16.0 中引入的，因此使用工作区的唯一方法是直接在环境中运行基于浏览器的 Web IDE。然而，Web IDE 可能不一定适合您。
+
+  #  在极狐GitLab 16.3 中，您可以使用 SSH 从桌面安全地连接到工作区，并使用本地工具和扩展。第一个迭代支持直接在 VS Code 中或使用 Vim 或 Emacs 等编辑器从命令行进行 SSH 连接。在未来的迭代中有望支持其他编辑器，例如 JetBrains IDE 和 JupyterLab。
+  #  stage: Create
+  #  self-managed: true
+  #  gitlab-com: true
+  #  available_in: [专业版, 旗舰版]
+  #  documentation_link: https://docs.gitlab.cn/jh/user/workspace/configuration.html#connect-to-a-workspace-with-ssh
+  #  image_url: https://about.gitlab.com/images/16_3/create-workspace-ssh.png
+  #  published_at: 2023-08-22
+  #  release: 16.3
+
+  #  - name: Flux 同步状态可视化
+  #  description: |  # Do not modify this line, instead modify the lines below.
+  #  在以前的版本中，您可能使用 `kubectl` 或其他第三方工具来检查 Flux 部署的状态。从 16.3 开始，您可以使用环境 UI 检查您的部署。
+
+  #  部署依赖 Flux `Kustomization` 和 `HelmRelease` 资源来收集给定环境的状态，需要为环境配置命名空间。默认情况下，极狐GitLab 会在 `Kustomization` 和 `HelmRelease` 资源中搜索项目 slug 的名称。您可以自定义极狐GitLab 在环境设置中查找的名称。
+  #  stage: Deploy
+  #  self-managed: true
+  #  gitlab-com: true
+  #  available_in: [免费版, 专业版, 旗舰版]
+  #  documentation_link: https://docs.gitlab.cn/jh/ci/environments/kubernetes_dashboard.html#flux-sync-status
+  #  image_url: https://about.gitlab.com/images/16_3/flux-badges.png
+  #  published_at: 2023-08-22
+  #  release: 16.3

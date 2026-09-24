@@ -1,0 +1,69 @@
+- name: 全新的富文本编辑器体验
+  description: |  # Do not modify this line, instead modify the lines below.
+    极狐GitLab 16.2 推出全新的富文本编辑体验！这项新功能可供所有人使用，作为现有 Markdown 编辑体验的替代方案。
+
+    对于许多人来说，使用纯文本编辑器进行评论或描述可能会影响人员协作。即使对于那些对语法相对有经验的人来说，记住图像引用的语法或使用长表也可能很乏味。富文本编辑器旨在通过提供"所见即所得"的编辑体验和可扩展的基础来打破这些障碍，在此基础上我们可以为图表、内容嵌入、媒体管理等构建自定义编辑界面。
+
+    富文本编辑器现在可用于所有议题、史诗和合并请求。我们计划很快在极狐GitLab 的更多地方提供此新体验。
+
+    我们很高兴和自豪推出新的编辑功能，并迫不及待地想听取您的想法和建议。请您多多使用新的富文本编辑器吧。
+  stage: plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/rich_text_editor.html
+  #  image_url: https://about.gitlab.com/images/16_2/knowledge-rich-text-editor.gif
+  published_at: 2023-07-22
+  release: 16.2
+
+- name: 命令面板
+  description: |  # Do not modify this line, instead modify the lines below.
+
+    如果您是高级用户（Power User），您可能不满足于使用键盘进行导航和操作。现在，新的命令面板可帮助您使用键盘完成更多工作。
+
+    要启用命令面板，请打开左侧边栏并选择 **搜索极狐GitLab** (🔍) 或使用 <kbd>/</kbd> 键。
+
+    您可以输入以下特殊字符：
+
+    * <kbd>></kbd> - 创建新对象或查找菜单项
+    * <kbd>@</kbd> - 搜索用户
+    * <kbd>:</kbd> - 搜索项目
+    * <kbd>/</kbd> - 在默认仓库分支中搜索项目文件
+  stage: manage
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/search/command_palette.html
+  #  image_url: https://img.youtube.com/vi/CXeHrMrJY6g/hqdefault.jpg
+  published_at: 2023-07-22
+  release: 16.2
+
+- name: 价值流仪表盘的新自定义层
+  description: |  # Do not modify this line, instead modify the lines below.
+    我们向价值流仪表盘添加了一个新的配置文件，以便更轻松地自定义仪表盘的数据和外观。在此文件中，您可以定义各种设置和参数，例如标题、描述以及面板和过滤器的数量。该文件是架构驱动的，并通过 Git 等版本控制系统进行管理。这样可以跟踪和维护配置更改的历史记录，必要时恢复到以前的版本，并与团队成员有效协作。
+
+    新配置还可以按标签过滤指标。您可以根据您感兴趣的领域调整指标比较面板，过滤掉不相关的信息，并专注于与您的分析或决策过程最相关的数据。
+  stage: plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [专业版]
+  documentation_link: https://docs.gitlab.cn/jh/user/analytics/value_streams_dashboard.html
+  # image_url: https://img.youtube.com/vi/4qDAHCxCfik/hqdefault.jpg
+  published_at: 2023-07-22
+  release: 16.2
+
+- name: 合并请求中的交互式差异建议
+  description: |  # Do not modify this line, instead modify the lines below.
+    当您在合并请求中提出更改建议时，您现在可以更快地编辑您的建议。在评论中，切换到富文本编辑器并使用 UI 上下移动文本行。通过此更改，您可以完全按照评论发布时显示的方式查看您的建议。
+
+    富文本编辑器是极狐GitLab 的新编辑方式。您可以在合并请求中使用，也可以在议题和史诗中与纯文本编辑器一起使用。
+
+    我们计划很快在极狐GitLab 的更多领域提供富文本编辑器。
+  stage: plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/project/merge_requests/reviews/suggestions.html#using-the-rich-text-editor
+  # image_url: https://about.gitlab.com/images/16_2/knowledge-suggest-changes.png
+  published_at: 2023-07-22
+  release: 16.2

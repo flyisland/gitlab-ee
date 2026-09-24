@@ -1,0 +1,7 @@
+---
+name: admin_ai_access_setting
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2036
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/3661
+milestone: '16.5'
+type: development
+default_enabled: false

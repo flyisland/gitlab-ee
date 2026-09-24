@@ -1,0 +1,8 @@
+---
+name: wecom_integration
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/3130
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/3214
+milestone: "16.2"
+type: development
+group: group::integrations
+default_enabled: false

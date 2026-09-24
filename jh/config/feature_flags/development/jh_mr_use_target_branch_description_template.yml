@@ -1,0 +1,8 @@
+---
+name: jh_mr_use_target_branch_description_template
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2919
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/4669
+milestone: '17.9'
+type: development
+group: group::database
+default_enabled: false

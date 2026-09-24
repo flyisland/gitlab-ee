@@ -1,0 +1,8 @@
+---
+name: jh_new_performance_measurement
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2428
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/4219
+milestone: '17.0'
+type: development
+group: group::project management
+default_enabled: false

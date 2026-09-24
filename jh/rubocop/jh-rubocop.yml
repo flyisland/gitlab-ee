@@ -1,0 +1,267 @@
+# default rubocop rules, https://github.com/rubocop/rubocop/blob/master/config/default.yml
+# inherit rubocop config from gitlab-styles, https://gitlab.com/gitlab-org/ruby/gems/gitlab-styles/-/blob/master/rubocop-default.yml
+# upstream define customize rubocop rules in folder gitlab/rubocop/
+# upstream skip rubocop in .rubocop_todo.yml, .rubocop_todo/*.yml
+
+Rails/Pluck:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - 'jh/vendor/gems/omniauth-cas3/**/*'
+    - 'jh/vendor/bundle/**/*'
+    - 'qa/vendor/bundle/**/*'
+
+Gemfile/MissingFeatureCategory:
+  Enabled: false
+  Exclude:
+    - jh/**/*.rb
+
+RSpec/FeatureCategory:
+  Exclude:
+    - jh/**/*.rb
+
+Cop/ActiveRecordAssociationReload:
+  Enabled: true
+  Exclude:
+    - 'jh/spec/**/*'
+    - 'jh/ee/spec/**/*'
+
+RSpec/ExampleWithoutDescription:
+  Exclude:
+    - jh/spec/**/*.rb
+
+RSpec/NoExpectationExample:
+  Exclude:
+    - 'jh/spec/features/ci_shared_runner_warnings_spec.rb'
+    - 'jh/spec/lib/gitee/connection_spec.rb'
+    - 'jh/spec/lib/gitlab/dingtalk/client_spec.rb'
+
+RSpec/Dialect:
+  Exclude:
+    - 'jh/spec/models/gitlab_subscriptions/features_spec.rb'
+
+RSpec/RepeatedSubjectCall:
+  Exclude:
+    - 'jh/spec/services/password_expiration/send_notification_email_service_spec.rb'
+
+RSpec/PendingWithoutReason:
+  Exclude:
+    - 'jh/spec/tasks/gitlab/db_rake_spec.rb'
+
+RSpec/RemoveConst:
+  Exclude:
+    - 'jh/spec/support/helpers/jh/version_dot_helpers.rb'
+
+RSpec/RailsControllerTesting:
+  Exclude:
+    - 'jh/spec/controllers/**/*'
+    - 'jh/spec/requests/**/*'
+
+RSpec/SubjectDeclaration:
+  Exclude:
+    - 'jh/spec/lib/jh/gitlab/expiring_subscription_message_spec.rb'
+    - 'jh/spec/services/commits/fetch_effective_lines_count_service_spec.rb'
+    - 'jh/spec/services/password_expiration/send_notification_email_service_spec.rb'
+
+Lint/RedundantCopDisableDirective:
+  Enabled: false
+
+Gitlab/DocumentationLinks/HardcodedUrl:
+  Exclude:
+    - 'jh/danger/documentation/Dangerfile'
+    - 'jh/tooling/danger/product_intelligence.rb'
+    - 'jh/tooling/danger/product_intelligence.rb'
+
+Gitlab/BoundedContexts:
+  Exclude:
+    - app/**/*.rb
+    - lib/**/*.rb
+    - ee/**/*.rb
+    - jh/**/*.rb
+
+Gitlab/FeatureFlagWithoutActor:
+  Exclude:
+    - jh/**/*
+
+RSpec/NamedSubject:
+  Exclude:
+    - jh/**/*.rb
+
+Style/InlineDisableAnnotation:
+  Exclude:
+    - jh/**/*.rb
+
+Gitlab/AvoidGitlabInstanceChecks:
+  Exclude:
+    - jh/**/*.rb
+
+CodeReuse/ActiveRecord:
+  Exclude:
+    - jh/app/controllers/**/*.rb
+    - jh/app/helpers/**/*.rb
+    - jh/spec/**/*.rb
+    - jh/app/models/**/*.rb
+    - jh/lib/tasks/**/*.rake
+
+Gitlab/NamespacedClass:
+  Exclude:
+    - jh/app/controllers/*.rb
+    - jh/app/validators/*.rb
+
+Gitlab/ModuleWithInstanceVariables:
+  Exclude:
+    - jh/app/controllers/**/*.rb
+    - jh/app/mailers/**/*.rb
+
+# temp disable
+Style/AndOr:
+  Exclude:
+    - jh/app/controllers/jh/users/terms_controller.rb
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - jh/app/controllers/concerns/jh/spammable_actions/captcha_check/html_format_actions_support.rb
+
+Style/FormatString:
+  Exclude:
+    - jh/lib/jh/gitlab/expiring_subscription_message.rb
+    - jh/app/components/jh/billing/plan_component.rb
+
+# Add compatibility of jh/qa folder
+Rails/FilePath:
+  Exclude:
+    - 'jh/qa/**/*'
+
+Layout/LineLength:
+  AllowedPatterns: ['^RSpec\.describe\s.*\sdo']
+  Exclude:
+    - jh/lib/jh/gitlab/project_template.rb
+    - jh/lib/jh/gitlab/expiring_subscription_message.rb
+    - jh/spec/lib/gitlab/project_template_spec.rb
+    - jh/spec/lib/jh/gitlab/expiring_subscription_message_spec.rb
+    - jh/spec/requests/api/graphql/mutations/issues/update_spec.rb
+
+Scalability/IdempotentWorker:
+  Exclude:
+    - jh/app/workers/**/*.rb
+
+RSpec/AnyInstanceOf:
+  Exclude:
+    - jh/spec/**/*.rb
+
+GitlabSecurity/PublicSend:
+  Exclude:
+    - jh/spec/**/*.rb
+    - jh/app/validators/content_validation_validator.rb
+
+Cop/GemFetcher:
+  Exclude:
+    - jh/Gemfile
+
+RSpec/ContextWording:
+  Exclude:
+    - jh/spec/lib/jh/gitlab/expiring_subscription_message_spec.rb
+    - jh/spec/requests/api/graphql/mutations/issues/update_spec.rb
+
+RSpec/VerifiedDoubles:
+  Exclude:
+    - jh/spec/lib/jh/gitlab/expiring_subscription_message_spec.rb
+
+Naming/FileName:
+  Exclude:
+    - jh/qa/qa/specs/**/*
+    - jh/qa/spec/**/*
+    - jh/qa/tasks/**/*.rake
+    - jh/lib/tasks/**/*.rake
+
+RSpec/ExpectInHook:
+  Exclude:
+    - jh/spec/requests/api/captcha_spec.rb
+    - jh/spec/requests/captcha_spec.rb
+    - jh/spec/services/captcha/captcha_verification_service_spec.rb
+
+Layout/FirstArrayElementIndentation:
+  Exclude:
+    - jh/spec/models/jh/project_spec.rb
+    - jh/spec/helpers/jh/trial_status_widget_helper_spec.rb
+    - jh/config/initializers/postgres_partitioning.rb
+    - jh/lib/china.rb
+
+Layout/FirstHashElementIndentation:
+  Exclude:
+    - jh/app/models/integrations/dingtalk.rb
+    - jh/app/models/jh/integrations/zentao.rb
+    - jh/app/services/content_validation/commit_service.rb
+    - jh/lib/jh/gitlab/application_rate_limiter.rb
+    - jh/spec/controllers/jh/projects/notes_controller_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/leaderboard/commits_pushed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/leaderboard/issues_closed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/leaderboard/merge_requests_merged_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/report/commits_pushed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/report/issues_closed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/report/issues_created_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/report/merge_requests_approved_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/report/merge_requests_closed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/report/merge_requests_created_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/report/merge_requests_merged_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/report/notes_created_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/summary/commits_pushed_per_capita_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/summary/commits_pushed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/summary/issues_closed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group/summary/merge_requests_merged_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group_leaderboard_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group_report_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/group_summary_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/leaderboard/commits_pushed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/leaderboard/issues_closed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/leaderboard/merge_requests_merged_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/report/commits_pushed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/report/issues_closed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/report/issues_created_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/report/merge_requests_approved_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/report/merge_requests_closed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/report/merge_requests_created_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/report/merge_requests_merged_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/report/notes_created_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/summary/commits_pushed_per_capita_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/summary/commits_pushed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/summary/issues_closed_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project/summary/merge_requests_merged_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project_leaderboard_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project_report_spec.rb
+    - jh/spec/lib/gitlab/analytics/performance_analytics/project_summary_spec.rb
+    - jh/spec/lib/gitlab/feishu/formatter_spec.rb
+    - jh/spec/lib/gitlab/patch/po_to_json_spec.rb
+    - jh/spec/models/analytics/performance_analytics/group_level_spec.rb
+    - jh/spec/models/analytics/performance_analytics/project_level_spec.rb
+    - jh/spec/requests/api/integrations/dingtalk_spec.rb
+    - jh/spec/requests/captcha_spec.rb
+    - jh/spec/services/commits/fetch_effective_lines_count_service_spec.rb
+    - jh/spec/services/content_validation/container_service_spec.rb
+
+Gitlab/FeatureFlagKeyDynamic:
+  Exclude:
+    - jh/**/*.rb
+
+Gitlab/Rails/AttrEncrypted:
+  Exclude:
+    - jh/app/models/jh/application_setting.rb
+
+Gitlab/SaasFeatureAvailableOutsideEe:
+  Exclude:
+    - jh/**/*
+
+Lint/TopLevelReturnWithArgument:
+  Exclude:
+    - jh/**/*
+
+Gettext/StaticIdentifier:
+  Exclude:
+    - jh/**/*
+Gitlab/JsonSafeParse:
+  Exclude:
+    - jh/**/*
+Gitlab/EeFeatureFlagInFoss:
+  Exclude:
+    - jh/**/*

@@ -1,0 +1,8 @@
+---
+name: performance_analytics
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/395
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/840
+milestone: '14.10'
+type: development
+group: group::optimize
+default_enabled: false

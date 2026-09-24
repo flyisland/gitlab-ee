@@ -1,0 +1,6 @@
+.no-access > .group-row-contents {
+  a {
+    pointer-events: none;
+    color: $gl-text-color-disabled !important;
+  }
+}

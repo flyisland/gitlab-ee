@@ -1,0 +1,1548 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gitlab-jh\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About GitLab"
+msgstr "About JiHu GitLab"
+
+msgid "AdminSettings|To help improve GitLab and its user experience, GitLab periodically collects usage information. %{link_start}What information is shared with GitLab Inc.?%{link_end}%{br}%{br}Benefits of enabling Service Ping:%{br}• Get access to DevOps Score for your instance%{br}• Get insights and advice to maximize the value of your GitLab investment%{br}• Analyze your instance usage over time%{br}%{benefits_link_start}Learn more about the benefits of Service Ping%{link_end}"
+msgstr "To help improve JiHu GitLab and its user experience, JiHu GitLab periodically collects usage information. %{link_start}What information is shared with JiHu(GitLab)?%{link_end}%{br}%{br}Benefits of enabling Service Ping:%{br}• Get access to DevOps Score for your instance%{br}• Get insights and advice to maximize the value of your GitLab investment%{br}• Analyze your instance usage over time%{br}%{benefits_link_start}Learn more about the benefits of Service Ping%{link_end}"
+
+msgid "BillingPlans|%{group_name} is currently using the %{plan_name}"
+msgstr "%{group_name} is currently using the %{plan_name}"
+
+msgid "BillingPlans|Everything from Free, plus:"
+msgstr ""
+
+msgid "BillingPlans|Premium"
+msgstr "Premium"
+
+msgid "BillingPlans|Ultimate"
+msgstr "Ultimate"
+
+msgid "Contribute to GitLab"
+msgstr "Contribute to JiHu GitLab"
+
+msgid "Country or region"
+msgstr "Country or region"
+
+msgid "GitLab"
+msgstr "JiHu GitLab"
+
+msgid "GitLab Enterprise Edition"
+msgstr "JiHu GitLab"
+
+msgid "GitLab informs you if a new version is available. %{link_start}What information does GitLab Inc. collect?%{link_end}"
+msgstr "JiHu GitLab informs you if a new version is available. %{link_start}What information does JiHu(GitLab) collect?%{link_end}"
+
+msgid "HelloMessage|%{handshake_emoji} Contribute to GitLab: %{contribute_link}"
+msgstr "%{handshake_emoji} Contribute to JiHu GitLab: %{contribute_link}"
+
+msgid "HelloMessage|%{magnifier_emoji} Create a new GitLab issue: %{new_issue_link}"
+msgstr "%{magnifier_emoji} Create a new JiHu GitLab issue: %{new_issue_link}"
+
+msgid "HelloMessage|%{rocket_emoji} We like your curiosity! Help us improve GitLab by joining the team: %{jobs_page_link}"
+msgstr "%{rocket_emoji} We like your curiosity! Help us improve JiHu GitLab by joining the team: %{jobs_page_link}"
+
+msgid "HelloMessage|Does this page need fixes or improvements? Open an issue or contribute a merge request to help make GitLab more lovable. At GitLab, everyone can contribute!"
+msgstr "Does this page need fixes or improvements? Open an issue or contribute a merge request to help make JiHu GitLab more lovable. At JiHu GitLab, everyone can contribute!"
+
+msgid "HelloMessage|Welcome to GitLab!"
+msgstr "Welcome to JiHu GitLab!"
+
+msgid "If you are unable to sign in or recover your password, contact a GitLab administrator."
+msgstr "If you are unable to sign in or recover your password, contact a JiHu GitLab administrator."
+
+msgid "InProductMarketing|Want to host GitLab on your servers?"
+msgstr "Want to host JiHu GitLab on your servers?"
+
+msgid "JH|%d effective line"
+msgid_plural "JH|%d effective lines"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "JH|%d line"
+msgid_plural "JH|%d lines"
+msgstr[0] "JH|%d line"
+msgstr[1] "JH|%d lines"
+
+msgid "JH|2,399"
+msgstr "2,399"
+
+msgid "JH|499"
+msgstr "499"
+
+msgid "JH|9,988"
+msgstr "9,988"
+
+msgid "JH|A demo project showing how DongTai IAST integrates into DevOps for detecting vulnerabilities"
+msgstr "A demo project showing how DongTai IAST integrates into DevOps for detecting vulnerabilities"
+
+msgid "JH|Access denied"
+msgstr ""
+
+msgid "JH|Access token cannot be blank."
+msgstr ""
+
+msgid "JH|Access token is invalid or expired."
+msgstr ""
+
+msgid "JH|Account|Account deletion warning"
+msgstr ""
+
+msgid "JH|Account|Updated at %{updatedAt}"
+msgstr ""
+
+msgid "JH|Account|Your free usage at jihulab.com will end in 1 day. Please consider to %{subscribeLinkStart}upgrade to a paid plan%{subscribeLinkEnd} before that date to avoid account being blocked."
+msgid_plural "JH|Account|Your free usage at jihulab.com will end in %{days} days. Please consider to %{subscribeLinkStart}upgrade to a paid plan%{subscribeLinkEnd} before that date to avoid account being blocked."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "JH|Account|Your free usage at jihulab.com will end in 1 day. Please consider to %{subscribeLinkStart}upgrade to a paid plan%{subscribeLinkEnd} if you need to continue to use your account after that."
+msgid_plural "JH|Account|Your free usage at jihulab.com will end in %{days} days. Please consider to %{subscribeLinkStart}upgrade to a paid plan%{subscribeLinkEnd} if you need to continue to use your account after that."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "JH|AdminSettings|Disable download source code button"
+msgstr "Disable download source code button"
+
+msgid "JH|AdminSettings|Download source code button"
+msgstr "Download source code button"
+
+msgid "JH|An error occurred while validating email"
+msgstr ""
+
+msgid "JH|Authenticate with Gitee"
+msgstr ""
+
+msgid "JH|Average Commits Per User"
+msgstr "Average Commits Per User"
+
+msgid "JH|Back to home"
+msgstr ""
+
+msgid "JH|BillingPlans|%{plan_name} Plan"
+msgstr ""
+
+msgid "JH|BillingPlans|10,000 compute minutes per month"
+msgstr ""
+
+msgid "JH|BillingPlans|2,000 compute minutes per month"
+msgstr ""
+
+msgid "JH|BillingPlans|2000 CI/CD minutes per month"
+msgstr ""
+
+msgid "JH|BillingPlans|AI empowered intelligent programming and DevOps"
+msgstr ""
+
+msgid "JH|BillingPlans|Application Security Testing"
+msgstr ""
+
+msgid "JH|BillingPlans|Credits"
+msgstr ""
+
+msgid "JH|BillingPlans|Credits/user"
+msgstr ""
+
+msgid "JH|BillingPlans|Everything from Free, plus:"
+msgstr ""
+
+msgid "JH|BillingPlans|Everything from Premium, plus:"
+msgstr ""
+
+msgid "JH|BillingPlans|Explore plans"
+msgstr ""
+
+msgid "JH|BillingPlans|For individuals working on personal projects and open source contributions."
+msgstr ""
+
+msgid "JH|BillingPlans|For scaling organizations seeking enhanced productivity and collaboration."
+msgstr ""
+
+msgid "JH|BillingPlans|GitLab Credits"
+msgstr ""
+
+msgid "JH|BillingPlans|GitLab Credits - Monthly committed pool"
+msgstr ""
+
+msgid "JH|BillingPlans|GitLab Duo Agent Platform"
+msgstr ""
+
+msgid "JH|BillingPlans|GitLab Free"
+msgstr ""
+
+msgid "JH|BillingPlans|Increase credits"
+msgstr ""
+
+msgid "JH|BillingPlans|Learn more"
+msgstr ""
+
+msgid "JH|BillingPlans|Learn more about each plan by reading our %{faq_link}, or start a free 30-day trial of GitLab.com Ultimate."
+msgstr "Learn more about each plan by reading our %{faq_link}, or start a free 30-day trial of Ultimate."
+
+msgid "JH|BillingPlans|Manage seats"
+msgstr ""
+
+msgid "JH|BillingPlans|Per user/month"
+msgstr "Per user/year"
+
+msgid "JH|BillingPlans|Premium"
+msgstr ""
+
+msgid "JH|BillingPlans|Purchase credits"
+msgstr ""
+
+msgid "JH|BillingPlans|Purchase monthly credits for your group and unlock AI capabilities."
+msgstr ""
+
+msgid "JH|BillingPlans|Recommended"
+msgstr ""
+
+msgid "JH|BillingPlans|Seats in use"
+msgstr ""
+
+msgid "JH|BillingPlans|See all features"
+msgstr ""
+
+msgid "JH|BillingPlans|Software Supply Chain Security"
+msgstr ""
+
+msgid "JH|BillingPlans|Start free with advanced enterprise security and compliance, no credit card required."
+msgstr ""
+
+msgid "JH|BillingPlans|Talk to sales"
+msgstr ""
+
+msgid "JH|BillingPlans|Team"
+msgstr "Team"
+
+msgid "JH|BillingPlans|Team Project Management"
+msgstr ""
+
+msgid "JH|BillingPlans|These credits are included in your trial, and provide access to AI features. To maintain access after your trial, purchase monthly credits for your group, starting at $0.95, with volume discounts available."
+msgstr ""
+
+msgid "JH|BillingPlans|Try for free"
+msgstr ""
+
+msgid "JH|BillingPlans|Ultimate"
+msgstr ""
+
+msgid "JH|BillingPlans|Unlimited licensed users"
+msgstr ""
+
+msgid "JH|BillingPlans|Up to 10 users per top-level group"
+msgstr ""
+
+msgid "JH|BillingPlans|Upgrade subscription"
+msgstr ""
+
+msgid "JH|BillingPlans|Upgrade to Premium"
+msgstr ""
+
+msgid "JH|BillingPlans|Upgrade to Team"
+msgstr ""
+
+msgid "JH|BillingPlans|Upgrade to Ultimate"
+msgstr ""
+
+msgid "JH|BillingPlans|Vulnerability Management"
+msgstr ""
+
+msgid "JH|BillingPlans|Your GitLab.com %{plan} trial will %{strong_open}expire after %{expiration_date}%{strong_close}. You can retain access to the %{plan} features by upgrading below."
+msgstr "Your %{plan} trial will %{strong_open}expire after %{expiration_date}%{strong_close}. You can retain access to the %{plan} features by upgrading below."
+
+msgid "JH|BillingPlans|Your GitLab.com trial expired on %{expiration_date}. You can restore access to the features at any time by upgrading below."
+msgstr "Your trial expired on %{expiration_date}. You can restore access to the features at any time by upgrading below."
+
+msgid "JH|BillingPlans|Your group is on %{planName}"
+msgstr ""
+
+msgid "JH|BillingPlans|Your monthly credit commitment is shared across all members of the group. Credits reset at the start of each billing cycle."
+msgstr ""
+
+msgid "JH|BillingPlans|a trial of GitLab Ultimate"
+msgstr ""
+
+msgid "JH|BillingPlans|frequently asked questions"
+msgstr ""
+
+msgid "JH|BillingPlans|per user/year"
+msgstr ""
+
+msgid "JH|BillingPlans|yearly"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|%{project_link} with job %{deployment_link} by %{user_link}"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|%{username} %{action} %{wiki_page_link} (%{diff_link}) in %{project_link}: *%{title}*"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|%{username} %{action} in %{project_link}: *%{title}*"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|%{username} %{state_or_action_text} merge request %{merge_request_link} in %{project_link}"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|%{username} pushed new %{ref_type} %{ref_link} to %{project_link}"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|%{username} pushed to %{ref_type} %{ref_link} of %{project_link} (%{compare_link})"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|%{username} removed %{ref_type} %{ref} from %{project_link}"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|Alert firing in %{project_link}"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|At most %{number} commits of the merge request are listed for your reference."
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|Content length exceeds maximum allowed to display."
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|Deploy to %{environment} %{status}"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|JiHu GitLab Notification"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|Starting deploy to %{environment}"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|Vulnerability detected in %{project_link}"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|[%{project_link}] Issue %{issue_link} **%{state}** by %{username}"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|added their approval to"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|removed their approval from"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|scheduled"
+msgstr ""
+
+msgid "JH|CHAT_MESSAGE|unapproved"
+msgstr ""
+
+msgid "JH|Captcha|Please click here to finish the verification"
+msgstr "Please click here to finish the verification"
+
+msgid "JH|Captcha|There was an error with the captcha. Please try again."
+msgstr "There was an error with the captcha. Please try again."
+
+msgid "JH|Captcha|Verification finished"
+msgstr "Verification finished"
+
+msgid "JH|Captcha|Verifying"
+msgstr "Verifying"
+
+msgid "JH|Chatops|%{platform_name} Integration for Saas is coming soon."
+msgstr ""
+
+msgid "JH|Chatops|%{platform_name} bot is deactivated. Please upgrade your JiHu GitLab to Premium Plan"
+msgstr ""
+
+msgid "JH|Chatops|Click to process"
+msgstr ""
+
+msgid "JH|Chatops|Closed"
+msgstr ""
+
+msgid "JH|Chatops|Failed to apply quick commands."
+msgstr ""
+
+msgid "JH|Chatops|Failed to create the comment:"
+msgstr ""
+
+msgid "JH|Chatops|I cannot find any issue related to %{query}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot find the project %{path}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot found target project %{path}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot move closed issue %{iid}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot not find the issue %{iid}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot understand your command. Type \"@(bot name) help\" to view all commands."
+msgstr ""
+
+msgid "JH|Chatops|I cannot understand your command. Type \"help\" to view all commands."
+msgstr ""
+
+msgid "JH|Chatops|Issue %{iid} is already closed."
+msgstr ""
+
+msgid "JH|Chatops|Message verification failed. Please check your settings of %{platform_name} Integration in JiHu GitLab."
+msgstr ""
+
+msgid "JH|Chatops|Open"
+msgstr ""
+
+msgid "JH|Chatops|Please connect your JiHu GitLab account"
+msgstr ""
+
+msgid "JH|Chatops|Please contact your administrator to enable %{integration} in Admin - Settings - General"
+msgstr ""
+
+msgid "JH|Chatops|Please contact your administrator to enable %{integration} in Admin - Settings - Integration"
+msgstr ""
+
+msgid "JH|Chatops|Please enable the \"%{feature_name}\" feature flag in JiHu GitLab."
+msgstr ""
+
+msgid "JH|Chatops|Sorry, this chat service is currently not supported by JiHu GitLab ChatOps."
+msgstr ""
+
+msgid "JH|Chatops|The command could not be scheduled. Please confirm the \".gitlab-ci.yml\" file defines a job with the name %{command}."
+msgstr ""
+
+msgid "JH|Chatops|You are not allowed to perform bot commands."
+msgstr ""
+
+msgid "JH|Chatops|You need to connect your JiHu GitLab account before performing bot commands."
+msgstr ""
+
+msgid "JH|Chatops|Your JiHu GitLab user account is locked. Please unlock it before performing bot commands."
+msgstr ""
+
+msgid "JH|Checking email availability..."
+msgstr ""
+
+msgid "JH|Checking username availability..."
+msgstr ""
+
+msgid "JH|Checkout|Could not get the data properly"
+msgstr ""
+
+msgid "JH|Checkout|Please try and refresh the page. If the problem persists please contact support."
+msgstr ""
+
+msgid "JH|CiComponents|Add CI components"
+msgstr ""
+
+msgid "JH|CiComponents|Add component"
+msgstr ""
+
+msgid "JH|CiComponents|Add components"
+msgstr ""
+
+msgid "JH|CiComponents|Add field"
+msgstr ""
+
+msgid "JH|CiComponents|CI component"
+msgstr ""
+
+msgid "JH|CiComponents|Component reference"
+msgstr ""
+
+msgid "JH|CiComponents|For correctly include component references, you may refer to the CI component documentation. %{linkStart}Learn more%{linkEnd}"
+msgstr ""
+
+msgid "JH|CiComponents|Inputs"
+msgstr ""
+
+msgid "JH|ContentValidation|According to the relevant laws and regulations, this content is not displayed."
+msgstr "According to the relevant laws and regulations, this content is not displayed."
+
+msgid "JH|ContentValidation|According to the relevant laws and regulations, this content is not displayed. If you believe this was a miscalculation, please email usersupport@gitlab.cn to appeal. We will process your appeal within 24 hours (working days) and send the result to your registered email address, please pay attention to it. Thank you for your understanding and support."
+msgstr ""
+
+msgid "JH|ContentValidation|According to the relevant laws and regulations, this content is not displayed. To appeal, please click"
+msgstr "According to the relevant laws and regulations, this content is not displayed. To appeal, please click "
+
+msgid "JH|ContentValidation|An error occurred while submitting appeal"
+msgstr "An error occurred while submitting appeal"
+
+msgid "JH|ContentValidation|Appeal"
+msgstr "Appeal"
+
+msgid "JH|ContentValidation|Appeal submitted"
+msgstr "Appeal submitted"
+
+msgid "JH|ContentValidation|Appealing Target"
+msgstr "Appealing Target"
+
+msgid "JH|ContentValidation|Configure Content Validation Service"
+msgstr ""
+
+msgid "JH|ContentValidation|Content Validation"
+msgstr ""
+
+msgid "JH|ContentValidation|Content Validation API key"
+msgstr ""
+
+msgid "JH|ContentValidation|Content Validation Service"
+msgstr ""
+
+msgid "JH|ContentValidation|Enable Content Validation via external API endpoint"
+msgstr ""
+
+msgid "JH|ContentValidation|Illegal content"
+msgstr ""
+
+msgid "JH|ContentValidation|Illegal contents are detected in your project %{project_name}"
+msgstr ""
+
+msgid "JH|ContentValidation|Illegal contents are detected in your project %{project_path} after its visibility is changed from “Private” to “Public”. The project visibility is restored to “Private”. "
+msgstr ""
+
+msgid "JH|ContentValidation|Repository"
+msgstr "Repository"
+
+msgid "JH|ContentValidation|Submit Appeal"
+msgstr "Submit Appeal"
+
+msgid "JH|ContentValidation|The API key used by JH GitLab for accessing the Content Validation service endpoint"
+msgstr ""
+
+msgid "JH|ContentValidation|To appeal, please click %{link_start}here%{link_end}."
+msgstr "To appeal, please click %{link_start}here%{link_end}. "
+
+msgid "JH|ContentValidation|URL of the external Content Validation endpoint"
+msgstr ""
+
+msgid "JH|ContentValidation|Write your appeal text here, can be empty"
+msgstr "Write your appeal text here, can be empty"
+
+msgid "JH|ContentValidation|You can view the position of the detected contents. Please correct the contents."
+msgstr ""
+
+msgid "JH|ContentValidation|Your content couldn't be submitted because it violated the rules. If you believe this was a miscalculation, please email usersupport@gitlab.cn to appeal. We will process your appeal within 24 hours (working days) and send the result to your registered email address, please pay attention to it. Thank you for your understanding and support."
+msgstr ""
+
+msgid "JH|ContentValidation|here"
+msgstr "here"
+
+msgid "JH|Create and provide your Gitee %{link_start}Personal Access Token%{link_end}. You will need to select the %{code_open}repo%{code_close} scope, so we can display a list of your public and private repositories which are available to import."
+msgstr ""
+
+msgid "JH|DingTalk Integration"
+msgstr ""
+
+msgid "JH|DingTalk integration allows you to interact with JiHu GitLab by entering commands in a DingTalk group conversation."
+msgstr ""
+
+msgid "JH|DingTalkIntegration|Cannot update DingTalk Integration in Group or Project level"
+msgstr ""
+
+msgid "JH|DingTalkIntegration|DingTalk Corp Id"
+msgstr ""
+
+msgid "JH|DingTalkIntegration|DingTalk Corp Id cannot be blank."
+msgstr ""
+
+msgid "JH|DingTalkIntegration|Dingtalk Integration is deactivated. Please upgrade your JiHu GitLab to Premium Plan"
+msgstr ""
+
+msgid "JH|DingTalkIntegration|Perform common operations in DingTalk."
+msgstr ""
+
+msgid "JH|DingTalkIntegration|Your corp id provided by DingTalk"
+msgstr ""
+
+msgid "JH|Downloading source code is disabled"
+msgstr ""
+
+msgid "JH|Email is already taken."
+msgstr ""
+
+msgid "JH|Email is available."
+msgstr ""
+
+msgid "JH|Enable the password expiration policy"
+msgstr ""
+
+msgid "JH|Expires in days"
+msgstr ""
+
+msgid "JH|FeishuBotIntegration|Cannot update Feishu Bot Integration in Group or Project level"
+msgstr ""
+
+msgid "JH|FeishuBotIntegration|Feishu Bot"
+msgstr ""
+
+msgid "JH|FeishuBotIntegration|Feishu Bot Integration is deactivated. Please upgrade your JiHu GitLab to Starter Plan"
+msgstr ""
+
+msgid "JH|FeishuBotIntegration|Perform common operations in Feishu Bot."
+msgstr ""
+
+msgid "JH|FoundationalFlow|JH Advanced Code Review"
+msgstr ""
+
+msgid "JH|FoundationalFlow|Review merge requests with related Issue and Pipeline context."
+msgstr ""
+
+msgid "JH|FreeTrial|Contact 400-088-8738 or scan below QR code to upgrade any of your group or purchase add-on service"
+msgstr ""
+
+msgid "JH|FreeTrial|If you do not upgrade any of your group or purchase add-on service, all data in your account will be deleted."
+msgstr ""
+
+msgid "JH|FreeTrial|If you have no plan to continue using %{host}, please %{link_start}migrate your data%{link_end} before %{trial_end_date}. After free trial ends, your data will be deleted."
+msgstr ""
+
+msgid "JH|FreeTrial|Navigate to 'Group Settings - Billing' and upgrade your plan"
+msgstr ""
+
+msgid "JH|FreeTrial|Thanks,"
+msgstr ""
+
+msgid "JH|FreeTrial|The JiHu GitLab Team"
+msgstr ""
+
+msgid "JH|FreeTrial|To keep using your account, you can:"
+msgstr ""
+
+msgid "JH|FreeTrial|Your free trial ends"
+msgstr ""
+
+msgid "JH|FreeTrial|Your free trial of JiHu GitLab has expired. Please contact 400-088-8738 for offline purchase assistant."
+msgstr ""
+
+msgid "JH|FreeTrial|Your free trial of JiHu GitLab on %{host} ends today. We are sorry to inform that your account is deactivated. If you want to continue, you can contact 400-088-8738 or scan below QR code to upgrade any of your group or purchase add-on service."
+msgstr ""
+
+msgid "JH|FreeTrial|Your free trial of JiHu GitLab on %{host} will end soon. If you do not upgrade any of your group or purchase add-on service, your account will be deactivated on %{trial_end_date}."
+msgstr ""
+
+msgid "JH|FreeTrial|Your free trial will end soon"
+msgstr ""
+
+msgid "JH|Generate repository Wiki"
+msgstr ""
+
+msgid "JH|Gitee"
+msgstr ""
+
+msgid "JH|Gitee Import"
+msgstr ""
+
+msgid "JH|Gitee Import|Failed to create issue %{issue} for project %{project}"
+msgstr ""
+
+msgid "JH|Gitee Import|Failed to create label %{label} for project %{project}"
+msgstr ""
+
+msgid "JH|Gitee Import|Failed to create merge request %{merge_request} for project %{project}"
+msgstr ""
+
+msgid "JH|Gitee Import|Failed to create milestone %{milestone} for project %{project}"
+msgstr ""
+
+msgid "JH|Gitee Import|The remote data could not be fully imported."
+msgstr ""
+
+msgid "JH|INTEGRATION|Dev Group, Ops Group(Feishu group names separated by comma)"
+msgstr ""
+
+msgid "JH|INTEGRATION|Do not send notifications for successful pipelines."
+msgstr ""
+
+msgid "JH|INTEGRATION|Enable FeiShu Integration"
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu App ID"
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu App Secret"
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu Integration"
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu integration allows you to receive project events and send operation commands in Feishu group chats."
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu notifications"
+msgstr ""
+
+msgid "JH|INTEGRATION|JiHu GitLab bot is not found in FeiShu group %{name}, please add the bot first"
+msgstr ""
+
+msgid "JH|INTEGRATION|Labels to be notified"
+msgstr ""
+
+msgid "JH|INTEGRATION|Labels to be notified behavior"
+msgstr ""
+
+msgid "JH|INTEGRATION|Match all of the labels"
+msgstr ""
+
+msgid "JH|INTEGRATION|Match any of the labels"
+msgstr ""
+
+msgid "JH|INTEGRATION|Notify only broken pipelines"
+msgstr ""
+
+msgid "JH|INTEGRATION|Please check your settings for Feishu Integration in JiHu GitLab, e.g. App ID and App Secret"
+msgstr ""
+
+msgid "JH|INTEGRATION|Please input valid FeiShu group name"
+msgstr ""
+
+msgid "JH|INTEGRATION|Please input valid Wecom group robot webhook key"
+msgstr ""
+
+msgid "JH|INTEGRATION|Send notifications about project events to FeiShu."
+msgstr ""
+
+msgid "JH|INTEGRATION|Send notifications about project events to Wecom."
+msgstr ""
+
+msgid "JH|INTEGRATION|Send notifications for issue, merge request, and comment events with the listed labels only. Leave blank to receive notifications for all events."
+msgstr ""
+
+msgid "JH|INTEGRATION|Validate FeiShu Group Error, please follow FeiShu Integration document verify the settings."
+msgstr ""
+
+msgid "JH|INTEGRATION|Wecom group robot webhook key separated by comma"
+msgstr ""
+
+msgid "JH|INTEGRATION|Wecom notifications"
+msgstr ""
+
+msgid "JH|If your password has expired. After you log in, you must update your password to access your account."
+msgstr ""
+
+msgid "JH|Import Projects from Gitee"
+msgstr ""
+
+msgid "JH|Integrations|Create new issue in LigaAI"
+msgstr ""
+
+msgid "JH|Integrations|Create new issue in ONES"
+msgstr ""
+
+msgid "JH|Integrations|DingTalk App Key"
+msgstr ""
+
+msgid "JH|Integrations|DingTalk App Secret"
+msgstr ""
+
+msgid "JH|Integrations|DingTalk Corp Id"
+msgstr ""
+
+msgid "JH|Integrations|Enable DingTalk Integration"
+msgstr ""
+
+msgid "JH|Integrations|LigaAI issues display here when you create issues in your project in LigaAI."
+msgstr ""
+
+msgid "JH|Integrations|ONES issues display here when you create issues in your project in ONES."
+msgstr ""
+
+msgid "JH|Integrations|Search LigaAI issues"
+msgstr ""
+
+msgid "JH|Integrations|Search ONES issues"
+msgstr ""
+
+msgid "JH|Integration|An error occurred while requesting data from the third party service."
+msgstr "An error occurred while requesting data from the third party service."
+
+msgid "JH|JobAssistant|Blank template"
+msgstr ""
+
+msgid "JH|JobAssistant|Create a new job template"
+msgstr ""
+
+msgid "JH|JobAssistant|Getting started with job template"
+msgstr ""
+
+msgid "JH|JobAssistant|Job template"
+msgstr ""
+
+msgid "JH|JobAssistant|Learn more about job template"
+msgstr ""
+
+msgid "JH|JobAssistant|Template name"
+msgstr ""
+
+msgid "JH|JobAssistant|Using the job template can quickly insert the corresponding job in the yml file, so that the editing efficiency of the pipeline is greatly improved."
+msgstr ""
+
+msgid "JH|Leaderboard"
+msgstr "Leaderboard"
+
+msgid "JH|License|Free"
+msgstr "Basic"
+
+msgid "JH|License|Premium"
+msgstr "Premium"
+
+msgid "JH|License|Premium Trial"
+msgstr ""
+
+msgid "JH|License|Starter"
+msgstr "Basic Extension"
+
+msgid "JH|License|Team"
+msgstr "Team"
+
+msgid "JH|License|Ultimate"
+msgstr "Ultimate"
+
+msgid "JH|License|Ultimate Trial"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|An error occurred while requesting data from the LigaAI service."
+msgstr ""
+
+msgid "JH|LigaaiIntegration|Base URL of the LigaAI instance."
+msgstr ""
+
+msgid "JH|LigaaiIntegration|Failed to load LigaAI issue. View the issue in LigaAI, or reload the page."
+msgstr ""
+
+msgid "JH|LigaaiIntegration|If different from web URL."
+msgstr ""
+
+msgid "JH|LigaaiIntegration|Leave blank to use your current token."
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI API URL (optional)"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI Secret Key"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI client ID"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI client ID."
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI issues"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI project ID"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI project ID."
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI user"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI web URL"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|Open LigaAI"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|This is a LigaAI user."
+msgstr ""
+
+msgid "JH|LigaaiIntegration|Use LigaAI as this project's issue tracker."
+msgstr ""
+
+msgid "JH|Monorepo|All related MR(s) are merged by"
+msgstr ""
+
+msgid "JH|Monorepo|Error while dispatching the merge request, please try again."
+msgstr ""
+
+msgid "JH|Monorepo|Merge all"
+msgstr ""
+
+msgid "JH|Monorepo|Merge blocked: unsuccessful merge request(s) found"
+msgstr ""
+
+msgid "JH|Monorepo|There are %{count} unapproved %{merge_request}"
+msgstr ""
+
+msgid "JH|Monorepo|There is 1 merging function in process, branch name is %{branch_name}"
+msgstr ""
+
+msgid "JH|Monorepo|mergeable"
+msgstr ""
+
+msgid "JH|OnesIntegration|Attachment"
+msgstr "Attachment"
+
+msgid "JH|OnesIntegration|Base URL of the ONES instance."
+msgstr "Base URL of the ONES instance."
+
+msgid "JH|OnesIntegration|Failed to load ONES issue. View the issue in ONES, or reload the page."
+msgstr ""
+
+msgid "JH|OnesIntegration|If different from web URL."
+msgstr "If different from web URL."
+
+msgid "JH|OnesIntegration|Leave blank to use your current token."
+msgstr "Leave blank to use your current token."
+
+msgid "JH|OnesIntegration|ONES"
+msgstr "ONES"
+
+msgid "JH|OnesIntegration|ONES API URL (optional)"
+msgstr "ONES API URL (optional)"
+
+msgid "JH|OnesIntegration|ONES API token"
+msgstr "ONES API token"
+
+msgid "JH|OnesIntegration|ONES issues"
+msgstr "ONES issues"
+
+msgid "JH|OnesIntegration|ONES project ID"
+msgstr "ONES project ID"
+
+msgid "JH|OnesIntegration|ONES project ID."
+msgstr ""
+
+msgid "JH|OnesIntegration|ONES team ID"
+msgstr "ONES team ID"
+
+msgid "JH|OnesIntegration|ONES user"
+msgstr ""
+
+msgid "JH|OnesIntegration|ONES user ID"
+msgstr "ONES user ID"
+
+msgid "JH|OnesIntegration|ONES user ID."
+msgstr ""
+
+msgid "JH|OnesIntegration|ONES web URL"
+msgstr "ONES web URL"
+
+msgid "JH|OnesIntegration|Open ONES"
+msgstr ""
+
+msgid "JH|OnesIntegration|This is a ONES user."
+msgstr ""
+
+msgid "JH|OnesIntegration|Use ONES as this project's issue tracker."
+msgstr "Use ONES as this project's issue tracker."
+
+msgid "JH|Password expiration policy"
+msgstr ""
+
+msgid "JH|Password is expiring soon"
+msgstr ""
+
+msgid "JH|Performance Analytics"
+msgstr "Performance Analytics"
+
+msgid "JH|Performance Report"
+msgstr "Performance Report"
+
+msgid "JH|PerformanceAnalytics|Approved MRs"
+msgstr "Approved MRs"
+
+msgid "JH|PerformanceAnalytics|Average Pushes Per User"
+msgstr "Average Pushes Per User"
+
+msgid "JH|PerformanceAnalytics|Branch selector only affect the number of code commits"
+msgstr "Branch selector only affect the number of code commits"
+
+msgid "JH|PerformanceAnalytics|Closed MRs"
+msgstr "Closed MRs"
+
+msgid "JH|PerformanceAnalytics|Closed issues"
+msgstr "Closed issues"
+
+msgid "JH|PerformanceAnalytics|Comments"
+msgstr "Comments"
+
+msgid "JH|PerformanceAnalytics|Commits"
+msgstr "Commits"
+
+msgid "JH|PerformanceAnalytics|Created MRs"
+msgstr "Created MRs"
+
+msgid "JH|PerformanceAnalytics|Created issues"
+msgstr "Created issues"
+
+msgid "JH|PerformanceAnalytics|Date range must be shorter than %{max_range} days."
+msgstr "Date range must be shorter than %{max_range} days."
+
+msgid "JH|PerformanceAnalytics|Last %d day"
+msgid_plural "JH|PerformanceAnalytics|Last %d days"
+msgstr[0] "Last %d day"
+msgstr[1] "Last %d days"
+
+msgid "JH|PerformanceAnalytics|Merged MRs"
+msgstr "Merged MRs"
+
+msgid "JH|PerformanceAnalytics|Name"
+msgstr "Name"
+
+msgid "JH|PerformanceAnalytics|No matches found"
+msgstr "No matches found"
+
+msgid "JH|PerformanceAnalytics|Number of pushes"
+msgstr "Number of pushes"
+
+msgid "JH|PerformanceAnalytics|The given date range is larger than 180 days"
+msgstr ""
+
+msgid "JH|PerformanceAnalytics|The interval must be one of %{intervals}."
+msgstr "The interval must be one of %{intervals}."
+
+msgid "JH|PerformanceAnalytics|The metric must be one of %{metrics}."
+msgstr "The metric must be one of %{metrics}."
+
+msgid "JH|PerformanceAnalytics|The start date must be earlier than the end date."
+msgstr "The start date must be earlier than the end date."
+
+msgid "JH|PerformanceAnalytics|There was an error while export performance report data"
+msgstr "There was an error while export performance report data"
+
+msgid "JH|PerformanceAnalytics|Total"
+msgstr "Total"
+
+msgid "JH|PerformanceAnalytics|You do not have permission to access performance analytics metrics."
+msgstr "You do not have permission to access performance analytics metrics."
+
+msgid "JH|PerformanceMeasurement|%{firstSelectedName} + %{selectedLength} more"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Active level"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Activity metrics"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Code quality"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Code validity ratio"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Commits"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Customized"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Default view"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Efficiency"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Individual data"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Issue(s) commented"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Issue(s) created"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Lines of code"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|MR(s) commented"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|MR(s) created"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|MR(s) reviewed"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Performance Measurement"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Private"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Public"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Select a view"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Select group or project"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|Shortcut"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|View"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|View name"
+msgstr ""
+
+msgid "JH|PerformanceMeasurement|View type"
+msgstr ""
+
+msgid "JH|Pipelines|Add job"
+msgstr ""
+
+msgid "JH|Pipelines|Add stage after"
+msgstr ""
+
+msgid "JH|Pipelines|Add stage before"
+msgstr ""
+
+msgid "JH|Pipelines|Create Stage"
+msgstr ""
+
+msgid "JH|Pipelines|Delete stage"
+msgstr ""
+
+msgid "JH|Pipelines|GUI Editor"
+msgstr ""
+
+msgid "JH|Pipelines|It seems like you do not have any configurations, please proceed at %{boldStart}Edit%{boldEnd} tab for further information."
+msgstr ""
+
+msgid "JH|Pipelines|No configuration found"
+msgstr ""
+
+msgid "JH|Pipelines|Please input a stage name"
+msgstr ""
+
+msgid "JH|Pipelines|Stage name"
+msgstr ""
+
+msgid "JH|Pipelines|Stage operation is turned off because no explicit stage declarations were found in config file."
+msgstr ""
+
+msgid "JH|Pipelines|Stage operations"
+msgstr ""
+
+msgid "JH|Pipeline|Edit with GUI"
+msgstr ""
+
+msgid "JH|Please complete your profile with email address at %{url} before %{expires_at}"
+msgstr ""
+
+msgid "JH|Profile Settings"
+msgstr ""
+
+msgid "JH|Profiles|Please complete your profile with email address before making purchases"
+msgstr ""
+
+msgid "JH|ProjectSettings|Every merge only creates a single squash merge commit."
+msgstr "Every merge only creates a single squash merge commit."
+
+msgid "JH|ProjectSettings|Single squash merge commit"
+msgstr "Single squash merge commit"
+
+msgid "JH|ProjectTemplates|DongTai IAST"
+msgstr ""
+
+msgid "JH|ProjectTerms|Declaration"
+msgstr "Declaration"
+
+msgid "JH|ProjectTerms|I declare that I have the complete, independent, and legitimate intellectual property rights and other rights of the content of this project. If it involves citation of others’ works, achievements, rights, and authorization or in other similar situations, I declare that the cited content complies with relevant laws and regulations and has been properly reviewed and authorized without any infringement or illegal acts, and I will expressly attach annotations and statements for the cited content. I will undertake all the risks and liabilities arising from such citation, and JiHu(GitLab) will be exempted from them."
+msgstr "I declare that I have the complete, independent, and legitimate intellectual property rights and other rights of the content of this project. If it involves citation of others’ works, achievements, rights, and authorization or in other similar situations, I declare that the cited content complies with relevant laws and regulations and has been properly reviewed and authorized without any infringement or illegal acts, and I will expressly attach annotations and statements for the cited content. I will undertake all the risks and liabilities arising from such citation, and JiHu(GitLab) will be exempted from them."
+
+msgid "JH|ProjectTerms|I hereby declare that I have read, understand, and agree to the %{linkStart}JiHu(GitLab) Terms of Service%{linkEnd} and all irregularly-updated agreements, user statements, disclaimers, and other content on this webpage. The content of this project does not violate relevant laws and regulations of any country or infringe on the intellectual property rights or other rights of any third parties. I will take full responsibility for any violation or infringement, and JiHu(GitLab) will be exempted from any responsibility."
+msgstr "I hereby declare that I have read, understand, and agree to the %{linkStart}JiHu(GitLab) Terms of Service%{linkEnd} and all irregularly-updated agreements, user statements, disclaimers, and other content on this webpage. The content of this project does not violate relevant laws and regulations of any country or infringe on the intellectual property rights or other rights of any third parties. I will take full responsibility for any violation or infringement, and JiHu(GitLab) will be exempted from any responsibility."
+
+msgid "JH|RealName|An error occurred while sending verification code"
+msgstr ""
+
+msgid "JH|RealName|An error occurred while validating phone"
+msgstr ""
+
+msgid "JH|RealName|Based on the regulation and the law, using internet services requires identity verification, by fill in your phone number to continue using JiHu GitLab."
+msgstr ""
+
+msgid "JH|RealName|Checking phone availability..."
+msgstr ""
+
+msgid "JH|RealName|Get code"
+msgstr ""
+
+msgid "JH|RealName|Phone"
+msgstr ""
+
+msgid "JH|RealName|Phone is already taken."
+msgstr ""
+
+msgid "JH|RealName|Phone is available."
+msgstr ""
+
+msgid "JH|RealName|Phone saved failed."
+msgstr ""
+
+msgid "JH|RealName|Please provide a valid phone number."
+msgstr ""
+
+msgid "JH|RealName|Please verify your phone before continuing."
+msgstr ""
+
+msgid "JH|RealName|Resend in %{wait}s"
+msgstr ""
+
+msgid "JH|RealName|Something happened when checking code"
+msgstr ""
+
+msgid "JH|RealName|Something happened when resolving captcha"
+msgstr ""
+
+msgid "JH|RealName|Thank you for using JiHu GitLab, please verify your phone"
+msgstr ""
+
+msgid "JH|RealName|Verification code"
+msgstr ""
+
+msgid "JH|RealName|Verification code is incorrect."
+msgstr ""
+
+msgid "JH|RealName|Verification code is nonexist."
+msgstr ""
+
+msgid "JH|RealName|Verification code is outdated."
+msgstr ""
+
+msgid "JH|RealName|You can not send more verification code within one minute"
+msgstr ""
+
+msgid "JH|RealName|You have already verified your phone."
+msgstr ""
+
+msgid "JH|Recover password via email"
+msgstr ""
+
+msgid "JH|Recover password via phone"
+msgstr ""
+
+msgid "JH|Register with email"
+msgstr ""
+
+msgid "JH|Register with phone"
+msgstr ""
+
+msgid "JH|Requires your primary JiHu GitLab email address."
+msgstr ""
+
+msgid "JH|ResendConfirmationEmail|Confirmation email sent to %{email}"
+msgstr "Confirmation email sent to %{email}"
+
+msgid "JH|ResendConfirmationEmail|Your operations are too frequent, or there was a problem sending the confirmation email"
+msgstr "Your operations are too frequent, or there was a problem sending the confirmation email"
+
+msgid "JH|Reset Gitee Access Token"
+msgstr ""
+
+msgid "JH|ResetPassword|Phone number"
+msgstr ""
+
+msgid "JH|ResetPassword|Please enter the verification code, valid for 10 minutes."
+msgstr ""
+
+msgid "JH|ResetPassword|Please enter your JiHu GitLab phone number."
+msgstr ""
+
+msgid "JH|ResetPassword|Requires your JiHu GitLab phone number."
+msgstr ""
+
+msgid "JH|ResetPassword|Resend code"
+msgstr ""
+
+msgid "JH|ResetPassword|Resending code..."
+msgstr ""
+
+msgid "JH|ResetPassword|SMS Code:"
+msgstr ""
+
+msgid "JH|ResetPassword|Sending SMS Code..."
+msgstr ""
+
+msgid "JH|ResetPassword|There is no user matches this phone"
+msgstr ""
+
+msgid "JH|ResetPassword|Via Email"
+msgstr ""
+
+msgid "JH|ResetPassword|Via Phone"
+msgstr ""
+
+msgid "JH|Restricted page access"
+msgstr ""
+
+msgid "JH|Saas|Contact us"
+msgstr ""
+
+msgid "JH|SearchToken|Milestone(Epic)"
+msgstr ""
+
+msgid "JH|Set the number of days after which user passwords expire. Choose a number from 14 to 400."
+msgstr ""
+
+msgid "JH|Set the number of days prior to password expiration that you want to notify users. Choose a number from 1 to 30."
+msgstr ""
+
+msgid "JH|Set the number of days to notify before expiration"
+msgstr ""
+
+msgid "JH|Shimo|Go to Shimo Workspace"
+msgstr ""
+
+msgid "JH|Shimo|Link to a Shimo Workspace from the sidebar."
+msgstr ""
+
+msgid "JH|Shimo|Shimo"
+msgstr ""
+
+msgid "JH|Shimo|Shimo Workspace"
+msgstr ""
+
+msgid "JH|Shimo|Shimo Workspace URL"
+msgstr ""
+
+msgid "JH|Shimo|Shimo Workspace integration is enabled"
+msgstr ""
+
+msgid "JH|Shimo|You've enabled the Shimo Workspace integration. You can view your wiki directly in Shimo."
+msgstr ""
+
+msgid "JH|SignUp|By clicking %{button_text}, I agree that I have read and accepted the JiHu GitLab %{linkStart}Terms of Use and Privacy Statement%{linkEnd}"
+msgstr ""
+
+msgid "JH|SignUp|By signing in you accept the JiHu GitLab %{link_start}Terms of Use and acknowledge the Privacy Statement and Cookie Policy%{link_end}."
+msgstr "By signing in you accept the JiHu GitLab %{link_start}Terms of Use and acknowledge the Privacy Statement and Cookie Policy%{link_end}. If you are registering with an enterprise email address, JiHu(GitLab) will not notify you nor be held accountable while sharing your account data with corresponding companies."
+
+msgid "JH|SignUp|I Agree to receive future marketing information from JiHu GitLab."
+msgstr ""
+
+msgid "JH|Sorry, you don't have access to the page"
+msgstr ""
+
+msgid "JH|Submit feedback"
+msgstr ""
+
+msgid "JH|Support|1. Access enterprise-level DevOps solutions support"
+msgstr ""
+
+msgid "JH|Support|2. Free or Discount JiHu Gitlab official training and certification"
+msgstr ""
+
+msgid "JH|Support|Scan the QR code to join our WeChat group"
+msgstr ""
+
+msgid "JH|The access token has been cleared."
+msgstr ""
+
+msgid "JH|The additional storage you purchased on JihuLab.com is about to expire."
+msgstr "【Important Reminder】The additional storage you purchased on JihuLab.com is about to expire. Please renew it in a timely manner."
+
+msgid "JH|There was an error while fetching performance analytics data."
+msgstr "There was an error while fetching performance analytics data."
+
+msgid "JH|This namespace has already been taken! Please choose another one."
+msgstr ""
+
+msgid "JH|To enable line wrap, run the following command in terminal:"
+msgstr ""
+
+msgid "JH|Trials|Day %{daysUsed}/%{duration}"
+msgstr ""
+
+msgid "JH|Trials|Suspension time"
+msgstr ""
+
+msgid "JH|Trials|This group and its projects under the namespace is using the basic version. Want to increase team productivity and use more advanced features? Try out JiHu GitLab Ultimate for free for 30 days."
+msgstr ""
+
+msgid "JH|Trials|Upgrade before suspension"
+msgstr ""
+
+msgid "JH|Trials|Upgrade to paid versions"
+msgstr ""
+
+msgid "JH|Trial|Group premium trial time"
+msgstr ""
+
+msgid "JH|Trial|Group ultimate trial time"
+msgstr ""
+
+msgid "JH|Trial|Please select a province"
+msgstr "Please select a province"
+
+msgid "JH|Trial|Provinces"
+msgstr "Provinces"
+
+msgid "JH|Trial|Start Premium trial"
+msgstr ""
+
+msgid "JH|Trial|Your free Ultimate Trial lasts for 30 days. You can maintain a JiHu GitLab Free account for 90 days, or upgrade to a paid plan."
+msgstr ""
+
+msgid "JH|Username, email or phone"
+msgstr ""
+
+msgid "JH|Uses the code repository in this project to generate or update repository documentation in the project Wiki."
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Additional Info"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|CWE Link"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Details"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Group Name"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Location"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Location Link"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Other Identifiers"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Project Name"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Scanner Name"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Severity"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Status"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Tool"
+msgstr ""
+
+msgid "JH|VulnerabilityExports|Vulnerability"
+msgstr ""
+
+msgid "JH|VulnerabilityExport|Activity"
+msgstr ""
+
+msgid "JH|VulnerabilityExport|CVE"
+msgstr ""
+
+msgid "JH|VulnerabilityExport|CWE"
+msgstr ""
+
+msgid "JH|VulnerabilityExport|Comments"
+msgstr ""
+
+msgid "JH|VulnerabilityExport|Detected At"
+msgstr ""
+
+msgid "JH|Warm reminder: The additional storage service you purchased for the group %{group_link} on JihuLab.com will expire on %{date}. To ensure your service remains uninterrupted, please renew the service in a timely manner."
+msgstr ""
+
+msgid "JH|WeCom|Also send notifications to my WeCom account"
+msgstr ""
+
+msgid "JH|WeCom|Assigned to you"
+msgstr ""
+
+msgid "JH|WeCom|JiHu GitLab"
+msgstr ""
+
+msgid "JH|WeCom|Project"
+msgstr ""
+
+msgid "JH|WeCom|Reason"
+msgstr ""
+
+msgid "JH|WeCom|Requires a bound WeCom account. Notifications follow your existing notification settings."
+msgstr ""
+
+msgid "JH|WeCom|Review requested"
+msgstr ""
+
+msgid "JH|WeCom|Subscribed"
+msgstr ""
+
+msgid "JH|WeCom|You were mentioned"
+msgstr ""
+
+msgid "JH|You (%{reference}) must verify your phone in order to perform this action, please access JiHu GitLab from a web browser at %{url}."
+msgstr ""
+
+msgid "JH|You can directly scan the QR code below to get in touch with our staff, and we will be happy to provide you with assistance."
+msgstr ""
+
+msgid "JH|You must be authorized to access this path."
+msgstr "JH|You must be authorized to access this path."
+
+msgid "JH|You must log in to JiHu GitLab to access the page"
+msgstr ""
+
+msgid "JH|Your account password will expire on %{date}, it is recommended that you change your password as soon as possible."
+msgstr ""
+
+msgid "JH|Your password has expired."
+msgstr ""
+
+msgid "JH|Your password is incorrect or this account doesn't exist. Please check and try again. Add country calling codes if your mobile phone number is outside the Chinese mainland."
+msgstr ""
+
+msgid "JH|can not be changed unless password expiration is enabled"
+msgstr ""
+
+msgid "JH|commented on %{link_to_project}"
+msgstr ""
+
+msgid "JH|inviteEmail|Invite email rate limit exceeded"
+msgstr ""
+
+msgid "JH|phone verification"
+msgstr ""
+
+msgid "JH|pipelineEditorWalkthrough|Use the %{boldStart}Edit%{boldEnd} tab at the left of the tabs to save the your work."
+msgstr ""
+
+msgid "JH|snippet"
+msgstr ""
+
+msgid "Select a country or region"
+msgstr "Select a country or region"
+
+msgid "SignUp|By clicking %{button_text} or registering through a third party you accept the GitLab %{link_start}Terms of Use and acknowledge the Privacy Statement and Cookie Policy%{link_end}."
+msgstr "By clicking %{button_text} or registering through a third party you accept the JiHu GitLab %{link_start}Terms of Use and acknowledge the Privacy Statement and Cookie Policy%{link_end}. If you are registering with an enterprise email address, JiHu(GitLab) will not notify you nor be held accountable while sharing your account data with corresponding companies."
+
+msgid "Thanks for signing up to GitLab!"
+msgstr "Thanks for signing up to JiHu GitLab!"
+
+msgid "The license key is invalid. Make sure it is exactly as you received it from GitLab Inc."
+msgstr "The license key is invalid. Make sure it is exactly as you received it from JiHu(GitLab)"
+
+msgid "There was an error with the reCAPTCHA. Please solve the reCAPTCHA again."
+msgstr "There was an error with the captcha. Please solve the captcha again."
+
+msgid "To continue using GitLab Enterprise Edition, upload the %{codeOpen}.gitlab-license%{codeClose} file or enter the license key you have received from GitLab Inc."
+msgstr "To continue using JiHu GitLab, upload the %{codeOpen}.gitlab-license%{codeClose} file or enter the license key you have received from JiHu(GitLab)"
+
+msgid "To start using GitLab Enterprise Edition, upload the %{codeOpen}.gitlab-license%{codeClose} file or enter the license key you have received from GitLab Inc."
+msgstr "To start using JiHu GitLab, upload the %{codeOpen}.gitlab-license%{codeClose} file or enter the license key you have received from JiHu(GitLab)"
+
+msgid "Unlock more features with GitLab Ultimate"
+msgstr "Unlock more features with JiHu(GitLab) Ultimate"
+
+msgid "Your %{spammable_entity_type} has been recognized as spam. Please, change the content or solve the reCAPTCHA to proceed."
+msgstr "Your %{spammable_entity_type} has been recognized as spam. Please, change the content or solve the captcha to proceed."

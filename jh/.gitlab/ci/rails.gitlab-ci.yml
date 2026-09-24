@@ -1,0 +1,99 @@
+rspec-jh migration pg17:
+  extends:
+    - .rspec-ee-base-pg17
+    - .rspec-base-migration
+    - .rails:rules:ee-only-migration
+
+rspec-jh unit pg17:
+  extends:
+    - .rspec-ee-base-pg17
+    - .rspec-jh-parallel
+    - .rails:rules:ee-only-unit
+
+rspec-jh integration pg17:
+  extends:
+    - .rspec-ee-base-pg17
+    - .rails:rules:ee-only-integration
+
+rspec-jh system pg17:
+  extends:
+    - .rspec-ee-base-pg17
+    - .rspec-jh-parallel
+    - .rails:rules:ee-only-system
+
+rspec-jh migration pg17 minimal:
+  extends:
+    - rspec-jh migration pg17
+    - .rails:rules:ee-only-migration:predictive
+
+rspec-jh unit pg17 minimal:
+  extends:
+    - rspec-jh unit pg17
+    - .rails:rules:ee-only-unit:predictive
+
+rspec-jh integration pg17 minimal:
+  extends:
+    - rspec-jh integration pg17
+  rules:
+    - !reference [".rails:rules:rspec-predictive", "rules"]
+
+rspec-jh system pg17 minimal:
+  extends:
+    - rspec-jh system pg17
+  rules:
+    - !reference [".rails:rules:rspec-predictive", "rules"]
+
+# Add variables to upstream job
+rspec unit pg17:
+  variables:
+    TZ: "UTC"
+# Override rspec:coverage
+rspec:coverage:
+  needs:
+    - setup-test-env
+    # FOSS/EE jobs
+    - job: rspec:artifact-collector unit
+      optional: true
+    - job: rspec:artifact-collector system
+      optional: true
+    - job: rspec:artifact-collector remainder
+      optional: true
+    - job: rspec:artifact-collector single-redis
+      optional: true
+    - job: rspec:artifact-collector system single-redis
+      optional: true
+    # as-if-foss jobs
+    - job: rspec:artifact-collector as-if-foss unit
+      optional: true
+    - job: rspec:artifact-collector as-if-foss system
+      optional: true
+    - job: rspec:artifact-collector as-if-foss remainder
+      optional: true
+    # EE jobs
+    - job: rspec:artifact-collector ee single-redis
+      optional: true
+    - job: rspec:artifact-collector ee
+      optional: true
+    # Memory jobs
+    - job: memory-on-boot
+      optional: true
+    # JH jobs
+    - job: rspec-jh migration pg17
+      optional: true
+    - job: rspec-jh unit pg17
+      optional: true
+    - job: rspec-jh integration pg17
+      optional: true
+    - job: rspec-jh system pg17
+      optional: true
+    - job: rspec-jh migration pg17 minimal
+      optional: true
+    - job: rspec-jh unit pg17 minimal
+      optional: true
+    - job: rspec-jh integration pg17 minimal
+      optional: true
+    - job: rspec-jh system pg17 minimal
+      optional: true
+
+rspec:undercoverage:
+  allow_failure: true

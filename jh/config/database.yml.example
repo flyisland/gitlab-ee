@@ -1,0 +1,27 @@
+development:
+  jh:
+    adapter: postgresql
+    encoding: unicode
+    database: gitlabhq_development_jh
+    host: /Users/xfyuan/works/jihulab/projects/gdk/postgresql
+    port: 5432
+    pool: 10
+    prepared_statements: false
+    variables:
+      statement_timeout: 120s
+    migrations_paths: 'jh/db/migrate'
+    schema_migrations_path: 'jh/db/schema_migrations'
+
+test: &test
+  jh:
+    adapter: postgresql
+    encoding: unicode
+    database: gitlabhq_test_jh
+    host: /Users/xfyuan/works/jihulab/projects/gdk/postgresql
+    port: 5432
+    pool: 10
+    prepared_statements: false
+    variables:
+      statement_timeout: 120s
+    migrations_paths: 'jh/db/migrate'
+    schema_migrations_path: 'jh/db/schema_migrations'

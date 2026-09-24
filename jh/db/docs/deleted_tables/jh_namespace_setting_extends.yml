@@ -1,0 +1,12 @@
+---
+table_name: jh_namespace_setting_extends
+classes:
+- Extend::NamespaceSetting
+feature_categories:
+- database
+description: JH database namespace setting extends
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2467
+milestone: '17.1'
+gitlab_schema: gitlab_jh
+removed_by_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/4888
+removed_in_milestone: '18.2'

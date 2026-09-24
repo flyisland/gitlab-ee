@@ -1,0 +1,7 @@
+- return unless trials_allowed?(current_user)
+- host = URI.parse(::Gitlab.com_url).host
+
+%li
+  %a.trial-link{ href: new_trial_path(glm_source: host, glm_content: 'top-right-dropdown') }
+    = s_("CurrentUser|Upgrade subscription")
+    = emoji_icon('rocket')

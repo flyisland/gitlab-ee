@@ -1,0 +1,15 @@
+test:
+  omniauth:
+    providers:
+      - {
+          name: "cas3",
+          label: "cas3",
+          args:
+            {
+              url: "https://sso.example.com",
+              disable_ssl_verification: false,
+              login_url: "/cas/login",
+              service_validate_url: "/cas/p3/serviceValidate",
+              logout_url: "/cas/logout",
+            },
+        }

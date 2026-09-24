@@ -1,0 +1,31 @@
+---
+version: '2'
+title: Dashboard Example With Views
+description: Dashboard with panels grouped into selectable views.
+panels: []
+views:
+  - title: Conversions
+    panels:
+      - title: Overall Conversion Rate
+        gridAttributes:
+          yPos: 0
+          xPos: 0
+          width: 6
+          height: 4
+        visualization: dora_line_chart
+  - title: Audience
+    panels:
+      - title: Visitors by month
+        gridAttributes:
+          yPos: 0
+          xPos: 0
+          width: 6
+          height: 4
+        visualization: dora_bar_chart
+      - title: Visitors over time
+        gridAttributes:
+          yPos: 4
+          xPos: 0
+          width: 6
+          height: 4
+        visualization: dora_line_chart

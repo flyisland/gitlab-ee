@@ -1,0 +1,24 @@
+static-analysis-jh:
+  extends:
+    - .static-analysis-base
+    - .static-analysis-cache
+    - .static-analysis:rules:static-analysis
+  script:
+    - yarn_install_script
+    - bin/rake jh:gettext:updated_check
+
+templates-shellcheck:
+  script:
+    # For fixing https://jihulab.com/gitlab-cn/gitlab/-/jobs/13660667
+    # Related Upstream commit:
+    #   https://jihulab.com/gitlab-cn/gitlab/-/commit/4e08b8198f4387b9e59d8608a676a6468a4d12bc
+    - apt update && apt install -y shellcheck
+    - bundle exec scripts/lint_templates_bash.rb
+
+static-analysis:
+  tags:
+    - memory-intensive
+
+validate-codeowners-coverage:
+  rules:
+    - when: never

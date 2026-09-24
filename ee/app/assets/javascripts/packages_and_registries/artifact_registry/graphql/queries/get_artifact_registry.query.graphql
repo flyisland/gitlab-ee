@@ -1,0 +1,12 @@
+# @feature_category: artifact_registry
+
+query getArtifactRegistry($organizationId: OrganizationsOrganizationID!) {
+  organization(id: $organizationId) {
+    id
+    artifactRegistry {
+      slug
+      status
+      createdAt
+    }
+  }
+}

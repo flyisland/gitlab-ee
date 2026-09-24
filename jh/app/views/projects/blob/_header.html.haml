@@ -1,0 +1,6 @@
+- blob = local_assigns.fetch(:blob, false)
+- if @content_blocked_state.present?
+  .js-file-title.file-title-flex-parent
+    = render 'projects/blob/header_content', blob: blob
+- else
+  = render_ee "projects/blob/header", blob: blob

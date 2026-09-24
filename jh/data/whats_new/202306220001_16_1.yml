@@ -1,0 +1,82 @@
+- name: 全新的导航体验
+  description: |  # Do not modify this line, instead modify the lines below.
+    极狐GitLab 16.1 推出全新的导航体验。我们已默认为所有用户启用此新导航体验。您可以点击用户界面右上角的头像，然后打开 **新导航** 开关。
+
+    新的导航旨在解决三个关键的反馈问题：导航极狐GitLab 可能不太容易，很难从上次停下的地方继续操作，无法自定义导航。
+
+    我们在新的导航中简化并改进了左侧边栏，您可以在其中：
+
+    * 固定 📌 经常访问的项目。
+    * 完全隐藏侧边栏并将其"拉回"到视图中。
+    * 使用新的 **您的工作** 和 **探索** 选项轻松切换上下文、搜索和查看数据子集。
+    * 减少顶级菜单项，扫描速度变得更快。
+
+    我们很自豪推出新版导航，并迫不及待地想了解您的想法。
+
+    欢迎您试用我们的新版导航，如有任何意见和建议，请联系我们。
+  stage: Manage
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/ee/tutorials/left_sidebar/index.html
+  #  image_url: https://img.youtube.com/vi/rGTl9_HIpbY/hqdefault.jpg
+  published_at: 2023-06-22
+  release: 16.1
+
+- name: 在极狐GitLab 中可视化 Kubernetes 资源
+  description: |  # Do not modify this line, instead modify the lines below.
+    如何检查集群中运行的应用程序状态？流水线状态和环境页面提供最新部署的运行情况。然而，早期版本的极狐GitLab 缺乏对部署状态的了解。在极狐GitLab 16.1 中，您可以查看 Kubernetes 部署中主要资源的概述。
+
+    此功能适用于每个连接的 Kubernetes 集群。使用 CI/CD 集成还是 GitOps 部署工作负载并不重要。在许多用例中，非人类用户可能需要进行身份验证。以前，根据所需范围，用户可以使用个人、项目或群组访问令牌来满足此需求。但这些令牌并不理想，因为其仍然与人类（对于个人访问令牌）或不必要的特权角色（对于群组和项目访问令牌）绑定。
+  stage: Deploy
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/ee/ci/environments/kubernetes_dashboard.html
+  #  image_url: https://about.gitlab.com/images/16_1/whats-new-k8s-visualization.png
+  published_at: 2023-06-22
+  release: 16.1
+
+- name: 使用服务账户进行身份验证
+  description: |  # Do not modify this line, instead modify the lines below.
+    在许多用例中，非人类用户可能需要进行身份验证。以前，根据所需范围，用户可以使用个人、项目或群组访问令牌来满足此需求。但这些令牌并不理想，因为其仍然与人类（对于个人访问令牌）或不必要的特权角色（对于群组和项目访问令牌）绑定。
+
+    服务账户不与人类用户绑定，并且范围更加细化。服务账户的创建和管理仅支持 API。
+  stage: Manage
+  self-managed: true
+  gitlab-com: true
+  available_in: [专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/ee/api/groups.html#service-accounts
+  #  image_url: https://img.youtube.com/vi/oZvjg0SCsqY/hqdefault.jpg
+  published_at: 2023-06-22
+  release: 16.1
+
+- name: 通过产物页面管理作业产物
+  description: |  # Do not modify this line, instead modify the lines below.
+    以前，如果您想查看或管理作业产物，您必须访问每个作业的详细信息页面，或使用 API。现在，您可以通过 **构建 > 产物** 页面查看和管理作业产物。
+
+    至少具有维护者角色的用户也可以使用这个新界面来删除产物。您可以删除单个产物，或者通过手动选择或选中页面顶部的 **选择全部** 选项，一次批量删除最多 100 个产物。
+
+    请使用产物页面顶部的调查来分享您对此新功能的任何反馈。
+  stage: Verify
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/ee/ci/jobs/job_artifacts.html#view-all-job-artifacts-in-a-project
+  #  image_url: https://about.gitlab.com/images/16_1/artifacts-bulk-delete.png
+  published_at: 2023-06-22
+  release: 16.1
+
+- name: 改进 CI/CD 变量列表视图
+  description: |  # Do not modify this line, instead modify the lines below.
+    CI/CD 变量是所有流水线的关键部分，可以在多个包括项目和群组设置在内的位置进行定义。为了给更大的改进做准备，以帮助用户直观地在不同层次结构的变量之间导航，我们首先改进变量列表的可用性和布局。
+
+    在极狐GitLab 16.1 中，您将看到这些改进的第一次迭代。我们已将"类型"和"选项"列合并到新的 **属性** 列中，这样就可以更好地呈现这些相关属性。欢迎您对我们如何继续改进 CI/CD 变量体验提供反馈。
+  stage: Verify
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/ee/ci/variables/#define-a-cicd-variable-in-the-ui
+  #  image_url: https://about.gitlab.com/images/16_1/layout_changes.png
+  published_at: 2023-06-22
+  release: 16.1

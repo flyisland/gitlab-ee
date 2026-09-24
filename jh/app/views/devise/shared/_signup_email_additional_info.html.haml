@@ -1,0 +1,4 @@
+- if ::Gitlab.com?
+  %p.validation-error.gl-text-red-500.gl-field-error-ignore.gl-mt-2.field-validation.hide= s_('JH|Email is already taken.')
+  %p.validation-success.gl-text-green-600.gl-field-error-ignore.gl-mt-2.field-validation.hide= s_('JH|Email is available.')
+  %p.validation-pending.gl-field-error-ignore.gl-mt-2.field-validation.hide= s_('JH|Checking email availability...')

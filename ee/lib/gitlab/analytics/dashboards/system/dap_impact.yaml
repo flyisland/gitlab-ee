@@ -1,0 +1,451 @@
+---
+title: DAP Impact
+description: See what your AI spend produced across your teams, and where to act next.
+version: '2'
+status: experiment
+gridHeight: compact
+filters:
+  # The default matches the window the panel queries used before this filter existed, so
+  # a first load shows the same data it always did.
+  dateRange:
+    enabled: true
+    defaultOption: 30d
+    options:
+    - 7d
+    - 30d
+    - 90d
+    - 180d
+    - custom
+    numberOfDaysLimit: 180
+panels: []
+views:
+- title: Overview
+  panels:
+  # The active projects, completed sessions and credits panels have no data source yet, so they
+  # run the active users query as a placeholder. Swap in the real queries once they exist.
+  - title: Active projects (WIP)
+    footer:
+      dashboardViewLink:
+        text: View adoption
+        view: 1
+    tooltip:
+      description: This panel is intended to show projects that have had at least one GitLab Duo Agent Platform (DAP) session. Currently, it displays placeholder data.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+        showTrends: true
+      data:
+        type: glql
+        query:
+          glql: |
+            display: stat
+            mode: analytics
+            query: type = AiUsageEvent and timestamp >= "%{startDate}" and timestamp <= "%{endDate}"
+            metrics: usersCount
+            displayConfig:
+              description: Projects with at least one DAP session
+    gridAttributes:
+      yPos: 0
+      xPos: 0
+      width: 3
+      height: 17
+  - title: Active users
+    footer:
+      dashboardViewLink:
+        text: View adoption
+        view: 1
+    tooltip:
+      description: Users who used at least one GitLab Duo Agent Platform (DAP) feature.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+        showTrends: true
+      data:
+        type: glql
+        query:
+          glql: |
+            display: stat
+            mode: analytics
+            query: type = AiUsageEvent and feature = "agent_platform" and timestamp >= "%{startDate}" and timestamp <= "%{endDate}"
+            metrics: usersCount
+            displayConfig:
+              description: Distinct users with at least one DAP feature
+    gridAttributes:
+      yPos: 0
+      xPos: 3
+      width: 3
+      height: 17
+  - title: Completed sessions (WIP)
+    footer:
+      dashboardViewLink:
+        text: View work
+        view: 2
+    tooltip:
+      description: This panel is intended to show sessions that reached a completed flow. Currently, it displays placeholder data.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+        showTrends: true
+      data:
+        type: glql
+        query:
+          glql: |
+            display: stat
+            mode: analytics
+            query: type = AiUsageEvent and timestamp >= "%{startDate}" and timestamp <= "%{endDate}"
+            metrics: usersCount
+            displayConfig:
+              description: Sessions that reached a completed flow
+    gridAttributes:
+      yPos: 0
+      xPos: 6
+      width: 3
+      height: 17
+  - title: Credits consumed (WIP)
+    footer:
+      dashboardViewLink:
+        text: View credits
+        view: 3
+    tooltip:
+      description: This panel is intended to show total credits consumed across all DAP activities. Currently, it displays placeholder data.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+        showTrends: true
+      data:
+        type: glql
+        query:
+          glql: |
+            display: stat
+            mode: analytics
+            query: type = AiUsageEvent and timestamp >= "%{startDate}" and timestamp <= "%{endDate}"
+            metrics: usersCount
+            displayConfig:
+              description: Across all activities
+    gridAttributes:
+      yPos: 0
+      xPos: 9
+      width: 3
+      height: 17
+  # Credits by capability is not queryable yet, so this borrows the AI usage events by feature
+  # data source to hold the layout. The final design differs too.
+  - title: Where credits went (WIP)
+    footer:
+      dashboardViewLink:
+        text: View credits
+        view: 3
+    tooltip:
+      description: This panel is intended to show how credits are distributed across capabilities, such as Chat, Software Dev, or Code Suggestions. Currently, it displays data from a temporary stand-in source.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+      data:
+        type: glql
+        query:
+          glql: |
+            display: barList
+            mode: analytics
+            query: type = AiUsageEvent and timestamp >= "%{startDate}" and timestamp <= "%{endDate}"
+            dimensions: feature
+            metrics: totalCount
+    gridAttributes:
+      yPos: 17
+      xPos: 0
+      width: 12
+      height: 32
+- title: Adoption
+  panels:
+  # A section is bottom-aligned, so any rows above its text act as spacing from the panel above.
+  # Seven rows is the fewest that fit the rule, heading and description. The grid floors panels
+  # at 10 rows unless minHeight lowers the floor.
+  - section:
+      title: Users
+      description: Who is using DAP, and how many of them are new.
+    gridAttributes:
+      yPos: 0
+      xPos: 0
+      height: 7
+      minHeight: 7
+  - title: Total users
+    tooltip:
+      description: Distinct users with at least one GitLab Duo Agent Platform (DAP) session in the selected date range.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+        showTrends: true
+      data:
+        type: glql
+        query:
+          glql: |
+            display: stat
+            mode: analytics
+            query: type = AgentPlatformSession and created >= "%{startDate}" and created <= "%{endDate}"
+            metrics: usersCount
+            displayConfig:
+              description: Distinct users with at least one DAP session
+    gridAttributes:
+      yPos: 7
+      xPos: 0
+      width: 12
+      height: 14
+  # New users are not queryable as a split yet, so this plots all and returning users per week.
+  # The returning metric only compiles with a timestamp dimension.
+  - title: New vs returning (WIP)
+    tooltip:
+      description: This panel is intended to show distinct users with at least one DAP session in the selected date range, split by whether they had used DAP before. Currently, it displays placeholder data.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+      data:
+        type: glql
+        query:
+          glql: |
+            display: barChart
+            mode: analytics
+            query: type = AiUsageEvent and feature = "agent_platform" and timestamp >= "%{startDate}" and timestamp <= "%{endDate}"
+            dimensions: timestamp(weekly)
+            metrics: usersCount, returningUsersCount
+            sort: timestamp asc
+    gridAttributes:
+      yPos: 21
+      xPos: 0
+      width: 12
+      height: 41
+  - title: Users by activity
+    tooltip:
+      description: Distinct users of each DAP flow type in the selected date range. A user of several flow types counts in each.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+      data:
+        type: glql
+        query:
+          glql: |
+            display: table
+            mode: analytics
+            query: type = AgentPlatformSession and created >= "%{startDate}" and created <= "%{endDate}"
+            dimensions: flowType as "Activity"
+            metrics: usersCount as "Users"
+            sort: usersCount desc
+    gridAttributes:
+      yPos: 62
+      xPos: 0
+      width: 12
+      height: 55
+  - section:
+      title: Engagement
+      description: How deeply and how widely those users engage in the selected date range.
+    gridAttributes:
+      yPos: 117
+      xPos: 0
+      height: 7
+      minHeight: 7
+  # A featuresCount filter only compiles when featuresCount is also a selected metric, and a stat
+  # carries exactly one metric, so this counts all DAP users until a real metric exists.
+  - title: Multi-activity users (WIP)
+    tooltip:
+      description: This panel is intended to show users who used two or more GitLab Duo capabilities in the selected date range. Currently, it displays placeholder data.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+        showTrends: true
+      data:
+        type: glql
+        query:
+          glql: |
+            display: stat
+            mode: analytics
+            query: type = AiUsageEvent and feature = "agent_platform" and timestamp >= "%{startDate}" and timestamp <= "%{endDate}"
+            metrics: usersCount
+            displayConfig:
+              description: Users who used two or more Duo capabilities
+    gridAttributes:
+      yPos: 124
+      xPos: 0
+      width: 6
+      height: 14
+  - title: Abandonment (WIP)
+    tooltip:
+      description: This panel is intended to show users who tried DAP once and did not return in the selected date range. Currently, it displays placeholder data.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+      data:
+        type: glql
+        query:
+          glql: |
+            display: stat
+            mode: analytics
+            query: type = AiUsageEvent and feature = "agent_platform" and event = "agent_platform_session_dropped" and timestamp >= "%{startDate}" and timestamp <= "%{endDate}"
+            metrics: usersCount
+            displayConfig:
+              description: Users who tried DAP once and did not return
+    gridAttributes:
+      yPos: 124
+      xPos: 6
+      width: 6
+      height: 14
+  # There is no user tier dimension yet, so months stand in for the tier rows. Capabilities keep
+  # the columns they have in the design, which the flow type filter makes room for: five columns
+  # leave each label enough width to read.
+  - title: Sessions by tier and capability (WIP)
+    tooltip:
+      description: This panel is intended to show sessions per capability by user tier, where tiers are session-count bands per user. Currently, the rows are months rather than tiers.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+      data:
+        type: glql
+        query:
+          glql: |
+            display: heatMap
+            mode: analytics
+            query: type = AgentPlatformSession and created >= "%{startDate}" and created <= "%{endDate}" and flowType in ("duo_chat", "software_development", "code_review/v1", "developer/v1", "fix_pipeline/v1")
+            dimensions: flowType, created(monthly)
+            metrics: totalCount as "Sessions"
+            sort: created asc
+    gridAttributes:
+      yPos: 138
+      xPos: 0
+      width: 12
+      height: 55
+  - section:
+      title: Adoption tiers
+      description: How platform engagement is distributed across all users in the selected date range.
+      tooltip:
+        title: Adoption tiers
+        description: "All DAP users grouped by their total sessions across every activity in the selected date range: Light 1–4, Regular 5–24, Heavy 25–99, Power 100+. A session is any agentic session, regardless of capability."
+    gridAttributes:
+      yPos: 193
+      xPos: 0
+      height: 7
+      minHeight: 7
+  - title: Users across tiers
+    tooltip:
+      description: Users with at least one DAP session in the selected date range.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+      data:
+        type: glql
+        query:
+          glql: |
+            display: stat
+            mode: analytics
+            query: type = AgentPlatformSession and created >= "%{startDate}" and created <= "%{endDate}"
+            metrics: usersCount
+            displayConfig:
+              description: Users with at least one session
+    gridAttributes:
+      yPos: 200
+      xPos: 0
+      width: 6
+      height: 14
+  - title: Total sessions
+    tooltip:
+      description: DAP sessions across all flow types and agents in the selected date range.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+      data:
+        type: glql
+        query:
+          glql: |
+            display: stat
+            mode: analytics
+            query: type = AgentPlatformSession and created >= "%{startDate}" and created <= "%{endDate}"
+            metrics: totalCount
+            displayConfig:
+              description: Across all activities and agents
+    gridAttributes:
+      yPos: 200
+      xPos: 6
+      width: 6
+      height: 14
+  # User tiers are not a dimension yet, so this compares users and sessions per flow type instead.
+  - title: Share of users vs share of sessions (WIP)
+    tooltip:
+      description: This panel is intended to compare each user tier's share of users with its share of sessions. Currently, it displays placeholder data.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+      data:
+        type: glql
+        query:
+          glql: |
+            display: divergingBarChart
+            mode: analytics
+            query: type = AgentPlatformSession and created >= "%{startDate}" and created <= "%{endDate}"
+            dimensions: flowType
+            metrics: usersCount, totalCount
+            sort: totalCount desc
+    gridAttributes:
+      yPos: 214
+      xPos: 0
+      width: 12
+      height: 41
+  - title: Session intensity by tier (WIP)
+    tooltip:
+      description: This panel is intended to show each user tier's share of users, share of sessions and the ratio between them. Currently, it displays placeholder data.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+      data:
+        type: glql
+        query:
+          glql: |
+            display: table
+            mode: analytics
+            query: type = AgentPlatformSession and created >= "%{startDate}" and created <= "%{endDate}"
+            dimensions: flowType as "Flow type"
+            metrics: usersCount as "Users", totalCount as "Sessions", completionRate as "Completion rate"
+            sort: totalCount desc
+    gridAttributes:
+      yPos: 255
+      xPos: 0
+      width: 12
+      height: 41
+  # There is no group dimension yet, so this compares projects instead.
+  - title: Group comparison (WIP)
+    tooltip:
+      description: This panel is intended to compare users and credits across the groups in the selected scope. Currently, it displays placeholder data.
+    visualization:
+      type: Glql
+      options:
+        showActions: false
+        showTrends: true
+        trendMetric: usersCount
+      data:
+        type: glql
+        query:
+          glql: |
+            display: table
+            mode: analytics
+            query: type = AgentPlatformSession and created >= "%{startDate}" and created <= "%{endDate}"
+            dimensions: project as "Project"
+            metrics: usersCount as "Users", totalCount as "Sessions"
+            sort: usersCount desc
+    gridAttributes:
+      yPos: 296
+      xPos: 0
+      width: 12
+      height: 41
+- title: Work
+  panels: []
+- title: Spend
+  panels: []

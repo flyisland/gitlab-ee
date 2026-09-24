@@ -1,0 +1,28 @@
+.h3.gl-mb-5= _('License overview')
+= render Pajamas::CardComponent.new(card_options: { class: 'gl-mb-5' },
+                                    body_options: { class: 'gl-flex gl-justify-between gl-items-center' }) do |c|
+  = c.with_body do
+    %div
+      %p.gl-mb-0
+        = sprite_icon('license', css_class: 'gl-fill-gray-700')
+        %span.gl-ml-3
+          = _('Plan:')
+        %strong= s_("JH|License|#{@license.plan.capitalize}") # rubocop:disable Gettext/StaticIdentifier -- Skip simply
+        %span.gl-ml-5
+          = render 'admin/licenses/license_status'
+        %span.gl-ml-5
+          = _('Licensed to:')
+          %strong= @license.licensee_name
+          = "(#{@license.licensee_email})"
+        %span.gl-ml-5
+          = _('Type:')
+          - case @license.license_type
+          - when 'online_cloud'
+            %strong= _('Online license')
+          - when 'offline_cloud'
+            %strong= _('Offline license')
+          - when 'legacy_license'
+            %strong= _('Legacy license')
+    %div
+      - if current_user.can_admin_all_resources?
+        = link_to 'View details', admin_subscription_path, class: "gl-button btn btn-default"

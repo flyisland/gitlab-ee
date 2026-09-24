@@ -1,0 +1,7 @@
+- namespace_id = local_assigns.fetch(:namespace_id)
+- track_label = local_assigns.fetch(:track_label)
+
+- if gitee_import_enabled?
+  %div
+    = link_to new_import_gitee_path(namespace_id: namespace_id), class: 'gl-button btn-default btn import_gitee js-import-project-btn', data: { platform: 'gitee', **tracking_attrs(track_label, 'click_button', 'gitee') } do
+      = s_('JH|Gitee')

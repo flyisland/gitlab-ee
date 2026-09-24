@@ -1,0 +1,9 @@
+---
+name: jh_skip_auto_assign_duo_seat
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/issues/500104
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/174400
+rollout_issue_url: 'not rollout'
+milestone: '17.7'
+group: group::activation
+type: ops
+default_enabled: false

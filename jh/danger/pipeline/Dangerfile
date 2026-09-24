@@ -1,0 +1,23 @@
+# frozen_string_literal: true
+
+MESSAGE = <<~MESSAGE
+  ## 流水线改动
+
+  此合并请求包含对极狐Gitlab 项目流水线的改动。
+
+  请考虑此合并请求中的改动对以下几点的影响：
+  - 对不同[流水线种类](https://docs.gitlab.cn/jh/development/pipelines.html#pipelines-for-merge-requests)的影响。
+  - 对非规范项目的影响：
+    - `gitlab-foss`
+    - `security`
+    - `dev`
+    - 其他个人分叉
+  - 对[流水线性能]的影响。
+
+  请考虑参照[流水线更改的沟通指南]的指引将此合并请求递交给其余团队。
+
+  [流水线性能]: <!-- https://about.gitlab.cn/handbook/engineering/quality/performance-indicators/#average-merge-request-pipeline-duration-for-gitlab -->
+  [流水线更改的沟通指南]: <!-- https://about.gitlab.cn/handbook/engineering/quality/engineering-productivity/#pipeline-changes -->
+MESSAGE
+
+markdown(MESSAGE) if helper.has_ci_changes?

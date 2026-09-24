@@ -1,0 +1,43 @@
+import { commitPath } from 'ee/packages_and_registries/artifact_registry/utils';
+import { truncateSha } from '~/lib/utils/text_utility';
+import { s__ } from '~/locale';
+
+const MANUALLY_PUBLISHED = s__('ArtifactRegistry|Manually published');
+
+const MANUALLY_PUBLISHED_BY_AUTHOR = s__('ArtifactRegistry|Manually published by %{author}');
+
+const PROJECT_BY_AUTHOR = s__('ArtifactRegistry|Published to %{project} by %{author}');
+
+const PROJECT_ONLY = s__('ArtifactRegistry|Published to %{project}');
+
+const AUTHOR_ONLY = s__('ArtifactRegistry|Published by %{author}');
+
+// The source reads as two lines: what the version was published from, and where and by whom. A
+// manual publish names its author on the first line, so the second never repeats it.
+const attributionMessage = ({ project, author, fromCommit }) => {
+  const namesAuthor = Boolean(author) && fromCommit;
+
+  if (project) return namesAuthor ? PROJECT_BY_AUTHOR : PROJECT_ONLY;
+
+  return namesAuthor ? AUTHOR_ONLY : null;
+};
+
+export const sourceOf = ({ gitCommitSha, project, createdBy }) => {
+  const author = createdBy?.name ?? null;
+
+  return {
+    sha: gitCommitSha ? truncateSha(gitCommitSha) : null,
+    commitPath: commitPath({ project, gitCommitSha }),
+    project,
+    author,
+    originMessage: author ? MANUALLY_PUBLISHED_BY_AUTHOR : MANUALLY_PUBLISHED,
+    attributionMessage: attributionMessage({
+      project,
+      author,
+      fromCommit: Boolean(gitCommitSha),
+    }),
+  };
+};
+
+export const hasSource = ({ gitCommitSha, project, createdBy }) =>
+  Boolean(gitCommitSha || project || createdBy);

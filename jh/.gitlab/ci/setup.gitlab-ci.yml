@@ -1,0 +1,10 @@
+backup gems:
+  before_script:
+    - !reference [.default-utils-before_script, before_script]
+    - rm -rf jh
+    - source scripts/prepare_build.sh
+  variables:
+    BUNDLE_WITHOUT: ""
+    BUNDLE_WITH: "production:development:test"
+    SETUP_DB: "false"
+    BUNDLE_GEMFILE: Gemfile

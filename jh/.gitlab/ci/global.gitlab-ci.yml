@@ -1,0 +1,11 @@
+.default-before_script:
+  before_script:
+    - !reference [.default-utils-before_script, before_script]
+    - source jh/scripts/prepare_build.sh
+
+.cache-analytics:
+  after_script:
+    - |
+      source scripts/utils.sh
+      section_start "cache-analytics" "Uploading cache metrics"
+      section_end "cache-analytics"

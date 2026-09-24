@@ -1,0 +1,14 @@
+- if ::Gitlab::RealNameSystem.enabled?
+  - add_page_specific_style 'page_bundles/password_reset'
+
+  #js-reset-password{ data: { email_action: user_password_path, phone_action: edit_user_password_path } }
+
+  .clearfix.prepend-top-20
+    = render 'devise/shared/sign_in_link'
+
+  #email-recaptcha.hidden
+    - if recaptcha_enabled?
+      = recaptcha_tags nonce: content_security_policy_nonce
+
+- else
+  = render_ce 'devise/passwords/new'

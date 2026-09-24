@@ -1,0 +1,8 @@
+---
+name: ff_monorepo_topic_ci_trigger
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3305
+rollout_issue_url:
+milestone: "18.5"
+type: ops
+group: group::code review
+default_enabled: false

@@ -1,0 +1,2 @@
+= label_tag :country, s_('JH|Trial|Provinces'), class: 'col-form-label'
+= select_tag :country, options_for_select([[s_('JH|Trial|Please select a province'), '']]), class: 'select2 gl-transparent-pixel', required: true, id: 'country_select', data: { countries_end_point: provinces_path, selected_option: params[:country], qa_selector: 'country' }

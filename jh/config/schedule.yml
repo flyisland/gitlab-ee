@@ -1,0 +1,36 @@
+# JH Sidekiq Cron Jobs default schedules loaded by Gitlab::SidekiqConfig::CronJobs
+---
+
+expire_password_worker:
+  class: PasswordExpiration::SendNotificationEmailWorker
+  cron: "0 0 * * *"
+
+scan_free_trial_user_worker:
+  class: FreeTrial::ScanFreeTrialUserWorker
+  cron: "0 4 * * *"
+
+remove_free_trial_user_worker:
+  class: FreeTrial::RemoveFreeTrialUserWorker
+  cron: "0 4 * * *"
+
+subscriptions_storage_expired_notice_worker:
+  class: GitlabSubscriptions::StorageExpiredNoticeWorker
+  cron: "0 10 * * *"
+
+# Upstream GitLab.com PIPL lifecycle jobs must never run on JiHu SaaS.
+# Overrides the SaaS schedule with an explicit disabled status. Class and cron
+# are kept so the entries stay valid where the SaaS schedule is not loaded.
+block_pipl_users_worker:
+  class: ComplianceManagement::Pipl::BlockPiplUsersWorker
+  cron: "0 8 * * *"
+  status: disabled
+
+delete_pipl_users_worker:
+  class: ComplianceManagement::Pipl::DeletePiplUsersWorker
+  cron: "0 8 * * *"
+  status: disabled
+
+send_recurring_notifications_worker:
+  class: ComplianceManagement::Pipl::SendRecurringNotificationsWorker
+  cron: "0 7 * * *"
+  status: disabled

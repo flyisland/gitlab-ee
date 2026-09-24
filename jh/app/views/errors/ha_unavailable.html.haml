@@ -1,0 +1,26 @@
+- content_for(:title, '高可用架构不可用 / High Availability Architecture Unavailable')
+
+.error-container
+  = image_tag('illustrations/error/error-422-lg.svg', alt: '高可用架构 / High Availability Architecture', lazy: false)
+  %h1
+    高可用架构不可用 / High Availability Architecture Unavailable
+  %p{ style: 'text-align: left;' }
+    您当前实例订阅状态为极狐GitLab 基础版，并同时使用了专业版及旗舰版中的订阅功能"高可用架构"，请您购买新订阅。购买后，请
+    %a{ href: 'https://gitlab.cn/docs/jh/administration/license_file/#add-a-license-through-the-console' } 通过控制台添加购买的许可证
+    。
+    %br
+    Your current instance subscription is JiHu GitLab Free, but you are using the "High Availability Architecture" feature from paid subscription. Please purchase a new subscription. After purchase, please
+    %a{ href: 'https://gitlab.cn/docs/jh/administration/license_file/#add-a-license-through-the-console' } add the purchased license through the console
+    \.
+  %p{ style: 'text-align: left;' }
+    若您确认将继续使用极狐GitLab，并维持当前基础版订阅，则需要将部署架构改为"非高可用架构"，并且与当前实例版本保持一致。
+    请参考如下步骤：
+    %a{ href: 'https://gitlab.cn/docs/jh/administration/backup_restore/migrate_to_new_server' } 如何将极狐GitLab 从一台服务器迁移到另一台服务器
+    ，完成从高可用架构迁移至非高可用架构。
+    %br
+    If you confirm to continue using JiHu GitLab and maintain the current Free subscription, you need to change the deployment architecture to "non-high availability architecture" and keep it consistent with the current instance version. Please refer to the following steps:
+    %a{ href: 'https://gitlab.cn/docs/jh/administration/backup_restore/migrate_to_new_server' } How to migrate JiHu GitLab from one server to another
+    \, to complete the migration from high availability architecture to non-high availability architecture.
+  .action-container
+    = render Pajamas::ButtonComponent.new(variant: :confirm, href: 'https://gitlab.cn/pricing/') do
+      购买新订阅 / Purchase new subscription

@@ -1,0 +1,176 @@
+.if-merge-request: &if-merge-request
+  if: '$CI_MERGE_REQUEST_IID'
+
+.if-merge-request-stable-jh-patch: &if-merge-request-stable-jh-patch
+  if: '$CI_MERGE_REQUEST_IID && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^[\d-]+-stable-jh-patch-[\d-]+$/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^[\d-]+-stable-jh$/'
+
+.static-analysis:rules:static-analysis-as-if-foss:
+  rules:
+    - <<: *if-merge-request
+      when: never
+
+.review:rules:danger:
+  rules:
+    - <<: *if-merge-request-stable-jh-patch
+      when: never
+    - <<: *if-merge-request
+
+.review:rules:danger-local:
+  rules:
+    - <<: *if-merge-request-stable-jh-patch
+      when: never
+
+.only-jh-check:rules:
+  rules:
+    - <<: *if-merge-request-stable-jh-patch
+      when: never
+    - <<: *if-merge-request
+
+# .code-patterns + .backstage-patterns
+.code-backstage-patterns: &code-backstage-patterns
+  - ".{gitattributes,nvmrc,prettierrc,stylelintrc,yamllint}"
+  - "eslint.config.mjs"
+  - ".eslint_todo/*.mjs"
+  - ".browserslistrc"
+  - ".stylelintrc"
+  - "{,ee/,jh/}{app,bin,config,db,elastic,generator_templates,gems,haml_lint,lib,locale,public,scripts,sidekiq_cluster,storybook,symbol,vendor}/**/*"
+  - "{,jh/}Gemfile{,.lock}"
+  - "{,jh/}Gemfile.next{,.lock}"
+  - "{package.json,yarn.lock}"
+  - "*_VERSION"
+  - "babel.config.js"
+  - "vite.config.js"
+  - "config.ru"
+  - "Dockerfile.assets"
+  - "jest.config.{base,integration,unit}.js"
+  - "keeps/**/*"
+  - "Rakefile"
+  - "tests.yml"
+  - "vendor/assets/**/*"
+  # Auto-generated files
+  - "doc/api/graphql/reference/*"
+  # CI changes
+  - "{,jh/}.gitlab-ci.yml"
+  - "{,jh/}.gitlab/ci/**/*"
+  # Mapped patterns (see tests.yml)
+  - "data/whats_new/*.yml"
+  - "doc/_index.md"
+  - "doc/api/settings.md"
+  # Backstage changes
+  - "Dangerfile"
+  - "danger/**/*"
+  - "{,ee/,jh/}fixtures/**/*"
+  - "{,ee/,jh/}rubocop/**/*"
+  - "scripts/**/*"
+  - "tooling/**/*"
+  - "{,ee/,jh/}spec/{support,factories,fixtures,tooling/fixtures}/**/*"
+  - "{,ee/,jh/}spec/{*.rb,.rspec}"
+  # FE island changes
+  - "ee/frontend_islands/{apps,packages}/**/package.json"
+  - "ee/frontend_islands/{apps,packages}/**/tsconfig*.json"
+  - "ee/frontend_islands/apps/**/*.config.{js,ts,cjs,mjs}"
+  - "ee/frontend_islands/apps/**/components.json"
+  - "ee/frontend_islands/packages/**/index.{js,json}"
+
+.rails:rules:rspec-predictive:
+  rules:
+    - <<: *if-merge-request-stable-jh-patch
+      when: never
+    - if: '($CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_EVENT_TYPE != "merge_train") && ($CI_MERGE_REQUEST_LABELS =~ /pipeline::expedited/ || $CI_MERGE_REQUEST_LABELS =~ /pipeline:expedite/)'
+      when: never
+    - if: '($CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_EVENT_TYPE != "merge_train") && $CI_MERGE_REQUEST_LABELS =~ /pipeline::tier-[23]/'
+      when: never
+    - if: '($CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_EVENT_TYPE != "merge_train") && ($CI_MERGE_REQUEST_SOURCE_BRANCH_NAME == "release-tools/update-gitaly" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /stable-(ee|jh)$/)'
+      when: never
+    - if: '($CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_EVENT_TYPE != "merge_train") && $CI_PROJECT_NAMESPACE == "gitlab-org/security"'
+      when: never
+    - if: '($CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_EVENT_TYPE != "merge_train") && $CI_MERGE_REQUEST_LABELS =~ /pipeline:run-all-rspec/'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_EVENT_TYPE != "merge_train"'
+      changes: *code-backstage-patterns
+
+.project-template-check:rules:
+  rules:
+    - if: $GITLAB_USER_NAME == "JH_SYNC_TOKEN" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+##############
+# Conditions #
+##############
+
+.if-jh-schedule: &if-jh-schedule
+  # Example of these projects:
+  # https://jihulab.com/gitlab-cn/gitlab
+  # https://gitlab.com/gitlab-org-sandbox/gitlab-jh-validation
+  if: '($CI_PROJECT_PATH =~ /^gitlab-(jh|cn)\/.*/ || $CI_PROJECT_NAME =~ /^gitlab-jh/) && $CI_PIPELINE_SOURCE == "schedule"'
+
+.if-not-jh: &if-not-jh
+  if: '$CI_PROJECT_NAMESPACE != "gitlab-cn"'
+
+.not-run-if-jh:
+  rules:
+    - if: $CI_PROJECT_NAMESPACE == "gitlab-cn"
+      when: never
+
+.if-jh-merge-request: &if-jh-merge-request
+  if: '$CI_SERVER_HOST == "jihulab.com" && $CI_PROJECT_NAMESPACE == "gitlab-cn" && ($CI_MERGE_REQUEST_EVENT_TYPE == "merged_result" || $CI_MERGE_REQUEST_EVENT_TYPE == "detached")'
+
+
+.if-merge-request-labels-run-all-rspec: &if-merge-request-labels-run-all-rspec
+  if: '$CI_MERGE_REQUEST_LABELS =~ /pipeline:run-all-rspec/'
+
+.if-merge-request-labels-run-review-app: &if-merge-request-labels-run-review-app
+  if: '$CI_MERGE_REQUEST_LABELS =~ /pipeline:run-review-app/'
+#######################
+# Vendored gems rules #
+#######################
+.vendor:rules:omniauth-cas3:
+  rules:
+    - <<: *if-merge-request
+      changes: ["jh/vendor/gems/omniauth-cas3/**/*"]
+    - <<: *if-merge-request-labels-run-all-rspec
+
+######################
+# Build images rules #
+######################
+
+.jh:build-images:rules:build-qa-image:
+  rules:
+    - <<: *if-jh-schedule
+      variables:
+        ARCH: amd64,arm64
+    - <<: *if-not-jh
+      when: never
+    - !reference [".build-images:rules:build-qa-image", "rules"]
+
+######################
+# Review app rules #
+######################
+
+.qa:rules:determine-e2e-tests:
+  rules:
+    - <<: *if-merge-request-labels-run-review-app
+
+
+setup-test-env:
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH'
+    - !reference [".rails:rules:setup-test-env", "rules"]
+
+
+.openapi:rules:openapi-check_docs:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+# SKIP on jh
+.db:rules:invalidate-old-pipeline-results:
+  rules:
+    - <<: *if-merge-request
+      when: never
+
+.permissions:rules:permissions-verify:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+.frontend:rules:generate-js-routes:
+  rules:
+    - when: always

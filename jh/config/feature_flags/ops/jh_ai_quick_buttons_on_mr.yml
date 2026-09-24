@@ -1,0 +1,7 @@
+---
+name: jh_ai_quick_buttons_on_mr
+feature_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/5016
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3414
+milestone: '18.7'
+type: ops
+default_enabled: false

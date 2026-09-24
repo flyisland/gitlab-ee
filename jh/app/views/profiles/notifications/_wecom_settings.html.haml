@@ -1,0 +1,9 @@
+-# Only offered once the instance can actually deliver to WeCom.
+- return unless ::Gitlab::Wecom::App.notifications_available?
+
+.form-group
+  = render Pajamas::CheckboxTagComponent.new(name: 'user[wecom_notifications_enabled]',
+    checked: ::JH::Users::WecomNotification.enabled_for?(current_user),
+    checkbox_options: { class: 'js-wecom-notifications-enabled' }) do |c|
+    - c.with_label { s_('JH|WeCom|Also send notifications to my WeCom account') }
+    - c.with_help_text { s_('JH|WeCom|Requires a bound WeCom account. Notifications follow your existing notification settings.') }

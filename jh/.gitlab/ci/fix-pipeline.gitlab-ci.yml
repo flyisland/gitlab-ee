@@ -1,0 +1,41 @@
+.fix-pipeline-base:
+  stage: post-test
+  allow_failure: true
+  timeout: 3h
+  resource_group: jh-fix-pipeline
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "pre-main-jh" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^fix-pipeline-[0-9]{8}-auto$/'
+      when: manual
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH =~ /^fix-pipeline-[0-9]{8}-auto$/'
+      when: manual
+    - if: '$CI_COMMIT_BRANCH == "pre-main-jh"'
+      when: manual
+  variables:
+    FAIL_PIPELINE_PATH: "$CI_PROJECT_DIR/tmp/failed-pipelines"
+    FIX_PIPELINE_DIR: "$CI_PROJECT_DIR/jh/scripts/fix-pipeline"
+    ALLOW_AUTO_PUSH: "true"
+  script:
+    - source scripts/utils.sh
+    - section_start "fix-pipeline" "JH fix-pipeline"
+    - bash "$FIX_PIPELINE_DIR/run.sh"
+    - section_end "fix-pipeline"
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - tmp/failed-pipelines/
+      - jh/scripts/fix-pipeline/logs/
+
+sync-pre-main-jh-conflict:
+  extends:
+    - rspec-jh integration pg17
+    - .fix-pipeline-base
+
+sync-pre-main-jh-conflict-minimal:
+  extends:
+    - .static-analysis-base
+    - .ruby-cache
+    - .fix-pipeline-base
+  interruptible: false
+  variables:
+    FIX_PIPELINE_SKIP_RUNTIME_VERIFY: "true"

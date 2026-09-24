@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-10T14:15:28Z",
+  "entries": {
+    "doc/administration/cicd/_index.md": {
+      "blob": "f4d3c31d9140ae43a5045a3f87633fc58ba7bf14",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "fac5c196e5de15d02ec3ca46bf490eca855dd6bc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/diff_limits.md": {
+      "blob": "0ed04fb2bb38ffbb8a68ae66cf322ec775a283c2",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "0310a7cdfa62863a16b8387775abcafffd8cbbfd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/git_http_rate_limits.md": {
+      "blob": "af66df4aa3ccbd6dad7ad22a2486b2d902c69ea5",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "0ff7d47f4846f7a979d49fdcf561eab41bf720be",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/git_lfs_rate_limits.md": {
+      "blob": "0416d15d62d5626f3e0a75656c4f2e65b181398f",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "e5a3a4095ba1234e1b8fc4f28cc3b6776cfdae5b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/graphql/_index.md": {
+      "blob": "4ee218e702a1291bc2d29bd3a84cc6f762313238",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "815b2c927ae7bf3bba5fb5fbbd404c59320e7db9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/group_import_export.md": {
+      "blob": "0160778357c0e893c66b7270d665f1466aad61b3",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "67408447cea2e834305951864700aceb65de3ffc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/project_import_export.md": {
+      "blob": "0621b91c3ca4e9aae68fb9eb0393aa1005a42600",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "38d331ff37b22f6758899d9c0337379fda5e19cf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/rest/_index.md": {
+      "blob": "37f973879ccdbc0c5db7acee3be2c58d8b7eb595",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "55e8caad62ac5a9cbe7f6edd47b2fe34d4d44d8b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/unit_test_reports.md": {
+      "blob": "90ed817aa935c0455f030c57375938fb4f2ef6a6",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "426202de6fe45d2bb21d6a81ab234a8dd7052a88",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/variables/dotenv_variables.md": {
+      "blob": "d2fdc5809df73feea26035b06589c0f365a08437",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "dbc1ca441ea8763946c3db5aa7304fba55b31787",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "f984472283e5e862ceaf64115044a0faaff61367",
+  "version": 2
+}

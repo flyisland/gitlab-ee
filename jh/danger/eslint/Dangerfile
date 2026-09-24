@@ -1,0 +1,31 @@
+# frozen_string_literal: true
+
+def get_eslint_files(files)
+  files.select do |file|
+    file.end_with?('.js', '.vue') &&
+      File.read(file).include?('/* eslint-disable')
+  end
+end
+
+eslint_candidates = get_eslint_files(helper.all_changed_files)
+
+return if eslint_candidates.empty?
+
+warn '此合并请求修改的文件中包含被禁用的 eslint 规则，请修正。'
+
+if helper.ci?
+  markdown(<<~MARKDOWN)
+    ## 禁用的 eslint 规则
+
+    以下文件检测到被禁用的 eslint 规则，请修正：
+
+    * #{eslint_candidates.map { |path| "`#{path}`" }.join("\n* ")}
+
+    执行以下命令获得更多信息
+
+    ```
+    node_modules/.bin/eslint --report-unused-disable-directives --no-inline-config \\
+    #{eslint_candidates.map { |path| "  '#{path}'" }.join(" \\\n")}
+    ```
+  MARKDOWN
+end

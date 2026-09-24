@@ -1,0 +1,1590 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gitlab-jh\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "About GitLab"
+msgstr "极狐(GitLab)官网"
+
+msgid "AdminSelfHostedModels|Manage GitLab Duo by configuring and assigning self-hosted models to AI-native features."
+msgstr "通过配置并分配自托管模型到 AI 原生功能来管理 GitLab Duo。"
+
+msgid "AdminSettings|To help improve GitLab and its user experience, GitLab periodically collects usage information. %{link_start}What information is shared with GitLab Inc.?%{link_end}%{br}%{br}Benefits of enabling Service Ping:%{br}• Get access to DevOps Score for your instance%{br}• Get insights and advice to maximize the value of your GitLab investment%{br}• Analyze your instance usage over time%{br}%{benefits_link_start}Learn more about the benefits of Service Ping%{link_end}"
+msgstr "为了帮助改进极狐GitLab 及提升用户体验，极狐GitLab 将定期收集使用信息。%{link_start}与极狐(GitLab) 共享哪些信息？%{link_end}%{br}%{br}启用 Service Ping 的好处：%{br}• 获取你实例的 DevOps Score 访问权限%{br}• 获取洞察和建议，最大化你的极狐GitLab 投资价值%{br}• 分析你的实例使用情况随时间的变化%{br}%{benefits_link_start}了解有关 Service Ping 的更多信息%{link_end}"
+
+msgid "BillingPlans|For scaling organizations seeking enhanced productivity and collaboration."
+msgstr "适用于追求更高生产力与协作效率的规模化组织。"
+
+msgid "BillingPlan|Upgrade"
+msgstr "升级"
+
+msgid "CodeSuggestions|A code snippet must be passable to the AI-gateway for users to utilize GitLab Duo in their IDE."
+msgstr "用户必须能将代码片段传递给 AI 网关，才能在 IDE 中使用 GitLab Duo。"
+
+msgid "CodeSuggestions|Not operational. Resolve issues to use GitLab Duo."
+msgstr "不可用。请解决问题以使用 GitLab Duo。"
+
+msgid "Contribute to GitLab"
+msgstr "为极狐GitLab 提交贡献"
+
+msgid "Country or region"
+msgstr "国家或地区"
+
+msgid "Discover|GitLab will perform static and dynamic tests on the code of your application, looking for known flaws and report them in the merge request so you can fix them before merging."
+msgstr "极狐GitLab 将对您的应用程序代码执行静态和动态测试，查找已知缺陷并在合并请求中报告这些缺陷，以便您可以在合并之前修复它们。"
+
+msgid "DuoCodeReview|:warning: Something went wrong while GitLab Duo was generating a code review summary."
+msgstr ":warning: 生成代码审查摘要时，出了一些问题。"
+
+msgid "DuoCoreTrialDiscover|Why GitLab Premium with Duo?"
+msgstr "为什么选择 GitLab Premium 搭配 Duo？"
+
+msgid "GitLab"
+msgstr "极狐GitLab"
+
+msgid "GitLab Enterprise Edition"
+msgstr "极狐GitLab"
+
+msgid "GitLab informs you if a new version is available. %{link_start}What information does GitLab Inc. collect?%{link_end}"
+msgstr "极狐GitLab 会通知您是否有新版本可用。%{link_start}极狐(GitLab) 收集哪些信息？%{link_end}"
+
+msgid "GitLab is free to use. Many features for larger teams are part of our %{link_start}paid products%{link_end}. You can try Ultimate for free without any obligation or payment details."
+msgstr "大型团队的许多功能是我们 %{link_start}付费产品%{link_end} 的一部分，您可以免费试用旗舰版。"
+
+msgid "HelloMessage|%{handshake_emoji} Contribute to GitLab: %{contribute_link}"
+msgstr "%{handshake_emoji} 向极狐GitLab 贡献代码：%{contribute_link}"
+
+msgid "HelloMessage|%{magnifier_emoji} Create a new GitLab issue: %{new_issue_link}"
+msgstr "%{magnifier_emoji} 创建一个新的议题：%{new_issue_link}"
+
+msgid "HelloMessage|%{rocket_emoji} We like your curiosity! Help us improve GitLab by joining the team: %{jobs_page_link}"
+msgstr "%{rocket_emoji} 我们喜欢您的好奇心！通过加入团队来帮助我们改进：%{jobs_page_link}"
+
+msgid "HelloMessage|Does this page need fixes or improvements? Open an issue or contribute a merge request to help make GitLab more lovable. At GitLab, everyone can contribute!"
+msgstr "此页面需要修复或改进吗？打开一个议题或贡献一个合并请求，每个人都可以做出贡献！"
+
+msgid "HelloMessage|Welcome to GitLab!"
+msgstr "欢迎使用极狐GitLab！"
+
+msgid "I'm sorry, Duo Chat agent reached the limit before finding an answer for your question. Please try a different prompt or clear your conversation history with /clear."
+msgstr "抱歉，Duo Chat 代理在找到你问题的答案前已达到限制。请尝试不同的提示或使用 /clear 清除会话历史。"
+
+msgid "If you are unable to sign in or recover your password, contact a GitLab administrator."
+msgstr "如果您无法登录或恢复密码，请联系管理员。"
+
+msgid "InProductMarketing|Want to host GitLab on your servers?"
+msgstr "想在您的服务器上托管极狐GitLab？"
+
+msgid "JH|%d effective line"
+msgid_plural "JH|%d effective lines"
+msgstr[0] "%d 有效行"
+msgstr[1] "%d 有效行"
+
+msgid "JH|%d line"
+msgid_plural "JH|%d lines"
+msgstr[0] "%d 行"
+msgstr[1] "%d 行"
+
+msgid "JH|2,399"
+msgstr "2,399"
+
+msgid "JH|499"
+msgstr "499"
+
+msgid "JH|9,988"
+msgstr "9,988"
+
+msgid "JH|A demo project showing how DongTai IAST integrates into DevOps for detecting vulnerabilities"
+msgstr "使用洞态IAST扫描应用漏洞的模板项目"
+
+msgid "JH|Access denied"
+msgstr "拒绝访问"
+
+msgid "JH|Access token cannot be blank."
+msgstr "访问令牌不能为空。"
+
+msgid "JH|Access token is invalid or expired."
+msgstr "访问令牌无效或已过期。"
+
+msgid "JH|Account|Account deletion warning"
+msgstr "账号删除警告"
+
+msgid "JH|Account|Updated at %{updatedAt}"
+msgstr ""
+
+msgid "JH|Account|Your free usage at jihulab.com will end in 1 day. Please consider to %{subscribeLinkStart}upgrade to a paid plan%{subscribeLinkEnd} before that date to avoid account being blocked."
+msgid_plural "JH|Account|Your free usage at jihulab.com will end in %{days} days. Please consider to %{subscribeLinkStart}upgrade to a paid plan%{subscribeLinkEnd} before that date to avoid account being blocked."
+msgstr[0] "您的 jihulab.com 免费试用将于 %{days} 天内到期，建议您在到期前%{subscribeLinkStart}升级到付费计划%{subscribeLinkEnd}，以免账户被禁用。"
+msgstr[1] "您的 jihulab.com 免费试用将于 %{days} 天内到期，建议您在到期前%{subscribeLinkStart}升级到付费计划%{subscribeLinkEnd}，以免账户被禁用。"
+
+msgid "JH|Account|Your free usage at jihulab.com will end in 1 day. Please consider to %{subscribeLinkStart}upgrade to a paid plan%{subscribeLinkEnd} if you need to continue to use your account after that."
+msgid_plural "JH|Account|Your free usage at jihulab.com will end in %{days} days. Please consider to %{subscribeLinkStart}upgrade to a paid plan%{subscribeLinkEnd} if you need to continue to use your account after that."
+msgstr[0] "您的 jihulab.com 免费试用将于 %{days} 天内到期。如您需要在 %{days} 天后继续访问您的账户，请%{subscribeLinkStart}升级到付费计划%{subscribeLinkEnd}。"
+msgstr[1] "您的 jihulab.com 免费试用将于 %{days} 天内到期。如您需要在 %{days} 天后继续访问您的账户，请%{subscribeLinkStart}升级到付费计划%{subscribeLinkEnd}。"
+
+msgid "JH|AdminSettings|Disable download source code button"
+msgstr "移除下载源代码按钮"
+
+msgid "JH|AdminSettings|Download source code button"
+msgstr "下载源代码按钮"
+
+msgid "JH|An error occurred while validating email"
+msgstr ""
+
+msgid "JH|Authenticate with Gitee"
+msgstr "使用 Gitee 身份验证"
+
+msgid "JH|Average Commits Per User"
+msgstr "人均提交次数"
+
+msgid "JH|Back to home"
+msgstr "返回首页"
+
+msgid "JH|BillingPlans|%{plan_name} Plan"
+msgstr "%{plan_name}"
+
+msgid "JH|BillingPlans|10,000 compute minutes per month"
+msgstr "每月 10,000 分钟计算时间"
+
+msgid "JH|BillingPlans|2,000 compute minutes per month"
+msgstr "每月 2,000 分钟计算时间"
+
+msgid "JH|BillingPlans|2000 CI/CD minutes per month"
+msgstr "每月 2000 分钟 CI/CD"
+
+msgid "JH|BillingPlans|AI empowered intelligent programming and DevOps"
+msgstr "AI 加持，智能编程 & DevOps 流程处理"
+
+msgid "JH|BillingPlans|Application Security Testing"
+msgstr "应用安全测试"
+
+msgid "JH|BillingPlans|Credits"
+msgstr "额度"
+
+msgid "JH|BillingPlans|Credits/user"
+msgstr "额度/用户"
+
+msgid "JH|BillingPlans|Everything from Free, plus:"
+msgstr "包括基础版的一切，另外："
+
+msgid "JH|BillingPlans|Everything from Premium, plus:"
+msgstr "包括专业版的一切，另外："
+
+msgid "JH|BillingPlans|Explore plans"
+msgstr "探索方案"
+
+msgid "JH|BillingPlans|For individuals working on personal projects and open source contributions."
+msgstr "适用于从事个人项目和开源贡献的个人。"
+
+msgid "JH|BillingPlans|For scaling organizations seeking enhanced productivity and collaboration."
+msgstr "适用于追求更高生产力与协作效率的规模化组织。"
+
+msgid "JH|BillingPlans|GitLab Credits"
+msgstr "GitLab Credits"
+
+msgid "JH|BillingPlans|GitLab Credits - Monthly committed pool"
+msgstr "GitLab Credits - 月度承诺额度池"
+
+msgid "JH|BillingPlans|GitLab Duo Agent Platform"
+msgstr "GitLab Duo 智能体平台"
+
+msgid "JH|BillingPlans|GitLab Free"
+msgstr "GitLab 基础版"
+
+msgid "JH|BillingPlans|Increase credits"
+msgstr "增加额度"
+
+msgid "JH|BillingPlans|Learn more"
+msgstr "了解更多"
+
+msgid "JH|BillingPlans|Learn more about each plan by reading our %{faq_link}, or start a free 30-day trial of GitLab.com Ultimate."
+msgstr "可以阅读%{faq_link}了解更多付费方案细节，或者开始为期30天的旗舰版试用。"
+
+msgid "JH|BillingPlans|Manage seats"
+msgstr "管理席位"
+
+msgid "JH|BillingPlans|Per user/month"
+msgstr "每用户/每年"
+
+msgid "JH|BillingPlans|Premium"
+msgstr "专业版"
+
+msgid "JH|BillingPlans|Purchase credits"
+msgstr "购买额度"
+
+msgid "JH|BillingPlans|Purchase monthly credits for your group and unlock AI capabilities."
+msgstr "为您的群组购买每月额度，解锁 AI 能力。"
+
+msgid "JH|BillingPlans|Recommended"
+msgstr "推荐"
+
+msgid "JH|BillingPlans|Seats in use"
+msgstr "使用中的席位"
+
+msgid "JH|BillingPlans|See all features"
+msgstr "查看全部功能"
+
+msgid "JH|BillingPlans|Software Supply Chain Security"
+msgstr "软件供应链安全"
+
+msgid "JH|BillingPlans|Start free with advanced enterprise security and compliance, no credit card required."
+msgstr "免费开启先进的企业级安全与合规。"
+
+msgid "JH|BillingPlans|Talk to sales"
+msgstr "联系销售"
+
+msgid "JH|BillingPlans|Team"
+msgstr "团队版"
+
+msgid "JH|BillingPlans|Team Project Management"
+msgstr "团队项目管理"
+
+msgid "JH|BillingPlans|These credits are included in your trial, and provide access to AI features. To maintain access after your trial, purchase monthly credits for your group, starting at $0.95, with volume discounts available."
+msgstr "这些额度包含在您的试用中，可用于访问 AI 功能。试用结束后如需继续使用，请为您的群组购买每月额度，起价为 $0.95，量大可享折扣。"
+
+msgid "JH|BillingPlans|Try for free"
+msgstr "免费试用"
+
+msgid "JH|BillingPlans|Ultimate"
+msgstr "旗舰版"
+
+msgid "JH|BillingPlans|Unlimited licensed users"
+msgstr "无限制授权用户"
+
+msgid "JH|BillingPlans|Up to 10 users per top-level group"
+msgstr "每个顶级组 10 个用户"
+
+msgid "JH|BillingPlans|Upgrade subscription"
+msgstr "升级订阅"
+
+msgid "JH|BillingPlans|Upgrade to Premium"
+msgstr "升级到专业版"
+
+msgid "JH|BillingPlans|Upgrade to Team"
+msgstr "升级到团队版"
+
+msgid "JH|BillingPlans|Upgrade to Ultimate"
+msgstr "升级到旗舰版"
+
+msgid "JH|BillingPlans|Vulnerability Management"
+msgstr "漏洞管理"
+
+msgid "JH|BillingPlans|Your GitLab.com %{plan} trial will %{strong_open}expire after %{expiration_date}%{strong_close}. You can retain access to the %{plan} features by upgrading below."
+msgstr "您的%{plan}试用将在%{strong_open}%{expiration_date}过期%{strong_close}。您可以通过以下方式升级以保留对%{plan}功能的访问权限。"
+
+msgid "JH|BillingPlans|Your GitLab.com trial expired on %{expiration_date}. You can restore access to the features at any time by upgrading below."
+msgstr "您的试用已于%{expiration_date}到期。您可以通过以下升级随时恢复对功能的访问。"
+
+msgid "JH|BillingPlans|Your group is on %{planName}"
+msgstr "您的群组正在使用 %{planName}"
+
+msgid "JH|BillingPlans|Your monthly credit commitment is shared across all members of the group. Credits reset at the start of each billing cycle."
+msgstr "您的每月额度承诺由群组所有成员共享。额度在每个计费周期开始时重置。"
+
+msgid "JH|BillingPlans|a trial of GitLab Ultimate"
+msgstr "GitLab 旗舰版试用"
+
+msgid "JH|BillingPlans|frequently asked questions"
+msgstr "常见问题"
+
+msgid "JH|BillingPlans|per user/year"
+msgstr "每用户/每年"
+
+msgid "JH|BillingPlans|yearly"
+msgstr "每年"
+
+msgid "JH|CHAT_MESSAGE|%{project_link} with job %{deployment_link} by %{user_link}"
+msgstr "项目 %{project_link} 中 %{user_link} 触发任务 %{deployment_link}"
+
+msgid "JH|CHAT_MESSAGE|%{username} %{action} %{wiki_page_link} (%{diff_link}) in %{project_link}: *%{title}*"
+msgstr "%{username} 在项目 %{project_link} 中%{action} %{wiki_page_link} (%{diff_link}): *%{title}*"
+
+msgid "JH|CHAT_MESSAGE|%{username} %{action} in %{project_link}: *%{title}*"
+msgstr "%{username} 在项目 %{project_link} 中%{action}: *%{title}*"
+
+msgid "JH|CHAT_MESSAGE|%{username} %{state_or_action_text} merge request %{merge_request_link} in %{project_link}"
+msgstr "%{username} 在项目 %{project_link} 中的合并请求 %{merge_request_link} %{state_or_action_text}"
+
+msgid "JH|CHAT_MESSAGE|%{username} pushed new %{ref_type} %{ref_link} to %{project_link}"
+msgstr "%{username} 已推送新%{ref_type} %{ref_link} 到项目 %{project_link}"
+
+msgid "JH|CHAT_MESSAGE|%{username} pushed to %{ref_type} %{ref_link} of %{project_link} (%{compare_link})"
+msgstr "%{username} 已推送%{ref_type} %{ref_link} 到项目 %{project_link} (%{compare_link})"
+
+msgid "JH|CHAT_MESSAGE|%{username} removed %{ref_type} %{ref} from %{project_link}"
+msgstr "%{username} 在项目 %{project_link} 中已删除%{ref_type} %{ref}"
+
+msgid "JH|CHAT_MESSAGE|Alert firing in %{project_link}"
+msgstr "项目 %{project_link} 发生告警"
+
+msgid "JH|CHAT_MESSAGE|At most %{number} commits of the merge request are listed for your reference."
+msgstr "合并请求中最多能显示 %{number} 个提交"
+
+msgid "JH|CHAT_MESSAGE|Content length exceeds maximum allowed to display."
+msgstr "内容超出允许显示的范围"
+
+msgid "JH|CHAT_MESSAGE|Deploy to %{environment} %{status}"
+msgstr "环境 %{environment} 部署%{status}"
+
+msgid "JH|CHAT_MESSAGE|JiHu GitLab Notification"
+msgstr "极狐GitLab 通知"
+
+msgid "JH|CHAT_MESSAGE|Starting deploy to %{environment}"
+msgstr "环境 %{environment} 部署已开始"
+
+msgid "JH|CHAT_MESSAGE|Vulnerability detected in %{project_link}"
+msgstr "在项目 %{project_link} 中发现漏洞"
+
+msgid "JH|CHAT_MESSAGE|[%{project_link}] Issue %{issue_link} **%{state}** by %{username}"
+msgstr "项目 %{project_link} 中 %{username} **%{state}** 议题 %{issue_link}"
+
+msgid "JH|CHAT_MESSAGE|added their approval to"
+msgstr "添加批准"
+
+msgid "JH|CHAT_MESSAGE|removed their approval from"
+msgstr "删除批准"
+
+msgid "JH|CHAT_MESSAGE|scheduled"
+msgstr "已列入计划"
+
+msgid "JH|CHAT_MESSAGE|unapproved"
+msgstr "未经批准"
+
+msgid "JH|Captcha|Please click here to finish the verification"
+msgstr "点击完成身份验证"
+
+msgid "JH|Captcha|There was an error with the captcha. Please try again."
+msgstr "验证码加载出错，请重试。"
+
+msgid "JH|Captcha|Verification finished"
+msgstr "身份验证已完成"
+
+msgid "JH|Captcha|Verifying"
+msgstr "正在验证"
+
+msgid "JH|Chatops|%{platform_name} Integration for Saas is coming soon."
+msgstr "%{platform_name} SaaS 的集成即将推出"
+
+msgid "JH|Chatops|%{platform_name} bot is deactivated. Please upgrade your JiHu GitLab to Premium Plan"
+msgstr "%{platform_name} 机器人已停用。请将您的极狐GitLab 升级到专业版。"
+
+msgid "JH|Chatops|Click to process"
+msgstr "点击处理"
+
+msgid "JH|Chatops|Closed"
+msgstr ""
+
+msgid "JH|Chatops|Failed to apply quick commands."
+msgstr ""
+
+msgid "JH|Chatops|Failed to create the comment:"
+msgstr ""
+
+msgid "JH|Chatops|I cannot find any issue related to %{query}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot find the project %{path}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot found target project %{path}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot move closed issue %{iid}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot not find the issue %{iid}"
+msgstr ""
+
+msgid "JH|Chatops|I cannot understand your command. Type \"@(bot name) help\" to view all commands."
+msgstr ""
+
+msgid "JH|Chatops|I cannot understand your command. Type \"help\" to view all commands."
+msgstr ""
+
+msgid "JH|Chatops|Issue %{iid} is already closed."
+msgstr ""
+
+msgid "JH|Chatops|Message verification failed. Please check your settings of %{platform_name} Integration in JiHu GitLab."
+msgstr "消息验证失败。请检查您在极狐GitLab 中的 %{platform_name} 集成设置。"
+
+msgid "JH|Chatops|Open"
+msgstr ""
+
+msgid "JH|Chatops|Please connect your JiHu GitLab account"
+msgstr "请关联您的极狐GitLab 账户"
+
+msgid "JH|Chatops|Please contact your administrator to enable %{integration} in Admin - Settings - General"
+msgstr "请联系您的管理员在管理员 - 设置 - 通用中启用 %{integration}"
+
+msgid "JH|Chatops|Please contact your administrator to enable %{integration} in Admin - Settings - Integration"
+msgstr "请联系您的管理员在管理员 - 设置 - 集成中启用 %{integration}"
+
+msgid "JH|Chatops|Please enable the \"%{feature_name}\" feature flag in JiHu GitLab."
+msgstr "请在极狐GitLab 中启用 %{feature_name} 功能标志。"
+
+msgid "JH|Chatops|Sorry, this chat service is currently not supported by JiHu GitLab ChatOps."
+msgstr ""
+
+msgid "JH|Chatops|The command could not be scheduled. Please confirm the \".gitlab-ci.yml\" file defines a job with the name %{command}."
+msgstr ""
+
+msgid "JH|Chatops|You are not allowed to perform bot commands."
+msgstr ""
+
+msgid "JH|Chatops|You need to connect your JiHu GitLab account before performing bot commands."
+msgstr "在执行机器人命令之前，您需要关联您的极狐GitLab 账户。"
+
+msgid "JH|Chatops|Your JiHu GitLab user account is locked. Please unlock it before performing bot commands."
+msgstr ""
+
+msgid "JH|Checking email availability..."
+msgstr "检查邮箱是否可用..."
+
+msgid "JH|Checking username availability..."
+msgstr ""
+
+msgid "JH|Checkout|Could not get the data properly"
+msgstr ""
+
+msgid "JH|Checkout|Please try and refresh the page. If the problem persists please contact support."
+msgstr ""
+
+msgid "JH|CiComponents|Add CI components"
+msgstr "添加流水线组件"
+
+msgid "JH|CiComponents|Add component"
+msgstr "添加组件"
+
+msgid "JH|CiComponents|Add components"
+msgstr "添加组件"
+
+msgid "JH|CiComponents|Add field"
+msgstr "添加字段"
+
+msgid "JH|CiComponents|CI component"
+msgstr "流水线组件"
+
+msgid "JH|CiComponents|Component reference"
+msgstr "组件引用"
+
+msgid "JH|CiComponents|For correctly include component references, you may refer to the CI component documentation. %{linkStart}Learn more%{linkEnd}"
+msgstr "为了正确引用组件, 你可以参考流水线组件文档。%{linkStart}了解更多%{linkEnd}"
+
+msgid "JH|CiComponents|Inputs"
+msgstr "流水线组件参数"
+
+msgid "JH|ContentValidation|According to the relevant laws and regulations, this content is not displayed."
+msgstr "根据相关法律政策，该内容无法显示。"
+
+msgid "JH|ContentValidation|According to the relevant laws and regulations, this content is not displayed. If you believe this was a miscalculation, please email usersupport@gitlab.cn to appeal. We will process your appeal within 24 hours (working days) and send the result to your registered email address, please pay attention to it. Thank you for your understanding and support."
+msgstr "根据相关法律政策，该内容无法显示。如果您认为这是一个误判，请发送邮件至 usersupport@gitlab.cn 进行申诉。我们会在 24 小时内（工作日）处理您的申诉并向您的注册邮箱发送处理结果，请您关注。感谢您对我们的理解和支持。"
+
+msgid "JH|ContentValidation|According to the relevant laws and regulations, this content is not displayed. To appeal, please click"
+msgstr "根据相关法律政策，该内容无法显示。如需申诉，请点击"
+
+msgid "JH|ContentValidation|An error occurred while submitting appeal"
+msgstr "提交申诉时发生错误"
+
+msgid "JH|ContentValidation|Appeal"
+msgstr "申诉"
+
+msgid "JH|ContentValidation|Appeal submitted"
+msgstr "申诉成功"
+
+msgid "JH|ContentValidation|Appealing Target"
+msgstr "申诉对象"
+
+msgid "JH|ContentValidation|Configure Content Validation Service"
+msgstr "内容安全检测服务配置"
+
+msgid "JH|ContentValidation|Content Validation"
+msgstr "内容安全检测"
+
+msgid "JH|ContentValidation|Content Validation API key"
+msgstr "内容安全检测服务的API key"
+
+msgid "JH|ContentValidation|Content Validation Service"
+msgstr "内容安全检测服务"
+
+msgid "JH|ContentValidation|Enable Content Validation via external API endpoint"
+msgstr "开启内容安全检测服务"
+
+msgid "JH|ContentValidation|Illegal content"
+msgstr "违规内容"
+
+msgid "JH|ContentValidation|Illegal contents are detected in your project %{project_name}"
+msgstr "%{project_name} 项目发现违规内容"
+
+msgid "JH|ContentValidation|Illegal contents are detected in your project %{project_path} after its visibility is changed from “Private” to “Public”. The project visibility is restored to “Private”. "
+msgstr "你管理的 %{project_path} 项目可见性从“私有”变更为“公开”后，经检测发现存在违规内容，现已恢复可见性为“私有”。"
+
+msgid "JH|ContentValidation|Repository"
+msgstr "仓库"
+
+msgid "JH|ContentValidation|Submit Appeal"
+msgstr "提交申诉"
+
+msgid "JH|ContentValidation|The API key used by JH GitLab for accessing the Content Validation service endpoint"
+msgstr "JH Gitlab通过此API key来访问内容安全检测服务"
+
+msgid "JH|ContentValidation|To appeal, please click %{link_start}here%{link_end}."
+msgstr "如需申诉，请点击%{link_start}此处%{link_end}。"
+
+msgid "JH|ContentValidation|URL of the external Content Validation endpoint"
+msgstr "内容安全检测服务的URL地址"
+
+msgid "JH|ContentValidation|Write your appeal text here, can be empty"
+msgstr "在此输入你的申诉内容，可为空"
+
+msgid "JH|ContentValidation|You can view the position of the detected contents. Please correct the contents."
+msgstr "您可以查看违规内容位置，进行内容修改。"
+
+msgid "JH|ContentValidation|Your content couldn't be submitted because it violated the rules. If you believe this was a miscalculation, please email usersupport@gitlab.cn to appeal. We will process your appeal within 24 hours (working days) and send the result to your registered email address, please pay attention to it. Thank you for your understanding and support."
+msgstr "您的内容因违反相关规定而无法提交。如果您认为这是一个误判，请发送邮件至 usersupport@gitlab.cn 进行申诉。我们会在 24 小时内（工作日）处理您的申诉并向您的注册邮箱发送处理结果，请您关注。感谢您对我们的理解和支持。"
+
+msgid "JH|ContentValidation|here"
+msgstr "此处"
+
+msgid "JH|Create and provide your Gitee %{link_start}Personal Access Token%{link_end}. You will need to select the %{code_open}repo%{code_close} scope, so we can display a list of your public and private repositories which are available to import."
+msgstr "请创建并提供您的 Gitee %{link_start}个人访问令牌%{link_end}。您需要选择 %{code_open}repo%{code_close} 范围，这样我们才可以向您显示可导入的公开和私有仓库的列表。"
+
+msgid "JH|DingTalk Integration"
+msgstr ""
+
+msgid "JH|DingTalk integration allows you to interact with JiHu GitLab by entering commands in a DingTalk group conversation."
+msgstr ""
+
+msgid "JH|DingTalkIntegration|Cannot update DingTalk Integration in Group or Project level"
+msgstr ""
+
+msgid "JH|DingTalkIntegration|DingTalk Corp Id"
+msgstr ""
+
+msgid "JH|DingTalkIntegration|DingTalk Corp Id cannot be blank."
+msgstr ""
+
+msgid "JH|DingTalkIntegration|Dingtalk Integration is deactivated. Please upgrade your JiHu GitLab to Premium Plan"
+msgstr ""
+
+msgid "JH|DingTalkIntegration|Perform common operations in DingTalk."
+msgstr ""
+
+msgid "JH|DingTalkIntegration|Your corp id provided by DingTalk"
+msgstr ""
+
+msgid "JH|Downloading source code is disabled"
+msgstr "已禁止下载源代码"
+
+msgid "JH|Email is already taken."
+msgstr "邮箱已被使用。"
+
+msgid "JH|Email is available."
+msgstr "邮箱可用。"
+
+msgid "JH|Enable the password expiration policy"
+msgstr "启用密码过期策略"
+
+msgid "JH|Expires in days"
+msgstr "密码有效天数"
+
+msgid "JH|FeishuBotIntegration|Cannot update Feishu Bot Integration in Group or Project level"
+msgstr ""
+
+msgid "JH|FeishuBotIntegration|Feishu Bot"
+msgstr "飞书机器人"
+
+msgid "JH|FeishuBotIntegration|Feishu Bot Integration is deactivated. Please upgrade your JiHu GitLab to Starter Plan"
+msgstr ""
+
+msgid "JH|FeishuBotIntegration|Perform common operations in Feishu Bot."
+msgstr ""
+
+msgid "JH|FoundationalFlow|JH Advanced Code Review"
+msgstr ""
+
+msgid "JH|FoundationalFlow|Review merge requests with related Issue and Pipeline context."
+msgstr "结合 Issue 和 Pipeline 进行合并请求的代码审查"
+
+msgid "JH|FreeTrial|Contact 400-088-8738 or scan below QR code to upgrade any of your group or purchase add-on service"
+msgstr "联系 400-088-8738 或者扫描下方二维码来购买专业版、旗舰版或附加服务"
+
+msgid "JH|FreeTrial|If you do not upgrade any of your group or purchase add-on service, all data in your account will be deleted."
+msgstr "如果您未进行升级购买专业版、旗舰版或附加服务，您账户的所有数据将被删除。"
+
+msgid "JH|FreeTrial|If you have no plan to continue using %{host}, please %{link_start}migrate your data%{link_end} before %{trial_end_date}. After free trial ends, your data will be deleted."
+msgstr "如果您不打算继续使用 %{host}，请注意在 %{trial_end_date} 前%{link_start}备份您的数据%{link_end}。到期后，您的数据将被删除。"
+
+msgid "JH|FreeTrial|Navigate to 'Group Settings - Billing' and upgrade your plan"
+msgstr "在应用中导航至 '群组设置 - 账单' 并升级您的版本"
+
+msgid "JH|FreeTrial|Thanks,"
+msgstr "谢谢"
+
+msgid "JH|FreeTrial|The JiHu GitLab Team"
+msgstr "极狐GitLab 团队"
+
+msgid "JH|FreeTrial|To keep using your account, you can:"
+msgstr "要继续使用您的账户，您可以："
+
+msgid "JH|FreeTrial|Your free trial ends"
+msgstr "试用到期"
+
+msgid "JH|FreeTrial|Your free trial of JiHu GitLab has expired. Please contact 400-088-8738 for offline purchase assistant."
+msgstr "您在极狐GitLab 的免费试用已结束。联系 400-088-8738 来购买专业版、旗舰版或附加服务。"
+
+msgid "JH|FreeTrial|Your free trial of JiHu GitLab on %{host} ends today. We are sorry to inform that your account is deactivated. If you want to continue, you can contact 400-088-8738 or scan below QR code to upgrade any of your group or purchase add-on service."
+msgstr "您在 %{host} 上的免费试用在今天到期。我们很抱歉地通知您，您的账户已被停用。如果您想继续使用，可以联系 400-088-8738 或扫描下方二维码来购买专业版、旗舰版或附加服务。"
+
+msgid "JH|FreeTrial|Your free trial of JiHu GitLab on %{host} will end soon. If you do not upgrade any of your group or purchase add-on service, your account will be deactivated on %{trial_end_date}."
+msgstr "您在 %{host} 上的免费试用即将结束。如果您不升级购买专业版、旗舰版或附加服务，您的账户将于 %{trial_end_date} 停用。"
+
+msgid "JH|FreeTrial|Your free trial will end soon"
+msgstr "试用即将到期"
+
+msgid "JH|Generate repository Wiki"
+msgstr "生成仓库 Wiki"
+
+msgid "JH|Gitee"
+msgstr ""
+
+msgid "JH|Gitee Import"
+msgstr ""
+
+msgid "JH|Gitee Import|Failed to create issue %{issue} for project %{project}"
+msgstr "为项目 %{project} 导入议题 %{issue} 失败"
+
+msgid "JH|Gitee Import|Failed to create label %{label} for project %{project}"
+msgstr "为项目 %{project} 导入标记 %{label} 失败"
+
+msgid "JH|Gitee Import|Failed to create merge request %{merge_request} for project %{project}"
+msgstr "为项目 %{project} 导入合并请求 %{merge_request} 失败"
+
+msgid "JH|Gitee Import|Failed to create milestone %{milestone} for project %{project}"
+msgstr "为项目 %{project} 导入里程碑 %{milestone} 失败"
+
+msgid "JH|Gitee Import|The remote data could not be fully imported."
+msgstr "远程数据无法被全部导入。"
+
+msgid "JH|INTEGRATION|Dev Group, Ops Group(Feishu group names separated by comma)"
+msgstr "开发群，运维群（飞书群名称，用英文逗号分隔）"
+
+msgid "JH|INTEGRATION|Do not send notifications for successful pipelines."
+msgstr "不发送运行成功的流水线通知"
+
+msgid "JH|INTEGRATION|Enable FeiShu Integration"
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu App ID"
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu App Secret"
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu Integration"
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu integration allows you to receive project events and send operation commands in Feishu group chats."
+msgstr ""
+
+msgid "JH|INTEGRATION|FeiShu notifications"
+msgstr "飞书通知"
+
+msgid "JH|INTEGRATION|JiHu GitLab bot is not found in FeiShu group %{name}, please add the bot first"
+msgstr "%{name} 中未配置极狐GitLab 机器人，请先添加该机器人。（如果添加多个群组，请使用英文逗号分隔）"
+
+msgid "JH|INTEGRATION|Labels to be notified"
+msgstr "待通知标签"
+
+msgid "JH|INTEGRATION|Labels to be notified behavior"
+msgstr "待通知标签行为"
+
+msgid "JH|INTEGRATION|Match all of the labels"
+msgstr "匹配所有标签"
+
+msgid "JH|INTEGRATION|Match any of the labels"
+msgstr "匹配任意标签"
+
+msgid "JH|INTEGRATION|Notify only broken pipelines"
+msgstr "只通知运行失败的流水线"
+
+msgid "JH|INTEGRATION|Please check your settings for Feishu Integration in JiHu GitLab, e.g. App ID and App Secret"
+msgstr "请检查您在极狐GitLab 中有关飞书集成的配置项，如 App ID、App Secret 和特性开关"
+
+msgid "JH|INTEGRATION|Please input valid FeiShu group name"
+msgstr "请输入正确的飞书群组名称"
+
+msgid "JH|INTEGRATION|Please input valid Wecom group robot webhook key"
+msgstr "请输入正确的企业微信群机器人 webhook key"
+
+msgid "JH|INTEGRATION|Send notifications about project events to FeiShu."
+msgstr "向飞书群组发送有关极狐GitLab 项目事件的通知。"
+
+msgid "JH|INTEGRATION|Send notifications about project events to Wecom."
+msgstr "向企业微信群组发送有关极狐GitLab 项目事件的通知。"
+
+msgid "JH|INTEGRATION|Send notifications for issue, merge request, and comment events with the listed labels only. Leave blank to receive notifications for all events."
+msgstr "只发送与上述标签有关的议题、合并请求、评论事件的通知。留空则发送所有事件的通知"
+
+msgid "JH|INTEGRATION|Validate FeiShu Group Error, please follow FeiShu Integration document verify the settings."
+msgstr "校验飞书群组出错，请根据飞书集成文档验证设置"
+
+msgid "JH|INTEGRATION|Wecom group robot webhook key separated by comma"
+msgstr "企业微信群机器人 webhook key，用英文逗号分隔"
+
+msgid "JH|INTEGRATION|Wecom notifications"
+msgstr "企业微信通知"
+
+msgid "JH|If your password has expired. After you log in, you must update your password to access your account."
+msgstr "如果密码已过期，您登录后必须更新密码才能访问账户。"
+
+msgid "JH|Import Projects from Gitee"
+msgstr "从 Gitee 导入项目"
+
+msgid "JH|Integrations|Create new issue in LigaAI"
+msgstr "在 LigaAI 里创建新议题"
+
+msgid "JH|Integrations|Create new issue in ONES"
+msgstr "在 ONES 里创建新议题"
+
+msgid "JH|Integrations|DingTalk App Key"
+msgstr ""
+
+msgid "JH|Integrations|DingTalk App Secret"
+msgstr ""
+
+msgid "JH|Integrations|DingTalk Corp Id"
+msgstr ""
+
+msgid "JH|Integrations|Enable DingTalk Integration"
+msgstr ""
+
+msgid "JH|Integrations|LigaAI issues display here when you create issues in your project in LigaAI."
+msgstr "当您在 LigaAI 项目中创建议题后，议题会被显示在这里。"
+
+msgid "JH|Integrations|ONES issues display here when you create issues in your project in ONES."
+msgstr "当您在 ONES 项目中创建议题后，议题会被显示在这里。"
+
+msgid "JH|Integrations|Search LigaAI issues"
+msgstr "搜索 LigaAI 议题"
+
+msgid "JH|Integrations|Search ONES issues"
+msgstr "搜索 ONES 议题"
+
+msgid "JH|Integration|An error occurred while requesting data from the third party service."
+msgstr "请求第三方服务时遇到了错误。"
+
+msgid "JH|JobAssistant|Blank template"
+msgstr ""
+
+msgid "JH|JobAssistant|Create a new job template"
+msgstr ""
+
+msgid "JH|JobAssistant|Getting started with job template"
+msgstr ""
+
+msgid "JH|JobAssistant|Job template"
+msgstr ""
+
+msgid "JH|JobAssistant|Learn more about job template"
+msgstr ""
+
+msgid "JH|JobAssistant|Template name"
+msgstr ""
+
+msgid "JH|JobAssistant|Using the job template can quickly insert the corresponding job in the yml file, so that the editing efficiency of the pipeline is greatly improved."
+msgstr ""
+
+msgid "JH|Leaderboard"
+msgstr "排行榜"
+
+msgid "JH|License|Free"
+msgstr "基础版"
+
+msgid "JH|License|Premium"
+msgstr "专业版"
+
+msgid "JH|License|Premium Trial"
+msgstr "专业试用版"
+
+msgid "JH|License|Starter"
+msgstr "基础扩展版"
+
+msgid "JH|License|Team"
+msgstr "团队版"
+
+msgid "JH|License|Ultimate"
+msgstr "旗舰版"
+
+msgid "JH|License|Ultimate Trial"
+msgstr "旗舰试用版"
+
+msgid "JH|LigaaiIntegration|An error occurred while requesting data from the LigaAI service."
+msgstr "请求 LigaAI 服务时遇到了错误。"
+
+msgid "JH|LigaaiIntegration|Base URL of the LigaAI instance."
+msgstr "LigaAI 实例的基本 URL。"
+
+msgid "JH|LigaaiIntegration|Failed to load LigaAI issue. View the issue in LigaAI, or reload the page."
+msgstr "加载 LigaAI 的议题失败。您可以在 LigaAI 中查看议题，或者刷新该页面。"
+
+msgid "JH|LigaaiIntegration|If different from web URL."
+msgstr "如果不同于网页 URL。"
+
+msgid "JH|LigaaiIntegration|Leave blank to use your current token."
+msgstr "留空时，使用您当前的令牌。"
+
+msgid "JH|LigaaiIntegration|LigaAI"
+msgstr "LigaAI"
+
+msgid "JH|LigaaiIntegration|LigaAI API URL (optional)"
+msgstr "LigaAI API URL（可选）"
+
+msgid "JH|LigaaiIntegration|LigaAI Secret Key"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI client ID"
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI client ID."
+msgstr ""
+
+msgid "JH|LigaaiIntegration|LigaAI issues"
+msgstr "LigaAI 议题"
+
+msgid "JH|LigaaiIntegration|LigaAI project ID"
+msgstr "LigaAI 项目 ID"
+
+msgid "JH|LigaaiIntegration|LigaAI project ID."
+msgstr "LigaAI 项目 ID"
+
+msgid "JH|LigaaiIntegration|LigaAI user"
+msgstr "LigaAI 用户"
+
+msgid "JH|LigaaiIntegration|LigaAI web URL"
+msgstr "LigaAI 网页 URL"
+
+msgid "JH|LigaaiIntegration|Open LigaAI"
+msgstr "打开 LigaAI"
+
+msgid "JH|LigaaiIntegration|This is a LigaAI user."
+msgstr "这是一个 LigaAI 的用户。"
+
+msgid "JH|LigaaiIntegration|Use LigaAI as this project's issue tracker."
+msgstr "使用 LigaAI 作为当前项目的议题追踪器。"
+
+msgid "JH|Monorepo|All related MR(s) are merged by"
+msgstr "相关的合并请求已全部合并，合并者"
+
+msgid "JH|Monorepo|Error while dispatching the merge request, please try again."
+msgstr "请求合并时发生了未知错误，请稍后再试。"
+
+msgid "JH|Monorepo|Merge all"
+msgstr "全部合并"
+
+msgid "JH|Monorepo|Merge blocked: unsuccessful merge request(s) found"
+msgstr "合并受阻：有未成功合并的合并请求"
+
+msgid "JH|Monorepo|There are %{count} unapproved %{merge_request}"
+msgstr "当前还有 %{count} 个未通过的 %{merge_request}"
+
+msgid "JH|Monorepo|There is 1 merging function in process, branch name is %{branch_name}"
+msgstr "当前还有一个功能正在合并中，分支为 %{branch_name}"
+
+msgid "JH|Monorepo|mergeable"
+msgstr "可以合并"
+
+msgid "JH|OnesIntegration|Attachment"
+msgstr "附件"
+
+msgid "JH|OnesIntegration|Base URL of the ONES instance."
+msgstr "ONES 实例的基本 URL。"
+
+msgid "JH|OnesIntegration|Failed to load ONES issue. View the issue in ONES, or reload the page."
+msgstr "加载 ONES 的议题失败。您可以在 ONES 中查看议题，或者刷新该页面。"
+
+msgid "JH|OnesIntegration|If different from web URL."
+msgstr "如果不同于网页 URL。"
+
+msgid "JH|OnesIntegration|Leave blank to use your current token."
+msgstr "留空时，使用您当前的令牌。"
+
+msgid "JH|OnesIntegration|ONES"
+msgstr "ONES"
+
+msgid "JH|OnesIntegration|ONES API URL (optional)"
+msgstr "ONES API URL（可选）"
+
+msgid "JH|OnesIntegration|ONES API token"
+msgstr "ONES API 令牌"
+
+msgid "JH|OnesIntegration|ONES issues"
+msgstr "ONES 议题"
+
+msgid "JH|OnesIntegration|ONES project ID"
+msgstr "ONES 项目 ID"
+
+msgid "JH|OnesIntegration|ONES project ID."
+msgstr "ONES 项目 ID。"
+
+msgid "JH|OnesIntegration|ONES team ID"
+msgstr "ONES 团队 ID"
+
+msgid "JH|OnesIntegration|ONES user"
+msgstr "ONES 用户"
+
+msgid "JH|OnesIntegration|ONES user ID"
+msgstr "ONES 用户 ID"
+
+msgid "JH|OnesIntegration|ONES user ID."
+msgstr "ONES 用户 ID。"
+
+msgid "JH|OnesIntegration|ONES web URL"
+msgstr "ONES web URL"
+
+msgid "JH|OnesIntegration|Open ONES"
+msgstr "打开 ONES"
+
+msgid "JH|OnesIntegration|This is a ONES user."
+msgstr "这是一个 ONES 的用户。"
+
+msgid "JH|OnesIntegration|Use ONES as this project's issue tracker."
+msgstr "使用 ONES 作为当前项目的议题追踪器。"
+
+msgid "JH|Password expiration policy"
+msgstr "密码过期策略"
+
+msgid "JH|Password is expiring soon"
+msgstr "密码即将过期"
+
+msgid "JH|Performance Analytics"
+msgstr "效能分析"
+
+msgid "JH|Performance Report"
+msgstr "效能报表"
+
+msgid "JH|PerformanceAnalytics|Approved MRs"
+msgstr "已核准MR"
+
+msgid "JH|PerformanceAnalytics|Average Pushes Per User"
+msgstr "人均推送次数"
+
+msgid "JH|PerformanceAnalytics|Branch selector only affect the number of code commits"
+msgstr "分支选项仅影响代码提交次数"
+
+msgid "JH|PerformanceAnalytics|Closed MRs"
+msgstr "已关闭MR"
+
+msgid "JH|PerformanceAnalytics|Closed issues"
+msgstr "已关闭的议题"
+
+msgid "JH|PerformanceAnalytics|Comments"
+msgstr "评论"
+
+msgid "JH|PerformanceAnalytics|Commits"
+msgstr "提交"
+
+msgid "JH|PerformanceAnalytics|Created MRs"
+msgstr "已创建MR"
+
+msgid "JH|PerformanceAnalytics|Created issues"
+msgstr "创建的议题"
+
+msgid "JH|PerformanceAnalytics|Date range must be shorter than %{max_range} days."
+msgstr "日期范围必须小于%{max_range}天。"
+
+msgid "JH|PerformanceAnalytics|Last %d day"
+msgid_plural "JH|PerformanceAnalytics|Last %d days"
+msgstr[0] "最近 %d 天"
+msgstr[1] "最近 %d 天"
+
+msgid "JH|PerformanceAnalytics|Merged MRs"
+msgstr "已合并MR"
+
+msgid "JH|PerformanceAnalytics|Name"
+msgstr "名称"
+
+msgid "JH|PerformanceAnalytics|No matches found"
+msgstr "未查询到匹配数据"
+
+msgid "JH|PerformanceAnalytics|Number of pushes"
+msgstr "推送次数"
+
+msgid "JH|PerformanceAnalytics|The given date range is larger than 180 days"
+msgstr ""
+
+msgid "JH|PerformanceAnalytics|The interval must be one of %{intervals}."
+msgstr "Interval 必须是 %{intervals} 其中之一。"
+
+msgid "JH|PerformanceAnalytics|The metric must be one of %{metrics}."
+msgstr "Metric 必须是 %{metrics} 其中之一。"
+
+msgid "JH|PerformanceAnalytics|The start date must be earlier than the end date."
+msgstr "开始日期必须早于结束日期。"
+
+msgid "JH|PerformanceAnalytics|There was an error while export performance report data"
+msgstr "导出效能报表数据时出错"
+
+msgid "JH|PerformanceAnalytics|Total"
+msgstr "总计"
+
+msgid "JH|PerformanceAnalytics|You do not have permission to access performance analytics metrics."
+msgstr "您没有权限访问效能分析指标"
+
+msgid "JH|PerformanceMeasurement|%{firstSelectedName} + %{selectedLength} more"
+msgstr "%{firstSelectedName} + %{selectedLength} 更多"
+
+msgid "JH|PerformanceMeasurement|Active level"
+msgstr "活跃度"
+
+msgid "JH|PerformanceMeasurement|Activity metrics"
+msgstr "效能数据"
+
+msgid "JH|PerformanceMeasurement|Code quality"
+msgstr "人均代码行数"
+
+msgid "JH|PerformanceMeasurement|Code validity ratio"
+msgstr "代码有效率"
+
+msgid "JH|PerformanceMeasurement|Commits"
+msgstr "提交次数"
+
+msgid "JH|PerformanceMeasurement|Customized"
+msgstr "自定义"
+
+msgid "JH|PerformanceMeasurement|Default view"
+msgstr "默认视图"
+
+msgid "JH|PerformanceMeasurement|Efficiency"
+msgstr "开发效率"
+
+msgid "JH|PerformanceMeasurement|Individual data"
+msgstr "人员数据"
+
+msgid "JH|PerformanceMeasurement|Issue(s) commented"
+msgstr "议题评论"
+
+msgid "JH|PerformanceMeasurement|Issue(s) created"
+msgstr "议题创建"
+
+msgid "JH|PerformanceMeasurement|Lines of code"
+msgstr "代码行数"
+
+msgid "JH|PerformanceMeasurement|MR(s) commented"
+msgstr "合并请求评论"
+
+msgid "JH|PerformanceMeasurement|MR(s) created"
+msgstr "合并请求创建"
+
+msgid "JH|PerformanceMeasurement|MR(s) reviewed"
+msgstr "合并请求审核"
+
+msgid "JH|PerformanceMeasurement|Performance Measurement"
+msgstr "效能分析"
+
+msgid "JH|PerformanceMeasurement|Private"
+msgstr "个人视图"
+
+msgid "JH|PerformanceMeasurement|Public"
+msgstr "公共视图"
+
+msgid "JH|PerformanceMeasurement|Select a view"
+msgstr "选择视图"
+
+msgid "JH|PerformanceMeasurement|Select group or project"
+msgstr "选择群组或项目"
+
+msgid "JH|PerformanceMeasurement|Shortcut"
+msgstr "快捷方式"
+
+msgid "JH|PerformanceMeasurement|View"
+msgstr "视图"
+
+msgid "JH|PerformanceMeasurement|View name"
+msgstr "视图名称"
+
+msgid "JH|PerformanceMeasurement|View type"
+msgstr "视图类型"
+
+msgid "JH|Pipelines|Add job"
+msgstr "添加任务"
+
+msgid "JH|Pipelines|Add stage after"
+msgstr "在后面添加一个阶段"
+
+msgid "JH|Pipelines|Add stage before"
+msgstr "在前面添加一个阶段"
+
+msgid "JH|Pipelines|Create Stage"
+msgstr "创建阶段"
+
+msgid "JH|Pipelines|Delete stage"
+msgstr "删除阶段"
+
+msgid "JH|Pipelines|GUI Editor"
+msgstr "图形化编辑器"
+
+msgid "JH|Pipelines|It seems like you do not have any configurations, please proceed at %{boldStart}Edit%{boldEnd} tab for further information."
+msgstr "看起来您还没有任何配置，请在 %{boldStart}编辑%{boldEnd} 标签页查看更多信息。"
+
+msgid "JH|Pipelines|No configuration found"
+msgstr "没有相关的配置"
+
+msgid "JH|Pipelines|Please input a stage name"
+msgstr "请输入阶段名称"
+
+msgid "JH|Pipelines|Stage name"
+msgstr "阶段名字"
+
+msgid "JH|Pipelines|Stage operation is turned off because no explicit stage declarations were found in config file."
+msgstr "配置文件中未显式定义阶段，阶段相关操作已禁用"
+
+msgid "JH|Pipelines|Stage operations"
+msgstr "阶段操作"
+
+msgid "JH|Pipeline|Edit with GUI"
+msgstr "用图形化编辑器编辑"
+
+msgid "JH|Please complete your profile with email address at %{url} before %{expires_at}"
+msgstr "请于 %{expires_at} 之前在%{url}填写您的电子邮箱地址以完成个人资料"
+
+msgid "JH|Profile Settings"
+msgstr "个人资料"
+
+msgid "JH|Profiles|Please complete your profile with email address before making purchases"
+msgstr "在购买付费计划前请绑定邮箱"
+
+msgid "JH|ProjectSettings|Every merge only creates a single squash merge commit."
+msgstr "每次合并只创建一个单独的压缩过的提交。"
+
+msgid "JH|ProjectSettings|Single squash merge commit"
+msgstr "单独的压缩合并提交"
+
+msgid "JH|ProjectTemplates|DongTai IAST"
+msgstr ""
+
+msgid "JH|ProjectTerms|Declaration"
+msgstr "承诺"
+
+msgid "JH|ProjectTerms|I declare that I have the complete, independent, and legitimate intellectual property rights and other rights of the content of this project. If it involves citation of others’ works, achievements, rights, and authorization or in other similar situations, I declare that the cited content complies with relevant laws and regulations and has been properly reviewed and authorized without any infringement or illegal acts, and I will expressly attach annotations and statements for the cited content. I will undertake all the risks and liabilities arising from such citation, and JiHu(GitLab) will be exempted from them."
+msgstr "我承诺并确保本人拥有此项目内容的完整的、独立的、合法的知识产权及其他权利，如内容涉及引用他人作品或成果或权利或授权或其他类似情形，我承诺所引用内容均为合法合规内容并经过了适当的审查与授权，不存在侵权或违法违规情况，且我承诺在明显处详细对引用部分做补充标注与声明，并确保该等引用产生的全部潜在风险与责任与极狐无关，将由我承诺处理解决。"
+
+msgid "JH|ProjectTerms|I hereby declare that I have read, understand, and agree to the %{linkStart}JiHu(GitLab) Terms of Service%{linkEnd} and all irregularly-updated agreements, user statements, disclaimers, and other content on this webpage. The content of this project does not violate relevant laws and regulations of any country or infringe on the intellectual property rights or other rights of any third parties. I will take full responsibility for any violation or infringement, and JiHu(GitLab) will be exempted from any responsibility."
+msgstr "我已阅读、认可并接受%{linkStart}《极狐Gitlab服务条款》%{linkEnd}及该网页所载的与不时更新的全部协议、用户声明、免责文件等全部内容；我承诺并确保此项目内容不违反任何国家法律法规或相关规定，亦承诺并确保此项目内容将持续遵守任何国家法律法规或相关规定；我承诺并确保此项目内容不侵犯任何第三方的任何知识产权或其他权利，相关责任由我负责并确保极狐免责。"
+
+msgid "JH|RealName|An error occurred while sending verification code"
+msgstr "发送验证码时发生错误"
+
+msgid "JH|RealName|An error occurred while validating phone"
+msgstr "验证手机号时发生错误"
+
+msgid "JH|RealName|Based on the regulation and the law, using internet services requires identity verification, by fill in your phone number to continue using JiHu GitLab."
+msgstr "根据国家相关法律要求，使用互联网服务，需要提供真实身份信息。请设置手机号以继续使用极狐GitLab。"
+
+msgid "JH|RealName|Checking phone availability..."
+msgstr "检测手机号有效性中..."
+
+msgid "JH|RealName|Get code"
+msgstr "发送验证码"
+
+msgid "JH|RealName|Phone"
+msgstr "手机号码"
+
+msgid "JH|RealName|Phone is already taken."
+msgstr "手机号已存在"
+
+msgid "JH|RealName|Phone is available."
+msgstr "手机号可用"
+
+msgid "JH|RealName|Phone saved failed."
+msgstr "手机号存储失败"
+
+msgid "JH|RealName|Please provide a valid phone number."
+msgstr "手机号码格式有误"
+
+msgid "JH|RealName|Please verify your phone before continuing."
+msgstr "请您在继续使用前验证手机号"
+
+msgid "JH|RealName|Resend in %{wait}s"
+msgstr "%{wait} 秒后重发"
+
+msgid "JH|RealName|Something happened when checking code"
+msgstr "核对短信验证码时出错"
+
+msgid "JH|RealName|Something happened when resolving captcha"
+msgstr "进行人机验证时出错"
+
+msgid "JH|RealName|Thank you for using JiHu GitLab, please verify your phone"
+msgstr "欢迎使用极狐GitLab，请完成手机验证"
+
+msgid "JH|RealName|Verification code"
+msgstr "验证码"
+
+msgid "JH|RealName|Verification code is incorrect."
+msgstr "验证码不正确"
+
+msgid "JH|RealName|Verification code is nonexist."
+msgstr "验证码不存在"
+
+msgid "JH|RealName|Verification code is outdated."
+msgstr "验证码过期"
+
+msgid "JH|RealName|You can not send more verification code within one minute"
+msgstr "一分钟内只能发送一次验证码"
+
+msgid "JH|RealName|You have already verified your phone."
+msgstr "您已验证手机号"
+
+msgid "JH|Recover password via email"
+msgstr "通过电子邮件重置密码"
+
+msgid "JH|Recover password via phone"
+msgstr "通过手机短信重置密码"
+
+msgid "JH|Register with email"
+msgstr "邮箱注册"
+
+msgid "JH|Register with phone"
+msgstr "手机号注册"
+
+msgid "JH|Requires your primary JiHu GitLab email address."
+msgstr "需要您的极狐GitLab 主邮箱地址"
+
+msgid "JH|ResendConfirmationEmail|Confirmation email sent to %{email}"
+msgstr "验证邮件已经发送到 %{email}"
+
+msgid "JH|ResendConfirmationEmail|Your operations are too frequent, or there was a problem sending the confirmation email"
+msgstr "您的操作过于频繁，亦或验证邮件发送出现了问题"
+
+msgid "JH|Reset Gitee Access Token"
+msgstr "重置 Gitee 访问令牌"
+
+msgid "JH|ResetPassword|Phone number"
+msgstr "手机号码"
+
+msgid "JH|ResetPassword|Please enter the verification code, valid for 10 minutes."
+msgstr "请输入验证码，有效时间为 10 分钟。"
+
+msgid "JH|ResetPassword|Please enter your JiHu GitLab phone number."
+msgstr "请输入与您的极狐GitLab 账号绑定的手机号码。"
+
+msgid "JH|ResetPassword|Requires your JiHu GitLab phone number."
+msgstr "需要输入与您的极狐GitLab 账号绑定的手机号码。"
+
+msgid "JH|ResetPassword|Resend code"
+msgstr "重新发送验证码"
+
+msgid "JH|ResetPassword|Resending code..."
+msgstr "正在重新发送验证码..."
+
+msgid "JH|ResetPassword|SMS Code:"
+msgstr "短信验证码："
+
+msgid "JH|ResetPassword|Sending SMS Code..."
+msgstr "正在发送短信验证码..."
+
+msgid "JH|ResetPassword|There is no user matches this phone"
+msgstr "没有找到绑定此手机号的用户"
+
+msgid "JH|ResetPassword|Via Email"
+msgstr "电子邮件"
+
+msgid "JH|ResetPassword|Via Phone"
+msgstr "手机号码"
+
+msgid "JH|Restricted page access"
+msgstr "页面访问受限"
+
+msgid "JH|Saas|Contact us"
+msgstr "联系我们"
+
+msgid "JH|SearchToken|Milestone(Epic)"
+msgstr "里程碑（史诗）"
+
+msgid "JH|Set the number of days after which user passwords expire. Choose a number from 14 to 400."
+msgstr "设置用户密码在多少天后过期。选择范围为 14 到 400。"
+
+msgid "JH|Set the number of days prior to password expiration that you want to notify users. Choose a number from 1 to 30."
+msgstr "设置要在密码到期前，提前通知用户的天数。选择范围为 1 到 30 天。"
+
+msgid "JH|Set the number of days to notify before expiration"
+msgstr "设置到期前的提前通知天数"
+
+msgid "JH|Shimo|Go to Shimo Workspace"
+msgstr "转到石墨工作区"
+
+msgid "JH|Shimo|Link to a Shimo Workspace from the sidebar."
+msgstr "从侧边栏关联石墨工作区"
+
+msgid "JH|Shimo|Shimo"
+msgstr "石墨"
+
+msgid "JH|Shimo|Shimo Workspace"
+msgstr "石墨工作区"
+
+msgid "JH|Shimo|Shimo Workspace URL"
+msgstr "石墨工作区 URL"
+
+msgid "JH|Shimo|Shimo Workspace integration is enabled"
+msgstr "已启用石墨工作区集成"
+
+msgid "JH|Shimo|You've enabled the Shimo Workspace integration. You can view your wiki directly in Shimo."
+msgstr "您已启用石墨工作区集成。您可以在石墨中直接查看您的 Wiki。"
+
+msgid "JH|SignUp|By clicking %{button_text}, I agree that I have read and accepted the JiHu GitLab %{linkStart}Terms of Use and Privacy Statement%{linkEnd}"
+msgstr "点击%{button_text}，即代表您同意并接受%{linkStart}极狐GitLab 服务条款和账号规范%{linkEnd}。如使用企业邮箱订阅本服务，则您同意极狐将该账户数据提供给对应企业而无需另行对您进行通知或承担责任。"
+
+msgid "JH|SignUp|By signing in you accept the JiHu GitLab %{link_start}Terms of Use and acknowledge the Privacy Statement and Cookie Policy%{link_end}."
+msgstr "登入即代表您同意并接受%{link_start}极狐GitLab服务条款和账号规范%{link_end}。如使用企业邮箱订阅本服务，则您同意极狐将该账户数据提供给对应企业而无需另行对您进行通知或承担责任。"
+
+msgid "JH|SignUp|I Agree to receive future marketing information from JiHu GitLab."
+msgstr "我同意接收来自极狐GitLab 的市场推广信息"
+
+msgid "JH|Sorry, you don't have access to the page"
+msgstr "抱歉，您没有访问页面的权限"
+
+msgid "JH|Submit feedback"
+msgstr ""
+
+msgid "JH|Support|1. Access enterprise-level DevOps solutions support"
+msgstr "1. 获取企业级DevOps解决方案"
+
+msgid "JH|Support|2. Free or Discount JiHu Gitlab official training and certification"
+msgstr "2. 免费或优惠考取极狐GitLab官方培训认证"
+
+msgid "JH|Support|Scan the QR code to join our WeChat group"
+msgstr "扫码加入微信群"
+
+msgid "JH|The access token has been cleared."
+msgstr "访问令牌清除成功。"
+
+msgid "JH|The additional storage you purchased on JihuLab.com is about to expire."
+msgstr "【重要提醒】您在JihuLab.com购买的额外存储即将到期，请及时续费"
+
+msgid "JH|There was an error while fetching performance analytics data."
+msgstr "获取效能分析数据时出错。"
+
+msgid "JH|This namespace has already been taken! Please choose another one."
+msgstr ""
+
+msgid "JH|To enable line wrap, run the following command in terminal:"
+msgstr "执行以下命令来打开换行："
+
+msgid "JH|Trials|Day %{daysUsed}/%{duration}"
+msgstr "第 %{daysUsed}/%{duration} 天"
+
+msgid "JH|Trials|Suspension time"
+msgstr "账号到期时间"
+
+msgid "JH|Trials|This group and its projects under the namespace is using the basic version. Want to increase team productivity and use more advanced features? Try out JiHu GitLab Ultimate for free for 30 days."
+msgstr "此群组及其所有相关项目使用的是基础版本。想要提高团队生产力并使用更多高级功能？免费试用极狐GitLab 旗舰版 30天。"
+
+msgid "JH|Trials|Upgrade before suspension"
+msgstr "升级付费版本，避免账号停用"
+
+msgid "JH|Trials|Upgrade to paid versions"
+msgstr "升级到付费版本"
+
+msgid "JH|Trial|Group premium trial time"
+msgstr "本群组专业版试用时间"
+
+msgid "JH|Trial|Group ultimate trial time"
+msgstr "本群组旗舰版试用时间"
+
+msgid "JH|Trial|Please select a province"
+msgstr "请选择"
+
+msgid "JH|Trial|Provinces"
+msgstr "省级行政区"
+
+msgid "JH|Trial|Start Premium trial"
+msgstr ""
+
+msgid "JH|Trial|Your free Ultimate Trial lasts for 30 days. You can maintain a JiHu GitLab Free account for 90 days, or upgrade to a paid plan."
+msgstr ""
+
+msgid "JH|Username, email or phone"
+msgstr "用户名/邮箱/手机号"
+
+msgid "JH|Uses the code repository in this project to generate or update repository documentation in the project Wiki."
+msgstr "使用当前项目的代码仓库，在项目 Wiki 中生成或更新仓库文档。"
+
+msgid "JH|VulnerabilityExports|Additional Info"
+msgstr "附加信息"
+
+msgid "JH|VulnerabilityExports|CWE Link"
+msgstr "CWE 链接"
+
+msgid "JH|VulnerabilityExports|Details"
+msgstr "描述"
+
+msgid "JH|VulnerabilityExports|Group Name"
+msgstr "群组名称"
+
+msgid "JH|VulnerabilityExports|Location"
+msgstr "位置"
+
+msgid "JH|VulnerabilityExports|Location Link"
+msgstr "位置链接"
+
+msgid "JH|VulnerabilityExports|Other Identifiers"
+msgstr "其他标识"
+
+msgid "JH|VulnerabilityExports|Project Name"
+msgstr "项目名称"
+
+msgid "JH|VulnerabilityExports|Scanner Name"
+msgstr "扫描器名称"
+
+msgid "JH|VulnerabilityExports|Severity"
+msgstr "严重程度"
+
+msgid "JH|VulnerabilityExports|Status"
+msgstr "状态"
+
+msgid "JH|VulnerabilityExports|Tool"
+msgstr "工具"
+
+msgid "JH|VulnerabilityExports|Vulnerability"
+msgstr "漏洞"
+
+msgid "JH|VulnerabilityExport|Activity"
+msgstr "已处理"
+
+msgid "JH|VulnerabilityExport|CVE"
+msgstr ""
+
+msgid "JH|VulnerabilityExport|CWE"
+msgstr ""
+
+msgid "JH|VulnerabilityExport|Comments"
+msgstr "注释"
+
+msgid "JH|VulnerabilityExport|Detected At"
+msgstr "发现时间"
+
+msgid "JH|Warm reminder: The additional storage service you purchased for the group %{group_link} on JihuLab.com will expire on %{date}. To ensure your service remains uninterrupted, please renew the service in a timely manner."
+msgstr "温馨提醒您，您在 JihuLab.com 为群组 %{group_link} 购买的额外存储服务将于 ${date} 到期。为确保您的服务不受影响，请您及时续购该服务。"
+
+msgid "JH|WeCom|Also send notifications to my WeCom account"
+msgstr "同时向我的企业微信账号发送通知"
+
+msgid "JH|WeCom|Assigned to you"
+msgstr "指派给您"
+
+msgid "JH|WeCom|JiHu GitLab"
+msgstr "极狐GitLab"
+
+msgid "JH|WeCom|Project"
+msgstr "项目"
+
+msgid "JH|WeCom|Reason"
+msgstr "通知原因"
+
+msgid "JH|WeCom|Requires a bound WeCom account. Notifications follow your existing notification settings."
+msgstr "需要已绑定企业微信账号。通知将遵循您现有的通知设置。"
+
+msgid "JH|WeCom|Review requested"
+msgstr "已请求评审"
+
+msgid "JH|WeCom|Subscribed"
+msgstr "已订阅"
+
+msgid "JH|WeCom|You were mentioned"
+msgstr "您被提及"
+
+msgid "JH|You (%{reference}) must verify your phone in order to perform this action, please access JiHu GitLab from a web browser at %{url}."
+msgstr "您 (%{reference}) 必须验证您的手机才能执行此操作，请用浏览器访问极狐GitLab 的网址%{url}。"
+
+msgid "JH|You can directly scan the QR code below to get in touch with our staff, and we will be happy to provide you with assistance."
+msgstr "您可直接扫描下方二维码与工作人员取得联系，我们将竭诚为您提供协助。"
+
+msgid "JH|You must be authorized to access this path."
+msgstr "您无权限访问此路径。"
+
+msgid "JH|You must log in to JiHu GitLab to access the page"
+msgstr "您必须先登录极狐GitLab 才能访问此页面"
+
+msgid "JH|Your account password will expire on %{date}, it is recommended that you change your password as soon as possible."
+msgstr "您的账户密码将在 %{date} 过期，建议您尽早修改密码。"
+
+msgid "JH|Your password has expired."
+msgstr "您的密码已过期。"
+
+msgid "JH|Your password is incorrect or this account doesn't exist. Please check and try again. Add country calling codes if your mobile phone number is outside the Chinese mainland."
+msgstr "密码错误或该账户不存在，请检查后重试，非中国大陆手机号需添加地区码。"
+
+msgid "JH|can not be changed unless password expiration is enabled"
+msgstr "无法更改，密码过期未开启"
+
+msgid "JH|commented on %{link_to_project}"
+msgstr ""
+
+msgid "JH|inviteEmail|Invite email rate limit exceeded"
+msgstr "通过邮件邀请的速率超过限制"
+
+msgid "JH|phone verification"
+msgstr ""
+
+msgid "JH|pipelineEditorWalkthrough|Use the %{boldStart}Edit%{boldEnd} tab at the left of the tabs to save the your work."
+msgstr "使用标签页左边的%{boldStart}编辑%{boldEnd}标签来保存你的修改。"
+
+msgid "JH|snippet"
+msgstr ""
+
+msgid "LearnGitLab|Start a free trial of GitLab Ultimate"
+msgstr "开始免费试用极狐GitLab 旗舰版"
+
+msgid "LearnGitlab|Contact your administrator to start a free Ultimate trial."
+msgstr "请联系管理员来开始旗舰版的试用。"
+
+msgid "ModelSelection|Manage GitLab Duo by configuring and assigning models to AI-native features."
+msgstr "通过配置并分配模型到 AI 原生功能来管理 GitLab Duo。"
+
+msgid "Promotions|Start GitLab Ultimate trial"
+msgstr "开始试用极狐GitLab 旗舰版"
+
+msgid "Select a country or region"
+msgstr "请选择一个国家或地区"
+
+msgid "SignUp|By clicking %{button_text} or registering through a third party you accept the GitLab %{link_start}Terms of Use and acknowledge the Privacy Statement and Cookie Policy%{link_end}."
+msgstr "点击%{button_text}或通过第三方注册即代表您同意并接受%{link_start}极狐GitLab服务条款和账号规范%{link_end}。如使用企业邮箱订阅本服务，则您同意极狐将该账户数据提供给对应企业而无需另行对您进行通知或承担责任。"
+
+msgid "SignUp|Minimum length is %{minimum_password_length} characters."
+msgstr "最小长度为%{minimum_password_length}个字符。"
+
+msgid "Start a Free Ultimate Trial"
+msgstr "开始免费试用极狐GitLab 旗舰版"
+
+msgid "Thanks for signing up to GitLab!"
+msgstr "感谢您注册极狐GitLab！"
+
+msgid "The license key is invalid. Make sure it is exactly as you received it from GitLab Inc."
+msgstr "许可证密钥无效。请确保它与您从极狐(GitLab) 收到的一致。"
+
+msgid "There was an error with the reCAPTCHA. Please solve the reCAPTCHA again."
+msgstr "验证码校验失败，请再次验证。"
+
+msgid "To continue using GitLab Enterprise Edition, upload the %{codeOpen}.gitlab-license%{codeClose} file or enter the license key you have received from GitLab Inc."
+msgstr "要继续使用极狐GitLab，请上传 %{codeOpen}.gitlab-license%{codeClose} 文件或输入您从极狐(GitLab) 收到的许可证密钥"
+
+msgid "To start using GitLab Enterprise Edition, upload the %{codeOpen}.gitlab-license%{codeClose} file or enter the license key you have received from GitLab Inc."
+msgstr "要开始使用极狐GitLab，请上传 %{codeOpen}.gitlab-license%{codeClose} 文件或输入您从极狐(GitLab) 收到的许可证密钥"
+
+msgid "Trial|State or province"
+msgstr "省或直辖市"
+
+msgid "Unlock more features with GitLab Ultimate"
+msgstr "使用旗舰版解锁更多功能"
+
+msgid "Your %{spammable_entity_type} has been recognized as spam. Please, change the content or solve the reCAPTCHA to proceed."
+msgstr "%{spammable_entity_type} 被识别为无效信息，请修改内容或重新提交验证码。"
+
+msgid "ZentaoIntegration|Before you enable this integration, you must configure ZenTao. For more details, read the %{link_start}ZenTao integration documentation%{link_end}."
+msgstr "您需要在启用此集成之前配置禅道。有关更多详细信息，请阅读 %{link_start}禅道产品集成文档%{link_end}。"

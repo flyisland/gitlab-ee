@@ -1,0 +1,6 @@
+%p
+  = _("Dear Administrator,")
+%p
+  = s_("JH|ContentValidation|Illegal contents are detected in your project %{project_path} after its visibility is changed from “Private” to “Public”. The project visibility is restored to “Private”. ") % { project_path: @project.full_name }
+%p
+  = html_escape(link_to(s_("JH|ContentValidation|You can view the position of the detected contents. Please correct the contents."), @obj_url.to_s))

@@ -1,0 +1,2 @@
+- unless ::Gitlab::CurrentSettings.disable_download_button_enabled?
+  = render_ce('projects/buttons/download', local_assigns)

@@ -1,0 +1,44 @@
+- name: 在群组层面管理项目合规框架报告
+  description: |
+    在极狐GitLab 15.11 之前，如果您想在项目中添加或删除合规性框架，您需要单独去每个项目的页面以管理与该项目相关联的框架。当管理多个项目时，这个过程既乏味又低效。
+
+    现在，您可以在群组级别管理应用于您项目的合规性框架，从而显着减少确保您的项目遵守相关规定和标准所需的时间。
+
+    在极狐GitLab 15.10 中，您可以查看您群组中的所有项目，并查看哪些项目应用了合规性框架。在极狐GitLab 15.11 中，您可以直接从合规框架报告中添加或删除合规框架。
+  stage: govern
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/compliance/compliance_report/#compliance-frameworks-report'
+  #  image_url: 'https://about.gitlab.com/images/15_11/govern-compliance-frameworks-report-management.png'
+  published_at: 2023-04-22
+  release: 15.11
+- name: 重新运行下游流水线触发器作业
+  description: |
+    以前，如果您需要重新运行整个下游流水线，则必须重新运行整个上游流水线。这个过程耗时且低效，尤其是当上游流水线有许多作业或其他下游流水线时。
+
+    在此版本中，您可以在触发器作业上选择 **再次运行**，仅重新运行下游流水线，无需重新运行整个父流水线。新触发的下游流水线替换流水线图中原来的下游流水线。当您只想再次运行下游流水线时，这将为您节省时间和资源。
+  stage: verify
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/ci/pipelines/downstream_pipelines.html#recreate-a-downstream-pipeline'
+  #  image_url: 'https://www.youtube-nocookie.com/embed/xCqGWWRx-1E'
+  published_at: 2023-04-22
+  release: 15.11
+- name: 忽略漏洞原因
+  description: |
+    在以前的版本中，您必须手动添加注释来指定漏洞被忽略的原因。
+
+    在极狐GitLab 15.11 中，您可以在漏洞报告中添加忽略漏洞的原因。
+
+    现在您可以快速一致地跟踪忽略漏洞的原因。
+
+    此功能目前仅适用于 JiHuLab.com。
+  self-managed: false
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/application_security/vulnerabilities/#vulnerability-dismissal-reasons'
+  #  image_url: 'https://about.gitlab.com//images/15_11/vulnerability_dismissal_types__reasons.png'
+  published_at: 2023-04-22
+  release: 15.11

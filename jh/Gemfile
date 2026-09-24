@@ -1,0 +1,35 @@
+# frozen_string_literal: true
+
+eval_gemfile File.expand_path('../Gemfile', __dir__)
+
+source 'https://rubygems.org'
+
+gem 'tencentcloud-sdk-common', git: 'https://jihulab.com/gitlab-cn/ruby/gems/tencentcloud-sdk-ruby.git',
+  tag: '1.0.200',
+  glob: 'tencentcloud-sdk-common/tencentcloud-sdk-common.gemspec'
+gem 'tencentcloud-sdk-sms', git: 'https://jihulab.com/gitlab-cn/ruby/gems/tencentcloud-sdk-ruby.git',
+  tag: '1.0.200',
+  glob: 'tencentcloud-sdk-sms/tencentcloud-sdk-sms.gemspec'
+gem 'tencentcloud-sdk-captcha', git: 'https://jihulab.com/gitlab-cn/ruby/gems/tencentcloud-sdk-ruby.git',
+  tag: '1.0.200',
+  glob: 'tencentcloud-sdk-captcha/tencentcloud-sdk-captcha.gemspec'
+
+gem 'chinese_pinyin', '~> 1.1'
+gem 'omniauth-cas3', '~> 1.1.4', path: 'vendor/gems/omniauth-cas3' # See vendor/gems/omniauth-cas3/README.md
+
+# PostHog: product analytics suite
+gem 'posthog-ruby', '1.3.0'
+
+group :development, :test, :danger do
+  gem 'gitlab-dangerfiles-jh', require: false,
+    tag: 'v3.6.6-jh',
+    git: 'https://jihulab.com/gitlab-cn/ruby/gems/gitlab-dangerfiles-jh.git'
+end
+
+gem 'gettext_i18n_rails_js', '~> 2.0.0', feature_category: :internationalization
+gem 'aliyun-sdk', '~> 0.8.0'
+
+gem 'omniauth-dingtalk-oauth2', '~> 1.0'
+# Pin this version because GitLab patches five protected strategy hooks.
+# Revalidate every hook against the released strategy before upgrading.
+gem 'omniauth-wecom', '1.0.0'

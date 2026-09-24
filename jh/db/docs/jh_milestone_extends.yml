@@ -1,0 +1,10 @@
+---
+table_name: jh_milestone_extends
+classes:
+- JH::MilestoneExtend
+feature_categories:
+- database
+description: JH database milestone extends
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2303
+milestone: '16.10'
+gitlab_schema: gitlab_jh

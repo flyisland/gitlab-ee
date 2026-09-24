@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "required": [
+    "merge_requests_list_status",
+    "other_merging_topic_label_name",
+    "merge_user",
+    "merged_at",
+    "has_permission_to_merge",
+    "merge_requests",
+    "central_pipeline"
+  ],
+  "properties": {
+    "merge_requests_list_status": {
+      "type": [
+        "string"
+      ]
+    },
+    "other_merging_topic_label_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "merge_user": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "merged_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "has_permission_to_merge": {
+      "type": [
+        "boolean"
+      ]
+    },
+    "merge_requests": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "central_pipeline": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

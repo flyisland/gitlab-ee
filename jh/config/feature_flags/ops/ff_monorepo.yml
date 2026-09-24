@@ -1,0 +1,8 @@
+---
+name: ff_monorepo
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/1935
+rollout_issue_url:
+milestone: "16.4"
+type: ops
+group: group::code review
+default_enabled: false

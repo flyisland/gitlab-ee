@@ -1,0 +1,5 @@
+- blob = local_assigns.fetch(:blob, false)
+- if @content_blocked_state.present?
+  = render 'shared/content_blocked', content_blocked_state: @content_blocked_state
+- else
+  = render_ee "projects/blob/content", blob: blob

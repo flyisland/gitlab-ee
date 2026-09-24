@@ -1,0 +1,157 @@
+include:
+  - local: .gitlab-ci.yml
+  - local: jh/.gitlab/ci/*.gitlab-ci.yml
+
+danger-review:
+  rules:
+    # replace reference keyword because upstream danger-review component
+    - if: '$CI_MERGE_REQUEST_IID && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^[\d-]+-stable-jh-patch-[\d-]+$/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^[\d-]+-stable-jh$/'
+      when: never
+    - if: '$CI_MERGE_REQUEST_IID'
+
+.default-ruby-variables: &default-ruby-variables
+  RUBY_VERSION: "3.3.12"
+  OMNIBUS_GITLAB_RUBY3_BUILD: "true"
+  OMNIBUS_GITLAB_CACHE_EDITION: "GITLAB_RUBY3_1"
+  TZ: "UTC"
+
+.backcompat-ruby-variables: &backcompat-ruby-variables
+  RUBY_VERSION: "2.7"
+  OMNIBUS_GITLAB_RUBY2_BUILD: "true"
+  OMNIBUS_GITLAB_CACHE_EDITION: "GITLAB_RUBY2"
+
+# Send messages to slack channel `main-jh-pipeline` by setting `CI_SLACK_WEBHOOK_URL`
+.default-branch-incident-variables: &default-branch-incident-variables
+  CREATE_INCIDENT_FOR_PIPELINE_FAILURE: "false"
+  NOTIFY_PIPELINE_FAILURE_CHANNEL: "master-broken"
+
+# parallel jobs for rspec-jh jobs, only for jh project
+.rspec-jh-parallel:
+  parallel: 5
+
+variables:
+  DANGER_DANGERFILE: "jh/Dangerfile"
+  DANGER_DANGERFILE_PREFIX: "jh/" # needed from upstream mr https://gitlab.com/gitlab-org/gitlab/-/merge_requests/152943
+  REVIEW_APPS_DOMAIN: "reviewapps.jihulab.net"
+  DEFAULT_RSPEC_PREDICTIVE_JOB_TAGS: "memory-intensive"
+  BUNDLE_GEMFILE: jh/Gemfile
+
+# The section below is copied over from .gitlab-ci.yml because we want to
+# change the contents of workflow.rules, but there's no easy way to do that
+# beside copying and editing at this moment. FIXME: use a proper way to
+# extend workflow.rules
+workflow:
+  name: '$PIPELINE_NAME'
+  rules:
+    # If `$FORCE_GITLAB_CI` is set, create a pipeline.
+    - if: '$FORCE_GITLAB_CI'
+      variables:
+        <<: *default-ruby-variables
+        PIPELINE_NAME: 'Ruby 3 forced pipeline'
+    # As part of the process of creating RCs automatically, we update stable
+    # branches with the changes of the most recent production deployment. The
+    # merge requests used for this merge a branch release-tools/X into a stable
+    # branch. For these merge requests we don't want to run any pipelines, as
+    # they serve no purpose and will run anyway when the changes are merged.
+    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^release-tools\/\d+\.\d+\.\d+-rc\d+$/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^[\d-]+-stable(-jh)?$/ && $CI_PROJECT_PATH == "gitlab-org/gitlab"'
+      when: never
+    # For merge requests running exclusively in Ruby 2.7
+    - if: '$CI_MERGE_REQUEST_LABELS =~ /pipeline:run-in-ruby2/'
+      variables:
+        <<: *backcompat-ruby-variables
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_MERGE_REQUEST_EVENT_TYPE MR pipeline'
+    - if: '$CI_MERGE_REQUEST_LABELS =~ /Community contribution/'
+      variables:
+        <<: *default-ruby-variables
+        GITLAB_DEPENDENCY_PROXY_ADDRESS: ""
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_MERGE_REQUEST_EVENT_TYPE MR pipeline (community contribution)'
+    # For (detached) merge request pipelines.
+    - if: '$CI_MERGE_REQUEST_IID'
+      variables:
+        <<: *default-ruby-variables
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_MERGE_REQUEST_EVENT_TYPE MR pipeline'
+    # For the scheduled pipelines, we set specific variables.
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule"'
+      variables:
+        <<: *default-ruby-variables
+        <<: *default-branch-incident-variables
+        CRYSTALBALL: "true"
+        PIPELINE_NAME: 'Scheduled Ruby $RUBY_VERSION $CI_COMMIT_BRANCH branch pipeline'
+    # Run pipelines for ruby2 branch
+    - if: '$CI_COMMIT_BRANCH == "ruby2" && $CI_PIPELINE_SOURCE == "schedule"'
+      variables:
+        <<: *backcompat-ruby-variables
+        NOTIFY_PIPELINE_FAILURE_CHANNEL: "f_ruby3"
+        PIPELINE_NAME: 'Scheduled Ruby $RUBY_VERSION $CI_COMMIT_BRANCH branch pipeline'
+    # This work around https://gitlab.com/gitlab-org/gitlab/-/issues/332411 whichs prevents usage of dependency proxy
+    # when pipeline is triggered by a project access token.
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $GITLAB_USER_LOGIN =~ /project_\d+_bot\d*/'
+      variables:
+        <<: *default-ruby-variables
+        <<: *default-branch-incident-variables
+        GITLAB_DEPENDENCY_PROXY_ADDRESS: ""
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_COMMIT_BRANCH branch pipeline (triggered by a project token)'
+    # For `$CI_DEFAULT_BRANCH` branch, create a pipeline (this includes on schedules, pushes, merges, etc.).
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      variables:
+        <<: *default-ruby-variables
+        <<: *default-branch-incident-variables
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_COMMIT_BRANCH branch pipeline'
+    - if: '$CI_COMMIT_BRANCH == "pre-main-jh"'
+      variables:
+        <<: *default-ruby-variables
+        <<: *default-branch-incident-variables
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_COMMIT_BRANCH branch pipeline'
+        CI_DEFAULT_BRANCH: 'pre-main-jh'
+        CI_PIPELINE_SOURCE: 'schedule'
+        SCHEDULE_TYPE: 'maintenance'
+    # For tags, create a pipeline.
+    - if: '$CI_COMMIT_TAG'
+      variables:
+        <<: *default-ruby-variables
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_COMMIT_TAG tag pipeline'
+    # If `$GITLAB_INTERNAL` isn't set, don't create a pipeline.
+    - if: '$GITLAB_INTERNAL == null'
+      when: never
+    # For stable, auto-deploy, and security branches, create a pipeline.
+    - if: '$CI_COMMIT_BRANCH =~ /^[\d-]+-stable(-jh)?$/'
+      variables:
+        <<: *default-ruby-variables
+        NOTIFY_PIPELINE_FAILURE_CHANNEL: "releases"
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_COMMIT_BRANCH branch pipeline'
+    - if: '$CI_COMMIT_BRANCH =~ /^\d+-\d+-auto-deploy-\d+$/'
+      variables:
+        <<: *default-ruby-variables
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_COMMIT_BRANCH branch pipeline'
+    - if: '$CI_COMMIT_BRANCH =~ /^security\//'
+      variables:
+        <<: *default-ruby-variables
+        PIPELINE_NAME: 'Ruby $RUBY_VERSION $CI_COMMIT_BRANCH branch pipeline'
+
+# add memory-intensive tag to rspec unit job, match better resource node
+.rspec-base:
+  tags:
+    - memory-intensive
+
+# add memory-intensive tag to frontend compile job, match better resource node
+compile-test-assets:
+  tags:
+    - memory-intensive
+
+# add memory-intensive tag to avoid timeout issue like https://jihulab.com/gitlab-cn/gitlab/-/jobs/15329097
+.rails-production-server-boot:
+  tags:
+    - memory-intensive
+
+# add memory-intensive tag to frontend jest msw integration vue3 job, match better resource node
+jest-msw-integration vue3:
+  tags:
+    - memory-intensive
+
+compile-production-assets:
+  tags:
+    - saas-linux-xlarge-amd64
+
+compile-production-assets vue3:
+  tags:
+    - saas-linux-xlarge-amd64

@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-09-10T12:47:23Z",
+  "entries": {
+    "doc/administration/semantic_code_search.md": {
+      "blob": "3fa7527d9281252f81f49c1d0848788ed877bffd",
+      "commit": "f984472283e5e862ceaf64115044a0faaff61367",
+      "target": {
+        "blob": "fee5eb0b3d31095e372e0d25c0709101e08b50e0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "f984472283e5e862ceaf64115044a0faaff61367",
+  "version": 2
+}

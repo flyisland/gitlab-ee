@@ -1,0 +1,14 @@
+-# EE:Self Managed
+
+- if !::Gitlab.com?
+  - link_classes ||= "blank-state blank-state-link gl-text-primary gl-flex gl-items-center gl-border-1 gl-border-solid gl-border-gray-100 gl-rounded-base gl-mb-5"
+  %div{ class: "#{link_classes} flex-column" }
+    .blank-state-icon.gl-mb-3
+      = image_tag("illustrations/wechat-com.png", { lazy: false, width: "168", height: "168" })
+    .blank-state-body.sm:gl-pl-6
+      %h3.gl-text-size-h2.gl-mt-0
+        = s_('JH|Support|Scan the QR code to join our WeChat group')
+      %p.gl-mb-0
+        = s_('JH|Support|1. Access enterprise-level DevOps solutions support')
+      %p
+        = s_('JH|Support|2. Free or Discount JiHu Gitlab official training and certification')

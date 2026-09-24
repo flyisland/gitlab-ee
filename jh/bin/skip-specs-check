@@ -1,0 +1,99 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'yaml'
+
+class SkipSpecsCheck # rubocop:disable Gitlab/NamespacedClass -- we need it
+  ConfigError = Class.new(StandardError)
+
+  # jh/spec/config/skip_specs.yml
+  # jh/qa/qa/specs/config/e2e_skip_specs_production.yml
+  ROOT_PATH = File.expand_path("../..", __dir__)
+  UNIT_CONFIG_PATH = "#{ROOT_PATH}/jh/spec/config/skip_specs.yml".freeze
+  QA_CONFIG_PATH_REGEX = "#{ROOT_PATH}/jh/qa/qa/specs/config/e2e_skip_specs_*.yml".freeze
+
+  attr_reader :config_path
+
+  def self.check!
+    errors = {}
+    config_paths = [UNIT_CONFIG_PATH] + Dir.glob(QA_CONFIG_PATH_REGEX)
+
+    config_paths.each do |path|
+      new(path).check_skipped_list!
+    rescue ConfigError => e
+      path = path.delete_prefix("#{ROOT_PATH}/")
+      errors[path] = e.message
+    end
+
+    return if errors.empty?
+
+    errors.each do |config_path, error|
+      warn "Check `#{config_path}` failed: #{error}"
+    end
+
+    exit 1
+  end
+
+  def initialize(config_path)
+    @config_path = config_path
+  end
+
+  def check_skipped_list!
+    check_description!
+
+    config_list.each do |item|
+      check_contain_jh_related_spec_or_skip_reason!(item)
+      check_jh_related_spec_is_valid!(item)
+    end
+  end
+
+  private
+
+  def check_description!
+    group_file_paths = config_list.group_by { |item| item['file_path'] }
+    duplicated_file_path = group_file_paths.find { |_k, v| v.size > 1 }&.first
+    raise ConfigError, "The `file_path` duplicated: #{duplicated_file_path}" if duplicated_file_path
+
+    descriptions_list = config_list.filter_map { |item| item['description'] }
+    descriptions_list.each do |descriptions|
+      raise ConfigError, "The `description` must be `Array`: #{descriptions.inspect}" unless descriptions.is_a?(Array)
+
+      group_descriptions = descriptions.group_by { |item| item }
+      duplicated_description = group_descriptions.find { |_k, v| v.size > 1 }&.first
+      raise ConfigError, "The `description` duplicated: #{duplicated_description}" if duplicated_description
+    end
+  end
+
+  def check_contain_jh_related_spec_or_skip_reason!(item)
+    return if !item['jh_related_spec'].nil? || !item['skip_reason'].nil?
+
+    raise ConfigError, "Cannot find `jh_related_spec` or `skip_reason` : #{item['file_path']}"
+  end
+
+  def check_jh_related_spec_is_valid!(item)
+    jh_related_spec = item['jh_related_spec']
+    return if jh_related_spec.nil?
+
+    case jh_related_spec
+    when String
+      jh_related_spec_str_is_valid!(jh_related_spec)
+    when Array
+      jh_related_spec.each do |jh_related_spec_str|
+        jh_related_spec_str_is_valid!(jh_related_spec_str)
+      end
+    else
+      raise ConfigError, "The `jh_related_spec` must be a `String` or an `Array` : #{item['file_path']}"
+    end
+  end
+
+  def jh_related_spec_str_is_valid!(jh_related_spec_str)
+    path = "#{ROOT_PATH}/#{jh_related_spec_str.split(' ')[0]}"
+    raise ConfigError, "The `jh_related_spec` file is not exist : #{jh_related_spec_str}" unless File.exist?(path)
+  end
+
+  def config_list
+    @config_list ||= YAML.load_file(config_path) || []
+  end
+end
+
+SkipSpecsCheck.check!

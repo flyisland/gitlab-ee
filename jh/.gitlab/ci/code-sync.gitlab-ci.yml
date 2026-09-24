@@ -1,0 +1,17 @@
+trigger-merge-pre-into-main-jh:
+  stage: .post
+  dependencies: [] # do not pull artifacts from previous stages
+  rules:
+    - if: '$DISABLE_TRIGGER_MERGE_PRE_INTO_MAIN_JH == "true"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH != "pre-main-jh"'
+      when: never
+    - !reference [".frontend:rules:jest", rules]
+    - !reference [".rails:rules:ee-only-system", rules]
+  variables:
+    # https://jihulab.com/gitlab-cn/code-sync
+    SYNC_CODE_PROJECT_ID: 9281
+    TRIGGER_CODE_SYNC_PIPELINE_URL: "$CI_SERVER_URL/api/v4/projects/$SYNC_CODE_PROJECT_ID/trigger/pipeline"
+  script:
+    - echo "Trigger code-sync pipeline to merge pre-main-jh into main-jh"
+    - curl -X POST --fail -F token="${TRIGGER_CODE_SYNC_TOKEN}" -F ref="main-jh" -F "variables[JH_SYNC_SCHEDULE]=gitlab-main-jh" $TRIGGER_CODE_SYNC_PIPELINE_URL

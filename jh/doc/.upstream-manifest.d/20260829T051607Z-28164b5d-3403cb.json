@@ -1,0 +1,286 @@
+{
+  "created_at": "2026-08-29T05:16:07Z",
+  "entries": {
+    "doc/releases/19/gitlab-19-3-released/advanced-sast-ios-beta.md": {
+      "blob": "08dd572b6e9a4049970411a22fe433ab9ea3fb06",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "02e80ea23294a1d1afe943adfe90b8aaac51f740",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/aws-bedrock-mantle.md": {
+      "absent": true,
+      "blob": "c1cffab8e32d87e189a62a3fbe5d1b1266cd2908",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/bulk_flow_execution.md": {
+      "blob": "ddaf2e529f6232cdb491bd50d992ea9c19a87e72",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "f99a11ad44bbdc9b09e5c8a3a0301bc33ef244c1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/bun-dependency-scanning.md": {
+      "blob": "ff5994ef53e8bf1e6f6e7501b6fb3b1b52fdb7fe",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "9eacd2adb3aa6984dc7274cc368901d8b27f7fa1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/dcr-oauth-username-visibility.md": {
+      "blob": "38e4fd74b41eca3af65ba0581c7f042e24ec2915",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "e35ed9582608a08d19ce636c7bee92e766912b66",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/devstral-2-deprecate.md": {
+      "absent": true,
+      "blob": "dbfa8638887b0ad25cb5d74514dc71b1e596eab5",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/disable-oauth-dynamic-client-registration.md": {
+      "blob": "cf1c9a501bf9d40a564a291c66f7d5c7bd63b988",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "6446666c37439bfe882c49e52dcf2aa77bdaed97",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/duo-agent-platform-ide-ui-v2-beta.md": {
+      "blob": "cd2bc716183e4e598ec956ab782a108b9dd85d56",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "db5720d426c6cdbf355e6c4169077ff4be39f42b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/duo-cli-plugin-marketplaces.md": {
+      "blob": "dfc904a809ebf47f6828bfc741e9c7a6a0d6bbf2",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "fd88555ac77f7f4e193efeac7897c3a77195023f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/flex-per-capability-spend-caps.md": {
+      "absent": true,
+      "blob": "ee29c016570478fbb581797d987fe2787325ecee",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/flex-usage-notification-emails.md": {
+      "absent": true,
+      "blob": "d58c160f75a61776267087432786f8499cc12715",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/flow-creator-foundational-agent.md": {
+      "blob": "f0f78fac4007e604fb062553b8489b9481ed6c8b",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "0a01709dbf1837baf6940b88c7a25bbd3e4e8c88",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/gitlab-runner-19-3.md": {
+      "blob": "522ad2ce689f681845d71c84024d031c70cc7af4",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "5a05de30dead44f3244bdb97516038246b87e402",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/index.md": {
+      "blob": "42df9fa3d98637aaa5856062d9f6ca5cc7c690de",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "b662de3d9d3fb686831debf609c5858be5284f39",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/kubernetes-1-36-support.md": {
+      "blob": "4cba12badb900c32c7abf3cd06433f76d7b70647",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "74085fb20ee96b2c714195e927307eb7f5f023ab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/mcp-merge-request-tools.md": {
+      "blob": "f6e5387505987953c46ad57e7a1d82e903a8618f",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "68240004614a11009edb59b724f7b3a10d527f5e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/mcp-oauth-admin-scope.md": {
+      "blob": "ae136a267be92a0b7796d1a27b207929086ff672",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "7dce393d29f65d7facd156894e2f5809e3b5251a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/postgresql-18-4-available-for-fresh-installs.md": {
+      "blob": "3f79dd3299038f2b30e4f91da7aaa20e68703ff6",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "ff414b7fc656102818d7b0575d2b81a2e286d893",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/prevent-bypassing-merge-trains.md": {
+      "blob": "4a0bf31b01eeb719acb0201a3f1a50e2b85afdfc",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "dacaeb0e7d4ac3d4da17032b6c6bf24526a832b9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/resolve-merge-conflicts-with-gitlab-duo-ga.md": {
+      "blob": "0b53679bb04909e0ae8a72b6ed73903c7093cad5",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "bf1259795702b8049d29683cf15517be6f5aabab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/resolve-review-discussions-with-gitlab-duo-ga.md": {
+      "blob": "55f1669f4041391cf61c341ba99604ac6ea7e6f3",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "52d1c5bf06c2de42f563e67f3209fa7d415b5855",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/restricted-visibility-ai-catalog.md": {
+      "blob": "06e6f428f18da82b2b2153c27f5e5a851c710147",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "c6db8a045b07072686624ebe89f9dad88ca3b762",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/sd-default-branch-commit-range-scan.md": {
+      "blob": "86a84e55340370231774af3d1379f373a78a043d",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "02e2b8d152df4b1fc550ab5f48e0d722ccd1e14d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/sd-gss-beta.md": {
+      "blob": "19fd3287cfde981919212d5badedc39e9d8d5e74",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "3b1e8e4ce5d885599085f940e94f8e0dd647982b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/secrets-manager-limited-availability.md": {
+      "blob": "44dfc66ec00913e92443fa24e53bd7ed1379f349",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "5c2c1e5137b0fa8ecb5b1248e8bedc6ff7ad9cc6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/session-detail-plan-sidebar.md": {
+      "blob": "eea215a6ca5fedd3daede3664c95bb149cea80b0",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "1cac01bcd74d1edc0cc5876d0c091adfbcd2ff86",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/spdx-license-expression-sbom-ingestion.md": {
+      "blob": "80a2aba96e3e22c3c99a8529193d1d1fdf43674c",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "ae88e78e81d2f4e3e78f5e5f4619e59eb1c713e2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/spp-new-audit-events.md": {
+      "blob": "e57f02b4da17c9cdea4e4ce34c8af17c54ce88f1",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "0fa4b8bb4e157931d029c3b8b170829c5be4a23e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/usage-caps-generally-available.md": {
+      "blob": "a5aafc58495a1f6cd4d46562b2502c099c9d59f9",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "0e989f562a9aac9ee5bca34f2a5697c76c15cde9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/vulnerability_details_redesign.md": {
+      "blob": "7ba18bf373c3509cdb85fcfa4011260e99255bc4",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "b1959173b0989dc1c5aca77a980644d315672132",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/vulnerability_wave_chart.md": {
+      "blob": "202a540c5f7e9fec9f79ebe88b60e116ff01bcfb",
+      "commit": "78e46f9a8e2f6b16c9fbbf08a11aeedffe83e1bd",
+      "target": {
+        "blob": "79f88a324a447e2b3a9b27c833cfbf8601e4caa1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "28164b5d5e25f35fcd0081113087abe92ec46dca",
+  "version": 2
+}

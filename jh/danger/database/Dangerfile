@@ -1,0 +1,72 @@
+# frozen_string_literal: true
+
+SCHEMA_NOT_UPDATED_MESSAGE_SHORT = "添加了新的 %<migrations>s 但 %<schema>s 还未更新"
+
+SCHEMA_NOT_UPDATED_MESSAGE_FULL = <<~MSG.freeze
+  **#{SCHEMA_NOT_UPDATED_MESSAGE_SHORT}**
+
+  通常情况下，当添加新 %<migrations>s 时，%<schema>s 也应一起更新
+  （除非此迁移没有修改数据库结构或不是最新的结构）。
+MSG
+
+DB_MESSAGE = <<~MSG
+  此合并请求需要数据库审核。为确保修改可以通过审核，请按以下步骤执行：
+
+  1. 确保此合并请求包含 ~database 和 ~"database::review pending" 标记。
+     如果此合并请求修改了数据库文件，Danger 会自动标记。
+  1. 按照文档重新检查此合并请求。
+  1. 分配并提醒一位审核者转盘推荐的数据库审核者。
+MSG
+
+DB_FILES_MESSAGE = <<~MSG
+  以下文件需要数据库团队的审核：
+MSG
+
+DB_REMOVE_MESSAGE = <<~MSG.freeze
+  若您不再需要数据库审核，您可以通过移除 ~database 标记然后重新运行 [`danger-review` 任务](#{ENV['CI_JOB_URL']})来移除这个建议。
+MSG
+
+DB_MIGRATION_TESTING_REQUIRED_MESSAGE = <<~MSG
+  1. 如果此合并请求不是 ~"Community contribution" 或来自分叉，请手动启动 `db:gitlabcom-database-testing` 手动任务。
+
+MSG
+
+DATABASE_APPROVED_LABEL = 'database::approved'
+
+non_geo_db_schema_updated = !git.modified_files.grep(%r{\Adb/structure\.sql}).empty?
+geo_db_schema_updated = !git.modified_files.grep(%r{\Aee/db/geo/structure\.sql}).empty?
+
+non_geo_migration_created = !git.added_files.grep(%r{\A(db/(post_)?migrate)/}).empty?
+geo_migration_created = !git.added_files.grep(%r{\Aee/db/geo/(post_)?migrate/}).empty?
+
+format_str = helper.ci? ? SCHEMA_NOT_UPDATED_MESSAGE_FULL : SCHEMA_NOT_UPDATED_MESSAGE_SHORT
+
+if non_geo_migration_created && !non_geo_db_schema_updated
+  warn format(format_str, migrations: 'migrations', schema: helper.html_link("db/structure.sql"))
+end
+
+if geo_migration_created && !geo_db_schema_updated
+  warn format(format_str, migrations: 'Geo migrations', schema: helper.html_link("ee/db/geo/structure.sql"))
+end
+
+return unless helper.ci?
+return if helper.mr_labels.include?(DATABASE_APPROVED_LABEL)
+
+db_paths_to_review = helper.changes_by_category[:database]
+
+DB_TEAM_URL = "<!-- https://gitlab.com/groups/gl-database/-/group_members -->"
+
+if helper.mr_labels.include?('database') || db_paths_to_review.any?
+  message "此合并请求添加或修改了需要[数据库团队](#{DB_TEAM_URL})的审核。"
+
+  markdown(DB_MESSAGE)
+  markdown(DB_MIGRATION_TESTING_REQUIRED_MESSAGE) if non_geo_migration_created
+
+  if db_paths_to_review.any?
+    markdown(DB_FILES_MESSAGE + helper.markdown_list(db_paths_to_review.to_set))
+  else
+    markdown(DB_REMOVE_MESSAGE)
+  end
+
+  helper.labels_to_add << 'database::review pending' unless helper.has_scoped_label_with_scope?("database")
+end

@@ -1,0 +1,99 @@
+{
+  "created_at": "2026-09-09T04:49:58Z",
+  "entries": {
+    "doc/administration/geo/replication/troubleshooting/common.md": {
+      "blob": "d1eb3b6b839336dd233bb6c5ea847afe8e4d47db",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "9802c7cd02145213c772c7b8f98cae101da7397d",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/administration/geo/replication/troubleshooting/synchronization_verification.md": {
+      "blob": "fe078ccbd3bbe0604badd0edc6a27e4b1569b113",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "1c8e3459426097f0fd3c2b78419fb24b43996ca2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/secondary_proxy/runners.md": {
+      "blob": "13ccdd40500550b6bd7a93a1eb6ec9b6f4622e02",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "5809b22a662fbcf83224d197ad62f075a015bbad",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/setup/two_single_node_sites.md": {
+      "blob": "a37d39287fbcf2331a4f84271cb544d376e879ea",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "384ec9d80fe38797b379477211cc0a447f119041",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/administration/gitaly/bundle_uris.md": {
+      "blob": "92575855a861a3589348866148dc6e98d4bfcf83",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "1854e91dc45da50a2aaaabfbe9c4c2c5b271a979",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/praefect/_index.md": {
+      "blob": "5c2853e355bad5c833c60bcb3df7846e70def09a",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "1c99e27d163e7b22558b0b90df295a8c6311f07e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/praefect/configure.md": {
+      "blob": "9c2146dac604ec2f22f85882ee269c440633ce26",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "e52a1ad895e3aff5b13d3a3959e782079c395535",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/supported_llm_serving_platforms.md": {
+      "blob": "21d252bdaa339b1b7fcf4c68e5e70401b358c8c9",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "d758f4ec9bf6a43c4bf8a2882901f157dc3491cb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/troubleshooting.md": {
+      "blob": "a069017100818e601228cf7b39359507379e751d",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "25926f7e3cfb125dc84ebccc03d78023401829e1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/nfs.md": {
+      "blob": "d6893787f45d476dd661eee2cb87df391dd6a75f",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "b67b1519f2510072b3cacbb8c70afe966d11bb63",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+  "version": 2
+}

@@ -1,0 +1,55 @@
+# frozen_string_literal: true
+
+NO_SPECS_LABELS = [
+  'maintenance::pipelines',
+  'maintenance::workflow',
+  'documentation',
+  'QA'
+].freeze
+NO_NEW_SPEC_MESSAGE = <<~MSG
+  您已对此应用做出修改，但尚未添加任何测试内容。
+  这仅应出现在重构现有的代码时，
+  如果是这样，请考虑添加 %<labels>s 标记之一。
+MSG
+EE_CHANGE_WITH_FOSS_SPEC_CHANGE_MESSAGE = <<~MSG
+  您已对极狐Gitlab 企业版本做出改动，但仅对 FOSS 测试做了更改。
+  这也许是在 FOSS 测试中测试企业版本行为的标志。
+
+  请确定这些测试文件在仅开源模式下也能够通过：
+
+  1. 在本地执行 `FOSS_ONLY=1 bin/rspec -- %<spec_files>s`。
+  1. 检查此合并请求流水线中的 `rspec foss-impact` 任务。
+  1. 为此合并请求添加 ~"pipeline:run-as-if-foss" 标记并启动新流水线。
+
+MSG
+
+CONTROLLER_SPEC_DEPRECATION_MESSAGE = <<~MSG
+  避免添加新的基于控制器的测试，我们正在将基于控制器的测试重构为基于请求（或功能）的测试，
+  请在 `/spec/requests` 或（和） `/ee/spec/requests` 中添加基于请求的测试。
+
+  <!-- 参见 https://gitlab.com/groups/gitlab-org/-/epics/5076 了解更多信息。-->
+MSG
+
+all_changed_files = helper.all_changed_files
+has_app_changes = all_changed_files.grep(%r{\A(app|lib|db/(geo/)?(post_)?migrate)/}).any?
+has_ee_app_changes = all_changed_files.grep(%r{\Aee/(app|lib|db/(geo/)?(post_)?migrate)/}).any?
+spec_changes = specs.changed_specs_files(ee: :exclude)
+has_spec_changes = spec_changes.any?
+has_ee_spec_changes = specs.changed_specs_files(ee: :only).any?
+new_specs_needed = (helper.mr_labels & NO_SPECS_LABELS).empty?
+
+if (has_app_changes || has_ee_app_changes) && !(has_spec_changes || has_ee_spec_changes) && new_specs_needed
+  warn format(NO_NEW_SPEC_MESSAGE, labels: helper.labels_list(NO_SPECS_LABELS)), sticky: false
+end
+
+# The only changes outside `ee/` are in `spec/`
+if has_ee_app_changes && has_spec_changes && !(has_app_changes || has_ee_spec_changes)
+  warn format(EE_CHANGE_WITH_FOSS_SPEC_CHANGE_MESSAGE, spec_files: spec_changes.join(" ")), sticky: false
+end
+
+# Forbidding a new file addition under `/spec/controllers` or `/ee/spec/controllers`
+warn CONTROLLER_SPEC_DEPRECATION_MESSAGE if helper.changes.added.files.grep(%r{^(ee/)?spec/controllers/}).any?
+
+specs.changed_specs_files.each do |filename|
+  specs.add_suggestions_for_match_with_array(filename)
+end

@@ -1,0 +1,21 @@
+- title = s_('JH|Authenticate with Gitee')
+- page_title title
+- header_title _("New project"), new_project_path
+- add_to_breadcrumbs s_('ProjectsNew|Import project'), new_project_path(anchor: 'import_project')
+
+%h1.page-title.gl-text-size-h-display
+  = title
+
+= form_tag personal_access_token_import_gitee_path, method: :post do
+  .form-group
+    %label.label-bold= _('Personal access token')
+    = hidden_field_tag(:namespace_id, params[:namespace_id])
+    = text_field_tag :personal_access_token, '', class: 'form-control gl-form-input', placeholder: _('e.g. %{token}') % { token: '8d3f016698e...' }, data: { testid: 'personal-access-token-field' }
+    %span.form-text.gl-text-gray-600
+      = import_gitee_personal_access_token_message
+
+  = render_if_exists 'import/gitee/ci_cd_only'
+
+  .form-actions.gl-flex.gl-justify-end
+    = link_to _('Cancel'), new_project_path, class: 'gl-button btn btn-default'
+    = submit_tag _('Authenticate'), class: 'gl-button btn btn-confirm gl-ml-3', data: { testid: 'authenticate-button' }

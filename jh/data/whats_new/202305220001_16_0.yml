@@ -1,0 +1,132 @@
+- name: 推出价值流仪表盘
+  description: | # Do not modify this line, instead modify the lines below.
+    新仪表盘提供了对指标的战略性洞察，帮助决策者识别优化软件交付的趋势和模式。极狐GitLab 价值流仪表盘的第一次迭代专注于通过对标价值流生命周期([价值流分析](https://docs.gitlab.cn/jh/user/group/value_stream_analytics/)、[DORA4](https://docs.gitlab.cn/jh/user/analytics/dora_metrics.html)) 和[漏洞](https://docs.gitlab.cn/jh/user/application_security/vulnerability_report/)指标，让团队不断改进软件交付工作流程。
+
+    组织可以使用[价值流仪表盘](https://docs.gitlab.cn/jh/user/analytics/value_streams_dashboard.html)跟踪和比较一段时间内这些指标的情况，尽快发现下降趋势，了解安全风险，并深入研究单个项目或指标以采取行动进行改进。
+
+    作为具有统一数据存储的单一应用程序，这种综合视图允许所有利益相关者，不论是管理者还是个人贡献者，了解软件开发生命周期，而无需购买或维护第三方工具。
+  stage: Plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/analytics/value_streams_dashboard.html
+  #  image_url: https://about.gitlab.com/images/16_0/16.0_vsd_ga.gif
+  published_at: 2023-05-22
+  release: 16.0
+
+- name: 评论模版
+  description: | # Do not modify this line, instead modify the lines below.
+    当您在议题、史诗或合并请求中发表评论时，您可能会不断重复，一遍又一遍地写相同的评论。也许您需要经常询问错误报告信息；也许作为分类过程的一部分，您可能正在通过快速操作应用标签；也许您只是想用有趣的动图或适当的表情符号来完成所有的代码审查。 🎉
+
+    评论模板让您能够创建已保存的回复，您可以将这些回复应用于极狐GitLab 其他的评论中，以加快您的工作流程。要创建评论模板，请点击 **用户设置 > 评论模板**，并填写您的模板。保存后，选择任何文本区域上的 **插入评论模板** 图标，您就可以使用保存的回复。
+
+    这是标准化回复并节省时间的好方法！
+  stage: Create
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版、专业版、旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/profile/comment_templates.html
+  #  image_url: https://about.gitlab.com/images/16_0/create-comment-templates.gif
+  published_at: 2023-05-22
+  release: 16.0
+
+- name: 从极狐GitLab UI 更新您的派生项目
+  description: | # Do not modify this line, instead modify the lines below.
+    这个功能让您更容易地管理您的派生。当您的派生落后时，在极狐GitLab UI 中选择 **更新派生** 以与上游更改保持同步。当您的派生超前时，选择 **创建合并请求** 将您的更改贡献回上游项目。这两个操作以前都需要您使用命令行完成。
+
+    在项目主页和 **仓库 > 文件** 中查看您的派生超前（或落后）的提交数。如果存在合并冲突，UI 会提供有关如何从命令行使用 Git 解决冲突的指导。
+  stage: Create
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版、专业版、旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/project/repository/forking_workflow.html#update-your-fork
+  #  image_url: https://about.gitlab.com/images/16_0/fetch_new_upstream_contents_when_fork_is_behind.png
+  published_at: 2023-05-22
+  release: 16.0
+
+- name: 仅镜像特定分支
+  description: | # Do not modify this line, instead modify the lines below.
+    您是否有过镜像一个包含许多分支的仓库，但您只需要其中几个分支的情况？现在您可以用通过创建仅匹配所需分支的正则表达式来限制镜像的分支数。
+
+    以前，您只能镜像整个仓库或所有受保护的分支。现在，这个新功能可以减少您的镜像推送或拉取数据量，并使敏感分支免于被公共镜像。
+  stage: Create
+  self-managed: true
+  gitlab-com: true
+  available_in: [专业版、旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/project/repository/mirror/#mirror-specific-branches
+  #  image_url: https://about.gitlab.com/images/16_0/mirror_specific_branches_only.png
+  published_at: 2023-05-22
+  release: 16.0
+
+- name: 推出新的 Web IDE 体验
+  description: | # Do not modify this line, instead modify the lines below.
+    自推出以来，我们一直在迭代 Web IDE 的可用性、性能和稳定性，这使我们能够在强大的基础架构上构建远程开发工作区和代码建议等功能。
+
+    我们收到了大量关于 Web IDE Beta 的正面反馈，并且从 16.0 开始，我们将其设为极狐GitLab 的默认多文件代码编辑器。
+  stage: Create
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版、专业版、旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/project/web_ide/
+  #  image_url: https://about.gitlab.com/images/16_0/web-ide-ga.png
+  published_at: 2023-05-22
+  release: 16.0
+
+- name: Beta 版的远程开发工作区功能可用于公共项目
+  description: | # Do not modify this line, instead modify the lines below.
+    这个功能让您可以不再花费数小时甚至数天时间对本地开发环境进行故障排除或解释难以理解的包安装错误。现在，您可以在代码中定义一个一致、稳定且安全的开发环境，并使用它来创建按需的远程开发工作区。
+
+    这些工作区可以用作云中个人的、短暂的开发环境。通过消除对本地开发环境的需求，您可以更多地关注代码而不是依赖项。加快新项目的启动流程，您只需几分钟就可以启动并运行，而无需几天的时间。
+
+    在为 Kubernetes 配置极狐GitLab 代理并在您选择的私有化部署集群或云平台中[安装依赖项](https://docs.gitlab.cn/jh/user/workspace/#prerequisites)后，您可以在 `.devfile.yaml` 文件中定义您的开发环境并将其存储在公共项目中。然后，您和任何其他有权访问代理的开发人员都可以基于 `.devfile.yaml` 文件创建工作区，并直接在嵌入式 Web IDE 中进行编辑。您将拥有对容器的完整终端访问权限，从而使您的工作更加高效。当您完成后，或者如果出现其他问题，您可以关闭工作区并为您的下一个开发任务启动一个全新的工作区。
+  stage: Create
+  self-managed: true
+  gitlab-com: true
+  available_in: [专业版、旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/workspace/index.html
+  #  image_url: https://img.youtube.com/vi/yjweL075Cdo/hqdefault.jpg
+  published_at: 2023-05-22
+  release: 16.0
+
+- name: 使用 SecureFlag 进行安全培训
+  description: | # Do not modify this line, instead modify the lines below.
+    随着安全左移的趋势，在没有指导的情况下修复安全发现很具挑战性。开发人员需要可操作的建议，以便解决漏洞并继续构建功能。极狐GitLab 14.9 发布了与检测到的特定漏洞相关的上下文训练。
+
+    在此次发布中，我们基于漏洞的 CWE 添加了与 SecureFlag 的集成。SecureFlag 的培训解决方案是独一无二的，因为实验室涉及了修复实时环境中的漏洞，并可以将其转移到真实环境中。
+  stage: Govern
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/application_security/vulnerabilities/#enable-security-training-for-vulnerabilities
+  #  image_url: https://about.gitlab.com/images/16_0/secureflag.png
+  published_at: 2023-05-22
+  release: 16.0
+
+- name: 令牌轮换 API
+  description: | # Do not modify this line, instead modify the lines below.
+    随着安全左移的趋势，在没有指导的情况下修复安全发现很具挑战性。开发人员需要可操作的建议，以便解决漏洞并继续构建功能。极狐GitLab 14.9 发布了与检测到的特定漏洞相关的上下文训练。
+
+    在此次发布中，我们基于漏洞的 CWE 添加了与 SecureFlag 的集成。SecureFlag 的培训解决方案是独一无二的，因为实验室涉及了修复实时环境中的漏洞，并可以将其转移到真实环境中。
+  stage: Govern
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版、专业版、旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/security/token_overview.html
+  #  image_url: https://img.youtube.com/vi/Lzb7DbPuqBU/hqdefault.jpg
+  published_at: 2023-05-22
+  release: 16.0
+
+- name: 项目级价值流分析的自定义价值流
+  description: | # Do not modify this line, instead modify the lines below.
+    为了提高整个工作流的可见性，我们向项目级价值流分析 (VSA) 添加了[概述阶段](https://docs.gitlab.cn/jh/user/group/value_stream_analytics)和[创建自定义价值流](https://docs.gitlab.cn/jh/user/group/value_stream_analytics/#create-a-value-stream-with-custom-stages)的选项。
+
+    到目前为止，这些功能仅适用于群组级别的 VSA。
+  stage: Plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [专业版、旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/group/value_stream_analytics/
+  #  image_url: https://about.gitlab.com/images/16_0/16_vsaparity.gif
+  published_at: 2023-05-22
+  release: 16.0
+

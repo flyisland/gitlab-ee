@@ -1,0 +1,11 @@
+#content
+  %p= _('Hi %{username},') % { username: @user.name }
+
+  %p= s_("JH|FreeTrial|Your free trial of JiHu GitLab on %{host} ends today. We are sorry to inform that your account is deactivated. If you want to continue, you can contact 400-088-8738 or scan below QR code to upgrade any of your group or purchase add-on service.") % {host: Gitlab.config.gitlab.host}
+
+  %img{ alt: "qa-code", src: image_url('mailers/saas-user-group-qa-code.png'), width: '300', height: '300' }
+
+  %p= s_("JH|FreeTrial|If you do not upgrade any of your group or purchase add-on service, all data in your account will be deleted.")
+
+  %p= s_("JH|FreeTrial|Thanks,")
+  %p= s_("JH|FreeTrial|The JiHu GitLab Team")

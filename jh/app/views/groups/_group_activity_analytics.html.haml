@@ -1,0 +1,28 @@
+- if @group.root? && @group.trial_active?
+  = render Pajamas::CardComponent.new do |c|
+    - c.with_body do
+      %h4.gl-heading-4.gl-mb-3
+        - if @group.ultimate_trial_plan?
+          = s_('JH|Trial|Group ultimate trial time')
+        - else
+          = s_('JH|Trial|Group premium trial time')
+      .gl-flex.gl-items-center.gl-flex-row.gl-gap-5.gl-mb-5
+        %div
+          %strong
+            = _('Start Time')
+          %span
+            = @group.trial_starts_on
+        %div
+          %strong
+            = _('End Time')
+          %span
+            = @group.trial_ends_on
+      .gl-flex.gl-items-center
+        - subscription_url = ::Gitlab::Routing.url_helpers.new_subscriptions_path(namespace_id: @group.id)
+        = render Pajamas::ButtonComponent.new(variant: :confirm, href: subscription_url, button_options: { class: 'gl-mr-3', data: { testid: 'upgrade-button' } }) do
+          = s_('JH|Trials|Upgrade to paid versions')
+        = render Pajamas::ButtonComponent.new(variant: :info, href: group_billings_path(@group, source: 'group-top-level-card'), button_options: { data: { testid: 'explore-plans-button' } }) do
+          = s_('TierBadgePopover|Explore paid plans')
+
+
+= render_ee 'groups/group_activity_analytics', group: @group

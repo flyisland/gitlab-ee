@@ -1,0 +1,1614 @@
+##
+# Notice:
+# 1. Always fix the test on upstream first, and then consider skipping tests
+# 2. We should include your MR or Issue url in comment, try to tell others where and why
+# 3. The file is grouped by `file_path`, check if a new `file_path` group already exists before adding it
+# 4. Please add new `file_path` group at the bottom
+# *. See details in: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/431
+#
+
+- file_path: 'ee/spec/features/groups/hooks/user_tests_hooks_spec.rb'
+  description:
+    - 'User tests hooks when project is not empty when URL is invalid is expected to have visible css "[data-testid=\"alert-danger\"]" with text "Hook execution failed: Failed to open"'
+  skip_reason: 'wait upstream fix failed test'
+- file_path: 'spec/features/groups_spec.rb'
+  description:
+    - 'Group create a group as a non-admin with current organization setting in middleware for setting from the header sets the organization to another organization'
+  skip_reason: 'due to https://gitlab.com/gitlab-org/gitlab/-/merge_requests/144811#note_1806657129'
+- file_path: 'spec/scripts/internal_events/product_group_renamer_spec.rb'
+  description:
+    - 'ProductGroupRenamer with real definitions reads all definitions files'
+  skip_reason: 'JH has own metric to load, so JH will add new test'
+- file_path: 'spec/views/devise/shared/_signup_box.html.haml_spec.rb'
+  description:
+    - 'devise/shared/_signup_box when signup_intent_step_one experiment is candidate renders signup_intent select'
+  skip_reason: 'JH override signup box, so do not need this test'
+- file_path: 'ee/spec/features/google_analytics_datalayer_spec.rb'
+  skip_reason: 'skip google service in JH'
+- file_path: 'ee/spec/features/trials/saas/duo_pro/creation_with_one_existing_namespace_flow_spec.rb'
+  skip_reason: 'JH does not has Duo pro trial feature'
+- file_path: 'ee/spec/features/trials/saas/duo_pro/creation_with_multiple_existing_namespace_flow_spec.rb'
+  skip_reason: 'JH does not has Duo pro trial feature'
+- file_path: 'spec/requests/projects/gcp/artifact_registry/docker_images_controller_spec.rb'
+  skip_reason: 'skip GCP related feature in JH'
+- file_path: 'ee/spec/helpers/billing_plans_helper_spec.rb'
+  description:
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "default", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "free", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "free", trial_active: false is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "bronze", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "silver", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "premium", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "gold", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "ultimate", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "ultimate_trial", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "premium_trial", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? type: "Group", plan: "opensource", trial_active: true is expected to equal true'
+    - 'BillingPlansHelper#use_new_purchase_flow? when the group is on a plan eligible for the new purchase flow when the user has a last name returns true'
+    - 'BillingPlansHelper#plan_purchase_url builds correct url for the old purchase flow'
+    - 'BillingPlansHelper#plan_purchase_url builds correct gitlab url with some source'
+    - 'BillingPlansHelper#plan_feature_list when premium returns features list'
+    - 'BillingPlansHelper#plan_feature_list when ultimate returns features list'
+  jh_related_spec:
+    - 'jh/spec/helpers/jh/billing_plans_helper_spec.rb'
+- file_path: 'ee/spec/features/subscriptions/subscription_flow_for_existing_user_with_eligible_group_spec.rb'
+  description:
+    - 'Subscription flow for existing user with eligible group purchases subscription by selecting create a new group'
+    - 'Subscription flow for existing user with eligible group purchases subscription by selecting existing group'
+  skip_reason: 'JH can not create group after purchase'
+- file_path: 'spec/features/profiles/emails_spec.rb'
+  description:
+    - 'Profile > Emails user re-sends confirmation email'
+  skip_reason: 'need modify send email time to make it pass'
+- file_path: 'spec/features/projects/clusters/gcp_spec.rb'
+  skip_reason: 'skip google service in JH'
+- file_path: 'spec/features/users/login_spec.rb'
+  description:
+    - 'Login when terms are enforced asks to accept the terms on first login'
+    - 'Login when terms are enforced when 2FA is required for the user when the user did not enable 2FA asks to set 2FA before asking to accept the terms'
+    - 'Login when terms are enforced when 2FA is required for the user when the user already enabled 2FA asks the user to accept the terms'
+    - 'Login when terms are enforced when the users password is expired asks the user to accept the terms before setting a new password'
+    - 'Login when terms are enforced when the user does not have an email configured asks the user to accept the terms before setting an email'
+  skip_reason:
+    - 'need JH related spec because terms page is skipped when phone_verification_code_enabled is disabled'
+- file_path: 'ee/spec/features/admin/admin_show_new_user_signups_cap_alert_spec.rb'
+  description:
+    - 'displays new user signups cap alert when reached active users cap displays and dismiss alert'
+  skip_reason:
+    - 'Need upstream fixed on !199879'
+- file_path: 'ee/spec/support/shared_examples/components/lead_form_shared_examples.rb'
+  description:
+    - 'GitlabSubscriptions::Trials::LeadFormComponent behaves like GitlabSubscriptions::Trials::LeadFormComponent with default content behaves like displays default trial header is expected to have text "Start your free Ultimate and GitLab Duo Enterprise trial"'
+    - 'GitlabSubscriptions::Trials::LeadFormComponent behaves like GitlabSubscriptions::Trials::LeadFormComponent with namespace_id when the group is eligible is expected to have text "Start your free Ultimate and GitLab Duo Enterprise trial on group1"'
+    - 'GitlabSubscriptions::Trials::LeadFormComponent behaves like GitlabSubscriptions::Trials::LeadFormComponent with namespace_id when the group is not eligible behaves like displays default trial header is expected to have text "Start your free Ultimate and GitLab Duo Enterprise trial"'
+    - 'GitlabSubscriptions::Trials::LeadFormComponent behaves like GitlabSubscriptions::Trials::LeadFormComponent with eligible namespaces when single namespace is expected to have text "Start your free Ultimate and GitLab Duo Enterprise trial on group3"'
+    - 'GitlabSubscriptions::Trials::LeadFormComponent behaves like GitlabSubscriptions::Trials::LeadFormComponent with eligible namespaces when multiple namespaces behaves like displays default trial header is expected to have text "Start your free Ultimate and GitLab Duo Enterprise trial"'
+  skip_reason:
+    - 'JiHu does not have GitLab Duo featues'
+- file_path: 'ee/spec/support/shared_examples/features/password_complexity_shared_examples.rb'
+  skip_reason: 'JH temp skip it'
+- file_path: 'spec/features/users/signup_spec.rb'
+  description:
+    - 'Signup when terms are enforced renders text that the user confirms terms by clicking register'
+    - 'Signup when terms are enforced renders text that the user confirms terms by signing in'
+    - 'Signup with feature flag restyle_login_page disabled when terms are enforced renders text that the user confirms terms by signing in'
+    - 'Signup with no errors when sending confirmation email when email confirmation setting is not `soft` with sign_in_form_vue feature flag disabled creates the user account and sends a confirmation email, and pre-fills email address after confirming'
+    - 'Signup with no errors when sending confirmation email when email confirmation setting is not `soft` with sign_in_form_vue feature flag enabled creates the user account and sends a confirmation email, and pre-fills email address after confirming'
+    - 'Signup with no errors when sending confirmation email when email confirmation setting is not `soft` creates the user account and sends a confirmation email, and pre-fills email address after confirming'
+  skip_reason:
+    - 'need JH related spec since JH modify i18n text'
+    - 'Signup when terms are enforced renders text that the user confirms terms by signing in'
+- file_path: 'spec/finders/autocomplete/users_finder_spec.rb'
+  description:
+    - 'Autocomplete::UsersFinder#execute when filtered by search searching with less than 3 characters does not allow partial matches'
+  skip_reason: 'need add jh rspec to cover'
+- file_path: 'ee/spec/views/shared/billings/_billing_plan_actions.html.haml_spec.rb'
+  description:
+    - 'shared/billings/_billing_plan_actions.html.haml contains the hand raise lead selector and tracking'
+  skip_reason:
+    - 'The test should be skipped because we have diverged the _billing_plan_actions.html.haml in jh/app/views/shared/billings/_billing_plan_actions.html.haml'
+- file_path: 'ee/spec/views/shared/billings/_billing_plan.html.haml_spec.rb'
+  description:
+    - 'shared/billings/_billing_plan.html.haml when read_only is false behaves like contains the default page features contains the feature link'
+    - 'shared/billings/_billing_plan.html.haml when read_only is true behaves like contains the default page features contains the feature link'
+  skip_reason:
+    - 'JH Override this _billing_plan.html.haml'
+- file_path: 'spec/lib/gitlab/tracking_spec.rb'
+  skip_reason: 'Todo'
+- file_path: 'spec/lib/gitlab/background_migration/delete_orphaned_pipeline_variable_records_spec.rb'
+  skip_reason: 'Ignore checking it with JH Database'
+- file_path: 'spec/lib/gitlab/database/load_balancing/session_map_spec.rb'
+  description:
+    - 'Gitlab::Database::LoadBalancing::SessionMap.without_sticky_writes initialises ScopedSessions with all valid lb names and calls ignore_writes'
+  skip_reason: 'JH database is needed but global not'
+- file_path: 'jh/spec/features/dashboard/groups_list_spec.rb'
+  skip_reason: 'Skip it until upstream fix it'
+- file_path: 'ee/spec/features/registrations/saas/sso_signin_standard_flow_company_creating_project_spec.rb'
+  skip_reason: 'JH override the button text'
+- file_path: 'ee/spec/views/shared/billings/_trial_status.html.haml_spec.rb'
+  jh_related_spec:
+    - 'jh/spec/views/shared/billings/_trial_status.html.haml_spec.rb' # covers each of its tests
+- file_path: 'spec/features/groups/issues_spec.rb'
+  description:
+    - 'Group issues page manual ordering issues should not be draggable when user is not logged in'
+    - 'Group issues page manual ordering issues should be draggable and persist order'
+  skip_reason: 'it breaks main jh a lot, skipped as a flaky case for now'
+- file_path: 'ee/spec/features/registrations/saas/subscription_flow_company_paid_plan_spec.rb'
+  description:
+    - 'Subscription flow for user picking just me for paid plan registers the user, processes subscription purchase and creates a group'
+    - 'Subscription flow for user picking company for paid plan registers the user, processes subscription purchase and creates a group'
+    - 'Subscription flow for user picking company for paid plan with regular sign up registers the user, processes subscription purchase and creates a group'
+    - 'Subscription flow for user picking company for paid plan with regular sign up registers the user and redirects to subscription group selection page'
+  skip_reason: 'follow up issue https://jihulab.com/gitlab-cn/gitlab/-/issues/3024'
+- file_path: 'ee/spec/features/registrations/saas/subscription_flow_just_me_paid_plan_spec.rb'
+  description:
+    - 'Subscription flow for user picking just me for paid plan registers the user, processes subscription purchase and creates a group'
+    - 'Subscription flow for user picking just me for paid plan with regular sign up registers the user, processes subscription purchase and creates a group'
+    - 'Subscription flow for user picking just me for paid plan with regular sign up registers the user and redirects to subscription group selection page'
+  skip_reason: 'follow up issue https://jihulab.com/gitlab-cn/gitlab/-/issues/3024'
+- file_path: 'ee/spec/features/registrations/saas/subscription_flow_spec.rb'
+  description:
+    - 'Subscription flow for user creating group and project for paid plan with regular sign up registers the user and redirects to interstitial page'
+  jh_related_spec: 'jh/spec/features/registrations/saas/subscription_flow_spec.rb'
+  skip_reason: 'JH subscription signup form does not render marketing opt-in'
+- file_path: 'ee/spec/features/storage_limits/repository_size_limit_banner_spec.rb'
+  description:
+    - 'Repository size limit banner when namespace storage limits are disabled shows the banner when a project repository in a free group has exceed the storage limit'
+    - 'Repository size limit banner when namespace storage limits are disabled shows the banner when a project repository in a paid group has exceed the storage limit'
+    - 'Repository size limit banner when namespace storage limits are enabled for free plans shows the banner when a project repository in a paid group has exceed the storage limit'
+  skip_reason: 'JH plan limit repository size is different with global'
+- file_path: 'spec/lib/gitlab/import_export/model_configuration_spec.rb'
+  jh_related_spec: 'jh/spec/lib/gitlab/import_export/model_configuration_spec.rb'
+  skip_reason: 'Combine the models of JH and Upstream together'
+- file_path: 'spec/support/shared_examples/config/metrics/every_metric_definition_shared_examples.rb'
+  description:
+    - 'Every metric definition is included in the Usage Ping hash structure'
+  skip_reason: 'Ignore checking of metric yaml files: https://docs.gitlab.com/ee/development/service_ping/metrics_dictionary.html'
+- file_path: 'spec/lib/gitlab/import_sources_spec.rb'
+  description:
+    - 'Gitlab::ImportSources.options returns a hash'
+    - 'Gitlab::ImportSources.values returns an array'
+    - 'Gitlab::ImportSources.importer_names returns an array of importer names'
+    - 'Gitlab::ImportSources.importable_project_types returns all importer types except project template importers'
+  jh_related_spec: 'jh/spec/lib/gitlab/import_sources_spec.rb'
+  skip_reason: 'follow up MR https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/820'
+- file_path: 'spec/support/shared_examples/features/resolving_discussions_in_issues_shared_examples.rb'
+  description:
+    - 'Resolve an open thread in a merge request by creating an issue As a user with access to the project creating the issue behaves like creating an issue for a thread creates a new issue for the project'
+    - 'Resolving all open threads in a merge request from an issue as a user with access to the project creating an issue for threads behaves like creating an issue for a thread creates a new issue for the project'
+    - 'Resolving all open threads in a merge request from an issue as a user with access to the project for a project where all threads need to be resolved before merging merge request has threads that need to be resolved creating an issue for threads behaves like creating an issue for a thread creates a new issue for the project'
+  skip_reason:
+    - 'follow up issue https://jihulab.com/gitlab-cn/gitlab/-/issues/1826'
+    - 'text cases skipped https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/909'
+- file_path: 'spec/finders/license_template_finder_spec.rb'
+  description:
+    - 'LicenseTemplateFinder#execute behaves like filters by popular category popular: true only returns popular licenses'
+    - 'LicenseTemplateFinder#execute popular: nil returns all licenses known by the Licensee gem'
+    - 'LicenseTemplateFinder#template_names behaves like filters by popular category popular: true only returns popular licenses'
+    - 'LicenseTemplateFinder#template_names popular: nil returns all licenses known by the Licensee gem'
+  jh_related_spec: 'jh/spec/finders/license_template_finder_spec.rb'
+  skip_reason: 'Not follow simple :popular anymore.'
+- file_path: 'spec/requests/api/templates_spec.rb'
+  description:
+    - 'API::Templates GET templates/licenses returns a list of available license templates'
+  jh_related_spec: 'jh/spec/requests/api/templates_spec.rb'
+  skip_reason: 'Number of `available` license templates has changed'
+- file_path: 'spec/views/layouts/devise.html.haml_spec.rb'
+  description:
+    - 'layouts/devise logo renders GitLab logo'
+  skip_reason:
+    - 'JH use JiHu GitLab img for logo'
+- file_path: 'spec/helpers/appearances_helper_spec.rb'
+  description:
+    - 'AppearancesHelper#brand_image when there is no title returns the default title'
+  skip_reason:
+    - 'JH use JiHu GitLab img for logo'
+- file_path: 'spec/features/import/manifest_import_spec.rb'
+  description:
+    - 'Import multiple repositories by uploading a manifest file imports a project successfully'
+  skip_reason:
+    - 'skip a flaky case'
+- file_path: 'ee/spec/features/billings/billing_plans_spec.rb'
+  description:
+    - 'Billing plan pages group billing page when a group is the top-level group on bronze when submitting hand raise lead displays the in-app hand raise lead'
+    - 'Billing plan pages group billing page when a group is the top-level group on free submits hand raise lead form'
+    - 'Billing plan pages group billing page when a group is the top-level group on trial displays the billing plans table'
+    - 'Billing plan pages group billing page when a group is the top-level group on trial behaves like used seats rendering for non paid subscriptions displays the number of seats'
+    - 'Billing plan pages group billing page when a group is the top-level group on trial behaves like plan with subscription table displays subscription table'
+    - 'Billing plan pages group billing page when a group is the top-level group on trial behaves like subscription table with management buttons displays subscription table'
+    - 'Billing plan pages group billing page when a group is the top-level group on ultimate behaves like code_suggestions connect with sales renders in-app hand raise lead for code suggestions'
+    - 'Billing plan pages group billing page when a group is the top-level group on bronze behaves like code_suggestions connect with sales renders in-app hand raise lead for code suggestions'
+    - 'Billing plan pages group billing page when a group is the top-level group on premium renders in-app hand raise lead for code suggestions'
+    - 'Billing plan pages users profile billing page on bronze plan behaves like can not contact sales does not render in-app hand raise lead'
+    - 'Billing plan pages users profile billing page on premium plan behaves like can not contact sales does not render in-app hand raise lead'
+    - 'Billing plan pages users profile billing page with a trial on bronze plan behaves like can not contact sales does not render in-app hand raise lead'
+    - 'Billing plan pages users profile billing page on bronze plan with an active deprecated plan renders the plan card marked as Legacy'
+    - 'Billing plan pages group billing page when a group is the top-level group on trial with enable_free_purchase_dap_monthly_commit flag off displays the billing plans table'
+  skip_reason:
+    - 'skip a flaky case'
+    - 'JH overwrites the _free_plan_billing_index page'
+    - 'JH use Premium trial as the default, which is different from upstream using Ultimate trial'
+- file_path: 'ee/spec/features/signup_spec.rb'
+  jh_related_spec: jh/spec/features/signup_spec.rb
+  description:
+    - 'Signup on EE password complexity when all password complexity rules are enabled when all rules are matched creates the user'
+  skip_reason: 'JH has override password complexity rules'
+- file_path: 'spec/commands/diagnostic_reports/uploader_smoke_spec.rb'
+  skip_reason: 'skip a flaky case'
+- file_path: 'spec/support/shared_examples/features/wiki/user_git_access_wiki_page_shared_examples.rb'
+  description:
+    - 'Project wikis behaves like User views Git access wiki page shows the correct clone URLs'
+  skip_reason: 'skip a flaky case'
+- file_path: 'ee/spec/workers/geo/repository_verification/primary/shard_worker_spec.rb'
+  skip_reason: 'skip flaky cases: timeout in rspec-ee unit pg12 minimal 11/18'
+- file_path: 'ee/spec/features/users/login_spec.rb'
+  description:
+    - 'Login via Group SAML with enforced terms shows the terms disclaimer'
+  jh_related_spec: 'jh/spec/features/users/login_spec.rb'
+- file_path: 'ee/spec/models/concerns/identity_verifiable_spec.rb'
+  description:
+    - 'IdentityVerifiable#identity_verification_state phone verification state when user has verified a phone number is expected to eq true'
+  skip_reason: 'JH overwrites this method'
+- file_path: 'spec/features/projects/pipelines/pipelines_spec.rb'
+  description:
+    - 'Pipelines when user is logged in GET /:project/-/pipelines when there is a delayed job when user played a delayed job immediately enqueues the delayed job'
+  skip_reason: 'skip a flaky case'
+- file_path: 'spec/features/projects/pipelines/legacy_pipelines_spec.rb'
+  skip_reason: 'skip a flaky case'
+- file_path: 'ee/spec/services/vulnerability_exports/exporters/csv_service_spec.rb'
+  description:
+    - 'VulnerabilityExports::Exporters::CsvService CSV content with valid findings when a project belongs to a group includes proper values for each column type'
+    - 'VulnerabilityExports::Exporters::CsvService CSV content with valid findings when a project belongs to a user includes proper values for each column except group name'
+    - 'VulnerabilityExports::Exporters::CsvService CSV content when a vulnerability is missing a finding includes proper values for each column except Other Identifiers'
+    - 'VulnerabilityExports::Exporters::CsvService CSV headers with en locale returns English headers'
+    - 'VulnerabilityExports::Exporters::CsvService avoids N+1 queries'
+    - 'VulnerabilityExports::Exporters::CsvService#header is expected to eq "Group Name,Project Name,Tool,Scanner Name,Status,Vulnerability,Details,Additional Info,Severity,CVE,...,Other Identifiers,Detected At,Location,Activity,Comments,Full Path,CVSS Vectors,Dismissal Reason\n"'
+  jh_related_spec:
+    - 'jh/spec/services/vulnerability_exports/exporters/csv_service_spec.rb'
+- file_path: 'spec/controllers/help_controller_spec.rb'
+  skip_reason: 'JH has own doc path'
+  jh_related_spec:
+    - 'jh/spec/controllers/jh/help_controller_spec.rb'
+- file_path: 'spec/features/global_search_spec.rb'
+  description:
+    - 'Global search when new_header_search feature is enabled renders updated search bar'
+  skip_reason: 'skip a flaky case'
+- file_path: 'spec/config/mail_room_spec.rb'
+  description:
+    - 'mail_room.yml when both incoming email and service desk email are enabled contains the intended configuration'
+    - 'mail_room.yml when both incoming email and service desk email are enabled for Microsoft Graph contains the intended configuration'
+  skip_reason: 'skip a flaky case'
+- file_path: 'spec/features/profiles/user_edit_profile_spec.rb'
+  description:
+    - 'User edit profile user status user menu adds emoji to user status'
+    - 'User edit profile user status user menu adds message to user status'
+    - 'User edit profile user status user menu sets the users status to busy'
+  skip_reason: 'skip a flaky case'
+- file_path: 'ee/spec/lib/world_spec.rb'
+  description:
+    - 'World.supported_countries returns exactly 239 countries'
+  jh_related_spec: 'jh/spec/lib/jh/world_spec.rb'
+- file_path: 'ee/spec/lib/gitlab/expiring_subscription_message_spec.rb'
+  description:
+    - 'Gitlab::ExpiringSubscriptionMessage message plan_name: "gold" subscribable installed subscribable should notify admins admin signed in subscribable expired when it blocks changes when it is currently blocking changes with namespace has an expiration blocking message'
+    - 'Gitlab::ExpiringSubscriptionMessage message plan_name: "gold" subscribable installed subscribable should notify admins admin signed in subscribable expired when it blocks changes when it is currently blocking changes with namespace is auto_renew has an expiration blocking message'
+    - 'Gitlab::ExpiringSubscriptionMessage message plan_name: "ultimate" subscribable installed subscribable should notify admins admin signed in subscribable expired when it blocks changes when it is currently blocking changes with namespace has an expiration blocking message'
+    - 'Gitlab::ExpiringSubscriptionMessage message plan_name: "ultimate" subscribable installed subscribable should notify admins admin signed in subscribable expired when it blocks changes when it is currently blocking changes with namespace is auto_renew has an expiration blocking message'
+  jh_related_spec: 'jh/spec/lib/jh/gitlab/expiring_subscription_message_spec.rb'
+- file_path: 'ee/spec/features/admin/subscriptions/admin_views_subscription_spec.rb'
+  description:
+    - 'Admin views Subscription with a cloud license with a cloud license only succeeds to sync the subscription'
+    - 'Admin views Subscription with a cloud license with a cloud license only fails to sync the subscription'
+    - 'Admin views Subscription with license file when activating another subscription shows the activation modal'
+    - 'Admin views Subscription with license file when activating another subscription displays a connectivity error'
+    - 'Admin views Subscription with license file when activating another subscription displays an error when the activation fails'
+  skip_reason: 'temporary skip'
+- file_path: 'spec/requests/pwa_controller_spec.rb'
+  description:
+    - 'PwaController GET #manifest with default appearance behaves like text values uses custom values'
+  jh_related_spec: 'jh/spec/requests/pwa_controller_spec.rb'
+- file_path: 'spec/features/broadcast_messages_spec.rb'
+  description:
+    - 'Broadcast Messages notification type behaves like a dismissable Broadcast Messages hides broadcast message after dismiss'
+  skip_reason: 'skip a flaky case'
+- file_path: 'spec/models/user_spec.rb'
+  description:
+    - 'User validations preferred_language when preferred_language is nil when Gitlab::CurrentSettings.default_preferred_language is set is expected to eq "zh_CN"'
+  jh_related_spec: 'jh/spec/models/jh/user_spec.rb'
+- file_path: 'spec/lib/release_highlights/validator_spec.rb'
+  description:
+    - 'ReleaseHighlights::Validator when validating all files they should have no errors'
+  skip_reason: "skip upstream what's new editions validator"
+- file_path: 'ee/spec/models/release_highlight_spec.rb'
+  description:
+    - 'ReleaseHighlight.load_items whats new for current tier only with no license returns items with available_in=Free'
+    - 'ReleaseHighlight.load_items whats new for current tier only with Starter license returns items with available_in=Free'
+    - 'ReleaseHighlight.load_items whats new for current tier only with Premium license returns items with available_in=Premium'
+    - 'ReleaseHighlight.load_items whats new for current tier only with Ultimate license returns items with available_in=Ultimate'
+  skip_reason: "skip upstream what's new editions validator"
+- file_path: 'spec/services/projects/import_service_spec.rb'
+  description:
+    - 'Projects::ImportService#execute with valid importer when importer when lfs import fails logs the error'
+    - 'Projects::ImportService#execute with valid importer when importer does not have a custom repository importer downloads lfs objects'
+  skip_reason: 'skip flaky cases: timeout'
+- file_path: 'spec/features/issuables/issuable_list_spec.rb'
+  description:
+    - 'issuable list displays a warning if counting the number of issues times out'
+  skip_reason: 'skip flaky case'
+- file_path: 'ee/spec/lib/system_check/geo/clocks_synchronization_check_spec.rb'
+  description:
+    - 'SystemCheck::Geo::ClocksSynchronizationCheck#multi_check with default NTP connection params passes with a success message'
+    - 'SystemCheck::Geo::ClocksSynchronizationCheck#multi_check when clock difference is greater than max_clock_difference fails with a message'
+  skip_reason: 'skip flaky case'
+- file_path: 'spec/lib/gitlab/background_migration/nullify_builds_auto_canceled_by_id_spec.rb'
+  description:
+    - 'Gitlab::BackgroundMigration::NullifyBuildsAutoCanceledById#perform nullifies canceled columns for non-existing pipelines'
+  skip_reason: 'JH doesnt have this FK sync'
+- file_path: 'spec/tasks/gitlab/db_rake_spec.rb'
+  description:
+    - 'gitlab:db namespace rake task dictionary generate when the dictionary files do not exist generate the dictionary files'
+    - 'gitlab:db namespace rake task dictionary generate when the dictionary files do not exist do not generate the dictionary files for test tables'
+    - 'gitlab:db namespace rake task dictionary generate when a new model class is added to the codebase appends new classes to the dictionary'
+    - 'gitlab:db namespace rake task gitlab:db:sos task calls Gitlab::Database::Sos.run'
+    - 'gitlab:db namespace rake task dictionary generate when the dictionary files do not exist do not generate the dictionary files for OpenBao tables'
+  skip_reason: 'jh skip generate db dictionary'
+- file_path: 'spec/scripts/pipeline/create_test_failure_issues_spec.rb'
+  skip_reason: 'config url is fixed to gitlab.com, not need in jh'
+- file_path: 'spec/requests/projects/ml/experiments_controller_spec.rb'
+  description:
+    - 'Projects::Ml::ExperimentsController GET show html does not perform N+1 sql queries'
+  skip_reason: 'temporary skip'
+- file_path: 'ee/spec/models/gitlab_subscriptions/features_spec.rb'
+  description:
+    - 'GitlabSubscriptions::Features ensures that there is no same names between licensed features and feature flags'
+    - 'GitlabSubscriptions::Features.plans_with_feature starter feature is in all plans'
+    - 'GitlabSubscriptions::Features.saas_plans_with_feature a Premium feature is present in all Premium+ plans'
+    - 'GitlabSubscriptions::Features.saas_plans_with_feature an Ultimate feature is present in all top plans'
+  jh_related_spec: 'jh/spec/models/gitlab_subscriptions/features_spec.rb'
+- file_path: 'spec/features/integrations_settings_spec.rb'
+  description:
+    - 'Integration settings with Shimo Zentao integration records shows settings without Shimo Zentao'
+  skip_reason: 'JH should display those settings: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/1480'
+- file_path: 'ee/spec/controllers/projects/issues_controller_spec.rb'
+  description:
+    - 'Projects::IssuesController GET #discussions is_gitlab_employee attribute when user is a gitlab team member renders the is_gitlab_employee attribute'
+  skip_reason: 'is_gitlab_employee is a attribute that describes whether the user is employee of GitLab. JH does not need is_gitlab_employee attribute'
+- file_path: 'ee/spec/requests/api/experiments_spec.rb'
+  description:
+    - 'API::Experiments GET /experiments when on .com for gitlab team members returns the feature flag details'
+    - 'API::Experiments GET /experiments when on .com for gitlab team members understands the state of the feature flag and what that means for an experiment'
+    - 'API::Experiments GET /experiments when on .com for gitlab team members the null_hypothesis as a canary runs and tracks the expected events'
+    - 'API::Experiments GET /experiments when on .com for gitlab team members the null_hypothesis as a canary returns a 400 if experimentation seems broken'
+    - 'API::Experiments GET /experiments when on .com for gitlab team members the null_hypothesis as a canary publishes into a collection of experiments that have been run in the request'
+    - 'API::Experiments DELETE /experiments/:name/cache when on .com for gitlab team members clears the cache for the given experiment name and returns 204'
+    - 'API::Experiments DELETE /experiments/:name/cache when on .com for gitlab team members returns 400 when the name references a non-hash cache key'
+    - 'API::Experiments experiment assignments endpoints GET /experiments/:experiment_name/assignments for gitlab team members returns the current assignment status'
+    - 'API::Experiments experiment assignments endpoints GET /experiments/:experiment_name/assignments for gitlab team members without context params defaults to current user'
+    - 'API::Experiments experiment assignments endpoints GET /experiments/:experiment_name/assignments for gitlab team members when a variant is cached returns the cached variant'
+    - 'API::Experiments experiment assignments endpoints GET /experiments/:experiment_name/assignments for gitlab team members with invalid context returns bad request'
+    - 'API::Experiments experiment assignments endpoints GET /experiments/:experiment_name/assignments for gitlab team members when the experiment class does not declare context keys returns bad request'
+    - 'API::Experiments experiment assignments endpoints POST /experiments/:experiment_name/assignments for gitlab team members forces the variant assignment'
+    - 'API::Experiments experiment assignments endpoints POST /experiments/:experiment_name/assignments for gitlab team members persists the assignment in cache'
+    - 'API::Experiments experiment assignments endpoints POST /experiments/:experiment_name/assignments for gitlab team members without context params defaults to current user'
+    - 'API::Experiments experiment assignments endpoints POST /experiments/:experiment_name/assignments for gitlab team members with invalid context returns bad request'
+    - 'API::Experiments experiment assignments endpoints POST /experiments/:experiment_name/assignments for gitlab team members when the variant is blank returns bad request'
+    - 'API::Experiments experiment assignments endpoints DELETE /experiments/:experiment_name/assignments for gitlab team members when a variant is cached clears the assignment and returns 204'
+    - 'API::Experiments experiment assignments endpoints DELETE /experiments/:experiment_name/assignments for gitlab team members when a variant is cached removes the assignment from the cache'
+    - 'API::Experiments experiment assignments endpoints DELETE /experiments/:experiment_name/assignments for gitlab team members when a variant is cached when another context has its own cached variant clears only the targeted context'
+    - 'API::Experiments experiment assignments endpoints DELETE /experiments/:experiment_name/assignments for gitlab team members when no variant is cached is idempotent and returns 204'
+    - 'API::Experiments experiment assignments endpoints DELETE /experiments/:experiment_name/assignments for gitlab team members without context params defaults to current user and returns 204'
+    - 'API::Experiments experiment assignments endpoints DELETE /experiments/:experiment_name/assignments for gitlab team members with invalid context returns bad request'
+  skip_reason: 'Those cases are all about gitlab team members which JH does not need'
+- file_path: 'spec/support/shared_examples/authz/granular_token_permissions_shared_examples.rb'
+  description:
+    - 'API::Experiments GET /experiments when on .com for gitlab team members behaves like authorizing granular token permissions when authenticating with a legacy personal access token behaves like granting access grants access'
+    - 'API::Experiments GET /experiments when on .com for gitlab team members behaves like authorizing granular token permissions when authenticating with a granular personal access token behaves like granting access grants access'
+    - 'API::Experiments DELETE /experiments/:name/cache when on .com for gitlab team members behaves like authorizing granular token permissions when authenticating with a legacy personal access token behaves like granting access grants access'
+    - 'API::Experiments DELETE /experiments/:name/cache when on .com for gitlab team members behaves like authorizing granular token permissions when authenticating with a granular personal access token behaves like granting access grants access'
+    - 'API::Experiments experiment assignments endpoints GET /experiments/:experiment_name/assignments for gitlab team members behaves like authorizing granular token permissions when authenticating with a legacy personal access token behaves like granting access grants access'
+    - 'API::Experiments experiment assignments endpoints GET /experiments/:experiment_name/assignments for gitlab team members behaves like authorizing granular token permissions when authenticating with a granular personal access token behaves like granting access grants access'
+  skip_reason: 'Those cases are all about gitlab team members which JH does not need'
+- file_path: 'ee/spec/views/projects/issues/show.html.haml_spec.rb'
+  description:
+    - 'projects/issues/show when issue is created by a GitLab team member renders an employee badge next to their name'
+  skip_reason: 'Those cases are all about gitlab team members which JH does not need'
+- file_path: 'ee/spec/helpers/ee/issuables_helper_spec.rb'
+  description:
+    - 'IssuablesHelper#issuable_initial_data #gitlab_team_member_badge when issue author is a GitLab team member returns span with svg icon'
+    - 'IssuablesHelper#issuable_initial_data #gitlab_team_member_badge when issue author is a GitLab team member when `css_class` parameter is passed adds CSS classes'
+  skip_reason: 'Those cases are all about gitlab team members which JH does not need'
+- file_path: 'ee/spec/models/ee/user_spec.rb'
+  description:
+    - 'User#gitlab_employee? based on group membership when user belongs to gitlab-com group is_com: true, expected_result: true is expected to equal true'
+    - 'User#gitlab_bot? based on group membership when user belongs to gitlab-com group is expected to equal true'
+    - 'User#gitlab_bot? based on user type when user is a bot is expected to equal true'
+    - 'User#gitlab_service_user? based on group membership when user belongs to gitlab-com group is expected to equal true'
+    - 'User#gitlab_service_user? based on user type is_com: true, user_type: :service_user, answer: true returns if the user is a GitLab-owned service user'
+  skip_reason: 'Those cases are all about gitlab team members which JH does not need'
+- file_path: 'spec/migrations/20230428085332_remove_shimo_zentao_integration_records_spec.rb'
+  description:
+    - 'RemoveShimoZentaoIntegrationRecords with CE/EE env destroys all shimo and zentao integrations'
+  skip_reason: 'This test only needs to be run in the EE env'
+- file_path: 'spec/migrations/20240611114131_remove_project_statistics_repository_size_and_project_id_index_spec.rb'
+  description:
+    - 'RemoveProjectStatisticsRepositorySizeAndProjectIdIndex#up prepares async index removal when on gitlab.com'
+    - 'RemoveProjectStatisticsRepositorySizeAndProjectIdIndex#down unprepares async index removal when on gitlab.com'
+  skip_reason: 'This test only needs to be run on Gitlab.com'
+- file_path: 'spec/migrations/20240611121101_remove_project_statistics_storage_size_and_project_id_index_spec.rb'
+  description:
+    - 'RemoveProjectStatisticsStorageSizeAndProjectIdIndex#up prepares async index removal when on gitlab.com'
+    - 'RemoveProjectStatisticsStorageSizeAndProjectIdIndex#down unprepares async index removal when on gitlab.com'
+  skip_reason: 'This test only needs to be run on Gitlab.com'
+- file_path: 'spec/migrations/20240611121818_remove_project_statistics_packages_size_and_project_id_index_spec.rb'
+  description:
+    - 'RemoveProjectStatisticsPackagesSizeAndProjectIdIndex#down unprepares async index removal when on gitlab.com'
+    - 'RemoveProjectStatisticsPackagesSizeAndProjectIdIndex#up prepares async index removal when on gitlab.com'
+  skip_reason: 'This test only needs to be run on Gitlab.com'
+- file_path: 'spec/migrations/20240708115906_remove_idx_project_statistics_repository_size_and_project_id_sync_spec.rb'
+  description:
+    - 'RemoveIdxProjectStatisticsRepositorySizeAndProjectIdSync#down re-adds the index when on gitlab.com'
+    - 'RemoveIdxProjectStatisticsRepositorySizeAndProjectIdSync#up removes the index when on gitlab.com'
+  skip_reason: 'This test only needs to be run on Gitlab.com'
+- file_path: 'spec/migrations/20241004100956_queue_restore_opt_in_to_gitlab_com_spec.rb'
+  description:
+    - 'QueueRestoreOptInToGitlabCom when SaaS when the temporary table exists schedules a new batched migration'
+  skip_reason: 'This test only needs to be run on Gitlab.com'
+- file_path: 'spec/migrations/20250220185148_queue_update_closed_merged_mrs_spec.rb'
+  description:
+    - 'QueueUpdateClosedMergedMrs for Gitlab.com schedules a new batched migration'
+  skip_reason: 'This test only needs to be run on Gitlab.com'
+- file_path: 'spec/lib/gitlab/memory/reporter_spec.rb'
+  description:
+    - 'Gitlab::Memory::Reporter#run_report when reports path is specified directly behaves like runs and stores reports when an error occurs when cause was compression command failing behaves like handles errors gracefully logs the error and returns false'
+    - 'Gitlab::Memory::Reporter#run_report when reports path is not specified behaves like runs and stores reports when an error occurs when cause was compression command failing behaves like handles errors gracefully logs the error and returns false'
+    - 'Gitlab::Memory::Reporter#run_report when reports path is specified via environment behaves like runs and stores reports when an error occurs when cause was compression command failing behaves like handles errors gracefully logs the error and returns false'
+  skip_reason:
+    - 'skip flaky cases'
+- file_path: 'ee/spec/components/namespaces/storage/repository_limit_alert_component_spec.rb'
+  skip_reason:
+    - 'jh/spec/components/namespaces/storage/repository_limit_alert_component_spec.rb'
+- file_path: 'ee/spec/models/merge_requests/status_check_response_spec.rb'
+  skip_reason:
+    = 'jh/spec/models/jh/merge_requests/status_check_response_spec.rb'
+- file_path: 'ee/spec/services/external_status_checks/retry_service_spec.rb'
+  description:
+    - 'ExternalStatusChecks::RetryService when user has permissions when licensed feature `external_status_checks` is available when status check response status is `failed` when rule retry operation suceeds updates `retried_at` field for the last status check response and async executes with data'
+  skip_reason: 'We need to use `eq` at 50 instead of `be`'
+- file_path: ee/spec/models/container_repository_spec.rb
+  description:
+    - 'ContainerRepository.with_target_import_tier all_plans disabled limit_gitlab_org enabled is expected to contain exactly '
+    - 'ContainerRepository.with_target_import_tier all_plans disabled limit_gitlab_org enabled with sub group named gitlab-org is expected to contain exactly '
+    - 'ContainerRepository.with_target_import_tier all_plans disabled limit_gitlab_org enabled with no gitlab root namespace is expected to be empty'
+    - 'ContainerRepository.with_target_import_tier all_plans disabled limit_gitlab_org disabled is expected to contain exactly '
+    - 'ContainerRepository.ready_for_import is expected to contain exactly '
+  skip_reason:
+    - Only for gitlab.com saas https://gitlab.com/gitlab-org/gitlab/-/merge_requests/123817
+- file_path: spec/workers/container_registry/record_data_repair_detail_worker_spec.rb
+  description:
+    - 'ContainerRegistry::RecordDataRepairDetailWorker#remaining_work_count when on Gitlab.com is expected to eq 6'
+  skip_reason:
+    - Only for gitlab.com saas https://gitlab.com/gitlab-org/gitlab/-/merge_requests/123817
+- file_path: spec/requests/api/integrations_spec.rb
+  description:
+    - 'API::Integrations integration: "github" DELETE /projects/:id/integrations/github deletes github'
+    - 'API::Integrations integration: "github" GET /projects/:id/integrations/github returns authentication error when unauthenticated'
+    - 'API::Integrations integration: "github" GET /projects/:id/integrations/github returns all properties of active integration github, except password fields'
+    - 'API::Integrations integration: "github" GET /projects/:id/integrations/github returns all properties of inactive integration github, except password fields'
+    - 'API::Integrations integration: "github" GET /projects/:id/integrations/github returns not found if integration does not exist'
+    - 'API::Integrations integration: "github" GET /projects/:id/integrations/github returns not found if integration exists but is in `Project#disabled_integrations`'
+    - 'API::Integrations integration: "github" GET /projects/:id/integrations/github returns error when authenticated but not a project owner'
+    - 'API::Integrations integration: "github" DELETE /projects/:id/services/github deletes github'
+    - 'API::Integrations integration: "github" GET /projects/:id/services/github returns authentication error when unauthenticated'
+    - 'API::Integrations integration: "github" GET /projects/:id/services/github returns all properties of active integration github, except password fields'
+    - 'API::Integrations integration: "github" GET /projects/:id/services/github returns all properties of inactive integration github, except password fields'
+    - 'API::Integrations integration: "github" GET /projects/:id/services/github returns not found if integration does not exist'
+    - 'API::Integrations integration: "github" GET /projects/:id/services/github returns not found if integration exists but is in `Project#disabled_integrations`'
+    - 'API::Integrations integration: "github" GET /projects/:id/services/github returns error when authenticated but not a project owner'
+    - 'API::Integrations integration: "wecom" PUT /projects/:id/integrations/wecom updates wecom settings and returns the correct fields'
+    - 'API::Integrations integration: "wecom" PUT /projects/:id/integrations/wecom returns if required fields missing'
+    - 'API::Integrations integration: "wecom" DELETE /projects/:id/integrations/wecom deletes wecom'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/integrations/wecom returns authentication error when unauthenticated'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/integrations/wecom returns all properties of active integration wecom, except password fields'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/integrations/wecom returns all properties of inactive integration wecom, except password fields'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/integrations/wecom returns not found if integration does not exist'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/integrations/wecom returns not found if integration exists but is in `Project#disabled_integrations`'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/integrations/wecom returns error when authenticated but not a project owner'
+    - 'API::Integrations integration: "wecom" PUT /projects/:id/services/wecom updates wecom settings and returns the correct fields'
+    - 'API::Integrations integration: "wecom" PUT /projects/:id/services/wecom returns if required fields missing'
+    - 'API::Integrations integration: "wecom" DELETE /projects/:id/services/wecom deletes wecom'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/services/wecom returns authentication error when unauthenticated'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/services/wecom returns all properties of active integration wecom, except password fields'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/services/wecom returns all properties of inactive integration wecom, except password fields'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/services/wecom returns not found if integration does not exist'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/services/wecom returns not found if integration exists but is in `Project#disabled_integrations`'
+    - 'API::Integrations integration: "wecom" GET /projects/:id/services/wecom returns error when authenticated but not a project owner'
+    - 'API::Integrations integration: "ones" PUT /projects/:id/integrations/ones updates ones settings and returns the correct fields'
+    - 'API::Integrations integration: "ones" PUT /projects/:id/integrations/ones returns if required fields missing'
+    - 'API::Integrations integration: "ones" DELETE /projects/:id/integrations/ones deletes ones'
+    - 'API::Integrations integration: "ones" GET /projects/:id/integrations/ones returns authentication error when unauthenticated'
+    - 'API::Integrations integration: "ones" GET /projects/:id/integrations/ones returns all properties of active integration ones, except password fields'
+    - 'API::Integrations integration: "ones" GET /projects/:id/integrations/ones returns all properties of inactive integration ones, except password fields'
+    - 'API::Integrations integration: "ones" GET /projects/:id/integrations/ones returns not found if integration does not exist'
+    - 'API::Integrations integration: "ones" GET /projects/:id/integrations/ones returns not found if integration exists but is in `Project#disabled_integrations`'
+    - 'API::Integrations integration: "ones" GET /projects/:id/integrations/ones returns error when authenticated but not a project owner'
+    - 'API::Integrations integration: "ones" PUT /projects/:id/services/ones updates ones settings and returns the correct fields'
+    - 'API::Integrations integration: "ones" PUT /projects/:id/services/ones returns if required fields missing'
+    - 'API::Integrations integration: "ones" DELETE /projects/:id/services/ones deletes ones'
+    - 'API::Integrations integration: "ones" GET /projects/:id/services/ones returns authentication error when unauthenticated'
+    - 'API::Integrations integration: "ones" GET /projects/:id/services/ones returns all properties of active integration ones, except password fields'
+    - 'API::Integrations integration: "ones" GET /projects/:id/services/ones returns all properties of inactive integration ones, except password fields'
+    - 'API::Integrations integration: "ones" GET /projects/:id/services/ones returns not found if integration does not exist'
+    - 'API::Integrations integration: "ones" GET /projects/:id/services/ones returns not found if integration exists but is in `Project#disabled_integrations`'
+    - 'API::Integrations integration: "ones" GET /projects/:id/services/ones returns error when authenticated but not a project owner'
+  skip_reason:
+    - Skip for now. Follow up issue https://jihulab.com/gitlab-cn/gitlab/-/issues/3239
+- file_path: spec/requests/api/features_spec.rb
+  description:
+    - 'API::Features POST /feature behaves like sets the feature flag status when the feature does not exist creates a feature with the given percentage of time if passed an integer'
+    - 'API::Features POST /feature behaves like sets the feature flag status when the feature does not exist creates a feature with the given percentage of time if passed a float'
+    - 'API::Features POST /feature behaves like sets the feature flag status when the feature does not exist creates a feature with the given percentage of actors if passed an integer'
+    - 'API::Features POST /feature behaves like sets the feature flag status when the feature does not exist creates a feature with the given percentage of actors if passed a float'
+    - 'API::Features POST /feature when feature flag set_feature_flag_service is disabled behaves like sets the feature flag status when the feature does not exist creates a feature with the given percentage of time if passed an integer'
+    - 'API::Features POST /feature when feature flag set_feature_flag_service is disabled behaves like sets the feature flag status when the feature does not exist creates a feature with the given percentage of time if passed a float'
+    - 'API::Features POST /feature when feature flag set_feature_flag_service is disabled behaves like sets the feature flag status when the feature does not exist creates a feature with the given percentage of actors if passed an integer'
+    - 'API::Features POST /feature when feature flag set_feature_flag_service is disabled behaves like sets the feature flag status when the feature does not exist creates a feature with the given percentage of actors if passed a float'
+  skip_reason:
+    - Skip for now
+- file_path: ee/spec/services/ee/emails/confirm_service_spec.rb
+  description:
+    - Emails::ConfirmService#execute records an audit event when confirmation is sent
+  skip_reason: JH add email confirmation time limit
+  jh_related_spec: 'jh/spec/services/emails/confirm_service_spec.rb'
+- file_path: spec/models/project_spec.rb
+  description:
+    - Project.with_slack_application_disabled when the Slack app setting is not enabled includes all projects
+  skip_reason: Need fix upstream spec stub error in https://gitlab.com/gitlab-org/gitlab/-/merge_requests/117809/diffs#f3b81163e99cc8ae1178c7b944a6a1541f9501c6_2139_2166
+- file_path: 'spec/models/projects/topic_spec.rb'
+  description:
+    - 'Projects::Topic validations is expected not to allow :name to be ‹"トピック"›, producing a custom validation error on failure'
+  skip_reason: 'JH override the ascii only validation'
+- file_path: ee/spec/controllers/projects/learn_gitlab_controller_spec.rb
+  description:
+    - 'Projects::LearnGitlabController GET #onboarding without a signed in user is expected to redirect to "/users/sign_in"'
+    - 'Projects::LearnGitlabController GET #show for unauthenticated user is expected to respond with numeric status code redirect'
+    - 'Projects::LearnGitlabController GET #end_tutorial for unauthenticated user is expected to respond with numeric status code redirect'
+    - 'Projects::LearnGitlabController PATCH #end_tutorial for unauthenticated user is expected to respond with numeric status code redirect'
+  skip_reason: jh override route_not_found to 401
+- file_path: 'ee/spec/requests/projects/get_started_controller_spec.rb'
+  description:
+    - 'Projects::GetStartedController GET /:namespace/:project/-/get_started for unauthenticated user is expected to respond with numeric status code redirect'
+    - 'Projects::GetStartedController GET #end_tutorial for unauthenticated user'
+    - 'Projects::GetStartedController PATCH #end_tutorial for unauthenticated user'
+  skip_reason: 'jh override route_not_found to 401'
+- file_path: 'ee/spec/requests/projects/settings/repository_controller_spec.rb'
+  description:
+    - 'Projects::Settings::RepositoryController GET show as a maintainer with custom roles does not cause a N+1 problem'
+  skip_reason: 'JH ADD QUERY'
+  jh_related_spec: 'jh/spec/requests/projects/settings/repository_controller_spec.rb'
+- file_path: spec/lib/gitlab/auth/o_auth/auth_hash_spec.rb
+  description:
+    - 'Gitlab::Auth::OAuth::AuthHash when username claim is in email format creates proper email and username fields'
+  skip_reason: 'JH overrided the generate_temporarily_email method: jh/lib/jh/gitlab/auth/o_auth/auth_hash.rb:13'
+- file_path: 'spec/requests/search_controller_spec.rb'
+  description:
+    - 'SearchController GET /search for issues scope behaves like an efficient database result avoids N+1 database queries'
+  skip_reason: 'jh has overrided the message'
+- file_path: 'ee/spec/lib/gitlab/llm/completions_factory_spec.rb'
+  description:
+    - 'Gitlab::Llm::CompletionsFactory.completion! with invalid completion raises name error completion service'
+  skip_reason: 'jh has overrided the message'
+- file_path: 'spec/support/shared_examples/features/navbar_shared_examples.rb'
+  description:
+    - '"Your work" navbar when devops operations dashboard is available behaves like verified navigation bar renders correctly'
+    - '"Your work" navbar behaves like verified navigation bar renders correctly'
+    - '"Your work" navbar when security dashboard is available behaves like verified navigation bar renders correctly'
+  skip_reason: 'skip flaky cases and JiHu has different navbar'
+- file_path: 'ee/spec/features/groups/billing_spec.rb'
+  description:
+    - 'Groups > Billing when CustomersDot is available with a free plan shows the proper title and subscription data'
+    - 'Groups > Billing when CustomersDot is available with a free plan with targeted message is shown to owner'
+    - 'Groups > Billing when CustomersDot is available with a free plan when enable_free_purchase_dap_monthly_commit is enabled displays the dap monthly commit billing page'
+    - 'Groups > Billing when CustomersDot is available with a trial plan when enable_free_purchase_dap_monthly_commit is enabled displays the dap monthly commit billing page'
+    - 'Groups > Billing when CustomersDot is available with a free plan when enable_free_purchase_dap_monthly_commit is enabled with monthly commitment purchased displays the monthly commitment credit card with purchased credits'
+    - 'Groups > Billing when CustomersDot is available with a free plan when enable_free_purchase_dap_monthly_commit is enabled with monthly commitment purchased behaves like submits hand raise lead submits hand raise lead form from premium plan card'
+    - 'Groups > Billing when CustomersDot is available with a free plan when enable_free_purchase_dap_monthly_commit is enabled with monthly commitment purchased behaves like submits hand raise lead submits hand raise lead form from ultimate plan card'
+    - 'Groups > Billing when CustomersDot is available with a trial plan when enable_free_purchase_dap_monthly_commit is enabled with monthly commitment purchased displays the monthly commitment credit card with purchased credits'
+    - 'Groups > Billing when CustomersDot is available with a trial plan when enable_free_purchase_dap_monthly_commit is enabled with monthly commitment purchased behaves like submits hand raise lead submits hand raise lead form from premium plan card'
+    - 'Groups > Billing when CustomersDot is available with a trial plan when enable_free_purchase_dap_monthly_commit is enabled with monthly commitment purchased behaves like submits hand raise lead submits hand raise lead form from ultimate plan card'
+    - 'Groups > Billing when CustomersDot is available with a free plan displays the dap monthly commit billing page'
+    - 'Groups > Billing when CustomersDot is available with a free plan with monthly commitment purchased displays the monthly commitment credit card with purchased credits'
+    - 'Groups > Billing when CustomersDot is available with a free plan with monthly commitment purchased behaves like submits hand raise lead submits hand raise lead form from premium plan card'
+    - 'Groups > Billing when CustomersDot is available with a free plan with monthly commitment purchased behaves like submits hand raise lead submits hand raise lead form from ultimate plan card'
+    - 'Groups > Billing when CustomersDot is available with a trial plan displays the dap monthly commit billing page'
+    - 'Groups > Billing when CustomersDot is available with a trial plan with monthly commitment purchased displays the monthly commitment credit card with purchased credits'
+    - 'Groups > Billing when CustomersDot is available with a trial plan with monthly commitment purchased behaves like submits hand raise lead submits hand raise lead form from premium plan card'
+    - 'Groups > Billing when CustomersDot is available with a trial plan with monthly commitment purchased behaves like submits hand raise lead submits hand raise lead form from ultimate plan card'
+    - 'Groups > Billing when CustomersDot is available with a free plan displays the upgrade subscription billing page'
+    - 'Groups > Billing when CustomersDot is available with a free plan with saas_upgrade_subscription_page feature flag disabled displays the manage seats billing page'
+    - 'Groups > Billing when CustomersDot is available with a free plan with monthly commitment purchased submits hand raise lead form from current plan card'
+    - 'Groups > Billing when CustomersDot is available with a free plan with monthly commitment purchased with saas_upgrade_subscription_page feature flag disabled behaves like submits hand raise lead submits hand raise lead form from premium plan card'
+    - 'Groups > Billing when CustomersDot is available with a free plan with monthly commitment purchased with saas_upgrade_subscription_page feature flag disabled behaves like submits hand raise lead submits hand raise lead form from ultimate plan card'
+    - 'Groups > Billing when CustomersDot is available with a trial plan displays the upgrade subscription billing page'
+    - 'Groups > Billing when CustomersDot is available with a trial plan with saas_upgrade_subscription_page feature flag disabled displays the manage seats billing page'
+    - 'Groups > Billing when CustomersDot is available with a trial plan with monthly commitment purchased submits hand raise lead form from current plan card'
+    - 'Groups > Billing when CustomersDot is available with a trial plan with monthly commitment purchased with saas_upgrade_subscription_page feature flag disabled behaves like submits hand raise lead submits hand raise lead form from premium plan card'
+    - 'Groups > Billing when CustomersDot is available with a trial plan with monthly commitment purchased with saas_upgrade_subscription_page feature flag disabled behaves like submits hand raise lead submits hand raise lead form from ultimate plan card'
+  skip_reason: 'skip for the strategic changes for SaaS'
+- file_path: 'ee/spec/support/shared_examples/features/targeted_messages_shared_examples.rb'
+  description:
+    - 'Groups > Billing when CustomersDot is available with a free plan behaves like targeted message interactions is shown to owner'
+    - 'Groups > Billing when CustomersDot is available with a free plan behaves like targeted message interactions dismisses when closed'
+  skip_reason: 'skip for the strategic changes for SaaS'
+- file_path: 'spec/helpers/license_helper_spec.rb'
+  skip_reason: 'JH has different subscription_portal_new_trial_url'
+- file_path: 'ee/spec/helpers/license_helper_spec.rb'
+  description:
+    - 'LicenseHelper#current_license_title when there is a current license returns the default title if it does not have a plan associated to it'
+    - 'LicenseHelper#current_license_title when there is NOT a current license returns the default title'
+    - 'LicenseHelper when current_user does not exists does not return the new trial url'
+    - 'LicenseHelper when current_user exists returns the trial url'
+  skip_reason: 'skip for the strategic changes for SaaS'
+- file_path: 'spec/requests/api/graphql/container_repository/container_repository_details_spec.rb'
+  description:
+    - 'container repository details when list tags API is enabled querying with referrers includes referrers in response'
+    - 'container repository details when list tags API is enabled behaves like returning proper responses with different permissions with different permissions project_visibility: :private, role: :maintainer, access_granted: true, destroy_container_repository: true return the proper response'
+    - 'container repository details when list tags API is enabled behaves like returning proper responses with different permissions with different permissions project_visibility: :private, role: :developer, access_granted: true, destroy_container_repository: true return the proper response'
+    - 'container repository details when list tags API is enabled behaves like returning proper responses with different permissions with different permissions project_visibility: :private, role: :reporter, access_granted: true, destroy_container_repository: false return the proper response'
+    - 'container repository details when list tags API is enabled behaves like returning proper responses with different permissions with different permissions project_visibility: :public, role: :maintainer, access_granted: true, destroy_container_repository: true return the proper response'
+    - 'container repository details when list tags API is enabled behaves like returning proper responses with different permissions with different permissions project_visibility: :public, role: :developer, access_granted: true, destroy_container_repository: true return the proper response'
+    - 'container repository details when list tags API is enabled behaves like returning proper responses with different permissions with different permissions project_visibility: :public, role: :reporter, access_granted: true, destroy_container_repository: false return the proper response'
+    - 'container repository details when list tags API is enabled behaves like returning proper responses with different permissions with different permissions project_visibility: :public, role: :guest, access_granted: true, destroy_container_repository: false return the proper response'
+    - 'container repository details when list tags API is enabled behaves like returning proper responses with different permissions with different permissions project_visibility: :public, role: :anonymous, access_granted: true, destroy_container_repository: false return the proper response'
+    - 'container repository details lastPublishedAt field on Gitlab.com returns the last_published_at'
+    - 'container repository details lastPublishedAt field on Gitlab.com with a network error returns an error'
+    - 'container repository details lastPublishedAt field returns the last_published_at'
+    - 'container repository details lastPublishedAt field with a network error returns an error'
+  skip_reason: 'These are just testing the Gitlab.com-only feature'
+- file_path: 'spec/graphql/resolvers/container_repository_tags_resolver_spec.rb'
+  description:
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported returns an ExternallyPaginatedArray'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported get the page size based on first and last param sends the page size based on first if next page is asked'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported get the page size based on first and last param sends the page size based on last if prev page is asked'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters before: nil, after: nil, sort: "NAME_DESC", name: "", first: 10, last: nil, sort_value: "-name" calls ContainerRepository#tags_page with correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters before: "bb", after: nil, sort: "NAME_ASC", name: "a", first: nil, last: 5, sort_value: "name" calls ContainerRepository#tags_page with correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters before: nil, after: "aa", sort: "NAME_DESC", name: "a", first: 10, last: nil, sort_value: "-name" calls ContainerRepository#tags_page with correct parameters'
+    # need response from https://gitlab.com/gitlab-org/gitlab/-/merge_requests/136676#note_1706808565
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters before: nil, after: nil, sort: "NAME_DESC", name: "", first: 10, last: nil, sort_value: "-name", referrers: nil, referrer_type: nil calls ContainerRepository#tags_page with correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters before: "bb", after: nil, sort: "NAME_ASC", name: "a", first: nil, last: 5, sort_value: "name", referrers: false, referrer_type: nil calls ContainerRepository#tags_page with correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters before: nil, after: "aa", sort: "NAME_DESC", name: "a", first: 10, last: nil, sort_value: "-name", referrers: true, referrer_type: "application/example" calls ContainerRepository#tags_page with correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters referrers: nil, sort_string: nil, sort_value: nil calls ContainerRepository#tags_page with the correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters referrers: true, sort_string: nil, sort_value: nil calls ContainerRepository#tags_page with the correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters referrers: false, sort_string: nil, sort_value: nil calls ContainerRepository#tags_page with the correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters referrers: nil, sort_string: "NAME_ASC", sort_value: "name" calls ContainerRepository#tags_page with the correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters referrers: nil, sort_string: "NAME_DESC", sort_value: "-name" calls ContainerRepository#tags_page with the correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters referrers: nil, sort_string: "PUBLISHED_AT_ASC", sort_value: "published_at" calls ContainerRepository#tags_page with the correct parameters'
+    - 'Resolvers::ContainerRepositoryTagsResolver#resolve when Gitlab API is supported with parameters referrers: nil, sort_string: "PUBLISHED_AT_DESC", sort_value: "-published_at" calls ContainerRepository#tags_page with the correct parameters'
+
+  skip_reason: 'These are just testing the Gitlab.com-only feature'
+- file_path: 'ee/spec/views/gitlab_subscriptions/trials/duo_enterprise/_lead_form.html.haml_spec.rb'
+  skip_reason: 'JH does not use lead form duo enterprise'
+  description:
+    - 'gitlab_subscriptions/trials/duo_enterprise/_lead_form.html.haml when group_name is defined renders lead form'
+- file_path: 'ee/spec/views/groups/billings/index.html.haml_spec.rb'
+  description:
+    - 'groups/billings/index when the group is the top level with free plan renders the billing page'
+    - 'groups/billings/index when the group is the top level with free plan with Duo Pro trial link renders the link'
+    - 'groups/billings/index when the group is the top level with free plan with Duo Pro trial link when duo_pro_trials and duo_pro_trials_for_free_plans is enabled renders the link'
+    - 'groups/billings/index when the group is the top level with a paid plan with Duo Pro trial link renders the link'
+    - 'groups/billings/index when the group is the top level with an active trial renders the billing page without the trial CTA'
+    - 'groups/billings/index when the group is the top level with a paid plan with code suggestions renders the code suggestions component'
+    - 'groups/billings/index when the group is the top level with an active trial behaves like with duo pro component renders the component'
+    - 'groups/billings/index when the group is the top level with a paid plan behaves like with duo pro component renders the component'
+    - 'groups/billings/index when the group is the top level with an active trial when duo_enterprise_trials is disabled behaves like with duo pro component renders the component'
+    - 'groups/billings/index when the group is the top level with free plan behaves like with duo enterprise trial alert renders the component'
+    - 'groups/billings/index when the group is the top level with free plan with an expired trial behaves like with duo enterprise trial alert renders the component'
+    - 'groups/billings/index when the group is the top level with a paid plan behaves like with duo enterprise trial alert renders the component'
+    - 'groups/billings/index when the group is the top level with free plan when duo_enterprise_trials is disabled renders the ultimate trial cta alert'
+    - 'groups/billings/index when the group is the top level with free plan renders the trusted by section with company logos'
+    - 'groups/billings/index when the group is the top level with free plan applies correct CSS classes for dark mode support'
+    - 'groups/billings/index when the group is the top level with an active trial renders the trusted by section'
+    - 'groups/billings/index when the group is the top level with free plan when enable_free_purchase_dap_monthly_commit feature flag is enabled renders the new billing page'
+    - 'groups/billings/index when the group is the top level with free plan renders the billing with dap monthly commit page'
+    - 'groups/billings/index when the group is the top level with free plan renders the upgrade subscription billing page'
+    - 'groups/billings/index when the group is the top level with free plan with saas_upgrade_subscription_page feature flag disabled renders the dap monthly credit billing page'
+  skip_reason: 'Due to marketing requirement, we need to replace some text on the page, so skip this for avoiding failures.'
+- file_path: 'spec/dot_gitlab_ci/rules_spec.rb'
+  description:
+    - '.gitlab/ci/rules.gitlab-ci.yml patterns missed matched files does not miss files to match'
+  skip_reason: 'JH does not need this'
+- file_path: 'spec/features/invites_spec.rb'
+  description:
+    - 'Group or Project invitations when inviting a registered user when signed out when analyzing the redirects and forms from invite link click shows the Email to be the invite_email from the invite'
+    - 'Group or Project invitations when inviting a registered user when signed out when analyzing the redirects and forms from invite link click with sign_in_form_vue feature flag enabled pre-fills the "Username or primary email" field on the sign in box with the invite_email from the invite'
+    - 'Group or Project invitations when inviting an unregistered user when registering using invitation email with email confirmation enabled when user is not valid in sign up form fails sign up and redirects back to sign up'
+    - 'Group or Project invitations when inviting an unregistered user when registering using invitation email when the email is already taken by a registered user shows error state of email already used'
+    - 'Group or Project invitations when inviting a registered user when signed out when analyzing the redirects and forms from invite link click pre-fills the "Username or primary email" field on the sign in box with the invite_email from the invite'
+  skip_reason: 'Upstream added the data-testid "invite-email" field to the registration page, but jihu did not.'
+- file_path: 'spec/requests/projects/gcp/artifact_registry/setup_controller_spec.rb'
+  skip_reason: 'JiHu does not support this feature. See: https://gitlab.com/gitlab-org/gitlab/-/blob/948ef56e21c4bff742bc9ab3c16d9f78dcbb5936/app/controllers/projects/gcp/artifact_registry/base_controller.rb#L26'
+- file_path: 'ee/spec/views/shared/promotions/_promotion_link_project.html.haml_spec.rb'
+  description:
+    - 'shared/_promotion_link_project when gitlab_com_subscriptions saas feature is not available for admin users with active license is expected to have text "Start GitLab Ultimate trial"'
+  skip_reason: 'JH modify the trial text'
+- file_path: 'ee/spec/helpers/trials_helper_spec.rb'
+  description:
+    - 'TrialsHelper#trial_selection_intro_text have_group_namespace: false, text: "Create a new group to start your GitLab Ultimate trial." is expected to eq "Create a new group to start your GitLab Ultimate trial."'
+  skip_reason: 'JH modify the trial text'
+- file_path: 'ee/spec/models/package_metadata/sync_configuration_spec.rb'
+  description:
+    - 'PackageMetadata::SyncConfiguration PackageMetadata::SyncConfiguration::Location.for_licenses filepath_exists: false, old_filepath_exists: false, expected_storage_type: :gcp, expected_base_uri: "prod-export-license-bucket-1a6c642fc4de57d4" is expected to contain exactly :gcp and "prod-export-license-bucket-1a6c642fc4de57d4"'
+    - 'PackageMetadata::SyncConfiguration PackageMetadata::SyncConfiguration::Location.for_advisories filepath_exists: false, expected_storage_type: :gcp, expected_base_uri: "prod-export-advisory-bucket-1a6c642fc4de57d4" is expected to contain exactly :gcp and "prod-export-advisory-bucket-1a6c642fc4de57d4"'
+    - 'PackageMetadata::SyncConfiguration configs based on enabled purl types when syncing licenses enabled_purl_types: all_purl_types, expected_purl_types: all_purl_types behaves like it returns all enabled sync configs is expected to contain exactly (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "composer", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "conan", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "gem", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "golang", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "maven", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "npm", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "nuget", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "pypi", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "apk", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "rpm", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "deb", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "cbl-mariner", :storage_type => :gcp, :version_format => "v2"}), and (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "wolfi", :storage_type => :gcp, :version_format => "v2"})'
+    - 'PackageMetadata::SyncConfiguration configs based on enabled purl types when syncing licenses enabled_purl_types: [1, 5], expected_purl_types: [1, 5] behaves like it returns all enabled sync configs is expected to contain exactly (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "composer", :storage_type => :gcp, :version_format => "v2"}) and (have attributes {:base_uri => "prod-export-license-bucket-1a6c642fc4de57d4", :data_type => "licenses", :purl_type => "maven", :storage_type => :gcp, :version_format => "v2"})'
+    - 'PackageMetadata::SyncConfiguration configs based on enabled purl types when syncing advisories enabled_purl_types: all_purl_types, expected_purl_types: all_purl_types behaves like it returns all enabled sync configs is expected to contain exactly (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "composer", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "conan", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "gem", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "golang", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "maven", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "npm", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "nuget", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "pypi", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "apk", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "rpm", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "deb", :storage_type => :gcp, :version_format => "v2"}), (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "cbl-mariner", :storage_type => :gcp, :version_format => "v2"}), and (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "wolfi", :storage_type => :gcp, :version_format => "v2"})'
+    - 'PackageMetadata::SyncConfiguration configs based on enabled purl types when syncing advisories enabled_purl_types: [1, 5], expected_purl_types: [1, 5] behaves like it returns all enabled sync configs is expected to contain exactly (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "composer", :storage_type => :gcp, :version_format => "v2"}) and (have attributes {:base_uri => "prod-export-advisory-bucket-1a6c642fc4de57d4", :data_type => "advisories", :purl_type => "maven", :storage_type => :gcp, :version_format => "v2"})'
+    - 'PackageMetadata::SyncConfiguration configs based on enabled purl types when syncing licenses when the v3 rollout flag is disabled returns GCS v2 configs'
+    - 'PackageMetadata::SyncConfiguration PackageMetadata::SyncConfiguration::Location.for_licenses v3_flag: false, filepath_exists: false, old_filepath_exists: false, expected_storage_type: :gcp, expected_base_uri: "prod-export-license-bucket-1a6c642fc4de57d4" is expected to eq [:gcp, "prod-export-license-bucket-1a6c642fc4de57d4"]'
+  skip_reason: 'Upstream hard code GCP service in spec, however JH use aliyun instead'
+- file_path: 'spec/views/devise/shared/_footer.html.haml_spec.rb'
+  description:
+    - 'devise/shared/_footer is expected to have visible link "Community forum" with href "https://forum.gitlab.com"'
+    - 'devise/shared/_footer when one trust is enabled is expected to have visible button "Cookie Preferences" with classes [ot-sdk-show-settings] that is not disabled'
+  skip_reason: 'JH does not have Cookie Preference Button'
+- file_path: 'ee/spec/requests/registrations/groups_controller_spec.rb'
+  description:
+    - 'Project creation via Registrations::GroupsController POST #create with an authenticated user when group and project can be created creates a group'
+    - 'Project creation via Registrations::GroupsController POST #create with an authenticated user when group already exists and project can be created creates a project'
+  skip_reason: 'Skip: Error reporting caused by SQL quantity'
+- file_path: spec/models/container_repository_spec.rb
+  description:
+    - 'ContainerRepository#tag when the repository is migrated when Gitlab API is supported when the Gitlab API returns a tag returns an instantiated tag from the response'
+    - 'ContainerRepository#tag when the repository is migrated when Gitlab API is supported when the Gitlab API does not return a tag returns nil'
+    - 'ContainerRepository#tags when the repository is migrated when Gitlab API is supported when the Gitlab API returns tags returns an instantiated tag from the response'
+    - 'ContainerRepository#tags when the repository is migrated when Gitlab API is supported when the Gitlab API does not return any tags returns an empty array'
+    - 'ContainerRepository#tag when the repository is migrated when Gitlab API is supported when the Gitlab API returns a tag behaves like returning an instantiated tag from the API response returns an instantiated tag from the response'
+    - 'ContainerRepository#tag when the repository is migrated when Gitlab API is supported when the Gitlab API returns multiple tags behaves like returning an instantiated tag from the API response returns an instantiated tag from the response'
+    - 'ContainerRepository.all_migrated? when on GitLab.com is expected to be truthy'
+    - 'ContainerRepository#last_published_at on GitLab.com supports gitlab api with a size_bytes field is expected to eq Tue, 30 Apr 2024 06:07:36.225000000 +0000'
+    - 'ContainerRepository#last_published_at on GitLab.com supports gitlab api without a last_published_at field is expected to eq nil'
+    - 'ContainerRepository#last_published_at on GitLab.com supports gitlab api with an invalid value for the last_published_at field is expected to eq nil'
+  skip_reason:
+    - Only for gitlab.com saas https://gitlab.com/gitlab-org/gitlab/-/merge_requests/123817
+- file_path: spec/requests/api/container_repositories_spec.rb
+  description:
+    - 'API::ContainerRepositories GET /registry/repositories/:id for allowed user with tags param when the repository is migrated when the GitLab API is supported when the Gitlab API does not return any tags returns an instantiated tag from the response'
+    - 'API::ContainerRepositories GET /registry/repositories/:id for allowed user with tags param when the repository is migrated when the GitLab API is supported when the Gitlab API returns tags returns instantiated tags from the response'
+  skip_reason:
+    - Only for gitlab.com saas https://gitlab.com/gitlab-org/gitlab/-/merge_requests/123817
+- file_path: 'spec/requests/api/project_container_repositories_spec.rb'
+  description:
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using API user for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API returns a tag behaves like returning the tag returns a details of tag'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using API user for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API returns a tag behaves like returning the tag returns a matching schema'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using API user for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API does not return a tag returns not found'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using job token for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API returns a tag behaves like returning the tag returns a details of tag'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using job token for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API returns a tag behaves like returning the tag returns a matching schema'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using job token for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API does not return a tag returns not found'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated parameter: "per_page=5", per_page: 5, sort: "name", last_param: nil passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated parameter: "last=abc", per_page: 20, sort: "name", last_param: "abc" passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated parameter: "sort=asc", per_page: 20, sort: "name", last_param: nil passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated parameter: "sort=desc", per_page: 20, sort: "-name", last_param: nil passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated parameter: "sort=desc&last=a&per_page=10", per_page: 10, sort: "-name", last_param: "a" passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated when the Gitlab API returns a tag returns the correct link to the next page'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated when the Gitlab API returns a tag behaves like returning values correctly returns a list of tags'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated when the Gitlab API returns a tag behaves like returning values correctly returns a matching schema'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated when the Gitlab API does not return a tag returns an empty array'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated parameter: "per_page=5", per_page: 5, sort: "name", last_param: nil passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated parameter: "last=abc", per_page: 20, sort: "name", last_param: "abc" passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated parameter: "sort=asc", per_page: 20, sort: "name", last_param: nil passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated parameter: "sort=desc", per_page: 20, sort: "-name", last_param: nil passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated parameter: "sort=desc&last=a&per_page=10", per_page: 10, sort: "-name", last_param: "a" passes the parameters correctly to the Container Registry API'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated when the Gitlab API returns a tag returns the correct link to the next page'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated when the Gitlab API returns a tag behaves like returning values correctly returns a list of tags'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated when the Gitlab API returns a tag behaves like returning values correctly returns a matching schema'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated when the Gitlab API does not return a tag returns an empty array'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using API user for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API returns multiple tags matching the name behaves like returning the tag returns a details of tag'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using API user for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API returns multiple tags matching the name behaves like returning the tag returns a matching schema'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using job token for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API returns multiple tags matching the name behaves like returning the tag returns a details of tag'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags/:tag_name using job token for reporter when the repository is migrated when the Gitlab API is supported when the Gitlab API returns multiple tags matching the name behaves like returning the tag returns a matching schema'
+  skip_reason:
+    - Only for gitlab.com saas https://gitlab.com/gitlab-org/gitlab/-/merge_requests/123817
+    - Keyset feature only for gitlab.com saas for now https://gitlab.com/gitlab-org/gitlab/-/merge_requests/143730
+- file_path: 'spec/support/shared_examples/requests/api/packages_shared_examples.rb'
+  description:
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using job token for reporter when pagination is set to keyset when repository is migrated when the Gitlab API returns a tag behaves like a package tracking event creates a gitlab tracking event list_tags'
+    - 'API::ProjectContainerRepositories GET /projects/:id/registry/repositories/:repository_id/tags using API user for reporter when pagination is set to keyset when repository is migrated when the Gitlab API returns a tag behaves like a package tracking event creates a gitlab tracking event list_tags'
+  skip_reason:
+    - Keyset feature only for gitlab.com saas for now https://gitlab.com/gitlab-org/gitlab/-/merge_requests/143730
+- file_path: 'spec/support/shared_examples/integrations_shared_examples.rb'
+  description:
+    - 'API::Integrations integration: "ones" PUT /projects/:id/integrations/ones behaves like set up an integration updates ones settings and returns the correct fields'
+    - 'API::Integrations integration: "ones" PUT /projects/:id/integrations/ones behaves like set up an integration returns if required fields missing'
+    - 'API::Integrations integration: "ones" PUT /projects/:id/integrations/ones behaves like set up an integration when all booleans are flipped updates ones settings and returns the correct fields'
+    - 'API::Integrations integration: "ones" DELETE /projects/:id/integrations/ones behaves like disable an integration deletes ones'
+    - 'API::Integrations integration: "ones" GET /projects/:id/integrations/ones behaves like get an integration settings returns all properties of active integration ones, except password fields'
+    - 'API::Integrations integration: "ones" GET /projects/:id/integrations/ones behaves like get an integration settings returns all properties of inactive integration ones, except password fields'
+    - 'API::Integrations integration: "ones" PUT /projects/:id/services/ones behaves like set up an integration updates ones settings and returns the correct fields'
+    - 'API::Integrations integration: "ones" PUT /projects/:id/services/ones behaves like set up an integration returns if required fields missing'
+    - 'API::Integrations integration: "ones" PUT /projects/:id/services/ones behaves like set up an integration when all booleans are flipped updates ones settings and returns the correct fields'
+    - 'API::Integrations integration: "ones" DELETE /projects/:id/services/ones behaves like disable an integration deletes ones'
+    - 'API::Integrations integration: "ones" GET /projects/:id/services/ones behaves like get an integration settings returns all properties of active integration ones, except password fields'
+    - 'API::Integrations integration: "ones" GET /projects/:id/services/ones behaves like get an integration settings returns all properties of inactive integration ones, except password fields'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/integrations/wecom behaves like set up an integration updates wecom settings and returns the correct fields'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/integrations/wecom behaves like set up an integration returns if required fields missing'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/integrations/wecom behaves like set up an integration when all booleans are flipped updates wecom settings and returns the correct fields'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/integrations/wecom behaves like set up an integration when updates fails returns 400 with correct message'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/integrations/wecom behaves like set up an integration when the integration does not exist creates wecom and returns the correct fields'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/services/wecom behaves like set up an integration updates wecom settings and returns the correct fields'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/services/wecom behaves like set up an integration returns if required fields missing'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/services/wecom behaves like set up an integration when all booleans are flipped updates wecom settings and returns the correct fields'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/services/wecom behaves like set up an integration when updates fails returns 400 with correct message'
+    - 'API::Integrations Project level integrations integration: "wecom" PUT /projects/:id/services/wecom behaves like set up an integration when the integration does not exist creates wecom and returns the correct fields'
+    - 'API::Integrations Group level integrations integration: "wecom" PUT /groups/:id/integrations/wecom behaves like set up an integration updates wecom settings and returns the correct fields'
+    - 'API::Integrations Group level integrations integration: "wecom" PUT /groups/:id/integrations/wecom behaves like set up an integration returns if required fields missing'
+    - 'API::Integrations Group level integrations integration: "wecom" PUT /groups/:id/integrations/wecom behaves like set up an integration when all booleans are flipped updates wecom settings and returns the correct fields'
+    - 'API::Integrations Group level integrations integration: "wecom" PUT /groups/:id/integrations/wecom behaves like set up an integration when updates fails returns 400 with correct message'
+    - 'API::Integrations Group level integrations integration: "wecom" PUT /groups/:id/integrations/wecom behaves like set up an integration when the integration does not exist creates wecom and returns the correct fields'
+    - 'API::Integrations Project level integrations integration: "shimo" PUT /projects/:id/integrations/shimo behaves like set up an integration updates shimo settings and returns the correct fields'
+    - 'API::Integrations Project level integrations integration: "shimo" PUT /projects/:id/integrations/shimo behaves like set up an integration returns if required fields missing'
+    - 'API::Integrations Project level integrations integration: "shimo" PUT /projects/:id/integrations/shimo behaves like set up an integration when all booleans are flipped updates shimo settings and returns the correct fields'
+    - 'API::Integrations Project level integrations integration: "shimo" PUT /projects/:id/services/shimo behaves like set up an integration updates shimo settings and returns the correct fields'
+    - 'API::Integrations Project level integrations integration: "shimo" PUT /projects/:id/services/shimo behaves like set up an integration returns if required fields missing'
+    - 'API::Integrations Project level integrations integration: "shimo" PUT /projects/:id/services/shimo behaves like set up an integration when all booleans are flipped updates shimo settings and returns the correct fields'
+  skip_reason: 'JH integration test need special config'
+- file_path: 'spec/features/admin/admin_projects_spec.rb'
+  description:
+    - 'Admin::Projects GET /admin/projects for an admin for "jh transition banner" part shows the banner class ".js-jh-transition-banner"'
+  skip_reason: 'JiHu do not has this feature'
+- file_path: 'ee/spec/models/ci/build_spec.rb'
+  description:
+    - 'Ci::Build build identity with integration active includes the gcloud file variables'
+  skip_reason: 'This is a upstream-only feature "google_cloud_support"'
+- file_path: 'jh/spec/features/users/signup_with_phone_spec.rb'
+  description:
+    - 'Signup with phone with SaaS environment with invalid password renders error message'
+  skip_reason: 'This feature is currently disabled and does not affect customer. Issue for details: https://jihulab.com/gitlab-cn/gitlab/-/issues/4135'
+- file_path: 'ee/spec/controllers/ee/sessions_controller_spec.rb'
+  description:
+    - 'SessionsController#create when user is not allowed to log in using password does not authenticate the user'
+  skip_reason: 'JiHu has different error message'
+- file_path: 'ee/spec/requests/admin/ai/feature_settings_controller_spec.rb'
+  description:
+    - 'Admin::Ai::FeatureSettingsController PATCH #update behaves like returns 404 when feature is disabled when current licences is not paid returns 404'
+    - 'Admin::Ai::FeatureSettingsController GET #edit behaves like returns 404 when feature is disabled when current licences is not paid returns 404'
+    - 'Admin::Ai::FeatureSettingsController POST #create behaves like returns 404 when feature is disabled when current licences is not paid returns 404'
+    - 'Admin::Ai::FeatureSettingsController GET #index behaves like returns 404 when feature is disabled when current licences is not paid returns 404'
+  skip_reason: 'skip AI feature in JH'
+- file_path: 'spec/migrations/20240611122408_remove_project_statistics_wiki_size_and_project_id_index_spec.rb'
+  description:
+    - 'RemoveProjectStatisticsWikiSizeAndProjectIdIndex#up prepares async index removal when on gitlab.com'
+    - 'RemoveProjectStatisticsWikiSizeAndProjectIdIndex#down unprepares async index removal when on gitlab.com'
+  skip_reason: 'JH does not have this feature'
+- file_path: 'ee/spec/models/ee/group_spec.rb'
+  description:
+    - 'Group#block_seat_overages? when gitlab subscriptions are available returns true when the feature flag is enabled'
+    - 'Group#block_seat_overages? when gitlab subscriptions are available returns false when the feature flag is disabled'
+    - 'Group#block_seat_overages? when gitlab subscriptions are not available returns false when the feature flag is enabled'
+    - 'Group#block_seat_overages? when gitlab subscriptions are not available returns false when the feature flag is disabled'
+  skip_reason: 'JH has different logic'
+- file_path: 'ee/spec/services/gitlab_subscriptions/upload_license_service_spec.rb'
+  description:
+    - 'GitlabSubscriptions::UploadLicenseService when license key belongs to an offline cloud license with an invalid license key returns an error'
+    - 'GitlabSubscriptions::UploadLicenseService when license key belongs to a legacy license and for a trial with an invalid license key returns an error'
+    - 'GitlabSubscriptions::UploadLicenseService when license key belongs to a legacy license with an invalid license key returns an error'
+  skip_reason: 'JH override the i18n language'
+  jh_related_spec: 'jh/spec/services/gitlab_subscriptions/upload_license_service_spec.rb'
+- file_path: 'spec/features/merge_request/user_sees_merge_request_pipelines_spec.rb'
+  description:
+    - 'Merge request > User sees pipelines triggered by merge request with feature flag `mr_pipelines_graphql turned off` when a user created a merge request from a forked project to the parent project when a user updated a merge request from a forked project to the parent project sees pipeline list in forked project'
+  skip_reason: 'JH skip it temporary'
+- file_path: 'spec/migrations/20240708121037_remove_idx_project_statistics_storage_size_and_project_id_sync_spec.rb'
+  description:
+    - 'RemoveIdxProjectStatisticsStorageSizeAndProjectIdSync#up removes the index when on gitlab.com'
+    - 'RemoveIdxProjectStatisticsStorageSizeAndProjectIdSync#down re-adds the index when on gitlab.com'
+  skip_reason: 'JH does not have this feature'
+- file_path: 'spec/migrations/20240708121845_remove_idx_project_statistics_packages_size_and_project_id_sync_spec.rb'
+  description:
+    - 'RemoveIdxProjectStatisticsPackagesSizeAndProjectIdSync#up removes the index when on gitlab.com'
+    - 'RemoveIdxProjectStatisticsPackagesSizeAndProjectIdSync#down re-adds the index when on gitlab.com'
+  skip_reason: 'JH does not have this feature'
+- file_path: 'spec/migrations/20240708130252_remove_idx_project_statistics_wiki_size_and_project_id_sync_spec.rb'
+  description:
+    - 'RemoveIdxProjectStatisticsWikiSizeAndProjectIdSync#down re-adds the index when on gitlab.com'
+    - 'RemoveIdxProjectStatisticsWikiSizeAndProjectIdSync#up removes the index when on gitlab.com'
+  skip_reason: 'JH does not have this feature'
+- file_path: 'spec/migrations/20250110151716_finalize_restore_opt_in_to_gitlab_com_spec.rb'
+  skip_reason: 'JH does not have this feature'
+- file_path: 'spec/lib/gitlab/content_security_policy/config_loader_spec.rb'
+  description:
+    - 'Gitlab::ContentSecurityPolicy::ConfigLoader.default_directives Websocket connections with insecure domain'
+    - 'Gitlab::ContentSecurityPolicy::ConfigLoader.default_directives Websocket connections with secure domain'
+    - 'Gitlab::ContentSecurityPolicy::ConfigLoader.default_directives Websocket connections with custom port'
+    - 'Gitlab::ContentSecurityPolicy::ConfigLoader.default_directives Websocket connections with custom port and secure domain'
+    - 'Gitlab::ContentSecurityPolicy::ConfigLoader.default_directives Websocket connections when port is included in HTTP_PORTS'
+    - 'Gitlab::ContentSecurityPolicy::ConfigLoader.default_directives when sentry is configured when sentry is configured adds new sentry path to CSP'
+    - 'Gitlab::ContentSecurityPolicy::ConfigLoader.default_directives when sentry is configured when sentry settings are from older schemas and sentry setting are missing config is backwards compatible, does not add sentry path to CSP'
+  skip_reason: 'JH has rewritten connect_src'
+- file_path: 'ee/spec/services/cloud_connector/status_checks/status_service_spec.rb'
+  description:
+    - 'CloudConnector::StatusChecks::StatusService has the expected default probes'
+  skip_reason: 'JH has rewritten CustomerDot host'
+- file_path: 'ee/spec/routing/directs/subscription_portal_spec.rb'
+  description:
+    - 'Custom URLs Subscription Portal subscriptions_comparison_url is expected to match /\Ahttps:\/\/about\.gitlab\.((cn\/pricing\/saas)|(com\/pricing\/gitlab-com))\/feature-comparison\z/'
+  skip_reason: 'JH has rewritten Gitlab.cn host'
+- file_path: 'ee/spec/controllers/gitlab_subscriptions/subscriptions_controller_spec.rb'
+  description:
+    - 'GitlabSubscriptions::SubscriptionsController GET #new when the user is authenticated when URL has no plan_id param is expected to redirect to "https://about.gitlab.com/pricing/"'
+  skip_reason: 'JH has rewritten Gitlab.cn host, and rollback to gitlab internal purchase flow'
+- file_path: 'ee/spec/lib/sidebars/groups/super_sidebar_panel_spec.rb'
+  description:
+    - 'Sidebars::Groups::SuperSidebarPanel behaves like a panel without placeholders has no Sidebars::NilMenuItem'
+  skip_reason: 'JH hide gitlab duo'
+- file_path: 'ee/spec/models/ee/plan_spec.rb'
+  description:
+    - 'Plan.tier_for has a mapping for every system-defined plan name'
+  skip_reason: 'JH includes Team in its system-defined plans and tests its independent tier'
+  jh_related_spec: 'jh/spec/models/jh/plan_spec.rb'
+- file_path: 'ee/spec/support/shared_examples/lib/sidebars/menus_shared_examples.rb'
+  skip_reason: 'JH hide gitlab duo'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/duo_pro/creation_with_one_existing_namespace_flow_spec.rb'
+  skip_reason: 'JH hide AI features'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/duo_pro/creation_with_multiple_existing_namespace_flow_spec.rb'
+  skip_reason: 'JH hide AI features'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/duo_enterprise/creation_with_one_existing_namespace_flow_spec.rb'
+  skip_reason: 'JH hide AI features'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/duo_pro/two_step_creation_with_one_existing_namespace_flow_spec.rb'
+  skip_reason: 'JH hide AI features'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/duo_pro/two_step_creation_with_multiple_existing_namespace_flow_spec.rb'
+  skip_reason: 'JH hide AI features'
+- file_path: 'ee/spec/helpers/ee/terms_helper_spec.rb'
+  description:
+    - 'EE::TermsHelper#terms_service_notice_link when onboarding is enabled returns correct html'
+  skip_reason: 'Jihu has override the "GitLab" keyword to "JiHu Gitlab"'
+- file_path: 'ee/spec/features/registrations/saas/standard_flow_company_creating_project_spec.rb'
+  skip_reason: 'Button text i18n error: "Start free Jihu GitLab Premium trial"'
+  description:
+    - 'Standard flow for user picking company and creating a project with sso sign up when opting into a trial registers the user and creates a group and project reaching onboarding'
+    - 'Standard flow for user picking company and creating a project when last name is missing for SSO and has to be filled in registers the user, has some lead submission failures and creates a group and project reaching onboarding'
+    - 'Standard flow for user picking company and creating a project with regular sign up when opting into a trial registers the user and creates a group and project reaching onboarding'
+- file_path: 'ee/spec/features/registrations/email_opt_in_registration_spec.rb'
+  skip_reason: 'JH has override the registration flow'
+- file_path: 'spec/workers/concerns/worker_attributes_spec.rb'
+  skip_reason: 'Override for JH Database'
+  jh_related_spec: 'jh/spec/workers/concerns/worker_attributes_spec.rb'
+- file_path: 'ee/spec/features/trials/duo_pro/trial_widget_in_sidebar_spec.rb'
+  skip_reason: 'JH hide AI features'
+- file_path: 'ee/spec/features/trials/duo_enterprise/trial_widget_in_sidebar_spec.rb'
+  skip_reason: 'JH hide AI features'
+- file_path: 'ee/spec/features/trials/trial_widget_in_sidebar_spec.rb'
+  skip_reason: 'JiHu no longer uses trial widget. See: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2825'
+- file_path: 'ee/spec/helpers/sidebars_helper_spec.rb'
+  skip_reason: 'JiHu override the trial widget: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2840'
+  description:
+    - 'SidebarsHelper#super_sidebar_context when in group scope trial status when subscriptions_trials feature is available does not return trial status widget data is expected not to include :trial_widget_data_attrs'
+    - 'SidebarsHelper#super_sidebar_context when in project scope trial status when subscriptions_trials feature is available does not return trial status widget data is expected not to include :trial_widget_data_attrs'
+    - 'SidebarsHelper#super_sidebar_context when in project scope duo pro trial status does not return trial status widget data is expected not to include :trial_widget_data_attrs'
+    - 'SidebarsHelper#super_sidebar_context when in group scope duo pro trial status does not return trial status widget data is expected not to include :trial_widget_data_attrs'
+- file_path: 'ee/spec/helpers/ee/sidebars_helper_spec.rb'
+  skip_reason: 'JiHu override the trial widget: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2840'
+  description:
+    - 'SidebarsHelper#super_sidebar_context when in project scope trial status when subscriptions_trials feature is available does not return trial status widget data is expected not to include :trial_widget_data_attrs'
+    - 'SidebarsHelper#super_sidebar_context when in project scope duo pro trial status does not return trial status widget data is expected not to include :trial_widget_data_attrs'
+    - 'SidebarsHelper#super_sidebar_context when in group scope trial status when subscriptions_trials feature is available does not return trial status widget data is expected not to include :trial_widget_data_attrs'
+    - 'SidebarsHelper#super_sidebar_context when in group scope duo pro trial status does not return trial status widget data is expected not to include :trial_widget_data_attrs'
+    - 'SidebarsHelper#super_sidebar_context when neither in a group nor in a project scope when subscriptions_trials feature is not available and user is admin when not eligible for any widget does not return any trial widget data'
+- file_path: 'spec/helpers/sidebars_helper_spec.rb'
+  skip_reason: 'JiHu disabled track (posthog)'
+  description:
+    - 'SidebarsHelper#sidebar_tracking_attributes_by_object when object is a project returns tracking attrs for project'
+    - 'SidebarsHelper#sidebar_tracking_attributes_by_object when object is a group returns tracking attrs for group'
+    - 'SidebarsHelper#sidebar_tracking_attributes_by_object when object is a user returns tracking attrs for user'
+- file_path: 'ee/spec/requests/gitlab_subscriptions/trials/duo_enterprise_controller_spec.rb'
+  skip_reason: 'JH does not use lead form duo enterprise'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/duo_enterprise/two_step_creation_with_multiple_existing_namespace_flow_spec.rb'
+  skip_reason: 'JH does not use lead form duo enterprise'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/duo_enterprise/two_step_creation_with_one_existing_namespace_flow_spec.rb'
+  description:
+    - 'Duo Enterprise trial lead submission and creation with one eligible namespace when applying trial fails fills out form, submits and is sent back to information form with errors and is then resolved'
+  skip_reason: 'JH hide AI features'
+- file_path: 'spec/migrations/20250813200545_reschedule_sent_notifications_backfill_spec.rb'
+  description:
+    - 'RescheduleSentNotificationsBackfill when migration is run in .com sets the min id to the value defined for .com'
+  skip_reason: 'This test only needs to be run on Gitlab.com'
+- file_path: 'ee/spec/requests/gitlab_subscriptions/trials_controller_spec.rb'
+  skip_reason: 'JiHu override the text which causes text assertion failure'
+  description:
+    - 'GitlabSubscriptions::TrialsController POST create when authenticated when successful for basic success cases is expected to redirect to "/groups/group1/-/settings/gitlab_duo"'
+    - 'GitlabSubscriptions::TrialsController POST legacy_create when authenticated when successful for basic success cases is expected to redirect to "/groups/group1/-/settings/gitlab_duo"'
+    - 'GitlabSubscriptions::TrialsController POST create when authenticated when successful for basic success cases when ultimate_trial_with_dap is enabled shows valid flash message'
+    - 'GitlabSubscriptions::TrialsController POST create when authenticated when successful when the namespace applying is on the premium plan when trial is applied when ultimate_trial_with_dap is enabled shows valid flash message'
+    - 'GitlabSubscriptions::TrialsController POST create when authenticated when successful for basic success cases shows valid flash message'
+    - 'GitlabSubscriptions::TrialsController POST create when authenticated when successful when the namespace applying is on the premium plan when trial is applied shows valid flash message'
+
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/creation_with_one_existing_namespace_flow_spec.rb'
+  skip_reason: 'JiHu does not have GitLab Duo featues'
+  description:
+    - 'Trial lead submission and creation with one eligible namespace when creating lead and applying trial is successful fills out form, submits and lands on the duo page'
+    - 'Trial lead submission and creation with one eligible namespace when creating lead and applying trial is successful on a premium plan fills out form, submits and lands on the group page'
+    - 'Trial lead submission and creation with one eligible namespace when creating lead and applying trial is successful on a free plan and has previously had a legacy ultimate trial fills out form, submits and lands on the group page'
+    - 'Trial lead submission and creation with one eligible namespace when creating lead and applying trial is successful on a premium plan and has previously had a legacy ultimate trial fills out form, submits and lands on the group page'
+    - 'Trial lead submission and creation with one eligible namespace when applying lead fails fills out form, submits and sent back to information form with errors and is then resolved'
+    - 'Trial lead submission and creation with one eligible namespace when applying trial fails fills out form, submits and is sent to select namespace with errors and is then resolved'
+    - 'Trial lead submission and creation with one eligible namespace when applying trial fails fails submitting trial and then chooses to create a namespace and apply trial to it'
+    - 'Trial lead submission and creation with one eligible namespace when creating lead and applying trial is successful when part of the discover security flow fills out form, submits and lands on the group security dashboard page'
+    - 'Trial lead submission and creation with one eligible namespace when use_ssot_for_ultimate_trial_eligibility is disabled when creating lead and applying trial is successful fills out form, submits and lands on the duo page'
+    - 'Trial lead submission and creation with one eligible namespace when creating lead and applying trial is successful when last name is blank fills out form, including last name, submits and lands on the duo page'
+- file_path: 'ee/spec/features/trials/lead_creation_form_validation_spec.rb'
+  skip_reason: 'JiHu has decided to remove company_size and other fields'
+  description:
+    - 'Trial lead form submission and validation with valid company information and without state proceeds to the next step'
+    - 'Trial lead submission and creation with multiple eligible namespaces when use_ssot_for_ultimate_trial_eligibility is disabled when selecting to create a new group with an existing group name fills out form, submits and lands on the duo page with a unique path'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/creation_with_no_existing_namespace_flow_spec.rb'
+  skip_reason: 'JiHu does not have GitLab Duo featues'
+  description:
+    - 'Trial lead submission, group and trial creation when applying trial fails fills out form, submits and is sent to select namespace with errors and is then resolved'
+    - 'Trial lead submission, group and trial creation when applying lead fails fills out form, submits and sent back to information form with errors and is then resolved'
+    - 'Trial lead submission, group and trial creation when creating lead, group and applying trial is successful fills out form, testing validations, submits and lands on the duo page'
+    - 'Trial lead submission, group and trial creation when creating lead, group and applying trial is successful when source of the trial initiation is about.gitlab.com fills out form without the company question, submits and lands on the duo page'
+    - 'Trial lead submission, group and trial creation when creating lead, group and applyingotrial is successful when source of the trial initiation is not a gitlab domain fills out form, submits and lands on the duo page'
+    - 'Trial lead submission, group and trial creation when creating lead, group and applying trial is successful when part of the discover security flow fills out form, submits and lands on the group security dashboard page'
+    - 'Trial lead submission, group and trial creation when user cannot create groups fails and redirects to not found'
+    - 'Trial lead submission, group and trial creation when creating lead, group and applying trial is successful when source of the trial initiation is not a gitlab domain fills out form, submits and lands on the duo page'
+    - 'Trial lead submission, group and trial creation when applying trial fails when use_ssot_for_ultimate_trial_eligibility is disabled fills out form, submits and is sent to select namespace with errors and is then resolved'
+    - 'Trial lead submission, group and trial creation when creating group, lead and applying trial is successful fills out form, testing validations, submits and lands on the duo page'
+    - 'Trial lead submission, group and trial creation when creating group, lead and applying trial is successful when part of the discover security flow fills out form, submits and lands on the group security dashboard page'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/creation_with_multiple_existing_namespace_flow_spec.rb'
+  skip_reason: 'JiHu does not have GitLab Duo featues'
+  description:
+    - 'Trial lead submission and creation with multiple eligible namespaces when selecting to create a new group with an invalid group name fills out form, submits and is presented with error then fills out valid name'
+    - 'Trial lead submission and creation with multiple eligible namespaces when applying lead fails fills out form, submits and sent back to information form with errors and is then resolved'
+    - 'Trial lead submission and creation with multiple eligible namespaces when applying trial fails fills out form, submits and is sent to select namespace with errors and is then resolved'
+    - 'Trial lead submission and creation with multiple eligible namespaces when creating lead and applying trial is successful fills out form, submits and lands on the duo page'
+    - 'Trial lead submission and creation with multiple eligible namespaces when creating lead and applying trial is successful when new trial is selected from within an existing namespace fills out form, has the existing namespace preselected, submits and lands on the duo page'
+    - 'Trial lead submission and creation with multiple eligible namespaces when selecting to create a new group with an existing group name fills out form, submits and lands on the duo page with a unique path'
+    - 'Trial lead submission and creation with multiple eligible namespaces when creating lead and applying trial is successful when part of the discover security flow fills out form, submits and lands on the group security dashboard page'
+    - 'Trial lead submission and creation with multiple eligible namespaces when use_ssot_for_ultimate_trial_eligibility is disabled when selecting to create a new group with an existing group name fills out form, submits and lands on the duo page with a unique path'
+    - 'Trial lead submission and creation with multiple eligible namespaces when creating lead and applying trial is successful when new trial is selected from within an existing namespace fills out form, has the existing namespace preselected, and creates a new group instead'
+- file_path: 'ee/spec/features/gitlab_subscriptions/trials/duo_enterprise/creation_with_multiple_existing_namespace_flow_spec.rb'
+  skip_reason: 'JiHu does not have GitLab Duo featues'
+- file_path: 'ee/spec/features/groups_spec.rb'
+  description:
+    - 'Group identity verification when the user has reached the maximum number of created groups when the user has not completed identity verification renders new group form with validation errors'
+  skip_reason: 'JH no need the group creation limit'
+- file_path: 'ee/spec/services/ee/groups/create_service_spec.rb'
+  description:
+    - 'Groups::CreateService#execute when user has exceed the top-level group creation limit does not create the group'
+    - 'Groups::CreateService#execute when user has exceed the identity verification top-level group creation limit does not create the group'
+  skip_reason: 'JH no need the group creation limit'
+- file_path: 'ee/spec/helpers/ee/groups_helper_spec.rb'
+  description:
+    - 'GroupsHelper#subgroup_creation_data returns expected hash'
+    - 'GroupsHelper#subgroup_creation_data when the group creation limit is exceeded is expected to include {:identity_verification_required => "true"}'
+  skip_reason: 'JH no need the group creation limit'
+- file_path: 'ee/spec/graphql/ee/types/projects/service_type_enum_spec.rb'
+  skip_reason: 'The upstream code here is very special and needs to be manually enabled FF'
+  description:
+    - 'Types::Projects::ServiceTypeEnum includes services that are blocked by settings'
+    - 'Types::Projects::ServiceTypeEnum includes all SaaS-only integrations in SASS_ONLY_INTEGRATION_NAMES'
+- file_path: 'ee/spec/helpers/ee/users/callouts_helper_spec.rb'
+  skip_reason: 'JH is not using Gemfile.next now. See https://gitlab.com/gitlab-org/gitlab/-/blob/e406596e45479a5f4985ab7a7be4281002557bb1/ee/spec/helpers/ee/users/callouts_helper_spec.rb#L191'
+  description:
+    - 'EE::Users::CalloutsHelper.show_joining_a_project_alert? cookie_present?: true, onboarding?: true, user_dismissed_callout?: false, expected_result: true is expected to eq true'
+- file_path: 'spec/services/todo_service_spec.rb'
+  skip_reason: 'Skip error: Using `any_instance` to stub a method (can?) that has been defined on a prepended module (JH::User) is not supported.'
+  description:
+    - TodoService#update_note users already have pending todos and the multiple_todos feature is off does not create N+1 queries for pending todos
+- file_path: 'spec/requests/api/doorkeeper_access_spec.rb'
+  skip_reason: 'Jihu has override the logic for blocked user'
+  description:
+    - doorkeeper access when user is blocked behaves like forbidden request returns 403 response
+- file_path: 'ee/spec/requests/api/graphql/vulnerabilities/issue_links_spec.rb'
+  skip_reason: 'The number of SQL is different from that of upstream.'
+  description:
+    - Query.vulnerabilities.issueLinks loading issue links in batch does not cause N+1 query issue
+- file_path: 'spec/requests/api/graphql/mutations/merge_requests/set_assignees_spec.rb'
+  skip_reason: 'The number of SQL is different from that of upstream.'
+  description:
+    - Setting assignees of a merge request when the current user does not have permission to add assignees does not change the assignees
+- file_path: 'ee/spec/features/registrations/saas/trial_flow_just_me_importing_project_spec.rb'
+  skip_reason: 'JiHu needs to change the form fields for applying trials'
+  description:
+    - 'Trial flow for user picking just me and importing a project with sso trial sign up registers the user and starts to import a project'
+    - 'Trial flow for user picking just me and importing a project with regular trial sign up registers the user and starts to import a project'
+- file_path: 'ee/spec/features/duo_chat/user_opens_duo_chat_spec.rb'
+  description:
+    - 'Duo Chat > User opens Duo Chat opening Duo Chat from Action button opens Duo Chat with troubleshoot prompt when Troubleshoot button is clicked'
+  skip_reason: 'Skip AI spec in JH'
+- file_path: 'ee/spec/support/shared_examples/lib/ai/context/dependencies/config_files/config_file_shared_examples.rb'
+  skip_reason: 'Skip AI spec when check gems'
+- file_path: 'ee/spec/features/user_interacts_with_explore_duo_core_banner_spec.rb'
+  description:
+    - 'User interacts with explore duo core banner for self-managed behaves like dismissals dismisses the banner when clicking the close button'
+    - 'User interacts with explore duo core banner for self-managed behaves like dismissals dismisses the banner when clicking the CTA'
+  skip_reason: 'Skip AI spec in JH'
+- file_path: 'ee/spec/models/application_setting_spec.rb'
+  description:
+    - 'ApplicationSetting default values has correct default values'
+  skip_reason: 'JH disable ci_requires_identity_verification_on_free_plan'
+- file_path: 'ee/spec/features/groups/wikis_spec.rb'
+  skip_reason: 'Skip it when upstream fix it on !201866'
+- file_path: 'ee/spec/features/projects/pipelines/pipelines_spec.rb'
+  description:
+    - 'Pipelines POST /:project/-/pipelines identity verification requirement prompts the user to verify their account'
+  skip_reason: 'JH does not need verify user account'
+- file_path: 'jh/spec/features/projects/settings/project_settings_spec.rb'
+  skip_reason: 'This JH spec has been outdated, skip it for now'
+- file_path: 'ee/spec/controllers/projects/runners_controller_spec.rb'
+  description:
+    - 'Projects::RunnersController#toggle_shared_runners when shared runners are off when user has not completed identity verification does not enable shared runners'
+  skip_reason: 'JH disable ci_requires_identity_verification_on_free_plan'
+- file_path: 'ee/spec/lib/users/identity_verification/authorize_ci_spec.rb'
+  description:
+    - 'Users::IdentityVerification::AuthorizeCi#user_can_run_jobs? when project shared runners enabled behaves like verifying identity when user identity is not verified is expected to eq false'
+    - 'Users::IdentityVerification::AuthorizeCi#user_can_run_jobs? when project shared runners enabled behaves like verifying identity when user identity is not verified when the application setting is disabled '
+    - 'Users::IdentityVerification::AuthorizeCi#user_can_enable_shared_runners? behaves like verifying identity when user identity is not verified is expected to eq false'
+    - 'Users::IdentityVerification::AuthorizeCi#user_can_enable_shared_runners? behaves like verifying identity when user identity is not verified when the application setting is disabled '
+    - 'Users::IdentityVerification::AuthorizeCi#authorize_run_jobs! when identity verification is required when user identity is not verified behaves like logs the failure and raises an exception aggregate_failures'
+    - 'Users::IdentityVerification::AuthorizeCi#authorize_run_jobs! when identity verification is required when user identity is not verified when the application setting is disabled '
+    - 'Users::IdentityVerification::AuthorizeCi#user_can_enable_shared_runners? behaves like verifying identity when user identity is not verified when root namespace has a paid plan with OSS plan with id_check_for_oss feature flag enabled is expected to eq false'
+    - 'Users::IdentityVerification::AuthorizeCi#user_can_run_jobs? when project shared runners enabled behaves like verifying identity when user identity is not verified when root namespace has a paid plan with OSS plan with id_check_for_oss feature flag enabled is expected to eq false'
+  skip_reason: 'JH disable ci_requires_identity_verification_on_free_plan'
+- file_path: 'ee/spec/helpers/ee/namespaces_helper_spec.rb'
+  description:
+  skip_reason: 'Skip for the Warden::Manager error: https://jihulab.com/gitlab-cn/gitlab/-/jobs/19808806'
+- file_path: 'spec/requests/api/graphql/mutations/issues/update_spec.rb'
+  description:
+    - 'Update of an existing issue when user has permissions to update issue setting labels reset labels resets labels'
+    - 'Update of an existing issue when user has permissions to update issue setting labels reset labels with global label ids resets labels'
+    - 'Update of an existing issue when user has permissions to update issue setting labels add and remove labels returns correct labels'
+  skip_reason: 'JH has more SQL query over 102'
+- file_path: 'spec/lib/gitlab/query_limiting/transaction_spec.rb'
+  description:
+    - 'Gitlab::QueryLimiting::Transaction#act_upon_results when the query threshold is exceeded raises an error when this is enabled'
+    - 'Gitlab::QueryLimiting::Transaction#act_upon_results when there is a different threshold when the query threshold is exceeded raises an error when this is enabled'
+    - 'Gitlab::QueryLimiting::Transaction#threshold_exceeded? returns true when the threshold is exceeded'
+    - 'Gitlab::QueryLimiting::Transaction#error_message returns the error message to display when the threshold is exceeded'
+    - 'Gitlab::QueryLimiting::Transaction#error_message includes a list of executed queries'
+    - 'Gitlab::QueryLimiting::Transaction#error_message includes the action name in the error message when present'
+  skip_reason: 'JH override max query limit on query_limiting transaction'
+- file_path: 'ee/spec/components/gitlab_subscriptions/trials/duo_enterprise/lead_form_component_spec.rb'
+  skip_reason: 'JH does not use lead form duo enterprise'
+- file_path: 'ee/spec/components/gitlab_subscriptions/trials/duo_enterprise/lead_form_with_errors_component_spec.rb'
+  skip_reason: 'JH does not use lead form duo enterprise'
+- file_path: 'ee/spec/support/shared_examples/components/duo_enterprise_lead_form_shared_examples.rb'
+  skip_reason: 'JH does not use lead form duo enterprise'
+- file_path: 'spec/scripts/trigger-build_spec.rb'
+  description:
+    - 'Trigger Trigger::CNG#variables with specific commit sha when trigger ref branch creation fails falls back to default ref'
+  skip_reason: 'JH TRIGGER_BRANCH is main-jh not master'
+  jh_related_spec: 'jh/spec/scripts/trigger-build_spec.rb'
+- file_path: 'spec/lib/gitlab/database/reindexing/coordinator_spec.rb'
+  description:
+    - 'Gitlab::Database::Reindexing::Coordinator#perform when executed during the week for saas does not start reindexing'
+    - 'Gitlab::Database::Reindexing::Coordinator#drop when executed during the week for saas does not start reindexing'
+  skip_reason: 'This is a test that a JH should not perform'
+- file_path: 'spec/lib/gitlab/database/reindexing/index_selection_spec.rb'
+  description:
+    - 'Gitlab::Database::Reindexing::IndexSelection with restricted tables for saas when executed on Fridays is expected not to include #<Gitlab::Database::PostgresIndex identifier: "public.some_index_11", indexrelid: 11, schema: "public...efinition: "CREATE INDEX public.some_index_11 ON ci_builds (ba...", ondisk_size_bytes: 107374182400>'
+    - 'Gitlab::Database::Reindexing::IndexSelection with restricted tables for saas when executed on Sundays is expected not to include #<Gitlab::Database::PostgresIndex identifier: "public.some_index_22", indexrelid: 22, schema: "public...efinition: "CREATE INDEX public.some_index_22 ON ci_builds (ba...", ondisk_size_bytes: 107374182400>'
+    - 'Gitlab::Database::Reindexing::IndexSelection with restricted tables for saas when executed on Mondays is expected not to include #<Gitlab::Database::PostgresIndex identifier: "public.some_index_33", indexrelid: 33, schema: "public...efinition: "CREATE INDEX public.some_index_33 ON ci_builds (ba...", ondisk_size_bytes: 107374182400>'
+  skip_reason: 'This is a test that a JH should not perform'
+- file_path: 'spec/support/shared_examples/lib/gitlab/template/ast_templates_shared_examples.rb'
+  description:
+    - 'Dependency-Scanning.latest.gitlab-ci.yml the created pipeline when project has Ultimate license Analyzer images with default config job: "gemnasium-dependency_scanning", image: "registry.gitlab.com/security-products/gemnasium:6" uses image registry.gitlab.com/security-products/gemnasium:6 for job gemnasium-dependency_scanning'
+    - 'Dependency-Scanning.latest.gitlab-ci.yml the created pipeline when project has Ultimate license Analyzer images with default config job: "gemnasium-maven-dependency_scanning", image: "registry.gitlab.com/security-products/gemnasium-maven:6" uses image registry.gitlab.com/security-products/gemnasium-maven:6 for job gemnasium-maven-dependency_scanning'
+    - 'Dependency-Scanning.latest.gitlab-ci.yml the created pipeline when project has Ultimate license Analyzer images with default config job: "gemnasium-python-dependency_scanning", image: "registry.gitlab.com/security-products/gemnasium-python:6" uses image registry.gitlab.com/security-products/gemnasium-python:6 for job gemnasium-python-dependency_scanning'
+    - 'Dependency-Scanning.latest.gitlab-ci.yml the created pipeline when project has Ultimate license Analyzer images with default config job: "dependency-scanning", image: "registry.gitlab.com/security-products/dependency-scanning:2" uses image registry.gitlab.com/security-products/dependency-scanning:2 for job dependency-scanning'
+    - 'Dependency-Scanning.v2.gitlab-ci.yml the created pipeline Dependency Scanning job uses image registry.gitlab.com/security-products/dependency-scanning:2 for job dependency-scanning'
+    - 'Dependency-Scanning.v2.gitlab-ci.yml the created pipeline Dependency Scanning job when analyzer image is specified set name input uses image registry.gitlab.com/security-products/foo:2 for job dependency-scanning'
+    - 'Dependency-Scanning.v2.gitlab-ci.yml the created pipeline Dependency Scanning job when analyzer image is specified set version input uses image registry.gitlab.com/security-products/dependency-scanning:0 for job dependency-scanning'
+    - 'Dependency-Scanning.v2.gitlab-ci.yml the created pipeline Maven resolution job uses image registry.gitlab.com/security-products/dependency-resolution/ubi9/openjdk-21:1 for job dependency-scanning:maven-resolution'
+    - 'Dependency-Scanning.v2.gitlab-ci.yml the created pipeline Python resolution job uses image registry.gitlab.com/security-products/dependency-resolution/ubi9/python-312-minimal-with-piptools-7:9 for job dependency-scanning:python-resolution'
+    - 'Dependency-Scanning.v2.gitlab-ci.yml the created pipeline Gradle resolution job uses image registry.gitlab.com/security-products/dependency-resolution/ubi9/openjdk-17-with-gradle-8:1 for job dependency-scanning:gradle-resolution'
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on the default branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is not set uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on the default branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to 'true' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on the default branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to 'true' when SECRET_DETECTION_IMAGE_SUFFIX is set to '-fips' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge-fips for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on the default branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to '1' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on the default branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to '1' when SECRET_DETECTION_IMAGE_SUFFIX is set to '-fips' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge-fips for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on the default branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to 'false' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on the default branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to '0' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on the default branch when tier is premium when SECRET_DETECTION_ENABLE_GSS is set to 'true' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on the default branch when tier is premium when SECRET_DETECTION_ENABLE_GSS is set to '1' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on a feature branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is not set uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on a feature branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to 'true' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on a feature branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to 'true' when SECRET_DETECTION_IMAGE_SUFFIX is set to '-fips' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge-fips for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on a feature branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to '1' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on a feature branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to '1' when SECRET_DETECTION_IMAGE_SUFFIX is set to '-fips' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge-fips for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on a feature branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to 'false' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on a feature branch when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to '0' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on a feature branch when tier is premium when SECRET_DETECTION_ENABLE_GSS is set to 'true' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as a branch pipeline on a feature branch when tier is premium when SECRET_DETECTION_ENABLE_GSS is set to '1' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as an MR pipeline when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is not set uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as an MR pipeline when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to 'true' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as an MR pipeline when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to 'true' when SECRET_DETECTION_IMAGE_SUFFIX is set to '-fips' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge-fips for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as an MR pipeline when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to '1' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as an MR pipeline when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to '1' when SECRET_DETECTION_IMAGE_SUFFIX is set to '-fips' uses image registry.gitlab.com/security-products/gitlab-advanced-secrets:edge-fips for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as an MR pipeline when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to 'false' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as an MR pipeline when tier is ultimate when SECRET_DETECTION_ENABLE_GSS is set to '0' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as an MR pipeline when tier is premium when SECRET_DETECTION_ENABLE_GSS is set to 'true' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+    - "Secret-Detection.latest.gitlab-ci.yml the created pipeline as an MR pipeline when tier is premium when SECRET_DETECTION_ENABLE_GSS is set to '1' uses image registry.gitlab.com/security-products/secrets:7 for job secret_detection"
+  skip_reason: 'JH only override registry.gitlab.com to registry.gitlab.cn'
+- file_path: 'spec/tasks/gitlab/openapi_rake_spec.rb'
+  description:
+    - 'gitlab:openapi namespace rake tasks gitlab:openapi:generate generates the OpenAPI documentation'
+    - 'gitlab:openapi namespace rake tasks gitlab:openapi:generate when not on test or development environments raises an error'
+  skip_reason: 'JH Not generate api doc'
+- file_path: 'spec/tasks/gitlab/permissions/permissions_rake_spec.rb'
+  description:
+    - 'gitlab:permissions rake tasks validate invokes Gitlab::Permissions::ValidateTask'
+  skip_reason: 'JH not use update api doc'
+- file_path: 'ee/spec/models/ee/namespace_spec.rb'
+  description:
+    - 'Namespace#actual_repository_size_limit with repository_size_limit set in plans_limits when in gitlab.com returns the value set locally, overriding the plan limit'
+    - 'Namespace#actual_size_limit when in repository enforcement with repository_size_limit set in plans_limits when in gitlab.com returns the value set locally, overriding the plan limit'
+  skip_reason: 'JH has override the actual_size_limit'
+- file_path: 'ee/spec/lib/gitlab/ci/templates/Jobs/dast_default_branch_gitlab_ci_yaml_spec.rb'
+  description:
+    - 'Jobs/DAST-Default-Branch-Deploy.gitlab-ci.yml DAST_AUTO_DEPLOY_IMAGE_VERSION corresponds to a published image in the registry'
+  skip_reason: 'JH do not have a repo gitlab-org/cluster-integration/auto-deploy-image'
+- file_path: 'spec/lib/gitlab/ci/templates/Jobs/deploy_gitlab_ci_yaml_spec.rb'
+  description:
+    - 'Jobs/Deploy.gitlab-ci.yml AUTO_DEPLOY_IMAGE_VERSION corresponds to a published image in the registry'
+  skip_reason: 'JH do not have a repo gitlab-org/cluster-integration/auto-deploy-image'
+- file_path: 'spec/helpers/application_helper_spec.rb'
+  description:
+    - 'ApplicationHelper#support_url when alternate support url is not specified builds the support url from the promo_url'
+    - 'ApplicationHelper#support_url when alternate support url is not specified builds the support url from the default support url'
+  skip_reason: 'JH has override the support_url from get-help/ to support/'
+- file_path: 'spec/features/admin/admin_settings_spec.rb'
+  description:
+    - 'Admin updates settings application setting :admin_mode is enabled Nav bar shows default help links in nav'
+  skip_reason: 'JH has override the support_url from get-help/ to support/'
+- file_path: 'spec/requests/api/graphql/ci/runner_spec.rb'
+  description:
+    - 'Query.runner(id) Query limits avoids N+1 queries'
+  skip_reason: 'JH actual subtract expect query count below 10'
+- file_path: 'spec/workers/gitlab/counters/flush_stale_counter_increments_worker_spec.rb'
+  skip_reason: 'upstream auto skip jh on MR https://gitlab.com/gitlab-org/gitlab/-/merge_requests/184458'
+- file_path: 'spec/support/shared_examples/features/rapid_diffs_shared_examples.rb'
+  description:
+    - 'User views rapid diffs behaves like Rapid Diffs application passes axe automated accessibility testing'
+  skip_reason:
+    - 'This is a strange error that will not affect business functions, so it should be skipped temporarily.'
+- file_path: 'spec/migrations/20250613142340_queue_backfill_sent_notifications_after_partition_spec.rb'
+  skip_reason:
+    - 'Migration only run on Gitlab.com'
+- file_path: 'ee/spec/features/registrations/saas/trial_flow_spec.rb'
+  description:
+    - 'Trial flow when trial_first_registration experiment is candidate goes through the experiment trial registration flow'
+  skip_reason: 'JH override sign_up page'
+- file_path: 'ee/spec/lib/gitlab_subscriptions/purchase_url_builder_spec.rb'
+  description:
+    - 'GitlabSubscriptions::PurchaseUrlBuilder#build when the plan is not supplied generates the marketing page URL'
+  skip_reason: 'About host about.gitlab.com'
+- file_path: 'spec/routing/directs/promo_spec.rb'
+  skip_reason: 'JH has override promo_host to about.gitlab.cn'
+- file_path: 'spec/lib/gitlab/saas_spec.rb'
+  description:
+    - 'Gitlab.promo_host returns the url'
+  skip_reason: 'JH has override promo_host to about.gitlab.cn'
+- file_path: ee/spec/features/registrations/saas/invite_flow_spec.rb
+  jh_related_spec:
+    - jh/spec/features/registrations/saas/invite_flow_spec.rb
+  skip_reason: 'JH has override sign_up page because accept term'
+- file_path: 'ee/spec/initializers/1_settings_spec.rb'
+  description:
+    - '1_settings cron jobs configures the expected jobs'
+    - '1_settings cron jobs for saas configures the expected jobs'
+  skip_reason: 'JH add some cronjobs'
+- file_path: 'spec/support/shared_examples/features/work_items/work_items_shared_examples.rb'
+  description:
+    - 'Epic work item detail for signed in user behaves like work items time tracking adds and deletes time entries and view report'
+  skip_reason: 'Odd question, everything is normal in local. Looking forward to the day when anyone can figure this problem out: https://jihulab.com/gitlab-cn/gitlab/-/jobs/23494781'
+- file_path: 'spec/migrations/20250826193504_queue_archive_authentication_events_spec.rb'
+  description:
+    - 'QueueArchiveAuthenticationEvents when running on GitLab.com schedules a new batched migration'
+  skip_reason: 'This test is only for com_except_jh'
+- file_path: spec/views/doorkeeper/authorizations/new_spec.rb
+  description:
+    - 'doorkeeper/authorizations/new OAuth application creation time display when application was created recently displays correct time ago text without date conversion issue'
+    - 'doorkeeper/authorizations/new OAuth application creation time display when application was created 1 hour ago displays correct time ago text for 1 hour'
+    - 'doorkeeper/authorizations/new OAuth application creation time display when application was created at a specific time today calculates time difference from actual creation time, not beginning of day'
+    - 'doorkeeper/authorizations/new OAuth application creation time display when application was created 30 minutes ago displays correct time ago text'
+  skip_reason: 'This is a timezone issue'
+- file_path: 'ee/spec/components/gitlab_subscriptions/duo_enterprise_alert/premium_component_spec.rb'
+  description:
+    - 'GitlabSubscriptions::DuoEnterpriseAlert::PremiumComponent with Duo add-on behaves like has the Duo Enterprise text has the text'
+    - 'GitlabSubscriptions::DuoEnterpriseAlert::PremiumComponent when there are no add-ons behaves like has the Duo Enterprise text has the text'
+  skip_reason: 'JH override locale'
+- file_path: 'spec/lib/gitlab_spec.rb'
+  description:
+    - 'Gitlab.promo_host returns the url'
+  skip_reason: 'JH Override promot_host'
+- file_path: 'ee/spec/features/trials/gitlab_com/trial_widget_in_sidebar_spec.rb'
+  description:
+    - 'Trial Widget in Sidebar when duo enterprise is available shows the correct days remaining on the first day of trial'
+    - 'Trial Widget in Sidebar when duo enterprise is available shows the correct trial type and days remaining'
+    - 'Trial Widget in Sidebar when duo enterprise is available when widget is expired shows upgrade after trial expiration'
+    - 'Trial Widget in Sidebar when duo enterprise is available when widget is expired and allows dismissal on the first day after trial expiration'
+    - 'Trial Widget in Sidebar shows the correct trial type and days remaining'
+    - 'Trial Widget in Sidebar shows the correct days remaining on the first day of trial'
+    - 'Trial Widget in Sidebar when widget is expired shows upgrade after trial expiration'
+    - 'Trial Widget in Sidebar when widget is expired and allows dismissal on the first day after trial expiration'
+    - 'Trial Widget in Sidebar when a pending trial marker is active (optimistic trial display) shows the trial widget before real trial data arrives'
+  skip_reason: 'JH Override the trial widget'
+- file_path: 'ee/spec/features/trials/self_managed/trial_widget_in_sidebar_spec.rb'
+  description:
+    - 'Trial Widget in Sidebar when trial is active shows the correct days remaining on the first day of trial'
+    - 'Trial Widget in Sidebar when trial is active shows the correct trial type and days remaining'
+    - 'Trial Widget in Sidebar when trial is expired shows upgrade after trial expiration'
+    - 'Trial Widget in Sidebar when trial is expired and allows dismissal on the first day after trial expiration'
+  skip_reason: 'JH Override the trial widget'
+- file_path: 'spec/features/projects/clusters/user_spec.rb'
+  description:
+    - 'User Cluster when user is an admin in admin_mode can visit the clusters index page'
+  skip_reason: 'JH Override i18n text'
+- file_path: 'jh/spec/features/issues/form_spec.rb'
+  description:
+    - 'New/edit issue new issue allows user to create new issue'
+    - 'New/edit issue new issue displays an error message when submitting an invalid form'
+  skip_reason: 'TODO: This is the deprecated jh-only feature'
+- file_path: 'jh/spec/features/projects/issues/user_creates_issue_spec.rb'
+  description:
+    - 'User creates issue with epics creates an issue with an epic'
+  skip_reason: 'TODO: This is the deprecated jh-only feature'
+- file_path: 'spec/features/groups/clusters/user_spec.rb'
+  description:
+    - 'User Cluster when user does have a cluster and visits cluster page when signed in user is an admin in admin_mode can visit the clusters index page'
+  skip_reason: 'JH Override i18n text'
+- file_path: 'ee/spec/requests/api/graphql/gitlab_subscriptions/subscription_usage_spec.rb'
+  description:
+    - 'Query.subscriptionUsage when in Self-Managed with admin user when feature flag is enabled when subscription can accept overage terms exposes acceptance flags and dashboard URL correctly'
+  skip_reason: 'JH has rewritten CustomerDot host'
+- file_path: 'spec/requests/api/groups_spec.rb'
+  description:
+    - 'API::Groups GET /groups/:id/projects when authenticated as user when include_subgroups is true avoids N+1 queries'
+  skip_reason: 'JH ADD QUERY'
+- file_path: 'ee/spec/services/analytics/ai_analytics/code_suggestion_usage_service_spec.rb'
+  skip_reason: 'Skip in temporarily to debug staging'
+- file_path: 'spec/tasks/gitlab/openapi/v2_rake_spec.rb'
+  description:
+    - 'gitlab:openapi:v2 namespace rake tasks gitlab:openapi:v2:generate behaves like gitlab:openapi:v2:generate generates the OpenAPI documentation'
+    - 'gitlab:openapi:v2 namespace rake tasks gitlab:openapi:v2:generate behaves like gitlab:openapi:v2:generate when not on test or development environments raises an error'
+    - 'gitlab:openapi:v2 namespace rake tasks gitlab:openapi:v2:generate_and_check behaves like gitlab:openapi:v2:generate generates the OpenAPI documentation'
+    - 'gitlab:openapi:v2 namespace rake tasks gitlab:openapi:v2:generate_and_check behaves like gitlab:openapi:v2:generate when not on test or development environments raises an error'
+  skip_reason: 'JH has own dir'
+
+- file_path: 'spec/features/users/active_sessions_spec.rb'
+  description:
+    - 'Active user sessions with sign_in_form_vue feature flag enabled sessionless login does not clean up obsolete entries'
+    - 'Active user sessions sessionless login does not clean up obsolete entries'
+  skip_reason: 'JH has override i18n text'
+- file_path: 'spec/graphql/resolvers/users/participants_resolver_spec.rb'
+  skip_reason: 'JH skip check participants, please check again on https://jihulab.com/gitlab-cn/gitlab/-/jobs/25279754'
+- file_path: 'ee/spec/services/ai/duo_workflows/start_workflow_service_spec.rb'
+  description:
+    - 'Ai::DuoWorkflows::StartWorkflowService with setup_script configuration with sandbox integration when sandbox is enabled with no custom image behaves like sandbox enabled behavior combines setup_sandbox_commands, setup_script, main commands, CLI install, and wrapped executor commands'
+    - 'Ai::DuoWorkflows::StartWorkflowService with custom image configuration when .gitlab/duo/agent-config.yml exists but has no default_image falls back to the default image'
+    - 'Ai::DuoWorkflows::StartWorkflowService#instance_image when no setting is configured returns the default image from registry.gitlab.com'
+    - 'Ai::DuoWorkflows::StartWorkflowService#instance_image when duo_workflows_default_image_registry setting is configured uses the configured registry'
+    - 'Ai::DuoWorkflows::StartWorkflowService#instance_image when registry includes port number preserves the port number in the image URL'
+    - 'Ai::DuoWorkflows::StartWorkflowService#instance_image when registry is set to default value returns the default image from registry.gitlab.com'
+    - 'Ai::DuoWorkflows::StartWorkflowService#instance_image when registry is set to empty string falls back to the default registry'
+    - 'Ai::DuoWorkflows::StartWorkflowService#instance_image when registry already includes a path uses the registry value as-is without appending IMAGE_PATH'
+    - 'Ai::DuoWorkflows::StartWorkflowService#instance_image when registry includes a path without a tag uses the registry value as-is without appending IMAGE_PATH'
+    - 'Ai::DuoWorkflows::StartWorkflowService#instance_image when registry is only a hostname (no path) appends IMAGE_PATH to the hostname'
+    - 'Ai::DuoWorkflows::StartWorkflowService with image priority when neither workflow nor config image are present uses the default image'
+  skip_reason: 'JH override default image path'
+  jh_related_spec:
+    - 'jh/spec/services/jh/ai/duo_workflows/start_workflow_service_spec.rb'
+- file_path: 'spec/features/dashboard/projects_spec.rb'
+  description:
+    - 'Dashboard Projects avoids an N+1 query in dashboard index'
+  skip_reason: 'Upstream will fix N+1 in future'
+- file_path: 'ee/spec/helpers/ee/groups/settings_helper_spec.rb'
+  description:
+    - 'EE::Groups::SettingsHelper#usage_billing_dashboard_data returns the expected data structure'
+  skip_reason: 'JH has override the "/subscriptions/new" url'
+- file_path: 'ee/spec/models/ai/catalog/item_spec.rb'
+  description:
+    - 'Ai::Catalog::Item scopes .foundational_external_agent_ids when on SaaS returns hardcoded external agent IDs'
+  skip_reason: 'This is upstream-only logic. See "Gitlab.com_except_jh?" in file "ee/app/models/ai/catalog/item.rb"'
+- file_path: 'ee/spec/views/dashboard/projects/_blank_state_ee_trial.html.haml_spec.rb'
+  description:
+    - dashboard/projects/_blank_state_ee_trial.html.haml links to internal trial path
+    - 'dashboard/projects/_blank_state_ee_trial.html.haml tracks the start trial CTA click'
+  skip_reason: 'JH not supports new_self_managed_trials_path'
+- file_path: 'spec/features/work_items/issues/move_spec.rb'
+  description:
+    - 'issue move to another project service desk issue moved to a project with service desk disabled shows an alert after being moved'
+    - 'issue move to another project service desk issue moved to a project with service desk disabled does not show an alert after being dismissed'
+  skip_reason: 'JH global footer (jh-records-footer) overlaps the sidebar button, causing ElementClickInterceptedError in CI'
+- file_path: 'spec/scripts/lint/commit_linter_spec.rb'
+  description:
+    - 'Lint::CommitLinter.run in commit-msg mode with an invalid commit message returns 1 and prints errors to stderr'
+    - 'Lint::CommitLinter.run in file mode with an invalid commit message returns 1 and prints errors to stderr'
+    - 'Lint::CommitLinter.run in message mode with an invalid commit message via --message returns 1 and prints errors to stderr'
+  skip_reason: 'JH has chinese git log'
+- file_path: 'ee/spec/features/experiments/change_dap_land_default_credits_events_spec.rb'
+  description:
+    - 'Change DAP land default credits experiment variant: "candidate" behaves like tracking the purchase credits funnel emits every event the journey declares for its variant'
+    - 'Change DAP land default credits experiment variant: "control" behaves like tracking the purchase credits funnel emits every event the journey declares for its variant'
+  skip_reason: 'JH uses its own DAP monthly credit card and tracking endpoint'
+- file_path: 'ee/spec/features/registrations/saas/standard_flow_just_me_joining_project_spec.rb'
+  description:
+    - 'Standard flow for user picking just me and joining a project when trial_first_registration experiment is control goes through the experiment standard registration flow'
+  skip_reason: 'JH does not need this experiment'
+- file_path: 'ee/spec/helpers/ee/registrations_helper_spec.rb'
+  description:
+    - 'EE::RegistrationsHelper#unified_registration? when onboarding is enabled when subscription_sm_unification feature flag is enabled is expected to equal true'
+  skip_reason: 'JH has different sign up page'
+- file_path: 'ee/spec/lib/ee/gitlab/tracking/event_eligibility_checker_spec.rb'
+  description:
+    - 'Gitlab::Tracking::EventEligibilityChecker#eligible? when fully eligible due to produce usage data is expected to equal true'
+    - 'Gitlab::Tracking::EventEligibilityChecker#eligible? when app_id is not passed event_name: "perform_completion_worker", self_hosted_duo: false, result: true is expected to eq true'
+    - 'Gitlab::Tracking::EventEligibilityChecker#eligible? when app_id is passed event_name: "click_button", app_id: "gitlab_ide_extension", self_hosted_duo: false, result: true is expected to eq true'
+    - 'Gitlab::Tracking::EventEligibilityChecker#eligible? when app_id is passed event_name: "suggestion_shown", app_id: "gitlab_ide_extension", self_hosted_duo: false, result: true is expected to eq true'
+    - 'Gitlab::Tracking::EventEligibilityChecker#eligible? when app_id is passed event_name: "perform_completion_worker", app_id: "some_other_app", self_hosted_duo: false, result: true is expected to eq true'
+  skip_reason: 'JH does not need track event'
+- file_path: 'spec/features/help_dropdown_spec.rb'
+  description:
+    - 'Help Dropdown when logged in as non-admin displays default support link'
+  skip_reason: 'JH has different domain'
+- file_path: 'spec/services/work_items/bulk_update_service_spec.rb'
+  description:
+    - 'WorkItems::BulkUpdateService when parent is a group when the user can read the parent when the user can update the work item with EE license preloads the namespace route to avoid N+1 queries'
+  skip_reason: 'JH has an additional query'
+- file_path: 'spec/lib/authz/role_definitions_spec.rb'
+  description:
+    - 'Authz::Role reporter in projects behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+    - 'Authz::Role reporter in groups behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+    - 'Authz::Role security_manager in projects behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+    - 'Authz::Role security_manager in groups behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+    - 'Authz::Role developer in projects behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+    - 'Authz::Role developer in groups behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+    - 'Authz::Role maintainer in projects behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+    - 'Authz::Role maintainer in groups behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+    - 'Authz::Role owner in projects behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+    - 'Authz::Role owner in groups behaves like a role that does not enable unexpected permissions does not enable permissions outside its role definition'
+  skip_reason: 'JH grants read_performance_analytics_metrics outside upstream role definitions'
+- file_path: 'ee/spec/features/registrations/saas/subscription_sm_flow_spec.rb'
+  description:
+    - 'Subscription flow for self managed purchase with sso sign up registers the user and redirects to the customers portal interstitial'
+    - 'Subscription flow for self managed purchase with sso sign up when purchasing credits registers the user and redirects to the customers portal interstitial'
+  skip_reason: 'JH does not show Google as a popular OAuth provider'
+- file_path: ee/spec/components/namespaces/free_user_cap/enforcement_without_storage_alert_component_spec.rb
+  description:
+    - 'Namespaces::FreeUserCap::EnforcementWithoutStorageAlertComponent when user is authorized to see alert renders the alert'
+    - 'Namespaces::FreeUserCap::EnforcementWithoutStorageAlertComponent when user is authorized to see alert renders the promo CTA linking to subscription checkout with promo code'
+  skip_reason: 'JH has override the promo_code'
+- file_path: 'ee/spec/features/projects/show_project_spec.rb'
+  description:
+    - 'Project show page all seats used alert when all seats are used when the user is an owner displays the reached seat count threshold alert'
+  jh_related_spec:
+    - 'jh/spec/features/projects/show_project_seat_alert_spec.rb'
+  skip_reason: 'JH links purchase more seats to usage quotas page on SaaS'
+- file_path: 'ee/spec/features/groups/group_overview_spec.rb'
+  description:
+    - 'Group information with all seats used alert when all seats are used with seat block overages enabled displays the reached seat count threshold alert'
+  jh_related_spec:
+    - 'jh/spec/features/groups/group_overview_seat_alert_spec.rb'
+  skip_reason: 'JH links purchase more seats to usage quotas page on SaaS'
+- file_path: ee/spec/services/ai/catalog/flows/seed_foundational_flows_service_spec.rb
+  description:
+    - 'Ai::Catalog::Flows::SeedFoundationalFlowsService#execute with workflow attributes mapping seeds exactly 11 foundational workflows'
+  skip_reason: 'JH has jh-only foundational flow'
+- file_path: 'spec/tooling/danger/roulette_spec.rb'
+  skip_reason: 'JH uses its own Dangerfile and gitlab-dangerfiles fork'
+- file_path: 'spec/lib/gitlab/experiment_feature_rollout_spec.rb'
+  description:
+    - 'Gitlab::ExperimentFeatureRollout#execute_assignment for even rollout to non-control rolls out relatively evenly to 2 behaviors'
+    - 'Gitlab::ExperimentFeatureRollout#execute_assignment for even rollout to non-control rolls out relatively evenly to 3 behaviors'
+    - 'Gitlab::ExperimentFeatureRollout#execute_assignment for even rollout to non-control when distribution is specified as an array rolls out with the expected distribution'
+    - 'Gitlab::ExperimentFeatureRollout#execute_assignment for even rollout to non-control when distribution is specified as a hash rolls out with the expected distribution'
+  skip_reason: 'JH produces different deterministic assignments for these exact-count assertions'
+- file_path: 'spec/lib/gitlab/ci/cron_parser_spec.rb'
+  description:
+    - 'Gitlab::Ci::CronParser#next_time_from behaves like when cron and cron_timezone are valid when cron_timezone is TZInfo format when cron_timezone is US/Pacific behaves like returns time in the future is expected to be future'
+    - 'Gitlab::Ci::CronParser#next_time_from behaves like when cron and cron_timezone are valid when cron_timezone is TZInfo format when cron_timezone is US/Pacific when PST (Pacific Standard Time) converts time in server time zone'
+    - 'Gitlab::Ci::CronParser#next_time_from behaves like when cron and cron_timezone are valid when cron_timezone is TZInfo format when cron_timezone is US/Pacific when PDT (Pacific Daylight Time) converts time in server time zone'
+    - 'Gitlab::Ci::CronParser#previous_time_from behaves like when cron and cron_timezone are valid when cron_timezone is TZInfo format when cron_timezone is US/Pacific behaves like returns time in the past is expected to be past'
+    - 'Gitlab::Ci::CronParser#previous_time_from behaves like when cron and cron_timezone are valid when cron_timezone is TZInfo format when cron_timezone is US/Pacific when PST (Pacific Standard Time) converts time in server time zone'
+    - 'Gitlab::Ci::CronParser#previous_time_from behaves like when cron and cron_timezone are valid when cron_timezone is TZInfo format when cron_timezone is US/Pacific when PDT (Pacific Daylight Time) converts time in server time zone'
+  skip_reason: 'US/Pacific is a tzdata-legacy alias absent from JH CI tzdata; wait for upstream to use America/Los_Angeles (https://gitlab.com/gitlab-org/gitlab/-/issues/556779)'
+- file_path: 'ee/spec/controllers/ee/registrations_controller_spec.rb'
+  description:
+    - 'RegistrationsController#new behaves like geo-ip restriction when IP is from a restricted location behaves like a restricted IP address redirects to the restricted identity verification path'
+    - 'RegistrationsController#new behaves like geo-ip restriction when IP is from a restricted location when user is invited behaves like a restricted invite deletes the invite'
+    - 'RegistrationsController#new behaves like geo-ip restriction when IP is from a restricted location when user is invited behaves like a restricted invite behaves like a restricted IP address redirects to the restricted identity verification path'
+    - 'RegistrationsController#new behaves like geo-ip restriction when IP is from a restricted location when user is invited when member is associated with a project behaves like a restricted invite deletes the invite'
+    - 'RegistrationsController#new behaves like geo-ip restriction when IP is from a restricted location when user is invited when member is associated with a project behaves like a restricted invite behaves like a restricted IP address redirects to the restricted identity verification path'
+    - 'RegistrationsController#create behaves like geo-ip restriction when IP is from a restricted location behaves like a restricted IP address redirects to the restricted identity verification path'
+    - 'RegistrationsController#create behaves like geo-ip restriction when IP is from a restricted location when user is invited behaves like a restricted invite deletes the invite'
+    - 'RegistrationsController#create behaves like geo-ip restriction when IP is from a restricted location when user is invited behaves like a restricted invite behaves like a restricted IP address redirects to the restricted identity verification path'
+    - 'RegistrationsController#create behaves like geo-ip restriction when IP is from a restricted location when user is invited when member is associated with a project behaves like a restricted invite deletes the invite'
+    - 'RegistrationsController#create behaves like geo-ip restriction when IP is from a restricted location when user is invited when member is associated with a project behaves like a restricted invite behaves like a restricted IP address redirects to the restricted identity verification path'
+  skip_reason: 'JH disables pipl_compliance, so registration must not redirect or delete invitations based on the upstream PIPL country restriction'
+- file_path: 'ee/spec/controllers/ee/omniauth_callbacks_controller_spec.rb'
+  description:
+    - 'OmniauthCallbacksController restricted country login prevention when new user attempts signing-up from restricted country behaves like restricted country message prevents login and redirects to signin page with error'
+    - 'OmniauthCallbacksController restricted country login prevention when new user attempts signing-up from restricted country behaves like restricted country message does not create a new user account'
+    - 'OmniauthCallbacksController restricted country login prevention when new user attempts signing-up from restricted country when user is invited to a paid/trial group with free group invitation behaves like restricted country message prevents login and redirects to signin page with error'
+    - 'OmniauthCallbacksController restricted country login prevention when new user attempts signing-up from restricted country when user is invited to a paid/trial group with free group invitation behaves like restricted country message does not create a new user account'
+    - 'OmniauthCallbacksController restricted country login prevention when new user attempts signing-up from restricted country when user is invited to a paid/trial group with no invitation behaves like restricted country message prevents login and redirects to signin page with error'
+    - 'OmniauthCallbacksController restricted country login prevention when new user attempts signing-up from restricted country when user is invited to a paid/trial group with no invitation behaves like restricted country message does not create a new user account'
+    - 'OmniauthCallbacksController restricted country login prevention with different OAuth providers blocks login for all OAuth providers from restricted countries'
+  skip_reason: 'JH disables pipl_compliance, so OAuth signup and authentication must not be rejected based on the upstream PIPL country restriction'
+- file_path: 'ee/spec/features/compliance_management/pipl/pipl_compliance_alert_spec.rb'
+  description:
+    - 'user is pipl compliant alert when the user is eligible for the alert shows the dismissible alert on the project page'
+  skip_reason: 'JH disables pipl_compliance and must not display the upstream PIPL migration alert'
+- file_path: 'ee/spec/helpers/users/identity_verification_helper_spec.rb'
+  description:
+    - 'Users::IdentityVerificationHelper#pipl_restricted_country? on GitLab.com with a restricted country code is expected to equal true'
+  skip_reason: 'JH disables pipl_compliance, so the PIPL country restriction predicate returns false'
+- file_path: 'ee/spec/lib/gitlab/sidekiq_config/cron_job_initializer_spec.rb'
+  description:
+    - 'Gitlab::SidekiqConfig::CronJobInitializer.execute as integration tests with SaaS schedule when not on SaaS does not provision SaaS-only jobs'
+  skip_reason: 'JH explicitly registers PIPL cron jobs as disabled even outside SaaS; covered by jh/spec/lib/gitlab/sidekiq_config/cron_job_initializer_spec.rb'
+- file_path: 'ee/spec/mailers/ee/emails/profile_spec.rb'
+  description:
+    - 'EE::Emails::Profile#pipl_compliance_notification has the correct subject'
+    - 'EE::Emails::Profile#pipl_compliance_notification includes the contact email'
+    - 'EE::Emails::Profile#pipl_compliance_notification includes the correctly formatted date'
+    - 'EE::Emails::Profile#pipl_compliance_notification includes the link to jihu'
+  skip_reason: 'JH disables the upstream GitLab.com PIPL lifecycle (pipl_compliance SaaS feature filtered, PIPL mail delivery blocked, PIPL cron jobs disabled), so these examples encoding GitLab.com behavior do not apply on JH'
+- file_path: 'ee/spec/services/compliance_management/pipl/block_non_compliant_user_service_spec.rb'
+  description:
+    - 'ComplianceManagement::Pipl::BlockNonCompliantUserService#execute when admin mode is enabled behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::BlockNonCompliantUserService#execute when admin mode is enabled when the user is in the admin_mode blocks the user and leaves an admin message'
+    - 'ComplianceManagement::Pipl::BlockNonCompliantUserService#execute when admin_mode is disabled when the block operation fails behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::BlockNonCompliantUserService#execute when admin_mode is disabled when the data is valid blocks the user and leaves an admin message'
+    - 'ComplianceManagement::Pipl::BlockNonCompliantUserService#execute when admin_mode is disabled when validations fail when the blocking user is not an admin behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::BlockNonCompliantUserService#execute when admin_mode is disabled when validations fail when the enforce_pipl_compliance setting is disabled behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::BlockNonCompliantUserService#execute when admin_mode is disabled when validations fail when the pipl threshold has not passed behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::BlockNonCompliantUserService#execute when admin_mode is disabled when validations fail when the user belongs to a paid group behaves like has a validation error returns an error with a descriptive message'
+  skip_reason: 'JH disables the upstream GitLab.com PIPL lifecycle (pipl_compliance SaaS feature filtered, PIPL mail delivery blocked, PIPL cron jobs disabled), so these examples encoding GitLab.com behavior do not apply on JH'
+- file_path: 'ee/spec/services/compliance_management/pipl/delete_non_compliant_user_service_spec.rb'
+  description:
+    - 'ComplianceManagement::Pipl::DeleteNonCompliantUserService#execute when admin mode is enabled behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::DeleteNonCompliantUserService#execute when admin mode is enabled when the user is in the admin_mode schedules user deletion'
+    - 'ComplianceManagement::Pipl::DeleteNonCompliantUserService#execute when admin_mode is disabled when checks fail when the deleting user is not an admin behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::DeleteNonCompliantUserService#execute when admin_mode is disabled when checks fail when the enforce_pipl_compliance setting is disabled behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::DeleteNonCompliantUserService#execute when admin_mode is disabled when checks fail when the pipl deletion threshold has not passed behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::DeleteNonCompliantUserService#execute when admin_mode is disabled when checks fail when the pipl_user is not blocked behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::DeleteNonCompliantUserService#execute when admin_mode is disabled when checks fail when the pipl_user is recently blocked behaves like has a validation error returns an error with a descriptive message'
+    - 'ComplianceManagement::Pipl::DeleteNonCompliantUserService#execute when admin_mode is disabled when the data is valid schedules user deletion'
+  skip_reason: 'JH disables the upstream GitLab.com PIPL lifecycle (pipl_compliance SaaS feature filtered, PIPL mail delivery blocked, PIPL cron jobs disabled), so these examples encoding GitLab.com behavior do not apply on JH'
+- file_path: 'ee/spec/services/compliance_management/pipl/send_initial_compliance_email_service_spec.rb'
+  description:
+    - 'ComplianceManagement::Pipl::SendInitialComplianceEmailService sends the pipl email'
+  skip_reason: 'JH disables the upstream GitLab.com PIPL lifecycle (pipl_compliance SaaS feature filtered, PIPL mail delivery blocked, PIPL cron jobs disabled), so these examples encoding GitLab.com behavior do not apply on JH'
+- file_path: 'ee/spec/services/compliance_management/pipl/send_recurring_compliance_email_service_spec.rb'
+  description:
+    - 'ComplianceManagement::Pipl::SendRecurringComplianceEmailService when enforce_pipl_compliance setting is disabled returns a service response error'
+    - 'ComplianceManagement::Pipl::SendRecurringComplianceEmailService when enforce_pipl_compliance setting is enabled returns success response'
+    - 'ComplianceManagement::Pipl::SendRecurringComplianceEmailService when enforce_pipl_compliance setting is enabled sends the pipl email'
+    - 'ComplianceManagement::Pipl::SendRecurringComplianceEmailService when enforce_pipl_compliance setting is enabled when the validations fail when the email has not been sent returns a service response error'
+    - 'ComplianceManagement::Pipl::SendRecurringComplianceEmailService when enforce_pipl_compliance setting is enabled when the validations fail when the pipl user does not exist returns a service response error'
+    - 'ComplianceManagement::Pipl::SendRecurringComplianceEmailService when enforce_pipl_compliance setting is enabled when the validations fail when the user is not provided returns a service response error'
+  skip_reason: 'JH disables the upstream GitLab.com PIPL lifecycle (pipl_compliance SaaS feature filtered, PIPL mail delivery blocked, PIPL cron jobs disabled), so these examples encoding GitLab.com behavior do not apply on JH'
+- file_path: 'ee/spec/workers/compliance_management/pipl/block_pipl_users_worker_spec.rb'
+  description:
+    - 'ComplianceManagement::Pipl::BlockPiplUsersWorker when system admin_mode is enabled behaves like worker runs as expected .perform when there are matching records blocks the users for the correct day threshold'
+    - 'ComplianceManagement::Pipl::BlockPiplUsersWorker when system admin_mode is enabled behaves like worker runs as expected .perform when there are matching records sets the correct admin message'
+  skip_reason: 'JH disables the upstream GitLab.com PIPL lifecycle (pipl_compliance SaaS feature filtered, PIPL mail delivery blocked, PIPL cron jobs disabled), so these examples encoding GitLab.com behavior do not apply on JH'
+- file_path: 'ee/spec/workers/compliance_management/pipl/delete_pipl_users_worker_spec.rb'
+  description:
+    - 'ComplianceManagement::Pipl::DeletePiplUsersWorker when system admin_mode is enabled behaves like worker runs as expected .perform when there are matching records schedules a ghost user migration for the deletable user'
+  skip_reason: 'JH disables the upstream GitLab.com PIPL lifecycle (pipl_compliance SaaS feature filtered, PIPL mail delivery blocked, PIPL cron jobs disabled), so these examples encoding GitLab.com behavior do not apply on JH'
+- file_path: 'ee/spec/workers/compliance_management/pipl/send_recurring_notifications_worker_spec.rb'
+  description:
+    - 'ComplianceManagement::Pipl::SendRecurringNotificationsWorker.perform when there are matching records sends the recurring email for the correct dates'
+  skip_reason: 'JH disables the upstream GitLab.com PIPL lifecycle (pipl_compliance SaaS feature filtered, PIPL mail delivery blocked, PIPL cron jobs disabled), so these examples encoding GitLab.com behavior do not apply on JH'
+- file_path: 'ee/spec/lib/gitlab/ai/catalog/third_party_flows/seeder_spec.rb'
+  description:
+    - 'Gitlab::Ai::Catalog::ThirdPartyFlows::Seeder#run! when all conditions are met seeds external agents successfully'
+    - 'Gitlab::Ai::Catalog::ThirdPartyFlows::Seeder#run! when all conditions are met creates items with correct attributes'
+  jh_related_spec:
+    - 'jh/spec/lib/gitlab/ai/catalog/third_party_flows/seeder_spec.rb'
+  skip_reason: 'JH extends the upstream list with additional built-in external agents, so the upstream exact-count assertions do not apply'
+- file_path: 'ee/spec/policies/global_policy_spec.rb'
+  description_prefix:
+    - 'GlobalPolicy manage instance AI model configuration manage self-hosted DAP models when admin is_offline_license: true, is_dap_add_on_available: false, '
+  skip_reason: 'JH self-hosted DAP models are available without an upstream DAP add-on'

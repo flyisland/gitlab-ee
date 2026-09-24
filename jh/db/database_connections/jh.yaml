@@ -1,0 +1,8 @@
+name: jh
+description: GitLab database holding all JH independent fuctionalities
+gitlab_schemas:
+  - gitlab_internal
+  - gitlab_jh
+klass: JH::ApplicationRecord
+uses_load_balancing: true
+db_dir: jh/db

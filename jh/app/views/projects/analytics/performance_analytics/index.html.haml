@@ -1,0 +1,9 @@
+- breadcrumb_title s_("JH|Performance Analytics")
+- page_title s_("JH|Performance Analytics")
+- add_page_specific_style 'page_bundles/performance_analytics'
+
+.mb-3
+  %h3
+    = s_("JH|Performance Analytics")
+
+#js-performance-analytics-app{ data: { is_group: false.to_s, full_path: @project.full_path, project_id: @project.id, group_id: @project.namespace.id, default_branch: @project.default_branch } }

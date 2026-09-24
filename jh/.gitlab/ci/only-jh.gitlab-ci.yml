@@ -1,0 +1,18 @@
+only-jh-check:
+  stage: test
+  extends:
+    - .predictive-job
+    - .only-jh-check:rules
+  variables:
+    JH_ONLY_CHECK_BRANCH_BASE: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+  script:
+    - git fetch origin ${JH_ONLY_CHECK_BRANCH_BASE}
+    - git diff --name-only origin/${JH_ONLY_CHECK_BRANCH_BASE}... -- jh > jh-changes
+    - git diff --name-only origin/${JH_ONLY_CHECK_BRANCH_BASE}... -- ':!package.json' ':!yarn.lock' > all-changes
+    - non_jh_changes=$(diff jh-changes all-changes | sed 's/> /* /' | grep '* ') || true
+    - |
+      if test -n "${non_jh_changes}"; then
+        echo -e "\e[31mChanges in the following files should be brought to upstream:\e[0m"
+        echo "${non_jh_changes}"
+        exit $(echo "${non_jh_changes}" | wc -l - | cut -f1 -d' ')
+      fi

@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+return unless helper.all_changed_files.include?('yarn.lock')
+
+duplicate = `node_modules/.bin/yarn-deduplicate --list --strategy fewer yarn.lock`
+              .split(/$/)
+              .map(&:strip)
+              .reject(&:empty?)
+
+return if duplicate.empty?
+
+warn '此合并请求引入了重复的 yarn 依赖。'
+
+if helper.ci?
+  markdown(<<~MARKDOWN)
+    ## 重复的 yarn 依赖
+
+    以下依赖项应该去重：
+
+    * #{duplicate.map { |path| "`#{path}`" }.join("\n* ")}
+
+    请运行下列命令随后提交 `yarn.lock` 的更改：
+
+    ```
+    node_modules/.bin/yarn-deduplicate --strategy fewer yarn.lock \\
+      && yarn install
+    ```
+  MARKDOWN
+end

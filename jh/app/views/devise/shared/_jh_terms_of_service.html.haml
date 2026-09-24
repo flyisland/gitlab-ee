@@ -1,0 +1,9 @@
+- return unless Gitlab::CurrentSettings.current_application_settings.enforce_terms?
+
+- com_text = html_escape(s_("SignUp|By clicking %{button_text} or registering through a third party you accept the GitLab %{link_start}Terms of Use and acknowledge the Privacy Statement and Cookie Policy%{link_end}.")) % { button_text: button_text,
+        link_start: "<a href='#{terms_path}' target='_blank' rel='noreferrer noopener'>".html_safe, link_end: '</a>'.html_safe }
+
+.gl-text-gray-500.gl-mt-5.gl-mb-3
+  - id = "new-user-terms-accepted-#{sequence}"
+  = f.gitlab_ui_checkbox_component :terms_accepted?, com_text, checkbox_options: { required: true, data: { testid: "new-user-terms-accepted" }, id: id }, label_options: { class: 'gl-text-gray-500', for: id }
+  = render_if_exists 'devise/registrations/opt_in_to_email', f: f

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo 'In the jh/Gemfile.lock, replace the remote using the PATH method with the upper-level directory'
+cat Gemfile.lock | sed -e '/^PATH$/{n;s/remote: /&..\//}' > jh/Gemfile.lock

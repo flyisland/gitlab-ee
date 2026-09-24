@@ -1,0 +1,89 @@
+{
+  "created_at": "2026-09-09T01:18:27Z",
+  "entries": {
+    "doc/ci/environments/protected_environments.md": {
+      "blob": "5508889224617878a188a7fd1da22128f4143534",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "5acdf12ffaf6898424c2604718e2f9dd592e0e35",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/examples/php.md": {
+      "blob": "74087babacefa64ea547d5581d124c4645fa3782",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "55c898693f23c978b1f6b1c8f46e870af5478918",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/migration/github_actions.md": {
+      "blob": "f68ff2ab54a52b33451915715fca66f582e84269",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "e67ce4be09fc2dee88aa9c71b97e5a360fe091ea",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/pipelines/_index.md": {
+      "blob": "33ec430ae4fc883b7d3129d78d6af0e8d8e93d58",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "afafe2d25e4c615f9f93e9641b7410f069214eae",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/ci/pipelines/merge_trains.md": {
+      "blob": "943ee357e0578b96c80aa4d427c9da8e9479ca44",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "d2e19abe4a39557e76a8d1a4d78481fd57707adf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/pipelines/pipeline_architectures.md": {
+      "blob": "78d00cae0f08e391409e28a8ca0092bc8941d2d4",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "042cea44c6448b9dd0a3e140f2f265116fe85865",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/pipelines/pipeline_efficiency.md": {
+      "blob": "974b72afb294c72fbb3f26321e48748ad737dd71",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "2049ba6f73111aab59c136282c295f6826b2cafa",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/convert-to-id-tokens.md": {
+      "blob": "219da28fcda6bc9ef81cf782182705fc0b68b470",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "0fb4b4b660d905f51c767b8942dd6e636f4d7e03",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/id_token_authentication.md": {
+      "blob": "708c57de60f92c1956211f3301f73aec731827ec",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "498d5ba1465f54d0c90cfd20a052e2620db5fc31",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+  "version": 2
+}

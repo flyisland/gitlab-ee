@@ -1,0 +1,65 @@
+- name: "可自定义的角色"
+  description: |
+    群组所有者或管理员现在可以在“角色和权限”菜单下通过 UI 创建和移除自定义角色。要创建自定义角色，您可以在现有的[基础角色](https://docs.gitlab.cn/jh/user/permissions.html#roles)上添加[权限](https://docs.gitlab.cn/jh/user/permissions.html#custom-role-requirements)。目前，可以添加到基础角色的权限数量有限，包括细粒度安全权限、批准合并请求和查看代码的权限。每个里程碑都会发布新的权限，您可以将其添加到现有权限中以创建自定义角色。
+  stage: Govern
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/permissions.html#create-a-custom-role'
+  #  image_url: 'https://img.youtube.com/vi/pSQ3CCdfaAs/hqdefault.jpg'
+  published_at: 2023-09-22
+  release: 16.4
+
+- name: "群组/子群组级别的依赖列表"
+  stage: Govern
+  description: |
+    在查看依赖项列表时，拥有整体视图很重要。对于想要审核所有项目的依赖项的大型组织来说，在项目级别管理依赖项有些困难。在此版本中，您可以查看项目或群组级别的所有依赖项，包括子群组级别。此功能现在默认可用。
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/application_security/dependency_list/'
+  #  image_url: 'https://about.gitlab.com/images/16_4/groupsubgroup_level_dependency_list.png'
+  published_at: 2023-09-22
+  release: 16.4
+
+- name: "使用极狐GitLab 用户身份本地访问集群"
+  stage: Deploy
+  description: |
+    以前，允许开发者访问 Kubernetes 集群需要开发者云账户或第三方认证工具，这增加了云身份和访问管理的复杂性。现在，您可以仅使用开发人员的极狐GitLab 身份和 Kubernetes 代理来授予开发人员访问 Kubernetes 集群的权限。使用传统的 Kubernetes RBAC 来管理集群内的授权。
+
+    与极狐GitLab 流水线中的 [OIDC 云身份验证](https://docs.gitlab.cn/jh/ci/cloud_services/) 一起使用，这些功能使得极狐GitLab 用户无需专用云账户即可访问云资源，且不会危及安全性和合规性。
+
+    在集群访问的第一次迭代中，您必须[手动管理 Kubernetes 配置](https://docs.gitlab.cn/jh/user/clusters/agent/user_access.html)。
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/clusters/agent/user_access.html#access-a-cluster-with-the-kubernetes-api'
+  #  image_url: 'https://img.youtube.com/vi/i9rLhmG7Aog/hqdefault.jpg'
+  published_at: 2023-09-22
+  release: 16.4
+
+- name: "为私有项目创建工作区"
+  stage: Create
+  description: |
+    以前，用户无法为私有项目[创建工作区](https://docs.gitlab.cn/jh/user/workspace/configuration.html#set-up-a-workspace)。要克隆私有项目，您只能在创建工作区后对自己进行身份验证。
+
+    在极狐GitLab 16.4 中，您可以为任何公共或私有项目创建工作区。创建工作区时，您将获得可用于该工作区的个人访问令牌。您可以使用此令牌克隆私有项目并执行 Git 操作，无需任何额外的配置或身份验证。
+  available_in: [专业版, 旗舰版]
+  self-managed: true
+  gitlab-com: true
+  documentation_link: 'https://docs.gitlab.cn/jh/user/workspace/#personal-access-token'
+  #  image_url: 'https://about.gitlab.com/images/16_4/create-workspace-from-private-repo.png'
+  published_at: 2023-09-22
+  release: 16.4
+
+- name: " CI/CD 可全局配置关键字 `id_tokens`"
+  stage: Verify
+  description: |
+    从极狐GitLab 16.4 开始，您可以在 `.gitlab-ci.yml` 中将 `id_tokens` 设置为全局默认值。此功能自动为每个作业设置 `id_token` 配置。使用 `secrets` 关键字的作业不需要您再设置单独的 `id_token`。
+  available_in: [免费版, 专业版, 旗舰版]
+  self-managed: true
+  gitlab-com: true
+  documentation_link: 'https://docs.gitlab.cn/jh/ci/yaml/index.html#id_tokens'
+  #  image_url: 'https://about.gitlab.com/images/16_4/id_tokens_img.png'
+  published_at: 2023-09-22
+  release: 16.4

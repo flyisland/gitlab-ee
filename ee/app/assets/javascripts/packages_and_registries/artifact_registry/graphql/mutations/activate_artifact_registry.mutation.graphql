@@ -1,0 +1,12 @@
+# @feature_category: artifact_registry
+
+mutation activateArtifactRegistry($input: ArtifactRegistryActivateInput!) {
+  activateRegistry: artifactRegistryActivate(input: $input) {
+    registry {
+      slug
+      status
+      createdAt
+    }
+    errors
+  }
+}

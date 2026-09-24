@@ -1,0 +1,23 @@
+# frozen_string_literal: true
+
+def has_matching_story?(file)
+  File.file?(file.dup.sub!(/\.vue$/, '.stories.js'))
+end
+
+def get_vue_shared_files(files)
+  files.select do |file|
+    file.end_with?('.vue') &&
+      file.include?('vue_shared/') &&
+      !has_matching_story?(file)
+  end
+end
+
+vue_shared_candidates = get_vue_shared_files(helper.all_changed_files)
+
+return if vue_shared_candidates.empty?
+
+documentation_url = '<!-- https://docs.gitlab.cn/jh/development/fe_guide/storybook -->'
+file_list = "- #{vue_shared_candidates.map { |path| "`#{path}`" }.join("\n- ")}"
+
+warn "此合并请求修改了在 `vue_shared` 目录中没有文档的 Vue 组件。" \
+  "请考虑为这些组件[创建故事](#{documentation_url})：\n#{file_list}"

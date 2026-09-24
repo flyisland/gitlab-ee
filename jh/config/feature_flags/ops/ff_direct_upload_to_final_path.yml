@@ -1,0 +1,8 @@
+---
+name: ff_direct_upload_to_final_path
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2396
+rollout_issue_url:
+milestone: "16.11"
+type: ops
+group: group::utilization
+default_enabled: false

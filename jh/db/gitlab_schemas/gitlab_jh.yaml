@@ -1,0 +1,8 @@
+name: gitlab_jh
+description: Schema for all Cell-local JH tables
+allow_cross_joins:
+  - gitlab_internal
+  - gitlab_shared
+allow_cross_transactions:
+  - gitlab_internal
+  - gitlab_shared

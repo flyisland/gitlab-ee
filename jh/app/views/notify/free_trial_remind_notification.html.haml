@@ -1,0 +1,17 @@
+#content
+  %p= _('Hi %{username},') % { username: @user.name }
+
+  %p= s_("JH|FreeTrial|Your free trial of JiHu GitLab on %{host} will end soon. If you do not upgrade any of your group or purchase add-on service, your account will be deactivated on %{trial_end_date}.") % {host: Gitlab.config.gitlab.host, trial_end_date: @trial_end_date}
+
+  %p= s_("JH|FreeTrial|To keep using your account, you can:")
+  %li= s_("JH|FreeTrial|Navigate to 'Group Settings - Billing' and upgrade your plan")
+  %li= s_("JH|FreeTrial|Contact 400-088-8738 or scan below QR code to upgrade any of your group or purchase add-on service")
+
+  %img{ alt: "qa-code", src: image_url('mailers/saas-user-group-qa-code.png'), width: '300', height: '300' }
+
+  - link_start = '<a href="%{url}" target="_blank" rel="noopener noreferrer">'.html_safe % {url: 'https://docs.gitlab.cn/jh/user/group/import/index.html'}
+
+  %p= s_("JH|FreeTrial|If you have no plan to continue using %{host}, please %{link_start}migrate your data%{link_end} before %{trial_end_date}. After free trial ends, your data will be deleted.").html_safe % { link_start: link_start, link_end: '</a>'.html_safe, host: Gitlab.config.gitlab.host, trial_end_date: @trial_end_date}
+
+  %p= s_("JH|FreeTrial|Thanks,")
+  %p= s_("JH|FreeTrial|The JiHu GitLab Team")

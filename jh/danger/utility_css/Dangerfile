@@ -1,0 +1,53 @@
+# frozen_string_literal: true
+
+common = 'app/assets/stylesheets/framework/common.scss'
+utilities = 'app/assets/stylesheets/utilities.scss'
+
+def get_css_files(files, common_filepath, utilities_filepath)
+  files.select do |file|
+    file.include?(common_filepath) ||
+      file.include?(utilities_filepath)
+  end
+end
+
+changed_util_files = get_css_files(helper.all_changed_files.to_a, common, utilities)
+
+NAMING_STYLE_URL = "https://unpkg.com/browse/@gitlab/ui/src/scss/utilities.scss"
+
+unless changed_util_files.empty?
+
+  markdown(<<~MARKDOWN)
+    ## 工具 SCSS 文件的修改
+  MARKDOWN
+
+  if changed_util_files.include?(common)
+
+    markdown(<<~MARKDOWN)
+      ### 对 `#{common}`的增加
+
+      您向 `#{common}` 中添加了新的规则。您确定需要这些规则吗？
+
+      如果这是共用于一些内容的组件类，可否将其作为工具类添加到组件或组件的样式表中？如果不可行，请忽略。
+
+      如果这是个新的工具类，是否有其他类与此文件或 `#{utilities}` 中共享同一个值？如果没有，请将其添加到 `#{utilities}` 中并参见[极狐Gitlab UI 命名规范](NAMING_STYLE_URL)。
+
+    MARKDOWN
+
+  end
+
+  if changed_util_files.include?(utilities)
+    markdown(<<~MARKDOWN)
+      ### 对 `#{utilities}`的增加
+
+      您向 `#{utilities}` 中添加了新的规则。您确定需要这些规则吗？
+
+      如果这是共用于一些内容的组件类，可否将其作为工具类添加至组件或组件的样式表中？如果不可行，请考虑将其添加到 `#{common}`。
+
+      如果这是个新的工具类，是否有其他类与此文件或 `#{utilities}` 中共享同一个值？如果没有，请参见[极狐Gitlab UI 命名规范](NAMING_STYLE_URL)。
+
+    MARKDOWN
+  end
+
+  warn "此合并请求添加了对 #{common} 或 #{utilities} 的新规则。"
+
+end

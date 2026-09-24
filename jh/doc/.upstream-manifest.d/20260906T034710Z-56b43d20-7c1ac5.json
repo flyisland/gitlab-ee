@@ -1,0 +1,277 @@
+{
+  "created_at": "2026-09-06T03:47:10Z",
+  "entries": {
+    "doc/user/duo_agent_platform/agents/foundational_agents/onboarding_guide.md": {
+      "blob": "125eb75b98ef048e768081e227b18a63f7fc39ae",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "bff1d76306e49c3914e719953bffc085e20a1762",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/agents/foundational_agents/permissions_assistant.md": {
+      "blob": "57c8b2cf1de017a185ce721b58bd1e604e98983f",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "820f76c912289a92d6d86247962be00a027e23cc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/agents/foundational_agents/security_review_agent.md": {
+      "blob": "0e89f23c96ac1073bd13dc881c16cbf36cd25747",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "4d6996e60b0f68963f6908c6d2f32a5e93a1dc78",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/agents/foundational_agents/support_assistant.md": {
+      "blob": "c30db72d476eedcce7e14212bee376836b66449c",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "1ec9e30e5e3acfafb3379ce4017d113a0615ff92",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/agents/tool-governance.md": {
+      "blob": "81f90f27defa2e16f95bd0863fe6b7d66f4c6f51",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "0304b9b17c3f129fc799368d8b58d85fc2c86848",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/ai-audit-events.md": {
+      "blob": "169f41db80ad7c13032db3b6b998dcce2621d02f",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "914c53515f2b1378d497155522026e62165c2127",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/agent_config_yml.md": {
+      "blob": "d1a53889dc004b1a2fb2baf29506b92dccc53b17",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "35eee5e1e20f7ca1d0d3847ee96a37606f01fb3a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/claude-edit-v1-flow-registry.md": {
+      "blob": "664288001dfb321bf048b46f2d6f3ea8a9cbb695",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "3d2baed7afcc5c673af05c9ee4b8b50715c00921",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/execution/_index.md": {
+      "blob": "df6d131e66e368cd2c3cc57f59da02bd9c5b628c",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "9aac7d5dbaeadbaef7e9454dcc87e0235d022bf4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/execution/agent-config-yaml.md": {
+      "blob": "4375eac644ce0ac92cef1aa4f8c7a6a8edbaed5d",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "5af4373086ec237cd7b391444f54ffc7e0879a08",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/execution/execution-variables.md": {
+      "blob": "6f06aa70392ad0ee6f8c58a17a782b530f38c32c",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "ed174e238ea9a34f9eb77f8a0371ac62cca8f884",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/execution/images.md": {
+      "blob": "1f16cd35ac093f7e62e559d8f085ff812cdc5962",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "9855e24fdaa9811b2e27d9078ec51c789d597a72",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/execution/security-considerations.md": {
+      "blob": "33d34dc1c5d7780e324223f11ee8a83d34ba6828",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "aa0a0d8aec7349ddd324164a9ae2463b49dd0be2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/agentic-breaking-change-resolution.md": {
+      "blob": "f079020b81e2f8e04fd9e4718a5ab9b35597791e",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "2f4a8951931bface4ee0063039fb737256710058",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/code_review/_index.md": {
+      "blob": "b010f7de66203df242fab1eb8eac5b4af6f83d5a",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "cd0458fa6a84ad81140fa31f0c86b51b4ae26516",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/code_review/troubleshooting.md": {
+      "blob": "60539c4ed58a9132edf14f376e3b2423abf88c4d",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "02edd30b830c16d17d10d98bc83ad8f04657c31e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/security_review.md": {
+      "blob": "5d6b13fb085adf6c3734f8767df5c4607805e37d",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "6265d85c83c04e35af56d35c4f88e7fa94de37bc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/onboarding.md": {
+      "blob": "3611843a89155964ab7e08d72bce8f43c9fb8b08",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "ba27b96ce0e7bb110e32552304211852e05546a7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo_cli/customize.md": {
+      "blob": "8879cfa26bcc31009042f275beb83e8122c60ab0",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "9a21c4e48a0a1f71faee19b72e7b7107a6da5b57",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo_cli/reference.md": {
+      "blob": "83692dd557137039940388d74fae5d5bb73f6d16",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "4df48d5450c54c7939de2fbf9870ef22294efb2a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo_cli/set_up.md": {
+      "blob": "e54410ee1b2980e110049c635162f043a91a8a81",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "206a9937217d25fa960ca7958cc3b927bbbc256d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo_cli/use.md": {
+      "blob": "f9b75fb209c3b24890a98a8ea78202137085393c",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "c46e778c927a4dc6efa4b866dba7f5e5501071b7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/glql/data_sources/ai_usage_events.md": {
+      "blob": "5893284e1ca8111f00e9b940dd113c7e381ca863",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "32d7ecd7fc16249756199ab7f5971a63451f392a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/glql/data_sources/code_suggestions.md": {
+      "blob": "226809f9a230f775d60fa9b54543a8db5f52d166",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "e49fcb3f9e633b10bbbafdd2b80c39ba2210a762",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/glql/data_sources/contributions.md": {
+      "blob": "ef480b77f7073aeda63f5a2ba8adde5b19504bd8",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "5f09a640a590b3851520319ca22ed976ad40a91f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/glql/data_sources/merge_request_analytics.md": {
+      "blob": "6ce65450470ba2f85744790e129d16c5307267bf",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "8ff4d3b57751a716d6926b5bf7186befd15892cd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/glql/data_sources/pipeline_analytics.md": {
+      "blob": "c5b37bcb1b53b4395e47e8a59e5aae492e33b45a",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "d2aa25d096e09181630a1cfec4709a3aa2c9f7bc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/glql/display_types.md": {
+      "blob": "9c2f6373ae8d33c55266ab973c09cd18913cad79",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "2390a8289ac564581685f3779dafb398702e6763",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/gitlab_instances/offline-transfer-migrations.md": {
+      "blob": "26add1b77f323abe8525d70fb59aac36104f4131",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "6d2b8ed1328e2c118118945136e107ea7fa321a0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/third_party_systems/fogbugz.md": {
+      "blob": "30a2372a1518539752150995fb63f1a652479e4b",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "912162c6de44cae1c401dd8835501de2ec006fda",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+  "version": 2
+}

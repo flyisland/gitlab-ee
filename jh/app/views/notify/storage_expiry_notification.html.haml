@@ -1,0 +1,11 @@
+#content
+  %p= _('Hi %{username},') % { username: @user.name }
+
+  %p= s_("JH|Warm reminder: The additional storage service you purchased for the group %{group_link} on JihuLab.com will expire on %{date}. To ensure your service remains uninterrupted, please renew the service in a timely manner.").html_safe % { date: @storage_expiry_date, group_link: link_to(@namespace.full_path, group_url(@namespace)) }
+
+  %p= s_("JH|You can directly scan the QR code below to get in touch with our staff, and we will be happy to provide you with assistance.")
+
+  %img{ alt: "qa-code", src: image_url('mailers/saas-user-group-qa-code.png'), width: '300', height: '300' }
+
+  %p= s_("JH|FreeTrial|Thanks,")
+  %p= s_("JH|FreeTrial|The JiHu GitLab Team")

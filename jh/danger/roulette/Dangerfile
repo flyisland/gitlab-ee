@@ -1,0 +1,192 @@
+# frozen_string_literal: true
+
+REVIEW_ROULETTE_SECTION = <<MARKDOWN
+## 审核者推荐 (JH-Beta)
+MARKDOWN
+
+CATEGORY_TABLE = <<MARKDOWN
+
+已检测到需要审核的改动！
+
+请参考以下 Danger 建议的审核者和维护者：
+
+| 改动分类 | 审核者 | 维护者 |
+| ------ | ----- | ----- |
+MARKDOWN
+
+POST_TABLE_MESSAGE = <<MARKDOWN
+
+#### 代码审核步骤：
+
+1. 在合并请求准备好（非 Draft 状态）后，设置一位或多位审核者（参考上方表格的“审核者”）。
+1. 第一次得到审核者批准时会进入安全审核流程，请等待安全审核通过。
+1. 在得到所有审核者批准后，设置一位项目维护者做最终审核并完成代码合并（参考上方表格的“维护者”）。
+
+更多有关代码审核的流程请参见[代码审核流程](https://gitlab.cn/handbook/engineering/code-review)。
+
+为了更平均地分配审核请求到所有可用的审查者，Danger 会基于审核者的状态和其他信息为每个席位挑选审核者。
+如果有更好的审核者人选，请放心地忽略此算法推荐的人选。
+
+决定好审核者的人选之后，请将他们指派为审核者或者@提醒他们！
+Danger Bot 不会帮您做这件事。
+MARKDOWN
+
+NO_SUGGESTIONS = <<MARKDOWN
+
+暂时没有针对此合并请求的审核者和维护者人选。
+MARKDOWN
+
+BAD_API_MESSAGE = "_:disappointed_relieved: 拉取成员信息时出现问题，您可以在日志中查看详情并考虑重试此任务..._"
+
+UNKNOWN_FILES_MESSAGE = <<MARKDOWN
+### 未分类的文件
+
+以下文件暂时没有正确的分类，所以 Danger 不能依靠这些文件推荐审核者人选。
+
+如果您知道这些文件应该如何分类，请帮助我们增加[对应的规则](https://jihulab.com/gitlab-cn/gitlab/-/blob/main-jh/jh/tooling/danger/project_helper.rb)。
+MARKDOWN
+
+def group_not_available_template(slack_channel, gitlab_group)
+  <<~TEMPLATE.strip
+    No engineer is available for automated assignment, please reach out to the `#{slack_channel}` Slack channel or mention `#{gitlab_group}` for assistance.
+  TEMPLATE
+end
+
+OPTIONAL_REVIEW_TEMPLATE = '%{role} review is optional for %{category}'
+NOT_AVAILABLE_TEMPLATES = {
+  default: 'No %{role} available',
+  product_intelligence: group_not_available_template('#g_product_intelligence',
+    '@gitlab-org/analytics-section/product-intelligence/engineers'),
+  integrations_be: group_not_available_template('#g_ecosystem_integrations',
+    '@gitlab-org/ecosystem-stage/integrations'),
+  integrations_fe: group_not_available_template('#g_ecosystem_integrations',
+    '@gitlab-org/ecosystem-stage/integrations')
+}.freeze
+
+TEAMMEMBER_REVIEWERS_URL = "https://team-members.gitlab.cn/api/reviewers"
+
+def note_for_spin_role(spin, role, category)
+  template = NOT_AVAILABLE_TEMPLATES[category] || NOT_AVAILABLE_TEMPLATES[:default]
+  unless spin.nil?
+    note = "[#{spin['nick_name'] || spin['jihulab_username']}](https://jihulab.com/#{spin['jihulab_username']}) " \
+      "(`@#{spin['jihulab_username']}`)"
+  end
+
+  note || format(template, role: role)
+end
+
+def markdown_row_for_spin(category, spin)
+  maintainer_note = note_for_spin_role(spin, :maintainer, category)
+  reviewer_note = note_for_spin_role(spin, :reviewer, category)
+
+  "| #{helper.label_for_category(category)} | #{reviewer_note} | #{maintainer_note} |"
+end
+
+changes = helper.changes_by_category
+
+# Ignore any files that are known but uncategorized. Prompt for any unknown files
+changes.delete(:none)
+# To reinstate roulette for documentation, remove this line.
+changes.delete(:docs)
+# No special review for changelog needed and changelog was never a label.
+changes.delete(:changelog)
+# No special review for feature flags needed.
+changes.delete(:feature_flag)
+categories = Set.new(changes.keys - [:unknown])
+
+# Ensure to spin for database reviewer/maintainer when ~database is applied (e.g. to review SQL queries)
+categories << :database if helper.mr_labels.include?('database')
+
+# Ensure to spin for UX reviewer when ~UX is applied (e.g. to review changes to the UI) except
+# when it's from wider community contribution where we want to assign from the corresponding group
+categories << :ux if helper.mr_labels.include?('UX') && helper.mr_labels.exclude?('Community contribution')
+
+# Ensure to spin for Product Intelligence reviewer when ~"product intelligence::review pending" is applied
+categories << :product_intelligence if helper.mr_labels.include?("product intelligence::review pending")
+
+# Skip Product intelligence reviews for growth experiment MRs
+categories.delete(:product_intelligence) if helper.mr_labels.include?("growth experiment")
+
+def http_get_json(url)
+  rsp = Net::HTTP.get_response(URI.parse(url))
+
+  raise "Redirection detected: #{rsp.header['location']}" if rsp.is_a?(Net::HTTPRedirection)
+
+  raise Net::HTTPError.new("Failed to read #{url}: #{rsp.code} #{rsp.message}", rsp) unless rsp.is_a?(Net::HTTPOK)
+
+  JSON.parse(rsp.body) # rubocop:disable Gitlab/Json  -- we need it
+end
+
+# @param [Array] members
+def rolette(members, category, author)
+  max_score = 0 # might -10 ?
+  members.each do |member|
+    score = member["remain_capacity"]
+    score += 20 if member["roles"].one? { |role| role.downcase.include?(category.to_s.downcase) }
+    score += 10 if member["team"] == author["team"]
+    member["score"] = score
+    max_score = score if score > max_score
+  end
+  members = members.filter { |reviewer| reviewer["score"] == max_score }
+  members.sample(random: Random.new(helper.mr_iid.to_i))
+end
+
+if changes.any?
+  project = helper.config.project_name.downcase
+  categories = categories.map { |category| category&.downcase }
+
+  # for unknown users
+  author_info = { team: "Guest" }
+
+  markdown(REVIEW_ROULETTE_SECTION)
+
+  begin
+    # @type reviewers_info [Array]
+    reviewers_info = http_get_json(TEAMMEMBER_REVIEWERS_URL)
+
+    maintainers_info = []
+    # filter out only member can handle this project
+    # and
+    reviewers_info.keep_if do |member|
+      if !member["projects"].key?(project)
+        false
+      elsif member["projects"][project] == "maintainer"
+        maintainers_info << member
+        false
+      elsif member["jihulab_username"] == helper.mr_author
+        author_info = member
+        false
+      else
+        member["projects"][project] == "reviewer" && member["available"]
+      end
+    end
+    rows = []
+
+    categories.map! do |category|
+      most_powered_reviewer = rolette(reviewers_info, category, author_info)
+      next if most_powered_reviewer.nil?
+
+      most_powered_maintainer = rolette(maintainers_info, category, author_info)
+
+      maintainer_note = note_for_spin_role(most_powered_maintainer, :maintainer, category)
+      reviewer_note = note_for_spin_role(most_powered_reviewer, :reviewer, category)
+
+      rows << "| #{helper.label_for_category(category)} | #{reviewer_note} | #{maintainer_note} |"
+    end
+
+    if rows.empty?
+      markdown(NO_SUGGESTIONS)
+    else
+      markdown(CATEGORY_TABLE + rows.join("\n"))
+      markdown(POST_TABLE_MESSAGE)
+    end
+  rescue StandardError => err
+    print "Exception in Reviewer Roulette: #{err.class}\n"
+    err.backtrace.each { |backtrace| print "\t#{backtrace}\n" }
+    markdown(BAD_API_MESSAGE)
+    markdown(POST_TABLE_MESSAGE)
+  end
+
+  unknown = changes.fetch(:unknown, [])
+  markdown(UNKNOWN_FILES_MESSAGE + helper.markdown_list(unknown)) unless unknown.empty?
+end

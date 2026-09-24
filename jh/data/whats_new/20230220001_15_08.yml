@@ -1,0 +1,65 @@
+- name: 外部状态检查通过前禁止合并
+  description: |  # Do not modify this line, instead modify the lines below.
+    您现在可以将您的项目配置为外部状态检查全部通过前禁止合并合并请求。这样您就可以放心地将外部系统视为极狐GitLab 工作流的一部分，并确保在代码合并之前完成所有必需的步骤。
+
+    配置成功后，只有当外部状态检查通过并且合并请求上显示绿色标记，用户才可以合并合并请求。如果还未进行外部状态检查或检查失败，则无法合并合并请求。
+
+  stage: govern
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: https://docs.gitlab.cn/ee/user/project/merge_requests/status_checks.html#block-merges-of-merge-requests-unless-all-status-checks-have-passed
+  #  image_url: https://about.gitlab.com/images/15_8/manage-block-external-status-checks.png
+  published_at: 2023-01-22
+  release: 15.8
+- name: 私有化部署支持 SCIM
+  description: |  # Do not modify this line, instead modify the lines below.
+    私有化部署的极狐GitLab 现在支持跨域身份管理（SCIM）的开放标准系统，允许您自动：
+
+        - 创建用户
+        - 通过停用用户的 SCIM 身份来删除用户
+
+      以前，这个功能仅适用于极狐GitLab SaaS 版本，SCIM 可以让极狐GitLab 的管理员对用户的生命周期进行完全的自动化管理。
+  stage: manage
+  self-managed: true
+  gitlab-com: false
+  available_in: [Premium, Ultimate]
+  documentation_link: https://docs.gitlab.cn/ee/user/admin_area/settings/scim_setup.html
+  image_url: https://about.gitlab.com/images/15_8/manage-scim-token.png
+  published_at: 2023-01-22
+  release: 15.8
+- name: 使用直接传输功能在迁移群组时迁移项目
+  description: |  # Do not modify this line, instead modify the lines below.
+    我们很高兴地宣布，您现在可以通过直接传输 Beta 功能迁移极狐GitLab 项目了。您可以使用直接传输功能一起迁移群组和项目资源，在不同的极狐GitLab 实例之间或同一实例之内进行迁移。
+
+    与使用[文件导出](https://docs.gitlab.cn/ee/user/project/settings/import_export.html)迁移群组和项目相比，[使用直接传输功能迁移群组](https://docs.gitlab.cn/ee/user/group/import/#migrate-groups-by-direct-transfer-recommended)的同时迁移项目是一个重大改进，因为：
+
+    - 您无需手动将每个项目导出到文件，然后再把所有导出文件导入到一个新位置。现在顶级群组中的所有项目会进行自动迁移，提高您的工作效率。
+    - 从私有化部署的极狐GitLab 迁移到 SaaS 版本时，用户关联（例如评论作者）不会变更为正在导入项目的用户。
+    使用直接传输功能的迁移在[满足条件](https://docs.gitlab.cn/ee/user/group/import/#preparation)时会正确映射用户及其贡献。
+
+     SaaS 版本提供了此功能。您现在就可以从私有化部署版本迁移到 SaaS 上啦！
+
+     如果您想在极狐GitLab 私有化部署实例上启用此功能，请参阅链接文档。
+
+  stage: manage
+  self-managed: false
+  gitlab-com: true
+  available_in: [Free, Premium, Ultimate]
+  documentation_link: https://docs.gitlab.cn/ee/user/group/import/#migrate-groups-by-direct-transfer-recommended
+  image_url: https://about.gitlab.com/images/15_8/groups-import-with-projects.png
+  published_at: 2023-01-22
+  release: 15.8
+- name: 在管理中心查看 Runner 的预计排队时间
+  description: |  # Do not modify this line, instead modify the lines below.
+    极狐GitLab Runner 队列优化的其中一个关键在于深入了解队列性能随时间的变化。虽然今天在管理中心视图中的 Runner 上可以看到每个作业的历史队列持续时间指标，但是缺少判断 Runner 当前队列性能的简单机制。
+
+    通过新的排队时间预估功能，您现在可以一目了然地确定所有实例 Runner 的平均预计等待时间。这样您就能够提前为您组织中的开发人员识别潜在的 CI 作业执行问题，并为配置或资源更改的决策提供指导，以优化 Runner 队列。
+  stage: verify
+  self-managed: true
+  gitlab-com: false
+  available_in: [Ultimate]
+  documentation_link: https://docs.gitlab.cn/ee/ci/runners/configure_runners.html#view-statistics-for-runner-performance
+  image_url: https://about.gitlab.com/images/15_8/admin-runners-estimated-queue-wait-time.png
+  published_at: 2023-01-22
+  release: 15.8

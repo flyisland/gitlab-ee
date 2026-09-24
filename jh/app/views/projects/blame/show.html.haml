@@ -1,0 +1,14 @@
+- if ::ContentValidation::Setting.block_enabled?(@project)
+  - content_blocked_state = ContentValidation::ContentBlockedState.find_by_container_commit_path(@project, @last_commit&.sha, @blob.path)
+  - if content_blocked_state.present?
+    - page_title _("Blame"), @blob.path, @ref
+    #blob-content-holder.tree-holder
+      = render "projects/blob/breadcrumb", blob: @blob, blame: true
+
+      .file-holder
+        = render "projects/blob/header", blob: @blob, blame: true
+        = render "shared/content_blocked", content_blocked_state: content_blocked_state
+  - else
+    = render_ee "projects/blame/show"
+- else
+  = render_ee "projects/blame/show"

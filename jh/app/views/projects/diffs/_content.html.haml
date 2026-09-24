@@ -1,0 +1,10 @@
+- diffable = @diffs&.diffable
+- container = diffable.respond_to?(:container) ? diffable.container : diffable&.project
+- if diffable.is_a?(Commit) && ContentValidation::Setting.block_enabled?(container)
+  - content_blocked_state = ContentValidation::ContentBlockedState.find_by_container_commit_path(container, diffable.sha, diff_file.blob.path)
+  - if content_blocked_state.present?
+    = render 'shared/content_blocked', content_blocked_state: content_blocked_state
+  - else
+    = render_ee 'projects/diffs/content', diff_file: diff_file
+- else
+  = render_ee 'projects/diffs/content', diff_file: diff_file

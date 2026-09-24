@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+default_branch = ENV['CI_DEFAULT_BRANCH'] || 'main'
+
+raise "请提供一个正确的合并请求描述。" if gitlab.mr_body.size < 5
+
+unless gitlab.mr_json["assignee"]
+  warn "此合并请求尚未指派给任何人。" \
+    "添加指派人后可以明确指明在此合并请求需要进一步动作时的对象。"
+end
+
+has_milestone = !gitlab.mr_json["milestone"].nil?
+skip_milestone_warning = helper.security_mr? && helper.mr_target_branch == default_branch
+
+warn "此合并请求没有对照到任何里程碑。", sticky: false if !has_milestone && !skip_milestone_warning
+
+has_pick_into_stable_label = helper.mr_labels.find { |label| label.start_with?('Pick into') }
+
+if helper.mr_target_branch != default_branch && !has_pick_into_stable_label && !helper.security_mr?
+  warn "大多数情况下，合并请求的目标应该是 `#{default_branch}`。" \
+    "或者，请设置相关的 `Pick into X.Y` 标签。"
+end

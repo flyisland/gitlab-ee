@@ -1,0 +1,7 @@
+- page_title s_('Analytics|Analytics dashboards')
+- breadcrumb_title s_("Analytics|Analytics dashboards")
+
+- if ::Feature.enabled?(:consolidate_analytics_dashboards, @group.root_ancestor)
+  #js-explore-analytics-dashboards{ data: analytics_dashboards_list_app_data(@group).merge({ explore_analytics_dashboards_path: group_analytics_dashboards_path(@group) }) }
+- else
+  #js-analytics-dashboards-list-app{ data: analytics_dashboards_list_app_data(@group).merge({ topics_explore_projects_path: topics_explore_projects_path }) }

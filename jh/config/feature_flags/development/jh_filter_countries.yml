@@ -1,0 +1,8 @@
+---
+name: jh_filter_countries
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3248
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/4902
+milestone: '18.3'
+type: development
+group: group::project management
+default_enabled: true

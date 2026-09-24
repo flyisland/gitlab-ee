@@ -1,0 +1,11 @@
+gitlab-advanced-sast-ext:
+  rules:
+    - when: never
+  script:
+    - echo "JH SKIP"
+
+xray_scan:
+  rules:
+    - when: never
+  script:
+    - echo "JH SKIP"

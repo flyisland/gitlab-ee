@@ -1,0 +1,115 @@
+{
+  "created_at": "2026-09-10T07:16:21Z",
+  "entries": {
+    "doc/administration/cicd/limits.md": {
+      "blob": "4fb5daceafe8a0a890baa2121a92128affc3117d",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "c1c1db080ff20319a0db9d13c17d96dc66c62e82",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/administration/instance_limits.md": {
+      "blob": "8f22638d82492d50ee1234af54e19f2b5b5c351e",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "9a37a60cd33121039c2d9cbbeeb52d6740633521",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/account_and_limit_settings.md": {
+      "blob": "df72dd2bd91ccf2f579516b2e24221c9dff7ceeb",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "c940f0f0aa188b9de879322ab78870bee34d8992",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/import_and_export_settings.md": {
+      "blob": "6bde0d0699eb7bd50e627a7acc3dd619603adf07",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "528f92dfbf45f8fbdef11da64cef35512080d0fe",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/jira_cloud_app.md": {
+      "blob": "511df77f550ca2d16f249cdeca7e281ec53f144b",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "0a68c7d49dc8f3a47f24b9d48f0fe8a277c65d1b",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/rate-limit-on-webhook-operations.md": {
+      "blob": "e81364b1c5fdfa0b2a3ecea07239d01b373144eb",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "274c8945b13879e9c6b550e0134e881e88dc70a7",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/operations/feature_flags.md": {
+      "blob": "d821428f0459c818e21d4240c17b8e155cdae63c",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "bcca37f38bbf933f5e5743464e85df91a27b1ca5",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/rate_limits/_index.md": {
+      "blob": "1f995aebe3440948fa91d279bb5dc282b14e36a0",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "76e6aea9aaf44e620c65a00fb251269c40be509a",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/rate_limits/git.md": {
+      "blob": "f7fa2a2e4990d041bed42f99a8b9752a5c82e2b7",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "f85ae5c940e54fbe6668fb930c28ab2ebaff107b",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/security/tokens/token_troubleshooting.md": {
+      "blob": "d03c0bc46cb4f75200125ff941df6fe300f94446",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "93fc5d9532eee08d4e0f9dd1be6162adf145ebd2",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/webhooks.md": {
+      "blob": "8ba1ac4bf243903072163b4e2443838ec0769c46",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "aaa29732450077783a7ccd939f1cdca5acdb6a5f",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/user/project/settings/import_export.md": {
+      "blob": "e0a5193c05059513969a8d28b9d77606b8a16481",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "7315256247b7f814b8d34967d6c6431a8ea9ac82",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "c5dbba38cb5376727bf7a3bef50d893c94019d4d",
+  "version": 2
+}

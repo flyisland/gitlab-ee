@@ -1,0 +1,18 @@
+---
+key_path: counts.groups_inheriting_feishu_active
+name: count_all_groups_inheriting_feishu_active
+description: Count of groups that inherit active Feishu integrations
+product_group: utilization
+product_categories:
+- integrations
+value_type: number
+status: active
+milestone: "15.7"
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/2219
+time_frame: all
+data_source: database
+data_category: operational
+tiers:
+- free
+- premium
+- ultimate

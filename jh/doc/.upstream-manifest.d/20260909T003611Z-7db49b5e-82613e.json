@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-09-09T00:36:11Z",
+  "entries": {
+    "doc/ci/testing/code_coverage/cobertura.md": {
+      "blob": "0b4a672d3e461a5062d47bf68e19f5300bf88212",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "3e93441d2a03f00e3cc0e5b4735cc4d8157b6098",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/variables/predefined_variables.md": {
+      "blob": "17dc06436e4a999c6cfe29a061bb4e9fac9bf0b0",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "52bc4b7929611a1e4c406937e3b52bb47f83b198",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/gmail_action_buttons_for_gitlab.md": {
+      "blob": "d311a9f8e53bb7de6832a0c33d18bf30b7346270",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "a9b6aabea4da9ae21e838971352e63c34401c6bd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/_index.md": {
+      "blob": "56d675c46fff5dde22bf19bd589e723c119769ae",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "4484fbc046469e8d7a6cab42b041e052e555d2b4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/operations/feature_flags.md": {
+      "blob": "d821428f0459c818e21d4240c17b8e155cdae63c",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "d13c467cd44da250e21989e42adb28e774c12cfc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/tokens/token_troubleshooting.md": {
+      "blob": "d03c0bc46cb4f75200125ff941df6fe300f94446",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "f37a4d4661d172ebaebe5c255be61b9a0bcf26b6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/deprecations.md": {
+      "blob": "70578d5ad838039afadd682b90ae7064f8198627",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "25a1fb8d8bf7cc5c6d3fd4188b6d4c0421c77354",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/update/versions/gitlab_16_changes.md": {
+      "blob": "f8fdfdf6b91f9b833b5caf4227d9dffd30105db1",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "1cc215b369f873738c0bc78c94b588870ccb565d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/troubleshooting.md": {
+      "blob": "5dfb6fe761332e75d3b724eac67d2fd758ecb374",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "a5c0e2543f1412768993b6c588f2cfaa03db8f3d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/coverage_fuzzing/_index.md": {
+      "blob": "1a175c5ccd21c6e096ec409fd901f1b00383388a",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "30f7a7e37a51a42f7f3fceb9ccc104866638fa7d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+  "version": 2
+}

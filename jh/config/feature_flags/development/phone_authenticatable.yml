@@ -1,0 +1,8 @@
+---
+name: phone_authenticatable
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/440
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/945
+milestone: '14.11'
+type: development
+group: 'group::authentication and authorization'
+default_enabled: false

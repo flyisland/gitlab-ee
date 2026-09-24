@@ -1,0 +1,8 @@
+---
+name: jh_wecom_app_notification
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3777
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/work_items/5292
+milestone: "19.4"
+type: wip
+group: group::integrations
+default_enabled: false

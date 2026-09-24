@@ -1,0 +1,16 @@
+- content_for(:title, _('Access Denied'))
+
+.holder
+  = image_tag('illustrations/error-401.svg', alt: s_('JH|Access denied'), lazy: false)
+  .gl-text-center
+    %h3
+      = s_("JH|Restricted page access")
+    %p
+      = s_("JH|Sorry, you don't have access to the page")
+    %p
+      = s_("JH|You must log in to JiHu GitLab to access the page")
+    = render Pajamas::ButtonComponent.new(href: new_session_path(:user), variant: :confirm, size: :normal) do
+      = _('Sign in')
+    = render Pajamas::ButtonComponent.new(button_options: { style: 'margin-left: 6px' }, href: root_path, size: :normal) do
+      = s_('JH|Back to home')
+

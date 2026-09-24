@@ -1,0 +1,8 @@
+@import '../../../../../ee/app/assets/stylesheets/startup/startup-signin';
+@import '../phone_verification';
+
+.login-page .omniauth-container.restyle-login-page {
+  form, .js-oauth-login {
+    flex-basis: calc(50% - 0.25rem);
+  }
+}

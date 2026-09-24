@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-09-10T07:14:00Z",
+  "entries": {
+    "doc/user/gitlab_com/_index.md": {
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "deleted": true,
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/user/gitlab_com/logging.md": {
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "deleted": true,
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    }
+  },
+  "source_sha": "c5dbba38cb5376727bf7a3bef50d893c94019d4d",
+  "version": 2
+}

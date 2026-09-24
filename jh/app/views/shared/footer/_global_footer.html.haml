@@ -1,0 +1,16 @@
+- if Gitlab.com? && !::Gitlab.hk?
+  %footer.jh-records-footer
+    %section.promotion-links
+      %a.jh-about-website{ href: "https://gitlab.cn", target: "_blank" } 关于极狐(GitLab)
+
+    %section.record-links
+      %span.record-item
+        = image_tag 'footer/anti-law.svg'
+        %a{ href: "https://12377.cn/" } 违法和不良信息举报中心
+      %span.divider
+      %span.record-item
+        = image_tag 'footer/national-emblem.svg'
+        %a.jh-records-link{ href: "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502047940", target: "_blank" } 京公网安备11010502047940号
+      %span.divider
+      %span.record-item
+        %a.jh-records-link{ href: "https://beian.miit.gov.cn/#/Integrated/index", target: "_blank" } 京ICP备2021036779号-1

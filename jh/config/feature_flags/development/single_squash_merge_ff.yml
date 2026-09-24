@@ -1,0 +1,7 @@
+---
+name: single_squash_merge_ff
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/1711
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/3148
+milestone: "16.2"
+type: development
+default_enabled: false

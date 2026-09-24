@@ -1,0 +1,70 @@
+{
+  "created_at": "2026-09-09T03:49:36Z",
+  "entries": {
+    "doc/ci/docker/buildah_rootless_tutorial.md": {
+      "blob": "121d19882b1d0438b645706b8df9ac6082917c22",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "9a73bb8680db43c3e14313e5b497cad04559fc9b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/migration/github_actions.md": {
+      "blob": "f68ff2ab54a52b33451915715fca66f582e84269",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "999ab2a0152ffcf98fc1e17804578439559293b1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/pipelines/pipeline_efficiency.md": {
+      "blob": "974b72afb294c72fbb3f26321e48748ad737dd71",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "29061b9931f1aa3d846ecdb2dc28d753d28be74a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/id_token_authentication.md": {
+      "blob": "708c57de60f92c1956211f3301f73aec731827ec",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "c3bf738edf9467987de5fb8629dfcdab1eaf6a5c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/tokens/token_troubleshooting.md": {
+      "blob": "d03c0bc46cb4f75200125ff941df6fe300f94446",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "b94a10e8cf10e280028c56066311b55b603dcb79",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/versions/gitlab_16_changes.md": {
+      "blob": "f8fdfdf6b91f9b833b5caf4227d9dffd30105db1",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "f38825b6f29cc08508f4750e28595a2e191ac33e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/coverage_fuzzing/_index.md": {
+      "blob": "1a175c5ccd21c6e096ec409fd901f1b00383388a",
+      "commit": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+      "target": {
+        "blob": "45a71c90350dd7d9f2bd7f02e0fa9b6deb8848ef",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "72aa27c4f8399e93cbcebf16b6828d2543967199",
+  "version": 2
+}

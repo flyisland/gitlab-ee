@@ -1,0 +1,60 @@
+# Disable test-on-omnibus-ee temp, we may bring it back later
+.qa:rules:test-on-omnibus-ee:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+.qa:rules:manual-omnibus-and-follow-up-e2e:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+.qa:rules:trigger-omnibus-env:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+.qa:rules:post-run-e2e-message:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+.qa:rules:follow-up-e2e:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+# Disable test-on-omnibus-ce forever, we should not support ce edition
+.qa:rules:test-on-omnibus-ce:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+.qa:rules:test-on-omnibus-nightly:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+.qa:rules:e2e:test-on-gdk:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+# Disable as-if-foss job on jh side temporarily
+.build-images:rules:build-assets-image-as-if-foss:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+# Disable rspec:feature-flags job on jh side temporarily
+.rails:rules:rspec-feature-flags:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+.build-images:rules:build-gdk-image:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+# Disable this job, because it use GLCI_DA_CLICKHOUSE_URL
+.test-metadata:rules:export-diff-stats:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+.frontend:rules:bundle-size-review:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]
+
+# Disable it on jh, because www-gitlab-com doc update before jh release
+docs-lint release-note-categories:
+  rules:
+    - !reference [".not-run-if-jh", "rules"]

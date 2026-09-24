@@ -1,0 +1,32 @@
+# @feature_category: security_policy_management
+
+query getPolicyStorePolicies($id: OrganizationsOrganizationID!, $ids: [Int!]) {
+  organization(id: $id) {
+    id
+    policyStore {
+      policies(ids: $ids) {
+        id
+        organizationId
+        namespaceId
+        name
+        description
+        version
+        triggerType
+        rules
+        policyRego
+        actions
+        policyScope
+        scopeRego
+        scopeDimensions
+        mode
+        lifecycleState
+        createdAt
+        updatedAt
+      }
+      triggers {
+        id
+        name
+      }
+    }
+  }
+}

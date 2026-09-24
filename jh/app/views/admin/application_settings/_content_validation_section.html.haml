@@ -1,0 +1,11 @@
+- if ::Gitlab.com? && ::Gitlab.jh?
+  %section.settings.as-spam.no-animate#js-spam-settings{ class: ('expanded' if expanded_by_default?) }
+    .settings-header
+      %h4
+        = s_('JH|ContentValidation|Content Validation Service')
+      %button.btn.gl-button.btn-default.js-settings-toggle{ type: 'button' }
+        = expanded_by_default? ? _('Collapse') : _('Expand')
+      %p
+        = s_('JH|ContentValidation|Configure Content Validation Service')
+    .settings-content
+      = render 'illegal'

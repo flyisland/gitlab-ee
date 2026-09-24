@@ -1,0 +1,277 @@
+{
+  "created_at": "2026-09-06T13:54:53Z",
+  "entries": {
+    "doc/user/application_security/dependency_scanning/dependency_scanning_sbom/troubleshooting_ds_sbom_analyzer.md": {
+      "blob": "23fc9c6141bed742a5958d88e7fd4cb9320f9a35",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "9f69e6c13763c05b44ed9ff7976a143adacfd6f9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dependency_scanning/legacy_dependency_scanning/troubleshooting_dependency_scanning.md": {
+      "blob": "3c0e463ce1989d077e5d11d56c79bb24c878cd18",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "7039621e5cb2ef40c04e430f783e4f3929a33567",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/gitlab_advisory_database/_index.md": {
+      "blob": "66ee25407fd3ddf0e4711346f259d8e24c8d2e99",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "f1e5995c65b14eb00f8e6ea0b9b0171c6f2b8423",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/_index.md": {
+      "blob": "e3479d1cb35be2b388e1740a73f8a1419f26edd4",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "9adb4b453279f06cf471a3e88bc7f7cbec8577ee",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/merge_request_approval_policies.md": {
+      "blob": "8a1fa0f1497e994b342fe304fba50c4d357a9b4b",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "e901302ff5a68200c3ed25cad39aba9a8b7c8887",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/scan_execution_policies.md": {
+      "blob": "7b3a68ff25de8ca49b7fe86f60e6f4889514c6fb",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "90155ce6bbbc4607af1f9c6fc8deb75ab980b825",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/terminology/_index.md": {
+      "blob": "6f0c39ebb339a0cae1e7ec82b8d5929d79c09f16",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "365d790895e9c9988a48711f8a75c255bb86a30c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/vulnerabilities/false_positive_detection.md": {
+      "blob": "0d1b6b5830819a6b3c9803e020dcec41acb8dcd6",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "5a8a2ab07ee508105c86052784e245e791c548bb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/compliance/license_scanning_of_cyclonedx_files/_index.md": {
+      "blob": "6a9a5f67498b09213bf11d1aacf359cad0f9b19c",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "197f023c856af417f43081e4de552968ecc66630",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/agents/foundational_agents/_index.md": {
+      "blob": "2ff2ee9a3d7f66f05976542efee298c7411f839a",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "a894d6fb0689f6f7fe2782f13b14a8acdd16b01f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/customize/review_instructions.md": {
+      "blob": "f101b40b8dcaa3ee36b95c8102629f000128f700",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "96cf55e80314b9717a3cd3abdaf645170bfc7283",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/get_started/get_started_planning_work.md": {
+      "blob": "aac6646878017a355ad570998784f3fc843f4da0",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "36602702d3caa3a6080b2295281edd35d0734cc0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo_chat/agentic_chat.md": {
+      "blob": "fd958d90743affde27327ce660c7ffd1543cb631",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "ebc066e0f62c81ee9306b99d4041e4b36363eee0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/glql/data_sources/merge_requests.md": {
+      "blob": "e9a83c7d5869d7ba0a3a175fe15a8321952c0150",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "5d980cd1381c1fc177053f649a442fcfb2b014a8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/glql/data_sources/work_items.md": {
+      "blob": "829eeda925fdd5ea488744ade9db19f875f8a880",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "d65353db12c050fbb3a57122c61e85d4f5131abc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/_index.md": {
+      "blob": "7e19980118aa94c602cadb6c25b36c62a1580472",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "726dbe124b5176f91517758ea68cb880273436d9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/epics/manage_epics.md": {
+      "blob": "235a74e18ca9ff054bb33ff3c3b7606c58b72ca9",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "a8385cbc58be1535d17fff93d62804ee7a7efb54",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/import/migrated_items.md": {
+      "blob": "ac33c60918d6bd6efa80cb5a48adc2073b535e5b",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "a481d6794641eabf4c04dba69355dab452f7ed6b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/manage.md": {
+      "blob": "6bfc31c172194ba54994b053c734a0eb872a14ce",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "7b731bad8f7a368ef9eaf4ad9e04dbbb3c8fb60e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/roadmap/_index.md": {
+      "blob": "8d6b3083f622d63b0bf351193a82a3e0ae3620e4",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "fa6285a2c9b96f661d49cf40114eb78fce548773",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/saml_sso/_index.md": {
+      "blob": "5e91dfeaf2538e7356b874118870654a37d2f495",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "83a5df781de1f0efd1fd0f3d1132a9733cdd7d90",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/saml_sso/group_sync.md": {
+      "blob": "af7053d36f51fd8f852465d0d52ef22c3a20aebc",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "51b88bd28ec5bd99937eedd7c09644a759d293c8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/bitbucket_server.md": {
+      "blob": "46993561940400490db65e0afdf0c0745298fbcb",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "bf55e43dffa2adec73e58c0ae6c64ae79084e58b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/profile/preferences.md": {
+      "blob": "61f22b6e8b2612dfd82a8d3d716a48dee6f53c95",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "10da09f145ba2760e8aebf4dfc2ac7de694a5d6b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/clusters/add_existing_cluster.md": {
+      "blob": "488c59a74606dd8f684b4482d6b5e7b460da16d8",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "abd1ab9c3d475ee82600392445983452c063d1ae",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/clusters/deploy_to_cluster.md": {
+      "blob": "2dcb828e4707d56704574af881f2eb786fecd5cc",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "527a9158485794b326dd9b0c2f4a0d7c8909a577",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/description_templates.md": {
+      "blob": "71cec619376ca7b09c3c3f6b2464d69df6a6c17b",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "a1de3f7071ae7c25c6b342588abb5d9972aaa6bb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/bugzilla.md": {
+      "blob": "4be4bb4369ab195400f30d5f14ff184338b6d0fa",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "b963e8725a8659008c6629d07cb466b9c3f64387",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/clickup.md": {
+      "blob": "21417c415f74d0587ae792cc317deba95f245f32",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "9d692110cf80864810b4de4857bbb6dafa0d64ae",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/custom_issue_tracker.md": {
+      "blob": "72dbb7bfd3b87e4ca30bdd5f9220b403c9bedc2b",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "e2757876b76469416cad7897a444af9b23c18ae9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+  "version": 2
+}

@@ -1,0 +1,10 @@
+---
+name: group_access_tokens_premium_offer
+description: Shows a Premium upgrade offer card to Free-tier owners on the group access tokens page.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/607721
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251176
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/618750
+milestone: '19.4'
+group: group::acquisition
+type: gitlab_com_derisk
+default_enabled: false
