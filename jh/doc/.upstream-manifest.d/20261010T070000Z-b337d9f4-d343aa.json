@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-10T07:00:00Z",
+  "entries": {
+    "doc/administration/gitlab_duo/configure/transition-to-the-agent-platform.md": {
+      "blob": "4b4356a9ec48381e6bae909781844d986605a476",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "48d97c2af6fac56fddf4aebeb0ce30e41f0726bf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/_index.md": {
+      "blob": "06140dab67dff387c0982821e784371e60396f06",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "b0e7006aaa19b003de759229aa85e1fb142e90a7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_deployment/ecs/deploy_to_aws_ecs.md": {
+      "blob": "52e860f959cf1dd520ceeded5b3490622be68029",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "2ba56839f3088f9e1dfe87124e5a9a1fa5adced8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_services/aws/_index.md": {
+      "blob": "c5d2117800687ededbfd432f4ec6a0643b00526d",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "763255d7f11e7931c94d36f978cad79d5ade0fa4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_services/azure/_index.md": {
+      "blob": "0ccd5e2164b8e5c751d0fd4aca4cc9fe3feb50bb",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "64bda2ac84c2f80c8d7e5fac63dff0edb97bf994",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_services/google_cloud/_index.md": {
+      "blob": "1fc8699837b9b9c75fc4705ce4b07edddeb1be5d",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "d4467fc98b552aeeb7b5824d33731ae14c8c2647",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/quick_start/_index.md": {
+      "blob": "49c8346343790882824997a9ac5a564890405c95",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "db769a4b45c1ac3f2e2cb676951c78d439934c9e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/triggers/_index.md": {
+      "blob": "e0f4eae206df81cc966fdea9eb10bb6a3a8116e9",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "52cc97840d03f64bcb91537330ff8d738dff6c36",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/detect/roll_out_security_scanning.md": {
+      "blob": "92d9bee750064a68bb0455c34815a8e71fd53fe2",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "7243325bc6c238f8ef8ee7144dfcef26cea5bcf4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/secret_detection/pipeline/configure.md": {
+      "blob": "e9214cd5b9a1110a7c503a28af138f418bdeb7e9",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "3ea4d6099ae932765df1b92b95e474e5c78e7317",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+  "version": 2
+}

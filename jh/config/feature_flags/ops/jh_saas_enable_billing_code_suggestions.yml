@@ -1,0 +1,8 @@
+---
+name: jh_saas_enable_billing_code_suggestions
+description: Enable usage quota checks for Code Suggestions on JiHu SaaS.
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3956
+milestone: '19.5'
+group: group::code suggestions
+type: ops
+default_enabled: true

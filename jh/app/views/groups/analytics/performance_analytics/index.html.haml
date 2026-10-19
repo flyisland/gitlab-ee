@@ -1,0 +1,9 @@
+- page_title s_("JH|Performance Analytics")
+- add_page_specific_style 'page_bundles/performance_analytics'
+- is_group = !@group.nil?
+
+.mb-3
+  %h3{ data: { testid: 'analytics-title-content' } }
+    = s_("JH|Performance Analytics")
+
+#js-performance-analytics-app{ data: { is_group: is_group.to_s, full_path: @group.full_path, group_id: @group.id } }

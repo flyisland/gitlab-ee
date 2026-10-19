@@ -1,0 +1,56 @@
+@import 'page_bundles/mixins_and_variables_and_functions';
+
+.gl-flex-fill-1 {
+  flex: 1;
+}
+
+.gl-mt-3 {
+  margin-top: 0.5rem;
+}
+
+.gl-ml-3 {
+  margin-left: 0.5rem;
+}
+
+.gl-flex-grow-1 {
+  flex-grow: 1;
+}
+
+.gl-align-items-flex-start {
+  align-items: flex-start;
+}
+
+.phone-input,
+.verification-code-input {
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.verification-code.form-group {
+  .js-verification-btn {
+    min-width: 120px;
+    flex: 1;
+  }
+}
+
+.phone-form {
+  padding: $gl-padding;
+}
+
+.phone-form.inline {
+  @include media-breakpoint-up(md) {
+    display: flex;
+
+    .phone,
+    .verification-code {
+      flex: none;
+      margin-right: $gl-spacing-scale-4;
+      width: 360px;
+    }
+  }
+}

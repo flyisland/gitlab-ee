@@ -1,0 +1,99 @@
+{
+  "created_at": "2026-09-18T05:04:10Z",
+  "entries": {
+    "doc/api/project_forks.md": {
+      "blob": "be6ed2486757ab13ddc6b4dea85d06c479fe6b19",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "cb7b257e9065e1b9b17a29637733a558e4f606f3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/runners/configure_runners.md": {
+      "blob": "9924993c716ea9be0df035d5a15c86f1af6e84b3",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "d1e8f3c1f68a6c7a65fddfd9a630db03f2b5b7e6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/git/forks.md": {
+      "blob": "be2669fb348c42b2562db70cce9cf5b811a35dc3",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "6b42b4f89fb185bd573d210d3dc95ba1b97fb28f",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/tutorials/fuzz_testing/_index.md": {
+      "blob": "c6a4758610506e697e01ea5f9643f8c0dc49ff66",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "4bcd91640ec228f49bb9b04d1955b36c930b0fa6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/allow_collaboration.md": {
+      "blob": "060cc6c2bf1393f5e7bb061234c3092c336f69ea",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "b961499d085bf0e27777d5bb24d8da8a02670d99",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/authorization_for_merge_requests.md": {
+      "blob": "9fe0ceaae285997ad8b2f6fa2b1015f2d19b3529",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "2d48c5db861aab4bc1b8293b4079a3b74a495635",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/confidential.md": {
+      "blob": "2c836770463b004c06b35330a87b9734aab51d81",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "99425ba6cfe2eb3115f7f59938808a3a7aee6ed1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/pages/getting_started/pages_forked_sample_project.md": {
+      "blob": "fb57572ba74dd54e695c19c73c2f72122af53a1f",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "6d38303b3f5ef57d952ff0dd0b8eedb6b1befea1",
+        "lineage": "generated",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/user/storage_usage_quotas.md": {
+      "blob": "ee292c755b2fdded85daf6bec3cc35eb63485991",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "50811d79a63dd69fb0a53085667a3e0da17ae5bc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/workspace/set_up_infrastructure.md": {
+      "blob": "6e7b7946ad6e3c65a2a149f2efc4e73cae89dc12",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "ee00ed7b006bbffbf73d6bb6c071accdce9b5489",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+  "version": 2
+}

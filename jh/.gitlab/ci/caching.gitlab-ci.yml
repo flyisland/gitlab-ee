@@ -1,0 +1,6 @@
+# upstream for UBI OS
+cache:ruby-gems-ubi:
+  extends:
+    - cache:ruby-gems
+    - .with-ruby-ubi-image
+    - .not-run-if-jh

@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T04:13:41Z",
+  "entries": {
+    "doc/user/application_security/dast/browser/checks/798.17.md": {
+      "blob": "c84dafbb618ca7fa1ced7f99e7cbcd4587b5c62e",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "20351813675c6ebdd7d4c935b87542dcb6ab8cd8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.170.md": {
+      "blob": "48b1e1ebf41519290fb211103673f4653ec72a3e",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "cb7b851a328ddc8e6fcf001375588939c42ff826",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.171.md": {
+      "blob": "bf527c395f3827ce7523468f7f386efd8dd0e907",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "31ef4b00f6934192c75940da9da8ae971a46e265",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.172.md": {
+      "blob": "e4f995678902ce562f9bc80ce7dde9cad143068b",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "0a5870de09a4753458339fc312d42dc656e64930",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.173.md": {
+      "blob": "32b42d6fd265ccf8c74f2ac5fefb1d69dff0ed6f",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "14e7aa6db08f0e34fb0f8541d2945957e6a1a18d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.174.md": {
+      "blob": "997b009013f0f7f702615a2a22869b71d1338f23",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "b788c88571a129241d104f8bfe385ff32b173030",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.175.md": {
+      "blob": "3c784176c930dd588dd755d9de773839e2a4e2e8",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "5ffe279d38ce5a2fc0ab63795f03db1b0a8df0bc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.176.md": {
+      "blob": "fb30b1834b2aa80ec7990d4028b08d6afb9943ca",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "40d7aead6cb9f86259cf6af64186b402d4aabfe5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.177.md": {
+      "blob": "7e5e53cac73ca43f2172dd289850626dd4fef727",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "b2d35fcd6eb674894eecd3fbbcfe509f68f2e525",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.178.md": {
+      "blob": "7cc595d3d6937efbb479af3badf64d11b6954d07",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "f0f1a751d53251128d057078965477023bd4c040",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+  "version": 2
+}

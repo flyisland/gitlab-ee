@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-09-14T11:25:05Z",
+  "entries": {
+    "doc/administration/get_started.md": {
+      "blob": "1a37205103e36e93ca96d1adc3186b8e3235677c",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "f4b09672210322ab19bb405f510b6a2e2af3c34e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/supported_llm_serving_platforms.md": {
+      "blob": "21d252bdaa339b1b7fcf4c68e5e70401b358c8c9",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "d8d1d916089e52f3eda30dcc24ad4ff13d4e3e8f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/pages/_index.md": {
+      "blob": "838a531a3ea7f65fcde350df7c40c88f4e80977c",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "bb8751a6f840d365037ac9c9626615a924ca8830",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/secrets_manager/_index.md": {
+      "blob": "1393dc3da2eaf171466ea84e1fd2a74380dd761b",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "f5a51aad5111033b755b3d876be3798413c3b4ea",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/install/sizing.md": {
+      "blob": "5d4df67ca575fc3ff1b826001366a799690c319f",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "52abcdca6e4aaf0a079554bd2778fd5e38584279",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/versions/gitlab_16_changes.md": {
+      "blob": "7dec35c4178bba305ee6a897f4598b7f02ea0a9f",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "bbd7469edb95cb63ddc5ca09f4b6cbf038486b4b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/compliance/audit_event_types.md": {
+      "blob": "d0ba3886b84d764a8959c35c41cf3cff1e8cb066",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "22cdbc19c568890e255fd4f3acb506941bc2b127",
+        "lineage": "generated",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/user/duo_agent_platform/flows/execution/_index.md": {
+      "blob": "df6d131e66e368cd2c3cc57f59da02bd9c5b628c",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "0912de40eb429fce90442d0c64855d1e94d1f2c4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/execution/images.md": {
+      "blob": "1f16cd35ac093f7e62e559d8f085ff812cdc5962",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "d917a8e0b1dbc794fa1b3b937fcb4c37c42a86ef",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/_index.md": {
+      "blob": "cc55a59780306fc6beffef7daeb1abb6d7d5113b",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "eec49a63ba153858de07da31753e2a74175136f9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "346444079ddb7ee48451328f0b82574008132e2f",
+  "version": 2
+}

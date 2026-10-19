@@ -1,0 +1,11 @@
+---
+name: zoekt_prioritized_rollout_selection
+description: Select paid namespaces, then any namespace without replicas, before the
+  full mismatched-replicas scan in Zoekt rollout.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/630717
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257853
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/631182
+milestone: '19.5'
+group: group::global search
+type: gitlab_com_derisk
+default_enabled: false

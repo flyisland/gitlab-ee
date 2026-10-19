@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-10-09T08:24:53Z",
+  "entries": {
+    "doc/administration/geo/replication/troubleshooting/synchronization_verification.md": {
+      "blob": "055a4f36eedf937434c5b3ccea20a3aadc9991a0",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "98b8fcedbab15f67dd02ff38a6b7bb1c11f9f6a3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/replication/tuning.md": {
+      "blob": "f09c2f36001f51a6711d7c0aa982340ca7caf5a5",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "0f97d1173cbf270e1d40f248da631894700a5993",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/setup/database.md": {
+      "blob": "f776d84c05a0781c0b1448950bdc1e0ae157fdd4",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "d9ac4f4cd03eca05feb44e45267b6c486fadd1c7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/setup/two_single_node_sites.md": {
+      "blob": "5ee1d5fc0ad0ffb1465db156f863fe260bc0d119",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "6c263790585624518b0ae71f9fb8aa933fb78eed",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/concurrency_limiting.md": {
+      "blob": "b84e22c4aade003064e230ff87344f4b43078f71",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "78c3fccaecc9be4d95f3fc7aba14e07275bb5078",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/monitoring.md": {
+      "blob": "4e8f8ea230a2ccd84360461645a7cf02453d44b6",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "76365cc4cdb06f6ba84bd18005f66f9166e59bf6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo/configure/_index.md": {
+      "blob": "c5962ab6cee905af3c1e788c437ff626181e26e2",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "f3ae3756ed51807077a3443448b99bcb7defb150",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo/configure/access_control.md": {
+      "blob": "3755ebe2ed7a05869aff7f7fd80ea7bd50cdf1b3",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "a7590346186404d7fcded3938438993b4100133a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo/configure/transition-to-the-agent-platform.md": {
+      "blob": "4b4356a9ec48381e6bae909781844d986605a476",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "d1f1eec3eedb448045748b7c304232b4c8c8d270",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "762c9b00f13aca97b8b7f788713548e75feeca25",
+  "version": 2
+}

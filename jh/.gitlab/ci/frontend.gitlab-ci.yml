@@ -1,0 +1,25 @@
+rspec-all frontend_fixture:
+  extends:
+    - .use-pg17
+    - .frontend-fixtures-base
+    - .frontend:rules:default-frontend-jobs
+
+jest:
+  tags:
+    - memory-intensive
+
+compile-storybook:
+  rules:
+    - when: never
+
+webpack-dev-server:
+  tags:
+    - memory-intensive
+
+rspec-all frontend_fixture clickhouse:
+  tags:
+    - memory-intensive
+
+test-storybook:
+  rules:
+    - when: never

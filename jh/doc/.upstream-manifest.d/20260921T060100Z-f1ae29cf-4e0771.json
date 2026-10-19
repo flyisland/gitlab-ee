@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-09-21T06:01:00Z",
+  "entries": {
+    "doc/administration/gitaly/concurrency_limiting.md": {
+      "blob": "b615d5321f92c9efaef40a318ec5d4b4e87ce65f",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "32bf7658a6884105b67cd2a3b5c1c34173ceed8c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/configure_gitaly.md": {
+      "blob": "aa609ee7d0ec73cb51cbf904327058088416725c",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "50693ec74e4bc2b1ed64ff2f2ba48317a2ddb777",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo/configure/_index.md": {
+      "blob": "112a4e02752d1e231fe9d61936887b668a2f0f7d",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "b2a322a98ce09d11835e360a9ec6954db0b46422",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo/model_selection.md": {
+      "blob": "f779fc22e3ff679a4390d2b46a08438f304eb654",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "759ee3d38300752293a382279cf6f6a8a2cc0e9f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/configure_duo_features.md": {
+      "blob": "81f85b565f66b028447ead24bb9a07714a881b4d",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "80d4f7a3fcb6172d0718cabfc8a7bc698d3ea90e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/offline_deployment.md": {
+      "blob": "f4c308e89f3f8915098ae1f7d527121c7ba84f21",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "6252da35cf90c9d28102af36c1929fc90f0ac38d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/troubleshooting.md": {
+      "blob": "d6276e3f865be2ef4962a30226465e216cced66f",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "a3a9530fa1df5a795c0be533ccfc8765d6498168",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/instance_limits.md": {
+      "blob": "7ae0d07e7320da4ede616572efb9a8a709ea4da1",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "9a37a60cd33121039c2d9cbbeeb52d6740633521",
+        "lineage": "mixed",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/administration/integration/terminal.md": {
+      "blob": "d1327d26f95f86a0bc410fcd53415363b73b85b9",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "303354001c94cde56bf7eb8e621f0ceeddf3385e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/logs/_index.md": {
+      "blob": "1e408abcd4d09780b2ad38d8a046c748c2ae2b69",
+      "commit": "f1ae29cfab050ae02cea80d5366faf577199f908",
+      "target": {
+        "blob": "ac70b375ec14132f8d16700e89b47b023d37973f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "f1ae29cfab050ae02cea80d5366faf577199f908",
+  "version": 2
+}

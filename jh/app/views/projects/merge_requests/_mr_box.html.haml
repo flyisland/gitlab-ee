@@ -1,0 +1,7 @@
+= render_ee "projects/merge_requests/mr_box"
+
+- if ::Feature.enabled?(:jh_ai_quick_buttons_on_mr)
+  .js-jh-only-data{ data: { can_summarize_changes: can?(current_user, :access_summarize_new_merge_request, @merge_request.project).to_s,
+                        duo_features_enabled: @merge_request.ai_review_merge_request_allowed?(current_user).to_s,
+                        iid: @merge_request.iid,
+                        project_path: @merge_request.project.path_with_namespace } }

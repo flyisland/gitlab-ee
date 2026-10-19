@@ -1,0 +1,7 @@
+internal-events-definitions-validation:
+  rules:
+    - when: never
+
+internal-events-definitions-validation-ee:
+  rules:
+    - when: never

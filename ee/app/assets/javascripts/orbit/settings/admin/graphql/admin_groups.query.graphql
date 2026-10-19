@@ -1,0 +1,34 @@
+#import "./admin_group.fragment.graphql"
+
+# @feature_category: knowledge_graph
+query getOrbitAdminGroups(
+  $withKnowledgeGraphEnabled: Boolean = false
+  $search: String
+  $first: Int
+  $last: Int
+  $after: String
+  $before: String
+) {
+  groups(
+    topLevelOnly: true
+    allAvailable: true
+    aimedForDeletion: false
+    withKnowledgeGraphEnabled: $withKnowledgeGraphEnabled
+    search: $search
+    first: $first
+    last: $last
+    after: $after
+    before: $before
+    sort: "name_asc"
+  ) {
+    nodes {
+      ...OrbitAdminGroup
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}

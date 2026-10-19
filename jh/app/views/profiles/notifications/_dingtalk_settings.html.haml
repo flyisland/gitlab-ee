@@ -1,0 +1,13 @@
+- return unless ::Gitlab::Dingtalk::App.notifications_available?
+
+.form-group.gl-mb-0
+  -# Keep id nil: hidden_field_tag would derive the checkbox id from the name and steal the label's for.
+  = hidden_field_tag 'user[dingtalk_notifications_enabled]', '0', id: nil
+  = render Pajamas::CheckboxTagComponent.new(name: 'user[dingtalk_notifications_enabled]',
+    checked: ::JH::Users::DingtalkNotification.enabled_for?(current_user),
+    checkbox_options: { class: 'js-dingtalk-notifications-enabled' }) do |c|
+    - c.with_label { s_('JH|DingTalk|Also send notifications to my DingTalk account') }
+    - c.with_help_text do
+      = s_('JH|DingTalk|Requires a bound DingTalk account. Notifications follow your existing notification settings.')
+      - unless ::Gitlab::Dingtalk::Recipient.for_user(current_user)
+        = s_('JH|DingTalk|Sign in with DingTalk again or reconnect your account in Authentication to enable delivery.')

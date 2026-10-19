@@ -1,0 +1,7 @@
+-# This should be using data from helper, right now this is only temporary.
+- data = account_trial_notification_data
+- days_left = data[:days_left]
+- updated_at = data[:updated_at]
+
+- if days_left.present? && days_left <= 30
+  .js-account-notification-banner{ data: { days_left: days_left, updated_at: updated_at, customer_dot_link: ::Gitlab.about_pricing_url } }

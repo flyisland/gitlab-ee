@@ -1,0 +1,25 @@
+@import 'page_bundles/mixins_and_variables_and_functions';
+
+.jh-pv-wrapper {
+  // value based on app/assets/stylesheets/page_bundles/signup.scss rule: edit-profile
+  max-width: 460px;
+
+  select[name="area_code"] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 2;
+  }
+
+  .input-group {
+    input[name="verification_code"] {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+
+  .verification-code-form {
+    .input-group-append {
+      background-color: $white;
+    }
+  }
+}

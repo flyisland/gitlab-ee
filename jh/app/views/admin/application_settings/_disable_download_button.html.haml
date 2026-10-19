@@ -1,0 +1,4 @@
+- if ::License.feature_available?(:disable_download_button)
+  .form-group
+    %label.label-bold= s_('JH|AdminSettings|Download source code button')
+    = f.gitlab_ui_checkbox_component :disable_download_button, s_('JH|AdminSettings|Disable download source code button'), checkbox_options: { data: { testid: 'disable-source-code-download-checkbox' } }

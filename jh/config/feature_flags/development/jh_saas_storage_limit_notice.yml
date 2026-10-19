@@ -1,0 +1,8 @@
+---
+name: jh_saas_storage_limit_notice
+description: Notify SaaS namespace owners about additional storage usage
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3831
+milestone: '19.5'
+group: group::utilization
+type: development
+default_enabled: false

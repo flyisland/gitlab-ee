@@ -1,0 +1,10 @@
+<%= s_('JH|NamespaceStorage|Group %{group_name} has used up its purchased storage: %{group_url}') % { group_name: @group_name, group_url: @group_url } %>
+
+<% unless @usage_percentage.nil? %>
+<%= s_('JH|NamespaceStorage|At the time this notification was triggered, %{usage_percentage} of this group\'s purchased shared storage pool had been consumed.') % { usage_percentage: number_to_percentage(@usage_percentage, precision: 1, strip_insignificant_zeros: true) } %>
+
+<% end %>
+<%= s_('JH|NamespaceStorage|Manage your storage usage, or purchase additional storage.') %>
+
+<%= s_('JH|FreeTrial|Thanks,') %>
+<%= s_('JH|FreeTrial|The JiHu GitLab Team') %>

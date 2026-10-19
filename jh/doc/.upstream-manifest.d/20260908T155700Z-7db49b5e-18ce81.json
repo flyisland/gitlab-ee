@@ -1,0 +1,53 @@
+{
+  "created_at": "2026-09-08T15:57:00Z",
+  "entries": {
+    "doc/administration/monitoring/prometheus/gitlab_metrics.md": {
+      "blob": "ee37e15a40715b031712fba652df9940af7da1fd",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "5c102efc9f4b3b658959da347d8d48e45bd6bb89",
+        "lineage": "generated",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/user/application_security/policies/_index.md": {
+      "blob": "e3479d1cb35be2b388e1740a73f8a1419f26edd4",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "ecb48a01afe874f8ea7118230448a8e3997aa670",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/merge_request_approval_policies.md": {
+      "blob": "8a1fa0f1497e994b342fe304fba50c4d357a9b4b",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "476276446314963c460bf7bf67e55b9dce20f7cb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/bitbucket_server.md": {
+      "blob": "3d82d60c606e613075cc5237de6e94d4c4555650",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "b347aa1bd2e7fcbd997225b9a2f8d26a5dbf24d8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/labels.md": {
+      "blob": "1917ca61e80354ead2dba953792a3e3add32c012",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "d8665735e390244fbbc0465081b76066150e25ac",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+  "version": 2
+}

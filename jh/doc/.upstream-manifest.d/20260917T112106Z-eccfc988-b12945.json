@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-09-17T11:21:06Z",
+  "entries": {
+    "doc/user/duo_agent_platform/flows/foundational_flows/_index.md": {
+      "blob": "cc55a59780306fc6beffef7daeb1abb6d7d5113b",
+      "commit": "346444079ddb7ee48451328f0b82574008132e2f",
+      "target": {
+        "blob": "4455b5303f3dabb7c76a38f2a503b4af840e23e2",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "eccfc98865a53ada33b02d170878faf6575fcb7a",
+  "version": 2
+}

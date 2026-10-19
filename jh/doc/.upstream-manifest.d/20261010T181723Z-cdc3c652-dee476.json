@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-10-10T18:17:23Z",
+  "entries": {
+    "doc/auth/tokens/fine_grained_access_tokens_graphql.md": {
+      "blob": "8f13e5b3984ea4a10060c912c43613eaeff02649",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "56a347870ea8a6cb433fc50ff7d24cf1cc132da0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/auth/tokens/fine_grained_access_tokens_other.md": {
+      "blob": "28b78209eb4c0c9eb04688804313b6dccb5d6e57",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "5ee1e2623562191680cd6f2761b4f9c2dba9eeb9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/caching/_index.md": {
+      "blob": "ce7e8163247e8934cb57e9b88bb971242b7f8ec5",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "0c75232c5cc1e6980230ba32ff728748173e7bb4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_services/_index.md": {
+      "blob": "6f4ea46b8be556a8c3ea02a52814e31ee2467232",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "afe45d30891130f74bb65c13df0169230ffc7dd9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/components/_index.md": {
+      "blob": "3bb3a91f4de6d3ef3294b88bc9fefb44819fbd98",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "a3ebbedeb7dcb6a929890adb6176f68902ec2015",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/docker/using_docker_build.md": {
+      "blob": "d1795beff298d1bee998817c9d96bb6da0ee6ad1",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "14c71d07244786c8b9fcea433e86d9084dc9e9e5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/_index.md": {
+      "blob": "a4a81ee9672695e6b614be52a0063781bd092f75",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "66fde50a039d610f89405d7b4f294173a1975497",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/protected_environments.md": {
+      "blob": "8b016bc888e8ff5b98409d6cc1a2361105c0e18d",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "a98136fc32bacad7b28aedab76bc6848687e7302",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/examples/deployment/composer-npm-deploy.md": {
+      "blob": "50b3c86285ccf1d6aacf24bc144e76f45eeab345",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "4a1aac5155daa15fe4a999573b7122cad17b84a9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/inputs/_index.md": {
+      "blob": "9d7f8994594477adef9ef74e43a69f54fb41b0ae",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "99359ba70fe46dd06ba7a6dcf2d7296419d56627",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    }
+  },
+  "source_sha": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+  "version": 2
+}

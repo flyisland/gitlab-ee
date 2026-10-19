@@ -1,0 +1,3 @@
+/locale/**/LC_MESSAGES
+/locale/**/*.time_stamp
+/locale/gitlab.pot

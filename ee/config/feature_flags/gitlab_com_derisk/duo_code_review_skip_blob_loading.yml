@@ -1,0 +1,11 @@
+---
+name: duo_code_review_skip_blob_loading
+description: Decide which files Duo Code Review can comment on from the diff patch
+  alone, without loading blobs from Gitaly
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/630829
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258482
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/631315
+milestone: '19.5'
+group: group::code review
+type: gitlab_com_derisk
+default_enabled: false

@@ -1,0 +1,8 @@
+- if ContentValidation::Setting.block_enabled?(@wiki)
+  - content_blocked_state = ContentValidation::ContentBlockedState.find_by_wiki_page(@page)
+  - if content_blocked_state.present?
+    = render 'shared/content_blocked', content_blocked_state: content_blocked_state
+  - else
+    = render_ee '/shared/wikis/wiki_content'
+- else
+  = render_ee '/shared/wikis/wiki_content'

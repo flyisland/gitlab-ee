@@ -1,0 +1,41 @@
+# frozen_string_literal: true
+
+def get_prettier_files(files)
+  files.select do |file|
+    file.end_with?('.js', '.scss', '.vue')
+  end
+end
+
+prettier_candidates = get_prettier_files(helper.all_changed_files)
+
+return if prettier_candidates.empty?
+
+unpretty = `node_modules/prettier/bin/prettier.cjs --list-different #{prettier_candidates.join(" ")}`
+             .split(/$/)
+             .map(&:strip)
+             .reject(&:empty?)
+
+return if unpretty.empty?
+
+warn '此合并请求有对前端文件的改动但没有正确格式化代码。'
+
+if helper.ci?
+  markdown(<<~MARKDOWN)
+    ## 对前端代码文件格式化
+
+    以下文件应当使用 `prettier` 格式化：
+
+    * #{unpretty.map { |path| "`#{path}`" }.join("\n* ")}
+
+    请运行
+
+    ```
+    node_modules/.bin/prettier --write \\
+    #{unpretty.map { |path| "  '#{path}'" }.join(" \\\n")}
+    ```
+
+    也请考虑开启编辑器中的[保存时自动格式化]功能。
+
+   [保存时自动格式化]: <!-- https://docs.gitlab.cn/jh/development/fe_guide/tooling.html#formatting-with-prettier -->
+  MARKDOWN
+end

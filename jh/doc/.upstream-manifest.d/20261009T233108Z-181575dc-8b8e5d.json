@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T23:31:08Z",
+  "entries": {
+    "doc/ci/secrets/fortanix_dsm_integration.md": {
+      "blob": "dff761993e97e5a2f510eaf9bfdd52bf3fb6d8c1",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "74b2e684c2ff86b8c8a0471ca2b1e1a84f7c89db",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/gcp_secret_manager.md": {
+      "blob": "3c45f24b1c0f08f8c9a26a3c6f380c8bbda15e43",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "2164224a3ef5de2abd4f9eac0b0e94aa7d088cc1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/hashicorp_vault.md": {
+      "blob": "f174b03638c3707771fa195aba77198a600b4cc2",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "aa00bf3bd6e7a06b43f3352212c3de5f6e6cd9df",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/hashicorp_vault_tutorial.md": {
+      "blob": "121839b4dcebc76b52c1ae6753c821a5e1706f32",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "ff05e1a0978bac4c1256498b8008728d965b61d8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secure_files/_index.md": {
+      "blob": "cc47de1cd271f4bb43b9900ec63002a7213c1552",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "b779a0c255c02293b55bc131088a839a7364dd58",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/services/gitlab.md": {
+      "blob": "551fb9bc8626d4330e6841e6b15ea458b07f3e64",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "50f139c5faa6cfe5047b1a0eda237f2af27b6fbe",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/services/postgres.md": {
+      "blob": "504d642639b0e0324d78a6e1678047917755f9fb",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "90b097d0fbf800ea2963edefe9666b439155e3a6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/services/redis.md": {
+      "blob": "7d7c89f46a4bbb89c6cac70a78d4cab3c7352a26",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "67e78a6ff414a8b184e2d8389c8f45a970d30dc4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/sustainability/_index.md": {
+      "blob": "616d979db5f57baba5d40f482e7548bdcb80796d",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "837af9fc94c5a51decaac7fd3c16f99c86cab164",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/sustainability/eco_ci.md": {
+      "blob": "085222f66ad8e5417a468557e16e2c49168d07fb",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "6dbb56468e613c43375566788db6460bf8c88606",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+  "version": 2
+}

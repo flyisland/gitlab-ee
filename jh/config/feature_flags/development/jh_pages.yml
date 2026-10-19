@@ -1,0 +1,9 @@
+---
+name: jh_pages
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/1479
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/2687
+milestone: "15.11"
+type: development
+group:
+default_enabled: false
+

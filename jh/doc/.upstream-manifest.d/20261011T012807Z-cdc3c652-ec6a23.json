@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-11T01:28:07Z",
+  "entries": {
+    "doc/ci/yaml/signing_self_hosted.md": {
+      "blob": "ea1e07a24c9364176eb0d9d4e1cc35b29050b0be",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "59311fba9247080077bad90fe2aa1324ee461437",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/yaml/workflow.md": {
+      "blob": "80881da1b5c23a7db818336cc02e781743d925a5",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "deba752a3077c1b2512a27f0f888984ad9fb3c30",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/yaml/yaml_optimization.md": {
+      "blob": "40f993c32fcce6c889fbb51c166c9d063fb515bc",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "d9de900748b82dfd79d8c1b591acce754ab38910",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/editor_extensions/eclipse/setup.md": {
+      "blob": "49e9467811ce42dc8c3bfae763dfd94586990b3c",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "50680cf7eeead133354882350c65196d9ecd5807",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/editor_extensions/jetbrains_ide/_index.md": {
+      "blob": "880b4d5705e96c541e430ab97d31d9bc461fd35f",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "0cc212ad660bacfe9c60f8a623e4ae82bd904d98",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/editor_extensions/jetbrains_ide/setup.md": {
+      "blob": "da274ba9eeb459055b58d142a6c95800c3c8e464",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "86b38315269d39ca9021bfb7786430ee6974a240",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/editor_extensions/language_server/_index.md": {
+      "blob": "0c016b824960c96d06e520182fc14b716699333e",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "d4f8799c06528bd6507cce00bb08948f8c51f028",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/editor_extensions/neovim/setup.md": {
+      "blob": "91229bb81e192b955fa35073f1b99853b4508fc7",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "b529e8fab3cf0ed7cc733f2bef9e3d531bbed7c5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/editor_extensions/software_development.md": {
+      "blob": "db8e84214a3421b0a6f87e662cf2017796d812f0",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "4ac396364b0e383d09823febc95eb89622b691a3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/editor_extensions/visual_studio/setup.md": {
+      "blob": "40b1e70ba3cbed055bff12c421a571614cd14a85",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "d2785ef64176bc1ddc5931d253a31c1c28ee2d36",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+  "version": 2
+}

@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-10T10:53:58Z",
+  "entries": {
+    "doc/integration/google_cloud_iam.md": {
+      "blob": "ac20c46d1d2d74c20f94c71b47c17166efdae904",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "4afd59957bbc6ab91d4692256376868d084550bc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/dvcs/_index.md": {
+      "blob": "fdde160102fb0c587277408eeddc47ae1955b037",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "18ead18a7cc3df4d4478ab113b8f75525c1d5999",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/dvcs/troubleshooting.md": {
+      "blob": "dfdd70a124c871708d58883e6a3cfb96ed03b3ec",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "e54519efa072ffa0c98bc0e00990c541226edaab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/issues.md": {
+      "blob": "898ba75c037d1b72d7571de1a677bc9eb3b3e381",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "0b1e6388895eb2af837133b49bfaf8f749d10801",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/jira_server_configuration.md": {
+      "blob": "0b75e10fbfada76b429c08cf0a98fd4b59b0c0bf",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "ac7b1ec32f225072bd5651fcd31ff1831a27f7a2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/kerberos_troubleshooting.md": {
+      "blob": "ad5c7f140d29ab13e15002c48754959ea5bb76a4",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "d721e25dd83c667143747138354e319f2b10ef57",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/mattermost/_index.md": {
+      "blob": "b8ee624ea1989491858c9dd40a1f453f5ccf73d8",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "2c2457bc1310635036754dfee9329177af063f07",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/oauth_provider.md": {
+      "blob": "2b3128f9a795de749a8627aac8967a61067148d3",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "1538208423e27b2a2bdd716cfd993f4c81386d2d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/openid_connect_provider.md": {
+      "blob": "6b998b354827ae9dadb088701e6911639fd96497",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "05160182ec283fbbcd4b5f78b16eb6a55e840eae",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/recaptcha.md": {
+      "blob": "cfb21d95d356287bbeeb6c7a241de55f14125286",
+      "commit": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+      "target": {
+        "blob": "44c312ae303de01d64b481cc36ebcb8325cb6b5b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "cc2511618e24f47af21fae2b5de29f2c3fe61a4a",
+  "version": 2
+}

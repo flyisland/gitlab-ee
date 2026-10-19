@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-11T04:08:37Z",
+  "entries": {
+    "doc/security/user_email_confirmation.md": {
+      "blob": "9c37034e06550225a867e22871eec1002b1cb5b7",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "b7a739522164cf80a8b36b277f69cc1782b3022f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/user_file_uploads.md": {
+      "blob": "a276f0310f90d48495e8462bb75271649fe7a547",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "07f4851557714a26c2c3d3c4ad157c04e8cfd592",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/background_migrations_troubleshooting.md": {
+      "blob": "9866e3c8b32e56ec54bbebc39f884656b9d2f0ac",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "6b0c35c360160adfb9bf0d44d850aa8ec7c3bfe5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/breaking_windows.md": {
+      "blob": "f2fd2d43a1c7f6fe64ec7b4a446ebe9d7b36051b",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "5bbeda7495ad524ba3fb5dbd41bdde653f26e31f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/docker/_index.md": {
+      "blob": "82c37179d8616fbf583b84351ffe990eeb582af4",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "8e0755cf3161263e0852862228d9bcede04888f0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/downtime_options.md": {
+      "blob": "5316805ef4ac345a85c052c52774053baeeda18c",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "11e126e004aca18b13c90d9040b12df6b5bf3d10",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/package/downgrade.md": {
+      "blob": "65782472734fe175510b049408b7f6bf71b534c8",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "e76d6218114a8571820fa94c77547a3f80516fa1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/patch_versions.md": {
+      "blob": "e9ae154e0bf6d5f1c76f9892deb1ea462d965be5",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "273f6d5b2276a671b6d8c247ee09ea18487bfa9d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/terminology.md": {
+      "blob": "91af71d7152bd79432194d514307683b9e22920a",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "89021f1fb668a7e1199134750838d5edd4e7c1f2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/troubleshooting_and_rolling_back.md": {
+      "blob": "4ab736de383f7edcd1968472085ccf5c75b4d97d",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "7b519ca45b72742fb3ad43d3ac3c4cc35e2da9a9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+  "version": 2
+}

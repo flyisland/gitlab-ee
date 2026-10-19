@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-20T14:50:18Z",
+  "entries": {
+    "doc/administration/auth/ldap/_index.md": {
+      "blob": "f8f28ebcdd1441bce1f6cdc6ef2070ee56ea9735",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "50573796f296e79d253d32e0e6b3ea0a2884c999",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/auth/ldap/ldap-troubleshooting.md": {
+      "blob": "ec1b3e023af602a4d7de1dc22a74bd459bb64496",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "f72241456e6c2eb2312f74b48a6d66a6054ee9aa",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/auth/smartcard.md": {
+      "blob": "719b77f9022215e1c6651c798b7adc63359e4f2f",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "380f5bc96d71de025e5057a7777f596d8fb5c008",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/cicd/job_artifacts.md": {
+      "blob": "072b4b567d64ad4555a9f0674ee0c8647e93654b",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "ddaeb343d99b7889113dcbfb752bfec21e63577b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/clusters/kas.md": {
+      "blob": "b61a459b9f4bc2a72c3633b8ab6765f57d911242",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "1af2c2f9ff2f5fe0d76274c7dfcdd4904084d289",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/email_from_gitlab.md": {
+      "blob": "e93e63693a0c0e9b706e93ff709ede3e0f773373",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "1a783da853ae6a2db2d6978e5a8e83571ba87b67",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/_index.md": {
+      "blob": "31351d03fb9a0544d88bc8363d0da0b791d6ac12",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "df33177e03b61b3565c928876009870b7ec6fcb4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/disaster_recovery/planned_failover.md": {
+      "blob": "4b87c780d6da76e909c9e3cb76a358b8f621a318",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "8c2857f2ab17d138ceabe864f38bc056abc2f2e8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/replication/container_registry.md": {
+      "blob": "18fb95501742fa331276ec9453479e772a6cf937",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "f8142048b8a1b9a23aada8ea5a0d9d81260a8a69",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/replication/datatypes.md": {
+      "blob": "c869bf56c8c0c999620cc17dba27539d48c8d3cb",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "bf796749e8fe55541fd3768b1549f4790fbc73a2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+  "version": 2
+}

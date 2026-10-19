@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-12T04:27:06Z",
+  "entries": {
+    "doc/releases/19/gitlab-19-4-released/goal-command-duo-cli.md": {
+      "blob": "f94a002cdbe351250edcafda1bc32b8a1ae5a9f0",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "f7a668985655ec17503b47e835569208be5ee7e8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/governance-for-gitlab-mcp-server-tools.md": {
+      "blob": "86e37bded73df878d01bf0a10c1b12a685dcb9b9",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "68b5b9a623b984a6fa350b6303b7351d0cf4b49f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/ldap-group-sync-diagnostics.md": {
+      "blob": "1ba378a2afc79b080a15e9c5f109ea54831a2d77",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "bf3df772cf1c6b8b3c1cac854ba3ab0c2b60436b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/mcp-duo-session-tools.md": {
+      "blob": "800a8ffeebc9bf42f93aff38a932ec5e12ca1f3a",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "418b0c0ac253fc6dba01ae1340bd137f3a3b76a2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/mcp-merge-request-tools.md": {
+      "blob": "24e64ec66bd77ea03a78cb1b5092e0318f954b89",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "1efb60623e86352351299339a953316f5bdddd16",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/mcp-project-user-tools.md": {
+      "blob": "2c5a51128545ff3f39a8d681c30715c57279185f",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "ee200b695fb43b4fac2e007606eec1e14bb6dab8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/mcp-repository-tools.md": {
+      "blob": "f3dadd73b813a69c030377cdc13a2cbd375397d1",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "a37d6afcfff30325f0d596f271216c0b658af0ec",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/mcp-semantic-search.md": {
+      "blob": "045276b8ec63ef2d6625a11c8313e4d38fd44a3a",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "208eb48f9e83e50faf4c91173f0536b079f0d362",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/mcp-server-community-tools.md": {
+      "blob": "c8ada2b14008dd8ab66e89dc75299b5f5895bd20",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "4119568b0671938685060bc39c3611b25f5cb6a4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/merge-request-widget-specific-status.md": {
+      "blob": "043b978c3f08fe1ce8259fabd0de6fee2ba7d41d",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "9d9ed60b19ee86f8aaf56618816915d7c14127d9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+  "version": 2
+}

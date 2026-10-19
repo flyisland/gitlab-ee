@@ -1,0 +1,69 @@
+- name: 使用 Maven 依赖代理来加速构建
+  description: |
+    一个典型的项目会有很多依赖，也就是我们俗称的依赖包。包可以由内部构建并维护或者从公共的仓库获得。基于我们的用户调研，我们了解到大多数项目是混合使用公共项目和私有项目（作为依赖），比例为 50/50。包的安装顺序非常重要，因为一旦使用了错误的安装包版本，就可能将中断变更或者安全漏洞引入到你的流水线中。
+
+    现在可以为你的极狐GitLab 项目添加一个外部的 Java 仓库了。添加之后，当你使用依赖代理安装包的时候，极狐GitLab 首先会在此项目中检查安装包。如果没有发现安装包，极狐GitLab 就会尝试从外部仓库拉取安装包。
+
+    当从外部仓库拉取安装包后，就会将其导入极狐GitLab 项目。当下次拉取特定的包时，就会从极狐GitLab 项目而不是外部项目来拉取该包了。即使外部仓库存在连接问题，但是只要包存在于依赖代理中，拉取包就会一直有效，这能够让你的流水线变得更快而且更可靠。
+
+    如果外部仓库中的包发生了变更（比如，用户删除了一个版本然后又重新发布了一个版本，而且有不同的文件变更），依赖代理就会检测到这些变更。它会让原来的包失效，以便极狐GitLab 可以重新拉取最新的包。这确保了下载的包始终是正确的而且能够减少安全漏洞。
+  stage: Package
+  self-managed: true
+  gitlab-com: true
+  available_in: [Premium, Ultimate]
+  documentation_link: https://docs.gitlab.com/ee/user/packages/package_registry/dependency_proxy/
+  published_at: 2024-01-18
+  release: 16.8
+
+- name: 工作空间现在已正式可用
+  description: |
+    我们很高兴地宣布工作空间已经正式可用，用来帮助你提高研发效率。
+
+    通过创建一个安全的、按需的远程研发环境，就能够帮你减少花费在依赖管理、新研发人员入职培训方面的时间，从而聚焦在软件的快速交付上。使用这种与平台无关的方法，你可以用你已有的云基础设施来托管你的工作空间，而且还能保证数据的安全性和私密性。
+
+    自从极狐GitLab 16.0 引入以来，工作空间已经收到了众多的改进需求，比如错误的处理和调谐、对私有项目的支持和 SSH 连接、额外的配置选项以及全新的管理员界面等。这些改进意味着工作空间现在已经足够灵活、更具有弹性而且更易于大规模管理。
+  stage: Create
+  self-managed: true
+  gitlab-com: true
+  available_in: [Premium, Ultimate]
+  documentation_link: https://docs.gitlab.com/ee/user/workspace/
+  image_url: https://assets.gitlab.cn/images/16_8/workspaces-ga.png
+  published_at: 2024-01-18
+  release: 16.8
+
+- name: 对极狐GitLab 管理员强制执行 2FA
+  description: |
+    不管极狐GitLab 管理员是否被要求使用 2FA，现在都可以让他们强制执行了。让所有的账号都使用 2FA 是一个很好的安全实践，特别是像管理员这样的特权账号。如果此配置被强制执行，那么不管管理员是否已经在用 2FA 了，他们都必须在下次登录的时候设置 2FA。
+  stage: Govern
+  self-managed: true
+  gitlab-com: false
+  available_in: [Free, Premium, Ultimate]
+  documentation_link: https://docs.gitlab.com/ee/security/two_factor_authentication.html#enforce-2fa-for-administrator-users
+  published_at: 2024-01-18
+  release: 16.8
+
+- name: 在议题分析报告中对于速率的深度洞察
+  description: |
+    **议题分析**报告现在已经包含了过去一个月所关闭的议题数量，以便进行详细的速率分析。有了这个数据的加持，极狐GitLab 用户就能够对与他们相关的一些项目做趋势洞察分析了，这能够提高向客户交付的整体周转时间和价值。**议题分析**可视化包含一个条形图，能够展示每一个月的议题数量，默认的时间跨度是 13 个月。你可以在**价值流仪表盘**的下拉菜单中看到这个图表。
+  stage: Plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [Ultimate]
+  documentation_link: https://docs.gitlab.com/ee/user/group/issues_analytics/index.html
+  image_url: https://assets.gitlab.cn/images/16_8/closed_issues_analytics.png
+  published_at: 2024-01-18
+  release: 16.8
+
+- name: 新的基于 DORA 的行业基准的组织级别的 DevOps 视图
+  description: |
+    我们在**价值流仪表盘**上新加了一个** DORA 性能指数**面板，用来可视化展示组织间跨不同项目之间的 DevOps 性能。这个新的可视化展示了 DORA 分数的详细情况（高、中或低），以便管理者能够从上到下了解到组织的 DevOps 健康状况。
+
+    四个 DORA 指标在极狐GitLab 上都是开箱即用的，现在有了新的 DORA 分数，组织就可以将自身的 DevOps 性能和行业基准进行对比了。这个基准测评能够帮助管理者了解自身和其他人的差别，然后识别出最佳实践或者他们可能落后的一些地方。
+  stage: Plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [Ultimate]
+  documentation_link: https://docs.gitlab.com/ee/user/analytics/value_streams_dashboard.html#dora-performers-score-panel
+  image_url: https://assets.gitlab.cn/images/16_8/16.8_vsd_dora.png
+  published_at: 2024-01-18
+  release: 16.8

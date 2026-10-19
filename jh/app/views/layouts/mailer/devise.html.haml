@@ -1,0 +1,17 @@
+- if Gitlab.com?
+  - content_for :additional_footer do
+    %tr
+      %td{ style: "font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;color:#5c5c5c;" }
+        %div
+          = _('Everyone can contribute')
+        %div
+          = link_to _('Blog'), 'https://about.gitlab.cn/blog/', style: "color:#3777b0;text-decoration:none;"
+          &middot;
+          = link_to "Bilibili", 'https://space.bilibili.com/2099384996', style: "color:#3777b0;text-decoration:none;"
+          &middot;
+          = link_to _('LinkedIn'), 'https://www.linkedin.com/company/jihu-gitlab', style: "color:#3777b0;text-decoration:none;"
+
+= render layout: 'layouts/mailer' do
+  %tr
+    %td{ style: "font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#333333;font-size:15px;font-weight:400;line-height:1.4;padding:15px 5px;text-align:center;" }
+      = yield

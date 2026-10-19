@@ -1,0 +1,10 @@
+---
+name: allow_flow_originated_cloud_event_triggers
+description: Lets cloud events caused by a flow acting with a composite identity start flow triggers.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/630476
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258734
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/631503
+milestone: '19.5'
+group: group::agent foundations
+type: gitlab_com_derisk
+default_enabled: false

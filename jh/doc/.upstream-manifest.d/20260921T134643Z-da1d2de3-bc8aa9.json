@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-09-21T13:46:43Z",
+  "entries": {
+    "doc/administration/instance_limits.md": {
+      "blob": "7ae0d07e7320da4ede616572efb9a8a709ea4da1",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "6e2864fb2d239ee9e1adcc12b3953e164057b6c1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+  "version": 2
+}

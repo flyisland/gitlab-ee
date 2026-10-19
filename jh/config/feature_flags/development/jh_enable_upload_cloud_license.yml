@@ -1,0 +1,8 @@
+---
+name: jh_enable_upload_cloud_license
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3504
+rollout_issue_url:
+milestone: '18.10.0'
+type: development
+group:
+default_enabled: false

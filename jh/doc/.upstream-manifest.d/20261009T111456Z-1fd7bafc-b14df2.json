@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T11:14:56Z",
+  "entries": {
+    "doc/administration/raketasks/cleanup.md": {
+      "blob": "44ec643dba8b310cd2206051726ab0efd5ce430e",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "8d019cb91caabe4c1bd996270cc41b50cca526ee",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/_index.md": {
+      "blob": "31ed03f0d8b7509cd0b2cf7986ed653cd316b5c5",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "bfe6d167b4fc97d500a45ec036eea43c3723a022",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/replication_and_failover.md": {
+      "blob": "5a837ce27577a5671b8a8f9fd754084b39c941cb",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "5642e5db890e02b681f69c163c963b4ac2c0f496",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/replication_and_failover_external.md": {
+      "blob": "ece0f0eaaefd3cad4a23b9fe5630eaa8cc5a587c",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "1255c7715a1d7ca53245a823694642029578ef7e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/standalone.md": {
+      "blob": "d5db80c172f2443f69fd704f572b74b3fcb3f3b3",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "bdb06c733591b86e28e3e6f3a58942b6ecc9479d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/tls.md": {
+      "blob": "f3c070cc70211229388bcc4f36665c2eab3264d3",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "5881683a07ecbd54179fdb91de63e26297a7378c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/troubleshooting.md": {
+      "blob": "732d7c8da9b996eeefe2115f7702d41f5bd8296c",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "78c596d4231ae73d7b23a11260ddf24a1e18a6f2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/10k_users.md": {
+      "blob": "e05f3534770edd2badf4b440d901abd30074deb8",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "fe7702b32da8669a02edf8ef5efdf7889bf1f865",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/1k_users.md": {
+      "blob": "7495ba2ed275b678108dc5e7ebe7b2c9420cd6fa",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "789ea13c9dfba75e05b6bead5413d99b0cfd336a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/25k_users.md": {
+      "blob": "756096830e20f9348611dd666fbd45169297b597",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "2326c2ff0afac37aaec386a09e62d09ede18e48e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+  "version": 2
+}

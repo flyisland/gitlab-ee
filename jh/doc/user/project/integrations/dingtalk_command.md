@@ -1,0 +1,32 @@
+---
+stage: Foundations
+group: Import and Integrate
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments
+title: 钉钉命令
+---
+
+{{< details >}}
+
+- Tier: 专业版, 旗舰版
+- Offering: 私有化部署
+
+{{< /details >}}
+
+您可以在群组中@机器人或者直接与机器人创建一对一的聊天框发送消息。当您未将钉钉账户和极狐GitLab 账户进行绑定时，机器人会提示您还未进行绑定，并会在与您的一对一聊天框中发送一个绑定链接，您需要点击链接完成绑定。
+
+您需要在命令中通过添加项目路径、项目 ID 或项目别名指定您要进行操作的项目。下表中的命令以 `project-path` 为例，且默认对此项目有操作权限。
+
+在群组中@机器人发送消息和与机器人进行一对一私聊时，会出现返回消息不一致的情况。下表中默认为返回消息一致的描述，如有不一致会另作说明。
+
+| 命令                                                              | 效果                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|-----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `help`                                                          | 显示所有可用命令。                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `(project-path) issue new (title) (shift+return) (description)` | 使用标题 `(title)` 和描述 `(description)` 创建一个新议题。 创建成功后，会显示 "I created an issue on xx's behalf: #`(id)` in `(project-path)`"。您可以点击消息中的议题 ID 查看议题的详细信息。<br/><br/>内容书写需遵循 markdown 语法。您也可以在命令中添加指派人和标记等。                                                                                                                                                                                                                                                                                  |
+| `(project-path) issue show (id)`                                | 使用 ID `(id)` 显示指定议题。如果您有所请求显示的议题（非私密）的权限，会显示议题标题、作者、指派人、里程碑和标记。如果您没有所请求显示的议题的权限或请求显示一个不存在的议题，会显示 "I cannot find the issue #`(id)`"。<br/><br/>如果您请求显示一个私密议题：<br/><br/>- 群组中：议题信息如标题、作者、指派人、里程碑和标记不会显示，仅显示议题 ID 链接，拥有对应议题权限的人员可以点击链接查看详细信息，没有权限的人员则无法查看。 <br/><br/>- 私聊中：如果您有该私密议题的权限，则会显示议题信息如标题、作者、指派人、里程碑和标记；如果您没有该私密议题的权限，会显示 "I cannot find the issue #`(id)`" 。<br/><br/>如果您查询一个不存在或您没有权限的项目中的议题，会显示 "You are not allowed to perform bot commands"。                           |
+| `(project-path) issue close (id)`                               | 使用 ID `(id)` 关闭指定议题。关闭议题（非私密）成功后，会显示 "I closed an issue on xx's behalf: #`(id)` in `(project-path)`"，并显示议题信息如标题、作者、指派人、里程碑和标记。<br/><br/>如果您请求关闭一个私密议题：<br/><br/>- 群组中：仅显示关闭成功消息，不显示议题详细信息。<br/><br/>- 私聊中：显示议题详细信息。<br/><br/>如果您请求关闭一个已关闭的议题，会显示 "Issue #`(id)` is already closed."。<br/> <br/>如果您请求关闭一个不存在或您没有权限的议题，会显示 "I cannot find the issue #`(id)`"。                                                                                                                       |
+| `(project-path) issue search (query)`                           | 最多显示五个您权限范围内匹配搜索内容 `(query)` 的议题，按照议题的创建时间从新到旧进行排列。<br/><br/>如果您请求查询议题：<br/><br/>- 群组中：私密议题显示为 "Confidential Issue"，非私密议题显示议题 ID、标题及状态。<br/><br/>- 私聊中：全部议题都显示议题ID、标题及状态。<br/><br/>如果没有找到匹配您查询条件的议题，会显示 "I cannot find any issue related to `(query)`"。<br/><br/>如果您输入的关键字大于或等于 3 个字符，则会进行模糊匹配搜索，即返回所有标题中包含此关键字的议题；如果您输入的关键字小于 3 个字符，则会进行精确匹配搜索，即仅会返回标题与此关键字相同的议题。                                                                                                                |
+| `(project-path) issue move (id) to (project)`                   | 使用 ID `(id)` 移动指定议题到 `(project)`。 移动成功后，会显示 "Moved issue #`(old_link)` to #`(new_link)`"。<br/><br/>如果所要移动的议题已关闭，会显示 "I cannot move closed issue"。<br/><br/>如果无法找到目标项目，会显示 "I cannot find target project `(project)`"。                                                                                                                                                                                                                                                             |
+| `(project-path) issue comment (id) (shift+return) (comment)`    | 向 ID 为 `(id)` 的议题添加评论正文为 `(comment)` 的新评论。评论成功后，会显示 "I commented on an issue on xx's behalf: #`(id)` in `(project-path)`" 和评论内容。<br/><br/>评论内容需遵循 markdown 语法，详情请参见 [Markdown 渲染](https://docs.gitlab.cn/jh/user/markdown.html)。您也可以使用[极狐GitLab 快速操作](https://docs.gitlab.cn/jh/user/project/quick_actions.html)对议题进行高级操作。<br/><br/>如果您请求评论一个不存在的议题，会显示 "I cannot find the issue #`(id)`"。<br/><br/>如果您请求评论一个您没有权限的议题，会显示 "You are not allowed to perform the given bot command"。 |
+| `(project-path) deploy (from) to (to)`                          | 从 `(from)` 环境部署到 `(to)` 环境。您请求部署后，会显示 "Deployment started from `(from)` to `(to)`. Follow its progress."。您可以点击消息中的链接查看部署进度，详情请参见[环境和部署](https://docs.gitlab.cn/jh/ci/environments/)。                                                                                                                                                                                                                                                                                              |
+| `(project-path) run (job name) (arguments) `                    | 在默认分支上执行作业 `(job name)`。运行成功后，会显示 "ChatOps job #`(id)` started by xx completed successfully" 和具体的作业 ID 及名称。您可以点击消息中的链接查看具体的作业内容。                                                                                                                                                                                                                                                                                                                                                  |
+

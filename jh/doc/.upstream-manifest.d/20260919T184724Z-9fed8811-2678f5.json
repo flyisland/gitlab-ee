@@ -1,0 +1,62 @@
+{
+  "created_at": "2026-09-19T18:47:24Z",
+  "entries": {
+    "doc/releases/17/gitlab-17-0-released.md": {
+      "blob": "610a253498d1633649b096f966e3334362d19f1d",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "1fb57a0a226e51a77c5dfb811ce639ae5060526d",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/releases/17/gitlab-17-10-released.md": {
+      "blob": "6fbd46d803d6d5a59669883ba12fad0448ebaf97",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "4558ae9e135a9c91bbf6038d1f73da8b8c1d4a90",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/17/gitlab-17-11-released.md": {
+      "blob": "0ee1670fe83d0d31d3042c4ed3b762388ec38894",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "f32e403865cbda56aa555aafe5777c9496d3783a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/17/gitlab-17-6-released.md": {
+      "blob": "56b03163daf5459845940ee8d1ed0ddcd92448f7",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "911fe80392ce5c1397684ccdb8a7c60afc7d402a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/17/gitlab-17-9-released.md": {
+      "blob": "67c4d328c781a3f60bcfab0eebf1c5003a5bcc0b",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "395da3028b3da04da17024b15a13da5c469569d1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-2-released.md": {
+      "blob": "08973db5b8b613342e74a5731a731f052685131a",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "1255576b6b2d19f05280385597ae842044d1dfdc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9fed8811df632e04c790ee345334a52f9f38345d",
+  "version": 2
+}

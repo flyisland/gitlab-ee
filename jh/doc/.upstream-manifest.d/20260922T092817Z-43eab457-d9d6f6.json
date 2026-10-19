@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-09-22T09:28:17Z",
+  "entries": {
+    "doc/user/duo_agent_platform/agents/external.md": {
+      "blob": "7e0d5c4c9be940966ae4a0d695f17ff7e473c9e9",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "0f72282e5e4640c75844d24ed7d7f5a909c31fec",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "43eab457348ba6889ef219ac944e54dad05ed379",
+  "version": 2
+}

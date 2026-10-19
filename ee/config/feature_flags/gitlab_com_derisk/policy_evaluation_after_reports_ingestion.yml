@@ -1,0 +1,10 @@
+---
+name: policy_evaluation_after_reports_ingestion
+description: Start the merge request approval policy evaluation timeout after security report ingestion and evaluate without the concurrency-limited sync worker
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/631508
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258567
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/631506
+milestone: '19.5'
+group: group::security policies
+type: gitlab_com_derisk
+default_enabled: false

@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-10-06T09:29:53Z",
+  "entries": {
+    "doc/api/group_webhooks.md": {
+      "blob": "ad74bb6d0d677355d7500c882a24b203d6a5ef81",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "0fa20229e4e82f4e0a3e9c43cba0acf9baa6bad8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/instance_ssh_certificates.md": {
+      "blob": "226887940af3abc70b365274e6445832aae8735e",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "7117a43346f9d7eba85d9fe09278877688167fa6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/job_artifacts.md": {
+      "blob": "13f7b3cdd89bec1281ad169aec1684a0ecb5126b",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "d91ac585630735c70dd8b59bdda6cfaec7b5eb8f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/jobs.md": {
+      "blob": "5f74b01258c15f644d6ef43e99dcf3a6faaefbe0",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "2ba36fc3a2946f580036157722905346ca1e3870",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/maven_virtual_registries.md": {
+      "blob": "6a2614d10d1245dcb46d0c213507382da3870f42",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "e92b72fde8d199c590322e62a3715e299739d934",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/merge_request_approvals.md": {
+      "blob": "991961096ab2967f07fa25658bc136c692935804",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "6812f37cd7d874184c1d92265126b1f61e74362c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/mobile_push_subscriptions.md": {
+      "blob": "92a0b61352493eb833c8022471e128cdc2e09e3a",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "43877ef8c281654f567195e389ba4f13bb3fffbd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/namespaces.md": {
+      "blob": "10f56ca1e48025b5e15ef4674a0100396eece2d2",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "83bf598ac32f0c3a05ef043e1cbb462e25013397",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+  "version": 2
+}

@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-10-09T02:30:04Z",
+  "entries": {
+    "doc/administration/geo/_index.md": {
+      "blob": "54b2c598fb3e8e8f12d07c5f08a1a95df416fb8e",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "19803e23ede51c8ac2a1a7b3f3a485cc41ec91d2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security/api_discovery/_index.md": {
+      "blob": "88c48e7b53d90d290bf2841fe2a07ec0c9fbbb6b",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "d63ba1a514095152c9a64633636c98fda794c994",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/_index.md": {
+      "blob": "79d152a00bb7a129b7ac780085274c4006b306df",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "6f656830387f4c5d3094243b24ee0e8126faba00",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/authentication.md": {
+      "blob": "b2606959f3b3725aa6a835ff61f08e14bbddef2a",
+      "commit": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+      "target": {
+        "blob": "ca808a32a7442efe5db1132979775c07cd9150b5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "7a5ebfcb37c52582c2891285d0f4995caae1a65d",
+  "version": 2
+}

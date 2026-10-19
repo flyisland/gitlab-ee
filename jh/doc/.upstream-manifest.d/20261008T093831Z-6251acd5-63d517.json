@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-08T09:38:31Z",
+  "entries": {
+    "doc/user/_index.md": {
+      "blob": "5bb81f9b336ca30ab3fa531e753abc1e247d3006",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "b3c587b753b96d1d165af912505fc6c662b409af",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/asciidoc.md": {
+      "blob": "4ce4a066804b4c4eb19bf74bb6b2b2737e3fc1c6",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "8366f08ba3020f7282ef23b288d089a8fc1aef7b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/custom_roles/_index.md": {
+      "blob": "41a69ead0d3243271e946235ea69ccb220d94e84",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "40b10a48f03e8d5006eaf5fe66d2ece06808cf5b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/free_push_limit.md": {
+      "blob": "261986dfb44d0d61e74833d4c1429b842c0d84b5",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "66e65a360be08a36c0febbd3b214e3493163dc9e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/free_user_limit.md": {
+      "blob": "864bbcf422084a425ad0faa41bc779c33ce85659",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "d87f8249ae46cb6c281b61edb4ade5a1151ef95f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/participants.md": {
+      "blob": "77c06dfe3e3a1f7b0e51bf1d5fcc5dd8f1bbed04",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "a661dda6f2ce13067c164bf6da09522473929fc3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/search/exact_code_search.md": {
+      "blob": "27828004303bc426875fdf62c8798c8c892bf171",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "f370f18da4f110d84a4ca86131c608e733f0d675",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/work_items/linked_items.md": {
+      "blob": "f235a89a187df5be46e8cf8d823603f9920541a4",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "eb67180c4b87851971ebe862ddada7da89cc97d5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/work_items/saved_views.md": {
+      "blob": "e3ddb5089cdf565536f8416a59019c4b7970e3c5",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "c8173d6c39f0d34375f39efcf8dee98b3b56711c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/work_items/weight.md": {
+      "blob": "a36e10e84ae6b095f85a4b9ea7e8226abfd9a220",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "4d11a39e0f5832f11d54539a7f4d13dd89fd7845",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+  "version": 2
+}

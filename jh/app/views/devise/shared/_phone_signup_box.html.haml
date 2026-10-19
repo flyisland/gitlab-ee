@@ -1,0 +1,48 @@
+- add_page_specific_style 'page_bundles/signin'
+- form_classes = "#{registration_by_phone? ? '' : 'hidden'}"
+- form_resource_name = "new_#{resource_name}"
+
+.phone-registration-form{ class: form_classes }
+
+  = gitlab_ui_form_for(resource, as: "new_#{resource_name}", url: url, html: { class: 'new_user gl-show-field-errors js-arkose-labs-form', 'aria-live' => 'assertive' }, data: { testid: 'signup-form' }) do |f|
+    .devise-errors
+      = render 'devise/shared/error_messages', resource: resource
+    - if Gitlab::CurrentSettings.invisible_captcha_enabled
+      = invisible_captcha nonce: true, autocomplete: SecureRandom.alphanumeric(12)
+    = hidden_field_tag(:registration_type, :phone)
+    .name.form-row
+    .username.form-group
+      = f.label :username, class: "label-bold gl-mb-1"
+      = f.text_field :username,
+        class: 'form-control gl-form-input middle js-block-emoji js-validate-length js-validate-username',
+        data: signup_username_data_attributes,
+        autocomplete: 'username',
+        pattern: Gitlab::PathRegex::NAMESPACE_FORMAT_REGEX_JS,
+        required: true,
+        title: _('Please create a username with only alphanumeric characters.')
+      %p.validation-error.gl-text-red-500.gl-field-error-ignore.gl-mt-2.field-validation.hide= _('Username is already taken.')
+      %p.validation-success.gl-text-green-600.gl-field-error-ignore.gl-mt-2.field-validation.hide= _('Username is available.')
+      %p.validation-pending.gl-field-error-ignore.gl-mt-2.field-validation.hide= s_('JH|Checking username availability...')
+    .form-group.gl-mb-5.js-password-strength
+      = f.label :password, class: "label-bold gl-mb-1"
+      %input.form-control.gl-form-input.js-password.js-password-complexity-validation{ data: { id: "#{form_resource_name}_password",
+        qa_selector: 'new_user_password_field',
+        autocomplete: 'new-password',
+        required: true,
+        name: "#{form_resource_name}[password]",
+        pattern: ".{#{@minimum_password_length},}",
+        minimum_password_length: @minimum_password_length,
+        title: s_('SignUp|Minimum length is %{minimum_password_length} characters.') % { minimum_password_length: @minimum_password_length } } }
+      %p.gl-field-hint-valid.text-secondary= s_('SignUp|Minimum length is %{minimum_password_length} characters.') % { minimum_password_length: @minimum_password_length }
+      = render_if_exists 'shared/password_requirements_list', show_basic_requirements: true
+    = render_if_exists 'shared/phone_verification', form: f
+    %div
+
+    - if arkose_labs_enabled?(user: nil)
+      = render_if_exists 'devise/registrations/arkose_labs'
+    - elsif show_recaptcha_sign_up?
+      = recaptcha_tags nonce: content_security_policy_nonce
+
+    = render 'devise/shared/terms_of_service_notice', button_text: button_text
+    .submit-container.gl-mt-5
+      = f.submit button_text, class: 'btn gl-button btn-confirm gl-block gl-w-full', data: { qa_selector: 'new_user_register_button' }

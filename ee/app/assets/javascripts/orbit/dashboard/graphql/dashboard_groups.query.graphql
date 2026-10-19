@@ -1,0 +1,29 @@
+# @feature_category: knowledge_graph
+query getOrbitDashboardGroups($first: Int = 50) {
+  groups(
+    topLevelOnly: true
+    allAvailable: false
+    withKnowledgeGraphEnabled: true
+    first: $first
+    sort: "name_asc"
+  ) {
+    count
+    nodes {
+      id
+      name
+      fullName
+      fullPath
+      avatarUrl
+      knowledgeGraphEnabled
+      orbit {
+        indexingStatus {
+          phase
+          domains {
+            name
+            phase
+          }
+        }
+      }
+    }
+  }
+}

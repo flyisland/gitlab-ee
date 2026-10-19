@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-07T02:27:38Z",
+  "entries": {
+    "doc/user/packages/_index.md": {
+      "blob": "04fd1ec264fa5c683522c0781b7775ca652aa8ad",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "676692008e28d49409dfce933882d4e60af5a5b2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/build_and_push_images.md": {
+      "blob": "77bb1a6a7a88689bf48e8270c0fe1090105d75c9",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "0fe99d0849fdcd6014979fb32166e387fe2994c1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/container_repository_protection_rules.md": {
+      "blob": "7b9b59e27aee3e6ee637053f8ee414142120924c",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "1f7e2d6a52edcec0ed8b67f0da5fbc1a3e7a1f6a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/cosign_tutorial.md": {
+      "blob": "d3d9aae0d55d4c1211e0f3464410d65ffba1c3fd",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "6d592af335f2c47f9743567c65a9d03b0fd8d908",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/delete_container_registry_images.md": {
+      "blob": "3b9977e50ff0fd6ccbb303e7fb11a4c709efebd8",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "a155dce8f04bc6f468f7e51461d0f4d83d0f2448",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/migrate_containers_ecr_tutorial.md": {
+      "blob": "aaecb03584e1945c9d0bc36cfa2a7db3e5947fcd",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "fc8602e58ba97a98dbc43875f0f9e8f5e9161ad4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/reduce_container_registry_data_transfer.md": {
+      "blob": "df3fe42f377ed717e9baca5bff3c17143213ba50",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "242d4f6837814a5288c09946c3d021a61a73191d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/reduce_container_registry_storage.md": {
+      "blob": "35bc20ca30eaeb322b4f0dd85d460f76c8eb3a92",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "f75df819ea4180092ee5b19fcb14ccf0f5247f45",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/troubleshoot_container_registry.md": {
+      "blob": "6f044cf9a882f9303c89fd578cebeac66510a2c9",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "ec293b84636b919727178f51e9d135ccf5db4684",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/dependency_proxy/reduce_dependency_proxy_storage.md": {
+      "blob": "4005db624b4abad4087a4b4b654c435d68e203c2",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "b334e18aa0c6d03ae41af1ffdd5d8900480d2716",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

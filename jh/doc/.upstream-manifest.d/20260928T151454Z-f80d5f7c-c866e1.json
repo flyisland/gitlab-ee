@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-28T15:14:54Z",
+  "entries": {
+    "doc/administration/configure.md": {
+      "blob": "32f3aadd5efa9eceea40defcc6cb2ce78052b5c4",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "a59ed869d1cd8945b29995e637bfc47d022d6638",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/configure_duo_features.md": {
+      "blob": "81f85b565f66b028447ead24bb9a07714a881b4d",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "94022e7511453bedd3baf49781cabdcfcc1801cd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/license.md": {
+      "blob": "9bea6bafcf6d0adcfd72c1bfc6b7ba2c0e1c1053",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "971ab49bc00157ca1a9b28691cf8cbc6c152d3f3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reporting/spamcheck.md": {
+      "blob": "f7929956cb5ff842df583c4623d78f9b03462d86",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "8aba9c0309fa6d630a5b1d5566149af0e813b688",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/graphql/_index.md": {
+      "blob": "4a3c5247ccf144a77a57f90d6a32e8202f2c0ac3",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "b6a888a8adea78d65c565ab457c695ee94ccbaa7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/project_repository_storage_moves.md": {
+      "blob": "b0b79d6013487bd6bf5530262e99338cbb32e1bf",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "832eb6786672cdf61c4633b7c853844e1da30bb9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/rest/_index.md": {
+      "blob": "91aefa33ec02a93d9cdc86ecbe87a57bc9196934",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "03c0e486f86a2496559870bc95a2da8204d34bee",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/kerberos.md": {
+      "blob": "ff774d5b6271688ac7e7926653e99771fa645948",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "0a1dd6b2185ab0919a2a5c5208e1acd22c1e3b4d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/_index.md": {
+      "blob": "e4f5f1f10c39d77c1e93975363253df633815bb3",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "acc5b4c496c8598ce0ced0c8322e88edf932a851",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/settings/import_export.md": {
+      "blob": "aca983613ebaaaecddee36ab992e964b66de3c26",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "85cc4763088dbf7d0a7d4c5521d32383ad4f5c79",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+  "version": 2
+}

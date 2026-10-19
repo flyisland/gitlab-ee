@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-08T16:23:14Z",
+  "entries": {
+    "doc/user/duo_agent_platform/agents/foundational_agents/ci_expert_agent.md": {
+      "blob": "ff6acbbfbc11e5384ddff0f2e24e9a7038569209",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "3000c6caed40257fc2ed1c465dba3237c8cc1aef",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/agents/foundational_agents/data_analyst.md": {
+      "blob": "5d11b625f4bc9b93038ceb5382183395ccf8a80f",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "e39ccf0f696678866b02cb65fe1ede4f7c9dc018",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/agents/foundational_agents/planner.md": {
+      "blob": "7327ec86d81e0e9d4aa59d698cb441bc6067bb05",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "61f76205d3f86a66bb5db19ec23b9d789c9bc612",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/agents/foundational_agents/security_analyst_agent.md": {
+      "blob": "3d1cde8ad0147e9fc0c37aedfd32b530cb46e1dc",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "e7546cb4c576ff0427e8741e142818dc59563307",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/authentication.md": {
+      "blob": "b2606959f3b3725aa6a835ff61f08e14bbddef2a",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "2cd2b885d3792f63493a6e2c6e13b905abba8ea0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/composite_identity.md": {
+      "blob": "a289d28b2f4ea80c9527baf84a49eb00f89942fa",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "e02a112285cdfe1be4b9ddfe56cdded5d7fa8852",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/context.md": {
+      "blob": "08d5515ded342475211a06c7341526ad971d09db",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "555ad6eb153e3bc895071be62f60b7e719189e6e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/customize/agents_md.md": {
+      "blob": "5d704a73405e9cdb5ec1c8a8cc35678348c8521f",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "189668d181608384a1a433423de73d337134ca1a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/customize/custom_rules.md": {
+      "blob": "e206c38e3a19c8ac11d92d01c8bee9a3ee5156d6",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "a78e1069191a4e98df53b9907668b6e6e420ecc7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/custom_flows_schema.md": {
+      "blob": "5249b58b3161cddef67ac31ed3f1a892594f9e00",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "1d6ddeb26c3386b489bf2d15d98a0bbc3c8036ce",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+  "version": 2
+}

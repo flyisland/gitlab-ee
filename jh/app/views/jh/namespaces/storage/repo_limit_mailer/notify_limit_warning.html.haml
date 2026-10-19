@@ -1,0 +1,17 @@
+- project_link = tag_pair(link_to('', @project_url), :project_link_start, :project_link_end)
+
+%p
+  = safe_format(s_('JH|NamespaceStorage|Project %{project_link_start}%{project_name}%{project_link_end} is about to reach its usage limit. Please check it.'), project_link, { project_name: @project_name })
+
+- unless @usage_percentage.nil?
+  %p
+    = safe_format(s_('JH|NamespaceStorage|At the time this notification was triggered, this project\'s repository and LFS storage usage was %{usage_percentage} of its included per-project storage limit.'), { usage_percentage: number_to_percentage(@usage_percentage, precision: 1, strip_insignificant_zeros: true) })
+
+%p
+  = s_('JH|NamespaceStorage|Manage your storage usage, or purchase additional storage to keep projects that exceed the included repository size from being restricted.')
+
+%p
+  %img{ alt: s_('JH|NamespaceStorage|QR code'), src: image_url('mailers/saas-user-group-qr-code.png'), width: '300', height: '300' }
+
+%p= s_('JH|FreeTrial|Thanks,')
+%p= s_('JH|FreeTrial|The JiHu GitLab Team')

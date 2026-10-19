@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-10-12T02:30:11Z",
+  "entries": {
+    "doc/security/unlock_user.md": {
+      "blob": "c4069a06eebde42c36834b8f40073b3cf778e772",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "5d6763de18630bc215cf7f98b35eacd3a144e37d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/upgrade_paths.md": {
+      "blob": "6e9b04275a7cd45c6d2ef09a1997fd388e7794fd",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "e9986ff2dcf4907a69bcd825a7d0f57a737f7d7a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md": {
+      "blob": "44129cb32b7933dd1f7210dd5bab0c20695610aa",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "863d58293f8b3b8564e51e7cbd61d35f03c83b79",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/saml_sso/troubleshooting.md": {
+      "blob": "4ed50f2989010c8b322e86c5fc8feb17200adad6",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "8892c8ce69081a185d3da07ff8aa18c6b54b6dab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+  "version": 2
+}

@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-09-19T09:56:19Z",
+  "entries": {
+    "doc/user/compliance/audit_event_streaming.md": {
+      "blob": "702a4719a9ba47d1a70225e400b8d721017bdfee",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "8a8f86e163e893df7f3c1c3fba7108ca89c14ab2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/access_and_permissions.md": {
+      "blob": "28c1f0a1ec9515bb5641513e241bb0e317c6d5f4",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "3899f8ae91904e8d2df7645fa76052db43de7c9c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/immutable_container_tags.md": {
+      "blob": "66e8f55011b68fbf79d6780ed62ecde525101c97",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "8f7ff8d34fa96d8d19f2f629e690848ec7229ad1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/protected_container_tags.md": {
+      "blob": "583c9a7f2ebdaefb2790679ab04371ee0abdc912",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "1eba03ee1a3ed12af56b5434193f949976249d8a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/nuget_repository/_index.md": {
+      "blob": "4e1a16444985f633fd51abb001bea6186d17666a",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "cc44b90ded66893d6ec905ca35c196fd0f32a901",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/profile/service_accounts.md": {
+      "blob": "b310dcc8312659e941836248bc0bd4fae4ca7497",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "48b67a8bba7771fdc4d096878f96c0252238479b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/mirror/_index.md": {
+      "blob": "9891eb0ad27ce0b7feb0732e7c1e1f427fa501bb",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "eb5800e16ac81d327e90d9c7ea11cc89b4075800",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/repository_size.md": {
+      "blob": "8b5f62d8163994e8d5dff80ee0fdf42d12eedf97",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "043c6c64133391e40fcbec66edb3196e822fb22f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9fed8811df632e04c790ee345334a52f9f38345d",
+  "version": 2
+}

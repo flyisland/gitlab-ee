@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T16:47:11Z",
+  "entries": {
+    "doc/ci/_index.md": {
+      "blob": "c64533c7693ba0ff012327dd78ca0d0aaf2e6f14",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "2b8f09f7c773e8a435d7b7aa43b74ddec01eafdc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/caching/examples.md": {
+      "blob": "a8b6e18ef446dafc9407767456b1c83853a3c4e5",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "3a68f44b68709e77fa2aca96b466653866d8c65f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/chatops/_index.md": {
+      "blob": "c1cfce4cfe5bfb0773eb736ae4ba5a5dd132897c",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "8e66dbc6a8f4655e88b233fa01aa6b0bb858361e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/ci_cd_for_external_repos/_index.md": {
+      "blob": "2c869636e068a557a44019b8f022aa73d6395472",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "8a12f06a024d26aa2be793a8589a8005fbffa6c2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/ci_cd_for_external_repos/bitbucket_integration.md": {
+      "blob": "a62b65999f012f7b51cb6dacbb6202243d09a738",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "2f68281d598a7ae8b325c2991b743c92bd4bd5ac",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/ci_cd_for_external_repos/external_commit_statuses.md": {
+      "blob": "672a3fd590cf9594f35c8286769a9068328fc88a",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "cbe6be3d96d00ebdd20c44173b6d346fca211631",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/ci_cd_for_external_repos/github_integration.md": {
+      "blob": "58ad183ab617e1b22932cf7c4288e5102bb43e4c",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "12e69394b37fbb0ac2945c5ba6be18e7d04b295a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_deployment/_index.md": {
+      "blob": "542b35925177249ba3ca5502f2d880df73aab309",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "dc097860e54bf4da6f293522d6f67cdcbc258461",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_deployment/ecs/deploy_to_aws_ecs.md": {
+      "blob": "52e860f959cf1dd520ceeded5b3490622be68029",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "b80ea173739199d0701755b64ede9fce607f0735",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_deployment/heroku.md": {
+      "blob": "e5f4d258d6a50caeff67ca5e0135100ac6c450de",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "78483d0694631a4f650ec8bbae73d594f4a7712b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+  "version": 2
+}

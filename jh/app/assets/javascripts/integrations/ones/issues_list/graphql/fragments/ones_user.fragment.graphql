@@ -1,0 +1,6 @@
+fragment OnesUser on UserCore {
+  id
+  avatarUrl
+  name
+  webUrl
+}

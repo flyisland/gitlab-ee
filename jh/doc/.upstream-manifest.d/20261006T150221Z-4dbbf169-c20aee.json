@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-06T15:02:21Z",
+  "entries": {
+    "doc/user/project/merge_requests/title_templates.md": {
+      "blob": "0cf1bc19967cbc665c16667bce12d4ef667270f2",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "ba96621f52d91f1d17d41e4dd23a63549d112259",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/versions.md": {
+      "blob": "9b397307a08ff16dff364b363ce43ea50c59c135",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "cf278e73e9a049ffb6560a6a10cf466912d42cc7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/widgets.md": {
+      "blob": "ae3286f80e61b838e345fdff323b892f4c1ea9e4",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "7763cb8fb33dcf1a5b446292c30384263f59d251",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/project_topics.md": {
+      "blob": "128dec4eb8c89b66c426dea294d3f9f6b142175e",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "3a923d7e1539bfd385a5e5320b31d85aaae7f9d2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/protected_tags.md": {
+      "blob": "b04d2822a584ab03ff5f5a4c59bad4b9f86379f6",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "a5294bfb592c3af3b1f1d7540c347a0b2115aa57",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/releases/release_cicd_examples.md": {
+      "blob": "31d31b434c404124db24fd4c63b7965165c9e159",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "aacb70ddcc58616b676d68d9d6555e2e02d13a3f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/branches/branch_rules.md": {
+      "blob": "510e68f210b94c4c43cce5aa1dfbf1fe8bf7f30e",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "9f4bcafc0f44a93eb6ae7348eae30a6076825155",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/branches/default.md": {
+      "blob": "6bd673afd56853ffe31cb08710cddd9fb11236fa",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "818e3935f9bb691a24e36e4ddd1eaf7e9ddad8b2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/branches/protected.md": {
+      "blob": "b51fe2c5da66f75fa3f9a24294f0de01d85fb462",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "16a8f075b8dc150b08de5508aec19417b50e2073",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/branches/protection_rules.md": {
+      "blob": "cfd0f54881d94512a4136f33dfffd61e19447810",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "a98050e567a523bae3d68e7b8e147eeaeb39ee03",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+  "version": 2
+}

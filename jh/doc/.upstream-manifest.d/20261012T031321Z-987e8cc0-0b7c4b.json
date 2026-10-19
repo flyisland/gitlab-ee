@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-12T03:13:21Z",
+  "entries": {
+    "doc/operations/observability/ci_cd.md": {
+      "blob": "6be8e2cc75c9850f7e025e03e71c8500252bfcd1",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "61a3b56fe88a1094ef9eab6f3f1a1e40d66b8e4f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/policy/maintenance.md": {
+      "blob": "f4e70df04f8f31328ac6c27b194db426c2fe4003",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "7018360c3eaee0aed31e2061af2e8db5c8adcecd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/rate_limits/api/_index.md": {
+      "blob": "c8f97788a4578a3c3ce54dbba663a15b6c8a5720",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "4a30aab33652a2981789edd90eb35340b4089b49",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/rate_limits/git.md": {
+      "blob": "76d6c59b23a90d4c4d6dc5e1c04e923c8f7c10c8",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "f85ae5c940e54fbe6668fb930c28ab2ebaff107b",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    },
+    "doc/rate_limits/non_configurable.md": {
+      "blob": "9bbcb7b77e2bef24b105e94db42ac06d4c05dfc0",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "62ff145d5090fb3d16fdaaa5e6d3f7ce8b3c8bfe",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/16/gitlab-16-0-released.md": {
+      "blob": "f9a281244dbaf76bbbe0eff48af3cfec019a1486",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "ab193e73efc3be729f6077066ad8e7071a3be715",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/16/gitlab-16-1-released.md": {
+      "blob": "f41273e64e293a26076dd20c75e162ced761aa24",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "b4f8d777700ef6d1e6e528ce0b4eaba9de12e6c5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/16/gitlab-16-2-released.md": {
+      "blob": "f7d09fcba346a016311fe9a1099d84636895047f",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "4c73d7a9fbc8595a60bc4215615018075c32ceb1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/16/gitlab-16-3-released.md": {
+      "blob": "588fb4fb2e4fd8a65a13b50b0b5a458d86c25788",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "7a24090573bf1228efa8f00a9fdb6af77c8ac89a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/16/gitlab-16-4-released.md": {
+      "blob": "906ed88aeb1defab85b97667aafcadbf0ca4a717",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "27326ce67e10172e5f6bebecfe98aa7acb866965",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+  "version": 2
+}

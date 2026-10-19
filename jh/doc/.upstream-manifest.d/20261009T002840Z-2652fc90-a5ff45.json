@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T00:28:40Z",
+  "entries": {
+    "doc/user/application_security/_index.md": {
+      "blob": "34b6d362d2de4c0a30b49ae21c193262ec2ed75c",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "97df1346148fe2a28c0d0db6af1a67741c187033",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/analyze/_index.md": {
+      "blob": "d9eb79e7f03dba131befcc7e739008da56e0a09b",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "3c6a1d93c0cb6699b11e140c3189095d692dd8e1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_fuzzing/_index.md": {
+      "blob": "43d4c767c31bcae4d79e2f4504a292b07e67879b",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "67ed78b1015fe0b8c0af10150082a74715625a58",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_fuzzing/configuration/_index.md": {
+      "blob": "f925b36405ed62a6a3270d8555d79f9114112682",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "431a7d5eef7095af1ca8aa3b4c3010b5fabd6d63",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_fuzzing/configuration/customizing_analyzer_settings.md": {
+      "blob": "3bf025a09ad83a4bd9fef463c84e9146a385a2be",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "6803264bfadb8de50e2785b43b7a477a56114cd1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_fuzzing/configuration/enabling_the_analyzer.md": {
+      "blob": "6a4b25f467a493c5410bfd523226121d6fea7460",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "4ce63c04113cdb0086c3d2e7b91bf2257f4b9835",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_fuzzing/configuration/offline_configuration.md": {
+      "blob": "5461be989db240269eb9fcbe2556823f25e78bc4",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "e34ed602f6b3237089d71949f3c40da70b445f8a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_fuzzing/configuration/overriding_analyzer_jobs.md": {
+      "blob": "e7614bebaefb0a49a9510b320f5808c2172a874b",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "681981b1ed6d1a8b5d8ed516a25b730f08bbde3f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_fuzzing/configuration/variables.md": {
+      "blob": "1e84b89624034fabc0d719b07d1ebcc3669f43d1",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "6a515f10e63b6cf7777cdb5be157a6870cacca0b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_fuzzing/create_har_files.md": {
+      "blob": "3a62dd4848e9f64ab7ccb62a4b5fb4a3ee950641",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "5fd6452fda01c556571a8e52b7c9ef4459d9a3c2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+  "version": 2
+}

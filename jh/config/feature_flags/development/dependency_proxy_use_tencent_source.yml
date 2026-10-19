@@ -1,0 +1,8 @@
+---
+name: dependency_proxy_use_tencent_source
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2290
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/4032
+milestone: "16.9"
+type: development
+group: group::container registry
+default_enabled: false

@@ -1,0 +1,52 @@
+{
+  "created_at": "2026-10-03T03:58:14Z",
+  "entries": {
+    "doc/administration/settings/rate_limit_on_projects_api.md": {
+      "blob": "6cfa03e911039c1673fe031d4c410542055ca1c9",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "913088deb316e41c0df956293c5f37e7115eead1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/rate_limit_on_users_api.md": {
+      "blob": "fd6336f30a3533db027ecf7991b47298a0a13d2c",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "6904267246abda78a55f4e75403717db938bbf9f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/rate_limits_on_git_ssh_operations.md": {
+      "blob": "1c4a5b1f7ddade9750965df12731b499d57f0fc8",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "0a137c50401b0d14e3c26361b851e21cf4fb788e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/sidekiq_job_limits.md": {
+      "blob": "5ccba66e9baa1d1f72368e0ff8eadf334657b1f7",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "72aa54ba06fa608747b0459fe636a330d372c475",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/terraform_limits.md": {
+      "blob": "b63bd8ed8a90c8428b6897905fb3294cd5821bb4",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "433b8b338299f583389c751282f4946108f7e5c7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+  "version": 2
+}

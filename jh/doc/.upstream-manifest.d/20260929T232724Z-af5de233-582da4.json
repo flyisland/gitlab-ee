@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-09-29T23:27:24Z",
+  "entries": {
+    "doc/administration/libravatar.md": {
+      "blob": "1668f1258964b0d4592ee8cfbda996aab36bc546",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "192cd2a0570bf11e088bd792112c4c3971e664cd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/license_usage.md": {
+      "blob": "cfd8ee6ff23eea06aab3e1fc30caae3d4f833aa7",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "6d45e4d5be5bd497232bc5e018e7ce727837ad3a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/load_balancer.md": {
+      "blob": "674b4ab2eb8ef454ad38c979f78038406095226e",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "6fe98c392071f923a5c2e50ffb6b947f5386a590",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/logs/log_parsing.md": {
+      "blob": "c1913e4583a4738100e827f5432f8089b3a0433d",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "153ccc89c2f95151c75ef0a08cab4cafb4b1b300",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/merge_request_diffs.md": {
+      "blob": "81a356408029e10f90fdb4d8a89e16615eb81479",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "0e24b3e1c5fa83cf93820335193aa79257b5b750",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/merge_requests_approvals.md": {
+      "blob": "c64248ccabead0e781acbf09d675d9b25fc9d13b",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "257e3addc6daf1aa3ac2b8fb86f29485df61e335",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/moderate_users.md": {
+      "blob": "bd67c2733f324dbc2cc07bcbec5430cea56dbb87",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "812e272cba76bd749ee738732217c2b0866ae519",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/_index.md": {
+      "blob": "1601b4b50262fa3f448920fd6d3c6c703f0cdbf3",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "ae0255c15f1348cb56e18e4e1d9d216bdc9f67bd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "af5de233de598cd2fd74b9c744103795d906fd24",
+  "version": 2
+}

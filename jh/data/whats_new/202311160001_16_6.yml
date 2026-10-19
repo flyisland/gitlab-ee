@@ -1,0 +1,36 @@
+- name: 企业用户自动认证
+  description: |  # Do not modify this line, instead modify the lines below.
+    当 JihuLab.com 用户的主电子邮件地址与现有的已验证域相匹配时，该用户将自动被认证为企业用户。这为群组所有者提供了更多的用户管理控制和用户账户可见性。成为企业用户后，用户只能将其主电子邮件地址更改为组织根据其验证域所拥有的电子邮件地址。
+  stage: govern
+  self-managed: false
+  gitlab-com: true
+  available_in: [专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/enterprise_user/#automatic-claims-of-enterprise-users
+  #  image_url: https://about.gitlab.com/images/16_6/automatic-claims-of-enterprise-users.png
+  published_at: 2023-11-16
+  release: 16.6
+
+- name: 最小派生 - 仅包含默认分支
+  description: |  # Do not modify this line, instead modify the lines below.
+    在以前版本的极狐GitLab 中派生仓库时，派生会包含仓库中的所有分支。现在，您可以创建仅包含默认分支的派生，从而降低复杂性和存储空间。如果您不需要其他分支中当前所进行的更改，请创建最小派生。默认的派生方法不会改变，并会继续包含仓库中的所有分支。新选项会显示哪个分支是默认分支，以便您清楚地知道新派生中所包含的分支。
+  stage: Create
+  self-managed: true
+  gitlab-com: true
+  available_in: [基础版, 专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/user/project/repository/forking_workflow.html#create-a-fork
+  #  image_url: https://about.gitlab.com/images/16_6/create-minimal-forking-default-branch.png
+  published_at: 2023-11-16
+  release: 16.6
+
+- name: CI/CD 变量管理 UI 优化
+  description: |  # Do not modify this line, instead modify the lines below.
+    CI/CD 变量是极狐GitLab CI/CD 的基本组成部分，我们在设置 UI 中提供了更好的变量使用体验。在此版本中，我们更新了 UI 以使用新的抽屉组件，该抽屉组件优化了添加和编辑 CI/CD 变量的流程。例如，过去您只能在保存 CI/CD 变量时屏蔽验证，如果失败，您必须重新开始。但现在使用新的抽屉组件，您可以实时验证并即刻调整，无需做重复工作。
+  stage: verify
+  self-managed: true
+  gitlab-com: true
+  available_in: [基础版, 专业版, 旗舰版]
+  documentation_link: https://docs.gitlab.cn/jh/ci/variables/#define-a-cicd-variable-in-the-ui
+  #  image_url: https://about.gitlab.com/images/16_6/ci_variables_drawer.png
+  published_at: 2023-11-16
+  release: 16.6
+

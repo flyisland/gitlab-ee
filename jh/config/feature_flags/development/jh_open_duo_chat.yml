@@ -1,0 +1,8 @@
+---
+name: jh_open_duo_chat
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3169/
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3169/
+milestone: '18.3'
+type: development
+group: group::optimize
+default_enabled: false

@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-03T03:53:41Z",
+  "entries": {
+    "doc/administration/settings/rate_limits_on_raw_endpoints.md": {
+      "blob": "e2e1f6a5bba54055c711e9d90990d317002893ed",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "18a94a9d3e3fb266b9c2e3fb6542885bf93c854b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/scim_setup.md": {
+      "blob": "2a6e2e8598e8ac45dc34626b5c46bff04070c2f2",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "138d1077cf1de4b26a8c38ef92dad4b8425cdf73",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/security_and_compliance.md": {
+      "blob": "d993732f74684f8b5e8276ee748c2debcf754413",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "c48653916147b15ee920a5aa4c989faa21979167",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/security_contact_information.md": {
+      "blob": "068d43b15220b0f16b1e33840b54c13582498fce",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "1f11bf445b7d995dc243dac5c7c901e26a461b77",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/sign_in_restrictions.md": {
+      "blob": "6b65cdc873a36fd08757762a46da3c215d2cd316",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "0949aacbc52efd12b37b2018d5ebfd66a06ea080",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/sign_up_restrictions.md": {
+      "blob": "ef3a796dfaf39b96ab27f8d69c9b103ed9e8f6a2",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "c3a3f2e5f25919e19766f95cccb0d2fe34a11e05",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/slack_app.md": {
+      "blob": "43b0578bb3092f87221a0b327fa8834dcb735ac3",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "73725467c078f328fca220f6b47ce24503304575",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/terms.md": {
+      "blob": "6746a44fa0fea1952114dd0e483a1b0bdfcc905e",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "7e41a0c622b33cf35c2e8d487f34ecbfbf44f50a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/third_party_offers.md": {
+      "blob": "6521e395dd788a4c522058b29f6e673cc3a6b13f",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "f143b673bd2a398f6eae7a6cf90294a5f36bbf5a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/usage_statistics.md": {
+      "blob": "c0f38e2f6157300ad9892927c29f758f318008f0",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "5ee6fdab9065fa15dbf705e2f041bbbeaef27a7f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+  "version": 2
+}

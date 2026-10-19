@@ -1,0 +1,8 @@
+---
+name: jh_ci_graph_editor
+introduced_by_url: "https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2561"
+rollout_issue_url: "don't rollout yet"
+milestone: '17.2'
+type: development
+group:
+default_enabled: false

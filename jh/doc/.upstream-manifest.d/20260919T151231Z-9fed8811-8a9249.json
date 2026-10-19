@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-19T15:12:31Z",
+  "entries": {
+    "doc/api/merge_requests.md": {
+      "blob": "c738be6587421712077578e9a16ead69027f3a16",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "5a8959e035e5f95a9bb003449db781abab436c5e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/projects.md": {
+      "blob": "410d67479fc539620ba9033881320dda8baa7f6b",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "8d9071b272dc4e67a4f59a8bbe2a321ea65e20a8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/auth/tokens/fine_grained_access_tokens_graphql.md": {
+      "blob": "1af8b688117ae711f1eabac6779b0462e54d1a0d",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "6c383d73c9b142814c17f1152df847e26edff826",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/deprecations.md": {
+      "blob": "c8e07f2979049933905040e755ddada1f1d4f936",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "4c7531f85275960867b7c92236ba81d3b1d34766",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/remediate/duo.md": {
+      "blob": "a250c3b7939b9cd57bd77f1e3a7bba56bbd41b03",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "d193e3594d7b5ae50357b4fe5a6b46b00703c21a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/compliance/audit_event_types.md": {
+      "blob": "b352806ced4d45c881a20741557a8584d01a2725",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "37ee9d0318ea575cab2f6d40acc414b02857a4c2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/reporting/git_abuse_rate_limit.md": {
+      "blob": "5b32663b3743f159bb35151cea1d1be4cb35ff7e",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "149061784a1d19c05f5fa854f8b68049f6860b04",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/bitbucket_cloud.md": {
+      "blob": "b21e1a2582a63324c945ba462770f0b5711038f0",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "9d39fb9c3c32e2ead2e554bd90383a9add3e0d3c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/permissions.md": {
+      "blob": "a5b9dc5a0fc8657d4c6f2255bb89b011c9423d25",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "c7bf971c18aa5c6f41013ace0a3101aea59e2a28",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/profile/contributions_calendar.md": {
+      "blob": "43e0821ae63f6c759def3e1075bcf4d853ccdc64",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "ab359ed88aa9a01030ec685a2485dc705f0f49ab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9fed8811df632e04c790ee345334a52f9f38345d",
+  "version": 2
+}

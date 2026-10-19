@@ -1,0 +1,59 @@
+.jh-page-wrapper {
+  @mixin empty-state-title {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  @mixin empty-state-text-content {
+    text-align: center;
+  }
+
+  [data-page='projects:jobs:show'],
+  [data-page='projects:metrics_dashboard:show']
+  {
+    .empty-state {
+      .text-content {
+        h4 {
+          @include empty-state-title;
+        }
+
+        p {
+          @include empty-state-text-content;
+        }
+      }
+    }
+  }
+
+  [data-page='projects:jobs:index'] {
+    .empty-state {
+      .text-content {
+        h4 {
+          @include empty-state-title;
+        }
+      }
+    }
+  }
+
+  [data-page='projects:security:policies:index'] {
+    .empty-state {
+      p.gl-font-weight-bold {
+        @include empty-state-title;
+      }
+    }
+  }
+
+  [data-page='projects:environments:index'] {
+    .empty-state {
+      .text-content {
+        .js-blank-state-title {
+          @include empty-state-title;
+        }
+
+        p {
+          @include empty-state-text-content;
+        }
+      }
+    }
+  }
+}

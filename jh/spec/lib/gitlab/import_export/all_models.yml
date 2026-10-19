@@ -1,0 +1,11 @@
+---
+# Combine the models of JH and Upstream together
+# Reference: spec/lib/gitlab/import_export/all_models.yml
+project:
+- ones_integration
+- shimo_integration
+- feishu_bot_integration
+- ligaai_integration
+- wecom_integration
+- dingtalk_integration
+- feishu_integration

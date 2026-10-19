@@ -1,0 +1,9 @@
+- page_title s_("JH|Gitee Import")
+%h3.page-title
+  = s_('JH|Import Projects from Gitee')
+
+%p
+  = link_to reset_access_token_import_gitee_path, method: :post do
+    = s_('JH|Reset Gitee Access Token')
+
+= render 'import/githubish_status', provider: 'gitee', default_namespace: @namespace

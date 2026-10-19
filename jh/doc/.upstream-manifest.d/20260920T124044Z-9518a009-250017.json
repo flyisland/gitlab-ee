@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-20T12:40:44Z",
+  "entries": {
+    "doc/user/project/integrations/hangouts_chat.md": {
+      "blob": "c1f6d68c10b49f86737a523c5f429608ed6fe7d7",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "4dad88e18275d114cc93be12b40c71558e9369ca",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/irker.md": {
+      "blob": "3c4911ea65cd105ca60ba42576da1a2bb4faa7c0",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "8230e22697612215e12dce327cfcdc95788b5c4f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/mattermost_slash_commands.md": {
+      "blob": "002c7c9f6e7d367d45e8b3f3296e9d194f7f3430",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "fd4ab51aab5a7ee08de81a17edf34def95508376",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/microsoft_teams.md": {
+      "blob": "0ea4c2966d830d85f269e8dc988ede492bf3dd28",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "6013b89097c9b3682751299cf83fa6a2f9e80c4b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/phorge.md": {
+      "blob": "f205226fce3163ee6eed23abb81c50096cd01750",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "bff54bcd425db1ddab9ca22c0bc6b34eee427e55",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/pumble.md": {
+      "blob": "b7e461c03bcc2fb4580d8e0406715a9f9a17d834",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "71eee2617b35022cb10bb2de663ffbc61276a38e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/squash_tm.md": {
+      "blob": "3690c2898f2b54b003d0014bb62ea14a5baf5d5a",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "f0468b6380848a8bd887e40ff6d9acd771ad3396",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/webex_teams.md": {
+      "blob": "99e033f8809b4de16a80a842683737a642a63191",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "48b0f79450e6863a8ddcfab5d25334342f9d5bcf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/zentao.md": {
+      "blob": "408dac153d11f0747b6c1080f2299461d607d584",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "70153307bb540456364c2ff0353a21ae8f5d8061",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/issue_board.md": {
+      "blob": "533791f9eda417f39771e0f2f68cd46432e52044",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "0223a18ca8069711eb66b4d21cc49e12ad816a0c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+  "version": 2
+}

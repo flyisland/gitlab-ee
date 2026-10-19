@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-06T04:19:33Z",
+  "entries": {
+    "doc/user/import/third_party_systems/jira.md": {
+      "blob": "0479eb1329e5505ff90dc9de2061536d5732fe1b",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "cda4b9eb51c06439473c8a4a536b12f4e4c8c4e6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/model_context_protocol/mcp_server.md": {
+      "blob": "0f571b35e46075f710426106e8f0a0aff7324368",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "37fcdb8ffd6180f8dd708495956fd9f6636f8d82",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/model_context_protocol/mcp_server_tools.md": {
+      "blob": "3725a4fa4364ae6d86ae88c0cc335317fd6ed103",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "c336f98d6ba351ffd74ed4faa8e2c3061160995e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/model_context_protocol/mcp_server_troubleshooting.md": {
+      "blob": "168ed454a21d95f5c01f2a2a37fd92733b599801",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "b1f60c6ddcf93cda6e12f9afe2905e30f3c01bb8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/org_mode.md": {
+      "blob": "0d7cef3c7f8ee7ef3b3cd8c7a00efe35003489f9",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "3cf1043ec7a38dfbd5179c835d63df8e8c3f599b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/reviews/automatic_reviewer_assignment.md": {
+      "blob": "12d8ce3c826143bd90c8998219e3af37e5c6d858",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "91c8c2ad541cfc27c7af3195eec02accf8efac72",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/reviews/stacked_merge_requests.md": {
+      "blob": "cc8dc656727800d4f0b985693dbc00c3e6889ed0",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "1a9b91d71b9ccc8282a6279ea604bac017044592",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/usage_and_storage.md": {
+      "blob": "47a55561cd4d09e6c3519e9cd753593ac1abee54",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "086e0c9602482ed922a072a19e62c02acae6c250",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/work_items/configurable_work_item_types.md": {
+      "blob": "a9a19861d5f88f22b09a3a05c6bc9014402131be",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "9641ed2ecc9257d5131e4a4950a1e308f96bcb0d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/work_items/workplan.md": {
+      "blob": "47c7970de64b0c4206d8ab3ebcabac80c88a7ce3",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "4d6ab75378cfd178d102c031048e76249f98b4d6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+  "version": 2
+}

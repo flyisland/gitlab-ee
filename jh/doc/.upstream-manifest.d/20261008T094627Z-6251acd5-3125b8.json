@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-08T09:46:27Z",
+  "entries": {
+    "doc/user/project/integrations/confluence.md": {
+      "blob": "ebdafbbfaca45ccbb9e2098489e4a1ebd18305c2",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "9f1460c007ab8888deddd158697b0cad77a32c32",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/emails_on_push.md": {
+      "blob": "771df72fb756cb6522077c43e27e118f7f0d3f45",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "43cbc041752df2123ffa13e1177e1051f1b786cd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/git_guardian.md": {
+      "blob": "15ccdec97adff3eae912747f17351174a3a177e4",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "73f46fd8dcdede2fd6bc2066f7a662ffc7f55527",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/github.md": {
+      "blob": "dcb7beb2f29e1af6684209b2b1943dd327e4fc01",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "0808b5eeef4115bd301fd463968f05379e781aa0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/google_artifact_management.md": {
+      "blob": "1d49a69a31ee3fa92cb7ec4b7dd5cb973d8cf7b5",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "ec712cce48edb9e23efc065a98f534ef6c72cd24",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/google_play.md": {
+      "blob": "8bfbff0c11801e980bbbe3d4935b25e100567ad0",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "943bea406325d56e4707f5f705413be2fa6dca11",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/harbor.md": {
+      "blob": "eeb2595704d0c13eed83375348e6087d854b07d9",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "3e562b860662728654f824776d30d7384073283e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/matrix.md": {
+      "blob": "0138a98e64074418c033ef60d9619744e6d18250",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "c166c401fef8b6e9256a5d0367de42c797954975",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/mock_ci.md": {
+      "blob": "c19849020e2e04c8631da452d5eb9ebbe53d4d23",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "1797c02f48eee029e958b35302c121f5d019b140",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/pipeline_status_emails.md": {
+      "blob": "a44626c7565ea2313025fbe4cd7cb27c992abbe9",
+      "commit": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+      "target": {
+        "blob": "1cbb8da372d7f414c0eb07bcc4677b144431c3a3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "6251acd52c3bba0e57120c6ff0fc26708b56ae7a",
+  "version": 2
+}

@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-06T14:59:44Z",
+  "entries": {
+    "doc/user/project/merge_requests/csv_export.md": {
+      "blob": "4fced5df432cd40227e6fcec3e537f213b7eddae",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "fe8d13594de59a460d4c01ffd75e757e8afa775a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/dependencies.md": {
+      "blob": "a40ee5d4984eca09b02a70be7942018f996b47de",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "dc43171b0b2d1e480f4823099055650b41688f63",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/drafts.md": {
+      "blob": "7e67ad51afd8b1765ae71ce7c4b0f2a8e2a59b36",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "97bde68de1085a79c65f00e2ce1223d2dfcc5ccb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/homepage.md": {
+      "blob": "79e108d1047dae0f719878bfcb081c20212ba2f7",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "f7682992c9b679d44254f7ebaa98ee47824f14f4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/manage.md": {
+      "blob": "bc30558f47a9e37b5c60a6cef6e3401ced24084f",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "0489b4512e43cc6941f0a4bad69f3528d296cd80",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/methods/_index.md": {
+      "blob": "dbfc1e1dcfb445769e57ba47fc3a179d7f567932",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "e57cba6c8ae3ccd792e4859f9c01012f2a5ebf09",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/revert_changes.md": {
+      "blob": "8859551630df591a684a25b33155235e2db3cb5f",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "db33bb5de2628fc0ffcadb92c051c7734ae0965c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/reviews/_index.md": {
+      "blob": "b17b49c7c1308deaf918a3581a70c8932c339ac4",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "00519480046941e9cb6007cd946f29d17be4aac2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/squash_and_merge.md": {
+      "blob": "26a3641a78a24dab23a5759f26a4dbdfab589dec",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "f2d492ec4c9b6d8261662a6ca7d8d23c07deb172",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/stacked_diffs.md": {
+      "blob": "20ca147e96c7986e681639fa56f39a1cc9f71605",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "b14a3dcb10b9f3336c6ae00b8838ecd5bf0126bd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+  "version": 2
+}

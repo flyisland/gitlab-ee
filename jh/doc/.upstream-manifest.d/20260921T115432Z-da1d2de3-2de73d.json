@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-09-21T11:54:32Z",
+  "entries": {
+    "doc/releases/19/gitlab-19-0-released/index.md": {
+      "blob": "e47052f92736eafeb3aadd377f1da59e30a5d40a",
+      "commit": "56b43d2035ddd831cee4c64e8e5eb9d6b80063dd",
+      "target": {
+        "blob": "3785d1f6dc0f6be8cb47b005bc63fd84fd54d55f",
+        "lineage": "mixed",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+  "version": 2
+}

@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-07T02:32:23Z",
+  "entries": {
+    "doc/user/packages/generic_packages/_index.md": {
+      "blob": "0f90f299a741dcb71263a3c1122e632af3489343",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "b49f56f2e2c4d5d4efddb29246e1f34f63e99564",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/harbor_container_registry/_index.md": {
+      "blob": "dc1f0e0583f151ccc6c8ee3d6c96cb848e023721",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "13214e8ae09a2e71f98096d8dcedffb5def0068a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/helm_repository/_index.md": {
+      "blob": "626b89d0e960052217d73ead6099e00c8c8bca59",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "831f8479d8918c8dd3fe48ef1dcc0b69f24c4ca4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/maven_repository/_index.md": {
+      "blob": "054705943f49a557b2d143dbc0dc1e304e77d277",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4d5854f810bc211e1150feaf89b2ea363b855cb7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/package_registry/_index.md": {
+      "blob": "4a1796fed8c4f711181958be8ad86105dcd5953b",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "271144eb492dff330d24ae30aa147dc6236c0734",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/package_registry/enterprise_structure_tutorial.md": {
+      "blob": "7e02d1bf0c66bbd0760c8cd29abdc0e7d70862fd",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "3491661295f7beae2ca8edb465cb411529910941",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/package_registry/package_protection_rules.md": {
+      "blob": "8f58ed98ad51aeffeb9839e88779421dc5e031dd",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "53ca64822882cd7e0e4dcace84fc597674913941",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/package_registry/pypi_cosign_tutorial.md": {
+      "blob": "7608de7ff0a8aa88c8a88407ab61384ed66e60ed",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "d734c5dbd28e74c43b30d23b3de5e133b4ef52b3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/package_registry/reduce_package_registry_storage.md": {
+      "blob": "2e6b7174eca01afeb270dcdbecafc15c073f29be",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "0a69b8376c73a285862182e08c83a43f8948f1d1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/package_registry/supported_functionality.md": {
+      "blob": "65bfe8705ad56aea4ec2722486cb4835d7eed4a1",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "fa5887261d999ba015aea01d2a8bc747184161f4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

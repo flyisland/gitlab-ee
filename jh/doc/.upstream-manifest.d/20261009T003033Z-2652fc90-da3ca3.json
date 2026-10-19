@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T00:30:33Z",
+  "entries": {
+    "doc/user/application_security/api_security/_index.md": {
+      "blob": "438a081d5267657ef41504e8010aa937dd989ca5",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "8b53dca2b76fb4e5728d9ccf6e7ebeba71e343e8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security/api_discovery/_index.md": {
+      "blob": "88c48e7b53d90d290bf2841fe2a07ec0c9fbbb6b",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "693c7ae4e77ac21059e2504d6709369d067cf14d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/_index.md": {
+      "blob": "79d152a00bb7a129b7ac780085274c4006b306df",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "fda0021df650071d22d2934e4f11ebc307878574",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/_index.md": {
+      "blob": "4070bc3e8d098c8a7fe74b7398d14ea4abb11775",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "fbf2f8ae8b3fb5fa9ddf92c62a2df85a89667b49",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/application_information_check.md": {
+      "blob": "6468767c23d26f8392effe460dd01af2663b4f75",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "b36f3dc3cd79bcb8c3eb6311322abfbd8ddf602d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/authentication_token_check.md": {
+      "blob": "31bf6596b38df60f1621ae27394034e3d5a9823e",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "bc16fd67bcac7b0551ddaeb7fb0dc5e9cda09c1e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/cleartext_authentication_check.md": {
+      "blob": "aa0f001d9e79489abf95a920ef89e3c5de466118",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "e60181c8781dc6e3001de0deff32e126fed16f7b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/cors_check.md": {
+      "blob": "f3f49de5a4d766520221b9cd1a0ad7287088364a",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "50803bb3325b01d1fef4c3515ee160dd06d069d7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/dns_rebinding_check.md": {
+      "blob": "2c0a115bdd697fd432d95c11b68c6535e79939a2",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "271cf8bca4314795d2b82a98e114e65d672430db",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/framework_debug_mode_check.md": {
+      "blob": "e8c3374f3afff9f66280b61e70320a46c38b4f5a",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "fa6da78987e943ade441aa2a8af3afe5ca52c308",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+  "version": 2
+}

@@ -1,0 +1,51 @@
+# frozen_string_literal: true
+
+def feature_mr?
+  (helper.mr_labels & %w[feature::addition feature::enhancement]).any?
+end
+
+DOCUMENTATION_UPDATE_MISSING = <<~MSG
+  ~"feature::addition" 和 ~"feature::enhancement" 的合并请求通常应当包含文档改动。
+  考虑更新文档或参照[技术文档部分]确认文档计划。
+
+  [技术文档部分]: <!-- https://about.gitlab.cn/handbook/engineering/ux/technical-writing/#assignments -->
+
+  更多信息请参见：
+
+  - Handbook：[合并请求类型](<!-- https://about.gitlab.cn/handbook/engineering/metrics/#work-type-classification -->)
+  - 文档：[完成的定义](<!-- https://docs.gitlab.cn/jh/development/contributing/merge_request_workflow.html#definition-of-done -->)
+MSG
+
+docs_paths_to_review = helper.changes_by_category[:docs]
+
+# Documentation should be updated for feature::addition and feature::enhancement
+if docs_paths_to_review.empty?
+  warn(DOCUMENTATION_UPDATE_MISSING) if feature_mr?
+
+  return
+end
+
+message '此合并请求添加或修改了文档文件。' \
+  '**建议**寻找一位技术文档团队人员审核您的改动。审核也可发生在合并之后。'
+
+return unless helper.ci?
+
+# rubocop:disable Gitlab/DocUrl  -- we need it
+markdown(<<~MARKDOWN)
+  ## 文档审核
+
+  以下文件需要技术文档人员审核：
+
+  * #{docs_paths_to_review.map { |path| "`#{path}`" }.join("\n* ")}
+
+  审核过程不会阻止合并请求的合并。参见:
+
+  - 您修改过的 [`*.md` 文件元数据]。每个 `*.md` 文件的头部几行用来标识与此文档改动最相关的阶段或群组。
+  - 为此阶段或群组[分配的技术文档人员]。
+  - 参见[文档工作流]以确定何时审核合并请求。
+
+  [`*.md` 文件元数据]: <!-- https://docs.gitlab.com/ee/development/documentation/#metadata -->
+  [分配的技术文档人员]: <!-- https://about.gitlab.cn/handbook/engineering/technical-writing/#assignments -->
+  [文档工作流]: <!-- https://docs.gitlab.cn/jh/development/documentation/workflow.html -->
+MARKDOWN
+# rubocop:enable Gitlab/DocUrl

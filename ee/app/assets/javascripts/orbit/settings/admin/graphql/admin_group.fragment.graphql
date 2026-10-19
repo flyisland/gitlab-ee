@@ -1,0 +1,14 @@
+fragment OrbitAdminGroup on Group {
+  id
+  name
+  fullPath
+  webPath
+  avatarUrl
+  knowledgeGraphEnabled
+  orbit {
+    enabledAt
+    indexingStatus {
+      phase
+    }
+  }
+}

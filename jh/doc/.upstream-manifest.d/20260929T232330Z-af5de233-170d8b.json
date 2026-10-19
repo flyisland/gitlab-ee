@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-09-29T23:23:30Z",
+  "entries": {
+    "doc/administration/instance_review.md": {
+      "blob": "0012d8e5d5d742b22b1b50909a4e9acb038ecf28",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "9ff5c03dc8a8a9b9720ac74bb47eff42931d7b79",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/integration/diagram_proxy.md": {
+      "blob": "766d4e7a82258b333b42f61980740ebd22e333d0",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "9a72cb74524e7011ddf891ff4bbdd647c9aa212c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/integration/diagrams_net.md": {
+      "blob": "468b6eacee44b651afe18281fe95f99fce83c069",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "67f100aa0139ed08b77af69bb8f99e11436325b3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/integration/mailgun.md": {
+      "blob": "dc037d4f7bc28a4a26679d4c4dd92e08aee7cc04",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "773067587ad0e396d2853cc2a879f5d4555cea65",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/internal_users.md": {
+      "blob": "99e1184962bc4579c1b9657ac9bb300fc15911a5",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "5d7b85018c1e0c3167f6fc6433ba334b837039b8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/invalidate_markdown_cache.md": {
+      "blob": "2da89634632e495dea2c625ed124ceb895ba4bc6",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "f664e1a4aeb5e922d2f3b1096de5a16f33cb6c10",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/issue_closing_pattern.md": {
+      "blob": "e6890b7c5c6f83cbb4c0e438b569fb8ebb4a06c7",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "be529560c7e14542e73f373df7b0fb4baaec1bd1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/labels.md": {
+      "blob": "f45df0be965dd5593be4f2ff017dc731bcb23ade",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "34c40639d19a1052ff50b37181336f9504690ef5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/lfs/_index.md": {
+      "blob": "aef0c206e0ed5833dfdef0ca43120ade8a706035",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "1f996ebe207088937c77ad9f992039f813c6b3d8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "af5de233de598cd2fd74b9c744103795d906fd24",
+  "version": 2
+}

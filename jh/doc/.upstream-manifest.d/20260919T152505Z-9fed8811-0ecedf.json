@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-09-19T15:25:05Z",
+  "entries": {
+    "doc/administration/gitlab_duo_self_hosted/_index.md": {
+      "blob": "b28a03f939c4c6e69afcc902e9e6cf320d44603a",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "2233747f9d23c58d668e882c8bc290695975e50b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/search.md": {
+      "blob": "6ec1f91473bed6e4a5b3477e8b4d335c8e8bc7f2",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "ad0205e602fbf289831553c4a417ecd9bdc4644c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/auth/tokens/fine_grained_access_tokens.md": {
+      "blob": "f8d3ff706982bc299f8edd1560d3b03c2592290b",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "c385b739b561a4c4c5280f55d6fa00a75db2ffa1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/16/gitlab-16-6-released.md": {
+      "blob": "bfb8628a1e842dc5fb23cd347ed8ecfb9eccd1bb",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "1d1a6dc22be3e1fab1ed7d4184de1ec4fac9a061",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/analyze/duo.md": {
+      "blob": "2e2c6f259cd9b5e6eb42092cbc16db532f899a78",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "f98965f642a98516965e85324db169d4bd75482e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/code_review.md": {
+      "blob": "c07b0b2df12eaf433a43a2950d513c9fc3e0702a",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "fa1b4b59e399d299640073d6c28d5ba71f67dc03",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo_chat/agentic_chat.md": {
+      "blob": "fd958d90743affde27327ce660c7ffd1543cb631",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "bdb550b1b75a0ab55f09f956d2005dd8d3dd12f4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/issues/managing_issues.md": {
+      "blob": "55d798224bea89f8106c6515643c86bfafeb2fa4",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "81ddc7aeb936b69e6e64a479b8c9fb57ffca89d7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/settings/_index.md": {
+      "blob": "1dba5e40f0835a2fea7362a5c6cebd293a543a09",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "2236f32f69cafb1abd269e79b21aee042859698a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9fed8811df632e04c790ee345334a52f9f38345d",
+  "version": 2
+}

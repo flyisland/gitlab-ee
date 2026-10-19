@@ -1,0 +1,8 @@
+#!/bin/sh
+
+git checkout "origin/${MERGE_FROM}" yarn.lock # Use upstream yarn.lock as base to make sure no upstream feature will break
+git checkout "origin/${MERGE_FROM}" package.json # Use upstream package.json as base to make sure no upstream feature will break
+jq -s 'map(.dependencies) | map(keys) | .[0] - .[1] | reduce .[] as $key ( $upstreamjson.dependencies; . + { ($key):  $jhjson.dependencies[$key]}) | { dependencies: . } | $upstreamjson + .'  ./jh/frontend.json package.json --argfile jhjson ./jh/frontend.json --argfile upstreamjson package.json > tmp.json # Write additional JH dependencies to package.json
+mv tmp.json package.json
+jq -s 'map(.devDependencies) | map(keys) | .[0] - .[1] | reduce .[] as $key ( $upstreamjson.devDependencies; . + { ($key):$jhjson.devDependencies[$key]}) | { devDependencies: . } | $upstreamjson + .'  ./jh/frontend.json package.json --argfile jhjson ./jh/frontend.json --argfile upstreamjson package.json > tmp.json # Write additional JH devdependencies to package.json
+mv tmp.json package.json

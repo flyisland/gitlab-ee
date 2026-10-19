@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-09-20T05:56:41Z",
+  "entries": {
+    "doc/releases/19/gitlab-19-4-released/crawl-automated-triage-and-remediation-api.md": {
+      "blob": "13956e53ca78a17e19c3be7b14f45b7ffea3e3b2",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "c0bf83c7ff76f2737c36aedf99c5ed83038183bd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/credits-usage-order-included-first.md": {
+      "blob": "802ffc9c23a5da7e1886f2caa03e51e2ba3e2698",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "28df4e34891a8b9e20f4a00e5e26af2c53a1091c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/credits-usage-per-event-export.md": {
+      "blob": "c376b9b70233934b0048fe32cc210cabc483d41d",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "c76bf4da57c85fa6e577fb6d74bb22a4ff03fad0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/developer-model-selection.md": {
+      "blob": "1674a36109bef5c843f0d2c06c3a841fd754c42a",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "18f4e981fb8c6f7ed31b9bbdbb3b481c0617b4cc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/file-lock-improved-ux.md": {
+      "blob": "03e1571a944b1d36abd04438684eec014e2c048f",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "d061d47423c4a75a5787ac6fb12de3add1a39dc1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/flow-trigger-enable-disable.md": {
+      "blob": "aa038ec1527d2c6b98bc4208d22a192562be474b",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "c06a60ee96ee7dc67d38e32133876b732ad4c546",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/geo-ssh-proxying.md": {
+      "blob": "965974fa5dab3714982e3c26f2a8aeca80832dbf",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "5f007657014105d75f7d19e401e16cfaf0af2da2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/gitlab-duo-slack-integration.md": {
+      "blob": "f0d2e2195caf029189cba020418cacace9b7d405",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "f7e0cfca19c2accce2a5e1060a464849e5868686",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/gitlab-flow-builder-beta.md": {
+      "blob": "8961ea5b4a43508f92b7e568f8f68747f6d9771b",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "b72b15362bc5c9fe39bc3e83bcef7992815a9352",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+  "version": 2
+}

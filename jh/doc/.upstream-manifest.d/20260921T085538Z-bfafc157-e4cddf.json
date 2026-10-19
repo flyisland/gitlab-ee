@@ -1,0 +1,52 @@
+{
+  "created_at": "2026-09-21T08:55:38Z",
+  "entries": {
+    "doc/releases/19/gitlab-19-4-released/developer-model-selection.md": {
+      "blob": "03370bdfa67f36e49bfdbe664425b6510c178311",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "f5f75df45ffb2d9ae445c759b05d0c791d35d6ec",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/improved-table-pasting.md": {
+      "blob": "5e270798bf600272617ee16577d007dda616535c",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "75cf0f248c590f0db16ee7a0229d146eea814a58",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/index.md": {
+      "blob": "ecaa0b2dd423069fadf55f214911f9325f6f2342",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "ad4e1e4596e76f581f1065e89b3bc6fb10040ee3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/open-models.md": {
+      "blob": "ebc8ed9d4819b1c105192604ceb08023548d5de8",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "9f8ebbacb1e35ede26ab1fc18adf31eafee18915",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/security-dashboard-orgs.md": {
+      "blob": "81f3e74bc8cc14909c8f86723ed7177517dd4e7c",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "34342c7615abeeb122d1f08864e0c235d1799143",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+  "version": 2
+}

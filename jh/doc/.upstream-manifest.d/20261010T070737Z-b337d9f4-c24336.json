@@ -1,0 +1,52 @@
+{
+  "created_at": "2026-10-10T07:07:37Z",
+  "entries": {
+    "doc/ci/runners/hosted_runners/gpu_enabled.md": {
+      "blob": "6db70a9d964bf4893e37519e0c5d220727099879",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "c3bcd08e79364afd6dc064647e3721b9df7452cd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/azure_key_vault.md": {
+      "blob": "33f16904793a80afd9d4d55601e064d43bf12a77",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "36037da82c0bae5b52d085e3bff5676f1ef9adac",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/fortanix_dsm_integration.md": {
+      "blob": "dff761993e97e5a2f510eaf9bfdd52bf3fb6d8c1",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "96a939d816aa25c55e2e25beee325e0c7aa6d5ce",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/gcp_secret_manager.md": {
+      "blob": "3c45f24b1c0f08f8c9a26a3c6f380c8bbda15e43",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "106e5ea9addb5f9cce7ec1fe895ec9f0041f3903",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/sast/advanced_sast_coverage.md": {
+      "blob": "78104c994a0b3a587807f71f65afb5e013314881",
+      "commit": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+      "target": {
+        "blob": "d3b5fde6e6d11b6a26f1702550e59b8e6e18fc0d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "b337d9f4c3a167edc40f4ef4a164c36a4c8f79c5",
+  "version": 2
+}

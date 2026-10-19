@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-10-11T00:59:34Z",
+  "entries": {
+    "doc/ci/secrets/secrets_manager/credit_usage.md": {
+      "blob": "26fa1d41f95e3d52377c323a26a0dfc319365cca",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "d897e9b54c0b10af11bb6b4bd34710a472590768",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/secrets_manager/secrets_manager_billing.md": {
+      "blob": "97eac4e836814146e1b40a0927cdd921bdc340cc",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "5e02178b400a68252e3bfaf5a6347ca6753ab83f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/services/_index.md": {
+      "blob": "c586434d241223ccac4ee14cea4ae97044fb6300",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "ffe594ffeeb1b9a852835b54e46a042bf3532409",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/_index.md": {
+      "blob": "61a5066ffce7829d22e6659f22a6c43d10ab1310",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "46c2c3a8aee5cbcb4142d9b25fae5b32d4299fb1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/code_coverage/_index.md": {
+      "blob": "ab4fc8613c3e0a14cdffaee15be64d0b3629f317",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "4fe64b06b937806cce0c66d953a3ecaeb2e3433f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/code_quality.md": {
+      "blob": "5a5f7027acc8fd1a7c067b26cddb7c0e871d1a4b",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "05647361a2395de3e143a22bd291d5dd07d7e763",
+        "lineage": "generated",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/ci/testing/code_quality_codeclimate_scanning.md": {
+      "blob": "bd619134aa182b1dccb7938a53a0bf2eb016f9af",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "1c65377acbeafbc0595221d874c9582704933516",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/code_quality_troubleshooting.md": {
+      "blob": "a17077b41cc3e91162a7fa70c7bd3736b8986e03",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "77402a1276024edec268f5c0a5e264af1f10bf4b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/load_performance_testing.md": {
+      "blob": "fda5c24e2f6b94a18f606f2ec0570deb1453bddb",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "540aa95c3ce7204e9db40480ecb615cfe6c5851c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/metrics_reports.md": {
+      "blob": "e4fc6557af7b207ddcc2941e6b978b4c93d801f7",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "17be24179f95c136c28bdab3e6339cc2d5907362",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+  "version": 2
+}

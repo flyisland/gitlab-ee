@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-07T02:36:57Z",
+  "entries": {
+    "doc/user/group/contribution_analytics/_index.md": {
+      "blob": "204b6262b6fde7dc8ea17e152a3ba00143f3a566",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "bd70eb9ef442416e78bfdc974f78756231cf7bae",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/custom_project_templates.md": {
+      "blob": "51f19219acdb28c64cbfd6788d5e445e7be63a66",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4c6a4b2ade0254b980c25eb23e1be7e935c9c191",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/epics/epic_boards.md": {
+      "blob": "8db46a9f76b94a91248489882fbc2f5b41b7d30a",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "a3f8168a1c9220f14a4b788ee148cd75e692a6c6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/epics/linked_epics.md": {
+      "blob": "73810a014b036f575b7ba8552a18c4c13b75980a",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "e2599f9fe821ae6982b72370f172c72e8eedd84b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/issues_analytics/_index.md": {
+      "blob": "706e78a1caca127890ee5743440da4741343976e",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "66839a338656da873c494c9f4bcb4f687f7ed6ee",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/moderate_users.md": {
+      "blob": "90fcc8704e0907319583818477e3b510d9a480d1",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "835a125dc5acdc37ea9305029aea0252011ddc07",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/repositories_analytics/_index.md": {
+      "blob": "72dd13cc7feb792a87529471aaf63ddc4c22667e",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "1d065926d4a1794bfd79b3f6542ff76297352e2f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/saml_sso/example_saml_config.md": {
+      "blob": "7bf69fde0c8fc9ef1315a04ea286804d2970f379",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "258933dfc85896e9f2a92e84c6cb157be405066e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/saml_sso/scim_setup.md": {
+      "blob": "93dfbe45cef9e07bf6b1404367f03d795f512620",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "a294d45ba574c2153ef3fb61c5888992dc63def9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/ssh_certificates.md": {
+      "blob": "01d6d434eabb8eb87356a79614663465fc3efe4d",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "7d557d5f58757f2bbb2cddb8cc4929606c6ba40d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

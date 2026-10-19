@@ -1,0 +1,70 @@
+{
+  "created_at": "2026-09-06T09:41:36Z",
+  "entries": {
+    "doc/administration/gitlab_duo_self_hosted/supported_models_and_hardware_requirements.md": {
+      "blob": "fe814b37795c9a1e050c7b540cc3f2e161f42227",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "ca4a88bc6a377eb49ea1c5e748fea74185a0c32a",
+        "lineage": "human",
+        "state": "present"
+      }
+    },
+    "doc/solutions/integrations/aws_bedrock_byom.md": {
+      "blob": "5bb6a92d8ece91c5ada5715d1c4fc3347d27e7cc",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "cf12e66eba0b9ea8d95fb5214e0ea72a7abaa119",
+        "lineage": "human",
+        "state": "present"
+      }
+    },
+    "doc/subscriptions/gitlab_credits.md": {
+      "blob": "690a5a592d1801eff58d8b413158b3c0672d5776",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "3d88a348241e2a5538deb26e952d83625d0ab66f",
+        "lineage": "human",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/model_selection.md": {
+      "blob": "ab7f34e5ca735ce6913517208eb24804922605b9",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "bd363040c2c6d4ab0fc61b9d9ee8d2f6ef7bd72c",
+        "lineage": "human",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/model_selection.md": {
+      "blob": "0b790fa83b20ae3615ab4dde1f0a8972eb364b35",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "90ce6e5af68b93599913dd489b9597204c7cfd85",
+        "lineage": "human",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo_chat/examples.md": {
+      "blob": "f2b37b62a97eb35f862dd1eec1d04be921acb958",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "a42dd5d6936408f18991ec6adfdf9d070bba1122",
+        "lineage": "human",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/duo_in_merge_requests.md": {
+      "blob": "455cdd3f391029414764e58825ce51c4707fca12",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "0239c8415a972e85f66e1bdec2d75e1be16e6f77",
+        "lineage": "human",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+  "version": 2
+}

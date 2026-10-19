@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-10T17:46:17Z",
+  "entries": {
+    "doc/api/project_members.md": {
+      "blob": "484385b0902249eedc852773a38e72a57d9fae4e",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "73e340a99669c7ce244cf4a4f64069d31b210c71",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/project_snippets.md": {
+      "blob": "41069ac615b372a506e294eeeccca6704bfb9954",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "fc4b3829b70f197db430b04385906e0a50cfca39",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/project_templates.md": {
+      "blob": "1b5fa5aacadfbdabca297ba9aec86d8e9e0aa486",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "70f30482cb12ecef424fde5cafe5474cb71016b3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/projects.md": {
+      "blob": "680f1e46aa0ce61ad0fdc2f3691b541d5ef6aad7",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "c5c5b7e4895d65c3c419057c434d6f3d120aa7cd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/repositories.md": {
+      "blob": "68c3854f721b2b067b30e2e763db2fcb75898929",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "5bd68b9a8f2b1eb40037d5535df6d5a1ced09647",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/rest/_index.md": {
+      "blob": "d3cc680a81a628f7dc746a973bc23c13ca6f2210",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "da15f7e5b06b8d939f75ee9aedcf0da280e0010f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/rest/authentication.md": {
+      "blob": "a65dda3066cb48c3deff4f3941a4bb87d0d36d3b",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "1bd5afafa0fe1a27c5e748976bae0db6912f21e7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/saml.md": {
+      "blob": "ea64f564e64290b1e5b577659ff6ba34ae1e998d",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "9de1a35856c27f01e705c426a4357a4da2937074",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/search.md": {
+      "blob": "20b0198b7dc9ca675c827042f3283b188e371d53",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "d231422cdcba35d184c36cae117bacaf2f3814cc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/service_accounts.md": {
+      "blob": "a190c16416f14075607910c03e5330c06da3a4f6",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "04b71b01784c2b5ede415170e3c12cec1b3423c7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+  "version": 2
+}

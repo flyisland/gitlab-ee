@@ -1,0 +1,17 @@
+##
+# Notice:
+# 1. Always fix the test on upstream first, and then consider skipping tests
+# 2. We should include your MR or Issue url in comment, try to tell others where and why
+# 3. The file is grouped by `file_path`, check if a new `file_path` group already exists before adding it
+# 4. Please add new `file_path` group at the bottom
+# *. See details in: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/431
+#
+
+- file_path: 'spec/specs/helpers/context_selector_spec.rb'
+  skip_reason: 'skip context selector archived spec.'
+  description:
+    - 'QA::Specs::Helpers::ContextSelector.context_matches? with arguments matches tld'
+- file_path: 'spec/tools/ci/pipeline_creator_spec.rb'
+  skip_reason: 'JH changed the performance-on-cng/main.gitlab-ci.yml path'
+  description:
+    - 'QA::Tools::Ci::PipelineCreator#create_non_functional creates pipeline definitions for non functional test pipelines with base variables added'

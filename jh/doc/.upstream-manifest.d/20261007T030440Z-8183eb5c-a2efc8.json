@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-07T03:04:40Z",
+  "entries": {
+    "doc/user/compliance/compliance_frameworks/centralized_compliance_frameworks.md": {
+      "blob": "a14633ef868b853784c073472dd7509f28426c98",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4bb7cf5765ff1fd308a8307c30963cb422a3b3a0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/compliance/license_approval_policies.md": {
+      "blob": "6495b2cf8c5c16a7f2462d7bcdebffc0c2424ebf",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "90ad7356f2ab2614d75d53f32031ade39572a744",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/_index.md": {
+      "blob": "f1d8e0182088e5466ea6ad1045ad9f91c74c1174",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "c402cdd9e391d551f2536a3e22a09b564fae0f87",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/gitlab_instances/_index.md": {
+      "blob": "3426d3cc08f501721b9f7eef9d24471deb15cb39",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "d4cd71600e50fd93ee0b65ce989d0e34532eb24a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/mapping/troubleshooting.md": {
+      "blob": "84c7a5b19948457a72894cbd605e7b560c97015d",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "5cf80d32895af2d23b251c531ca7efc6e10230e3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/third_party_systems/_index.md": {
+      "blob": "71e370eb6af1d9d97a381ceafbf58cced4bcd68d",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "cbba3346e3ec1996c5fd1535cef277b9956e5805",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/third_party_systems/clearcase.md": {
+      "blob": "523589fdc254985dbe5684c97d558a2a641a7398",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "f6e26140bb304ab0fde8b7c4ce932c7b1f429a48",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/third_party_systems/cvs.md": {
+      "blob": "f307358397973bf1a4db4cc87348ed90324585e3",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "f7d80aafca557331a9600faa91f68db9ff18c47e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/third_party_systems/manifest_file.md": {
+      "blob": "1903b96a56531fe1b2f3a572921bdac96c188be8",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "93a07339a39861752b662e0b3f0990cfd000424d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/third_party_systems/perforce.md": {
+      "blob": "ae0020c650c66c153013eb14f98b22e2c3c7de43",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "0887e4126d6c86ae88ed538963776a8b7d88b854",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

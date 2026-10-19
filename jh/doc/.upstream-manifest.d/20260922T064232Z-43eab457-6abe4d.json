@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-09-22T06:42:32Z",
+  "entries": {
+    "doc/user/discussions/_index.md": {
+      "blob": "d4f916f28764c33635fac2bb6519b6c2d5974bf8",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "d91d667b768b6ab511df7e957629823b3ba9f6c3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_amazon_q/_index.md": {
+      "blob": "58f001e6ccca8a0ac173ea61b230eb6e9c180dc1",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "3cdbd256a676c851e36c29952545c92e0b45d89a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/feature_summary.md": {
+      "blob": "8b92b4a31cfa01efc7af9bfa374aac571b7ddc56",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "4c5435cb22d63bd041fdc7a5e42b6bab5fff266c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/security.md": {
+      "blob": "3fa14dc6d197830d1be1498ddd2077148ea91010",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "55d6c1ebdb0c2722c4627b587020b4454ca681d8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/duo_in_merge_requests.md": {
+      "blob": "67ad2383b89a783f13c2f6824620d62f51dc8d04",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "c8f47808ed69b921481ddc0cba5526f952795964",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/code_explain.md": {
+      "blob": "a82d7e6cb954f679b0e90cdb19ecf4367458d57b",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "f35c38271225a198579ad1681366a9283638e0ec",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/code_suggestions/_index.md": {
+      "blob": "e22d619f58db29c6c134efad9a2aa95d5c820fde",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "79b0a0543bb71f524759423624b59864e37b18d0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/shortcuts.md": {
+      "blob": "6c13365f06d8bcd52fa9bb0dd6879abf85b1dad1",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "f4b98d0272cb5d64d965820e49602a96ae9f5e47",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "43eab457348ba6889ef219ac944e54dad05ed379",
+  "version": 2
+}

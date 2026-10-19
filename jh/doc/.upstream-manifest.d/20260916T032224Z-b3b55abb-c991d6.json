@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-09-16T03:22:24Z",
+  "entries": {
+    "doc/administration/auth/ldap/ldap_synchronization.md": {
+      "blob": "b0a0cb035a49817a0e63578b3ff72047c332da81",
+      "commit": "b3b55abbcfe2b6cdf079252806549c773e2e3aab",
+      "target": {
+        "blob": "5cf3644df52a6b22990542a3606026ec00ae5a4d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/backup_restore/backup_large_reference_architectures.md": {
+      "blob": "545ba3bd6f0bc7d67bb9411fdedf60bedf40a678",
+      "commit": "b3b55abbcfe2b6cdf079252806549c773e2e3aab",
+      "target": {
+        "blob": "227c5b7212164128fef44ffbd5cdfd80085f926d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/variables/_index.md": {
+      "blob": "26795ad1ad193466550b555633191efb2ee2a32a",
+      "commit": "b3b55abbcfe2b6cdf079252806549c773e2e3aab",
+      "target": {
+        "blob": "b882253262fac12e8c5d38e9227b0ce3924e9cc4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "b3b55abbcfe2b6cdf079252806549c773e2e3aab",
+  "version": 2
+}

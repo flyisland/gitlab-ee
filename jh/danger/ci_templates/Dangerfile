@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+TEMPLATE_MESSAGE = <<~MSG
+  此合并请求需要 CI/CD 的模板审核。为确保修改可以通过审核，请执行以下步骤：
+
+  1. 确保此合并请求拥有 ~"ci::templates" 标记。
+     如果此合并请求修改了 CI/CD 模板文件，Danger 会自动标记。
+  1. 按照[模板开发指引]为 CI/CD 模板审查准备您的合并请求。
+  1. 分配并提醒一位审核者转盘推荐的 CI/CD 模板审核者。
+
+  [模板开发指引]: <!-- https://docs.gitlab.cn/jh/development/cicd/templates.html -->
+MSG
+
+TEMPLATE_FILES_MESSAGE = <<~MSG
+  以下文件需要 CI/CD 模板维护者的审核：
+MSG
+
+return unless helper.ci?
+
+template_paths_to_review = helper.changes_by_category[:ci_template]
+
+if helper.mr_labels.include?('ci::templates') || template_paths_to_review.any?
+  message '此合并请求添加或修改了需要 CI/CD 模板维护者审核的文件。'
+
+  markdown(TEMPLATE_MESSAGE)
+  markdown(TEMPLATE_FILES_MESSAGE + helper.markdown_list(template_paths_to_review)) if template_paths_to_review.any?
+end

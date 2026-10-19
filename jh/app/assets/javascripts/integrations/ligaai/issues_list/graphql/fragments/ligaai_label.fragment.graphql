@@ -1,0 +1,7 @@
+fragment LigaaiLabel on Label {
+  id
+  title
+  name
+  color
+  textColor
+}

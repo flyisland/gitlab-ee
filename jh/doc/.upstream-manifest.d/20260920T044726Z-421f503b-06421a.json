@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-09-20T04:47:26Z",
+  "entries": {
+    "doc/releases/19/gitlab-19-4-released/merge-request-created-event-trigger.md": {
+      "blob": "0704126c01688fb8ca890de5809e32ca84858636",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "01bba74d5b55544813302cb31005fbd43d12be87",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/per-user-credit-cap-ui.md": {
+      "blob": "0769ecbe31f2be0dc5b774aa66d00b1e450992b0",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "28ca8d944cb48a574edfa0dc17fdd6ffd4127fd8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/revoke-routable-personal-access-tokens.md": {
+      "blob": "9c405400a8bfb7e1febd0bedb5a6489b5db45707",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "e5b96367f7ff444062f6020f5e2c9c1e6ea30fd6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/sast-kotlin-dart-scala-language-support.md": {
+      "blob": "0b597781b8469bcd3f092a6e8fbadbd7b6f9dc55",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "5c75e371ad1e23fc267cb4000236b08133aebd07",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/sca-spdx-license-expressions.md": {
+      "blob": "fbfa43df28c4658a85eaf04f0611c0e32cc47d8e",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "9734e1d345ce17fbb925e6fc7415150a5b65708e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/security-inventory-ux-and-usability-improvements.md": {
+      "blob": "245ae0ca315d414930d92cf8623626ea9f5beee9",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "966cdcffac1b5763a96a8edeefd1c1d4ab419f81",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/session-details-panel-redesign.md": {
+      "blob": "5d8095c5ef1df812c1a919a4dd0dd7dc492092df",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "af5901b05f321f3e74588d4c05e69c48c5b376f3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/vulnerability-tools-added-to-the-gitlab-mcp-server.md": {
+      "blob": "5e5526d03d44f2cbd70afe8f71e82d9d3340527e",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "9c1b76215bc0a9881aec38e3183991e8f14e2d2b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+  "version": 2
+}

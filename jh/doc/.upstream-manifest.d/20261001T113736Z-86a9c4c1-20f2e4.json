@@ -1,0 +1,36 @@
+{
+  "created_at": "2026-10-01T11:37:36Z",
+  "entries": {
+    "doc/ci/debugging.md": {
+      "blob": "74bc2ccd7c21fdc331970c0764c070863e0d5985",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "668e4ead92e463c26cb1b21bbb1ca737c1c3f3af",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/releases/17/gitlab-17-0-released.md": {
+      "blob": "610a253498d1633649b096f966e3334362d19f1d",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "1fb57a0a226e51a77c5dfb811ce639ae5060526d",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/user/application_security/sast/_index.md": {
+      "blob": "32f3f60e1bd4121afca409614742014115f9bc4f",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "8888e380a11c0babd5e2c55534b977cca03fa214",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

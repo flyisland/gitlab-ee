@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-10-01T08:55:10Z",
+  "entries": {
+    "doc/releases/16/gitlab-16-11-released.md": {
+      "blob": "f320be7cce7b287b9543ed81c6ee900cbbb1369a",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "09d6b20583bafe0dae6b92dac9cb232b94b20f6e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/17/gitlab-17-11-released.md": {
+      "blob": "0ee1670fe83d0d31d3042c4ed3b762388ec38894",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "dbcf80f1a68721669feab7d12663cce68e452417",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-0-released.md": {
+      "blob": "b2e86896ca803099f662a38b57945d4d628fad9c",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "1ff5fd184305b3d33f4730270c68b26df54d3a64",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-2-released.md": {
+      "blob": "08973db5b8b613342e74a5731a731f052685131a",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "ffde5254853df2a1b4426a2cb304f83d869c4a8b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-3-released.md": {
+      "blob": "feb0b743150220ee8d414c494ab917f05353914c",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "d8879ca6c16765e96cf5cf2f415c9b421c13b7ba",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-4-released.md": {
+      "blob": "b888ee81bcb82fb883b95b06902051c0777f8e13",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "0cb76fc769713ab2a66c3f094d3fdb91469548f2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-5-released.md": {
+      "blob": "a3be229378f550f532628870de8ef96f9ec23d19",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "9e3f80aaea9c3b85831fb9a9a48e03967596dcdf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-6-released.md": {
+      "blob": "ce24c851ddf27302bdce63265fc77bbd3f1623a7",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "75d75df4666ee1f1380a0096aa3aad099d211dc3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-8-released.md": {
+      "blob": "99b62b9745403027b770b1b8b0311983ef747002",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "3dbe7d52cd3dba86d53ccc7d1867b67c022d1bd0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

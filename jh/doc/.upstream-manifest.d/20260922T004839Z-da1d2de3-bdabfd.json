@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-09-22T00:48:39Z",
+  "entries": {
+    "doc/administration/gitlab_duo/configure/_index.md": {
+      "blob": "112a4e02752d1e231fe9d61936887b668a2f0f7d",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "f34b75e2bd53a3d93bb4b36772c543b9e88680b1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+  "version": 2
+}

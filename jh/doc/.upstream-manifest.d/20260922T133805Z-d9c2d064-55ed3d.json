@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-09-22T13:38:05Z",
+  "entries": {
+    "doc/administration/semantic_code_search.md": {
+      "blob": "60962868325b6c1feb61c460ecabb29b63f96c26",
+      "commit": "d9c2d06408beb0ff2fee70c0df732f6a96ee3683",
+      "target": {
+        "blob": "3cfe8f1d4d6650e965df0d8df0ab44c751f8fb5f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/continuous_integration.md": {
+      "blob": "966c496f89ee35420ae0bb5a4f0cea6d34386b9a",
+      "commit": "d9c2d06408beb0ff2fee70c0df732f6a96ee3683",
+      "target": {
+        "blob": "d091641ee162cd9b9c56130d07e55fa7d5c955fc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/rate-limit-on-audit-events-api.md": {
+      "blob": "67e0e6973377b8806f17b060edc6087e6f87fefa",
+      "commit": "d9c2d06408beb0ff2fee70c0df732f6a96ee3683",
+      "target": {
+        "blob": "12cdee7a6927a6085862feb91735ebc7b6152e05",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/terraform_state_settings.md": {
+      "blob": "9ce7a2f5477ef829734b345b8cfd43453e701b83",
+      "commit": "d9c2d06408beb0ff2fee70c0df732f6a96ee3683",
+      "target": {
+        "blob": "9650167747ec2a2184776f1ca7f01e63776ca50f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/user_and_ip_rate_limits.md": {
+      "blob": "7f58d7c38b16951ee969ad574200d93692482298",
+      "commit": "d9c2d06408beb0ff2fee70c0df732f6a96ee3683",
+      "target": {
+        "blob": "c5ff9a4233f2fdd7ae4f006ed6e42db25eab2d80",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/sidekiq_memory_killer.md": {
+      "blob": "56c5649457a5eba8aa886263f5c57a9a7b61580b",
+      "commit": "d9c2d06408beb0ff2fee70c0df732f6a96ee3683",
+      "target": {
+        "blob": "16a62d3c705b5e2773ce31a1e30ff67683feecae",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/uploads.md": {
+      "blob": "b0fe099b4c3463398256e8c365a43f3ad9165abd",
+      "commit": "d9c2d06408beb0ff2fee70c0df732f6a96ee3683",
+      "target": {
+        "blob": "4a80bf622c0d38d366d567cfa913833129b0936c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/wikis/_index.md": {
+      "blob": "704c6d879b1341bc2bb90c913683ed31dd43c300",
+      "commit": "d9c2d06408beb0ff2fee70c0df732f6a96ee3683",
+      "target": {
+        "blob": "364fd1197dfba142e299b6fa2494684214f4e78c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "d9c2d06408beb0ff2fee70c0df732f6a96ee3683",
+  "version": 2
+}

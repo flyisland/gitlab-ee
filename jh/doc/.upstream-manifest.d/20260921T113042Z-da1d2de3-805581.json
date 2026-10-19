@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-21T11:30:42Z",
+  "entries": {
+    "doc/administration/backup_restore/_index.md": {
+      "blob": "e29185b9f1f09fc42cef6cb0d59734f913852d7c",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "46df1be1895e22c44845c7979423531eebfa937d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/backup_restore/backup_gitlab.md": {
+      "blob": "ef6e6df18af0b8edf77153b4308d49977f3db424",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "83095bc7c4c795a5e49ea45fe9342d878c1b26fc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/backup_restore/backup_large_reference_architectures.md": {
+      "blob": "0852a940cdb4dbe0d8a493117f3f9784365057c4",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "64e7f2e234e9443861e2197531318ee75be1adf6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/compliance/audit_event_reports.md": {
+      "blob": "99da6660fbef7b9797e622f499c73592bfe7eb65",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "0ad3ee8c94be186f27b6d35263f44e6255580732",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/replication/datatypes.md": {
+      "blob": "7d261dd2f35719d5f159585948c76f3f818afffd",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "dad3d4b04b641f8b66325a10cedf5c815163d6b6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo/configure/access_control.md": {
+      "blob": "c33c85ba6ea9482e2fd38dc14b299e590fa6552b",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "7c1eb55d6b17a43c0d9666fa941c02495f735cca",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/performance/_index.md": {
+      "blob": "9ef2e00f1579de77c7b26e3f3af26d93a44b7b9f",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "eee406ca28b269a05cdebd4a4026920160e15829",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/_index.md": {
+      "blob": "58213a2828cfb0fd0f83cc15567d79eb521ecb56",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "40dcbc0905d5e819e635f839d83dafe6f96d1ce3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/gitlab_metrics.md": {
+      "blob": "76e29bb057e34470bcc3796ad91c83a71989d052",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "dd56ebdfbdb99eca0ef7584ac7a1b1c45e8aa348",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/nfs.md": {
+      "blob": "b8ba7139f08bd9e4c2d5f3e70c20bedd800e07cd",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "cdbc725ee3b18924a68c805477e8e07406360ca2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+  "version": 2
+}

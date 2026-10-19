@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-09-18T05:20:33Z",
+  "entries": {
+    "doc/administration/cicd/dot_com_compute_minutes.md": {
+      "blob": "b160b5baf14bd314a87f2c67aa9544a49a8d3f9e",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "099571dd5e14bcc3a4d0f9e9306da0ea06acf730",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reporting/git_abuse_rate_limit.md": {
+      "blob": "6f6da2548b74cb65fca8331b80b03dd9dc369bdb",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "6fcab9c445ca01e0b410bf782233cd146841c4db",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/repository_storage_paths.md": {
+      "blob": "9acacbf9d8844eacb804ee2ef0287f09185f2404",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "78939c1f71eb8154d1d50b810918f2d48b57ad5a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/debugging.md": {
+      "blob": "8cbc3bc7b633409ca4d9059b04b48a915c7f3605",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "668e4ead92e463c26cb1b21bbb1ca737c1c3f3af",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/ci/examples/_index.md": {
+      "blob": "9d03f8e3ae0da301c50b8ffe81768b142aee400b",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "202e4c80323df283a2ac2e47af89276252fd1ce1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/examples/semantic-release.md": {
+      "blob": "8c3334c72735a0e340ffa68bbb9ef70cec02e090",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "d2e191d525b3a114138f16e646cea197f47793ae",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/runners/git_submodules.md": {
+      "blob": "4f1f860f7503570826d0185e06708cbdc7c3a8b7",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "4f74c8dea9764a34af35a298f7c02850a3bc2fe8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/runners/runners_scope.md": {
+      "blob": "a2fdb65994a35e5d2b1b76f551e0bfc3242f929f",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "9e3431bd90217c84a64c2a455c6267d8be389d7b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/services/mysql.md": {
+      "blob": "029961421a94a47e7f8b7646ee2ed8d0ad427418",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "d392f3539e235abdf3e94a3ff9beb3a7b815a71d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/git/advanced.md": {
+      "blob": "4f18417dfd5c5f680b4c544a10bf8261d497745a",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "3ce8e0db08c529a5bb97de7a48ece885f6a52d05",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+  "version": 2
+}

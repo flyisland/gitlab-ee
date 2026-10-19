@@ -1,0 +1,7 @@
+---
+name: soft_email_required_flow
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/1484
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/2775
+milestone: "15.11"
+type: development
+default_enabled: false

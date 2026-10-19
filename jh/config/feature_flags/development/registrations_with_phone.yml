@@ -1,0 +1,8 @@
+---
+name: registrations_with_phone
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/2506
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/2546
+milestone: '15.9'
+type: development
+group: 'group::authentication and authorization'
+default_enabled: false

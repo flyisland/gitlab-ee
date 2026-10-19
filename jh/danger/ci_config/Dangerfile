@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+
+all_changed_files = helper.all_changed_files
+
+def get_ci_config_files(files)
+  files.select do |file|
+    file.include?('gitlab/ci/config/entry')
+  end
+end
+
+schema_path = 'app/assets/javascripts/editor/schema/ci.json'
+schema_docs_path = '<!-- https://docs.gitlab.cn/jh/development/cicd/schema.html#write-specs -->'
+has_schema_update = all_changed_files.include?(schema_path)
+return if has_schema_update
+
+ci_config_files = get_ci_config_files(all_changed_files)
+return if ci_config_files.empty?
+
+file_list = "- #{ci_config_files.map { |path| "`#{path}`" }.join("\n- ")}"
+
+warn "此合并请求修改了 CI 配置但未更新对应结构。" \
+  "请考虑更新[对应的结构](#{schema_path})来反映以下改动：\n" \
+  "#{file_list}.\n\n" \
+  "参见[文档](#{schema_docs_path})以获得关于如何编写和运行 CI 结构的帮助。"

@@ -1,0 +1,7 @@
+---
+name: jh_only_block_seat_for_team_plan
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2636
+milestone: '17.3'
+type: ops
+group: group::access
+default_enabled: true

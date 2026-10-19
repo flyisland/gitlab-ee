@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-10-09T08:38:53Z",
+  "entries": {
+    "doc/administration/gitlab_duo/model_selection.md": {
+      "blob": "37101a8aa2dc96b1bef2c7b0a780fcb578e385dc",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "3e5deac0afaebe0133c7ca84bdf53ed6417084eb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/_index.md": {
+      "blob": "06140dab67dff387c0982821e784371e60396f06",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "e3248bf4ac4d7080f5ef2dfd3a3a5eee6ae4130d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/configure_duo_features.md": {
+      "blob": "b7684fc20d4a98d2864c1047a6de23c68233960f",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "0c09872099db053b4c8782d5f55f4bc2687f5b1c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/logging.md": {
+      "blob": "b106a63a5b7bf833973f4f2a9d69cec20327d5f3",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "46613f8027cea7c56ef6b1d1878314165fc5e4c4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/offline_deployment.md": {
+      "blob": "083bb60900ff74b36901f61b9ae105fef0865b91",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "094e5b86fca9e9a4a6df2185cfadbe85ff910b81",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/supported_llm_serving_platforms.md": {
+      "blob": "da184387f995653f54a1137bbeb047a04536f59e",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "0a8af8216d0162cb7f855a332fb42a06a92386f2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/troubleshooting.md": {
+      "blob": "fc1d475e1f10c2e41f03b578867fdb9aebc757b4",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "1eac11e934a31e35307fc7c742578397e5dcc5fe",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/instance_limits.md": {
+      "blob": "f32c088efc87209e4cbe76ba28779f32470ca4b3",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "dfca3e73da56e0bf193cc050789ab6ef489dfea6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/integration/plantuml.md": {
+      "blob": "aa3324de0697e976d063dcc2cc998c756fcbf7a1",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "688737d3677f24ea05740bc44ddd37fff52deac4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "762c9b00f13aca97b8b7f788713548e75feeca25",
+  "version": 2
+}

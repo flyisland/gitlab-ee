@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-29T17:44:14Z",
+  "entries": {
+    "doc/administration/cicd/job_logs.md": {
+      "blob": "9030b28b17d38a8cd2045a4876026dd4bc81ef1d",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "147b70daff50a2f9c94b85890a3410e815ace96f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/cicd/maintenance.md": {
+      "blob": "0d4c3857e6bedde28dfa1963bcfc6758590e4741",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "1c76e05d1e01cf9de510ad16fb1c12b4bbbd357f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/cicd/secure_files.md": {
+      "blob": "9744e9e8435fc1c7c68ad6adf735aa8956e63215",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "3603beff7e22738b65c8a8b4844e8bf6d3f4e691",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/compliance/compliance_features.md": {
+      "blob": "5c4a7959e9742c11e6094137c0382db890afce72",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "d03caceec5bf215fd2b8711eac4bf5df7dfe74c0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/consul.md": {
+      "blob": "30b1c0ab9b558465a0546305ee920cdd32bde477",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "33295c8c4748e62998c02f275cd800067065a544",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/credentials_inventory.md": {
+      "blob": "fc646a79c259e58dafa2382e392106a497a721b3",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "c2a26480018d1e6bce3ae874546d9b498fae6ec0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/custom_html_header_tags.md": {
+      "blob": "561112e2fd172fa7d0144849d44142e952c6653d",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "3724b6103ac40a51ee267ca41ed3df288d5655a4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/custom_project_templates.md": {
+      "blob": "f3c55b4039a2bcd315a03afb4edb99ef1e9d03a2",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "1e088f3667bbe8da83e8b57cf3e2ee98e66f33cd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/duo_add_on_seat_management_with_ldap.md": {
+      "blob": "3405b4e935f030aec8de98ec8365b1df3aae349f",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "4fdd1b093b3cbae75fdd9d2ae89b83a64135de56",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/encrypted_configuration.md": {
+      "blob": "8a00f84d336548a866cecd295756c349600c33bb",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "988bebb386df6923e3177780c1eaea44974ca6ab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "af5de233de598cd2fd74b9c744103795d906fd24",
+  "version": 2
+}

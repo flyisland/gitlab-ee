@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-10-01T06:35:11Z",
+  "entries": {
+    "doc/administration/postgresql/_index.md": {
+      "blob": "c9cf2145ab497f6bbe5b312f7374abdba7a94ac3",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "ef3f7234539923d0fe4939553b4ef81b0d901d37",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/postgresql/external.md": {
+      "blob": "e9b0f9bfc19d395691d51bda3e2393f8335ca552",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "8ecc8d94b324886988f30f1daeb932fbcb7589ed",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/postgresql/external_metrics.md": {
+      "blob": "0994faf0b953860c65f34457a390e414a0344138",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "b55e35fdd3255fd561c77b009d9f8201f87ca0e2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/postgresql/moving.md": {
+      "blob": "798f9433da6fb4146390f7a09eb3b2b7dbc43e29",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "fde4fde70fae86ae4914eae0c0e52c5363d2824a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/postgresql/pgbouncer.md": {
+      "blob": "25bc60abb9be9663c81a3d206653db5a571e67af",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "e059341ebb1f7629e39af72ca6981bc380301891",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/postgresql/replication_and_failover_troubleshooting.md": {
+      "blob": "71b1f5b88636dba54c4f0bc8df82c24e115820bf",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "26c8b39c9d33c1e7a8a5b2f8507ceaa23995049d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/postgresql/standalone.md": {
+      "blob": "d6244af102e9cc3f8db8374447bdd243d5eb2795",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "e30b373d7e9f999a2014892db34c1116f0e1d7c0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/postgresql/tune.md": {
+      "blob": "ca265d9de51618ced9763b4a247734ae82c28d42",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "c7dfa55da7fc11012abca745cc2694f09421777d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/postgresql/upgrading_os.md": {
+      "blob": "6cd3da7cee9a3637dbc871ab2c2157593c1ac37c",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "3c7bc9082aecea4d7bf180320bed1237dccabf62",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

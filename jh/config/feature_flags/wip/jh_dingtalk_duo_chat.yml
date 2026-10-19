@@ -1,0 +1,8 @@
+---
+name: jh_dingtalk_duo_chat
+description: Route non-command DingTalk robot messages to Duo Agent Platform
+feature_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/work_items/5330
+milestone: '19.5'
+group: group::integrations
+type: wip
+default_enabled: false

@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T15:01:23Z",
+  "entries": {
+    "doc/user/application_security/sast/glas_rules_docs/gitlab_advanced_sast_rules_php.md": {
+      "blob": "cc9d50bac854202bbbc5bda1d92862a2985defb6",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "02ae9144f0a9078c292e048adaf5d7e0bf59eced",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/sast/glas_rules_docs/gitlab_advanced_sast_rules_python.md": {
+      "blob": "37b87a714f6058ffc9f188388663d14f1a607414",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "b777f8648b9ac7cb4ccb9b4c8a4a8064d6932c8d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/sast/glas_rules_docs/gitlab_advanced_sast_rules_regex.md": {
+      "blob": "fe88975dd084fab8901197b0bb2a5a0e7dce41f4",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "a99803884def3df255506afa3e99de7c222f46a6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/sast/glas_rules_docs/gitlab_advanced_sast_rules_ruby.md": {
+      "blob": "ef018fce0f7accf80f2cdb72e03075189f8368d1",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "dbc0c02b51ca32eebe1b64a03c8fb69996500793",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/sast/rules.md": {
+      "blob": "0dae11f4907eabdcf81f47ccb49acc422e89e21c",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "046aba9b786f53557dceb14b0900c7e568797351",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/secret_detection/_index.md": {
+      "blob": "c60fdfc98d24d5ae13c4b620194c75563fd59380",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "84bee7d61913c88a60b3b41f872c7368e60e66d9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/secret_detection/client/_index.md": {
+      "blob": "3fb7ffc7cb12aa0dd4ea0575c98c3407c2793308",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "e80d94521d83908e3a6deef0f98f9c886909a6ac",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/secret_detection/exclusions.md": {
+      "blob": "62e9202d8f988f41dfcbe122c9a6662b19e8aa87",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "462b224adf6219ea87f8eec8f070bef24885ff80",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/secret_detection/pipeline/_index.md": {
+      "blob": "a1e50bdaa7d26c6b0dfb0d7f7e931a9b798e2445",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "bccfb64f61c5c2979ca208de4a6f6b6238477119",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/secret_detection/pipeline/configure.md": {
+      "blob": "e9214cd5b9a1110a7c503a28af138f418bdeb7e9",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "104c726c8dbe1562f6bf8acd561d4234785c1a19",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+  "version": 2
+}

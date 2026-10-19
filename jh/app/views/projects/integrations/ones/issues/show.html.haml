@@ -1,0 +1,6 @@
+- add_to_breadcrumbs(s_('JH|OnesIntegration|ONES issues'), project_integrations_ones_issues_path(@project))
+- if @issue_json.present?
+  - breadcrumb_title(ones_issue_breadcrumb_link(@issue_json))
+  - page_title(@issue_json[:title])
+
+.js-ones-issues-show-app{ data: ones_issues_show_data }

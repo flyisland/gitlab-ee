@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-12T01:36:53Z",
+  "entries": {
+    "doc/integration/bitbucket.md": {
+      "blob": "d30cee8bb2eab771aa43f4fea24a7a79641ca6b7",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "f265ffd2e6c9f394da17756d78770b49e725159f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/clickhouse.md": {
+      "blob": "f932515b6a2613d98df57f744b0ad22228dc6f95",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "682384a1cfaef98c73b7d7837fb15f9ea060dfdb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/datadog.md": {
+      "blob": "caa04e36ac253438810a220186b8dbbd952a7087",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "02a5fc91d5599f034523619926dd88cb9873a610",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/diffblue_cover.md": {
+      "blob": "0c649f7ec9f6826d8fe06214cf41b9a041ec7ced",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "38775ab9870f00f21ef5f84caafb0f5b260b9df7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/elasticsearch/troubleshooting/access.md": {
+      "blob": "b55e69ab70c8f37ad3c7d3cba49a0361896cc031",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "b97b8ce09d4fcee303a4bf369ed94d8b7b9e7fe9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/elasticsearch/troubleshooting/indexing.md": {
+      "blob": "d767d160acd4d765fc7d73a6e0b5a8292bd3a36c",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "294ff3e05df564a0c0b8e7a6e1e0e8df57591e9c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/connect-app.md": {
+      "blob": "502289b00b62036c1bc5fefd42b775ba25c9dca1",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "56c3f42ce9499a56a9f545bc560e620b1e7be936",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/development_panel.md": {
+      "blob": "37c13e245c96bf6703edb1f3c4eab40ecfc19b73",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "1eb26cfc6e4ada35cf231df138388f894a591e27",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/troubleshooting.md": {
+      "blob": "a682ac39238eecd18995fb6822a3241731531f80",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "7b7e22a24ac3e45addd8d73308c6374b190f8689",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/oauth2_generic.md": {
+      "blob": "6a78304a71c6a2ce26761cf732456ea9493ec9f6",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "04ddf6ddc4c9dfab7d970a444ad691821e5c84a8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+  "version": 2
+}

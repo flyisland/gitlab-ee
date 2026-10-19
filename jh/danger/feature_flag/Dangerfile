@@ -1,0 +1,93 @@
+# frozen_string_literal: true
+
+SEE_DOC = "参见功能标志文档(<!--https://docs.gitlab.cn/jh/development/feature_flags#feature-flag-definition-and-validation-->)。"
+FEATURE_FLAG_LABEL = "feature flag"
+
+SUGGEST_MR_COMMENT = <<~SUGGEST_COMMENT.freeze
+  ```suggestion
+  group: "%<group>s"
+  ```
+
+  #{SEE_DOC}
+SUGGEST_COMMENT
+
+def check_feature_flag_yaml(feature_flag)
+  mr_group_label = helper.group_label
+
+  if feature_flag.group.nil?
+    message_for_feature_flag_missing_group!(feature_flag: feature_flag, mr_group_label: mr_group_label)
+  else
+    message_for_feature_flag_with_group!(feature_flag: feature_flag, mr_group_label: mr_group_label)
+  end
+rescue Psych::Exception
+  # YAML could not be parsed, fail the build.
+  raise "#{helper.html_link(feature_flag.path)} 不是合法的 YAML！#{SEE_DOC}"
+rescue StandardError => e
+  warn "检查功能标志文件时出错。错误：#{e.class.name} - #{e.message}"
+end
+
+def message_for_feature_flag_missing_group!(feature_flag:, mr_group_label:)
+  if mr_group_label.nil?
+    warn "Consider setting `group` in #{helper.html_link(feature_flag.path)}. #{SEE_DOC}"
+  else
+    mr_line = feature_flag.raw.lines.find_index("group:\n")
+
+    if mr_line
+      markdown(format(SUGGEST_MR_COMMENT, group: mr_group_label), file: feature_flag.path, line: mr_line.succ)
+    else
+      warn %(Consider setting `group: "#{mr_group_label}"` in #{helper.html_link(feature_flag.path)}. #{SEE_DOC})
+    end
+  end
+end
+
+def message_for_global_rollout(feature_flag)
+  return unless feature_flag.default_enabled == true
+
+  message = <<~SUGGEST_COMMENT
+    您正在[使用功能标志发布功能]。
+    此流程仅在功能在[生产环境全局推出]**之后**执行。
+    请确保已在[推出议题](#{feature_flag.rollout_issue_url})中完成所有前置步骤，否则，更改 YAML 的定义内容可能不会生效。
+
+    [使用功能标志发布功能]: https://jihulab.com/gitlab-cn/gitlab/-/blob/main-jh/.gitlab/issue_templates/Feature%20Flag%20Roll%20Out.md#optional-release-the-feature-with-the-feature-flag
+    [生产环境全局推出]: https://jihulab.com/gitlab-cn/gitlab/-/blob/main-jh/.gitlab/issue_templates/Feature%20Flag%20Roll%20Out.md#global-rollout-on-production
+  SUGGEST_COMMENT
+
+  mr_line = feature_flag.raw.lines.find_index { |l| l.include?('default_enabled:') }
+  markdown(message, file: feature_flag.path, line: mr_line.succ)
+end
+
+def message_for_feature_flag_with_group!(feature_flag:, mr_group_label:)
+  return if feature_flag.group_match_mr_label?(mr_group_label)
+
+  unless mr_group_label.nil?
+    raise <<~MSG.strip
+      `group` is set to ~"#{feature_flag.group}" in #{helper.html_link(feature_flag.path)}, \
+      which does not match ~"#{mr_group_label}" set on the MR!
+    MSG
+  end
+
+  helper.labels_to_add << feature_flag.group
+end
+
+def feature_flag_file_added?
+  feature_flag.feature_flag_files(change_type: :added).any?
+end
+
+def feature_flag_file_added_or_removed?
+  feature_flag_file_added? || feature_flag.feature_flag_files(change_type: :deleted).any?
+end
+
+feature_flag.feature_flag_files(change_type: :added).each do |feature_flag|
+  check_feature_flag_yaml(feature_flag)
+end
+
+feature_flag.feature_flag_files(change_type: :modified).each do |feature_flag|
+  message_for_global_rollout(feature_flag)
+end
+
+if helper.security_mr? && feature_flag_file_added?
+  SECURITY_DOC = "<!-- https://gitlab.com/gitlab-org/release/docs/-" \
+    "/blob/master/general/security/utilities/feature_flags.md -->"
+  raise "不建议在安全相关的合并请求中使用功能标志。" \
+    "参见[关于安全的文档](#{SECURITY_DOC})。"
+end

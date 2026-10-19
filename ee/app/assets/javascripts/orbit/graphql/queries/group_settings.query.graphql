@@ -1,0 +1,19 @@
+# @feature_category: knowledge_graph
+query getOrbitGroupSettings($fullPath: ID!) {
+  group(fullPath: $fullPath) {
+    id
+    name
+    fullPath
+    knowledgeGraphEnabled
+    orbitAccess {
+      state
+      reason
+    }
+    orbit {
+      enabledAt
+      indexingStatus {
+        phase
+      }
+    }
+  }
+}

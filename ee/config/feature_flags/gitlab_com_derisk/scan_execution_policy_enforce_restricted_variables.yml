@@ -1,0 +1,10 @@
+---
+name: scan_execution_policy_enforce_restricted_variables
+description: Prevent group and project CI/CD variables from overriding preconfigured scan execution policy variables
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/627552
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254593
+rollout_issue_url:
+milestone: '19.5'
+group: group::policy management
+type: gitlab_com_derisk
+default_enabled: false

@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-09-19T09:48:00Z",
+  "entries": {
+    "doc/ci/yaml/_index.md": {
+      "blob": "97fb9375082221178baad227184e9c04e5596ca8",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "e47d7d99ddde01821add857c1ee73660f7acead4",
+        "lineage": "human",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/ci/yaml/artifacts_reports.md": {
+      "blob": "98c96018b56a862a08268b6cbb9060b6b967ad71",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "4567648ded60e539bd254567acda04031b58ac8b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jenkins.md": {
+      "blob": "1ae14933421a825713cc4b85448bb963e8aa0542",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "9b4fc4f5266d2a4ba03d7a8d1d3d5eac57c898a9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/configure.md": {
+      "blob": "46e297d4f724b33cb8ae5a5752145b9b3ee4c06f",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "db24e705c3c5e176e9492571333e619e2b1c593e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/troubleshooting.md": {
+      "blob": "b4b562ac7b240e772fb17ea6741ce16765042323",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "27c6cb90c933fda22d47f44faec22d774aedd30f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/16/gitlab-16-0-released.md": {
+      "blob": "e08fa612cda1998d34071186c8c26d394cb5d6ce",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "56a224bbae0f918a265ec1df9fd742d3abcec287",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/16/gitlab-16-2-released.md": {
+      "blob": "658249fd941064c3e55a22fda20a712e16d5e01c",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "64407869fcb481d72ac4673596d50459f8cc4660",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-0-released.md": {
+      "blob": "b2e86896ca803099f662a38b57945d4d628fad9c",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "b552984138ea3042fb46397272d226792f6ecdf7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/git/lfs/_index.md": {
+      "blob": "d56ad726d80033002ac2502ce3be9d1d92592b41",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "b2b845841eb44b08b12076e7b483928d27427320",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/git/troubleshooting_git.md": {
+      "blob": "6a7c594e753e0c816f50100c29d458a549a47617",
+      "commit": "9fed8811df632e04c790ee345334a52f9f38345d",
+      "target": {
+        "blob": "7191dcd57c8e899a599f1ae281996dab58a69405",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9fed8811df632e04c790ee345334a52f9f38345d",
+  "version": 2
+}

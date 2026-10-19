@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-22T00:34:14Z",
+  "entries": {
+    "doc/administration/_index.md": {
+      "blob": "a4bc19b661c36f798bc6bcaed738e922323dbb0c",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "962e1d601e691abb7a387679b726db4df5e80a80",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/auth/oidc.md": {
+      "blob": "9c411fa58bd63522f5bc2b4e5da8ea8f3a315e21",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "4510ae221aba80e4d463df7aaae876ca0c8f5a30",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/backup_restore/migrate_to_new_server.md": {
+      "blob": "3d72220b79fe1d7bb5cb764cc860f081ed9f8168",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "867651feb66d056da25196b91dfebee63af6c91e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/_index.md": {
+      "blob": "efaee1d65f189462babb1f58961b58602cebab51",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "17d25b8673f34790eba623c13dfcb70761a72890",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/troubleshooting.md": {
+      "blob": "cb8b5d9c73c4eee9b34b8400f5cb0dba1d76cdfe",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "81c43daac0a0578856f933b8b6eda27aabd8bcfc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/license.md": {
+      "blob": "9bea6bafcf6d0adcfd72c1bfc6b7ba2c0e1c1053",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "bf5adaa79de2e737eec6d1f91d82021d506a3e17",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/_index.md": {
+      "blob": "1601b4b50262fa3f448920fd6d3c6c703f0cdbf3",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "5ea72c788bb0ec9a0b406c0ea21a47283a72b57e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/rails_console.md": {
+      "blob": "682bdff313c646c9d8ee77fd1dd983370892561c",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "b7ee5810d5b6f24e1993bbd9a0ff7edbcd810bc5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/postgresql/replication_and_failover.md": {
+      "blob": "804b0d023c47afa3bdb4e34bddb3355b978b084d",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "bba3f7cf73900b88d82f49fad2942358eb71c00c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/_index.md": {
+      "blob": "758ed62d9321843f74e5ca375c95aa844b6ba165",
+      "commit": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+      "target": {
+        "blob": "76914464654e65d973c01f9048e92bcbe171cd90",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "da1d2de3f031f486dce603ce779696df1ad0f0a1",
+  "version": 2
+}

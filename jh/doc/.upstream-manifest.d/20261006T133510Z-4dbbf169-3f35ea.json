@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-10-06T13:35:10Z",
+  "entries": {
+    "doc/api/notification_settings.md": {
+      "blob": "12b90c57a006b2bc6ef40fe8007d89e76fe8e906",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "9e8646b345229789d4fddb5974a639b70609572b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/personal_access_tokens.md": {
+      "blob": "376b98770f7c8244f366907c41402668e61497e6",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "886efebf4f2db59f0c5da5e7364897b43053cc88",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/pipelines.md": {
+      "blob": "ddb8fdc97e8e17e42d009066a083f2e86103128e",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "a7edb170dcb2633e5ea1c2f28943c9bd6c30c476",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/plan_limits.md": {
+      "blob": "49cf1017129ffa11883719068ff36bc378c5161c",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "8d9f0b06bf18640bb2150cd851befce3478304bb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/policy_store.md": {
+      "blob": "7c55044bb938a8c6e22d35546767afe5afcc749d",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "29e0e74a79bc4562c59adbed347a07c5280d6481",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/project_access_tokens.md": {
+      "blob": "a1937d4662e5f1a27bf9cb2c66670880dccd9137",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "a07222cb6a90b00cd52587352ba68bf0c952944b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/project_pull_mirroring.md": {
+      "blob": "a5702c295151101738be28741a04a1edfa053a68",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "57737f15f87ac27bc9e1c0d5d98d2d4cd855d2bf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/project_webhooks.md": {
+      "blob": "faec58cc22fd5128eb48aea0fb0e935315f27771",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "5d986167cea834a530c5c8ca3f8958b4d40afdf8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+  "version": 2
+}

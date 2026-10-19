@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-09-17T09:11:01Z",
+  "entries": {
+    "doc/integration/omniauth.md": {
+      "blob": "77959155fbe4d86889f4574a6d8d14a71f0e1ab1",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "a219feda1e7f09bcddaf1c6b4b8186053f7e66a1",
+        "lineage": "human",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "eccfc98865a53ada33b02d170878faf6575fcb7a",
+  "version": 2
+}

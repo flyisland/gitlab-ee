@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-18T05:28:16Z",
+  "entries": {
+    "doc/topics/git/basics.md": {
+      "blob": "fefa25641a9cc5f6df605b1d9daae91ba714587f",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "260ab72d8a9e5b70f8a6c007ce75b5dcd04184c0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/git/cherry_pick.md": {
+      "blob": "b0436d70c52c4d17f2ee773fe3bb7afe0ed306c6",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "306763503345b484b109d88892b2f963225460b2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/git/commands.md": {
+      "blob": "4e762136bd5807ee44955fbbcc6f1bef1fe5b163",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "9087c039955b4b80a104eee6a2d619eb97570bd7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/git/get_started.md": {
+      "blob": "50aed7f72649b98cc6efcffcd8d0d48888722a2c",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "aacc474eebcb0bab9d38004bea912f2a6bb6cd27",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/update_git_remote_url/_index.md": {
+      "blob": "71a52a76ace6b0d1e22e634fd9056e2807963577",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "016684d1853c9969168b2a3b6c27f5af8aad9346",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/set_up_dast_tutorial.md": {
+      "blob": "a36cd1c672bb98d3a77816fff5aa56937edc6bd5",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "fc706a02907125b6361bf2cef6e32721474f2511",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/_index.md": {
+      "blob": "ab5ba6608bee85b7752247ca7d2a0dd67420c45d",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "87de90cc7d57d3cb58453832eb949a070fb0e935",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/_index.md": {
+      "blob": "f8d2427a845734fe1ad611f1f9b686d3da7f71a1",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "e9099da6d50e5107e06d7c6c9f66c0ac338436ba",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/custom.md": {
+      "blob": "a3848be558eecdc004d7dd196cff053a7f1d276f",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "ad462953bbfaa5ef9411396d52365508cfb9768a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/software_development.md": {
+      "blob": "d65d131abb908006b3b163d7e7bda9fa4486387e",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "c451b4b8cb2c5028e505734fa2fa077cf0c43688",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+  "version": 2
+}

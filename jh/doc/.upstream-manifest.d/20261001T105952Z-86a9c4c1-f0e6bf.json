@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-10-01T10:59:52Z",
+  "entries": {
+    "doc/administration/reply_by_email.md": {
+      "blob": "4cbbcbe4fa904752ae758c46be753e5ff36295ca",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "af804a6b0583b65b06b17555c10ff6afe9d41898",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reply_by_email_postfix_setup.md": {
+      "blob": "99ddca45f48765bba1df795695480bff9ff50ef5",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "67db611da4497e21c44006212ad14e07a22b9fa7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reporting/ip_addr_restrictions.md": {
+      "blob": "35d8222f6fe294677841d52c9db965c18282de50",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "56ba96eac77864a6f3d1c0aff17162f30f26030b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/repository_checks.md": {
+      "blob": "bd4e8ee56cb1d814e521881e854f28391bbd9da7",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "bb056e9425a2fefe5bfc347d84b30bcc57878c68",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/restart_gitlab.md": {
+      "blob": "2b0c8c0d0c5c3a0d03f06fdb2762637a4dc8a4be",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "734bc30f2e564e58c3101467d417666b7005acb8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/review_abuse_reports.md": {
+      "blob": "023692eb52d718fee6af86bbde2a4363d024a84b",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "d0c575a505de2645d5f706a286b9849b56c9bd7c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/review_spam_logs.md": {
+      "blob": "536b6a041953083ca544a4319bbd4b5bf06378b8",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "82f7fe2222ea4d75211d528bfeca12838ec214d4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/secrets_manager/_index.md": {
+      "blob": "1dd7accbb59039d82fbbdfd0dff9d8098cf77a20",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "4609e6dc1f65ab25ef959204df2f985b33137c82",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/secrets_manager/recovery_key.md": {
+      "blob": "6853e3208d827d664d83a0d49ca573eacad557fe",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "d91705a1404a8072227355fa8b4756cddca68f25",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

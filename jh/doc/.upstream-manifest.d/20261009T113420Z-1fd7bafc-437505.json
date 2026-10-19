@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T11:34:20Z",
+  "entries": {
+    "doc/administration/semantic_code_search.md": {
+      "blob": "e2cb8eac04dca9c6bc66a5a95cd189a3e6ca5ee2",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "84af3134b4342a844c7ce24a25c2c676a2b8d855",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/code-dropdown-custom-clients.md": {
+      "blob": "15707090e0c1ce7a7e6dc343c24afc0965246d57",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "91e949247bd50bf20db8b6731e7d8b84abf32fa9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/continuous_integration.md": {
+      "blob": "9d3e6fb065bde1827f12d8daed9cdf3b3e6c0c1f",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "767d5e35c153b3b83fef302f4c9c15213509b42f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/event_data.md": {
+      "blob": "ef7f9428e3feb22ea5ea105e151bece8a38a33cc",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "919ebbb2434552ce5174544a771b592c86c8ce49",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/scim_setup.md": {
+      "blob": "4f1c73cc05dd2cfce08cc8031ee585048c2813ab",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "98ffa64d82c92872a2ae0b477da5b85074b69dbe",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/sidekiq.md": {
+      "blob": "29257798574ba81a5808c3a57b3c82afebfc02d9",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "8939ed6edc91d1a06a338aa0b14368d97d8ca80e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/user_and_ip_rate_limits.md": {
+      "blob": "7982e41610f1d53a1c394e6ed8463271ded8acbe",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "9aac58cc02bfa594bf398b50b9cf77f979caf446",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/visibility_and_access_controls.md": {
+      "blob": "af06001c3a51e3d28f727a754bd6436e50c5cf38",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "b55a591d976a19eb7ed42b7261573622483159a6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/_index.md": {
+      "blob": "306470592618c9c5c9a2014ef8ee067fa9bb9cfc",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "64df0e4352ff1be1078edfcd8d952879fefc43ea",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/extra_sidekiq_processes.md": {
+      "blob": "3a1efba8d387ad0cc520f81b5143b0fd41da01f6",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "875af3b36f6cde9351b193ec1afaa9645bed916f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+  "version": 2
+}

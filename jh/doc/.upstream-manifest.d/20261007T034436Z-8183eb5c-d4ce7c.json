@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-07T03:44:36Z",
+  "entries": {
+    "doc/user/clusters/agent/ci_cd_workflow.md": {
+      "blob": "18681efb83b33f09c09c124f691b5766b4fd1519",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4d8603505780557f6234a9c1f03fe73921758831",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/agent/enterprise_considerations.md": {
+      "blob": "592c4f08a1c23ef767f9271cde3db7f69f108f91",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4cd230f429fa5bd4445a0c5fddd1e6a7109c4877",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/agent/getting_started.md": {
+      "blob": "48eb5790546386f0e6f5e9d6aa8e45d16610ff16",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "799e1e5793cd5ade8c1699c63e3579add04006a6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/agent/getting_started_deployments.md": {
+      "blob": "e40c23cb381688c4c22ba6513f8c8246c717fa72",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "448ebb8b3785efec2c58db4111db30af618748ab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/agent/gitops.md": {
+      "blob": "082c1d45fd751ea0a55b3533f5f17c64967bc523",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "218022e46fe90b3155ee07fb7fed2be5624091dc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/agent/gitops/migrate_to_flux.md": {
+      "blob": "eb5ad10db3ec96a0ea5d0170fa80c8ea0ce0292b",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "d1c27d32ce352340966566e653411a1e00f6a4ef",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/agent/managed_kubernetes_resources.md": {
+      "blob": "681c526adb63dfc07112313422d6feb9e45be9e9",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "b1cd97a8b337d40b382c7b67573cb6a1493eae64",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/agent/troubleshooting.md": {
+      "blob": "266a8d1e0f4af3660e70f9777adf88c423af0c52",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "cea9e01e0d48bd0b7ed76fd5158b6d3dd4c8e2ee",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/agent/user_access.md": {
+      "blob": "f5974a41c07fab9c6058ba002727ec1807f4cc28",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4f78ac7641dccaf55e13e9b7ec28603440d89715",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/agent/vulnerabilities.md": {
+      "blob": "30973405304b71ddd02c1eff17053a7ea54731af",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "47e4913c6b666b9a5bfb8bcb623ae2f101ad4d67",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

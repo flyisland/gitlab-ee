@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-01T06:38:52Z",
+  "entries": {
+    "doc/administration/raketasks/check.md": {
+      "blob": "be934b6106aa5f3d7497005e6f674e3583eeb19d",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "91ba84bff68440c9e4a4531e69dab26f4dc55c8d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/import_export_rake_tasks_troubleshooting.md": {
+      "blob": "59aee14fad8950c459244d41a387bc472f076598",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "e91a432f395ff3dc482e49fdf16a9649007595dd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/incoming_email.md": {
+      "blob": "ff6dac58c55dc2860f278e03b11f0aab93485b59",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "6801649d9dca8d5e4ee42724f728f4fbc1871a83",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/keep_around.md": {
+      "blob": "5dd3d94bff5da5162eb4189b33a0190d49bc1310",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "0fb728c04727c293b8be46e69dbd4ae584734923",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/ldap.md": {
+      "blob": "c21793f3eee38e22d547b0625aa21efef9ac4511",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "92ca9588062a5a81353a3b314b39dc9dba77544e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/password.md": {
+      "blob": "b6f6bfb5050a266b3d93b18b463358e9e47510c1",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "5e86016d76a4a13b3ab6bef4d590c1630734e849",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/praefect.md": {
+      "blob": "d593a14428e7742b7c931cb4f58e8b05370f8deb",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "0c32106c8beff2f3e10bbcb4170cbe87b4ce3275",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/project_import_export.md": {
+      "blob": "bdd1e0fcf2fcabcf7d5ddb184a3ca57a37d60d68",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "bdebe0e924b375281229107b7bfdf59a524e5522",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/service_desk_email.md": {
+      "blob": "d77837fb4f4787689bbbda12034910f5126e0689",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "33952ae99b4b50dd12a6d2a113214fed09d86e22",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/smtp.md": {
+      "blob": "5e876b8bed0ac468d0417c925e5d3cbb1e9d7f77",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "51872b13ad4f1c5e5fa5ba0a73ca4120d35b85b2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

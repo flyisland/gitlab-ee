@@ -1,0 +1,53 @@
+##
+# Notice:
+# 1. Always fix the test on upstream first, and then consider skipping tests
+# 2. We should include your MR or Issue url in comment, try to tell others where and why
+# 3. The file is grouped by `file_path`, check if a new `file_path` group already exists before adding it
+# 4. Please add new `file_path` group at the bottom
+# *. See details in: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/431
+#
+
+- file_path: 'qa/specs/features/browser_ui/3_create/merge_request/merge_merge_request_from_fork_spec.rb'
+  description:
+    - 'Create Merge request creation from fork can merge source branch from fork into upstream repository'
+  skip_reason: 'Admin token required to create user but not supported in JH prod env'
+- file_path: 'qa/specs/features/browser_ui/5_package/package_registry/rubygems_registry_spec.rb'
+  skip_reason: 'Admin account required to update application settings but not supported in JH production'
+- file_path: 'qa/specs/features/ee/browser_ui/3_create/web_ide/code_suggestions_in_web_ide_spec.rb'
+  skip_reason: 'skip code suggestions spec due to related function is not ready in JH'
+- file_path: 'qa/specs/features/ee/api/3_create/code_suggestions_spec.rb'
+  skip_reason: 'skip code suggestions spec due to related function is not ready in JH'
+- file_path: 'qa/specs/features/ee/browser_ui/13_secure/secret_push_protection_spec.rb'
+  description:
+    - 'Secure Secret Push Protection blocks commit when enabled when token is detected'
+  skip_reason: 'Secret Push Protection is not supported in JH yet'
+- file_path: 'qa/specs/features/ee/api/6_deploy/kubernetes/kubernetes_agent_spec.rb'
+  description:
+    - 'Deploy Kubernetes Agent deploys a K8s manifest file'
+  skip_reason: 'skip google k8s test in JH'
+- file_path: 'qa/specs/features/ee/browser_ui/18_security_risk_management/explain_this_vulnerability_spec.rb'
+  description:
+    - 'Security Risk Management Vulnerability Report can explain a vulnerability using Duo'
+  skip_reason: 'Explaining vulnerabilities with Duo is not supported in JH yet'
+- file_path: 'qa/specs/features/ee/browser_ui/3_create/merge_request/generate_commit_message_spec.rb'
+  description:
+    - 'Create Generate merge commit message as a maintainer can be generated using Duo'
+  skip_reason: 'Generating merge commit messages with Duo is not supported in JH yet'
+- file_path: 'qa/specs/features/browser_ui/5_package/package_registry/maven/maven_group_level_spec.rb'
+  skip_reason: 'Admin account required to update application settings but not supported in JH production'
+- file_path: 'qa/specs/features/browser_ui/5_package/package_registry/helm_registry_spec.rb'
+  skip_reason: 'Admin account required to update application settings but not supported in JH production'
+- file_path: 'qa/specs/features/browser_ui/6_deploy/auto_devops/create_project_with_auto_devops_spec.rb'
+  description:
+    - 'Deploy Auto DevOps with a Kubernetes Agent runs auto devops'
+  skip_reason: 'skip gcloud k8s test in JH'
+- file_path: 'qa/specs/features/browser_ui/5_package/package_registry/nuget/nuget_group_level_spec.rb'
+  skip_reason: 'NuGet package registry tests require admin account to fabricate personal access tokens in JH'
+- file_path: 'qa/specs/features/browser_ui/5_package/package_registry/nuget/nuget_project_level_spec.rb'
+  skip_reason: 'NuGet package registry tests require admin account to fabricate personal access tokens in JH'
+- file_path: 'qa/specs/features/browser_ui/3_create/snippet/clone_push_pull_project_snippet_spec.rb'
+  skip_reason: 'The relevant assertions are not compatible with JH'
+- file_path: 'qa/specs/features/browser_ui/3_create/snippet/clone_push_pull_personal_snippet_spec.rb'
+  skip_reason: 'The relevant assertions are not compatible with JH'
+- file_path: 'qa/specs/features/browser_ui/4_verify/ci_job_artifacts/unlocking_job_artifacts_across_pipelines_spec.rb'
+  skip_reason: 'Skip job artifacts test due to a bug in the functionality, see https://jihulab.com/gitlab-cn/gitlab/-/work_items/5304'

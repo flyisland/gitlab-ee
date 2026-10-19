@@ -1,0 +1,6 @@
+@import '../../../../../app/assets/stylesheets/page_bundles/terminal';
+
+#terminal > div {
+  // 32px(notice) + 36px(code section) + 48px(breadcrumb) + 48 header + 100px padding bottom
+  height: calc(100vh - 264px);
+}

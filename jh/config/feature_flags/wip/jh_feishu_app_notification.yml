@@ -1,0 +1,8 @@
+---
+name: jh_feishu_app_notification
+feature_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/work_items/5317
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3841
+milestone: '19.4'
+group: group::integrations
+type: wip
+default_enabled: false

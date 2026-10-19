@@ -1,0 +1,52 @@
+{
+  "created_at": "2026-09-17T08:15:51Z",
+  "entries": {
+    "doc/user/application_security/vulnerabilities/_index.md": {
+      "blob": "8c0a15e61c4d71f1806e726dd6f225df48a890f4",
+      "commit": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+      "target": {
+        "blob": "c4c4f6c47a4a1fee3bc8cfbab280635afcc63a18",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/vulnerability_report/_index.md": {
+      "blob": "db9427fa1ecedab6855ae388e3e4e94a42fa4606",
+      "commit": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+      "target": {
+        "blob": "3446e03d97680a41bfa7d032e8d90b1d9855516e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/compliance/compliance_frameworks/_index.md": {
+      "blob": "3a9ef75eeedeff8743f20a50738e4475587e56a1",
+      "commit": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+      "target": {
+        "blob": "a8d468266191794e6e7e36df7c1006fd2006ea40",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/compliance/compliance_frameworks/compliance_standards.md": {
+      "blob": "4eff6566f744f9c42f51a366c5f8dbe91f266c32",
+      "commit": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+      "target": {
+        "blob": "439c98de25f544568434f798d1eb6b3e7bb70c91",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/use_cases.md": {
+      "blob": "7a4afbac3ed5f91b9d16507c797f985dc6208aa0",
+      "commit": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+      "target": {
+        "blob": "c475df28b25219dbbe8ede680170a3f1f2a5745b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+  "version": 2
+}

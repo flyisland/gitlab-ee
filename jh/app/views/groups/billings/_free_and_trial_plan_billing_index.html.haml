@@ -1,0 +1,19 @@
+- billing_render_label = namespace.trial_active? ? 'trial' : 'free'
+.gl-max-w-6xl.gl-mx-auto{ data: { track_action: 'render', track_label: billing_render_label, testid: 'free-trial-plan-billing-content' } }
+  #js-targeted-message-banner{ "data-provide": { namespaceFullPath: namespace.full_path }.to_json }
+  #js-free-trial-plan-billing-with-dap-monthly-commit{ "data-provide": free_trial_plan_billing_attributes(namespace, plans_data, monthly_commitment_purchased: @monthly_commitment_purchased).to_json }
+
+.gl-mt-8.gl-text-center
+  .gl-text-size-h1.gl-font-bold.gl-leading-24.gl-mb-4
+    = s_("BillingPlans|Have a question? We're here to help.")
+  .gl-inline-flex.gl-mb-4
+    = link_to s_('BillingPlans|Talk to an expert'), 'https://gitlab.cn/', target: '_blank'
+  .gl-mt-12
+    = image_tag("marketing/1@2x.png", alt: '禅道', title: '禅道', class: "gl-mr-6", height: 40)
+    = image_tag("marketing/2@2x.png", alt: '中智行', title: '中智行', class: "gl-mr-6", height: 40)
+    = image_tag("marketing/3@2x.png", alt: '云骥', title: '云骥', class: "gl-mr-6", height: 40)
+    = image_tag("marketing/4@2x.png", alt: '普华永道', title: '普华永道', class: "gl-mr-6", height: 40)
+    = image_tag("marketing/5@2x.png", alt: '广发证券', title: '广发证券', class: "gl-mr-6", height: 40)
+    = image_tag("marketing/6@2x.png", alt: 'New Development Bank', title: 'New Development Bank', class: "gl-mr-6", height: 40)
+    = image_tag("marketing/7@2x.png", alt: '齐碳科技', title: '齐碳科技', class: "gl-mr-6", height: 40)
+    = image_tag("marketing/8@2x.png", alt: '途游游戏', title: '途游游戏', class: "gl-mr-6", height: 40)

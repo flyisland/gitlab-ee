@@ -1,0 +1,11 @@
+---
+name: recommend_reviewers_compact_data
+description: Use version 3.1.0-dev of the recommend reviewers flow, which sends the reviewer
+  data to the model in a compact format to use fewer tokens
+feature_issue_url:
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258989
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/631681
+milestone: '19.5'
+group: group::code review
+type: gitlab_com_derisk
+default_enabled: false

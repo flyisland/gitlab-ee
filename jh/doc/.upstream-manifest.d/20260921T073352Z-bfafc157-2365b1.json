@@ -1,0 +1,70 @@
+{
+  "created_at": "2026-09-21T07:33:52Z",
+  "entries": {
+    "doc/user/group/epics/_index.md": {
+      "blob": "6c2e0352a4dfd5549f696160191db58be5cc78db",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "33023e4064d2c5f3a7a2aab06e5a0c6321279a1c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/import/_index.md": {
+      "blob": "624f122f1294ce7d34424599a82f7ee4d5136a12",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "13e69f3a9665e7157f2a3940553cde61a17e3118",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/import/direct_transfer_migrations.md": {
+      "blob": "2dc03a9a7835ddcf8f81cf83ecf65a3fcff301fe",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "87b2a96de1ace0c8f7b88892cc2538c382fd071e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/iterations/_index.md": {
+      "blob": "82ffa731def85d4983da289659d7ea3797d6b966",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "788ca729ae5ac54b4e8947613bffba8f14a47667",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/saml_sso/troubleshooting.md": {
+      "blob": "4ed50f2989010c8b322e86c5fc8feb17200adad6",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "4bb873ab0505c973942615e1a115e7245828ffdf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/subgroups/_index.md": {
+      "blob": "06e88845d52d818a8dc4737498419ef760326ccb",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "52a1ee0830157adb3d8751886efc8aca8e97ace5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/gitea.md": {
+      "blob": "9b6c591ba7b458f8d3bf42f3f6ba8ef310c397f1",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "b4f34718f35a508c9b4fcb9d25cffb850bfed53e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+  "version": 2
+}

@@ -1,0 +1,28 @@
+#import "~/graphql_shared/fragments/user.fragment.graphql"
+
+fragment MrAiOverviewReviewers on MergeRequest {
+  id
+  reviewers {
+    nodes {
+      ...User
+      mergeRequestInteraction {
+        approved
+        reviewState
+      }
+    }
+  }
+  aiSuggestedReviewers {
+    nodes {
+      id
+      reason
+      user {
+        ...User
+      }
+      approvalRule {
+        id
+        name
+        type
+      }
+    }
+  }
+}

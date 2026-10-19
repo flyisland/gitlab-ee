@@ -1,0 +1,9 @@
+vendor omniauth-cas3:
+  variables:
+    BUNDLE_GEMFILE: "Gemfile"
+  extends:
+    - .vendor:rules:omniauth-cas3
+  needs: []
+  trigger:
+    include: jh/vendor/gems/omniauth-cas3/.gitlab-ci.yml
+    strategy: depend

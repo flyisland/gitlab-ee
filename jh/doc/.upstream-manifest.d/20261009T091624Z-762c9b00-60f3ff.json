@@ -1,0 +1,89 @@
+{
+  "created_at": "2026-10-09T09:16:24Z",
+  "entries": {
+    "doc/administration/load_balancer.md": {
+      "blob": "a8103affc2c5269988bb92a68ff42c77b8987946",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "6fe98c392071f923a5c2e50ffb6b947f5386a590",
+        "lineage": "generated",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/administration/logs/_index.md": {
+      "blob": "a6606914fcb58e36fe52ccd1ce2d1fb56dbb3ff3",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "b70965db05aa71adb1ea41c0e6909234b84e3708",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/moderate_users.md": {
+      "blob": "d2c62ee82bd9e8e5147993cbe0899f5d57285657",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "0626e537cb4ff371b96b072f9eec90bbd93e8278",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/performance/_index.md": {
+      "blob": "bd010bd7e2854446d40f70e90eae5e1557283348",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "f721015fae32af9072939a527e1a79b220042572",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/gitlab_metrics.md": {
+      "blob": "0c7648788ea890bf7d9b640f1f88984de558b7bd",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "3040bf86f4ab293dc6a8e90bede77f1610a0c750",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/object_storage.md": {
+      "blob": "3624542f4de0467b54a5641a07a844c24a43cbcb",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "92246200500df7d643c621b68a2c47be42d78bdc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/moving_repositories.md": {
+      "blob": "61606afdf21da0b6563be0853d1bef1e128732ca",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "d627feb83ed4b6bca8e35f0294d289e17f81a1c9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/package_information/defaults.md": {
+      "blob": "b6418f531da374158b178f5276fddc0e7c1eedd8",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "306800809cc73de17aa4586008637a8e1e470e22",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/packages/container_registry.md": {
+      "blob": "8a7e9f6dd18d49612be59abbc7438be0cf182e80",
+      "commit": "762c9b00f13aca97b8b7f788713548e75feeca25",
+      "target": {
+        "blob": "4ded0e0ebaa050bb0425f343f6f0f2f513f5ea9f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "762c9b00f13aca97b8b7f788713548e75feeca25",
+  "version": 2
+}

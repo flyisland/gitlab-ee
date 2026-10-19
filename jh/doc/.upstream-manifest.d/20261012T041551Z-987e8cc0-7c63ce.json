@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-12T04:15:51Z",
+  "entries": {
+    "doc/tutorials/idea_management/_index.md": {
+      "blob": "bc2d918bdc53d4257534fa18b5b62dc363458e30",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "d5882d7a4692a86f8aa7223fcae7eef9dac38b7d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/infrastructure.md": {
+      "blob": "204ae234f42e5110576d7661cc862dfdb20fa06c",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "7c060c3cd3ceef2c86a9b7e95ccacf2909752f61",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/issue_triage/_index.md": {
+      "blob": "6a290a5ce2a3ebceff567bd8105ab6545350a80a",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "82f3933d1b4697ac96fad34edde7d66894426f02",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/issue_triage_complex_group/_index.md": {
+      "blob": "a0488a19cb49eefa2558a929a053872c88b1c0c6",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "a0ad288ed57538d157bee62bd10e859c6631071a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/issue_triage_group/_index.md": {
+      "blob": "98a0697f6763dc5c8f207385a4c7805a721720c7",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "eabd30c41eaa1e3be65bbd8a54ad08c1c531580a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/kanban/_index.md": {
+      "blob": "fbd08ddea30bdb5bd45c913c68216acc2b92d58b",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "6ea73e2e4cbbca6f95e99da94f36b1e978448df9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/learn_git.md": {
+      "blob": "02e09b9e7d2041d55c2e6fb22256807474eb0fa3",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "9aab8e01896e074db61a24319d8544745000bd1f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/make_first_git_commit/_index.md": {
+      "blob": "3bc5cc2a2b1630e96689c82351880391e46243ca",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "0d557f677abce842fc72d28903f776eea13f3c7f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/manage_user/_index.md": {
+      "blob": "09d71fc7201130fd9cc2b1b55768ea673936ae35",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "d1af6953756f8102294dbe81baec55f61235e7f9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/merge_requests/homepage.md": {
+      "blob": "f2e99e07da10260fe0575a15eae3c056aa76804d",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "3e4b8b523d199a24303fe88679b055c9925cfd3b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+  "version": 2
+}

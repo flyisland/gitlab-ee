@@ -1,0 +1,8 @@
+---
+name: jh_redirect_trial_temp_email_to_profile
+introduced_by_url: https://jihulab.com/gitlab-cn/internal/customers-jihulab-com/-/work_items/751
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3770
+milestone: '19.3'
+type: development
+group: group::acquisition
+default_enabled: true

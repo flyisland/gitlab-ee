@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-09-20T13:08:50Z",
+  "entries": {
+    "doc/install/package/_index.md": {
+      "blob": "b7bafd89dea08c419427390f517cb87c3e722c2a",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "4b5aa5b6bf56f7ac2f89fb914d397b0f688e3c95",
+        "lineage": "human",
+        "state": "present"
+      }
+    },
+    "doc/install/self_compiled/_index.md": {
+      "blob": "f05403a5ac268b2e26c550f31c73e80bd2ea9d70",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "c8aff78f87a019779b16ec83c2e2cf9b68fc92e5",
+        "lineage": "human",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+  "version": 2
+}

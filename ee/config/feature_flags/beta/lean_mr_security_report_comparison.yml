@@ -1,0 +1,10 @@
+---
+name: lean_mr_security_report_comparison
+description: Loads only the comparison columns of security findings for the merge request security report comparison and reloads the added and fixed findings afterwards, instead of loading every finding with all associations.
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/628409
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256395
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/630617
+milestone: '19.5'
+group: group::vulnerability management
+type: beta
+default_enabled: true

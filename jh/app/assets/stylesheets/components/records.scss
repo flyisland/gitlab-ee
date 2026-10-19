@@ -1,0 +1,227 @@
+@import 'framework/variables';
+
+$records-footer-height: 47px;
+
+.jh-records-footer {
+  display: none;
+}
+
+@media (min-width: $breakpoint-lg) {
+  .with-performance-bar.jh-page-wrapper.has-global-footer {
+    .content-wrapper {
+      min-height: calc(100vh - var(--header-height) - #{$performance-bar-height} - var(--gl-spacing-scale-3));
+    }
+  }
+}
+
+.jh-page-wrapper.has-global-footer {
+  .content-wrapper {
+
+    @media (min-width: $breakpoint-lg) {
+      min-height: calc(100vh - var(--header-height));
+      position: relative;
+
+      .panel-content {
+        padding-bottom: calc($records-footer-height + var(--gl-spacing-scale-3));
+      }
+
+      .jh-records-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding-left: 16px;
+        padding-right: 16px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        transition: padding $gl-transition-duration-medium;
+        background-color: $gray-10;
+        color: $gray-500;
+        height: $records-footer-height;
+        line-height: $records-footer-height;
+        font-size: 10px;
+        box-sizing: border-box;
+        z-index: 200;
+
+        a,
+        a:visited {
+          color: $gray-500;
+        }
+
+        .promotion-links {
+          white-space: nowrap;
+          font-size: 10px;
+          flex-shrink: 0;
+        }
+
+        .record-links {
+          display: inline-flex;
+          align-items: center;
+          flex-wrap: nowrap;
+          gap: 0;
+          flex-shrink: 0;
+
+          .record-item {
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            font-size: 10px;
+            flex-shrink: 0;
+
+            img,
+            a {
+              vertical-align: middle;
+            }
+
+            img {
+              margin-right: 3px;
+              width: 10px;
+              height: 10px;
+              flex-shrink: 0;
+            }
+
+            a {
+              font-size: 10px;
+            }
+          }
+
+          .divider {
+            width: 1px;
+            background-color: $gray-500;
+            margin: 0 4px;
+            height: 10px;
+            border-top: none;
+            flex-shrink: 0;
+          }
+        }
+
+        // Smaller screens (lg to xl) - 10px font
+        @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl - 1) {
+          font-size: 10px;
+          padding-left: 12px;
+          padding-right: 12px;
+
+          .promotion-links {
+            font-size: 10px;
+          }
+
+          .record-links {
+            .record-item {
+              font-size: 10px;
+
+              img {
+                width: 10px;
+                height: 10px;
+                margin-right: 2px;
+              }
+
+              a {
+                font-size: 10px;
+              }
+            }
+
+            .divider {
+              margin: 0 4px;
+              height: 9px;
+            }
+          }
+        }
+
+        // Normal screens (xl and above) - 14px font
+        @media (min-width: $breakpoint-xl) {
+          font-size: 12px;
+
+          .promotion-links {
+            font-size: 12px;
+          }
+
+          .record-links {
+            .record-item {
+              font-size: 12px;
+
+              img {
+                width: 11px;
+                height: 11px;
+                margin-right: 3px;
+              }
+
+              a {
+                font-size: 12px;
+              }
+            }
+
+            .divider {
+              height: 10px;
+            }
+          }
+        }
+      }
+
+      // This rule is meant for fixing boards content with `jh-records-footer`
+      // which obscures the operation button
+      .issue-boards-content>#content-body {
+        padding-bottom: $records-footer-height;
+      }
+
+      .layout-page:not(.right-sidebar-expanded):not(.right-sidebar-collapsed) & .jh-records-footer {
+        padding-right: 16px;
+      }
+    }
+
+    @include media-breakpoint-only(sm) {
+      &:not(.wiki-sidebar):not(.build-sidebar):not(.issuable-bulk-update-sidebar) {
+        .jh-records-footer {
+          padding-right: $right-sidebar-collapsed-width;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      .jh-records-footer {
+        padding-right: $right-sidebar-collapsed-width + 16px;
+      }
+    }
+  }
+
+  .settings {
+    .gl-toggle-wrapper {
+      position: relative;
+    }
+  }
+
+  .right-sidebar-expanded {
+    @include media-breakpoint-up(md) {
+      .jh-records-footer {
+        padding-right: $right-sidebar-width + 16px;
+      }
+    }
+  }
+}
+
+// In panels mode, the content-wrapper is constrained by flex layout,
+// so we use normal flow instead of absolute positioning for the footer.
+.page-with-panels.jh-page-wrapper.has-global-footer {
+  @media (min-width: $breakpoint-lg) {
+    // Keep fixed sidebars above the footer while preserving the panel's bottom spacing.
+    .right-sidebar {
+      bottom: calc($records-footer-height + $calc-application-footer-height);
+    }
+  }
+
+  .content-wrapper {
+    min-height: 0;
+
+    .panel-content {
+      @media (min-width: $breakpoint-lg) {
+        padding-bottom: 0;
+      }
+    }
+
+    .jh-records-footer {
+      position: static;
+      flex-shrink: 0;
+      padding-right: 16px;
+    }
+  }
+}

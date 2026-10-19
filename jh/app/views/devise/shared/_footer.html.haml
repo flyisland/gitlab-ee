@@ -1,0 +1,23 @@
+-# Forked from ce/views/devise/shared/_footer
+.footer-container.gl-w-full.gl-self-end
+  %hr.gl-m-0
+  .container.gl-py-5.gl-flex.gl-justify-between
+    .gl-flex.gl-gap-5.gl-flex-wrap.gl-w-full
+      - unless public_visibility_restricted?
+        = link_to _("Explore"), explore_root_path
+        = link_to _("Help"), help_path
+      = link_to _("About GitLab"), promo_url
+      - if Gitlab.com? && ::Gitlab.hk?
+        = link_to s_("JH|Saas|Contact us"), "mailto:partner@gitlab.cn"
+      - if Gitlab.com? && !::Gitlab.hk?
+        .records.gl-hidden.md:gl-flex.gl-gap-5.gl-ml-auto.footer-links
+          %span.record-item.gl-flex.gl-items-center
+            = image_tag 'footer/anti-law.svg', class: 'gl-mr-2'
+            %a{ href: "https://12377.cn/" } 违法和不良信息举报中心
+          %span.record-item.gl-flex.gl-items-center
+            = image_tag 'footer/national-emblem.svg', class: 'gl-mr-2'
+            %a.jh-records-link{ href: "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502047940", target: "_blank" } 京公网安备11010502047940号
+          %span.record-item.gl-flex.gl-items-center
+            %a.jh-records-link{ href: "https://beian.miit.gov.cn/#/Integrated/index", target: "_blank" } 京ICP备2021036779号-1
+    = render 'devise/shared/language_switcher'
+= footer_message

@@ -1,0 +1,66 @@
+- name: 禁用规则时自动解决 SAST 发现
+  description: |
+    在 JiHuLab.com 上，当您[禁用预定义规则](https://docs.gitlab.cn/jh/user/application_security/sast/customize_rulesets.html#disable-predefined-rules)或我们从默认规则集中删除规则时，极狐GitLab SAST 会自动[解决](https://docs.gitlab.cn/jh/user/application_security/vulnerabilities/#vulnerability-status-values)基于 Semgrep<!--[Semgrep](https://gitlab.com/gitlab-org/security-products/analyzers/semgrep)--> 和 KICS<!--[KICS](https://gitlab.com/gitlab-org/security-products/analyzers/kics)--> 的分析器的漏洞。漏洞管理系统随后会留下注释，说明该规则已被删除，因此您仍然拥有该漏洞的历史记录。JiHuLab.com 和极狐GitLab 15.10 中默认启用此功能。
+  stage: Secure
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/application_security/sast/#automatic-vulnerability-resolution'
+  #  image_url: 'https://about.gitlab.com/images/15_10/automatic-resolution.png'
+  published_at: 2023-03-22
+  release: 15.10
+- name: 一起查看所有与分支相关的设置
+  description: |
+    所有与分支相关的保护现在都显示在一个页面上。要查看您的分支及其所有保护方法的统一列表，请前往 **设置 > 仓库 > 分支规则**。每个分支显示为其配置的合并请求批准、安全批准、受保护分支和状态检查。您现在可以更容易地查看特定分支保护的整体视图。我们希望此功能可以帮助您更轻松地发现、使用和监控这些设置。
+  stage: Create
+  self-managed: false
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/project/repository/branches/'
+  #  image_url: 'https://img.youtube.com/vi/AUrwtjIr124/hqdefault.jpg'
+  published_at: 2023-03-22
+  release: 15.10
+- name: 在 Web IDE Beta 中创建和切换分支
+  description: |
+    当您从仓库或合并请求打开 Web IDE Beta 时，默认使用当前选择的分支。您可以为您做的改动创建一个新分支，如果您不在受保护的分支上，您可以提交到当前分支。从极狐GitLab 15.10 开始，您还可以在 Web IDE Beta 中进行改动或切换分支时随时创建新分支。这样，您无需关闭 Web IDE Beta 即可切换上下文，从而提高工作效率。
+  stage: Create
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/project/web_ide_beta/#switch-branches'
+  #  image_url: 'https://about.gitlab.com/images/15_10/create-web-ide-manage-branches.png'
+  published_at: 2023-03-22
+  release: 15.10
+- name: 合规框架报告
+  description: |
+    极狐GitLab 在以前的版本中提供了显示违规行为的合规报告。在极狐GitLab 15.10 中，我们添加了合规框架报告，这样您就可以快速查看哪些合规框架已应用于您群组中的项目。
+  stage: Govern
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/compliance/compliance_report/#compliance-frameworks-report'
+  #  image_url: 'https://about.gitlab.com/images/15_10/govern-compliance-framework-report.png'
+  published_at: 2023-03-22
+  release: 15.10
+- name: 使用 diagrams.net 编辑器在 wiki 中创建图表
+  description: |
+    通过极狐GitLab 15.10，您可以使用 diagrams.net GUI 编辑器更轻松地在 wiki 中创建和编辑图表。此功能在 Markdown 编辑器和内容编辑器中可用，并与极狐GitLab 更广泛的社区密切合作以实现。
+  stage: Plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/markdown.html#diagramsnet-editor'
+  #  image_url: 'https://img.youtube.com/vi/F6kfhpRN3ZE/hqdefault.jpg'
+  published_at: 2023-03-22
+  release: 15.10
+- name: 苹果应用商店集成
+  description: |
+    从极狐GitLab 15.10 开始，您可以使用苹果应用商店证书配置和验证您的项目。您也可以在 CI/CD 流水线中使用这些证书以自动发布到 Test Flight 和应用商店。<!--To record your experiences with the App Store integration, see this [feedback issue](https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/feedback/-/issues/10).-->
+  stage: Deploy
+  self-managed: true
+  gitlab-com: true
+  available_in: [免费版, 专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/project/integrations/apple_app_store.html'
+  #  image_url: 'https://img.youtube.com/vi/CwzAWVgJeK8/hqdefault.jpg'
+  published_at: 2023-03-22
+  release: 15.10

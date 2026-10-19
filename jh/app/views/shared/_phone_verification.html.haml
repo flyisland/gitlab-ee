@@ -1,0 +1,33 @@
+- if ::Gitlab::RealNameSystem.enabled?
+  - f = local_assigns.fetch(:form)
+
+  -# haml-lint:disable InlineJavaScript
+  - if ::Gitlab::Captcha::TencentCaptcha.tencent_captcha_enabled
+    %script{ "src" => "https://turing.captcha.qcloud.com/TCaptcha.js", "nonce" => content_security_policy_nonce }
+  .phone.form-group
+    = f.label :phone, s_('JH|RealName|Phone'), class: 'label-bold'
+    .input-group.gl-items-start
+      .select-wrapper
+        = f.select('area_code', JH::Sms.config.area_codes,
+          { hide_label: true },
+          { class: 'input-group-prepend input-group-text js-select-areacode select-control gl-pr-6', style: 'border-top-right-radius: 0; border-bottom-right-radius: 0;' })
+        = sprite_icon('chevron-down', css_class: 'gl-absolute gl-right-0 gl-top-3 gl-right-3')
+      .phone-input.gl-grow
+        = f.text_field :phone, hide_label: true,
+        class: 'form-control gl-form-input gl-grow bottom js-phone-input js-validate-phone',
+        style: 'border-top-left-radius: 0;border-bottom-left-radius: 0; position: relative;',
+        data: { qa_selector: 'new_user_phone_field' },
+        required: !@user&.skip_real_name_verification?
+        %p.validation-format-error.gl-text-red-500.gl-field-error-ignore.gl-mt-2.field-validation.hide= s_('JH|RealName|Please provide a valid phone number.')
+        %p.validation-error.gl-text-red-500.gl-field-error-ignore.gl-mt-2.field-validation.hide= s_('JH|RealName|Phone is already taken.')
+        %p.validation-success.gl-text-green-600.gl-field-error-ignore.gl-mt-2.field-validation.hide= s_('JH|RealName|Phone is available.')
+        %p.validation-pending.gl-field-error-ignore.gl-mt-2.field-validation.hide= s_('JH|RealName|Checking phone availability...')
+  .verification-code.form-group
+    = f.label :verification_code, s_('JH|RealName|Verification code'), class: 'label-bold'
+    .input-group.gl-items-start.gl-flex-nowrap
+      .verification-code-input.gl-grow
+        = f.text_field :verification_code, hide_label: true,
+          class: 'form-control gl-form-input gl-grow bottom',
+          required: true
+      .js-verification-btn.btn.form-control.gl-button.gl-ml-3.btn-confirm.disabled#TencentCaptcha{ :class => "!gl-w-auto !gl-rounded-base" }
+        = s_('JH|RealName|Get code')

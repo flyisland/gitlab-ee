@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-10-01T10:09:22Z",
+  "entries": {
+    "doc/administration/gitlab_duo_self_hosted/offline_deployment.md": {
+      "blob": "f4c308e89f3f8915098ae1f7d527121c7ba84f21",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "9d922b117455b47d7838efec42e50eb57398d227",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/install/install_ai_gateway.md": {
+      "blob": "9bd806eae56a17645fe44a617c9a9085b3ae13fd",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "9f606621956351c938e45cf704964bd7942f859d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

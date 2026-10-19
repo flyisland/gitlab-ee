@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-10-10T07:57:11Z",
+  "entries": {
+    "doc/topics/autodevops/cicd_variables.md": {
+      "blob": "6e1094866ac8f74082d2455d7f88061a6d9f1526",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "44155c73538d3c4c8f958e9adf08d69a8775ab16",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/autodevops/cloud_deployments/auto_devops_with_ec2.md": {
+      "blob": "d405f507ca3b8f0e8ca119ccb0e25aa9353d4c03",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "ec5572ed9ebed4dc0ce1012cd8f631606530bb6c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/autodevops/cloud_deployments/auto_devops_with_ecs.md": {
+      "blob": "65e53a0180b6bd8acdf2fdeeaa05df61b88e9124",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "4189ba035078de44b9c972c12842067767bedbdc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/autodevops/cloud_deployments/auto_devops_with_eks.md": {
+      "blob": "6ca49d5ec0adc04e15229e18dcc3dc0762007b68",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "0f5f81db1122c6787336269cbf87abad27a15a4e",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/topics/autodevops/customize.md": {
+      "blob": "d724f2c64fc73b8232bd6b997fcd75cb8b30a0f3",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "e09ddbb2fc5effc382d872687015548d1240f2eb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/autodevops/multiple_clusters_auto_devops.md": {
+      "blob": "626fdebf777b258e7ed966a05b764cb37ea1fb7d",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "cb65b2cc5f17b20f7a11c5524122709af928b514",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/autodevops/prepare_deployment.md": {
+      "blob": "4ed1ce627af78ba2e697d36b670a2fa1808b0de1",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "d9bab6a0e298a52a0c20183d7a4606164f8eb8f2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/autodevops/requirements.md": {
+      "blob": "976815a0b68808a86fb3310173b3369e272c9311",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "60a365357cc028ad911720dcda4acbf2127931cb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/autodevops/stages.md": {
+      "blob": "31cc74f9269b30f79cade6bbd8728817092d18ec",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "7cece1bfcc3efa549533c09435d6d041841e783d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/autodevops/troubleshooting.md": {
+      "blob": "3a860f92c63c6006365f24d3c0855a79c7240a0e",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "dcc81126a039f34b7dad18056a1027e33b93dfd9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "3f510de507ba6dd84854213422b4b3b0545c7693",
+  "version": 2
+}

@@ -1,0 +1,44 @@
+{
+  "created_at": "2026-10-06T07:31:04Z",
+  "entries": {
+    "doc/administration/troubleshooting/test_environments.md": {
+      "blob": "01fe0295163ea89c856f3cf18dbed7ef62a10f53",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "6633411c6b20c23b5528b1acda35aaf024348050",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/user_cohorts.md": {
+      "blob": "397716118a1ce9f83d899c633c038a76f0cb8578",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "74b8d89745d3d5b8f1d632a355f06fa97e231c7b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/user_settings.md": {
+      "blob": "79bdd16f0eae91d9df019b2f09ceced2e84dabec",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "cc847931858afcf85de8cd1aaeb6f57d1c1429d9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/whats-new.md": {
+      "blob": "3cb4664b360d9b05eba329d106a883d45b73ba2a",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "9f89bedb33c4b98cdc523676d4b719cc17e7f3cc",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    }
+  },
+  "source_sha": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+  "version": 2
+}

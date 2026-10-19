@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-15T23:16:08Z",
+  "entries": {
+    "doc/administration/admin_area.md": {
+      "blob": "aa502dbbbc21648f4e98f7e8dc09b7a079dc0433",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "475227c81a0fa2809ec00f7ac0fb2bbe5084eead",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/backup_restore/backup_large_reference_architectures.md": {
+      "blob": "545ba3bd6f0bc7d67bb9411fdedf60bedf40a678",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "ca4853d4e76a8a434e3d1f5d21635b53a13bb703",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/backup_restore/troubleshooting_backup_gitlab.md": {
+      "blob": "a421e8593018bc6920377598e7715cc769709b6a",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "6dad94b044308b3721f338c4a485cf10c380bb6a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/compliance/audit_event_streaming.md": {
+      "blob": "fe56ba7ffe03d0e920739eb552fee4d41840523f",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "982186a59f7391e6e5d315990caa50df8abdddfd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/feature_flags/_index.md": {
+      "blob": "454aa8020d833aa58a701673e570b46353d98725",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "6169616079db6ce67d21ff9a988503ca3e0da1aa",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/disaster_recovery/_index.md": {
+      "blob": "8f445b49c2815b70d53ac200fc60ad98f738a9c8",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "0585a657752de25ef71eb15191cce45d6c960abc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/disaster_recovery/background_verification.md": {
+      "blob": "0b09aa1415eea86bd824ec1f128ab9ef087da1b9",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "c46c9cca2da0a1852111d8d7887cd268120a94ba",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/disaster_recovery/failover_troubleshooting.md": {
+      "blob": "52258e34d00053020ebc9501e36ace947a8a4772",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "207e1a1fec8778163bc6e333aaa4310070983cf2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/replication/configuration.md": {
+      "blob": "afa275124b0623ac04eb57ffbceb65e2a2b18158",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "4b35342779628a959a5bce2cf592d1f077452890",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/replication/selective_synchronization.md": {
+      "blob": "81d61ac4190f89cba5c68f308f3b0778a4ff4437",
+      "commit": "71eb476fb449ef7d540744a37368adfb76a3de11",
+      "target": {
+        "blob": "c0376a2b17cbe14fd303fa87086441513b68d930",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "71eb476fb449ef7d540744a37368adfb76a3de11",
+  "version": 2
+}

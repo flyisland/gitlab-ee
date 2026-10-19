@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-22T06:17:28Z",
+  "entries": {
+    "doc/administration/redis/replication_and_failover.md": {
+      "blob": "4181a758764bbc88d408932ab9f19eb8d59d3445",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "c79d9f943fcf2082b4c2d07f6bd003483b8731ce",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/standalone.md": {
+      "blob": "d7501ae98775e2d5c2345e65598ad114797e28ba",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "67492f2b6d3e0da8c3e0653e4a53e0f601aad917",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/10k_users.md": {
+      "blob": "1c22475abbb9578104973fb31070e8f7061a8ba2",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "c1481ccc918c5b530b80d39cfc10ad5179b1df0a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/1k_users.md": {
+      "blob": "3fe72a9e8d1e756aa404ea811490c4499d4fe8d7",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "cd38bae63f495b03fb790306b0b003c11da8ecba",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/25k_users.md": {
+      "blob": "7383706458bdcee179b482f70e0529d2a904111c",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "9d0710651f7a7cc6ea123fcc9f4d3bd7faef0eb0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/2k_users.md": {
+      "blob": "f2b419ce2894df205519a854e129b079492c71d6",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "6514627e7c099508c1cf8c1cb37fabc7ec2367c1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/3k_users.md": {
+      "blob": "088a07e5533fa4ba1234be95adfa1c9c0e273562",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "166c1071e818d086c0f6095275c2513541d179e1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/50k_users.md": {
+      "blob": "537f5801add870d1499bc26717ebe383fc7d3fec",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "745b5b5373719145bf1af379047eedc141994f1f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/5k_users.md": {
+      "blob": "a0455a5e767fdf0f6f6f9a436b13ca6ca4605e2f",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "ec13486f5b1bed9de6d3f547daba91187d492b3b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/_index.md": {
+      "blob": "9dd14e65829e4dea5d7ba68e52ece8445c5d4cb0",
+      "commit": "43eab457348ba6889ef219ac944e54dad05ed379",
+      "target": {
+        "blob": "8ce415252f805f933aa762a502dc1c4bc393bd46",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "43eab457348ba6889ef219ac944e54dad05ed379",
+  "version": 2
+}

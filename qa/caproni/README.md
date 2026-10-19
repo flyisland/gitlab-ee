@@ -1,0 +1,233 @@
+# Using Caproni for CNG end-to-end test pipeline
+
+This deploys a CNG build of the GitLab commit under test onto a job-local
+[k3d](https://k3d.io) cluster inside `docker:dind`, using
+[Caproni](https://gitlab-org.gitlab.io/caproni/) and runs the E2E suite against it.
+
+Five jobs in the existing `test-on-cng` child pipeline run against a Caproni-deployed
+GitLab instance:
+
+- `cng-instance-caproni` (non-blocking) runs `Test::Instance::All` over 10 parallel shards
+- `cng-relative-url-caproni` (non-blocking) runs `Test::Instance::Smoke` against an instance
+  served under a `/relative` subpath
+- `cng-registry-caproni` (non-blocking) runs `Test::Integration::Registry`
+- `cng-oauth-caproni` (non-blocking) runs `Test::Integration::OAuth` (see [GitHub OAuth](#github-oauth-opt-in) for why it executes nothing yet)
+- `cng-instance-ff-inverse` (blocking) runs `Test::Instance::All` with `QA_FEATURE_FLAGS`
+  inverted, and only when a feature flag definition file changes
+
+The four non-blocking jobs shadow an orchestrator-deployed counterpart and run whenever
+those run.
+
+The `-caproni` suffix is transitional. It marks a job that shadows an orchestrator-deployed
+one so the two can run side by side and be compared. A job that replaces its counterpart
+outright has nothing left to disambiguate from and takes the plain name, as
+`cng-instance-ff-inverse` does. The suffix goes away entirely once every `cng-` job uses
+Caproni.
+
+The registry job needs nothing beyond the chart's Gateway route for `registry.<domain>`.
+The registry spec takes its address from `CI_REGISTRY`, so unlike the orchestrator this rig
+does not have to publish the registry on the GitLab host at port 5000.
+
+This doubles as a reference implementation of deploying a CNG instance with Caproni, for
+modular feature teams adopting it. Copy the shape, but check the shims first: the pieces
+marked `Shim:` in `scripts/` exist only because Caproni cannot do the job yet, and each
+names the upstream issue that would retire it. They are not the intended pattern.
+
+## Layout
+
+| Path | Purpose |
+|---|---|
+| `caproni.yaml` | The whole rig: cluster, deployers, edge and CNG image pinning |
+| `caproni.github-oauth.yaml` | Opt-in fragment: the `gitlab-oauth-github` secret and `global.appConfig.omniauth` values |
+| `caproni.relative-url.yaml` | Opt-in fragment: serves the instance under `QA_RELATIVE_URL_ROOT` |
+| `values/gitlab.yaml` | Chart values, ported from the orchestrator's Ruby |
+| `values/gitlab-dev-stack.yaml` | PostgreSQL (CNPG), Valkey and Garage; ClickHouse and NATS disabled |
+| `manifests/pre-receive-hook/` | Gitaly pre-receive server hook the E2E suite expects, applied by a kustomize deployer |
+| `manifests/github-oauth/` | Kustomization the fragment applies between namespace creation and the Helm install; its `provider.yaml` is generated from the fragment's `files:` |
+| `scripts/install-caproni.sh` | Fetches and checksum-verifies the Caproni binary at `CAPRONI_VERSION` |
+| `scripts/write_local_config.rb` | Generates `caproni.local.yaml`: the CI domain, plus the fragments a job opts into |
+| `scripts/seed_admin_token.rb` | Seeds the admin PAT the E2E suite authenticates with |
+| `scripts/save-cluster-logs.sh` | Pod and event log bundle for failure diagnosis |
+
+The CI jobs live in
+[`.gitlab/ci/test-on-cng/caproni.gitlab-ci.yml`](../../.gitlab/ci/test-on-cng/caproni.gitlab-ci.yml),
+and `CAPRONI_VERSION` and `K3D_VERSION` in
+[`.gitlab/ci/qa-common/variables.gitlab-ci.yml`](../../.gitlab/ci/qa-common/variables.gitlab-ci.yml).
+
+The Ruby scripts are covered by specs in `qa/spec/caproni/`, which `qa:rspec-internal`
+runs. Locally they need the internal options file, because `qa/.rspec` points the default
+path at the E2E suite:
+
+```shell
+cd qa && bundle exec rspec -O .rspec_internal spec/caproni/
+```
+
+The configuration lives in this repository, rather than in `gitlab-org/gitlab-caproni`,
+because the rig has to version with the code under test: an MR that changes a chart value
+alongside application code can do both in one commit.
+
+## The Ingress decision
+
+Gateway API, using the chart's integrated Envoy Gateway
+(`global.gatewayApi.installEnvoy: true`), so the rig deploys no proxy of its own.
+`nginx-ingress` is disabled, and so is k3s's bundled Traefik.
+
+The rendered edge is entirely chart-supplied:
+
+```plaintext
+Gateway gitlab-gw (class gitlab-cng)
+  gitlab-web    HTTP 80  gitlab.<domain>
+  registry-web  HTTP 80  registry.<domain>
+  kas-web       HTTP 80  kas.<domain>
+  gitlab-ssh    TCP  22
+TCPRoute gitlab-gitlab-shell -> parentRef gitlab-gw, sectionName gitlab-ssh, port 22
+```
+
+Two reasons for Gateway API. It has been the chart default since GitLab 19.0, with
+Ingress deprecated for removal in 20.0. SSH needs two values, not edge config:
+`global.shell.tcp.proxyProtocol` and `gitlab-shell.config.proxyProtocol`, both `true`,
+so Envoy's PROXY v2 header carries the real client IP to gitlab-shell. SSH IP
+restrictions need that rather than Envoy's pod address. The chart still emits the
+listener, `TCPRoute` and `BackendTrafficPolicy` itself; `proxyPolicy` stays `"use"` so
+headerless connections still work.
+
+This is not adopted for speed, and it is not faster: the deploy cost here is image
+pulls, not the edge.
+
+`installEnvoy` alone does not give you a `ClientTrafficPolicy`: `clientTrafficPolicySpec`
+defaults to `{}`, and an empty spec renders nothing. `values/gitlab.yaml` fills it with
+`escapedSlashesAction: KeepUnchanged`, because the suite addresses projects by
+URL-encoded path (`/api/v4/projects/group%2Fproject`) and a proxy that unescapes those
+breaks the API in ways that read as application failures. `targetRefs` is omitted so the
+chart supplies the Gateway-scoped ref Envoy Gateway accepts in HTTP-only mode.
+
+## Datastores
+
+The chart requires external datastores. This rig gets PostgreSQL (via CloudNativePG),
+Valkey and Garage from the published [`gitlab-dev-stack`](https://gitlab.com/gitlab-org/cloud-native/charts/gitlab-dev-stack)
+chart, with `secretNamespace: gitlab` so the GitLab chart consumes the `*-conn` secrets
+directly. `values/gitlab-dev-stack.yaml` pins the bucket list to exactly
+`Garage::BUCKETS` from the orchestrator, so no object-storage feature silently loses its
+bucket, including `git-lfs` rather than the chart's default `gitlab-lfs`.
+
+## Gitaly server hook
+
+`manifests/pre-receive-hook/` carries the global pre-receive hook the orchestrator creates
+in `Configurations::Kind`. The `pre-receive-hook` kustomize deployer applies it after
+`prerequisites` and before the `gitlab` Helm release, which mounts it through
+`global.gitaly.hooks.preReceive.configmap`. The E2E suite's
+`tag_revision_trigger_prereceive_hook_spec.rb` pushes to a project path matching
+`reject-prereceive` and expects the hook's error message. The chart mounts the ConfigMap by
+name, so the name `pre-receive-hook` has to stay stable.
+
+## The chart
+
+`release.chart` is the chart project's source archive at the commit
+`GITLAB_HELM_CHART_REF` names in `.gitlab/ci/qa-common/variables.gitlab-ci.yml`, which is
+how the pinned SHA is honoured. Caproni fetches the archive and resolves the dependencies
+it declares but does not carry.
+
+`GITLAB_CHART_PACKAGE` takes precedence when it points at a packaged chart, and the job
+sets it when `cng-helm-cache` has already cached `gitlab-<sha>.tgz` for this ref. A miss
+re-fetches the archive - that is tracked here ([caproni#283](https://gitlab.com/gitlab-org/caproni/-/issues/283)).
+
+A local run needs one of the two set. Both are named in one variable, so an unset ref
+only fails the load when the archive is actually needed:
+
+```yaml
+CHART: ${GITLAB_CHART_PACKAGE:-...archive/${GITLAB_HELM_CHART_REF:?...}/...}
+```
+
+## GitHub OAuth (opt-in)
+
+`caproni.github-oauth.yaml` replicates the orchestrator's OAuth setup: the
+`gitlab-oauth-github` secret and the `global.appConfig.omniauth` chart values. It's a
+separate fragment because the smoke and registry jobs run without OAuth credentials.
+
+To opt in:
+
+1. Export `QA_GITHUB_OAUTH_APP_ID` and `QA_GITHUB_OAUTH_APP_SECRET`.
+2. Add this to `caproni.local.yaml`:
+```yaml
+   extends:
+     - caproni.github-oauth.yaml
+```
+3. Run `caproni up`.
+
+`cng-oauth-caproni` does this automatically in CI.
+
+**Note:** this doesn't test anything yet. The only `:oauth` spec is quarantined
+([issue 24015](https://gitlab.com/gitlab-org/quality/test-failure-issues/-/issues/24015)),
+so the job deploys but runs zero examples.
+
+## Relative URL root (opt-in)
+
+`caproni.relative-url.yaml` sets the chart value `global.appConfig.relativeUrlRoot`
+from the `QA_RELATIVE_URL_ROOT` environment variable, appended as a `dynamic_overrides`
+entry. It's a separate fragment because the rig's other jobs are served at the domain
+root.
+
+To opt in:
+
+1. Export `QA_RELATIVE_URL_ROOT` (for example, `/relative`).
+2. Add this to `caproni.local.yaml`:
+
+   ```yaml
+   extends:
+     - caproni.relative-url.yaml
+   ```
+3. Run `caproni up`.
+
+`cng-relative-url-caproni` does this automatically in CI, setting `QA_RELATIVE_URL_ROOT`
+to `/relative`.
+
+## Licensing
+
+The suite licenses the instance itself: `QA::EE::Strategy.perform_before_hooks` posts
+`QA_EE_LICENSE` to `POST /api/v4/license` before any EE scenario runs. All the deployment
+supplies is `GITLAB_LICENSE_MODE=test`, which loads the test decryption key at Rails boot so
+a test-signed key validates. `values/gitlab.yaml` sets it, next to `CUSTOMER_PORTAL_URL`,
+which selects the customers portal and is not used by the API path.
+
+The orchestrator's pre-created `gitlab-license` secret is not reproduced because it was never
+consumed: the orchestrator names it at `gitlab.license.secret`, while the chart reads
+`global.gitlab.license.secret`. An instance that has to come up already licensed would need the
+secret, which could follow the same kustomize pattern as `github-oauth-secret`, and
+`global.gitlab.license.secret` naming it.
+
+## Known gaps
+
+- Admin token seeding and reading back the root password are CI script steps rather than
+  deploy hooks. [caproni#192](https://gitlab.com/gitlab-org/caproni/-/issues/192)
+- `save-cluster-logs.sh` only reads the `gitlab` namespace, so CloudNativePG, Valkey and
+  Garage logs are not captured; they live in `gitlab-dev-stack` and `cnpg-system`.
+- Nothing validates the rendered charts ahead of a deploy, so a Helm template error is
+  only found once `caproni up` reaches the GitLab release.
+- `orchestrator metrics` has no Caproni equivalent.
+
+## Running it locally
+
+To simulate the CI job's deploy steps locally, from the repository root:
+
+```shell
+cd qa/caproni
+
+export CI_PROJECT_DIR="$(git rev-parse --show-toplevel)"
+export CI_COMMIT_SHA="$(git rev-parse HEAD)"
+export CI_COMMIT_SHORT_SHA="$(git rev-parse --short HEAD)"
+export GITLAB_HELM_CHART_REF="$(awk -F'"' \
+  '$0 ~ /^[[:space:]]*GITLAB_HELM_CHART_REF:[[:space:]]*"/ {print $2; exit}' \
+  "${CI_PROJECT_DIR}/.gitlab/ci/qa-common/variables.gitlab-ci.yml")"
+
+# In CI, build-cng-env sets these. Add a v prefix to any version that is semver.
+export GITALY_TAG="$(cat "${CI_PROJECT_DIR}/GITALY_SERVER_VERSION")"
+export GITLAB_SHELL_TAG="v$(cat "${CI_PROJECT_DIR}/GITLAB_SHELL_VERSION")"
+export GITLAB_KAS_TAG="$(cat "${CI_PROJECT_DIR}/GITLAB_KAS_VERSION")"
+
+caproni up
+caproni update-etc-hosts
+```
+
+The images must exist in
+[CNG-mirror](https://gitlab.com/gitlab-org/build/CNG-mirror/container_registry) for that
+commit, which in practice means a commit whose `build-cng` job has run.

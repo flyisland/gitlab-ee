@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-30T03:06:40Z",
+  "entries": {
+    "doc/administration/monitoring/github_imports.md": {
+      "blob": "b4aa90539c9db9d3babe89c67005b38cb47fb7c4",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "d72b3c70026a886d3044b4dc153453120e116369",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/health_check.md": {
+      "blob": "b305ba895703c99a310920b142f5640a640726e3",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "8a1f26057802a810dd4ee49b2ee361d63dc8d9df",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/ip_allowlist.md": {
+      "blob": "f7032436b089216e17a97bc54f2bd226328f9fa8",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "40292a39ed60c115d27b1ff72ceec246b35bbcf1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/performance/grafana_configuration.md": {
+      "blob": "a5ab91586630075f6fc81f0ca70ea7beecdf3cf1",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "a44b3fddaeee1f5866a586b565bb0e172e0ef46f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/performance/performance_bar.md": {
+      "blob": "2ba625bf535051de4cd13cb007ac8e31cce8a541",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "bf27b249878baeaa46a40452ba0ef8dba263a04e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/web_exporter.md": {
+      "blob": "2844d454b0139e1726f4c0c39cab6ce06d3c3676",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "64d09f7d464a9a5bc681c3ae724d87ad2731a571",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/_index.md": {
+      "blob": "564896068560b2f421989354ab57c9eba5db36d6",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "09fbc609b56b82ea056cd99edad9b055ac613bbb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/fast_ssh_key_lookup.md": {
+      "blob": "716a0586e78551c896badb26354c21d95d791d5b",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "aba21ca80a27f444844f07932109eef1b90c01ff",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/filesystem_benchmarking.md": {
+      "blob": "1d70d5a551e51760c571985a493b71257c434a03",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "78c6765169504fa5190fbd296c976426ed267b4b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/gitlab_sshd_ssh_certificates.md": {
+      "blob": "3f830fc546e603d323fbe69d7dd1fcdecd6dee8a",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "5a8d3d6e52cbf17021fefeecde1bcfa57c759577",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "af5de233de598cd2fd74b9c744103795d906fd24",
+  "version": 2
+}

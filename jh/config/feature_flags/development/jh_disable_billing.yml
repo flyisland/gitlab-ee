@@ -1,0 +1,7 @@
+---
+name: jh_disable_billing
+type: development
+introduced_by_url: "https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3508"
+group: group::consumables_cost_management
+milestone: '18.10.0'
+default_enabled: true

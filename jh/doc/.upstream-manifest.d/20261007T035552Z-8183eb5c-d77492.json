@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-07T03:55:52Z",
+  "entries": {
+    "doc/user/project/clusters/add_eks_clusters.md": {
+      "blob": "2c4e902030353788c77e825b9babba52afc39e0b",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "5b4daad88dc923dddb0d7a536347a739bb569f50",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/clusters/add_gke_clusters.md": {
+      "blob": "ea6bacd0675f96ebb41a018bb727a2b97debf2bc",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "830d94cf1945cd51067f25ab92eb92ed49844262",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/clusters/cluster_access.md": {
+      "blob": "71aafe8a0b2daf1bf9a59767060437d6eb994581",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "1e5d92f4a70b5d035b5129995ef1a1f0ffc1cc65",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/clusters/gitlab_managed_clusters.md": {
+      "blob": "1e0a6634870da8b7db92e76d6e043d1df79fee0e",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "f58e66e52de6ed8d3449de62239fe2de4d719e86",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/clusters/multiple_kubernetes_clusters.md": {
+      "blob": "13b6b33c2dd8a3eef145f03ba0dfaa525b714ef2",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "c7d6ab8833fd272c05befcfd1888c79e9dfbbc95",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/_index.md": {
+      "blob": "0e9c8725a32362027e0a99cc11a7a0458f609b2d",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "068387d04a5ac53ef775778d06a40a6de599c264",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/apple_app_store.md": {
+      "blob": "34ec1444782e49483f0c8fb3597c8cc25367b450",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "c6c078d81e3583cdb21708fc82ce9f27daea1f91",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/aws_codepipeline.md": {
+      "blob": "b547767f3f5f43c924a4adac382be173baa5ef4e",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "adae9837a0ee428951fb22212b13152b8c030f25",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/bamboo.md": {
+      "blob": "5f9d2656d569a73c89b380ae035ca3ff1bda6876",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "a17e7626081d7772c2557ab290b6135caff7e500",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/beyond_identity.md": {
+      "blob": "f7da4c66c0c202f73e61cbf026ad63f034147823",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "2822ea13938e13793c6297f0d01f3752a4a72b9e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

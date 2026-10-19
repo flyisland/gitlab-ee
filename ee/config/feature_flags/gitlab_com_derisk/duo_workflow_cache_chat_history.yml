@@ -1,0 +1,10 @@
+---
+name: duo_workflow_cache_chat_history
+description: Caches the chat history rebuilt from checkpoint blobs, so a duoMessages read folds only the blobs written since the last read
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/631643
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258940
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/631667
+milestone: '19.5'
+group: group::ai core infra
+type: gitlab_com_derisk
+default_enabled: false

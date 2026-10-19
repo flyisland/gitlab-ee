@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-07T02:35:05Z",
+  "entries": {
+    "doc/user/group/clusters/_index.md": {
+      "blob": "dcd231b65ec89a51a3af6d95bb5bba7ac302d739",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "1d413757324e4079d8b3d823c3557a5fe7a15ad0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/package_registry/tutorial_generate_sbom.md": {
+      "blob": "0d4c1cce0667075c3fd08bea5823ced00a1145ec",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "1091d6d401c780b707955652a1a70e870590cf33",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/pypi_repository/_index.md": {
+      "blob": "5e960609004726bfb127dad82a1dcdcb5fb6b36f",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "7047e3237e4e151fe0234d9057eec57503a44b4b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/pypi_repository/auto_publish_tutorial.md": {
+      "blob": "4a65562f643ed7bb84c91e58a138cd943676ae84",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "6d782a845871b2bcfe5b922dcb5b43785a5ccfbd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/virtual_registry/_index.md": {
+      "blob": "2ec5f2301405a3cdebc836e1e9c3eb7ffceab47f",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4d59a38f8f1a3c28dc0ad0ae8f8115406c9e4479",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/virtual_registry/container/_index.md": {
+      "blob": "eaf03101fe696674b7a388f776b9327238d9ed5a",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "dc9ed4d312c68e341b3133db512272d7d5fd1d02",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/virtual_registry/maven/_index.md": {
+      "blob": "0c4c87c94ffd331c367ab74e86cced43188d5512",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "807536ec9dfbfb93bf97d643f20f3d341c061833",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/workflows/build_packages.md": {
+      "blob": "c337eb92e80fdff1567c26e07650d49e41d6c29d",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "2c07c2921d2447876138a4da959c9b6e069be73b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/workflows/project_registry.md": {
+      "blob": "85d6bfe118cf42d1026a8684de6108f49d561c26",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "b52bf8aa545f309938dd68b89b602ee4e46f57b0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/workflows/working_with_monorepos.md": {
+      "blob": "d382392f1392d25008cafc06825ea0db11177b57",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "8be88f51f0300ab9c9d5ed25f399c88476fb4ff2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

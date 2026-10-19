@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-10-09T16:51:19Z",
+  "entries": {
+    "doc/ci/cloud_services/aws/_index.md": {
+      "blob": "c5d2117800687ededbfd432f4ec6a0643b00526d",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "f40034422c4a2ce993f485c22ce2fd8b54dbd3c7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_services/azure/_index.md": {
+      "blob": "0ccd5e2164b8e5c751d0fd4aca4cc9fe3feb50bb",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "035b68d9c1aba3969f311affe4499435665cb890",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_services/google_cloud/_index.md": {
+      "blob": "1fc8699837b9b9c75fc4705ce4b07edddeb1be5d",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "b36879719cb1138dc688eb7cd1f93dd046970fab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/components/examples.md": {
+      "blob": "518cd485323e1edcb8a10c765af17148ed04cd41",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "c2e1dc780359b590cd065a1ab7b7be2fb564cc7a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/docker/_index.md": {
+      "blob": "ccc4e924624905cb520838d8f1109491010c1a40",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "46be10c46d3333abe34bb42bc174bd62082418d0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/docker/authenticate_registry.md": {
+      "blob": "982584ae275040b9ade4100550253efac0354d7c",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "64efaa1638601bccf96f99d9d80ff28ba69b2d0f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/docker/buildah_rootless_multi_arch.md": {
+      "blob": "729abaa9d9d3f97812fa923649d0a6d7967263e1",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "bd8001f2d91aa2fc00e97c680dfd9e44aac15f12",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/docker/docker_build_troubleshooting.md": {
+      "blob": "faa6d33924bf934839712eabd8e8b4c5a69e5b84",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "2521f06623a932e8d1e507ed41a8f6caa5922dd9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/docker/docker_layer_caching.md": {
+      "blob": "582b4aa1277f33809318b7bdbe3fd834a557d649",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "944727733d87711c77a1a86a0125b756f9ab1f0c",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/ci/docker/using_buildkit.md": {
+      "blob": "379f186a142e91cc524005edbc173ba9d67546ec",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "4bf9f37950107a0b4ab78393af870f4e77848289",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+  "version": 2
+}

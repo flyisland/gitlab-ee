@@ -1,0 +1,17 @@
+- group_link = tag_pair(link_to('', @group_url), :group_link_start, :group_link_end)
+
+%p
+  = safe_format(s_('JH|NamespaceStorage|Group %{group_link_start}%{group_name}%{group_link_end} is about to use up its purchased storage. Please check it.'), group_link, { group_name: @group_name })
+
+- unless @usage_percentage.nil?
+  %p
+    = safe_format(s_('JH|NamespaceStorage|At the time this notification was triggered, %{usage_percentage} of this group\'s purchased shared storage pool had been consumed.'), { usage_percentage: number_to_percentage(@usage_percentage, precision: 1, strip_insignificant_zeros: true) })
+
+%p
+  = s_('JH|NamespaceStorage|Manage your storage usage, or purchase additional storage to keep projects that exceed the included repository size from being restricted.')
+
+%p
+  %img{ alt: s_('JH|NamespaceStorage|QR code'), src: image_url('mailers/saas-user-group-qr-code.png'), width: '300', height: '300' }
+
+%p= s_('JH|FreeTrial|Thanks,')
+%p= s_('JH|FreeTrial|The JiHu GitLab Team')

@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-10-09T10:57:39Z",
+  "entries": {
+    "doc/user/application_security/dast/browser/checks/798.17.md": {
+      "blob": "c84dafbb618ca7fa1ced7f99e7cbcd4587b5c62e",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "19049e9c987d426a9ba63ff9166a684eac95921f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/checks/798.20.md": {
+      "blob": "622848ca386996308001973e10ca45135deb89cc",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "1ad0f22ea001f3ad3861c911d05d0e82bc8ddd20",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+  "version": 2
+}

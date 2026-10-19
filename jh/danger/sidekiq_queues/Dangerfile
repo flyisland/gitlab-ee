@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+SCALABILITY_REVIEW_MESSAGE = <<~MSG
+  ## Sidekiq 队列相关改动
+  此合并请求包含了对 Sidekiq 队列相关的改动。
+  请参照[关于调整队列优先级的文档](<!--https://docs.gitlab.cn/jh/development/sidekiq/worker_attributes.html#job-urgency-->)。
+MSG
+
+ADDED_QUEUES_MESSAGE = <<~MSG
+  添加了以下队列：
+MSG
+
+CHANGED_QUEUES_MESSAGE = <<~MSG
+  对以下队列的属性进行了修改：
+MSG
+
+if sidekiq_queues.added_queue_names.any? || sidekiq_queues.changed_queue_names.any?
+  markdown(SCALABILITY_REVIEW_MESSAGE)
+
+  if sidekiq_queues.added_queue_names.any?
+    markdown(ADDED_QUEUES_MESSAGE + helper.markdown_list(sidekiq_queues.added_queue_names))
+  end
+
+  if sidekiq_queues.changed_queue_names.any?
+    markdown(CHANGED_QUEUES_MESSAGE + helper.markdown_list(sidekiq_queues.changed_queue_names))
+  end
+end

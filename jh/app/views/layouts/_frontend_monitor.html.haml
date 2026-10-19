@@ -1,0 +1,20 @@
+<!-- Tencent RUM -->
+- if front_monitor_enabled?
+  -# haml-lint:disable InlineJavaScript
+  %script{ :src => "#{ENV['RUM_URL']}", :type => "text/javascript" }
+  = javascript_tag do
+    :plain
+      ;var aegis = new Aegis({
+          id: '#{rum_config['id']}',
+          reportApiSpeed: #{rum_config['reportApiSpeed']},
+          reportAssetSpeed: #{rum_config['reportAssetSpeed']},
+      });
+      window.addEventListener("unhandledrejection", function(err){
+        if(err.reason && err.reason.name === 'AbortError') {
+          err.preventDefault();
+        }
+      });
+<!-- End Tencent Code -->
+
+- if JH::Gitlab.com_except_hk? && Rails.env.production?
+  = render partial: 'layouts/sensorsdata'

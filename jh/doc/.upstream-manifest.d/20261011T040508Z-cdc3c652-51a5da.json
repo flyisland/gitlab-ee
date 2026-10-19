@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-11T04:05:08Z",
+  "entries": {
+    "doc/security/email_verification.md": {
+      "blob": "849d513c513b285b3c043a4a49eaa2fa465ff8ae",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "ffa258480df8142093cde3277a0b11b75b939398",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/hardening_cicd_recommendations.md": {
+      "blob": "b997d64e50dff719e845a7b989537d863f80f701",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "f8fca70215e979d8ab6b88cf65fbb9c5a40579c1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/hardening_general_concepts.md": {
+      "blob": "695da87bb4faa10d9034b094bb7dc7c9a3af037a",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "bfd980fb6d6915851bd2ca3691a61469eae50b61",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/identity_verification.md": {
+      "blob": "c13f4ddc8d10c9370a749369866f308d14d0db9b",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "b2972645db13d123be456951908dc8651ade4445",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/reset_user_password.md": {
+      "blob": "890ce5cc0ea12d85cd52140c091bf44d9760568d",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "a5fd090c281f1e7a8f633834b41af92d8cc0f421",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/rotate_integrations_secrets.md": {
+      "blob": "18bb27473da3db6d03101c3f9efafc3ea8cd6fef",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "c1eb1f762493603e53abe684dc0b59b1659483fa",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/ssh_keys_restrictions.md": {
+      "blob": "acc1918b1516971e7e2b6888cb1199deca22b754",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "9732272cc9ad1025ce9fe082594f55d89f30bc27",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/tls_support.md": {
+      "blob": "2a0cc130ce818e351433e9fb6504a81b6b52462d",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "e0dc8235e1f9dc5d89cbd8005c5b3166fd71b71f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/two_factor_authentication.md": {
+      "blob": "2069a127d1627481838a80b99835e3ea23f050b0",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "ae0fb9059aafd665eb5c29aeda33cf6e755a4424",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/security/unlock_user.md": {
+      "blob": "c4069a06eebde42c36834b8f40073b3cf778e772",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "3677d4093e2c6e5bc7f3c13da20b02d243237846",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+  "version": 2
+}

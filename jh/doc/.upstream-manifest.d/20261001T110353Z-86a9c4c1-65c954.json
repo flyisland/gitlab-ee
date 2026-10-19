@@ -1,0 +1,70 @@
+{
+  "created_at": "2026-10-01T11:03:53Z",
+  "entries": {
+    "doc/administration/settings/import_export_rate_limits.md": {
+      "blob": "5ce9b73f4ef32f75c621f8f21fc0ab07a3e0f2fe",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "e96beea30ff27393548c3afac0a65e85cdbd3652",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/incident_management_rate_limits.md": {
+      "blob": "9cc487b86667a8367e5d2ca751ead812a35ccf53",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "0b00da03b564a351171f8120b901061e24871747",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/instance_template_repository.md": {
+      "blob": "6cd7e3324622fbba6270a7bf6ec6621d051fff08",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "4f469a5cc37c8801862196dd2edafc79d71cf96c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/localization.md": {
+      "blob": "e66e942eaf58eb842be6dc65da6c810dc8737c38",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "59f37287e71781415eccafd8d7316cea2b3061d1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/project_integration_management.md": {
+      "blob": "2d47ab3be74472bbfedcfb098f90425eecad0ff1",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "ee07de649968d1be0f8b63671aa59427e10004fe",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/protected_paths.md": {
+      "blob": "e0d9eead37074de6459da368d332ec8451012a6e",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "031f50ab995076b13334693794b7bad8b169dc92",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/push_event_activities_limit.md": {
+      "blob": "3980c9eae4ba44e322d2bbf23c7b3d6b6dae358b",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "a411017a06b6857fd868098ff3d44761301c167d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

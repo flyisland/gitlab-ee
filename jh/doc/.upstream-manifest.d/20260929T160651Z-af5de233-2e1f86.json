@@ -1,0 +1,89 @@
+{
+  "created_at": "2026-09-29T16:06:51Z",
+  "entries": {
+    "doc/administration/license.md": {
+      "blob": "9bea6bafcf6d0adcfd72c1bfc6b7ba2c0e1c1053",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "6ccfacd2c990a34e7633256a91c36a23f5d04a92",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/orbit.md": {
+      "blob": "e07c64994cf88d4044a0f24275257adb89e83b38",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "56016b50e9a2b584166f3234cf1d5f67a7756d3c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/kerberos.md": {
+      "blob": "ff774d5b6271688ac7e7926653e99771fa645948",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "35651b2d2fc4b932306a064f4447bcacb4b47ed5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/offline/quick_start_guide.md": {
+      "blob": "783dcc33d0f60cfd0e94507cf2ad1ba9793864d9",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "81c51fb94bacdf66c87637b614f2633476439c62",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md": {
+      "blob": "44129cb32b7933dd1f7210dd5bab0c20695610aa",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "ade6eb268e2457c09be2a3300bf3e88c55fb3d04",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/rubygems_registry/_index.md": {
+      "blob": "5e732f63c32d5da436e203bc320aee5b3a243024",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "12cf33b4a340a48e2131d2e5b99ae44e1c6bf3c3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/profile/personal_access_tokens.md": {
+      "blob": "f52551ea560337c45d96f90c1b791abb262707af",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "7ea60ec585314b7a257960cf964e99e4c11776af",
+        "lineage": "generated",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/user/project/integrations/webhook_events.md": {
+      "blob": "11781b7c984283c0ce248c761d1b52ab93fc3fe4",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "65c4afe92f15f3e714c82ec23093ecb9b91acf0a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/settings/import_export.md": {
+      "blob": "aca983613ebaaaecddee36ab992e964b66de3c26",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "983320cb7a6b297117eb516b2821c476c9d69735",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "af5de233de598cd2fd74b9c744103795d906fd24",
+  "version": 2
+}

@@ -1,0 +1,6 @@
+skip-specs-check:
+  stage: lint
+  extends:
+    - .predictive-job
+  script:
+    - jh/bin/skip-specs-check

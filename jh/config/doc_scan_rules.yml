@@ -1,0 +1,59 @@
+delete_rules:
+  - !ruby/regexp '/\(https:\/\/gitlab\.com\/gitlab-org\/gitlab\/-\/issues\/[0-9]*\)/'
+  - !ruby/regexp '/\(https:\/\/gitlab\.com\/gitlab-org\/gitlab\/-\/merge_requests\/[0-9]*\)/'
+  - !ruby/regexp '/\(https:\/\/en\.wikipedia\.org\/wiki\/[\w#=-\?\.&]*\)/'
+  - !ruby/regexp '/\(https:\/\/www\.youtube\.com\/([\w#=-\?\.&]*)\)/'
+  - !ruby/regexp '/\(https:\/\/youtu\.be\/[\w#=-\?\.&]*\)/'
+
+replace_rules:
+  - from: https://gitlab.com/gitlab-org/
+    to: https://jihulab.com/gitlab-cn/
+  - from: https://docs.gitlab.com/omnibus
+    to: https://docs.gitlab.cn/omnibus
+  - from: https://docs.gitlab.com/runner
+    to: https://docs.gitlab.cn/runner
+  - from: https://docs.gitlab.com/charts
+    to: https://docs.gitlab.cn/charts
+  - from: registry.gitlab.com/
+    to: registry.gitlab.cn/
+  - from: https://about.gitlab.com/install
+    to: https://gitlab.cn/install
+  - from: gitlab/gitlab-ee:latest
+    to: registry.gitlab.cn/omnibus/gitlab-jh:latest
+
+
+excluded_files:
+  # The following files should be generated manually
+  - /doc/user/usage_quotas.md
+  - /doc/install/docker.md
+  - /doc/administration/pages/index.md
+  - /doc/development/licensing.md
+  - /doc/subscriptions/gitlab_com/index.md
+  - /doc/subscriptions/self_managed/index.md
+  - /doc/user/admin_area/license.md
+  - /doc/user/admin_area/license_file.md
+  - /doc/user/gitlab_com/index.md
+  - /doc/install/install_methods.md
+  # The following files can be ignored
+  - /doc/legal/corporate_contributor_license_agreement.md
+  - /doc/legal/developer_certificate_of_origin.md
+  - /doc/legal/index.md
+  - /doc/legal/individual_contributor_license_agreement.md
+  - /doc/administration/package_information/deprecation_policy.md
+  - /doc/administration/package_information/signed_packages.md
+  - /doc/administration/package_information/licensing.md
+  - /doc/administration/pages/source.md
+  - /doc/administration/docs_self_host.md
+  - /doc/administration/reference_architectures/
+  - /doc/cloud_seed/index.md
+  - /doc/downgrade_ee_to_ce/index.md
+  - /doc/install/installation.md
+  - /doc/install/migrate/compare_sm_to_saas.md
+  - /doc/policy/alpha-beta-support.md
+  - /doc/policy/maintenance.md
+  - /doc/subscriptions/bronze_starter.md
+  - /doc/subscriptions/gitlab_dedicated/index.md
+  - /doc/update/upgrading_from_ce_to_ee.md
+  - /doc/update/upgrading_from_source.md
+  - /doc/update/package/convert_to_ee.md
+  - /doc/user/free_user_limit.md

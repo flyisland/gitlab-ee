@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-01T06:42:56Z",
+  "entries": {
+    "doc/administration/geo/replication/location_aware_git_url.md": {
+      "blob": "f6fc6feb5dbf7da2d224af9b367a14922ed8cba4",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "0a4587964cf7aae3e07c64d1cd4e9d60f7da1b96",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/spdx.md": {
+      "blob": "ced2a58c44dbb082a6526b6475506f92c7b0b32e",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "31439da55761e95b91ffa320be280e4781ae86ff",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/tokens/_index.md": {
+      "blob": "fd7dfa0ec4bcb9cdfe7357455d9e899cc5090bd7",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "8bd573a050d133c06dcc113b259bfa824e483513",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/uploads/sanitize.md": {
+      "blob": "0e926aae0f37e243ff4f6ada9fb25a44f43fb71f",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "98520d94e3436646b62fef7da307c941fdc14495",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/web_hooks.md": {
+      "blob": "817b5f8c67f2f49b98923fee3d45bcba8d19c830",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "8eb89d61eaf6bca7c9de36aa7038d77179edd980",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/x509_signatures.md": {
+      "blob": "46c7b70b61102c61fe29f4a2780d91a371e435a2",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "beb1cfa42522a05a8b0e07ea79d1e7b37a5ae8b2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/read_only_gitlab.md": {
+      "blob": "5d316e4ebc6df07d1bcfeedb284d81dc473fa8c5",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "5021685ca46c36b12147306957966519723d5788",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/replication_and_failover_external.md": {
+      "blob": "aa074f2d19de427fbef76280a1929ab6daf5c2b0",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "7961664c432642abf705ded549412212bc799509",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/tls.md": {
+      "blob": "1577f4351090bb2a43bcca0b21a2709bbd6cbe49",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "919aa61f5c8639aa8d652d22c2043630294919a9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/redis/troubleshooting.md": {
+      "blob": "3ccb5c93b4af706387bbdcc8b4dcf42c17611e7e",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "5933d10de35690e5d2a069d948a3ff38a6fcf803",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

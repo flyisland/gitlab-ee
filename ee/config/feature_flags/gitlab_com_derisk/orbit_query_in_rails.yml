@@ -1,0 +1,10 @@
+---
+name: orbit_query_in_rails
+description: Runs Orbit ExecuteQuery streams and redaction in Rails instead of Workhorse.
+feature_issue_url: https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/349
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261318
+rollout_issue_url:
+milestone: '19.6'
+group: group::context-systems
+type: gitlab_com_derisk
+default_enabled: false

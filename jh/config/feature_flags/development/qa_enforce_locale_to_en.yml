@@ -1,0 +1,8 @@
+---
+name: qa_enforce_locale_to_en
+introduced_by_url: "https://jihulab.com/gitlab-cn/gitlab/-/issues/1199"
+rollout_issue_url: "don't rollout"
+milestone: '15.7'
+type: development
+group: group::qa
+default_enabled: false

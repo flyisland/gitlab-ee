@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-09-21T09:47:22Z",
+  "entries": {
+    "doc/user/application_security/vulnerabilities/_index.md": {
+      "blob": "1f283ebb3f2707963d1923e608e48e90fed0e924",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "555138dd5c52d6563095eadb2d8022ad726fc2bb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/_index.md": {
+      "blob": "0fe8c2488530dcc36720bf362f78dcbb042389d7",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "32ef01fe37ca8bc3b12d5b8af07a668bd72e9c05",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/code_review/_index.md": {
+      "blob": "b215731f9f9176b1fcce78d1f56cc9dd9904b09e",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "75b53ad2bf9def087de70bc8a453b9ebd941fbe6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/code_intelligence.md": {
+      "blob": "2b1784ea882fca6e50599fc2c6adf4b5a09f8752",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "336bceb6b77241c3e01b05a5d21abd2a044b7509",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+  "version": 2
+}

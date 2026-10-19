@@ -1,0 +1,27 @@
+fragment FlowTriggerFragment on AiFlowTriggerType {
+  id
+  active
+  description
+  eventTypes
+  filter
+  goals
+  configUrl
+  configPath
+  aiCatalogItemConsumer {
+    id
+    item {
+      id
+      name
+    }
+  }
+  user {
+    id
+    avatarUrl
+    name
+    username
+    webPath
+    webUrl
+  }
+  createdAt
+  updatedAt
+}

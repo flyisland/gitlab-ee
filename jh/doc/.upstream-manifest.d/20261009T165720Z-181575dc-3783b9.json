@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T16:57:20Z",
+  "entries": {
+    "doc/ci/docker/using_kaniko.md": {
+      "blob": "a69cde01f9316a277218fd5ffeaa881501be4352",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "aab8f7639737896f675c0d6517c16b1029f6bb65",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/configure_kubernetes_deployments.md": {
+      "blob": "bc814982c93d9efc10360ab39d3159090580eda2",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "27822fa2c07d8969869b609336aa77d6668e19e7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/deployment_approvals.md": {
+      "blob": "53c291271a8001f564edc2727eb0fa9c52f33c33",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "16aa15a2cc514aed31e920aff9075861edf05f3c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/deployment_safety.md": {
+      "blob": "b0b0da909965ff1c80977ac5d9ec8ae8436e1a3b",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "5ba73282e96e9f513b8b0d06a27554e2dd5b3ee6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/deployments.md": {
+      "blob": "3abf407f7cbae426d4639f5e2d51f5886fac32b2",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "88232059913453905d898b6d1888f7e47a1a396b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/environments_dashboard.md": {
+      "blob": "25be8acbd49cdd144ee8e30a8b2db79532696af2",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "5f30ee121fe3b24121444e82f9caf7cdb388fbc8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/external_deployment_tools.md": {
+      "blob": "e259d9f4604783cbcd2f627d1f906a0250711d5d",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "7b2ffebd6a53bce9e8c2534ff0e755ef6b40f153",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/incremental_rollouts.md": {
+      "blob": "e920ad03b3d686d1d79f6ab3629a07c400906944",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "91610121587b75a297e8b2b24961411f74f2d30f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/kubernetes_dashboard.md": {
+      "blob": "0d58d728f27c5b57614c00bb8ce4aaa2c1448f6a",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "80553084fdd732e31d58938114a962849a263063",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/examples/deployment/_index.md": {
+      "blob": "26ca36a84b2cffc6455f64550fc7f836f08676aa",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "af5b66ee466b2a126f27ec21131d29463a556ffb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+  "version": 2
+}

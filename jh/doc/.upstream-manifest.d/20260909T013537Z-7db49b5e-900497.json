@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-09T01:35:37Z",
+  "entries": {
+    "doc/administration/settings/rate_limit_on_groups_api.md": {
+      "blob": "d717366efb8702a5ab3921a537b706c7adfd5540",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "145d733155a572a2cfa591f48fcb159d27712261",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/rate_limit_on_notes_creation.md": {
+      "blob": "f053850b41f9d64d5734eb8873f20281dc777514",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "5f28021c3c88d39e6ec387533bf9e468aee56848",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/user_and_ip_rate_limits.md": {
+      "blob": "fdd5c8a62b9112424adfe0f055a4200de7c13906",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "2a8b0759e8b6e17f0e94071e8361dda128b7c8fe",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/sidekiq_troubleshooting.md": {
+      "blob": "3fe0be2296d6bbc6fb2a1c7852f060fe0d39ac21",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "4de3a87b846f4ed39f515d0f6924f36fb3f08eeb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/duo_agent_platform_flows.md": {
+      "blob": "88c94b64d5375e6f9fc9cd1d1029c79ad430f10a",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "f5349417fe6b14dd826d818fd297665f10df3719",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/issues.md": {
+      "blob": "8dbb8374b27c45d26484d6270b84f823ff6cb4bd",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "75715cef9a41ecb70a8a9fe5682a01713e914e6b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/notes.md": {
+      "blob": "d24b7b37a625f7f8bf7b64b23656b3dac9ff1051",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "af39cfbe120c52605257b8f4e7419f58ed475a1a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/components/_index.md": {
+      "blob": "6dcd4d50d8163727987ccf9683140981fcb55bb9",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "71fcc2befc89f9e22fddaca11cf5f904f659335e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/docker/buildah_rootless_tutorial.md": {
+      "blob": "121d19882b1d0438b645706b8df9ac6082917c22",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "c616fdbbc668eb81605be53bf639bf686ec98d56",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/docker/using_docker_build.md": {
+      "blob": "e809695a2f2554c48ba7fb025d1965d8e179321d",
+      "commit": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+      "target": {
+        "blob": "f53a57978847b65022671f6ae299ef99de39954b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "7db49b5e9bffb5e8f61b1c021a64f5ae0ae0301d",
+  "version": 2
+}

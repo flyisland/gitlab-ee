@@ -1,0 +1,11 @@
+---
+name: duo_code_review_resource_context
+description: Pin Duo Code Review to the code_review 3.0.0 flow, which reads the merge
+  request from agent_platform_resource_context
+feature_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/608242
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260066
+rollout_issue_url: https://gitlab.com/gitlab-org/gitlab/-/work_items/632852
+milestone: '19.5'
+group: group::code review
+type: gitlab_com_derisk
+default_enabled: false

@@ -1,0 +1,8 @@
+---
+name: ff_invitation_email_rate_limit
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/4086
+rollout_issue_url:
+milestone: "16.10"
+type: ops
+group: group::utilization
+default_enabled: false

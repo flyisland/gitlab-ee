@@ -1,0 +1,8 @@
+---
+name: jh_usage_statistics
+introduced_by_url: "https://jihulab.com/gitlab-cn/gitlab/-/issues/3236"
+rollout_issue_url: "don't rollout"
+milestone: "16.3"
+type: development
+group:
+default_enabled: true

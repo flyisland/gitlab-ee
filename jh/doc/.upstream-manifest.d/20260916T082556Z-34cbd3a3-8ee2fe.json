@@ -1,0 +1,16 @@
+{
+  "created_at": "2026-09-16T08:25:56Z",
+  "entries": {
+    "doc/user/duo_agent_platform/agents/_index.md": {
+      "blob": "b89cd0f1e88430951237e5290b7c496e9b0d3847",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "0c43b8d6f207174afe5dfac8fb4cef65983aee53",
+        "lineage": "human",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "34cbd3a31fbe40b225af4492bc330afc4802dc97",
+  "version": 2
+}

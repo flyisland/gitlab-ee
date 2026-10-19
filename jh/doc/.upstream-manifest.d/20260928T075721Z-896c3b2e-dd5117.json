@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-09-28T07:57:21Z",
+  "entries": {
+    "doc/administration/docs_self_host.md": {
+      "absent": true,
+      "blob": "36a300f311df043f7dfdb66401eab8e2a0eb41fe",
+      "commit": "896c3b2e58b60341915465d0ff66eae95c714141",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/install/mirror.md": {
+      "absent": true,
+      "blob": "5b13e5f0cb09cf1445589888fe19c88287d72ae6",
+      "commit": "896c3b2e58b60341915465d0ff66eae95c714141",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/update/convert_to_ee/_index.md": {
+      "absent": true,
+      "blob": "db1cf8f3e0629d4ff2726a0e30fc143f56c313cc",
+      "commit": "896c3b2e58b60341915465d0ff66eae95c714141",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/update/convert_to_ee/docker.md": {
+      "absent": true,
+      "blob": "5dfd732ac0e4c80f655936435c7d0bf248f0aaac",
+      "commit": "896c3b2e58b60341915465d0ff66eae95c714141",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/update/convert_to_ee/package.md": {
+      "absent": true,
+      "blob": "365496756d7ef79a58647ca9584a7772ed8f06c2",
+      "commit": "896c3b2e58b60341915465d0ff66eae95c714141",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/update/convert_to_ee/package_troubleshooting.md": {
+      "absent": true,
+      "blob": "2ba80558dc8d94481e0bf7fc8bd949c17dc58371",
+      "commit": "896c3b2e58b60341915465d0ff66eae95c714141",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/update/convert_to_ee/revert.md": {
+      "absent": true,
+      "blob": "3c3b1df5f0a89fa3509a0e719e599c4134a31d16",
+      "commit": "896c3b2e58b60341915465d0ff66eae95c714141",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/update/convert_to_ee/self_compiled.md": {
+      "absent": true,
+      "blob": "010e9a2683ff099922ad065bb0bad9e9939e230f",
+      "commit": "896c3b2e58b60341915465d0ff66eae95c714141",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    }
+  },
+  "source_sha": "896c3b2e58b60341915465d0ff66eae95c714141",
+  "version": 2
+}

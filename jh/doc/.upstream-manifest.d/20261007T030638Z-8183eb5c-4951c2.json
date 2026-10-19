@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-07T03:06:38Z",
+  "entries": {
+    "doc/user/analytics/_index.md": {
+      "blob": "e946e3f69202c61134955680c701035f7f3cde38",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "b9ac7e5625f1a550cbed4119c203a54dc74809dd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/analytics/analytics_dashboards.md": {
+      "blob": "810ea8e3e451209cf89fcb9ba12cf9945f6faf4d",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "d230d1a71eb8d9b7c8ccfbd4c63dd5514e381f2e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/analytics/ci_cd_analytics.md": {
+      "blob": "6758f3a76c279176cab41367c5e2dd5d8d4790a3",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "239bd85de87257aa5452365bbd5d606287d23b74",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/analytics/code_review_analytics.md": {
+      "blob": "f4a47afb757878984261a97394acf3599e2aaa68",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "e0d094b30033b2d040b34fece1f451bbe3c525f8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/analytics/dora_metrics_charts.md": {
+      "blob": "7eeb281d9fa51d70398bbe8fae5fbc25ec4aa294",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "292648b20ebe918acd09ad5c73d6b42bd4ad6c52",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/analytics/duo_and_sdlc_trends.md": {
+      "blob": "8e01797e55fc69bce4c85dc5637cf0933b560dab",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "0762574cf7bd0cb35d6c241f6bf39c16385a8af5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/analytics/merge_request_analytics.md": {
+      "blob": "94397cde951fddecb8ee9fd9c7a28ce0a773e416",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "9080d8d2fbf51049e2cc24a209099a88e2035979",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/third_party_systems/repo_by_url.md": {
+      "blob": "e9edae3969d73c2ec919fea6691bff7fc01af5d7",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "8d4b91e57d83dcd88286cd462209b572640840ed",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/third_party_systems/tfvc.md": {
+      "blob": "02087f892d316f8efeb071d26802ece75eb5b3d5",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "bf9897b34ea33b4c5f460c68b7eec9bda9c5080c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/troubleshooting.md": {
+      "blob": "52ff45a26550293eedb58075ce8574ddf74e7a1e",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "a2a2c265b9142f9ee859f8e49d4958b4321b6401",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

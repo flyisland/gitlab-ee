@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-10-10T10:55:59Z",
+  "entries": {
+    "doc/integration/salesforce.md": {
+      "blob": "b6ad30cf96bbff59a00d3d30e4c8aa3e5c86a093",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "9175ab906b0980d844d6a77f680011944b9a02fb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/shibboleth.md": {
+      "blob": "ecf844fb8eaf1c11ed851dce5b0fce249de44ec9",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "e8e93b7cde1931d027701d02f296b71f5b6619b0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/snowflake.md": {
+      "blob": "799f03f7e5cbd84ad6c824e6f06f8cb660b9f6c0",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "60a841241af7c12b2c2e29abc001acd811812869",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/vault.md": {
+      "blob": "45bb500133fb87a939b32d37ceff6345a2e7a2cd",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "3f6b664ab4c456c5adf924d5ee52bfdbf216b18e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+  "version": 2
+}

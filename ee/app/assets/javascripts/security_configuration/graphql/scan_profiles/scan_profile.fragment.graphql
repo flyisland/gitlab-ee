@@ -1,0 +1,31 @@
+fragment ScanProfileFields on ScanProfileType {
+  id
+  name
+  description
+  scanType
+  gitlabRecommended
+  triggers
+  projectCount
+  triggerSettings {
+    triggerType
+    configuration {
+      ... on SastConfiguration {
+        secureAnalyzersPrefix
+        imageSuffix
+        analyzerImageTag
+        excludedAnalyzers
+        excludedPaths
+        advancedSastPartialScan
+        gitlabAdvSastIncrScan
+      }
+      ... on SecretDetectionConfiguration {
+        secureAnalyzersPrefix
+        imageSuffix
+        historicScan
+        logOptions
+        excludedPaths
+        rulesetGitReference
+      }
+    }
+  }
+}

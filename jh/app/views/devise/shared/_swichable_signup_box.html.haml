@@ -1,0 +1,17 @@
+- form_classes = phone_presented? ? { phone: 'active gl-tab-nav-item-active', email: '' } : { phone: '', email: 'active gl-tab-nav-item-active' }
+- form_aria_selected = phone_presented? ? { phone: 'true', email: 'false' } : { phone: 'false', email: 'true' }
+
+.tabs.gl-tabs.mb-3
+  %ul.nav.gl-tabs-nav.nav-justified{ role: 'tablist' }
+    %li.nav-item{ role: 'presentation' }
+      %a.nav-link.gl-tab-nav-item.register-with-phone{ class: form_classes[:phone], href: '#', role: 'tab', 'data-toggle': 'tab', 'data-target': '#phone', 'aria-controls': 'phone', 'aria-selected': form_aria_selected[:phone] }
+        = s_('JH|Register with phone')
+    %li.nav-item
+      %a.nav-link.gl-tab-nav-item.register-with-email{ class: form_classes[:email] , href: '#', role: 'tab', 'data-toggle': 'tab', 'data-target': '#email', 'aria-controls': 'email', 'aria-selected': form_aria_selected[:email] }
+        = s_('JH|Register with email')
+= render 'devise/shared/phone_signup_box',
+  url: url,
+  button_text: button_text
+= render 'devise/shared/signup_box',
+  url: url,
+  button_text: button_text

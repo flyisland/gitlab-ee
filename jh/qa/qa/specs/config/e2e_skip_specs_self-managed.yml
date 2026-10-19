@@ -1,0 +1,10 @@
+##
+# Notice:
+# 1. Always fix the test on upstream first, and then consider skipping tests
+# 2. We should include your MR or Issue url in comment, try to tell others where and why
+# 3. The file is grouped by `file_path`, check if a new `file_path` group already exists before adding it
+# 4. Please add new `file_path` group at the bottom
+# *. See details in: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/431
+#
+- file_path: 'qa/specs/features/ee/api/3_create/code_suggestions_spec.rb'
+  skip_reason: 'this feature is not supported in JH yet'

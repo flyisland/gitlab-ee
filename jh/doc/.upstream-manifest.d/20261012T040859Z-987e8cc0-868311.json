@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-12T04:08:59Z",
+  "entries": {
+    "doc/releases/18/gitlab-18-1-released.md": {
+      "blob": "ad26dbb44240968c78709162b43cee94d97a7900",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "786eeb24233818ce19f92e08034f638cfbd5bc6d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-10-released.md": {
+      "blob": "ed6f37e271b2815d344e243093d92a5c164e4169",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "e318588317d4ebea8308a27e92f53ef411b08f33",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-4-released.md": {
+      "blob": "2a8ca95181d6f9bb692cd3474d86c99d3f086dae",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "0cb76fc769713ab2a66c3f094d3fdb91469548f2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-8-released.md": {
+      "blob": "9c650c39183da95631f728091b2e3f5c867d5a47",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "140fc9b93a8488b4a32e73034142ceec96e2362f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/_index.md": {
+      "blob": "142de2d15df685629e29509f334a7d7bddb9821a",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "701988941bc6072c8239d17a8b7c1f6df1f28bd4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-0-released/gitlab-duo-developer-enhancements-for-merge-request-workflows.md": {
+      "blob": "359cfd6a7175f6fe538a8e6440fa77abe381feb4",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "9e9e4a271bdf0340db154c74d1d32eaf45eefcb1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-0-released/restrict-the-ai-catalog-to-a-group-hierarchy.md": {
+      "blob": "9c4ca8985258ec605c4977a69289e42ff640804e",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "dd56390add6470897b1cc70c757eccd925e9d0e5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-2-released/fix-failing-pipeline-flow-improvements.md": {
+      "blob": "a7864224af47d7733f6fed3022c078b7041ce876",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "3c6084a95780e19035731e678e36c4f243bf3e48",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-2-released/security-review-flow.md": {
+      "blob": "30f05ecc2d2d809b4faec007df6be03184f2d1a8",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "154b6c6675597850d0d240c4ee0518122ff4d33e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-2-released/start-foundational-flows-from-agentic-chat.md": {
+      "blob": "b679ce6b7bd68e9f91d9ff0573c55041fc6a080d",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "eb5eaf71f19a29ad6524b5a535ecf79c1ca9194f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+  "version": 2
+}

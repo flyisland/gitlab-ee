@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-18T05:13:16Z",
+  "entries": {
+    "doc/administration/admin_area.md": {
+      "blob": "aa502dbbbc21648f4e98f7e8dc09b7a079dc0433",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "70713279a6b1dac351796eefb7f5b7f7794622d9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/variables/_index.md": {
+      "blob": "26795ad1ad193466550b555633191efb2ee2a32a",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "a305f8d57e3c7211c2cbe5fada260069d26306bf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/vulnerabilities/_index.md": {
+      "blob": "8c0a15e61c4d71f1806e726dd6f225df48a890f4",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "4452a0994551173a0a28c6309990ccc6c639b51a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/compliance/compliance_frameworks/_index.md": {
+      "blob": "3a9ef75eeedeff8743f20a50738e4475587e56a1",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "95d8184009903972e6c2cb29aabcd1fcb2541442",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/use_cases.md": {
+      "blob": "7a4afbac3ed5f91b9d16507c797f985dc6208aa0",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "ef5be59a217155ab7fc547a726e5559d6e81e68c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/_index.md": {
+      "blob": "7ca9fcbc14caece019233e6a112a0e79b0cf25eb",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "05279b57a7fb033418e5c3d310c5b173c593a86a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/group/saml_sso/_index.md": {
+      "blob": "5e91dfeaf2538e7356b874118870654a37d2f495",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "16ba94b241a823cbdb691f553010d0f62c56e649",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/third_party_systems/jira.md": {
+      "blob": "0479eb1329e5505ff90dc9de2061536d5732fe1b",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "9bd643b4685ed71960837c826f60714a4224261f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/conflicts.md": {
+      "blob": "da5cee7757bb18f1ba7e04a8bdebed74e2d25330",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "1de2821a847968b20177e9eedf0b04588644c832",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/working_with_projects.md": {
+      "blob": "bf73bf99579c76cdbd8fdae9b8de4fefff0724a8",
+      "commit": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+      "target": {
+        "blob": "04e5b981eefe2f744886cb5a0d17744f176f1630",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9f57fc9b4d8e54a032a5f8ba3fda0b219e84fc6f",
+  "version": 2
+}

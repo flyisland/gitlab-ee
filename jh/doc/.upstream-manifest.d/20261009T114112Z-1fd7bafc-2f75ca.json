@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T11:41:12Z",
+  "entries": {
+    "doc/administration/sidekiq/processing_specific_job_classes.md": {
+      "blob": "caa7a7bcb1d50ab2cf66dd75861d46309d142da8",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "10723450abcbc9e1088bbe189c2fb99da9a4c10c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/sidekiq_health_check.md": {
+      "blob": "86e7b3cb778f2a74c497334e422197e845a6770d",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "14cc881592eb1f0f5d0d4841fe26ea502e58f920",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/sidekiq_job_migration.md": {
+      "blob": "7e93b0cade28a092f9a9cbf17a4d1dd5ea252800",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "3ee0a715fc9757d879da7af4b472691ffc0229b4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/sidekiq_memory_killer.md": {
+      "blob": "4313c56721814db8b4157193b0657943eca33712",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "4a28d943f9cdd79e78df6cec130a7d47891e2e28",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/sidekiq_troubleshooting.md": {
+      "blob": "3d510472cb83f35c1f893bbb3536b46a545b338c",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "a26332d070e5f51a30a950a81d001c64cb19fd9d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/troubleshooting/gitlab_rails_cheat_sheet.md": {
+      "blob": "84731690a0b61ab535bebbd63ce7af6c1b3e359e",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "63f8fc8f1c996f8c8ac23b8976fad6caa510efaf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/admin/batched_background_migrations.md": {
+      "blob": "f62d39482438d84dd5bc3aa4c5b2f4802576f3ad",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "3dc78c6c322c148170707beb09515b0873a55c28",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/admin/data_management.md": {
+      "blob": "48617c873b32ec3f623aa481bf6a1ce5cbbe288a",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "f8480df45b92b64dd544ae191516e29835fe7b51",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/admin_sidekiq_queues.md": {
+      "blob": "c147c3903b7e0aa06411090cee47ed39b3a414f1",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "851a738c2d9bb60e1082151444badcf35b39e93d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/api_resources.md": {
+      "blob": "ecf7e0b75da2a9b60d99e826c45db8232292f48e",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "6e6aef4cfa6bf4ad3df56312099d35d642cd01f5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+  "version": 2
+}

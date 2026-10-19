@@ -1,0 +1,10 @@
+<%= s_('JH|NamespaceStorage|Project %{project_name} has reached its usage limit: %{project_url}') % { project_name: @project_name, project_url: @project_url } %>
+
+<% unless @usage_percentage.nil? %>
+<%= s_('JH|NamespaceStorage|At the time this notification was triggered, this project\'s repository and LFS storage usage was %{usage_percentage} of its included per-project storage limit.') % { usage_percentage: number_to_percentage(@usage_percentage, precision: 1, strip_insignificant_zeros: true) } %>
+
+<% end %>
+<%= s_('JH|NamespaceStorage|Manage your storage usage, or purchase additional storage.') %>
+
+<%= s_('JH|FreeTrial|Thanks,') %>
+<%= s_('JH|FreeTrial|The JiHu GitLab Team') %>

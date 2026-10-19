@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-10-06T14:53:19Z",
+  "entries": {
+    "doc/user/project/autocomplete_characters.md": {
+      "blob": "98167529cb7bd2daa862fbc490d8882cc41642c3",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "25e416cf6dc7999d4316d9ffd5d49e6e31db730e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/changelogs.md": {
+      "blob": "e7842adc40a04dc477962bd63f0fe9f1db171383",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "c6b169531f7bea64898a856223b03b59bd517620",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/codeowners/_index.md": {
+      "blob": "a0026f6ae9757db5e230a370df46276393dd3faa",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "c965cfe88232c2787da995837f3dc293be88ecfc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/codeowners/reference.md": {
+      "blob": "2b19af1a83b5b8809b30f0024fdf4c2e85aa3947",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "f87d548a4943bf1e2fc1acdaba5b65b1fda89a16",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/user/project/deploy_keys/_index.md": {
+      "blob": "fe85bb4b405bd3a6c55e76ffced63c01f147639a",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "7d2ee43370e0d084fa9333d3263de8cfb31e1ef7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/issues/design_management.md": {
+      "blob": "0e69b7e32cbbdff18379b4f10ae8f8c33a6334fe",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "fb76610c7e023e269e0bea74b99ac7965dd212ad",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/members/sharing_projects_groups.md": {
+      "blob": "f3c2d15e1153f187fe3c5affb3453803ababb28b",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "3a249bda96a3709e6fd6b87446adf60d12bce4ca",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/approvals/_index.md": {
+      "blob": "4a8e33fcfe360108e6f0ec5acce9364687d44f9a",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "15f2296ee9f83e1ed4e74bbe9b77df7b288afe65",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/approvals/settings.md": {
+      "blob": "bf6c0ffdeb2e372fbb8b5cad5203bf3ba02df5a2",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "88acaf1489b84f4e84eb90ff5bf41d60dbd111f5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/commits.md": {
+      "blob": "d8bb40402f9b19f3ed3234d13c389a20e14a1e90",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "f9384f6c49a763d72b7846056c1206f5dbb25828",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+  "version": 2
+}

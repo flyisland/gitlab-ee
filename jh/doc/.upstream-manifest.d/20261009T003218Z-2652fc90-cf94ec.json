@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T00:32:18Z",
+  "entries": {
+    "doc/user/application_security/api_security_testing/checks/heartbleed_open_ssl_check.md": {
+      "blob": "7245b13fac63d1710d8f5232ee021f019a7f8209",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "fd821c6e551eccf0583bcebbb2f6994e2f416bbb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/html_injection_check.md": {
+      "blob": "b459465751b56de8eff48ab292051eb5479032dd",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "85eab3304b455a32c846260bc213580e4d910a98",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/insecure_http_methods_check.md": {
+      "blob": "83006a6cf6a19ef146e11ad68c395fb465f8b222",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "0527f22517774998f93a77d7d16817996e3ad0d4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/json_hijacking_check.md": {
+      "blob": "9685cb3365086571382e2000c04adea36b8c82fc",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "3c5b24c8acffe6d7cd4a267db804cddfc4e558bb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/json_injection_check.md": {
+      "blob": "e79226c51fb6ba9073cf54c81e065e9f10c00159",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "1e1b81f2449f8ef49142dec9bea2382aadca230c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/open_redirect_check.md": {
+      "blob": "0581192d86c8b27990e0d7dec9440d6410d8a61c",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "f8cc6629f25f054b0215f43fd1f0eaedbb342f1a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/os_command_injection_check.md": {
+      "blob": "dc52e2d474fa1ce0ed3db8e35d7d97264f43b719",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "03fd5e23fa718d32aa32ead8639a299e5321afc5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/path_traversal_check.md": {
+      "blob": "ab8cd63952f4f46835800ea302525add426abe68",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "4fdad5f1f470d279f1d0987128ebc6f5280ed3a7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/sensitive_file_disclosure_check.md": {
+      "blob": "a7986d6a3f75db59255c4e883814fc71a89f1543",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "20c367e3ab108759ef6c6c0c7e47446a046713c7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/sensitive_information_disclosure_check.md": {
+      "blob": "429b03ab05c021ef4e94055a86376ef298cfd530",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "e355906c300ce1bc6217f07ab61e7b045de8a64a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+  "version": 2
+}

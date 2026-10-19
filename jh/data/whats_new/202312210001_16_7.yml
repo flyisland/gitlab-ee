@@ -1,0 +1,45 @@
+- name: 洞察报告图表中新的下拉视图
+  description: |  # Do not modify this line, instead modify the lines below.
+    有了洞察报告，你就可以使用自定义图标的方式来进行分析了。新的下拉选项能力增加了“通过优先级创建的缺陷”及“通过严重等级创建的缺陷”这两个选项。洞察报告允许你通过下拉的方式来对议题分析报告进行深度解析。
+
+    我们计划在后期的版本中，将此能力以定制化的选项能力添加到洞察报告中。
+  stage: Plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [Ultimate]
+  documentation_link: https://docs.gitlab.com/ee/user/group/insights/#drill-down-on-charts
+  image_url: https://about.gitlab.com/images/16_7/insights_drill_16_7.gif
+  published_at: 2023-12-21
+  release: 16.7
+
+- name: 在 MR 变更视图中查看 SAST 结果
+  description: |  # Do not modify this line, instead modify the lines below.
+    现在可以在合并请求变更中视图中看到 SAST 扫描结果了。这能在代码审核过程中就能更容易地看到、理解以及修复发现的潜在风险。
+
+    SAST 问题的具体行数会以符号的形式进行展现。选择符号就能看到问题列表，然后选择其中某个议题就能看到详情了。
+
+    目前该功能只在 SaaS 上默认开启，预计会在 16.8 对私有化部署默认开启。
+  stage: Secure
+  self-managed: true
+  gitlab-com: true
+  available_in: [Ultimate]
+  documentation_link: https://docs.gitlab.com/ee/user/application_security/sast/#merge-request-changes-view
+  image_url: https://img.youtube.com/vi/COaFZ5aNnZs/hqdefault.jpg  # This should be a full URL, generally taken from the release post content. If a video, use the youtube thumbnail URL with the structure of https://img.youtube.com/vi/hCAyCTacdAQ/hqdefault.jpg
+  published_at: 2023-12-21
+  release: 16.7
+
+- name: Beta 版的 CI/CD 目录功能
+  description: |  # Do not modify this line, instead modify the lines below.
+    极狐GitLab 16.7 发布了 Beta 版的 CI/CD 目录功能（catalog）。目录是一个你可以查找你想要的 [CI/CD 组件](https://docs.gitlab.com/ee/ci/components/)的地方，这些组件可能是由你、你的组织或者其他开放社区维护的。这也是一个 DevOps 工程师可以聚集在一起的地方，他们可以创建、贡献以及分享复用一些流水线配置。
+
+    和其他复用 CI/CD 配置的方法不同，发布在目录中的 CI/CD 组件有着很好的使用体验，而且能够轻松添加到你的流水线中。我们诚挚地邀请你来测试这一激动人心的功能！你可以来尝试已经发布到目录中的组件，也可以创建属于你自己的组件，然后将其分享给所有人。
+
+    当然，这只是个初始的 Beta 版本，我们将继续努力工作来改善该功能的使用体验，争取以后此功能可以成为极狐GitLab CI/CD 部分的核心功能。
+  stage: Verify
+  self-managed: true
+  gitlab-com: true
+  available_in: [Free, Premium, Ultimate]
+  documentation_link: https://docs.gitlab.com/ee/ci/components/#cicd-catalog
+  image_url: https://img.youtube.com/vi/NTbUq30NA7U/hqdefault.jpg
+  published_at: 2023-12-21
+  release: 16.7

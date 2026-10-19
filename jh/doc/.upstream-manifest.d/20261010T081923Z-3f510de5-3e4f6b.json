@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-10-10T08:19:23Z",
+  "entries": {
+    "doc/ci/components/examples.md": {
+      "blob": "518cd485323e1edcb8a10c765af17148ed04cd41",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "f5989673497d8d010d470b356f86653d3c805f4d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-0-released/detailed-cicd-catalog-component-usage-analytics.md": {
+      "blob": "dc918f3de28b8107e0cef473382145bad034ef9e",
+      "commit": "3f510de507ba6dd84854213422b4b3b0545c7693",
+      "target": {
+        "blob": "c190b934cc4b07a3d6dd441112ec320c95efeee8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "3f510de507ba6dd84854213422b4b3b0545c7693",
+  "version": 2
+}

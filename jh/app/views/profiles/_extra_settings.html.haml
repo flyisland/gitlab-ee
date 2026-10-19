@@ -1,0 +1,4 @@
+- if ::Gitlab::RealNameSystem.enabled?
+  - f = local_assigns.fetch(:form)
+
+  = render 'shared/phone_verification', form: f

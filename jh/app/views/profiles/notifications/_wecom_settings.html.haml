@@ -1,0 +1,12 @@
+-# Only offered once the instance can actually deliver to WeCom.
+- return unless ::Gitlab::Wecom::App.notifications_available?
+
+.form-group.gl-mb-0
+  -# Submit 0 so unchecking differs from another form omitting the field. Keep id nil:
+  -# hidden_field_tag would derive the checkbox id from the name and steal the label's for.
+  = hidden_field_tag 'user[wecom_notifications_enabled]', '0', id: nil
+  = render Pajamas::CheckboxTagComponent.new(name: 'user[wecom_notifications_enabled]',
+    checked: ::JH::Users::WecomNotification.enabled_for?(current_user),
+    checkbox_options: { class: 'js-wecom-notifications-enabled' }) do |c|
+    - c.with_label { s_('JH|WeCom|Also send notifications to my WeCom account') }
+    - c.with_help_text { s_('JH|WeCom|Requires a bound WeCom account. Notifications follow your existing notification settings.') }

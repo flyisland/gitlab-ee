@@ -1,0 +1,6 @@
+fragment LigaaiUser on UserCore {
+  id
+  avatarUrl
+  name
+  webUrl
+}

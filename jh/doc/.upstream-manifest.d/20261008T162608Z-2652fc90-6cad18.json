@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-08T16:26:08Z",
+  "entries": {
+    "doc/user/duo_agent_platform/security_threats.md": {
+      "blob": "e6c3ccd0e9d789ea73f1fde56a6bed28b8626256",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "59c542cb83062c80fa07e0a3be9e902cec2b74c5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/sessions/_index.md": {
+      "blob": "cafabf0a1b649930c55312af09358b69be75ef36",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "8793e9dc0a176ae6fbe0c59d248158ed567c1cb5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/_index.md": {
+      "blob": "33d5ff20d214e5a21961203968ef1f981de9cbd2",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "dedbf76fd409b52220fd4518b08c26069155e634",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/context.md": {
+      "blob": "94aaf9ecc6be95a1b14d29218827c5577274a3ff",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "ba77f2230d4e27ef54f02941708c154e597c5545",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/model_context_protocol/_index.md": {
+      "blob": "530bb7d87650df0a5f75fcdeabc113a3d5330075",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "a261963d50e943fddb2986cdda4045c361b1fd2c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/prompt_examples/_index.md": {
+      "blob": "cd38df2e806641c9d71d098df52e8b4a3e74cb4c",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "5719d9c6eabd45bd804cb0cddb5189bddd79991a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/prompt_examples/analyze_vulnerabilities.md": {
+      "blob": "7bde0c7c3a664b784fec5d885e3fd7e8af69704b",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "e50e85274847a09fff0d2d59a79b2abf697b06cf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/prompt_examples/debug_failing_code.md": {
+      "blob": "a9d9f9d54f73a386223599cdf4c73c0bbca36f5a",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "a081f76d532fbd6374c1ec9f2ae6fe88c8dbcc42",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/prompt_examples/generate_tests.md": {
+      "blob": "8f827f4c1c2b4700f4ee64f12e14862b4f2f38a6",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "98dea8ddc4dabcfd5080e36aa73343b2567ef196",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/prompt_examples/refactor_legacy_code.md": {
+      "blob": "e71a4696a7525095cc517231c64c98d354975cd5",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "7acde7ea8dc89ae089a35e90f3ee5474c5c65e15",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+  "version": 2
+}

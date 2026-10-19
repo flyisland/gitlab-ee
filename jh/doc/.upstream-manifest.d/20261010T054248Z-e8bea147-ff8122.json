@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-10-10T05:42:48Z",
+  "entries": {
+    "doc/user/application_security/sast/analyzers.md": {
+      "blob": "a945e27588438c7dd76c9d9b46b6b9de7846aa61",
+      "commit": "e8bea147adde09367af1f9e7b977f0e852a40680",
+      "target": {
+        "blob": "5752611f58bf88dfcd5dd5a37c08d4af51c4843a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/sast/customize_rulesets.md": {
+      "blob": "59b8efd52928acf1a4eae07afbf95fcc9e61e760",
+      "commit": "e8bea147adde09367af1f9e7b977f0e852a40680",
+      "target": {
+        "blob": "6125785101f6c33c067232e33ffabc24a39251df",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "e8bea147adde09367af1f9e7b977f0e852a40680",
+  "version": 2
+}

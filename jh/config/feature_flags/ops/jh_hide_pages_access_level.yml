@@ -1,0 +1,8 @@
+---
+name: jh_hide_pages_access_level
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/4029
+rollout_issue_url:
+milestone: "16.11"
+type: ops
+group:
+default_enabled: false

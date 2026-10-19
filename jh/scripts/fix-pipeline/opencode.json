@@ -1,0 +1,78 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "${JH_FIX_PIPELINE_OPENCODE_MODEL}",
+  "small_model": "${JH_FIX_PIPELINE_OPENCODE_MODEL}",
+  "autoupdate": false,
+  "provider": {
+    "openai": {
+      "options": {
+        "baseURL": "${JH_FIX_PIPELINE_OPENCODE_BASE_URL}",
+        "timeout": 600000,
+        "chunkTimeout": 90000
+      }
+    }
+  },
+  "enabled_providers": [
+    "openai"
+  ],
+  "default_agent": "pipeline-fix",
+  "agent": {
+    "pipeline-fix": {
+      "description": "修复当前 JH pipeline 中可重现的代码失败",
+      "mode": "primary",
+      "model": "${JH_FIX_PIPELINE_OPENCODE_MODEL}",
+      "steps": 80,
+      "prompt": "加载 pipeline-fix skill，使用结构化 diagnostics，只修改 jh/，并遵守停止条件与提交门禁。"
+    }
+  },
+  "instructions": [
+    "INSTRUCTIONS.md"
+  ],
+  "permission": {
+    "*": "deny",
+    "external_directory": "allow",
+    "question": "deny",
+    "task": "deny",
+    "webfetch": "deny",
+    "websearch": "deny",
+    "bash": {
+      "*": "allow",
+      "git commit": "deny",
+      "git commit *": "deny",
+      "git push": "deny",
+      "git push *": "deny",
+      "curl *": "deny"
+    },
+    "edit": "allow",
+    "read": "allow",
+    "list": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "todowrite": "allow",
+    "doom_loop": "deny",
+    "skill": {
+      "*": "allow"
+    }
+  },
+  "command": {
+    "fix": {
+      "template": "请加载 pipeline-fix skill，并严格按该 skill 完整流程修复当前 CI pipeline（CI_PIPELINE_ID）。细则以 skills/pipeline-fix/SKILL.md 为准。",
+      "description": "执行完整的 pipeline 修复流程"
+    }
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 12000
+  },
+  "snapshot": false,
+  "share": "disabled",
+  "watcher": {
+    "ignore": [
+      ".git/**",
+      "logs/**",
+      "node_modules/**",
+      "vendor/**"
+    ]
+  }
+}

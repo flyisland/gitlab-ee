@@ -1,0 +1,12 @@
+# @feature_category: knowledge_graph
+# The expiry worker turns Orbit off when a trial ends. At most 10 groups: the orbitTrial limit.
+query getOrbitOwnedTrials($first: Int = 10) {
+  groups(topLevelOnly: true, ownedOnly: true, first: $first) {
+    nodes {
+      id
+      orbitTrial {
+        state
+      }
+    }
+  }
+}

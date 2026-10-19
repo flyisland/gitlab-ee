@@ -1,0 +1,8 @@
+---
+name: jh_new_purchase_flow
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/894
+rollout_issue_url: https://jihulab.com/gitlab-cn/internal/customers-jihulab-com/-/issues/193
+milestone: '15.6'
+type: development
+group: group::optimize
+default_enabled: false

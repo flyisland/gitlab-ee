@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-12T04:19:07Z",
+  "entries": {
+    "doc/releases/19/gitlab-19-3-released/aws-bedrock-mantle.md": {
+      "absent": true,
+      "blob": "824e49215a39c3284d3a1ce1e3df958f9fe0ab2a",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/duo-cli-plugin-marketplaces.md": {
+      "blob": "bbb2b6074ad10a332b7f75c8ec38da6ebed4ea97",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "5960445341b7e25ecf387dfddba652347602e0db",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/flex-per-capability-spend-caps.md": {
+      "absent": true,
+      "blob": "3ad3c85906d6a25ccbdc111361e649f6a5748d6a",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/flex-usage-notification-emails.md": {
+      "absent": true,
+      "blob": "83ec0dd54c9709c2f48653adcedff4687fe13e15",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/resolve-merge-conflicts-with-gitlab-duo-ga.md": {
+      "blob": "3e93db4ed9a89cd2ee490b41bf5ce330cc949c34",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "bf1259795702b8049d29683cf15517be6f5aabab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/resolve-review-discussions-with-gitlab-duo-ga.md": {
+      "blob": "a55a23aae7b6fec3dbb07b1f73ef5830259946f2",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "52d1c5bf06c2de42f563e67f3209fa7d415b5855",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-3-released/secrets-manager-limited-availability.md": {
+      "blob": "13b24e9e984776c7136512fead0e88b0c0029030",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "5c2c1e5137b0fa8ecb5b1248e8bedc6ff7ad9cc6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/additional-feature-enhancements.md": {
+      "blob": "ee616353bb894d302e3347d535c5fe86a6464f17",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "16c5300f52ac3307a8beb6f24a87ad06917d8a24",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/external-mcp-server-controls-beta.md": {
+      "blob": "126042db1481e28766acf4f83cf452c9917d50d3",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "cfd320f3b198397eba6c36b97ac6ae156598d363",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/19/gitlab-19-4-released/flex-per-capability-cap-warning-emails.md": {
+      "absent": true,
+      "blob": "148fc6e676631677956e1982721f76b9d65427c8",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "lineage": "generated",
+        "state": "absent"
+      }
+    }
+  },
+  "source_sha": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+  "version": 2
+}

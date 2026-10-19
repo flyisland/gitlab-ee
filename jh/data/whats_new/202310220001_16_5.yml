@@ -1,0 +1,54 @@
+- name: 合规标准遵守报告
+  description: | # Do not modify this line, instead modify the lines below.
+    合规中心现在包含一个用于展示标准遵守情况报告的新选项卡。
+    该报告最初包含极狐GitLab 最佳实践标准，显示您群组中的项目不满足标准中包含的检查要求的时间。最初显示的三项检查是：
+
+    - 批准规则要求 MR 至少有 2 名批准者
+    - 批准规则禁止 MR 作者合并
+    - 批准规则禁止 MR 提交者合并
+
+    该报告包含对每个项目进行的每项检查状态的详细信息。还会显示上次运行检查的时间、检查适用的标准以及如何修复报告中可能显示的任何故障或问题。在未来的迭代中，我们将增加更多检查并扩大范围以包含更多规则和标准。
+    此外，我们将对报告进行分组和过滤，这样您就可以专注于最重要的项目或标准。
+  stage: govern
+  self-managed: true
+  gitlab-com: true
+  available_in: [旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/compliance/compliance_center/#standards-adherence-dashboard'
+  #  image_url: 'https://about.gitlab.com/images/16_5/govern-compliance-standards-adherence-report.png'
+  published_at: 2023-10-22
+  release: 16.5
+- name: 创建规则以设置合并请求的目标分支
+  description: | # Do not modify this line, instead modify the lines below.
+    有些项目使用多个长期分支进行开发，例如 `develop` 和 `qa`。在这些项目中，您可能希望将 `main` 保留为默认分支，因为它代表项目的生产状态。然而，开发工作期望合并请求以 `develop` 或 `qa` 为目标分支。目标分支规则有助于确保合并请求为您的项目和开发工作流程选取适当的目标分支。
+
+    当您创建合并请求时，规则会检查分支的名称。如果分支名称与规则匹配，则合并请求会预先选择您在规则中指定的分支作为目标分支。如果分支名称不匹配，合并请求将选取项目的默认分支为目标分支。
+  stage: create
+  self-managed: true
+  gitlab-com: true
+  available_in: [专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/project/repository/branches/#configure-rules-for-target-branches'
+  #  image_url: 'https://about.gitlab.com/images/16_5/create-target-branch-rules.png'
+  published_at: 2023-10-22
+  release: 16.5
+- name: 解决议题主题
+  description: | # Do not modify this line, instead modify the lines below
+    具有多个评论主题且持续时间很长的议题有时会给用户读取和跟踪增加难度。现在，当讨论结束时，您可以解决议题的主题。
+  stage: plan
+  self-managed: true
+  gitlab-com: true
+  available_in: [基础版, 专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/user/discussions/#resolve-a-thread'
+  #  image_url: 'https://about.gitlab.com/images/16_5/resolve_functionality_for_issues.png'
+  published_at: 2023-10-22
+  release: 16.5
+- name: 具有半线性历史的快进式合并队列
+  description: | # Do not modify this line, instead modify the lines below.
+    在 16.4 中，我们发布了快进式合并队列，我们同时希望支持所有的[合并方法](https://docs.gitlab.cn/jh/user/project/merge_requests/methods/)。现在，如果您想保留半线性提交历史记录，您可以使用半线性快进式合并队列。
+  stage: verify
+  self-managed: true
+  gitlab-com: true
+  available_in: [专业版, 旗舰版]
+  documentation_link: 'https://docs.gitlab.cn/jh/ci/pipelines/merge_trains.html'
+  #  image_url: 'https://about.gitlab.com/images/16_5/ff-merge.png'
+  published_at: 2023-10-22
+  release: 16.5

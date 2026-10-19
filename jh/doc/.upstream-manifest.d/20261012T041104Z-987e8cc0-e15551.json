@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-12T04:11:04Z",
+  "entries": {
+    "doc/tutorials/boards_for_standups/_index.md": {
+      "blob": "c2faf5d8923b4767d3c45300124c02b660227c33",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "df0716ddcff708b80e550dd071c48026a2d5fdb5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/boards_for_teams/_index.md": {
+      "blob": "77843485ccb75ebd811670fc956f9e23aca8b8d3",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "9026890ea517e2ee635fec482a520a11bd7ca528",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/build_application.md": {
+      "blob": "a73f4041b08f2e1462981013dde6f7d81cbb0ea6",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "96c9b069268b1290b956c8e06f4f7a1e47c72e3a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/build_runner_admission_controller/_index.md": {
+      "blob": "e6580369e0521dab278d2f2f32e095c1573b740c",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "c57234a72df7c7c2a5c526deeae1840d0b0c30b7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/configure_gitlab_runner_to_use_gke/_index.md": {
+      "blob": "19b038394dd7e47e3b5a3bf0313dfc75c828c9f5",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "e318862f08e78d75170a439379a76ad68500ebe4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/connect_claude_desktop_with_gitlab_mcp_server/_index.md": {
+      "blob": "c459e196d083850479202b230ab7b1b8e5ea2d0e",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "b74b0675b752b562d7ac6a2399144f9c99f137a3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/container_scanning/_index.md": {
+      "blob": "88934cb33ad4717bd6931f5a135420dff356955d",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "938e2a660617aef91a51575fc75bfe0b20cfec9d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/convert_personal_namespace_to_group/_index.md": {
+      "blob": "54f134125ce195a0adab8d0573cab036cfca15a1",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "88874ea097c28cf1dd3632dcd861771ce93f741f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/create_and_deploy_web_service_with_google_cloud_run_component/_index.md": {
+      "blob": "7d57f42153ae8714e07053eb3260108aa79c90dd",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "d470bb3871834213a8fa0f02b959346447ee4276",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/tutorials/create_gitlab_pipeline_push_to_google_artifact_registry/_index.md": {
+      "blob": "611091241d6c565a40ea5671298ea7e1f94c7701",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "ca7c5fabce6a919efd8362495886417bcb387b99",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+  "version": 2
+}

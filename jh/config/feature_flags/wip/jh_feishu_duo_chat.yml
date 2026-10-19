@@ -1,0 +1,8 @@
+---
+name: jh_feishu_duo_chat
+description: Route non-command Feishu robot messages to Duo Agent Platform
+feature_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/work_items/5345
+milestone: '19.5'
+group: group::duo workflow
+type: wip
+default_enabled: false

@@ -1,0 +1,12 @@
+# The gdk-update job boots into an existing GDK (GitLab Development Kit)
+# installation. We then run `gdk update` to update the installation as if
+# the current branch was already merged to master.
+#
+# The point of this job is to ensure that changes in this repository
+# don't break the development flow of contributors.
+# gitlab/.gitlab/ci/gdk.gitlab-ci.yml
+gdk-update:
+  rules:
+    - when: never
+  script:
+    - echo "JH SKIP"

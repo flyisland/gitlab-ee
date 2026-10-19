@@ -1,0 +1,11 @@
+= render_ee 'projects/settings/merge_requests/merge_request_merge_method_settings', local_assigns
+
+- labelSquashFFMerge = s_('JH|ProjectSettings|Single squash merge commit')
+- squashFFMergeCommit = s_('JH|ProjectSettings|Every merge only creates a single squash merge commit.')
+
+- if ::Feature.enabled?(:single_squash_merge_ff, @project)
+  = form.gitlab_ui_radio_component :merge_method,
+    :single_squash_merge,
+    labelSquashFFMerge,
+    radio_options: { data: { testid: 'merge-single-squash-radio' } },
+    help_text: squashFFMergeCommit

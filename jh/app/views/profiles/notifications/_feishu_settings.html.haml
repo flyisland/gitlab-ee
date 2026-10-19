@@ -1,0 +1,10 @@
+- return unless ::Gitlab::Feishu::App.notifications_available?
+
+.form-group.gl-mb-0
+  -# Keep id nil: hidden_field_tag would derive the checkbox id from the name and steal the label's for.
+  = hidden_field_tag 'user[feishu_notifications_enabled]', '0', id: nil
+  = render Pajamas::CheckboxTagComponent.new(name: 'user[feishu_notifications_enabled]',
+    checked: ::JH::Users::FeishuNotification.enabled_for?(current_user),
+    checkbox_options: { class: 'js-feishu-notifications-enabled' }) do |c|
+    - c.with_label { s_('JH|Feishu|Also send notifications to my Feishu account') }
+    - c.with_help_text { s_('JH|Feishu|Requires a bound Feishu account. Notifications follow your existing notification settings.') }

@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T14:05:22Z",
+  "entries": {
+    "doc/user/application_security/detect/security_report_validation.md": {
+      "blob": "5b10eccfe861de8224f0860aa0d2c7f522ceb278",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "6a9db19d20cd3ad22b5fbd206d071a21e1718a06",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/detect/security_scanning_results.md": {
+      "blob": "507a7ffffe29800c87880382a472a4267ea76c07",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "9b1ebe10b14f75e46504fa91fb5abbdbcd6fe080",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/detect/vulnerability_deduplication.md": {
+      "blob": "bd2e7208fb89ddb6e8a25d691289edb5b6dfb3ea",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "ea76e95ab59eb56349b6e1efc5f42a6b2052f2d9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/detect/vulnerability_scanner_maintenance.md": {
+      "blob": "0f9bad15a68c65376726dba8cc40bd859cd33ed6",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "c2a7e0dc503042f1fcd43e813917e0bcf81cbc2c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/get-started-security.md": {
+      "blob": "42bdffd58c2dab59981eefac349726e25cccd91b",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "b78f10e0a6aa7d6b87f3ddd871c57f90f9b6bbdb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/enforcement/_index.md": {
+      "blob": "46973ec42757d16d8735869837a430de413a50bf",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "0727acbe085dda68eeeb1c748e94ea8dbe3cf151",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/enforcement/compliance_and_security_policy_groups.md": {
+      "blob": "cb32683491133244d911fc35144374907d70d7b2",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "e4cdc852ef0e45380f6ed9b77790c72af6be60f1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/enforcement/security_policy_projects.md": {
+      "blob": "aede378a209b55df999e02e1b448966103105b57",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "c81cb2a291c94be091743039f161b56330646177",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/scheduled_pipeline_execution_policies.md": {
+      "blob": "7ee63950a269ac8ad8f4fe358c8971c96fad020d",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "614784ed401f23df22c03bdf47874f96237a457e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/vulnerability_management_policy_schema.md": {
+      "blob": "1bc069dc92974ec01fef5179e3807ac49c6aedcc",
+      "commit": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+      "target": {
+        "blob": "9b1748cdf1c14bdf140d7c55b6c061fb403ff8ca",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "1fd7bafc804cecbc87fc05603f489da7d4ed2301",
+  "version": 2
+}

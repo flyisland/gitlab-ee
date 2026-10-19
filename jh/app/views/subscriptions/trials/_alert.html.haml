@@ -1,0 +1,5 @@
+- if namespace.root? && show_start_free_trial_messages?(namespace)
+  .js-jh-trials-banner{ data: { trial_path: new_trial_path(namespace_id: namespace.id),
+    explore_options_path: group_billings_path(namespace, source: 'group-top-level-banner') } }
+
+= render_ee 'subscriptions/trials/alert', namespace: namespace

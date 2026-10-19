@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-09-21T07:28:37Z",
+  "entries": {
+    "doc/user/import/mapping/post_migration_mapping.md": {
+      "blob": "fdd9f420fac047e313679f37757ed0761e423e4f",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "533b710c70bf1074e2896ddc0c72b4aadca40d07",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/import/mapping/reassignment.md": {
+      "blob": "86bd069a200502ce7b77f176f216a4801f5900ea",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "5425bbd484029d7620e619ffc34aca73c93ceab2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/migrate_to_gitlab_agent.md": {
+      "blob": "60fff6b76b67e5cf06fb406af4fccfaa7726755d",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "5f9b5614dcb62d18cd4274661efc0f9b9d73fe8b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/composer_repository/_index.md": {
+      "blob": "55e6c86d074ffc3b3c3064157148bb393efa1d35",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "b5d5806083299a2cec7425d0fc512e94eab675d2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/debian_repository/_index.md": {
+      "blob": "cc9ce4d0f9def41a73d1818e49ca9c9919ded1d1",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "9950e96a75254a1f70bf25ffc64fe07d14b143a4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/go_proxy/_index.md": {
+      "blob": "cf784590ea7fe9b47ece7cb10319d60aeffc0584",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "b438f217cf9b5182b0f8e2dbd451a499e5e44c1b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/profile/_index.md": {
+      "blob": "dd6fbafebeb58cfbd387d053c9e0032db46aa1a0",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "57056e2335cbe79edc78f71318be7d5e3d1eac1f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/profile/account/two_factor_authentication.md": {
+      "blob": "1287a797dde4efcced2216eee8301a85243bd9b6",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "ad799d1a372a9bfc86ffdd6fb523943fcae254b7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/profile/achievements.md": {
+      "blob": "2b31f778d5a0c155f68f75516c78b12dfd198f61",
+      "commit": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+      "target": {
+        "blob": "b74953b23844a446a6ae74faa651e15c002c3205",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "bfafc157f9fcef6ae2f946301a2ac4171df33991",
+  "version": 2
+}

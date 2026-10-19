@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-10-07T02:23:33Z",
+  "entries": {
+    "doc/administration/whats-new.md": {
+      "blob": "3cb4664b360d9b05eba329d106a883d45b73ba2a",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "5cd9a69dff508573a55379c8bfea5d9273c175c8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/feature_flags.md": {
+      "blob": "7223f4fd9b73ca781cedbe3b31fd9a34e1b0f2e2",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "c5f7428d3e1b432497723f5a6b2318589487aa65",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/codeowners/reference.md": {
+      "blob": "2b19af1a83b5b8809b30f0024fdf4c2e85aa3947",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "6ffc22a581670fe1be1e8cbf7b33c9f2c759dfe6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/signed_commits/gpg.md": {
+      "blob": "a31e57cae942465499078047423e2cb9cc1b3ede",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "35e63b4f84a5587d2be958cad26056b3d0e8ffea",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

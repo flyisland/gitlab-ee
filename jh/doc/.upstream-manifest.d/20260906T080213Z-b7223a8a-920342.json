@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-09-06T08:02:13Z",
+  "entries": {
+    "doc/user/duo_agent_platform/flows/foundational_flows/code_review/_index.md": {
+      "blob": "b010f7de66203df242fab1eb8eac5b4af6f83d5a",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "e6ea4c778b69eacd228e823c36ca94617e8e88d6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo_cli/set_up.md": {
+      "blob": "e54410ee1b2980e110049c635162f043a91a8a81",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "85b6f5621ff9e461814fd27ee69f8075166aa9c6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+  "version": 2
+}

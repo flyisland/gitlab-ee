@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-30T03:02:25Z",
+  "entries": {
+    "doc/administration/gitlab_duo_self_hosted/logging.md": {
+      "blob": "e77d77a576d0361e62a8a7c07262bbcbb0441717",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "c7c7f5d71f3dc1d727f0af047274baf2d6389b0d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/integration/plantuml.md": {
+      "blob": "073d43307432ff5135efab5c9dc21a8debffb672",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "e6eb14089f58991f0068b4dd116fd37bf6cea250",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/license_file.md": {
+      "blob": "3ccdf957ccd4be5fffa9f5f408ab3b98f16fa8ae",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "75008dcbfd4dcf541950d9edbd5fa0cbe0be77c4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/logs/tracing_correlation_id.md": {
+      "blob": "dafcf8eda1627fb34a5569c8810c8c6e990692b4",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "2e1b9b5fe2cdb7728301fbedb82f10b252fc5499",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/gitlab_exporter.md": {
+      "blob": "ba3cf2e9fa23e95c6c1902909e50c740d200498d",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "5095d0399d8a93a44336f00925630baf666956ac",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/node_exporter.md": {
+      "blob": "4ae6413bd74cfb5eef23232d22afc4ff0675aff6",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "6695d023f7322a9c298ba202e15d3efc93b45a10",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/pgbouncer_exporter.md": {
+      "blob": "e0e4008670bc059943313a4f8c97b66dfa7c0c65",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "f29450448ea839beda6266bc6960c9655224699d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/postgres_exporter.md": {
+      "blob": "197fdd9babc07b1f82a87e1981964788f1e1be15",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "7622ac559be8cea9ab7f4ef9affd5e88de44d477",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/redis_exporter.md": {
+      "blob": "4662d7a0076ca8729969ffed706b51a9c2a1eee2",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "eeb8926edf1e975be4193c26d9d9ea44ddc2d874",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/registry_exporter.md": {
+      "blob": "c247a3a3b3a0e47a2019f4d77889cbc126385d41",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "49a2ab520cadf3772b427cf291e3a0f74fc85643",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "af5de233de598cd2fd74b9c744103795d906fd24",
+  "version": 2
+}

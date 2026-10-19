@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-09-20T04:38:00Z",
+  "entries": {
+    "doc/user/packages/terraform_module_registry/_index.md": {
+      "blob": "0ecce251181ea38023dd909ef366c8561bdb0e1d",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "106649857fa8ebdafb6f559360428eb2e706ffe1",
+        "lineage": "human",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/yarn_repository/_index.md": {
+      "blob": "145e531f82389f75aa96001d3ee083bdc2f1eb0c",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "4be6afbe929fcf84f8f93003e7bc1cb6d7796b41",
+        "lineage": "human",
+        "state": "present"
+      }
+    },
+    "doc/user/workspace/set_up_gitlab_agent_and_proxies.md": {
+      "blob": "5060f6f225d99e976545c3e60275aeff133fa6d3",
+      "commit": "77a116aad99956306aa5b9c1a70dc0f62d4918a1",
+      "target": {
+        "blob": "1a4bdc565798e36159b0efe2f8964a2b2f0b7472",
+        "lineage": "human",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+  "version": 2
+}

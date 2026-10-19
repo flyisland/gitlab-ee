@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-09-17T03:15:12Z",
+  "entries": {
+    "doc/ci/secrets/secrets_manager/_index.md": {
+      "blob": "b0baafe81e9ecdb895dcbc3fb5617d314f84bcc4",
+      "commit": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+      "target": {
+        "blob": "cf691b8f77eb804552f3be919063eeffb3d7c257",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/deprecations.md": {
+      "blob": "70578d5ad838039afadd682b90ae7064f8198627",
+      "commit": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+      "target": {
+        "blob": "2bdd37d1dfbb7fdd02e69bbc63fbe6ac44622dc3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/execution/images.md": {
+      "blob": "53726dfe4763908792e9cbbc11c8a7c5ebc11ca1",
+      "commit": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+      "target": {
+        "blob": "814c5d395da4601b2825c599ae61b4121476b92e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "84a35be2b2b2db1af93433665bdfb047f21cdbb6",
+  "version": 2
+}

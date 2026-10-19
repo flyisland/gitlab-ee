@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-09-20T04:54:20Z",
+  "entries": {
+    "doc/administration/gitlab_duo_self_hosted/_index.md": {
+      "blob": "b28a03f939c4c6e69afcc902e9e6cf320d44603a",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "b49406a36561897d43b8898bb4bf2b79f5ac62b1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/examples/semantic-release.md": {
+      "blob": "8c3334c72735a0e340ffa68bbb9ef70cec02e090",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "eb1bf204f367b3ea1383e65c8cdeec71352aa9b4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jenkins.md": {
+      "blob": "1ae14933421a825713cc4b85448bb963e8aa0542",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "5e9163b0e8a8ec38c795cc491fd2ae9532d358df",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/jira/troubleshooting.md": {
+      "blob": "b4b562ac7b240e772fb17ea6741ce16765042323",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "9533bff154c47887e25e3844215d4bff563673ef",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/16/gitlab-16-6-released.md": {
+      "blob": "bfb8628a1e842dc5fb23cd347ed8ecfb9eccd1bb",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "27faec8d443b570efca6fc4e0d65e35e3c7f1b6b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/git/lfs/_index.md": {
+      "blob": "d56ad726d80033002ac2502ce3be9d1d92592b41",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "acf00822823c5448de3552b141718c6b2926c269",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/container_registry/immutable_container_tags.md": {
+      "blob": "66e8f55011b68fbf79d6780ed62ecde525101c97",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "cbc9f56880c7c65e1ea689745e1d6e83d5264256",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/packages/nuget_repository/_index.md": {
+      "blob": "4e1a16444985f633fd51abb001bea6186d17666a",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "4d7dc2ea216dcf794c4a7af6b043e6cac7e764db",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/profile/service_accounts.md": {
+      "blob": "b310dcc8312659e941836248bc0bd4fae4ca7497",
+      "commit": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+      "target": {
+        "blob": "4920caff58d0effddc50d76ddda574aaace74a84",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "421f503badc4dedf18d6fdc9a92e6a3f58947a18",
+  "version": 2
+}

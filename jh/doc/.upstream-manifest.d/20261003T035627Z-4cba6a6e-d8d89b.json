@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-03T03:56:27Z",
+  "entries": {
+    "doc/administration/settings/visibility_and_access_controls.md": {
+      "blob": "94a6db63560077efca08660564a420284aa4b3da",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "a16778b62d55b416f806cd8176f3eec2998af86f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/vscode_extension_marketplace.md": {
+      "blob": "beb51e4cad4ce2c5b07c7991fbe407f968bba08e",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "54dc9fb9f39015dc528ccd467d21dbed085a5276",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/web_ide.md": {
+      "blob": "fc578e0e3d209468d324d39c94d856a4e4285560",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "3fc9ad563ecdeed970a889c27ac0c96735bba0a8",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/_index.md": {
+      "blob": "0d68ef973051dc3811b01c8b9f0521604d2cd7be",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "e302cb82e1a47e90a6222884a798d00f9cc76922",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/configuration_for_imports.md": {
+      "blob": "524f986fa27ddff00a08ce2352d2e64ab4e2507c",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "d8cc9c4939501249bc1c011f75f102e079b062bd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/extra_sidekiq_processes.md": {
+      "blob": "5e6c7c8aceff524e05b50f446430675b0ec06b5e",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "99b121d2b13bf1f4fcdfaae9ff8e577adaf40dd2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/processing_specific_job_classes.md": {
+      "blob": "c258ce175935bc5b10afd397ec5e944e67f52693",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "4e95870d72e6f31372c74eb88a2e2c7625286a35",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/sidekiq_health_check.md": {
+      "blob": "e8ae5d1aefa0dad85423305b0337ba415c1e9929",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "c3603611cf07257ea4332ec307b3e49e0596f8bc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/sidekiq/sidekiq_job_migration.md": {
+      "blob": "65c101bd19de7137efdae7f1bdc7584f81b09b46",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "96854a780563c084d8a64bf3c3ca3b7e08c15378",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/silent_mode/_index.md": {
+      "blob": "e6646d25ac920734872344b9440bb57b86fcc394",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "e7c3de76acf66188be3f5ad302d1f67c73d4d113",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+  "version": 2
+}

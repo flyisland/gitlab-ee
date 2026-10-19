@@ -1,0 +1,8 @@
+---
+name: integration_with_ligaai_issues
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/2799
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/2889
+milestone: "16.0"
+type: development
+group: group::integrations
+default_enabled: false

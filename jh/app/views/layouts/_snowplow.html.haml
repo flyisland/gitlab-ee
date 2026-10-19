@@ -1,0 +1,2 @@
+- if Gitlab::Tracking.send(:tracker).is_a?(::Gitlab::Tracking::Destinations::Snowplow)
+  = render_ce 'layouts/snowplow'

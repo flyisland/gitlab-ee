@@ -1,0 +1,21 @@
+# frozen_string_literal: true
+
+module Types
+  module Ai
+    module Catalog
+      class FlowType < ::Types::BaseObject
+        graphql_name 'AiCatalogFlow'
+        description 'An AI catalog flow'
+        authorize :read_ai_catalog_item
+
+        implements ::Types::Ai::Catalog::ItemInterface
+
+        field :accepts_trigger_goal, GraphQL::Types::Boolean,
+          null: false,
+          method: :accepts_trigger_goal?,
+          experiment: { milestone: '19.5' },
+          description: 'Whether a flow trigger for the flow can carry a configured goal.'
+      end
+    end
+  end
+end

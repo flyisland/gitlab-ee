@@ -1,0 +1,53 @@
+# frozen_string_literal: true
+
+require 'cgi'
+
+def get_vue_files_with_ce_and_ee_versions(files)
+  files.select do |file|
+    if file.end_with?('.vue')
+      counterpart_path = if file.start_with?('ee/')
+                           file.delete_prefix('ee/')
+                         else
+                           "ee/#{file}"
+                         end
+
+      escaped_path = CGI.escape(counterpart_path)
+      api_endpoint = "https://jihulab.com/api/v4/projects/gitlab-cn%2Fgitlab/repository/files" \
+        "/#{escaped_path}?ref=main-jh"
+      response = HTTParty.get(api_endpoint) # rubocop:disable Gitlab/HTTParty -- we need it
+      response.code != 404
+    else
+      false
+    end
+  end
+end
+
+vue_candidates = get_vue_files_with_ce_and_ee_versions(helper.all_changed_files)
+
+return if vue_candidates.empty?
+
+message '此合并请求包含极狐Gitlab 企业版本和极狐Gitlab 开源版本都有的 Vue 文件。'
+
+markdown(<<~MARKDOWN)
+  ## 在极狐Gitlab 开源版本和极狐Gitlab 企业版本中共存的 Vue `<template>`
+
+  此合并请求对极狐Gitlab 企业版本和极狐Gitlab 开源版本的 Vue 文件进行了更改。
+  （例如 `path/to/file.vue` 和 `ee/path/to/file.vue`。）
+
+  当在极狐Gitlab 开源版本的上下文时，极狐Gitlab 开源版本的 Vue 文件将会被使用。
+  当在极狐Gitlab 企业版本的上下文时，极狐Gitlab 企业版本的 Vue 文件将会被使用。
+
+  很可能意外地将_本应该_出现在两个版本的改动仅应用在了极狐Gitlab 开源版本的 `<template` 中。
+  这会导致这些改动仅在极狐Gitlab 开源版本中显示。
+
+  以下是此合并请求中同时修改了两个版本的文件：
+
+  * #{vue_candidates.map { |path| "`#{path}`" }.join("\n* ")}
+
+  如果您对 `<template>` 做出了任何应当同时出现在两个版本的改动，请确保您已经同时对两个版本的文件都已应用。
+
+  ### 更好的解决方案
+
+  一个_更好的_解决方案是将这个组件重构为使极狐Gitlab 的不同版本共用单一模板文件。
+  <!-- 更多请参见：https://docs.gitlab.cn/jh/development/ee_features.html#template-tag 。 -->
+MARKDOWN

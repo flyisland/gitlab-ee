@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-30T03:10:31Z",
+  "entries": {
+    "doc/administration/operations/migrate_to_subdomain.md": {
+      "blob": "6faa157bcf5b9fdd7f47c9f24f12bfa9b7d3e6f6",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "90fcba4c780e289a864a3e17e010c2c2ac1df518",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/moving_repositories.md": {
+      "blob": "1b5a7888e61125f7a541c9fb905d9f8d7c282507",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "d9e394896f0ace3147c46c71bd70ec57795351e9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/puma.md": {
+      "blob": "c58aea6bebdd0b7da8a27d388ef22aac45dad031",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "939512feeea03778e954c2766e46dcc38d484a89",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/rails_console.md": {
+      "blob": "682bdff313c646c9d8ee77fd1dd983370892561c",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "6c05bf9ec13edd5590e6a919ef79603401ca411c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/operations/ssh_certificates.md": {
+      "blob": "af2b8527c7c24383005afc9ef76d20fdf6917bc9",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "7f698aaec5baab23ad5532081f5400d0087461b2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/package_information/_index.md": {
+      "blob": "070c3e1a89b43e8ca911f81b7c9f3961f5e69624",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "62802bfefa8f6a8f9921db6a1acacb452ad6dd93",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/package_information/defaults.md": {
+      "blob": "f92c36e852a897977d8cee8bc0f794dfb0dd9c19",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "e3e0aa7a94f6e3635be165a4f976405695d03486",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/package_information/deprecation_policy.md": {
+      "blob": "e63dd990d170a9183b023a43a94327da28bb5091",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "0fe9f350052eede702726e85be53c06d568655f2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/package_information/licensing.md": {
+      "blob": "3f12a5fa4ae45395074156a6b28f5e8f24a60c55",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "e37f97f4b007c4330079c1cbf06df375ca9e4815",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/package_information/omnibus_packages.md": {
+      "blob": "f0a1179ea867508920c0175be59f40f6ddab4c88",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "1a8e9e82ef37928722992241d9e6c5863c9fe40f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "af5de233de598cd2fd74b9c744103795d906fd24",
+  "version": 2
+}

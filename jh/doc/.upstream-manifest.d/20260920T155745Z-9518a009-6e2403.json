@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-09-20T15:57:45Z",
+  "entries": {
+    "doc/user/duo_agent_platform/flows/foundational_flows/_index.md": {
+      "blob": "0fe8c2488530dcc36720bf362f78dcbb042389d7",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "fe7b6db2eddf6c9af509d3b82ba06f9974b32177",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/flows/foundational_flows/code_review/_index.md": {
+      "blob": "18b5eee82c35e91dd67b9237aa8f3ea1f7525b15",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "a14bcf155703cb2ab3a5bba4f086eae87b4c290f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/settings/import_export.md": {
+      "blob": "aca983613ebaaaecddee36ab992e964b66de3c26",
+      "commit": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+      "target": {
+        "blob": "903d89b1a3d91433bad6b740c6093b23c8b7fa6c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "9518a009bdad7b87bb0d78a907f96bf9aca6bfac",
+  "version": 2
+}

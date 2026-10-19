@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-09-28T18:20:54Z",
+  "entries": {
+    "doc/update/versions/gitlab_15_changes.md": {
+      "blob": "0d744e57225af83253ab03da59eafed9f81af74e",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "e01b7813330df7b82c30d425e45f558089801b8f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/versions/gitlab_16_changes.md": {
+      "blob": "3e20cb659c671b3d694c49aaeed9f0e4dcb2af41",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "1e99ade9d0f455e4c9424fccab315c290570b60c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/update/versions/gitlab_18_changes.md": {
+      "blob": "8828e62e91f3e89fdb47d28826730841986722b6",
+      "commit": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+      "target": {
+        "blob": "43005e949699c0f94da6f9915fccffd8f79d5d43",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "f80d5f7ceccffe2971efc4409b8bbbdb8da50f82",
+  "version": 2
+}

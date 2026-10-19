@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-10-03T03:50:27Z",
+  "entries": {
+    "doc/ci/debugging.md": {
+      "blob": "74bc2ccd7c21fdc331970c0764c070863e0d5985",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "837f66da2a99e0193f015a6930d1c14f38b840ed",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/17/gitlab-17-0-released.md": {
+      "blob": "610a253498d1633649b096f966e3334362d19f1d",
+      "commit": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+      "target": {
+        "blob": "5cac7eb1e886d146701f5ac63d1714b9de137f49",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4cba6a6ea04cc8ad28a84292cb085a29f57359ea",
+  "version": 2
+}

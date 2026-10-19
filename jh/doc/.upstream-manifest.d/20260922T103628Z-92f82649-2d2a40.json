@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-22T10:36:28Z",
+  "entries": {
+    "doc/administration/gitaly/configure_gitaly.md": {
+      "blob": "2af43cbf9fc14e6a0b7607cfc2481b45eef7a61b",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "1f19886e5207e93189cf2cbcde76ce279722557d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/monitoring/prometheus/gitlab_metrics.md": {
+      "blob": "cabdf34690b20ab994efaeadbc0dbddf94d34518",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "77226f7d3348bd840e34642d1d48f0104dbb3439",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/pages/_index.md": {
+      "blob": "b144dacf00fb5083e90de098d5007fca5b10be7b",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "b65e48d5cafe06455141545ccc1f788235a64868",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/pages/rate-limits.md": {
+      "blob": "8034ebe9c0ecd4ea3b0903356cbcc294b06423f3",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "69292c02523f1ad196fcbc12a7ca68be4e31a147",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/pages/source.md": {
+      "blob": "5910f35e55ed916cccf985498729852808f783e8",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "3bafdb695da3dc2803d2037de1261faa30430229",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/pages/troubleshooting.md": {
+      "blob": "bf515c300f664628ce90f2464ce7423f4463f2d4",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "a6917a311cbab857471b813dd57d6e2138d8f24d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/raketasks/_index.md": {
+      "blob": "f316cd4542fa0c04bf45386d1c269b2f0490584e",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "2a9bc1b4ca4a6920a3a70c745ae40f1543146b09",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/cloud_native.md": {
+      "blob": "7e0d5c92cdee5228912eabf9989b568c5834d199",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "ed4343fe9b5181aab089bdd25950e581dfe94bd5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/secrets_manager/linux_package_integration.md": {
+      "blob": "18f09194abbaa525103cfa17cae575fe46c032f2",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "ec8bb7cb25ad2080e62328181519c0a59fd2ddea",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/secrets_manager/troubleshooting.md": {
+      "blob": "9fcd4f8cf04715eaed6f55fb897ada5d04e3dfa1",
+      "commit": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+      "target": {
+        "blob": "233d21ff359bfb885e51eb181674378806a885fc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "92f826490ee7a260c4e518ffe726c73acd4e2030",
+  "version": 2
+}

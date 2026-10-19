@@ -1,0 +1,70 @@
+{
+  "created_at": "2026-10-01T13:04:03Z",
+  "entries": {
+    "doc/administration/raketasks/ai_catalog.md": {
+      "blob": "f294b00a9ba38ca3aba40928bf90f33c253f7de5",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "9a29977241812d83c34825702ece51cd937b319b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/sizing.md": {
+      "blob": "262b7d4eeb16d058d690a4c7a802987bd9ae4af6",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "9ce5ffd4c4940797bdc153fb6a57f4eb0f5ea9a5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/deprecated_api_rate_limits.md": {
+      "blob": "371fc525cc30940259df3d2a0d63fc9aad13c80b",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "b9746bcc85d9ffa818501e7a377117ede5cf2e4b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/files_api_rate_limits.md": {
+      "blob": "d72e90bc6be3d7c6be249c40356fef3a5a807ba2",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "e68c699736c8d39544a4fafc7a99095f13fb995d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/package_registry_rate_limits.md": {
+      "blob": "212ff21542fb341a3d4c6ea507be95e5a3884c0c",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "25ef483db9cd45f9c9a6b5d81d55b20261c21b67",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/rate_limit_on_organizations_api.md": {
+      "blob": "253aa82a7686a80495e53965c92032054ada04cd",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "34e1070445a3397e49b54f4c16385752f45f65d5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/rate_limit_on_pipelines_creation.md": {
+      "blob": "df02fe6d0b68e2a6b5d8bd67c36a681d29c01b52",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "b5f9401f3dca88fd6110b13ab5a73cbc8a8c3973",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

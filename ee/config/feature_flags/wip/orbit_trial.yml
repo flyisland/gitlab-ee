@@ -1,0 +1,10 @@
+---
+name: orbit_trial
+description: Lets Owners of top-level groups on GitLab.com start an Orbit trial.
+feature_issue_url: https://gitlab.com/groups/gitlab-org/orbit/-/work_items/19
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258545
+rollout_issue_url:
+milestone: '19.5'
+group: group::context-systems
+type: wip
+default_enabled: false

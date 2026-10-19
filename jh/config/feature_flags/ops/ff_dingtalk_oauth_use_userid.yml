@@ -1,0 +1,8 @@
+---
+name: ff_dingtalk_oauth_use_userid
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/2970
+rollout_issue_url:
+milestone: "17.9"
+type: ops
+group: group::authentication
+default_enabled: false

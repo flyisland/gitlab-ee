@@ -1,0 +1,8 @@
+---
+name: jh_hidden_oss_content_type
+feature_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/work_items/5293
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3778
+milestone: '19.4'
+type: ops
+group: group::product management
+default_enabled: false

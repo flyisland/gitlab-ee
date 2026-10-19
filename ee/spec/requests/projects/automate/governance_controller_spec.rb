@@ -1,0 +1,97 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe Projects::Automate::GovernanceController, feature_category: :compliance_management do
+  let_it_be(:user) { create(:user) }
+  let_it_be_with_reload(:group) { create(:group) }
+  let_it_be(:project) { create(:project, group: group) }
+
+  subject(:get_index) { get project_automate_governance_path(project) }
+
+  before do
+    stub_licensed_features(ai_features: true)
+    group.namespace_settings.update!(duo_features_enabled: true)
+    sign_in(user)
+  end
+
+  describe 'GET index' do
+    before_all do
+      group.add_owner(user)
+    end
+
+    context 'when licensed and the user can read tool rules' do
+      it 'renders index with 200 status code' do
+        get_index
+
+        expect(response).to have_gitlab_http_status(:ok)
+        expect(response.body).to include('data-ai-audit-events-storage-enabled')
+        expect(response.body).to include(group_settings_gitlab_duo_configuration_index_path(group))
+      end
+    end
+
+    context 'when AI features are not licensed' do
+      before do
+        stub_licensed_features(ai_features: false)
+      end
+
+      it 'renders 404' do
+        get_index
+
+        expect(response).to have_gitlab_http_status(:not_found)
+      end
+    end
+
+    context 'when the user cannot read tool rules (not an owner)' do
+      let_it_be(:maintainer) { create(:user) }
+
+      before_all do
+        project.add_maintainer(maintainer)
+      end
+
+      before do
+        sign_in(maintainer)
+      end
+
+      it 'renders 404' do
+        get_index
+
+        expect(response).to have_gitlab_http_status(:not_found)
+      end
+    end
+
+    context 'when the project belongs to a personal namespace' do
+      let_it_be(:personal_project) { create(:project, :in_user_namespace) }
+
+      before do
+        sign_in(personal_project.first_owner)
+      end
+
+      it 'renders 404' do
+        get project_automate_governance_path(personal_project)
+
+        expect(response).to have_gitlab_http_status(:not_found)
+      end
+    end
+
+    it 'does not render with the project settings layout' do
+      get_index
+
+      expect(response.body).not_to include('js-search-settings-app')
+    end
+  end
+
+  describe 'GET the legacy settings path' do
+    it 'redirects to the new path' do
+      get "/#{project.full_path}/-/settings/gitlab_duo/governance"
+
+      expect(response).to redirect_to(project_automate_governance_path(project))
+    end
+
+    it 'keeps the query string' do
+      get "/#{project.full_path}/-/settings/gitlab_duo/governance?tab=agent-artifacts"
+
+      expect(response).to redirect_to(project_automate_governance_path(project, tab: 'agent-artifacts'))
+    end
+  end
+end

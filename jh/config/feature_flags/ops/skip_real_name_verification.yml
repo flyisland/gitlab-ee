@@ -1,0 +1,8 @@
+---
+name: skip_real_name_verification
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/1231
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/2047
+milestone: '15.8'
+type: ops
+group: 'group::authentication and authorization'
+default_enabled: false

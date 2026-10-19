@@ -1,0 +1,6 @@
+- return unless ::Gitlab.hk?
+
+= f.gitlab_ui_checkbox_component :onboarding_status_email_opt_in,
+  s_("JH|SignUp|I Agree to receive future marketing information from JiHu GitLab."),
+  content_wrapper_options: { class: 'gl-text-gray-500' },
+  checkbox_options: { checked: onboarding_status_presenter.email_opt_in? }

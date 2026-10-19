@@ -1,0 +1,8 @@
+---
+name: jh_disable_subject_to_high_limit
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3159
+rollout_issue_url: https://jihulab.com/gitlab-cn/gitlab/-/issues/4858
+milestone: '18.1'
+type: development
+group: group::project management
+default_enabled: false

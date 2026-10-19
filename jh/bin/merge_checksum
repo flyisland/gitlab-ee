@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Native Bundler CHECKSUMS replace the legacy JSON checksums.
+# Keep this no-op while gitlab-cn/code-sync calls it. Remove it after callers are cleaned up.
+exit 0

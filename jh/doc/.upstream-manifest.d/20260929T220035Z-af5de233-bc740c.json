@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-09-29T22:00:35Z",
+  "entries": {
+    "doc/administration/geo/replication/upgrading_the_geo_sites.md": {
+      "blob": "a89b5a9a0d6bfbcfe2becfa7e2a877e81840271f",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "ddacfafa6bdc6a2c198246338815aefcfa6f2b23",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/replication/usage.md": {
+      "blob": "e3f9d9cb9c708613928272255f93eecf29c1d0c9",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "597f2da9695013f978967bc2fec32586518e00a0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/setup/_index.md": {
+      "blob": "e06d32defa4226538b7f1cf4e259eea9bab38230",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "0545103f2a2bd13306ae05471b309487f8eeff94",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo_sites.md": {
+      "blob": "52fd941ceadefddeb81cac38e26362849b1e0f36",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "17a615c1f85bb9897585c94de08953c540ec8121",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/_index.md": {
+      "blob": "efaee1d65f189462babb1f58961b58602cebab51",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "4403ce2d30e6825e20b0e24bb862daf82416c2c3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/cgroups.md": {
+      "blob": "414c07260166300d72608a0550d8157d10b1bfb5",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "f9651303f3eac6c0f53c50ed7c88a4564ba2ec9f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/consistency_checks.md": {
+      "blob": "21cb0a4d428b50062d5492772efac5be15ad26c0",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "8b016c750eedc248ccf86f88b60c5b4b021f707c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/gitaly_geo_capabilities.md": {
+      "blob": "a8066dd1d5f945d95aae8cdffa0a79976f959fce",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "255397f8cae2e1d4107a98a7e3b3ab1f294e7085",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/kubernetes.md": {
+      "blob": "ebf1a1242f16cbdf14d0455940dc1e514f2581fb",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "a457bfb2017d653f1b4d8534f43945e3ae23cf54",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/monitoring.md": {
+      "blob": "430c6221ba0dd20be7ffcf8fe47657116f9fda78",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "72bdb26df7c84b094a37ea5ea4ebd5449cbac43a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "af5de233de598cd2fd74b9c744103795d906fd24",
+  "version": 2
+}

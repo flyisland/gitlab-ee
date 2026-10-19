@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-10-08T09:25:29Z",
+  "entries": {
+    "doc/user/clusters/agent/user_access.md": {
+      "blob": "f5974a41c07fab9c6058ba002727ec1807f4cc28",
+      "commit": "dc04c31f9e77c253000fc213b084507be5a3a7c2",
+      "target": {
+        "blob": "fdf083549aa241a2577611337b3a15ad53df2d32",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/migrating_from_gma_to_project_template.md": {
+      "blob": "8549cbf3f353b24f3933eb1c5271d74b18a63938",
+      "commit": "dc04c31f9e77c253000fc213b084507be5a3a7c2",
+      "target": {
+        "blob": "213d0a812c04f57d6873640c57f8ab09d1472adf",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "dc04c31f9e77c253000fc213b084507be5a3a7c2",
+  "version": 2
+}

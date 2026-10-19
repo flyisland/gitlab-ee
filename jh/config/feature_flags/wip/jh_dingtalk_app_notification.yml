@@ -1,0 +1,8 @@
+---
+name: jh_dingtalk_app_notification
+description: Send notification emails as DingTalk work notification cards
+introduced_by_url: https://jihulab.com/gitlab-cn/gitlab/-/merge_requests/3839
+milestone: '19.4'
+group: group::integrations
+type: wip
+default_enabled: false

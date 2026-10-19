@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-10T12:09:12Z",
+  "entries": {
+    "doc/administration/gitlab_duo/configure/access_control.md": {
+      "blob": "3755ebe2ed7a05869aff7f7fd80ea7bd50cdf1b3",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "8bbf1473b126593ebc5ac255067eb2f66eac0aaa",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/jobs/ssh_keys.md": {
+      "blob": "43e9a73bb4ca9893f9516d8e952c3093e5a539c3",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "e00f80fac48410eefdf497f905c76912e1470ed4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/fail_fast_testing.md": {
+      "blob": "20587484d5b8c2a4ac066b7e821f7ee05ba4978a",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "e7ea8f348337a7d1337deaaff45ef7c6162c22c6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/releases/18/gitlab-18-7-released.md": {
+      "blob": "a62673ee12c9d66e16e67c341a8d0c3e7e56b730",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "20ecca195b372449241e6c5a6f3aa2824b12f928",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/solutions/components/workflow_mobileapps.md": {
+      "blob": "31cc68778bab58f05a7fc943ec49139d0948fdc0",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "d6be509b2e3f18ed0ce058d2840855fed7dba773",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/autodevops/stages.md": {
+      "blob": "31cc74f9269b30f79cade6bbd8728817092d18ec",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "2b732b95bc98646335bfe1082f7408465aa65204",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/topics/runner_fleet_design_guides/gitlab_runner_manager_performance.md": {
+      "blob": "2e2009993ceedb39fc03a614b19ae32bcce76696",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "62df01e943ad4ce38fc3b7a701cd1d76354c239f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_fuzzing/configuration/enabling_the_analyzer.md": {
+      "blob": "6a4b25f467a493c5410bfd523226121d6fea7460",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "e97ef11e2619ff6d18e6ab4d91efcd931437d41c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/_index.md": {
+      "blob": "79d152a00bb7a129b7ac780085274c4006b306df",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "5530ab80eb4deadaab2bd8d4ad7d0ab5ae1ce7ee",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/_index.md": {
+      "blob": "9e195d5db134047205ec9f6a3b8238decb7be230",
+      "commit": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+      "target": {
+        "blob": "b2414d5090efa3409bf92e68b0fcc9c3a44f0340",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "cdc3c652f9b2c6c65aa9c97e7b1363de92270977",
+  "version": 2
+}

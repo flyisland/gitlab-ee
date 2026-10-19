@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-07T03:53:04Z",
+  "entries": {
+    "doc/user/infrastructure/clusters/connect/new_eks_cluster.md": {
+      "blob": "30ce0bd2d67ce06fb5e7595aaf7587d6977ef5b2",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "88a68e297f2eecc7375e274d7db82141409b898d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/connect/new_gke_cluster.md": {
+      "blob": "381d276626fe4126c78b5f7d3ffaebb9d90279df",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "e290beedc26b5d118f7de4bd26b84d2d9c0ee98c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/manage/management_project_applications/certmanager.md": {
+      "blob": "cdf4c4086a282adffb161ccb09cabdd2e94047d6",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "b398c42a3d021f02473780e2ca1c2e71c60ccec9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/manage/management_project_applications/ingress.md": {
+      "blob": "22808599188ec390521153b13cd537adfca07112",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "aada72876a7c748273041d535c7e485faaa3f6b2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/manage/management_project_applications/runner.md": {
+      "blob": "cbec38be4f084c5ff1e324d11ee7398f889d20e4",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "102d1268625a1250f240ff8b126b539e7299a2b7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/manage/management_project_applications/vault.md": {
+      "blob": "19c0922378e31721bbfc6977835e449d37562475",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "901b726fa6260b7168b7c866f1bfbc22fc0e23b7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/iac/_index.md": {
+      "blob": "3f2c22f278b7c204ee55143478aa6fdd4e58d4e6",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "0d7eacbea330365e92bccba1d1d3b38098239386",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/iac/terraform_state.md": {
+      "blob": "60d58a983334ce421919f21e2b3cf2393583a20b",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "aa1c7f086cd1bbf3044ed3e93b3dd50ec3caecda",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/iac/troubleshooting.md": {
+      "blob": "0aad38bbbb7deeb751d48ae071a77bcede76b262",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "88cd775ab522e6212c27f6664f4cece73105b533",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/clusters/_index.md": {
+      "blob": "e19557f2555250bb25484129dd1b4b5962989b93",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "c8306677777e3b1f53f2a86d3a52d125a05ea47f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

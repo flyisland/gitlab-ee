@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-10-07T03:47:38Z",
+  "entries": {
+    "doc/user/clusters/create/_index.md": {
+      "blob": "ace9ed7cc7b15699bac90b7693af2a93dd20777d",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "7430d3ac7b19e815e8273f7a6091c9a498914ab3",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/environments.md": {
+      "blob": "bb785dd4d8c537c4a3b96ed731f65f7a4a54d9fd",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4ef0a8b88ed03434c03837eeacc8b23714390a3f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/management_project.md": {
+      "blob": "1497df8f29f6efb8029a360bc54535175e87e016",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "b3da835bb384c6ca237228496403d7c398f8c68a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/management_project_template.md": {
+      "blob": "29dff861bdb12cfade14bce072aefa7fca63d1f7",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "338f6566f59f53ec4572433ae637e9430ff36cf0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/clusters/migrating_from_gma_to_project_template.md": {
+      "blob": "8549cbf3f353b24f3933eb1c5271d74b18a63938",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4c14f24df5d641fc0051f38afb893fbc0ae7b471",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/user/infrastructure/_index.md": {
+      "blob": "fb2f4f4a633220253394f8714326d0c9f0bd11d0",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "ccac0be1d83fa7b02bf3913b7e48b04ad5d7df66",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/_index.md": {
+      "blob": "53196d456ab60bebf20f148ee4b147d98d8c523d",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "bab5eb858a8278c5daf4b3f7d1f75c0f59edf649",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/connect/_index.md": {
+      "blob": "d1967513fefe5af8b69b592aa0cb98880b7b86de",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "4b042786838d0ee033c95f8ddf743ad42e1fc391",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/connect/new_aks_cluster.md": {
+      "blob": "c4f83701c17e1fc7cadbaeb655f5847a3cae2e99",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "eeb60704f72c6da9f72e951fb3700046d27f3c44",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/infrastructure/clusters/connect/new_civo_cluster.md": {
+      "blob": "58630613d9db38d3e9fb8b03bd36c3ec54849e16",
+      "commit": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+      "target": {
+        "blob": "19caeed5a2d944a3b60332601c8a4f86600db5fa",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "8183eb5c4d8d82d57d5c55a31c7b4aa03045925d",
+  "version": 2
+}

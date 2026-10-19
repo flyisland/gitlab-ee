@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-09-29T23:19:50Z",
+  "entries": {
+    "doc/administration/gitaly/praefect/monitoring.md": {
+      "blob": "ad3208c3ea077aa3528f8820c8dfa5c2009293e4",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "a92b03f16a2fc343c2da9fb44ac2056c6277a029",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/praefect/recovery.md": {
+      "blob": "c4e2b3f116bae63b494966463ec6fcfd67963aba",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "ff3d2087e3cb00280b9ac1a5dd2cf2a7e0ef7395",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/praefect/troubleshooting.md": {
+      "blob": "e259a2b371fe3ff3b48c413d67918e9898fdb5f9",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "6bedcc7035c13a134e9e1757c2cac2c1ea58ecbb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/tls_support.md": {
+      "blob": "bf1140c660dccde7630a7ea0505eb4784433000b",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "889cf86648f1dc90474d829277fbb85684068cd6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitaly/troubleshooting.md": {
+      "blob": "cb8b5d9c73c4eee9b34b8400f5cb0dba1d76cdfe",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "43d74e729151204cbe4607d88d0f9722bea7d4fc",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo/gateway.md": {
+      "blob": "d063e178b8a76750b58c94d298fe627726c77de3",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "6ab801b5b5760e814b065fb8602cd5967fd8fa56",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo_self_hosted/vllm_gpt_oss_120b.md": {
+      "blob": "01b2bd4f4c082cb3a91290b66d1ba50b8acd865d",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "6c018d7f3fdf0cc5b3e747fb68bbf22a388db4a4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/guest_users.md": {
+      "blob": "acff28cdf9626e51679078a8158f778943840a88",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "55d1d7163188adb7d4752be2f5f390ec5e889423",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/housekeeping.md": {
+      "blob": "8b4ba5668bb593ee212a63b3c211af63af0c90db",
+      "commit": "af5de233de598cd2fd74b9c744103795d906fd24",
+      "target": {
+        "blob": "79b53ce0d549a4290c595467ac65af71d468048f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "af5de233de598cd2fd74b9c744103795d906fd24",
+  "version": 2
+}

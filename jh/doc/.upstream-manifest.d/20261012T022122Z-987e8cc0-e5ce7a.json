@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-12T02:21:22Z",
+  "entries": {
+    "doc/administration/gitlab_duo_self_hosted/offline_deployment.md": {
+      "blob": "083bb60900ff74b36901f61b9ae105fef0865b91",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "42e6f5bf3304f03ede8227699d603200781c8f9c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/duo_agent_platform_flows.md": {
+      "blob": "8b2205147709054c529f3af44ac124a5d7f635a5",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "642b69243054812030b1311b7928ee393a8814e4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/group_integrations.md": {
+      "blob": "2ddf862871cc4ec4de9e4ed8958a467eec1ed5ca",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "c113c69d519ec737a3bb9c12826b4e2f41a05407",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/cloud_services/_index.md": {
+      "blob": "6f4ea46b8be556a8c3ea02a52814e31ee2467232",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "cb6d95eaf378898cfaf464f383f9456dc3f7114b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/jobs/job_artifacts.md": {
+      "blob": "e6c91723f3b961bc4614649027ad444245620690",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "c37991891a67e15824883090926ea25dde1c010e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/pipelines/compute_minutes.md": {
+      "blob": "fac786b24d44ffd33afee07ae7097707107554b3",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "9caede2b7e0bbbe4fb079dc4c2445af88d1f1a4b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/secrets_manager/credit_usage.md": {
+      "blob": "26fa1d41f95e3d52377c323a26a0dfc319365cca",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "871b9c2476b5d9de562bb9f83a5f0421144c84cd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/code_quality.md": {
+      "blob": "5a5f7027acc8fd1a7c067b26cddb7c0e871d1a4b",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "b946b5f41911fe22f257ca0f35c56aaac73ee816",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/yaml/signing_examples.md": {
+      "blob": "471c8e878d72a8b5d14f79016d968b534ee8d5f6",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "8988c8c1b5da249626a469ed46206004a78f28ad",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/yaml/signing_self_hosted.md": {
+      "blob": "ea1e07a24c9364176eb0d9d4e1cc35b29050b0be",
+      "commit": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+      "target": {
+        "blob": "86ec957fc3142ce4daee2db06655aa38a3c423cb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "987e8cc098e1213f8fedf1e0969ad5a823da4bfb",
+  "version": 2
+}

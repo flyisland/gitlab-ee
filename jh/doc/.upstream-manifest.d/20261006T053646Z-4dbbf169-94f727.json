@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-10-06T05:36:46Z",
+  "entries": {
+    "doc/administration/monitoring/prometheus/gitlab_metrics.md": {
+      "blob": "00b4cf5c5f5def6b0e0053c44321cc51f23a1c2e",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "bf3a9d609a4535f11a30d45beb65e9f37bf08736",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/duo_agent_platform_flows.md": {
+      "blob": "1da63dcfc78c4aa3286758bdfa36f3f6ee342578",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "6a76367aa4b25f855d372d97a1f25245472a441f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/events.md": {
+      "blob": "5012788e46615039082eb7739ac8ca7cfd271188",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "6cf19cb39850852a0fea84923c8655cd55e73c4e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/feature_flags.md": {
+      "blob": "7223f4fd9b73ca781cedbe3b31fd9a34e1b0f2e2",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "bdb54818e7a2811bb0173e193b5bf13fc99ba0ae",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/glql.md": {
+      "blob": "63f0982923f4545e16d0458e943df5cc8b2cd798",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "e2652c6a74b2cda2eb1f842bc82b74742157d811",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/graphql/compliance_frameworks.md": {
+      "blob": "f8240d11341c7dabc405eb757f2bb4bb60fae043",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "95dadf4b375849b012a23b799100b88decd97da4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/group_access_tokens.md": {
+      "blob": "4ef827f4cc7012867e5c53369a85f5c7e168e24e",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "e02c193a2f8d03a46a63a9b35d58a7cca5fbb03c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/group_ssh_certificates.md": {
+      "blob": "074d7586687ac99462aae11cec7e7d19273b1f96",
+      "commit": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+      "target": {
+        "blob": "4a0ce07365111b70710ad69322419ab8e71603e0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "4dbbf1699016eb485db34b5ae98c8ab7a5849003",
+  "version": 2
+}

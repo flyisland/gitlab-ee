@@ -1,0 +1,30 @@
+watch-upstream-feature-flags:
+  stage: test
+  allow_failure: true
+  extends:
+    - .predictive-job
+  rules:
+    - if: $GITLAB_USER_NAME == "JH_SYNC_TOKEN" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  script:
+    - latest_commit=`git rev-parse --short HEAD`
+    - echo "latest commit is $latest_commit"
+    - latest_changes=`git diff $latest_commit^ $latest_commit --name-only`
+    - echo "latest_changes is $latest_changes"
+    - |-
+        if [[ $latest_changes == *"config/feature_flags"* ]];
+        then
+            echo "Upstream feature flags changed! Change commit is $latest_commit"
+            feature_flag_changes=$(git diff $latest_commit^ $latest_commit -- config/feature_flags ee/config/feature_flags)
+            echo "feature_flag_changes is $feature_flag_changes"
+            title="Feature flag changes detected"
+            datetime=`TZ=UTC-8 date '+%F %T'`
+            curl -X POST --header 'Content-Type:application/json' --header "PRIVATE-TOKEN:$JIHU_REPORTER_TOKEN" --data "{\"confidential\":\"true\",\"title\":\"$title $datetime\",\"description\":\"New Change in commit $latest_commit   \n see detail here, $CI_JOB_URL\n\",\"labels\":\"featureflag::changed\"}" https://jihulab.com/api/v4/projects/13953/issues
+            curl -X POST \
+              -H 'Content-type:application/json' \
+              --data "{\"blocks\":[{\"type\":\"header\",\"text\":{\"type\":\"plain_text\",\"text\":\"$title\"}},{\"type\":\"section\",\"fields\":[{\"type\":\"mrkdwn\",\"text\":\"*Job:* <$CI_JOB_URL|#$CI_JOB_ID>\"},{\"type\":\"mrkdwn\",\"text\":\"*Issue:* <https://jihulab.com/gitlab-cn/gitlab/-/issues/?sort=created_date&state=opened&label_name%5B%5D=featureflag%3A%3Achanged|link>\"}]}]}" \
+              --url $FEATURE_FLAG_CHANNEL_URL
+        else
+            echo "Upstream feature flag not changed"
+            curl -X POST -H "Content-Type:application/json" --data "{\"text\":\"Upstream feature flag not changed, $CI_JOB_URL\"}" \
+              --url $FEATURE_FLAG_CHANNEL_URL
+        fi

@@ -1,0 +1,19 @@
+---
+description: User selects an entity on the Orbit Schema tab
+internal_events: true
+action: click_orbit_schema_item
+identifiers:
+- user
+- namespace
+- project
+additional_properties:
+  label:
+    description: Where the user selected the entity. One of "map" (domain map), "neighbor" (neighbor graph), "details" (related entity in the details panel), or "picker" (entity picker).
+product_group: context_systems
+product_categories:
+- knowledge_graph
+milestone: '19.1'
+introduced_by_url: https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237283
+tiers:
+- premium
+- ultimate

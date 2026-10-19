@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-10-01T11:02:13Z",
+  "entries": {
+    "doc/administration/server_hooks.md": {
+      "blob": "981b44c89c3b4dd71186422359c1e8f3150619f0",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "57c967fd4767b43b630b85a1b8c2260147037ee5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/_index.md": {
+      "blob": "0c448b8ea21a11ec4ed314bb0ac0c5a32b0d03b8",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "92c12bd72f8c82cdfa0bbbcd2ff44929a9ffba28",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/editor_extensions.md": {
+      "blob": "f7e869dbf4fd91113e4b8bbae69d25bff51c7fbe",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "fc6e516165219f2202fb4ad54c95a94b4236a364",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/event_data.md": {
+      "blob": "d5245553e6cc7e3865e398f9de30b99d4de467ff",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "8cad657a14eef683f022fbcda6ec7eb3ed7b017d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/external_authorization.md": {
+      "blob": "db15c22b5c4d4354c7ee503f9e40eeb09c9d7f16",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "eb7845e20b78d405bda1d3affdd93c4fedcf1692",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/floc.md": {
+      "blob": "12a981eece1700c1df98b21fab3706e14bcb5c02",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "4c50a840bd79e70eeece582926c589ff7cdeced7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/gitaly_timeouts.md": {
+      "blob": "e34e481574502571054a078785e86dcbf373a319",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "24d390198deb58d855b58d8ea9107ef97e40a776",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/help_page.md": {
+      "blob": "7b00ac6c8e2ce901477807d9e08e8691e2b4f9cb",
+      "commit": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+      "target": {
+        "blob": "9cefe15f190dd308cd2894f5c4565eed32fa810f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "86a9c4c139cabf430afd302f0a39607ff5ff5629",
+  "version": 2
+}

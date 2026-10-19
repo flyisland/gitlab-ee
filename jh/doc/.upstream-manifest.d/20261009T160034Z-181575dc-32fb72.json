@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-10-09T16:00:34Z",
+  "entries": {
+    "doc/user/application_security/analyze/duo.md": {
+      "blob": "a7931a15c6ffaecd195f4306f5dc239df2302c05",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "efa33c339491b2651de59bbfab57627f7214f578",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/sast/_index.md": {
+      "blob": "66381889112f678cb5e390c978eacdaa2abb7a8c",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "9718b98c329e60cb435b6460ae5a5efa7768bd22",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/vulnerabilities/_index.md": {
+      "blob": "7edb1364a32fbed57502abc2d57b1e171e6c568a",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "5213966208bcadf2bd752178c2a71036699ac406",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/issues/managing_issues.md": {
+      "blob": "f8deeb1674d2a05a64807308967fdb2f45f50807",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "6e25a55f7f7d3753374a94ecd96c938b5efe5afe",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+  "version": 2
+}

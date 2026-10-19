@@ -1,0 +1,12 @@
+- breadcrumb_title s_('JH|Shimo|Shimo Workspace')
+- page_title s_('JH|Shimo|Shimo Workspace')
+- add_page_specific_style 'page_bundles/wiki'
+
+= render Pajamas::EmptyStateComponent.new(svg_path: 'illustrations/empty-state/empty-wiki-md.svg',
+  title: s_('JH|Shimo|Shimo Workspace integration is enabled'),
+  primary_button_text: s_('JH|Shimo|Go to Shimo Workspace'),
+  primary_button_link: @project.shimo_integration.external_wiki_url,
+  empty_state_options: { data: { testid: 'wiki-empty-state' } }) do |c|
+
+  - c.with_description do
+    = s_("JH|Shimo|You've enabled the Shimo Workspace integration. You can view your wiki directly in Shimo.")

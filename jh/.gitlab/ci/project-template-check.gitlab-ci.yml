@@ -1,0 +1,10 @@
+project-template-check:
+  extends:
+    - .static-analysis-base
+    - .static-analysis-cache
+    - .project-template-check:rules
+  allow_failure: true
+  script:
+    - bin/rake jh:project_template_check:run
+  variables:
+    SETUP_DB: "true"

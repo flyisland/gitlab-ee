@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T23:28:29Z",
+  "entries": {
+    "doc/ci/runners/hosted_runners/_index.md": {
+      "blob": "15c7a898a0b91c54e91716bd4bd394686b97cd81",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "6d39622cb2e1ef3d8a867066a4dedc06ca91f257",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/runners/hosted_runners/gpu_enabled.md": {
+      "blob": "6db70a9d964bf4893e37519e0c5d220727099879",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "b57bd406a377fafe61388e4b0ef1298ee4e3991f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/runners/hosted_runners/windows.md": {
+      "blob": "32c760496458ac3e9b0e12b95686f82c797cdcde",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "bfa674eb4309bf370dcda9f9873281f366569d36",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/runners/job_router/runner_controllers.md": {
+      "blob": "4d87bf630b8e681ac95d57cd9857d441bcf98d47",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "71219e1a43e9504fe38933580795e02be51f1774",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/runners/new_creation_workflow.md": {
+      "blob": "c0af5789217913df3170148fd2c89bbfbdca438b",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "4756e2e979278d61b131ec9eea8d0d921654f139",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/runners/provision_runners_google_cloud.md": {
+      "blob": "1ad1b743919c4c544fbeb33d709d351215fa53d1",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "28614da9401ed43e79635e03145afad51ce6d452",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/runners/runner_fleet_dashboard.md": {
+      "blob": "3fa97a6c5c7fc076b4b04d24f4fc6a7a3b03e6ba",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "7fcb86704414065a45b1cbcb6aeca3e1191bbc1f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/_index.md": {
+      "blob": "a47f026d2975d40a97b04d2f5695e57799c3445b",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "984d75f0e41112f4f738cb4a14cffc8c09cca684",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/aws_secrets_manager.md": {
+      "blob": "bfdafe1d313978f62fc4c527a4b8f61692d0dca1",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "37b3a8db62efee39628872fd546f78de1f302419",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/secrets/azure_key_vault.md": {
+      "blob": "33f16904793a80afd9d4d55601e064d43bf12a77",
+      "commit": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+      "target": {
+        "blob": "119e2efe583e8b3dd46cf7d83220dfb687f457bd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "181575dcab5031f736ee281d2c89e422e2bddcf2",
+  "version": 2
+}

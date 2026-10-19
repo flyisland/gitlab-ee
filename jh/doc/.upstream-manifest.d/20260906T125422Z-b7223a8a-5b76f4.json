@@ -1,0 +1,279 @@
+{
+  "created_at": "2026-09-06T12:54:22Z",
+  "entries": {
+    "doc/administration/backup_restore/backup_gitlab.md": {
+      "blob": "8487bd0dc1198f107260b6208fafeafc4dcb5b4c",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "1ef5dbe6c076c988019ccec149f1916b618b0262",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/get_started.md": {
+      "blob": "0ff50c74e3f70b95b84240f6fa253e8952b2460f",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "9349eb0317f391908ef37428cd4fe98ac370fccd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/incoming_email.md": {
+      "blob": "14dcdbf7dfcaa6cab9105384354ce49f3f786577",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "8b873b5d4b020f054c31ad25fc932bb5acd48cfd",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/instance_limits.md": {
+      "blob": "8f22638d82492d50ee1234af54e19f2b5b5c351e",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "fea48fe910d784fe506b09d4c8fe07105f573d75",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/integration/kroki.md": {
+      "blob": "4395c3b62fa7bbf6eff4f0bbc31f4dd8796bf265",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "0f19ced5c41b62b768e4fd57c54746318c33f66d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/logs/_index.md": {
+      "blob": "ebdba4cf385233604f55655ac832a94d107eab92",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "c8282e5e2a29bd1be68d35fb5820ebbceb97bfd6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/maintenance_mode/_index.md": {
+      "blob": "14690a3bbc5d61341e544b50f6835d1c33d94c2a",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "093ab1192f6d2e8242a6c6e11d7055b565b3d24d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/packages/container_registry.md": {
+      "blob": "2ab9d2fb2ed0a25377c26e03e29aa7c687affa6e",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "92bf2834c4161239f02745de94416f81ec39408f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/reference_architectures/25k_users.md": {
+      "blob": "157ea67a0a3496fe4fae4d7f87c2d3794727b696",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "32a9ee203a3f8ac3b1b14ecabc7df19a2cfde089",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/account_and_limit_settings.md": {
+      "blob": "df72dd2bd91ccf2f579516b2e24221c9dff7ceeb",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "966f49fb33afad6c14dfb92aef8cea3e8832ad70",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/jira_cloud_app_troubleshooting.md": {
+      "blob": "a187be5048b29b2d5603379ac6e7e39af145dd34",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "a31142ef8f886bcafbe847151fa06318e10781ea",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/settings/rate_limit_on_issues_creation.md": {
+      "blob": "f053850b41f9d64d5734eb8873f20281dc777514",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "5f28021c3c88d39e6ec387533bf9e468aee56848",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/api/api_resources.md": {
+      "blob": "b941a04120fbd25925c3bac8ebcb21400827a2ae",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "2d60b7a42a167546e5b6bba95fa2f4d2f384eb36",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/environments/_index.md": {
+      "blob": "6b0d7c70878621d5a452ddc085ead2247a2dfafa",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "8ca343c2000e20a9ad9160e7b760f2ffb9a824ba",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/migration/circleci.md": {
+      "blob": "f264adacb5062db92125061eab34ea8201cb026f",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "b6bd3f1e654c7bea1b8e1b13dccee1e27cb10920",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/ci/testing/code_quality.md": {
+      "blob": "3aa30c6b810b565fae53ec92c5ac8d094d295086",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "05647361a2395de3e143a22bd291d5dd07d7e763",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/advanced_search/elasticsearch.md": {
+      "blob": "94b88508338b41bc8ea13645776e1fd4cffd75b0",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "dc348447c200258830c0ab7953a854d247008d6c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/integration/saml.md": {
+      "blob": "bed1dd40d4bb0f6a4b4fab0a6129a5d8cfccf94b",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "cbbc192f049a79625795d1252463703a6c275dea",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/update/versions/gitlab_18_changes.md": {
+      "blob": "8828e62e91f3e89fdb47d28826730841986722b6",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "a64a98cddeb015ed5c2eddaaef9e787987ab4d39",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/policies/pipeline_execution_policies.md": {
+      "blob": "29ad64dcde3b6ba5eb1761d464bfabf95b4b7788",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "26e97a05bd44aa6fe34e5eb574f33ede2b34c21a",
+        "lineage": "seeded",
+        "state": "present"
+      },
+      "waived": true
+    },
+    "doc/user/application_security/security_dashboard/_index.md": {
+      "blob": "47487a7f262927bfd3a928144c6cb0b8d3d962b5",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "c34d0706eee3296a86f8a7a10a6f68d1c5dd0b6b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/duo_agent_platform/agents/custom.md": {
+      "blob": "1e80910dee94eead7317fe685b126eb5411d3587",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "692e163c818867b525edef4be0426b5bd5a7fc01",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/gitlab_duo/turn_on_off.md": {
+      "blob": "95baab6943629c8a4de4e5a8c0e6a8c56cfcad1f",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "8fd4551623c536e374c0e51764e41e4919e6d8e4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/permissions.md": {
+      "blob": "b0fb46e657a4b263049a814d9d66f1aa7ad210bc",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "5406bcb3dc2da2cf6cbb0009b89fc96a296684a7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/clusters/runbooks/_index.md": {
+      "blob": "2540297d434f86b6b9fd00955214d57397e618f2",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "9a008e5e731ebcfae4dc66b610cb37664336f98b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/import/github.md": {
+      "blob": "ce6f19080bf303e46facf9d295c125d04326abc5",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "ef12b744f4c81a3295410d3eb0fc050b92f54bb1",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/issues/create_issues.md": {
+      "blob": "66b677c9ca5fbbcf66e88924e37b64041377c223",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "2ad870c4ff3d42bbc5f8d1f11635a9591e23ffab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/issues/managing_issues.md": {
+      "blob": "bdc406f0e47f3ba30643eaa6591f06a709f018e4",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "9a08f276235cdfcbcd30a57997b705edd7284f85",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/service_desk/using_service_desk.md": {
+      "blob": "df2e1ba6821e4c0351db1e1cec0fdc480f9f54ba",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "1b1aaf0e2c66fe23c32f95889800103a8722ea6f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/settings/import_export_troubleshooting.md": {
+      "blob": "f3c51d0b07cd1726372d19c705fde67be896a03f",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "77d1ad7786b8000919f5808afc86168683f57362",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+  "version": 2
+}

@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-10-08T13:28:36Z",
+  "entries": {
+    "doc/administration/auth/_index.md": {
+      "blob": "16edd7633c975436b6f519858c653d6911133112",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "b5b1185936260fc2dac172e82ecf45c10a7cd6f2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/auth/ldap/_index.md": {
+      "blob": "a1f5ad0e23c4e96a8132074062ce9fa0d5e6f3b9",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "50573796f296e79d253d32e0e6b3ea0a2884c999",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/cicd/job_artifacts.md": {
+      "blob": "056a42f44a81b3571f6363b2764af914ff1df8b9",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "d95e311ea36bd1cbfc301fc647948558c7ecac28",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/cicd/job_logs.md": {
+      "blob": "b2bd4c6f8c8df2efd18ff6b0b4de52e009f3f546",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "9a35cb18009aa09726cd3268a88ec38d8f08fe6c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/clusters/kas.md": {
+      "blob": "9941f3ae04bad833730c7feb804fea69d281baf5",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "7e34f39b9a9c294238de7a6a6ff39b64460fd603",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/consul.md": {
+      "blob": "108a0e07091909b369cf477493b1b11c17712cde",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "edf22da853fd8f4c9fae34009c683599fcba9931",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/credentials_inventory.md": {
+      "blob": "44410174fad5c5c7b718bb5009c561e402f0cf5f",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "4cc855e5e89edf3d8eb981654c11621fe3ded05e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/_index.md": {
+      "blob": "54b2c598fb3e8e8f12d07c5f08a1a95df416fb8e",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "d8611ed3790c5f99db4d0903cba85d7e643303f9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/replication/datatypes.md": {
+      "blob": "43c5a5f6b0f757e6f2c857c8a595dc07c9021340",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "f02613009be34a3c9489f2ae621ca8a6625dedde",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+  "version": 2
+}

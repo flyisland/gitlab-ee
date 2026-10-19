@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T00:38:40Z",
+  "entries": {
+    "doc/user/application_security/api_security_testing/checks/session_cookie_check.md": {
+      "blob": "1b49cb50c4cdf55f70ac8de4074cb21aadfd7ba7",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "cc679e7366fc52c3002bfe6cf53beed2678082c5",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/shellshock_check.md": {
+      "blob": "e5914b85be21d948a9c107195e626c19471cb512",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "e61f39ea5cae2742528b7258e72d5059626f99b7",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/sql_injection_check.md": {
+      "blob": "b065c1186991b93ed8ece23de39cc008d68805d6",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "68b93fa7a014558bf9eab88304c0b0f90482cc90",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/tls_server_configuration_check.md": {
+      "blob": "fa067387d421ad289f7fac45bb43fd70ee34cb50",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "b864e48fe2d8d2e401b3b7916e25f5f3ec32e039",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/xml_external_entity_check.md": {
+      "blob": "8358b566e7c431305902f6801e20685ed07fc0c7",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "e6b59a54f2bbf5233c258fa259cd04970f47be05",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/checks/xml_injection_check.md": {
+      "blob": "93c33f1e53aae4b1ee508ad115eac9daa5765a41",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "4748a5eb39abd3551e1db1e3523862d2c8957855",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/configuration/_index.md": {
+      "blob": "f925b36405ed62a6a3270d8555d79f9114112682",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "431a7d5eef7095af1ca8aa3b4c3010b5fabd6d63",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/configuration/customizing_analyzer_settings.md": {
+      "blob": "46183f165326c8a2bac91796c26eef9ed08ff22a",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "6d65b311c7465fefa8eb75fe43f779dd865826d2",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/configuration/enabling_the_analyzer.md": {
+      "blob": "770c46c3af91af5ebbe248b5686d9b482506972e",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "2785a6aa765f0d02f228f126d6ac49e7be95bf80",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/configuration/offline_configuration.md": {
+      "blob": "67cfe09e60381bb156e41574d0144073a498f3ca",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "ef2a1ded80931874a6abd4584e38b97d1a6fb21a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+  "version": 2
+}

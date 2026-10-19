@@ -1,0 +1,28 @@
+- return '' if !Gitlab.jh? || Gitlab.com?
+
+- expanded = integration_expanded?('dingtalk_app_')
+= render ::Layouts::SettingsBlockComponent.new(s_('JH|DingTalk Integration'),
+  id: 'js-dingtalk-integration-settings',
+  expanded: expanded) do |c|
+  - c.with_description do
+    = s_("JH|DingTalk integration allows you to interact with JiHu GitLab by entering commands in a DingTalk group conversation.")
+  - c.with_body do
+    = form_for @application_setting, url: general_admin_application_settings_path(anchor: 'js-dingtalk-integration-settings'), html: { class: 'fieldset-form' } do |f|
+      = form_errors(@application_setting) if expanded
+
+      %fieldset
+        .form-group
+          .form-check
+            = f.check_box :dingtalk_integration_enabled, class: 'form-check-input'
+            = f.label :dingtalk_integration_enabled, s_('JH|Integrations|Enable DingTalk Integration'), class: 'form-check-label'
+        .form-group
+          = f.label :dingtalk_corpid, s_('JH|Integrations|DingTalk Corp Id'), class: 'label-bold'
+          = f.text_field :dingtalk_corpid, class: 'form-control gl-form-input'
+        .form-group
+          = f.label :dingtalk_app_key, s_('JH|Integrations|DingTalk App Key'), class: 'label-bold'
+          = f.text_field :dingtalk_app_key, class: 'form-control gl-form-input'
+        .form-group
+          = f.label :dingtalk_app_secret, s_('JH|Integrations|DingTalk App Secret'), class: 'label-bold'
+          = f.text_field :dingtalk_app_secret, class: 'form-control gl-form-input'
+
+      = f.submit _('Save changes'), class: "gl-button btn btn-confirm"

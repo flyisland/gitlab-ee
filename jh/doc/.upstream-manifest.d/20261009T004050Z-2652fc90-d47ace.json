@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-09T00:40:50Z",
+  "entries": {
+    "doc/user/application_security/api_security_testing/configuration/overriding_analyzer_jobs.md": {
+      "blob": "c36baeec87ed6049173548f005716187662d724b",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "4c22dd63c2fb853f4b6e7b0ee767cf8096bf38ea",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/api_security_testing/configuration/variables.md": {
+      "blob": "45d2bf7c6df705ff1eb7bd4d10a713eb19f85bb2",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "d15f44ab6710f1ce1c51980a053a8ce58a1c79e9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/attributes/_index.md": {
+      "blob": "c27f2f92498b50ca8072a2a8736d0a2cf0282333",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "99ae391d1966475c5999b67337292e241a7ff8ab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/container_scanning/container_scanning_troubleshooting.md": {
+      "blob": "0c376ed68c31d64cd919407dbe263c3a53349dab",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "8a82a5005c356cabf568dcddef6b5d27a5154e66",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/container_scanning/continuous_container_scanning/_index.md": {
+      "blob": "f5de1993e40f74c072e4958a829c25ea84295350",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "38ae35bfeb7c1c24edfeadfe0ba7140220600362",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/container_scanning/multi_container_scanning.md": {
+      "blob": "db92e30a8f8ef504b89311701838fd080bc33495",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "cc92e5c6c863e2ef0a248cf193fb48920bb20eab",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/cve_id_request.md": {
+      "blob": "e1789dc0b41d80bb9a549d837caee0c6e0f20cf0",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "0280c88e121e58ced27abae96b33e2b60ff03cbb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/_index.md": {
+      "blob": "cc8b92e43695c481588c4a0e76d96a4b28ec3a51",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "b9c1ae3a0d412f13424d39f890ceff55caced24d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/_index.md": {
+      "blob": "9e195d5db134047205ec9f6a3b8238decb7be230",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "16d0cc6b3c4998ffbdeeccec4da89394d55a628a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/application_security/dast/browser/application_deployment_options.md": {
+      "blob": "f77af389dddb4eb29508abc43e1f8137a48584a2",
+      "commit": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+      "target": {
+        "blob": "2ee03b2f878368c8a61e850166692c503130b60a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "2652fc908e4a68a33c5a4cfa68902fc67b319a5c",
+  "version": 2
+}

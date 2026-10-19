@@ -1,0 +1,277 @@
+{
+  "created_at": "2026-09-06T13:34:32Z",
+  "entries": {
+    "doc/administration/backup_restore/restore_gitlab.md": {
+      "blob": "66d6dc0e9cba6bd416716bb4f9a22cf3f2f8adb9",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "a8c4e2355bacf53ecc3cdaadadd5d51d02ee70c0",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/_index.md": {
+      "blob": "8884a6ce674d5e4f10f047114410cd16d1c226cb",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "b7005cac8fa43e48bc6286ac6c0c36fd4081f9a9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/replication/datatypes.md": {
+      "blob": "47a9d69f95bf7ebfd960600276113df022b6406c",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "796fb1943000f97eabddad33cf05c26a01c8c157",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/geo/setup/database.md": {
+      "blob": "3f2018a6cc6db9851112f7ee4df1f37e731e27d7",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "58b3d2a96d00ba195ea161ace508e1678d89d390",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/administration/gitlab_duo/model_selection.md": {
+      "blob": "e1219601406f4b2caaeb9081365049dbfd06450c",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "fdf9fbac5ab8730d5b0dad4d1b37a263da074bc9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/gitlab_slack_app_troubleshooting.md": {
+      "blob": "08b2f552d5c96a9f4c26d6d631aa238b8cdc6d5d",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "bb78ebfb805f37b687f86a98b3e7a91fe4940170",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/linear.md": {
+      "blob": "9db403fac515fe294bdc24a32925b0ff958d0f01",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "13155a6b9abf18ef2a0f258201a9f3c9112f7723",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/mattermost.md": {
+      "blob": "ead4a7e59124bb7128228ce43ea0ae1308827e68",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "c22c4f0859a34e5df4953d281de6f988710a0495",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/pivotal_tracker.md": {
+      "blob": "e7076b0baf9ff4f6c1e5b83787aafd5f52136c7c",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "8a1c3e18f952b486c03f83a26741e6cc91e42d11",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/redmine.md": {
+      "blob": "cb666880efde677887b0bdb893b32890f790ccd0",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "af223c957bda54f4b56aae2edfeeeb097c63151c",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/telegram.md": {
+      "blob": "6f322d0987109b607b1bbc7241e0ec6c1dfcb008",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "110b147cd3556ac165d15f5ec87bfb6130b72c8e",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/webhook_events.md": {
+      "blob": "80749e6353987e1b8058d6f673e22852134ad86b",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "282f1afa2579f1434aaf61a32fb49bda0aa9fd31",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/webhooks.md": {
+      "blob": "8ba1ac4bf243903072163b4e2443838ec0769c46",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "8c7d8e5d29808cfd09f2dd631efcaf68df00fb4d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/integrations/youtrack.md": {
+      "blob": "58b427ebe2f5af9abc1672c6985d8f8144c958c3",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "0ede5954aa75978ff59655d76a3fc2bd1776b2e4",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/issues/confidential_issues.md": {
+      "blob": "7161e2569afa767b99e7887b1f8517888a258dae",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "58855d8d88a90cd22b76cc371c242c871a275b26",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/issues/csv_import.md": {
+      "blob": "fde415a92c0ae8115b4966fb96df0e05952cde2a",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "bfbce1dec59367e209ab8cd671fc637a901e1d7b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/issues/multiple_assignees_for_issues.md": {
+      "blob": "0dbe8a7d08949ac4e738be0a729ddc525cb65d18",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "9911b8d509f2476824ff1df2c5ad75d07b57067d",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/labels.md": {
+      "blob": "a31a8026f4fba8ef9df26b80db7a30f3d5321628",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "d1528fcc66bbddbf516018cba8690f81849157c9",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/conflicts.md": {
+      "blob": "da5cee7757bb18f1ba7e04a8bdebed74e2d25330",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "cb551a6693181b5eb84dbb64ad570f8465a32c1a",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/merge_requests/status_checks.md": {
+      "blob": "52717827c50de0ea34cb1acf636dcf4c20377e65",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "bacfa1d866abe63e27fdb0c021b0724cd08b9321",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/milestones/burndown_and_burnup_charts.md": {
+      "blob": "6680f3005c08772331b96dfd6a1238da218357c6",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "bc3737bc0cdd0e0059d514e6b43460727517764b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/pages/_index.md": {
+      "blob": "5c0c86d229b5d18beb65e44d542934c26288f275",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "686cec61d3a1449219ba66801e57fc3afb138914",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/pages/custom_domains_ssl_tls_certification/_index.md": {
+      "blob": "2c64a52414bbe3dfc41d08ad2ee8a4a56286f708",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "a78bb42dc2dde348208d488904292f12077a183b",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.md": {
+      "blob": "b26313f813fdf4c9f883c20028f18f5952459487",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "89dab59ab99cf2500137be4dfeaedaddf7712103",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/pages/custom_domains_ssl_tls_certification/ssl_tls_concepts.md": {
+      "blob": "95daacc98c93a6d2e233e60a94a3eb5e38bf0aaf",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "92a7f65415749fcb72beaae1a0db63eb0cd41173",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/pages/getting_started/pages_from_scratch.md": {
+      "blob": "3364f1908ade95601caaa06cf2929d94049db6ba",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "98c1e943eed0123ee34a6e5486dca89aae06e01f",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/releases/release_cli.md": {
+      "blob": "07fc0f8030c0d36a6c2b7d431a21b4bfa278fd7d",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "eefe2102cf295fa5ca5e84ac81b57fe807edbebb",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/repository/files/_index.md": {
+      "blob": "cd1dfee6f0f917ff13d977798b7efaea06282fab",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "a444af6f74ee00318bf797894a940619af127461",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/wiki/_index.md": {
+      "blob": "67bc0eec03c7530986e28a1f91b7f75d1e740b13",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "17f070e5c6c9f7e4df9e67c6db1e69f731df5715",
+        "lineage": "generated",
+        "state": "present"
+      }
+    },
+    "doc/user/project/wiki/wiki_for_planning.md": {
+      "blob": "ed5766a8162fc7c9b72399e5c7c8ac209a9091b2",
+      "commit": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+      "target": {
+        "blob": "dfd6e085ceabf8df62b8f5e7479da42c7d500fa6",
+        "lineage": "generated",
+        "state": "present"
+      }
+    }
+  },
+  "source_sha": "b7223a8a230bfd9238cf7c4c237ecaee04c0897c",
+  "version": 2
+}
